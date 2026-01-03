@@ -1,0 +1,38 @@
+{
+  "name": "me",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@nuxtjs/i18n": "^9.5.6",
+    "@primeuix/themes": "^2.0.2",
+    "lucide-vue-next": "^0.562.0",
+    "motion-v": "^1.7.5",
+    "nuxt": "^4.2.2",
+    "primeicons": "^7.0.0",
+    "primevue": "^4.5.4"
+  },
+  "devDependencies": {
+    "@iconify-json/logos": "^1.2.10",
+    "@iconify-json/lucide": "^1.2.82",
+    "@iconify-json/solar": "^1.2.5",
+    "@nuxt/eslint": "1.12.1",
+    "@nuxt/fonts": "0.12.1",
+    "@nuxt/hints": "1.0.0-alpha.4",
+    "@nuxt/icon": "2.1.1",
+    "@nuxt/image": "2.0.0",
+    "@nuxt/scripts": "0.13.2",
+    "@primevue/nuxt-module": "4.5.4",
+    "@tailwindcss/vite": "^4.1.18",
+    "eslint": "^9.39.2",
+    "tailwindcss": "^4.1.18"
+  }
+}

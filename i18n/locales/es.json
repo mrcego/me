@@ -1,0 +1,109 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca",
+    "techStack": "Stack Técnico",
+    "capabilities": "Capacidades",
+    "projects": "Proyectos",
+    "contact": "Contacto",
+    "getInTouch": "Contáctame"
+  },
+  "hero": {
+    "tagline": "Miembro Fundador {'@'} LingoQuesto",
+    "name": "CÉSAR GÓMEZ",
+    "title": "Desarrollador Fullstack Senior",
+    "description": "13+ años especializándome en Excelencia Frontend. Experto en Vue.js, Nuxt.js, TypeScript y arquitecturas web modernas.",
+    "cta": "Contáctame",
+    "stats": {
+      "experience": "Años de Experiencia",
+      "projects": "Proyectos Entregados",
+      "technologies": "Tecnologías Dominadas"
+    },
+    "tags": {
+      "frontArch": "Arquitecto Frontend",
+      "nuxt": "Nuxt.js",
+      "ts": "Typescript",
+      "engineer": "Ingeniero"
+    },
+    "marquee": "EXPERTO FRONTEND"
+  },
+  "about": {
+    "section": "Identidad Técnica",
+    "title": "Profundidad Fullstack.",
+    "titleHighlight": "Pulso Frontend.",
+    "description1": "Como Desarrollador Fullstack Senior con enfoque especializado en Arquitectura Frontend, he pasado 13+ años conectando el diseño pixel-perfect con sistemas escalables.",
+    "description2": "Mi trayectoria en Colegium y LingoQuesto ha sido definida por una sola obsesión: crear experiencias de usuario de alto rendimiento impulsadas por fundamentos backend robustos y resilientes.",
+    "philosophy": "Filosofía",
+    "philosophyQuote": "Como Fullstack Enfocado en Frontend, creo que la interfaz es donde la ingeniería se encuentra con el impacto.",
+    "expertise": "Experiencia Frontend",
+    "logic": "Lógica Fullstack",
+    "userCentric": "Centrado en el Usuario"
+  },
+  "techStack": {
+    "section": "Arsenal",
+    "title": "Stack Técnico",
+    "titleHighlight": "Nivel Producción.",
+    "description": "Tecnologías que he dominado a través de 13+ años de excelencia en producción.",
+    "certifications": "Certificaciones y Credenciales",
+    "languages": "Idiomas",
+    "levels": {
+      "architect": "Arquitecto Frontend",
+      "senior": "Desarrollador Senior",
+      "principal": "Principal",
+      "founding": "Ingeniero Fundador"
+    },
+    "creds": "Credenciales Oficiales",
+    "flow": "Lingüística y Flow"
+  },
+  "capabilities": {
+    "section": "Ventaja Estratégica",
+    "title": "Capacidades de",
+    "titleHighlight": "Alta Velocidad."
+  },
+  "projects": {
+    "section": "Portafolio",
+    "title": "Artesanía",
+    "titleHighlight": "Frontend.",
+    "filter": {
+      "all": "Todos los Proyectos",
+      "featured": "Destacados",
+      "web": "Apps Web",
+      "mobile": "Móvil"
+    }
+  },
+  "contact": {
+    "section": "Nexo",
+    "title": "Construyamos",
+    "titleHighlight": "productos de",
+    "titleEnd": "alta fidelidad.",
+    "description": "Conectando la brecha entre hojas de ruta de producto ambiciosas y ejecución técnica sólida.",
+    "methods": {
+      "email": "Señal Directa",
+      "linkedin": "Red Profesional",
+      "github": "Protocolo Abierto",
+      "whatsapp": "Línea Segura"
+    },
+    "form": {
+      "name": "Identidad del Comandante",
+      "namePlaceholder": "Tu Nombre",
+      "email": "Frecuencia de Señal",
+      "emailPlaceholder": "email{'@'}dominio.com",
+      "subject": "Objetivo de Misión",
+      "subjectPlaceholder": "ej. Escalando Ecosistema Nuxt",
+      "message": "Datos de Inteligencia",
+      "messagePlaceholder": "Detalla el desafío técnico...",
+      "submit": "Iniciar Enlace Seguro",
+      "sending": "Enviando...",
+      "success": "✓ ¡Mensaje enviado exitosamente! Te responderé pronto.",
+      "error": "Error al enviar mensaje. Por favor intenta de nuevo o contacta directamente vía email."
+    },
+    "footer": {
+      "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",
+      "rights": "Todos los derechos reservados."
+    }
+  },
+  "col": {
+    "nav": "Navegación",
+    "connect": "Conectar"
+  }
+}

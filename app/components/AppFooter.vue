@@ -1,0 +1,153 @@
+<template>
+  <footer
+    class="py-20 md:py-32 px-6 md:px-12 bg-background relative overflow-hidden border-t border-white/5"
+  >
+    <!-- Cinematic Background -->
+    <div
+      class="absolute inset-0 bg-primary/5 opacity-20 pointer-events-none footer-ambient-bg"
+    />
+
+    <div
+      class="absolute bottom-0 left-0 right-0 h-[300px] bg-gradient-to-t from-primary/5 to-transparent pointer-events-none opacity-30"
+    />
+
+    <div class="container mx-auto space-y-16 relative z-10">
+      <div
+        class="flex flex-col md:flex-row justify-between items-start md:items-center gap-12"
+      >
+        <!-- Brand Identity -->
+        <div class="space-y-6 group cursor-pointer">
+          <div class="flex items-center gap-4">
+            <div
+              class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary group-hover:rotate-[-12deg] group-hover:scale-110 transition-all duration-500 shadow-lg shadow-primary/20 bg-white/10 backdrop-blur-md border border-white/20"
+            >
+              <Icon name="solar:code-square-bold-duotone" class="w-7 h-7" />
+            </div>
+            <div class="flex flex-col">
+              <h4
+                class="text-2xl font-black tracking-tighter text-white group-hover:text-primary transition-colors duration-300 uppercase"
+              >
+                {{ $t("hero.name") }}
+              </h4>
+              <span
+                class="text-[10px] tracking-[0.2em] text-slate-500 uppercase font-bold group-hover:text-white transition-colors delay-75"
+              >
+                {{ $t("hero.tags.frontArch") }}
+              </span>
+            </div>
+          </div>
+          <p
+            class="text-slate-500 text-xs font-medium uppercase tracking-[0.2em] max-w-xs leading-loose pl-1"
+          >
+            {{ $t("footer.tagline") }}
+          </p>
+        </div>
+
+        <!-- Navigation Columns -->
+        <div class="flex flex-wrap gap-12 md:gap-24">
+          <div v-for="col in footerLinks" :key="col.title" class="space-y-6">
+            <h5
+              class="text-[10px] font-black uppercase tracking-[0.4em] text-primary flex items-center gap-2"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              {{ $t(col.title) }}
+            </h5>
+            <ul class="space-y-3">
+              <li v-for="link in col.links" :key="link.name">
+                <a
+                  :href="link.href"
+                  class="text-xs md:text-sm font-medium text-slate-400 hover:text-white transition-all hover:translate-x-2 inline-flex items-center gap-2 group/link"
+                >
+                  <span
+                    class="w-0 overflow-hidden group-hover/link:w-3 transition-all duration-300 opacity-0 group-hover/link:opacity-100 text-primary"
+                  >
+                    <Icon name="solar:arrow-right-linear" class="w-3 h-3" />
+                  </span>
+                  {{ $t(link.name) }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div
+        class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8"
+      >
+        <p
+          class="text-[10px] font-bold uppercase tracking-widest text-slate-600 flex items-center gap-2"
+        >
+          <span>© {{ new Date().getFullYear() }} Signal Protocol.</span>
+          <span class="hidden md:inline text-slate-800">|</span>
+          <span class="opacity-50">All Systems Operational</span>
+        </p>
+
+        <!-- Socials -->
+        <div class="flex gap-4">
+          <a
+            v-for="s in socials"
+            :key="s.icon"
+            :href="s.link"
+            class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] border border-white/10 hover:border-primary flex items-center justify-center p-0 group/social"
+            aria-label="Social Link"
+          >
+            <Icon
+              :name="s.icon"
+              class="w-5 h-5 transition-colors duration-300 text-slate-200 group-hover/social:text-white"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</template>
+
+<script setup>
+const footerLinks = [
+  {
+    title: "col.nav",
+    links: [
+      { name: "nav.home", href: "#" },
+      { name: "about.philosophy", href: "#about" },
+      { name: "projects.section", href: "#portfolio" },
+      { name: "capabilities.section", href: "#capabilities" },
+    ],
+  },
+  {
+    title: "col.connect",
+    links: [
+      { name: "nav.getInTouch", href: "mailto:cesargomezh90@gmail.com" },
+      {
+        name: "contact.methods.linkedin",
+        href: "https://linkedin.com/in/mrcego",
+      },
+      {
+        name: "contact.methods.github",
+        href: "https://github.com/cesargomezh",
+      },
+    ],
+  },
+];
+
+const socials = [
+  { icon: "lucide:linkedin", link: "https://linkedin.com/in/mrcego" },
+  { icon: "lucide:github", link: "https://github.com/cesargomezh" },
+  {
+    icon: "solar:letter-bold-duotone",
+    link: "mailto:cesargomezh90@gmail.com",
+  },
+];
+</script>
+
+<style scoped>
+.footer-ambient-bg {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 75, 92, 0.15) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+}
+</style>

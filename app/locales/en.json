@@ -1,0 +1,87 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "techStack": "Tech Stack",
+    "capabilities": "Capabilities",
+    "projects": "Projects",
+    "contact": "Contact",
+    "getInTouch": "Get in Touch"
+  },
+  "hero": {
+    "tagline": "Founding Member @ LingoQuesto",
+    "name": "CÉSAR GÓMEZ",
+    "title": "Senior Fullstack Developer",
+    "description": "13+ years specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.",
+    "cta": "Get in Touch",
+    "stats": {
+      "experience": "Years Experience",
+      "projects": "Projects Delivered",
+      "technologies": "Technologies Mastered"
+    }
+  },
+  "about": {
+    "section": "Technical Identity",
+    "title": "Fullstack Depth.",
+    "titleHighlight": "Frontend Pulse.",
+    "description1": "As a Senior Fullstack Developer with a specialized focus on Frontend Architecture, I've spent 13+ years bridging the gap between pixel-perfect design and scalable systems.",
+    "description2": "My trajectory through Colegium and LingoQuesto has been defined by a single obsession: creating high-performance user experiences powered by robust, resilient backend foundations.",
+    "philosophy": "Philosophy",
+    "philosophyQuote": "As a Frontend Focused Fullstack, I believe the interface is where engineering meets impact."
+  },
+  "techStack": {
+    "section": "Arsenal",
+    "title": "Production-Grade",
+    "titleHighlight": "Tech Stack.",
+    "description": "Technologies I've mastered through 13+ years of production excellence.",
+    "certifications": "Certifications & Credentials",
+    "languages": "Languages"
+  },
+  "capabilities": {
+    "section": "Strategic Edge",
+    "title": "High-Velocity",
+    "titleHighlight": "Capabilities."
+  },
+  "projects": {
+    "section": "Portfolio",
+    "title": "Frontend",
+    "titleHighlight": "Craftsmanship.",
+    "filter": {
+      "all": "All Projects",
+      "featured": "Featured",
+      "web": "Web Apps",
+      "mobile": "Mobile"
+    }
+  },
+  "contact": {
+    "section": "Nexus",
+    "title": "Let's build",
+    "titleHighlight": "high-fidelity",
+    "titleEnd": "products.",
+    "description": "Bridging the gap between ambitious product roadmaps and solid technical execution.",
+    "methods": {
+      "email": "Direct Signal",
+      "linkedin": "Professional Mesh",
+      "github": "Open Protocol",
+      "whatsapp": "Secure Line"
+    },
+    "form": {
+      "name": "Commander Identity",
+      "namePlaceholder": "Your Name",
+      "email": "Signal Frequency",
+      "emailPlaceholder": "email@domain.com",
+      "subject": "Mission Objective",
+      "subjectPlaceholder": "e.g. Scaling Nuxt Ecosystem",
+      "message": "Intelligence Data",
+      "messagePlaceholder": "Detail the technical challenge...",
+      "submit": "Initiate Secure Link",
+      "sending": "Sending...",
+      "success": "✓ Message sent successfully! I'll get back to you soon.",
+      "error": "Failed to send message. Please try again or contact directly via email."
+    }
+  },
+  "footer": {
+    "tagline": "Building high-fidelity products with frontend excellence",
+    "rights": "All rights reserved."
+  }
+}
