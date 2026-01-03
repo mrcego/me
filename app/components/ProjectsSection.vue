@@ -28,15 +28,15 @@
             <h2
               class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
             >
-              {{ ("portfolio.section_tag") }}
+              {{ $t("portfolio.section_tag") }}
             </h2>
           </div>
           <h3
             class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white"
           >
-            {{ ("portfolio.title_top") }}<br>
+            {{ $t("portfolio.title_top") }}<br>
             <span class="text-gradient">{{
-              ("portfolio.title_bottom")
+              $t("portfolio.title_bottom")
             }}</span>
           </h3>
         </Motion>
@@ -87,8 +87,7 @@
           <div
             class="relative aspect-video rounded-4xl overflow-hidden bg-slate-900 mb-8 md:mb-12 shrink-0 border border-white/5"
           >
-            <img
-              :src="project.image"
+            <img:src="project.image"
               class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
               alt="Project Showcase"
             >
@@ -122,7 +121,7 @@
                 <h4
                   class="text-2xl md:text-3xl font-black tracking-tighter text-white group-hover:text-primary transition-colors"
                 >
-                  {{ (portfolio.projects..title) }}
+                  {{ $t(`portfolio.projects.${i}.title`) }}
                 </h4>
                 <p
                   class="text-slate-500 font-bold text-[10px] md:text-xs uppercase tracking-widest"
@@ -141,7 +140,7 @@
             <p
               class="text-slate-400 text-sm md:text-base leading-relaxed max-w-lg line-clamp-3 group-hover:line-clamp-none transition-all duration-700 font-medium"
             >
-              {{ (portfolio.projects..desc) }}
+              {{ $t(`portfolio.projects.${i}.desc`) }}
             </p>
           </div>
         </Motion>
@@ -164,7 +163,7 @@
             />
             <span
               class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em]"
-              >{{ ("portfolio.nexus") }}</span
+              >{{ $t("portfolio.nexus") }}</span
             >
           </span>
         </button>
@@ -207,11 +206,18 @@ const filteredProjects = computed(() => {
 
 <style scoped>
 .project-scanline {
-  background: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 75, 92, 0.2) 2px);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(255, 75, 92, 0.2) 2px
+  );
 }
 
 .project-grid-bg {
-  background-image: linear-gradient(0deg, #ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px);
+  background-image: linear-gradient(0deg, #ffffff 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff 1px, transparent 1px);
   background-size: 100px 100px;
 }
 </style>
+

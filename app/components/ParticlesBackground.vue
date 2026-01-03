@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="particles-container" aria-hidden="true">
     <canvas ref="canvas" class="particles-canvas" />
   </div>
@@ -139,3 +139,4 @@ onUnmounted(() => {
   display: block;
 }
 </style>
+

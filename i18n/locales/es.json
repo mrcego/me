@@ -101,11 +101,11 @@
       "sending": "Enviando...",
       "success": "✓ ¡Mensaje enviado exitosamente! Te responderé pronto.",
       "error": "Error al enviar mensaje. Por favor intenta de nuevo o contacta directamente vía email."
-    },
-    "footer": {
-      "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",
-      "rights": "Todos los derechos reservados."
     }
+  },
+  "footer": {
+    "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",
+    "rights": "Todos los derechos reservados."
   },
   "col": {
     "nav": "Navegación",

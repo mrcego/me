@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section
     id="contact"
     class="py-24 md:py-64 px-6 md:px-12 relative overflow-hidden bg-background"
@@ -100,7 +100,7 @@
               v-if="submitSuccess"
               class="p-4 sm:p-6 bg-green-500/10 border border-green-500/30 rounded-2xl text-green-400 text-sm sm:text-base font-medium text-center"
             >
-              ✓ Message sent successfully! I'll get back to you soon.
+              âœ“ Message sent successfully! I'll get back to you soon.
             </div>
 
             <!-- Error Message -->
@@ -118,7 +118,7 @@
                   class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                   >Commander Identity</label
                 >
-                <InputText
+                <inputText
                   id="contact-name"
                   v-model="formData.name"
                   placeholder="Your Name"
@@ -131,7 +131,7 @@
                         'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-6! bg-white/3! border-white/5! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-white/20',
                     },
                   }"
-                />
+                >
                 <span
                   v-if="errors.name"
                   id="name-error"
@@ -145,7 +145,7 @@
                   class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                   >Signal Frequency</label
                 >
-                <InputText
+                <inputText
                   id="contact-email"
                   v-model="formData.email"
                   type="email"
@@ -159,7 +159,7 @@
                         'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-6! bg-white/3! border-white/5! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-white/20',
                     },
                   }"
-                />
+                >
                 <span
                   v-if="errors.email"
                   id="email-error"
@@ -175,7 +175,7 @@
                 class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                 >Mission Objective</label
               >
-              <InputText
+              <inputText
                 id="contact-subject"
                 v-model="formData.subject"
                 placeholder="e.g. Scaling Nuxt Ecosystem"
@@ -188,7 +188,7 @@
                       'rounded-xl sm:rounded-2xl md:rounded-3xl !p-3 sm:!p-4 md:!p-6 !bg-white/3 !border-white/5 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-white/20',
                   },
                 }"
-              />
+              >
               <span
                 v-if="errors.subject"
                 id="subject-error"
@@ -325,3 +325,4 @@ const contactMethods = [
   animation: sweep 4s ease-in-out infinite;
 }
 </style>
+

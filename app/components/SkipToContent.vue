@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <a href="#main-content" class="skip-to-content" @click="skipToContent">
     Skip to main content
   </a>
@@ -40,3 +40,4 @@ const skipToContent = (e) => {
   outline-offset: 4px;
 }
 </style>
+

@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section
     id="tech-stack"
     class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
@@ -31,7 +31,7 @@
         <h3
           class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black tracking-tighter leading-[0.9] text-white"
         >
-          {{ $t("techStack.title") }}<br />
+          {{ $t("techStack.title") }}<br>
           <span class="text-gradient">{{
             $t("techStack.titleHighlight")
           }}</span>
@@ -289,3 +289,4 @@ const languages = [
   );
 }
 </style>
+

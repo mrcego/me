@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <footer
     class="py-20 md:py-32 px-6 md:px-12 bg-background relative overflow-hidden border-t border-white/5"
   >
@@ -79,7 +79,7 @@
           class="text-[10px] font-bold uppercase tracking-widest text-slate-600 flex items-center gap-2"
         >
           <span
-            >©
+            >Â©
             <ClientOnly fallback="2025">{{
               new Date().getFullYear()
             }}</ClientOnly>
@@ -157,3 +157,4 @@ const socials = [
   mask-image: linear-gradient(to bottom, black, transparent);
 }
 </style>
+

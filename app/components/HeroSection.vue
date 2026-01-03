@@ -335,3 +335,4 @@ onMounted(() => {
 .hero-scanline { background: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 75, 92, 0.1) 2px); }
 </style>
 
+

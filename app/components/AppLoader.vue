@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <Transition name="loader-fade">
     <div
       v-if="loading"
@@ -27,7 +27,7 @@
 
             <NuxtImg
               src="/img/logo.png"
-              alt="César Gómez"
+              alt="CÃ©sar GÃ³mez"
               class="w-full h-full object-contain relative z-10 drop-shadow-2xl"
             />
           </div>
@@ -115,3 +115,4 @@ defineProps({
   }
 }
 </style>
+

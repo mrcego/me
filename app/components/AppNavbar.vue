@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <nav
     class="fixed top-0 left-0 right-0 z-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
     :class="[isScrolled ? 'py-4' : 'py-8']"
@@ -28,7 +28,7 @@
             />
             <NuxtImg
               src="/img/logo.png"
-              alt="César Gómez"
+              alt="CÃ©sar GÃ³mez"
               width="48"
               height="48"
               class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
@@ -338,3 +338,4 @@ onUnmounted(() => {
 <style scoped>
 /* Scoped styles if needed, but Tailwind handles most */
 </style>
+

@@ -20,13 +20,15 @@
           <h2
             class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
           >
-            Strategic Core
+            {{ $t("capabilities.section") }}
           </h2>
           <div class="h-px w-10 bg-primary/40" />
         </div>
         <h3 class="text-5xl md:text-8xl font-black tracking-tighter text-white">
-          High-Velocity<br>
-          <span class="text-gradient">Capabilities.</span>
+          {{ $t("capabilities.title") }}<br>
+          <span class="text-gradient">{{
+            $t("capabilities.titleHighlight")
+          }}</span>
         </h3>
       </Motion>
 
@@ -98,10 +100,20 @@ const capabilities = [
 
 <style scoped>
 .capability-scanline {
-  background: repeating-linear-gradient(45deg, transparent, transparent 1px, rgba(255, 75, 92, 0.03) 2px);
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 1px,
+    rgba(255, 75, 92, 0.03) 2px
+  );
 }
 
 .capability-ambient-glow {
-  background: radial-gradient(circle at 50% 0%, rgba(255, 75, 92, 0.03), transparent);
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 75, 92, 0.03),
+    transparent
+  );
 }
 </style>
+
