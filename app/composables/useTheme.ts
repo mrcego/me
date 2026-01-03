@@ -1,12 +1,39 @@
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { updatePrimaryPalette, updateSurfacePalette, palette } from '@primeuix/themes';
 
+export interface ThemePreset {
+  id: string;
+  name: string;
+  background: string;
+  surface: string;
+  primary: string;
+  font: 'Sans' | 'Fira Code';
+  isDark: boolean;
+}
+
+export const THEME_PRESETS: ThemePreset[] = [
+  { id: 'dark-modern', name: 'Dark Modern', background: '#1f1f1f', surface: '#181818', primary: '#007acc', font: 'Sans', isDark: true },
+  { id: 'dark-plus', name: 'Dark+', background: '#1e1e1e', surface: '#252526', primary: '#0e639c', font: 'Fira Code', isDark: true },
+  { id: 'tokyo-night', name: 'Tokyo Night', background: '#1a1b26', surface: '#16161e', primary: '#7aa2f7', font: 'Fira Code', isDark: true },
+  { id: 'dracula', name: 'Dracula', background: '#282a36', surface: '#1e1f29', primary: '#bd93f9', font: 'Fira Code', isDark: true },
+  { id: 'one-dark', name: 'One Dark', background: '#282c34', surface: '#21252b', primary: '#61afef', font: 'Fira Code', isDark: true },
+  { id: 'nord', name: 'Nord', background: '#2e3440', surface: '#3b4252', primary: '#88c0d0', font: 'Fira Code', isDark: true },
+  { id: 'catppuccin', name: 'Catppuccin', background: '#1e1e2e', surface: '#181825', primary: '#89b4fa', font: 'Fira Code', isDark: true },
+  { id: 'rose-pine', name: 'Rose Pine', background: '#191724', surface: '#1f1d2e', primary: '#ebbcba', font: 'Fira Code', isDark: true },
+  { id: 'github-dark', name: 'GitHub Dark', background: '#0d1117', surface: '#161b22', primary: '#58a6ff', font: 'Fira Code', isDark: true },
+  { id: 'monokai', name: 'Monokai', background: '#272822', surface: '#1e1f1c', primary: '#f92672', font: 'Fira Code', isDark: true },
+  { id: 'cobalt2', name: 'Cobalt2', background: '#193549', surface: '#152c3e', primary: '#ffc600', font: 'Fira Code', isDark: true },
+  { id: 'light-modern', name: 'Light Modern', background: '#ffffff', surface: '#f3f3f3', primary: '#005fb8', font: 'Sans', isDark: false },
+];
+
 // Shared state
-const isDark = ref(false);
-const primaryColor = ref('#ff4b5c');
-const surfaceColor = ref('#0f172a');
+const currentThemeId = ref('dark-modern');
 
 export const useTheme = () => {
+  const currentTheme = computed(() =>
+    THEME_PRESETS.find(p => p.id === currentThemeId.value) || THEME_PRESETS[0]
+  );
+
   const getContrastColor = (hex: string) => {
     if (!hex || hex.length < 7) return '#ffffff';
     const r = parseInt(hex.substring(1, 3), 16);
@@ -19,109 +46,89 @@ export const useTheme = () => {
   const syncCSSVariables = () => {
     if (!import.meta.client) return;
     const root = document.documentElement;
-    const dark = isDark.value;
+    const theme = currentTheme.value;
+    if (!theme) return;
+    const dark = theme.isDark;
 
     // Primary Palette
-    const pPalette = palette(primaryColor.value);
-    root.style.setProperty('--primary', primaryColor.value);
-    root.style.setProperty('--primary-hover', (dark ? pPalette[400] : pPalette[600]) || primaryColor.value);
-    root.style.setProperty('--primary-contrast', getContrastColor(primaryColor.value));
+    const pPalette = palette(theme.primary) as any;
+    root.style.setProperty('--primary', theme.primary);
+    root.style.setProperty('--primary-hover', (dark ? pPalette[400] : pPalette[600]) || theme.primary);
+    root.style.setProperty('--primary-contrast', getContrastColor(theme.primary));
 
-    // Surface Palette logic based on isDark
-    const sPalette = palette(surfaceColor.value);
+    // Surface Palette
+    const sPalette = palette(theme.surface) as any;
 
-    if (dark) {
-      root.style.setProperty('--background', sPalette[950] || '#030612');
-      root.style.setProperty('--foreground', '#ffffff');
-      root.style.setProperty('--muted', '#94a3b8');
-      root.style.setProperty('--surface', sPalette[900] || '#0f172a');
-      root.style.setProperty('--secondary', sPalette[800] || '#080c14');
-      root.style.setProperty('--border', 'rgba(255, 255, 255, 0.08)');
-      root.style.setProperty('--glass-bg', 'rgba(255, 255, 255, 0.03)');
-    } else {
-      root.style.setProperty('--background', sPalette[50] || '#ffffff');
-      root.style.setProperty('--foreground', '#0f172a');
-      root.style.setProperty('--muted', '#64748b');
-      root.style.setProperty('--surface', '#ffffff');
-      root.style.setProperty('--secondary', sPalette[100] || '#f1f5f9');
-      root.style.setProperty('--border', 'rgba(0, 0, 0, 0.08)');
-      root.style.setProperty('--glass-bg', 'rgba(0, 0, 0, 0.03)');
-    }
+    root.style.setProperty('--background', theme.background);
+    root.style.setProperty('--foreground', dark ? '#ffffff' : '#0f172a');
+    root.style.setProperty('--muted', dark ? '#94a3b8' : '#64748b');
+    root.style.setProperty('--surface', theme.surface);
+    root.style.setProperty('--secondary', (dark ? sPalette[800] : sPalette[100]) || '#080c14');
+    root.style.setProperty('--border', dark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)');
+    root.style.setProperty('--glass-bg', dark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)');
+
+    // Font Family
+    const fontStack = theme.font === 'Fira Code'
+      ? '"Fira Code", "Outfit", "Inter", sans-serif'
+      : '"Outfit", "Inter", sans-serif';
+    root.style.setProperty('--font-main', fontStack);
   };
 
-  const applyTheme = (dark: boolean) => {
+  const applyTheme = (theme: ThemePreset) => {
     if (import.meta.client) {
+      if (!theme) return;
       const root = document.documentElement;
-      if (dark) {
+      if (theme.isDark) {
         root.classList.add('app-dark', 'dark');
         root.classList.remove('light');
       } else {
         root.classList.remove('app-dark', 'dark');
         root.classList.add('light');
       }
+
+      // Update PrimeVue Palettes
+      updatePrimaryPalette(palette(theme.primary) as any);
+      updateSurfacePalette(palette(theme.surface) as any);
+
       syncCSSVariables();
     }
   };
 
-  // Inicializar desde localStorage o sistema
+  // Inicializar
   if (import.meta.client) {
-    const stored = localStorage.getItem('theme-mode');
-    if (stored) {
-      isDark.value = stored === 'dark';
-    } else {
-      isDark.value = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const stored = localStorage.getItem('theme-preset-id');
+    if (stored && THEME_PRESETS.some(p => p.id === stored)) {
+      currentThemeId.value = stored;
     }
-
-    const savedPrimary = localStorage.getItem('primary-color');
-    const savedSurface = localStorage.getItem('surface-color');
-    if (savedPrimary) primaryColor.value = savedPrimary;
-    if (savedSurface) surfaceColor.value = savedSurface;
-
-    applyTheme(isDark.value);
+    const theme = currentTheme.value;
+    if (theme) applyTheme(theme);
   }
 
+  const setThemePreset = (id: string) => {
+    const theme = THEME_PRESETS.find(p => p.id === id);
+    if (theme) {
+      currentThemeId.value = id;
+      localStorage.setItem('theme-preset-id', id);
+      applyTheme(theme);
+    }
+  };
+
+  // Keep toggleTheme for quick switch between current and light/dark equivalents? 
+  // No, user said "without allowed user to change dark/light manually" or "standardize better".
+  // Let's just allow picking from the list.
   const toggleTheme = () => {
-    isDark.value = !isDark.value;
-    applyTheme(isDark.value);
-    if (import.meta.client) {
-      localStorage.setItem('theme-mode', isDark.value ? 'dark' : 'light');
-    }
-  };
-
-  const ensureHex = (color: string) => color.startsWith('#') ? color : `#${color}`;
-
-  const changePrimaryColor = (color: string) => {
-    const hexColor = ensureHex(color);
-    primaryColor.value = hexColor;
-    const colors = palette(hexColor);
-    if (colors && typeof colors === 'object') {
-      updatePrimaryPalette(colors);
-      if (import.meta.client) {
-        localStorage.setItem('primary-color', hexColor);
-        syncCSSVariables();
-      }
-    }
-  };
-
-  const changeSurfaceColor = (color: string) => {
-    const hexColor = ensureHex(color);
-    surfaceColor.value = hexColor;
-    const colors = palette(hexColor);
-    if (colors && typeof colors === 'object') {
-      updateSurfacePalette(colors);
-      if (import.meta.client) {
-        localStorage.setItem('surface-color', hexColor);
-        syncCSSVariables();
-      }
-    }
+    const theme = currentTheme.value;
+    if (!theme) return;
+    const isNowDark = theme.isDark;
+    const nextTheme = THEME_PRESETS.find(p => p.isDark !== isNowDark);
+    if (nextTheme) setThemePreset(nextTheme.id);
   };
 
   return {
-    isDark,
-    primaryColor,
-    surfaceColor,
-    toggleTheme,
-    changePrimaryColor,
-    changeSurfaceColor
+    currentThemeId,
+    currentTheme,
+    THEME_PRESETS,
+    setThemePreset,
+    toggleTheme
   };
 };

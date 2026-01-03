@@ -105,81 +105,96 @@
           <!-- Language Switcher -->
           <AppLanguageSwitcher />
 
-          <!-- Theme Toggle -->
-          <ClientOnly>
-            <button
-              class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
-              :aria-label="isDark ? 'Switch to light' : 'Switch to dark'"
-              @click="toggleTheme"
-            >
-              <Icon
-                :name="
-                  isDark
-                    ? 'solar:moon-stars-bold-duotone'
-                    : 'solar:sun-2-bold-duotone'
-                "
-                class="w-5 h-5 md:w-6 md:h-6"
-              />
-            </button>
-          </ClientOnly>
-
           <!-- Color Picker -->
           <ClientOnly>
             <div class="relative">
               <button
                 class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
                 aria-label="Customize Theme"
-                @click="showColorPicker = !showColorPicker"
+                @click="showThemeSelector = !showThemeSelector"
               >
                 <Icon
                   name="solar:palette-bold-duotone"
                   class="w-5 h-5 md:w-6 md:h-6"
                 />
               </button>
-              <!-- Color Picker Popover -->
+              <!-- Theme Preset Selector Popover -->
               <Motion
-                v-if="showColorPicker"
+                v-if="showThemeSelector"
                 :initial="{ opacity: 0, scale: 0.9, y: 10 }"
                 :animate="{ opacity: 1, scale: 1, y: 0 }"
                 :transition="{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }"
               >
                 <div
-                  class="absolute top-full right-0 mt-4 p-5 glass rounded-4xl min-w-64 border border-foreground/10 shadow-4xl z-50 origin-top-right backdrop-blur-3xl"
+                  class="absolute top-full right-0 mt-4 w-72 lg:w-80 glass rounded-3xl p-6 shadow-4xl z-100 border border-foreground/10"
                 >
-                  <div class="space-y-4">
-                    <div class="space-y-2">
-                      <label
-                        class="text-[10px] font-black uppercase tracking-widest text-muted"
-                        >Primary Accent</label
+                  <div class="space-y-6">
+                    <div class="flex items-center justify-between">
+                      <h4
+                        class="text-xs font-black uppercase tracking-widest text-foreground"
                       >
-                      <div class="flex items-center gap-2">
-                        <ColorPicker
-                          v-model="primaryColor"
-                          format="hex"
-                          class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-foreground/10"
-                          @update:model-value="changePrimaryColor"
-                        />
-                        <span class="text-xs font-mono text-muted uppercase">{{
-                          primaryColor
-                        }}</span>
-                      </div>
+                        {{ $t("nav.themePresets") || "Theme Presets" }}
+                      </h4>
+                      <span
+                        class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-bold"
+                        >{{ THEME_PRESETS.length }} Modes</span
+                      >
                     </div>
-                    <div class="space-y-2">
-                      <label
-                        class="text-[10px] font-black uppercase tracking-widest text-muted"
-                        >Surface Tone</label
+
+                    <div
+                      class="grid grid-cols-1 gap-1.5 max-h-80 overflow-y-auto pr-2 custom-scrollbar"
+                    >
+                      <button
+                        v-for="preset in THEME_PRESETS"
+                        :key="preset.id"
+                        class="flex items-center justify-between p-2.5 rounded-2xl transition-all duration-300 group/item border"
+                        :class="[
+                          currentThemeId === preset.id
+                            ? 'bg-primary/10 border-primary/20 scale-[1.02]'
+                            : 'bg-foreground/3 border-transparent hover:bg-foreground/5',
+                        ]"
+                        @click="setThemePreset(preset.id)"
                       >
-                      <div class="flex items-center gap-2">
-                        <ColorPicker
-                          v-model="surfaceColor"
-                          format="hex"
-                          class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-foreground/10"
-                          @update:model-value="changeSurfaceColor"
+                        <div class="flex items-center gap-3">
+                          <div
+                            class="w-8 h-8 rounded-xl flex items-center justify-center relative overflow-hidden ring-2 ring-foreground/5 shadow-sm"
+                            :style="{ background: preset.background }"
+                          >
+                            <div
+                              class="absolute top-0 right-0 w-1/2 h-1/2"
+                              :style="{ background: preset.primary }"
+                            />
+                            <div
+                              v-if="preset.font === 'Fira Code'"
+                              class="absolute inset-0 flex items-center justify-center text-[8px] font-mono text-white/20 select-none"
+                            >
+                              fc
+                            </div>
+                          </div>
+                          <div class="text-left">
+                            <p
+                              class="text-[11px] font-bold transition-colors"
+                              :class="[
+                                currentThemeId === preset.id
+                                  ? 'text-primary'
+                                  : 'text-foreground',
+                              ]"
+                            >
+                              {{ preset.name }}
+                            </p>
+                            <p
+                              class="text-[8px] text-muted font-black uppercase tracking-widest opacity-60"
+                            >
+                              {{ preset.font }}
+                            </p>
+                          </div>
+                        </div>
+                        <Icon
+                          v-if="currentThemeId === preset.id"
+                          name="solar:check-circle-bold"
+                          class="w-4 h-4 text-primary"
                         />
-                        <span class="text-xs font-mono text-muted uppercase">{{
-                          surfaceColor
-                        }}</span>
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -269,22 +284,14 @@
 <script setup>
 import { Motion } from "motion-v";
 import { ref, onMounted, onUnmounted } from "vue";
-import ColorPicker from "primevue/colorpicker";
 import { useTheme } from "~/composables/useTheme";
 import AppLanguageSwitcher from "~/components/AppLanguageSwitcher.vue";
 
 const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);
-const {
-  isDark,
-  primaryColor,
-  surfaceColor,
-  toggleTheme,
-  changePrimaryColor,
-  changeSurfaceColor,
-} = useTheme();
+const { currentThemeId, THEME_PRESETS, setThemePreset } = useTheme();
 
-const showColorPicker = ref(false);
+const showThemeSelector = ref(false);
 
 const navLinks = [
   { name: "nav.home", href: "#hero", id: "hero" },

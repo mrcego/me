@@ -12,8 +12,8 @@
   --color-accent: #3b82f6;
   --color-border: var(--border);
 
-  --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Outfit", "Inter", sans-serif;
+  --font-sans: var(--font-main), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-main), "Outfit", "Inter", sans-serif;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -60,9 +60,7 @@
     --primary: #ff4b5c;
     --primary-hover: #ff1e3c;
     --secondary: #080c14;
-    --surface: #0f172a;
-    --border: rgba(255, 255, 255, 0.05);
-    --glass-bg: rgba(255, 255, 255, 0.03);
+    --font-main: "Outfit", "Inter", sans-serif;
 
     background-color: var(--background);
     color: var(--foreground);
@@ -72,7 +70,7 @@
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden;
     margin: 0;
-    font-family: var(--font-sans);
+    font-family: var(--font-main);
     line-height: 1.5;
   }
 
