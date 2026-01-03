@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <section
     id="tech-stack"
     class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
@@ -29,7 +29,7 @@
           <div class="h-[2px] w-12 md:w-16 bg-primary/20" />
         </div>
         <h3
-          class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black tracking-tighter leading-[0.9] text-white"
+          class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black tracking-tighter leading-[0.9] text-foreground"
         >
           {{ $t("techStack.title") }}<br>
           <span class="text-gradient">{{
@@ -37,7 +37,7 @@
           }}</span>
         </h3>
         <p
-          class="text-slate-500 text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto px-4 md:px-0"
+          class="text-muted text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto px-4 md:px-0"
         >
           {{ $t("techStack.description") }}
         </p>
@@ -57,7 +57,7 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="group relative glass p-10 md:p-14 rounded-[3rem] border-white/5 hover:border-primary/40 transition-all duration-700 hover:shadow-4xl overflow-hidden min-h-[400px] flex flex-col justify-between cursor-crosshair"
+          class="group relative glass p-10 md:p-14 rounded-[3rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 hover:shadow-4xl overflow-hidden min-h-[400px] flex flex-col justify-between cursor-crosshair"
         >
           <div
             class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
@@ -74,7 +74,7 @@
               </div>
               <div class="flex flex-col items-end">
                 <span
-                  class="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-primary transition-colors"
+                  class="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-primary transition-colors"
                   >{{ t.years }}</span
                 >
                 <span
@@ -86,19 +86,19 @@
 
             <div class="space-y-3 md:space-y-4">
               <h4
-                class="text-2xl md:text-3xl font-black tracking-tighter text-white group-hover:text-gradient-primary transition-all"
+                class="text-2xl md:text-3xl font-black tracking-tighter text-foreground group-hover:text-gradient transition-all"
               >
                 {{ t.name }}
               </h4>
               <p
-                class="text-slate-500 text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] leading-normal"
+                class="text-muted text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] leading-normal"
               >
                 {{ $t(t.level) }}
               </p>
             </div>
 
             <p
-              class="text-sm text-slate-400 font-medium leading-relaxed group-hover:text-slate-200 transition-colors mt-auto"
+              class="text-sm text-muted font-medium leading-relaxed group-hover:text-foreground transition-colors mt-auto"
             >
               {{ t.desc }}
             </p>
@@ -118,7 +118,7 @@
           :in-view="{ opacity: 1, x: 0 }"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
-          class="glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-white/5 space-y-10 md:space-y-12 group/hud relative overflow-hidden"
+          class="glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-foreground/5 space-y-10 md:space-y-12 group/hud relative overflow-hidden"
         >
           <div
             class="absolute inset-0 bg-primary/5 opacity-0 group-hover/hud:opacity-40 pointer-events-none tech-hud-horizontal"
@@ -131,7 +131,7 @@
               <Icon name="solar:medal-ribbon-star-linear" class="w-6 h-6" />
             </div>
             <h4
-              class="text-2xl md:text-3xl font-black tracking-tight text-white"
+              class="text-2xl md:text-3xl font-black tracking-tight text-foreground"
             >
               {{ $t("techStack.creds") }}
             </h4>
@@ -147,7 +147,7 @@
                 class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-primary/20 group-hover/cert:bg-primary transition-all scale-100 group-hover/cert:scale-150 shrink-0 shadow-[0_0_10px_rgba(255,75,92,0.5)]"
               />
               <span
-                class="text-base md:text-lg font-bold text-slate-400 group-hover/cert:text-white transition-colors"
+                class="text-base md:text-lg font-bold text-muted group-hover/cert:text-foreground transition-colors"
                 >{{ cert }}</span
               >
             </div>
@@ -159,7 +159,7 @@
           :in-view="{ opacity: 1, x: 0 }"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
-          class="glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-white/5 flex flex-col justify-between space-y-16 group/hud relative overflow-hidden"
+          class="glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-foreground/5 flex flex-col justify-between space-y-16 group/hud relative overflow-hidden"
         >
           <div
             class="absolute inset-0 bg-primary/5 opacity-0 group-hover/hud:opacity-40 pointer-events-none tech-hud-vertical"
@@ -173,7 +173,7 @@
                 <Icon name="solar:global-linear" class="w-6 h-6" />
               </div>
               <h4
-                class="text-2xl md:text-3xl font-black tracking-tight text-white"
+                class="text-2xl md:text-3xl font-black tracking-tight text-foreground"
               >
                 {{ $t("techStack.flow") }}
               </h4>
@@ -182,20 +182,22 @@
               <div
                 v-for="lang in languages"
                 :key="lang.name"
-                class="px-6 py-2.5 md:px-8 md:py-3 glass rounded-xl md:rounded-2xl border-white/5 hover:border-primary/40 transition-all cursor-alias active:scale-95 shadow-md"
+                class="px-6 py-2.5 md:px-8 md:py-3 glass rounded-xl md:rounded-2xl border-foreground/5 hover:border-primary/40 transition-all cursor-alias active:scale-95 shadow-md"
               >
                 <span
-                  class="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-slate-500 block mb-1"
+                  class="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-muted block mb-1"
                   >{{ lang.level }}</span
                 >
-                <span class="text-lg md:text-xl font-bold text-white">{{
+                <span class="text-lg md:text-xl font-bold text-foreground">{{
                   lang.name
                 }}</span>
               </div>
             </div>
           </div>
 
-          <div class="pt-10 md:pt-16 border-t border-white/5 relative z-10">
+          <div
+            class="pt-10 md:pt-16 border-t border-foreground/5 relative z-10"
+          >
             <p
               class="text-[8px] md:text-[10px] uppercase font-black tracking-widest text-primary mb-4 md:mb-6"
             >
@@ -211,7 +213,7 @@
                   'SPA/SSR',
                 ]"
                 :key="skill"
-                class="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-slate-300 glass px-4 py-2 rounded-lg md:rounded-xl border-white/5 hover:bg-primary/10 hover:border-primary/40 transition-all cursor-default shadow-sm hover:shadow-primary/10"
+                class="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-muted glass px-4 py-2 rounded-lg md:rounded-xl border-foreground/5 hover:bg-primary/10 hover:border-primary/40 transition-all cursor-default shadow-sm hover:shadow-primary/10"
               >
                 {{ skill }}
               </span>
@@ -289,4 +291,3 @@ const languages = [
   );
 }
 </style>
-

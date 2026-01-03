@@ -41,12 +41,12 @@
             }"
           >
             <span
-              class="text-sm md:text-base font-black tracking-tight text-white group-hover:text-primary transition-colors leading-none uppercase"
+              class="text-sm md:text-base font-black tracking-tight text-foreground group-hover:text-primary transition-colors leading-none uppercase"
             >
               {{ $t("hero.name") }}
             </span>
             <span
-              class="text-[9px] font-bold uppercase tracking-[0.2em] text-slate-500"
+              class="text-[9px] font-bold uppercase tracking-[0.2em] text-muted"
             >
               {{ $t("hero.tags.frontArch") }}
             </span>
@@ -55,10 +55,10 @@
 
         <!-- Desktop Navigation -->
         <div
-          class="hidden lg:flex items-center gap-1 bg-white/3 backdrop-blur-md rounded-full px-2 py-1.5 border transition-all duration-700"
+          class="hidden lg:flex items-center gap-1 bg-foreground/3 backdrop-blur-md rounded-full px-2 py-1.5 border transition-all duration-700"
           :class="
             isScrolled
-              ? 'opacity-100 scale-100 border-white/5 shadow-inner shadow-white/5'
+              ? 'opacity-100 scale-100 border-foreground/5 shadow-inner shadow-white/5'
               : 'opacity-100 bg-transparent border-transparent shadow-none backdrop-blur-none'
           "
         >
@@ -77,8 +77,8 @@
                 class="relative px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 isolate group/link overflow-hidden cursor-pointer"
                 :class="[
                   isActiveSection(link.id)
-                    ? 'text-white'
-                    : 'text-slate-400 hover:text-white',
+                    ? 'text-foreground'
+                    : 'text-muted hover:text-foreground',
                 ]"
                 @click="scrollToSection($event, link.href)"
               >
@@ -86,14 +86,14 @@
                 <!-- Active Background Pill -->
                 <div
                   v-if="isActiveSection(link.id)"
-                  class="absolute inset-0 bg-white/10 rounded-full z-0"
+                  class="absolute inset-0 bg-foreground/10 rounded-full z-0"
                   layoutId="nav-pill"
                   transition="{ type: 'spring', stiffness: 300, damping: 30 }"
                 />
                 <!-- Hover Glow -->
                 <div
                   v-else
-                  class="absolute inset-0 bg-white/5 rounded-full opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 z-0"
+                  class="absolute inset-0 bg-foreground/5 rounded-full opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 z-0"
                 />
               </a>
             </Motion>
@@ -108,7 +108,7 @@
           <!-- Theme Toggle -->
           <ClientOnly>
             <button
-              class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-all active:scale-95"
+              class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
               :aria-label="isDark ? 'Switch to light' : 'Switch to dark'"
               @click="toggleTheme"
             >
@@ -127,7 +127,7 @@
           <ClientOnly>
             <div class="relative">
               <button
-                class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-all active:scale-95"
+                class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
                 aria-label="Customize Theme"
                 @click="showColorPicker = !showColorPicker"
               >
@@ -144,43 +144,41 @@
                 :transition="{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }"
               >
                 <div
-                  class="absolute top-full right-0 mt-4 p-5 glass rounded-4xl min-w-64 border border-white/10 shadow-4xl z-50 origin-top-right backdrop-blur-3xl"
+                  class="absolute top-full right-0 mt-4 p-5 glass rounded-4xl min-w-64 border border-foreground/10 shadow-4xl z-50 origin-top-right backdrop-blur-3xl"
                 >
                   <div class="space-y-4">
                     <div class="space-y-2">
                       <label
-                        class="text-[10px] font-black uppercase tracking-widest text-slate-500"
+                        class="text-[10px] font-black uppercase tracking-widest text-muted"
                         >Primary Accent</label
                       >
                       <div class="flex items-center gap-2">
                         <ColorPicker
                           v-model="primaryColor"
                           format="hex"
-                          class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-white/10"
+                          class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-foreground/10"
                           @update:model-value="changePrimaryColor"
                         />
-                        <span
-                          class="text-xs font-mono text-white/60 uppercase"
-                          >{{ primaryColor }}</span
-                        >
+                        <span class="text-xs font-mono text-muted uppercase">{{
+                          primaryColor
+                        }}</span>
                       </div>
                     </div>
                     <div class="space-y-2">
                       <label
-                        class="text-[10px] font-black uppercase tracking-widest text-slate-500"
+                        class="text-[10px] font-black uppercase tracking-widest text-muted"
                         >Surface Tone</label
                       >
                       <div class="flex items-center gap-2">
                         <ColorPicker
                           v-model="surfaceColor"
                           format="hex"
-                          class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-white/10"
+                          class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-foreground/10"
                           @update:model-value="changeSurfaceColor"
                         />
-                        <span
-                          class="text-xs font-mono text-white/60 uppercase"
-                          >{{ surfaceColor }}</span
-                        >
+                        <span class="text-xs font-mono text-muted uppercase">{{
+                          surfaceColor
+                        }}</span>
                       </div>
                     </div>
                   </div>
@@ -189,7 +187,7 @@
             </div>
           </ClientOnly>
 
-          <div class="w-px h-6 bg-white/10 mx-1 hidden sm:block" />
+          <div class="w-px h-6 bg-foreground/10 mx-1 hidden sm:block" />
 
           <!-- CTA Button -->
           <a
@@ -206,7 +204,7 @@
 
           <!-- Mobile Toggle -->
           <button
-            class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full text-white bg-white/5 hover:bg-white/10 transition-colors"
+            class="lg:hidden w-10 h-10 flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors"
             @click="isMobileMenuOpen = !isMobileMenuOpen"
           >
             <Icon
@@ -233,10 +231,10 @@
     >
       <div
         v-if="isMobileMenuOpen"
-        class="fixed inset-4 z-90 glass rounded-[2.5rem] flex flex-col items-center justify-center overflow-hidden border border-white/10 shadow-4xl lg:hidden"
+        class="fixed inset-4 z-90 glass rounded-[2.5rem] flex flex-col items-center justify-center overflow-hidden border border-foreground/10 shadow-4xl lg:hidden"
       >
         <button
-          class="absolute top-6 right-6 p-4 text-white/50 hover:text-white"
+          class="absolute top-6 right-6 p-4 text-muted hover:text-foreground"
           @click="isMobileMenuOpen = false"
         >
           <Icon name="solar:close-circle-linear" class="w-10 h-10" />
@@ -247,7 +245,7 @@
             v-for="link in navLinks"
             :key="link.id"
             :href="link.href"
-            class="block text-4xl font-black tracking-tighter text-white hover:text-primary transition-colors cursor-pointer"
+            class="block text-4xl font-black tracking-tighter text-foreground hover:text-primary transition-colors cursor-pointer"
             @click="scrollToSection($event, link.href)"
           >
             {{ $t(link.name) }}
@@ -256,7 +254,7 @@
         <div class="mt-12">
           <a
             href="#contact"
-            class="inline-flex items-center gap-3 px-8 py-4 bg-white text-black rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform"
+            class="inline-flex items-center gap-3 px-8 py-4 bg-foreground text-background rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform"
             @click="scrollToSection($event, '#contact')"
           >
             {{ $t("nav.getInTouch") }}

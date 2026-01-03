@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <section
     id="portfolio"
     class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
@@ -32,7 +32,7 @@
             </h2>
           </div>
           <h3
-            class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white"
+            class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-foreground"
           >
             {{ $t("portfolio.title_top") }}<br />
             <span class="text-gradient">{{
@@ -47,7 +47,7 @@
           :in-view="{ opacity: 1, scale: 1 }"
           :transition="{ duration: 0.8, delay: 0.2 }"
           :viewport="{ once: true }"
-          class="flex flex-wrap gap-2 md:gap-4 p-2 md:p-3 glass rounded-[2.5rem] border-white/5 w-fit shadow-xl"
+          class="flex flex-wrap gap-2 md:gap-4 p-2 md:p-3 glass rounded-[2.5rem] border-foreground/5 w-fit shadow-xl"
         >
           <button
             v-for="cat in categories"
@@ -56,7 +56,7 @@
             :class="[
               activeCategory === cat
                 ? 'bg-primary text-white shadow-2xl shadow-primary/30 scale-105'
-                : 'text-slate-500 hover:text-white hover:bg-white/5',
+                : 'text-muted hover:text-foreground hover:bg-foreground/5',
             ]"
             @click="activeCategory = cat"
           >
@@ -77,15 +77,18 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="group relative glass p-6 md:p-10 rounded-[3rem] md:rounded-[5rem] border-white/5 hover:border-primary/40 transition-all duration-700 flex flex-col cursor-pointer overflow-hidden"
+          class="group relative glass p-6 md:p-10 rounded-[3rem] md:rounded-[5rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 flex flex-col cursor-pointer overflow-hidden"
         >
           <!-- holographic sweep -->
           <div
-            class="absolute inset-0 bg-linear-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"
+            class="absolute inset-x-0 bottom-0 h-px bg-primary/20 z-20 pointer-events-none"
+          />
+          <div
+            class="absolute inset-0 bg-linear-to-tr from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"
           />
 
           <div
-            class="relative aspect-video rounded-4xl overflow-hidden bg-slate-900 mb-8 md:mb-12 shrink-0 border border-white/5"
+            class="relative aspect-video rounded-4xl overflow-hidden bg-secondary mb-8 md:mb-12 shrink-0 border border-foreground/5"
           >
             <img
               :src="project.image"
@@ -107,7 +110,7 @@
               <div
                 v-for="tag in project.tags"
                 :key="tag"
-                class="bg-white/10 backdrop-blur-md border border-white/10 text-white text-[8px] md:text-[9px] font-black uppercase tracking-widest px-4 md:px-5 py-1.5 md:py-2 rounded-xl shadow-2xl shrink-0 hover:bg-primary transition-colors cursor-default"
+                class="bg-foreground/10 backdrop-blur-md border border-foreground/10 text-foreground text-[8px] md:text-[9px] font-black uppercase tracking-widest px-4 md:px-5 py-1.5 md:py-2 rounded-xl shadow-2xl shrink-0 hover:bg-primary transition-colors cursor-default"
               >
                 {{ tag }}
               </div>
@@ -120,26 +123,26 @@
             <div class="flex justify-between items-start gap-4">
               <div class="space-y-1">
                 <h4
-                  class="text-2xl md:text-3xl font-black tracking-tighter text-white group-hover:text-primary transition-colors"
+                  class="text-2xl md:text-3xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors"
                 >
                   {{ $t(`portfolio.projects.${i}.title`) }}
                 </h4>
                 <p
-                  class="text-slate-500 font-bold text-[10px] md:text-xs uppercase tracking-widest"
+                  class="text-muted font-bold text-[10px] md:text-xs uppercase tracking-widest"
                 >
                   {{ project.category }}
                 </p>
               </div>
               <a
                 href="#"
-                class="w-12 h-12 md:w-16 md:h-16 glass rounded-full flex items-center justify-center text-slate-400 hover:bg-primary hover:text-white hover:scale-110 active:scale-90 transition-all duration-500 shrink-0 shadow-lg"
+                class="w-12 h-12 md:w-16 md:h-16 glass rounded-full flex items-center justify-center text-muted hover:bg-primary hover:text-white hover:scale-110 active:scale-90 transition-all duration-500 shrink-0 shadow-lg"
               >
                 <Icon name="solar:arrow-right-up-linear" class="w-6 h-6" />
               </a>
             </div>
 
             <p
-              class="text-slate-400 text-sm md:text-base leading-relaxed max-w-lg line-clamp-3 group-hover:line-clamp-none transition-all duration-700 font-medium"
+              class="text-muted text-sm md:text-base leading-relaxed max-w-lg line-clamp-3 group-hover:line-clamp-none transition-all duration-700 font-medium"
             >
               {{ $t(`portfolio.projects.${i}.desc`) }}
             </p>
@@ -155,7 +158,7 @@
         class="text-center pt-8 md:pt-16"
       >
         <button
-          class="btn-premium px-12 md:px-16 py-6 md:py-8 border-white/10 text-white rounded-[3rem] hover:border-primary hover:shadow-primary/20 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto mx-auto flex items-center justify-center"
+          class="btn-premium px-12 md:px-16 py-6 md:py-8 border-foreground/10 text-foreground hover:text-white rounded-[3rem] hover:border-primary hover:shadow-primary/20 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto mx-auto flex items-center justify-center border!"
         >
           <span class="flex items-center gap-4 md:gap-6">
             <Icon
@@ -216,8 +219,12 @@ const filteredProjects = computed(() => {
 }
 
 .project-grid-bg {
-  background-image: linear-gradient(0deg, #ffffff 1px, transparent 1px),
-    linear-gradient(90deg, #ffffff 1px, transparent 1px);
+  background-image: linear-gradient(
+      0deg,
+      var(--foreground) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, var(--foreground) 1px, transparent 1px);
   background-size: 100px 100px;
 }
 </style>

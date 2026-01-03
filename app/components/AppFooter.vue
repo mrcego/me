@@ -1,6 +1,6 @@
 ﻿<template>
   <footer
-    class="py-20 md:py-32 px-6 md:px-12 bg-background relative overflow-hidden border-t border-white/5"
+    class="py-20 md:py-32 px-6 md:px-12 bg-background relative overflow-hidden border-t border-foreground/5"
   >
     <!-- Cinematic Background -->
     <div
@@ -19,25 +19,25 @@
         <div class="space-y-6 group cursor-pointer">
           <div class="flex items-center gap-4">
             <div
-              class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary group-hover:rotate-[-12deg] group-hover:scale-110 transition-all duration-500 shadow-lg shadow-primary/20 bg-white/10 backdrop-blur-md border border-white/20"
+              class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary group-hover:rotate-[-12deg] group-hover:scale-110 transition-all duration-500 shadow-lg shadow-primary/20 border-foreground/10"
             >
               <Icon name="solar:code-square-bold-duotone" class="w-7 h-7" />
             </div>
             <div class="flex flex-col">
               <h4
-                class="text-2xl font-black tracking-tighter text-white group-hover:text-primary transition-colors duration-300 uppercase"
+                class="text-2xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors duration-300 uppercase"
               >
                 {{ $t("hero.name") }}
               </h4>
               <span
-                class="text-[10px] tracking-[0.2em] text-slate-500 uppercase font-bold group-hover:text-white transition-colors delay-75"
+                class="text-[10px] tracking-[0.2em] text-muted uppercase font-bold group-hover:text-foreground transition-colors delay-75"
               >
                 {{ $t("hero.tags.frontArch") }}
               </span>
             </div>
           </div>
           <p
-            class="text-slate-500 text-xs font-medium uppercase tracking-[0.2em] max-w-xs leading-loose pl-1"
+            class="text-muted text-xs font-medium uppercase tracking-[0.2em] max-w-xs leading-loose pl-1"
           >
             {{ $t("footer.tagline") }}
           </p>
@@ -56,7 +56,7 @@
               <li v-for="link in col.links" :key="link.name">
                 <a
                   :href="link.href"
-                  class="text-xs md:text-sm font-medium text-slate-400 hover:text-white transition-all hover:translate-x-2 inline-flex items-center gap-2 group/link"
+                  class="text-xs md:text-sm font-medium text-muted hover:text-foreground transition-all hover:translate-x-2 inline-flex items-center gap-2 group/link"
                 >
                   <span
                     class="w-0 overflow-hidden group-hover/link:w-3 transition-all duration-300 opacity-0 group-hover/link:opacity-100 text-primary"
@@ -73,10 +73,10 @@
 
       <!-- Footer Bottom -->
       <div
-        class="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8"
+        class="pt-12 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-8"
       >
         <p
-          class="text-[10px] font-bold uppercase tracking-widest text-slate-600 flex items-center gap-2"
+          class="text-[10px] font-bold uppercase tracking-widest text-muted flex items-center gap-2"
         >
           <span
             >Â©
@@ -85,7 +85,7 @@
             }}</ClientOnly>
             Signal Protocol.</span
           >
-          <span class="hidden md:inline text-slate-800">|</span>
+          <span class="hidden md:inline text-muted/30">|</span>
           <span class="opacity-50">All Systems Operational</span>
         </p>
 
@@ -95,12 +95,12 @@
             v-for="s in socials"
             :key="s.icon"
             :href="s.link"
-            class="w-10 h-10 rounded-full bg-white/10 hover:bg-primary transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] border border-white/10 hover:border-primary flex items-center justify-center p-0 group/social"
+            class="w-10 h-10 rounded-full glass hover:bg-primary transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] border-foreground/10 hover:border-primary flex items-center justify-center p-0 group/social"
             aria-label="Social Link"
           >
             <Icon
               :name="s.icon"
-              class="w-5 h-5 transition-colors duration-300 text-slate-200 group-hover/social:text-white"
+              class="w-5 h-5 transition-colors duration-300 text-muted group-hover/social:text-white"
             />
           </a>
         </div>
@@ -157,4 +157,3 @@ const socials = [
   mask-image: linear-gradient(to bottom, black, transparent);
 }
 </style>
-

@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <section
     id="about"
     class="py-24 md:py-32 px-6 md:px-12 relative bg-secondary/5 overflow-hidden"
@@ -39,7 +39,7 @@
 
               <NuxtImg
                 src="/img/me.jpg"
-                alt="CÃ©sar GÃ³mez - Senior Fullstack Developer and Frontend Architect"
+                alt="César Gómez - Senior Fullstack Developer and Frontend Architect"
                 width="600"
                 height="800"
                 format="webp"
@@ -56,13 +56,13 @@
 
             <!-- Content inside card -->
             <h3
-              class="text-xl md:text-2xl font-black tracking-tight text-white mb-4 px-2"
+              class="text-xl md:text-2xl font-black tracking-tight text-foreground mb-4 px-2"
             >
               {{ $t("about.philosophy") }}
             </h3>
 
             <p
-              class="mb-8 md:mb-10 text-sm md:text-base font-medium text-slate-300 leading-relaxed px-2"
+              class="mb-8 md:mb-10 text-sm md:text-base font-medium text-muted leading-relaxed px-2"
             >
               "{{ $t("about.philosophyQuote") }}"
             </p>
@@ -82,12 +82,12 @@
                   class="transition-transform duration-300 group-hover/p:translate-x-1 flex flex-col justify-center"
                 >
                   <h5
-                    class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-white"
+                    class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-foreground"
                   >
                     {{ $t(point.label) }}
                   </h5>
                   <p
-                    class="text-[9px] md:text-[10px] text-slate-500 font-bold uppercase tracking-widest pt-0.5"
+                    class="text-[9px] md:text-[10px] text-muted font-bold uppercase tracking-widest pt-0.5"
                   >
                     {{ point.desc }}
                   </p>
@@ -107,7 +107,7 @@
             class="space-y-6 md:space-y-10"
           >
             <div class="flex items-center gap-4">
-              <div class="h-px w-12 bg-white/10" />
+              <div class="h-px w-12 bg-foreground/10" />
               <div class="flex items-center gap-3 shrink-0">
                 <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 <h2
@@ -119,7 +119,7 @@
             </div>
 
             <h3
-              class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-white"
+              class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-foreground"
             >
               {{ $t("about.title") }}<br>
               <span class="text-gradient">{{
@@ -128,7 +128,7 @@
             </h3>
 
             <div
-              class="prose prose-invert prose-lg md:prose-xl max-w-none text-slate-400 font-medium leading-relaxed space-y-6"
+              class="prose prose-invert prose-lg md:prose-xl max-w-none text-muted font-medium leading-relaxed space-y-6"
             >
               <p>
                 {{ $t("about.description1") }}
@@ -151,8 +151,11 @@
                 delay: i * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }"
-              class="glass p-6 md:p-10 rounded-[2rem] border-white/5 hover:border-primary/30 transition-all duration-700 group hover:-translate-y-2 flex flex-col justify-between min-h-64 relative overflow-hidden"
+              class="glass p-6 md:p-10 rounded-4xl border-foreground/5 hover:border-primary/30 transition-all duration-700 group hover:-translate-y-2 flex flex-col justify-between min-h-64 relative overflow-hidden"
             >
+              <div
+                class="absolute inset-x-0 bottom-0 h-px bg-primary/20 z-20 pointer-events-none"
+              />
               <div
                 class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
               />
@@ -165,25 +168,25 @@
                   </div>
                   <Icon
                     :name="role.icon"
-                    class="w-6 h-6 text-slate-600 group-hover:text-primary transition-colors"
+                    class="w-6 h-6 text-muted group-hover:text-primary transition-colors"
                   />
                 </div>
 
                 <div class="space-y-2">
                   <h4
-                    class="text-xl md:text-2xl font-black tracking-tight text-white group-hover:text-primary transition-colors"
+                    class="text-xl md:text-2xl font-black tracking-tight text-foreground group-hover:text-primary transition-colors"
                   >
                     {{ role.title }}
                   </h4>
                   <p
-                    class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-slate-500"
+                    class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-muted"
                   >
                     {{ role.company }}
                   </p>
                 </div>
 
                 <p
-                  class="text-xs md:text-sm text-slate-400 leading-relaxed mt-auto pt-4 border-t border-white/5 group-hover:border-white/10 transition-colors"
+                  class="text-xs md:text-sm text-muted leading-relaxed mt-auto pt-4 border-t border-foreground/5 group-hover:border-foreground/10 transition-colors"
                 >
                   {{ role.desc }}
                 </p>
@@ -290,5 +293,3 @@ const roles = [
   animation: scanline-subtle 3s linear infinite;
 }
 </style>
-
-

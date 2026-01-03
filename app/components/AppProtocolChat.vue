@@ -17,18 +17,18 @@
 
       <!-- Terminal Header -->
       <div
-        class="p-6 bg-white/2 border-b border-white/5 flex items-center justify-between relative z-10"
+        class="p-6 bg-foreground/2 border-b border-foreground/5 flex items-center justify-between relative z-10"
       >
         <div class="flex items-center gap-3">
           <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <h4
-            class="text-[10px] font-black uppercase tracking-[0.3em] text-white"
+            class="text-[10px] font-black uppercase tracking-[0.3em] text-foreground"
           >
             Signal Protocol v4.0
           </h4>
         </div>
         <button
-          class="p-2 text-slate-500 hover:text-white transition-colors"
+          class="p-2 text-muted hover:text-foreground transition-colors"
           @click="isOpen = false"
         >
           <Icon name="lucide:x" class="w-4 h-4" />
@@ -50,7 +50,7 @@
               'inline-block px-4 py-2 rounded-2xl text-[11px] leading-relaxed',
               msg.role === 'bot'
                 ? 'bg-primary/10 text-primary border border-primary/20'
-                : 'bg-white/5 text-white border border-white/10',
+                : 'bg-foreground/5 text-foreground border border-foreground/10',
             ]"
           >
             <span
@@ -73,12 +73,14 @@
       </div>
 
       <!-- Quick Suggestions -->
-      <div class="p-4 bg-white/1 border-t border-white/5 relative z-10">
+      <div
+        class="p-4 bg-foreground/1 border-t border-foreground/5 relative z-10"
+      >
         <div class="flex flex-wrap gap-2">
           <button
             v-for="s in suggestions"
             :key="s"
-            class="px-3 py-1.5 glass rounded-xl text-[9px] font-black uppercase tracking-widest text-slate-400 hover:text-primary hover:border-primary/30 transition-all"
+            class="px-3 py-1.5 glass rounded-xl text-[9px] font-black uppercase tracking-widest text-muted hover:text-primary hover:border-primary/30 transition-all"
             @click="sendMessage(s)"
           >
             {{ s }}
@@ -88,15 +90,15 @@
 
       <!-- Input Area -->
       <div
-        class="p-4 bg-white/5 border-t border-white/10 relative z-10 flex gap-3"
+        class="p-4 bg-foreground/5 border-t border-foreground/10 relative z-10 flex gap-3"
       >
         <input
           v-model="userInput"
           type="text"
           placeholder="SEND COMMAND..."
-          class="flex-1 bg-transparent border-none outline-none text-white font-mono text-xs placeholder:text-slate-700"
+          class="flex-1 bg-transparent border-none outline-none text-foreground font-mono text-xs placeholder:text-muted/50"
           @keyup.enter="sendMessage()"
-        >
+        />
         <button
           class="p-2 text-primary hover:scale-110 active:scale-95 transition-all"
           @click="sendMessage()"
@@ -242,5 +244,3 @@ watch(isOpen, (val) => {
   );
 }
 </style>
-
-

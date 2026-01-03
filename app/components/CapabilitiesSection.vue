@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <section
     class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
   >
@@ -24,7 +24,9 @@
           </h2>
           <div class="h-px w-10 bg-primary/40" />
         </div>
-        <h3 class="text-5xl md:text-8xl font-black tracking-tighter text-white">
+        <h3
+          class="text-5xl md:text-8xl font-black tracking-tighter text-foreground"
+        >
           {{ $t("capabilities.title") }}<br>
           <span class="text-gradient">{{
             $t("capabilities.titleHighlight")
@@ -44,7 +46,7 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="group relative glass p-10 md:p-14 rounded-[3rem] border-white/5 hover:border-primary/40 transition-all duration-700 cursor-pointer overflow-hidden"
+          class="group relative glass p-10 md:p-14 rounded-[3rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 cursor-pointer overflow-hidden"
         >
           <!-- holographic scanline internal -->
           <div
@@ -59,12 +61,12 @@
             </div>
             <div class="space-y-4">
               <h4
-                class="text-2xl md:text-3xl font-black tracking-tighter text-white group-hover:text-primary transition-colors"
+                class="text-2xl md:text-3xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors"
               >
                 {{ cap.title }}
               </h4>
               <p
-                class="text-slate-400 text-sm md:text-base leading-relaxed font-medium"
+                class="text-muted text-sm md:text-base leading-relaxed font-medium"
               >
                 {{ cap.desc }}
               </p>
@@ -116,4 +118,3 @@ const capabilities = [
   );
 }
 </style>
-

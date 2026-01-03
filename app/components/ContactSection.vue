@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <section
     id="contact"
     class="py-24 md:py-64 px-6 md:px-12 relative overflow-hidden bg-background"
@@ -34,17 +34,17 @@
               </h2>
             </div>
             <h3
-              class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-none text-white whitespace-pre-line"
+              class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-none text-foreground whitespace-pre-line"
             >
-              {{ $t("contact.title") }}<br />
+              {{ $t("contact.title") }}<br>
               <span class="text-gradient">{{
                 $t("contact.titleHighlight")
               }}</span
-              ><br />
+              ><br>
               {{ $t("contact.titleEnd") }}
             </h3>
             <p
-              class="text-slate-400 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto lg:mx-0"
+              class="text-muted text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto lg:mx-0"
             >
               {{ $t("contact.description") }}
             </p>
@@ -67,12 +67,12 @@
               </div>
               <div class="space-y-1 sm:space-y-1.5 md:space-y-2 text-left">
                 <p
-                  class="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-primary transition-colors"
+                  class="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-primary transition-colors"
                 >
                   {{ $t(`contact.methods.${c.key}`) }}
                 </p>
                 <p
-                  class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-black text-white tracking-tighter break-all group-hover:text-gradient transition-all"
+                  class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-black text-foreground tracking-tighter break-all group-hover:text-gradient transition-all"
                 >
                   {{ c.value }}
                 </p>
@@ -87,7 +87,7 @@
           :in-view="{ opacity: 1, x: 0 }"
           :transition="{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
-          class="glass p-6 sm:p-8 md:p-12 lg:p-16 xl:p-24 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] border-white/5 relative overflow-hidden group shadow-4xl mt-12 lg:mt-0"
+          class="glass p-6 sm:p-8 md:p-12 lg:p-16 xl:p-24 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] border-foreground/5 relative overflow-hidden group shadow-4xl mt-12 lg:mt-0"
         >
           <div
             class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-[0.03] transition-opacity duration-1000 pointer-events-none"
@@ -119,7 +119,7 @@
               <div class="space-y-2 sm:space-y-3 md:space-y-4 group/input">
                 <label
                   for="contact-name"
-                  class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
+                  class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                   >{{ $t("contact.form.name") }}</label
                 >
                 <inputText
@@ -132,7 +132,7 @@
                   :pt="{
                     root: {
                       class:
-                        'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-6! bg-white/3! border-white/5! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-white/20',
+                        'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-6! bg-foreground/3! border-foreground/5! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-foreground/20 text-foreground!',
                     },
                   }"
                 />
@@ -146,7 +146,7 @@
               <div class="space-y-2 sm:space-y-3 md:space-y-4 group/input">
                 <label
                   for="contact-email"
-                  class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
+                  class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                   >{{ $t("contact.form.email") }}</label
                 >
                 <inputText
@@ -160,7 +160,7 @@
                   :pt="{
                     root: {
                       class:
-                        'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-6! bg-white/3! border-white/5! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-white/20',
+                        'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-6! bg-foreground/3! border-foreground/5! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-foreground/20 text-foreground!',
                     },
                   }"
                 />
@@ -176,7 +176,7 @@
             <div class="space-y-2 sm:space-y-3 md:space-y-4 group/input">
               <label
                 for="contact-subject"
-                class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
+                class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                 >{{ $t("contact.form.subject") }}</label
               >
               <inputText
@@ -189,7 +189,7 @@
                 :pt="{
                   root: {
                     class:
-                      'rounded-xl sm:rounded-2xl md:rounded-3xl !p-3 sm:!p-4 md:!p-6 !bg-white/3 !border-white/5 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-white/20',
+                      'rounded-xl sm:rounded-2xl md:rounded-3xl !p-3 sm:!p-4 md:!p-6 !bg-foreground/3 !border-foreground/5 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-foreground/20 text-foreground!',
                   },
                 }"
               />
@@ -204,7 +204,7 @@
             <div class="space-y-2 sm:space-y-3 md:space-y-4 group/input">
               <label
                 for="contact-message"
-                class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
+                class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                 >{{ $t("contact.form.message") }}</label
               >
               <Textarea
@@ -218,7 +218,7 @@
                 :pt="{
                   root: {
                     class:
-                      'rounded-xl sm:rounded-[1.5rem] md:rounded-[2.5rem] !p-4 sm:!p-6 md:!p-8 !bg-white/3 !border-white/5 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 focus:rounded-2xl text-sm md:text-base hover:border-white/20',
+                      'rounded-xl sm:rounded-[1.5rem] md:rounded-[2.5rem] !p-4 sm:!p-6 md:!p-8 !bg-foreground/3 !border-foreground/5 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 focus:rounded-2xl text-sm md:text-base hover:border-foreground/20 text-foreground!',
                   },
                 }"
               />

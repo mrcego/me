@@ -2,7 +2,7 @@
   <Transition name="loader-fade">
     <div
       v-if="loading"
-      class="fixed inset-0 z-1000000 bg-background text-white flex flex-col items-center justify-center overflow-hidden"
+      class="fixed inset-0 z-1000000 bg-background text-foreground flex flex-col items-center justify-center overflow-hidden"
     >
       <!-- Subtle ambient background -->
       <div
@@ -36,7 +36,7 @@
         <!-- Minimalist Loading Line -->
         <div class="w-48 md:w-64 space-y-4">
           <div
-            class="h-[2px] w-full bg-white/5 rounded-full overflow-hidden relative"
+            class="h-[2px] w-full bg-foreground/5 rounded-full overflow-hidden relative"
           >
             <Motion
               :initial="{ x: '-100%' }"
@@ -47,7 +47,7 @@
           </div>
 
           <div
-            class="flex justify-between items-center text-[10px] uppercase font-black tracking-[0.3em] text-slate-500"
+            class="flex justify-between items-center text-[10px] uppercase font-black tracking-[0.3em] text-muted"
           >
             <Motion
               :initial="{ opacity: 0, y: 5 }"
@@ -115,4 +115,3 @@ defineProps({
   }
 }
 </style>
-

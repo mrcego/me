@@ -23,7 +23,7 @@
         <span
           v-for="n in 6"
           :key="n"
-          class="text-[25vw] font-black text-white tracking-tighter leading-none mr-32 select-none uppercase"
+          class="text-[25vw] font-black text-foreground tracking-tighter leading-none mr-32 select-none uppercase"
         >
           {{ $t("hero.marquee") }}
         </span>
@@ -66,7 +66,7 @@
                 ease: [0.16, 1, 0.3, 1],
                 delay: 0.2,
               }"
-              class="text-gradient block hover:text-white transition-colors duration-700"
+              class="text-gradient block hover:text-foreground transition-colors duration-700"
               >{{ firstName }}</Motion
             >
             <Motion
@@ -77,7 +77,7 @@
                 ease: [0.16, 1, 0.3, 1],
                 delay: 0.4,
               }"
-              class="text-white block hover:text-primary transition-colors duration-700"
+              class="text-foreground block hover:text-primary transition-colors duration-700"
               >{{ lastName }}</Motion
             >
           </h1>
@@ -93,7 +93,7 @@
             class="space-y-4 sm:space-y-6 md:space-y-8 max-w-2xl"
           >
             <p
-              class="text-slate-400 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed md:leading-[1.2] lg:leading-[1.15] font-medium tracking-tight"
+              class="text-muted text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed md:leading-[1.2] lg:leading-[1.15] font-medium tracking-tight"
             >
               {{ $t("hero.description") }}
             </p>
@@ -103,7 +103,7 @@
               <div
                 v-for="tag in heroTags"
                 :key="tag"
-                class="flex items-center gap-1.5 sm:gap-2 md:gap-3 text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-[0.25em] sm:tracking-[0.3em] text-slate-500 hover:text-primary transition-all cursor-default"
+                class="flex items-center gap-1.5 sm:gap-2 md:gap-3 text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-[0.25em] sm:tracking-[0.3em] text-muted hover:text-primary transition-all cursor-default"
               >
                 <div class="w-1 h-1 rounded-full bg-primary/40" />
                 {{ $t(tag) }}
@@ -119,7 +119,7 @@
           class="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 items-start sm:items-center"
         >
           <Button
-            class="btn-premium bg-primary text-white rounded-3xl! px-8! sm:px-10! md:px-12! py-4! sm:py-5! md:py-6! shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 transition-all w-full sm:w-auto text-sm sm:text-base"
+            class="btn-premium bg-primary text-white rounded-3xl! px-8! sm:px-10! md:px-12! py-4! sm:py-5! md:py-6! shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 transition-all w-full sm:w-auto text-sm sm:text-base border-none!"
             as="a"
             href="#contact"
             aria-label="Contact CÃ©sar GÃ³mez"
@@ -131,7 +131,7 @@
             <span>{{ $t("hero.cta") }}</span>
           </Button>
           <div
-            class="flex gap-3 sm:gap-4 md:gap-6 items-center border-t sm:border-t-0 sm:border-l border-white/10 pt-4 sm:pt-0 sm:pl-6 md:pl-8 w-full sm:w-auto justify-center sm:justify-start"
+            class="flex gap-3 sm:gap-4 md:gap-6 items-center border-t sm:border-t-0 sm:border-l border-foreground/10 pt-4 sm:pt-0 sm:pl-6 md:pl-8 w-full sm:w-auto justify-center sm:justify-start"
           >
             <a
               v-for="social in socials"
@@ -140,7 +140,7 @@
               target="_blank"
               rel="noopener noreferrer"
               :aria-label="`Visit ${social.label} profile`"
-              class="p-3 sm:p-4 glass rounded-xl sm:rounded-2xl text-slate-400 hover:text-white hover:border-primary/30 transition-all hover:-translate-y-1 active:scale-90"
+              class="p-3 sm:p-4 glass rounded-xl sm:rounded-2xl text-muted hover:text-foreground hover:border-primary/30 transition-all hover:-translate-y-1 active:scale-90"
             >
               <Icon :name="social.icon" class="w-5 h-5 sm:w-6 sm:h-6" />
             </a>
@@ -148,7 +148,7 @@
         </Motion>
 
         <div
-          class="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 pt-8 sm:pt-10 md:pt-12 border-t border-white/5"
+          class="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 pt-8 sm:pt-10 md:pt-12 border-t border-foreground/5"
         >
           <Motion
             v-for="(stat, i) in heroStats"
@@ -163,12 +163,12 @@
             class="space-y-1 md:space-y-2 group/stat cursor-help"
           >
             <div
-              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
+              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
             >
               {{ stat.value }}
             </div>
             <div
-              class="text-[6px] sm:text-[7px] md:text-[9px] uppercase font-bold tracking-[0.2em] sm:tracking-[0.3em] text-slate-600 group-hover/stat:text-slate-400 transition-colors"
+              class="text-[6px] sm:text-[7px] md:text-[9px] uppercase font-bold tracking-[0.2em] sm:tracking-[0.3em] text-muted group-hover/stat:text-foreground transition-colors"
             >
               {{ $t(stat.label) }}
             </div>
@@ -228,7 +228,7 @@
                 Status
               </div>
               <div
-                class="text-[10px] md:text-xs font-mono font-bold text-white uppercase"
+                class="text-[10px] md:text-xs font-mono font-bold text-foreground uppercase"
               >
                 Operational
               </div>
@@ -332,7 +332,12 @@ onMounted(() => {
   animation: float-random linear infinite;
 }
 
-.hero-scanline { background: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 75, 92, 0.1) 2px); }
+.hero-scanline {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(255, 75, 92, 0.1) 2px
+  );
+}
 </style>
-
-
