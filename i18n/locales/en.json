@@ -25,21 +25,7 @@
       "ts": "Typescript",
       "engineer": "Engineer"
     },
-    "marquee": "FRONTEND EXPERT",
-    "section_tag": "Portfolio",
-    "title_top": "Frontend",
-    "title_bottom": "Craftsmanship.",
-    "nexus": "Full Project Nexus",
-    "projects": {
-      "0": {
-        "title": "Colegium Cloud Architecture",
-        "desc": "Leading the technical evolution of a massive educational platform. Refactored legacy systems into modern Vue 3 architectures with 100k+ users."
-      },
-      "1": {
-        "title": "LingoQuesto Interface",
-        "desc": "Boutique frontend engineering focused on high-performance learning interfaces and seamless motion orchestration."
-      }
-    }
+    "marquee": "FRONTEND EXPERT"
   },
   "about": {
     "section": "Technical Identity",
@@ -74,15 +60,20 @@
     "title": "High-Velocity",
     "titleHighlight": "Capabilities."
   },
-  "projects": {
-    "section": "Portfolio",
-    "title": "Frontend",
-    "titleHighlight": "Craftsmanship.",
-    "filter": {
-      "all": "All Projects",
-      "featured": "Featured",
-      "web": "Web Apps",
-      "mobile": "Mobile"
+  "portfolio": {
+    "section_tag": "Portfolio",
+    "title_top": "Frontend",
+    "title_bottom": "Craftsmanship.",
+    "nexus": "Full Project Nexus",
+    "projects": {
+      "0": {
+        "title": "Colegium Cloud Architecture",
+        "desc": "Leading the technical evolution of a massive educational platform. Refactored legacy systems into modern Vue 3 architectures with 100k+ users."
+      },
+      "1": {
+        "title": "LingoQuesto Interface",
+        "desc": "Boutique frontend engineering focused on high-performance learning interfaces and seamless motion orchestration."
+      }
     }
   },
   "contact": {

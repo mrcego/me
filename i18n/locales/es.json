@@ -25,21 +25,7 @@
       "ts": "Typescript",
       "engineer": "Ingeniero"
     },
-    "marquee": "EXPERTO FRONTEND",
-    "section_tag": "Portafolio",
-    "title_top": "Arte",
-    "title_bottom": "Frontend.",
-    "nexus": "Nexo de Proyectos",
-    "projects": {
-      "0": {
-        "title": "Arquitectura Cloud Colegium",
-        "desc": "Liderando la evolución técnica de una plataforma educativa masiva. Refactorización de sistemas legados hacia arquitecturas modernas en Vue 3 con más de 100k usuarios."
-      },
-      "1": {
-        "title": "Interfaz LingoQuesto",
-        "desc": "Ingeniería frontend boutique enfocada en interfaces de aprendizaje de alto rendimiento y orquestación de movimiento fluida."
-      }
-    }
+    "marquee": "EXPERTO FRONTEND"
   },
   "about": {
     "section": "Identidad Técnica",
@@ -74,15 +60,20 @@
     "title": "Capacidades de",
     "titleHighlight": "Alta Velocidad."
   },
-  "projects": {
-    "section": "Portafolio",
-    "title": "Artesanía",
-    "titleHighlight": "Frontend.",
-    "filter": {
-      "all": "Todos los Proyectos",
-      "featured": "Destacados",
-      "web": "Apps Web",
-      "mobile": "Móvil"
+  "portfolio": {
+    "section_tag": "Portafolio",
+    "title_top": "Arte",
+    "title_bottom": "Frontend.",
+    "nexus": "Nexo de Proyectos",
+    "projects": {
+      "0": {
+        "title": "Arquitectura Cloud Colegium",
+        "desc": "Liderando la evolución técnica de una plataforma educativa masiva. Refactorización de sistemas legados hacia arquitecturas modernas en Vue 3 con más de 100k usuarios."
+      },
+      "1": {
+        "title": "Interfaz LingoQuesto",
+        "desc": "Ingeniería frontend boutique enfocada en interfaces de aprendizaje de alto rendimiento y orquestación de movimiento fluida."
+      }
     }
   },
   "contact": {
