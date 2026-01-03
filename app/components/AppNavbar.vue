@@ -124,65 +124,70 @@
           </ClientOnly>
 
           <!-- Color Picker -->
-          <div class="relative">
-            <button
-              class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-all active:scale-95"
-              aria-label="Customize Theme"
-              @click="showColorPicker = !showColorPicker"
-            >
-              <Icon
-                name="solar:palette-bold-duotone"
-                class="w-5 h-5 md:w-6 md:h-6"
-              />
-            </button>
-            <!-- Color Picker Popover -->
-            <Motion
-              v-if="showColorPicker"
-              :initial="{ opacity: 0, scale: 0.8 }"
-              :enter="{ opacity: 1, scale: 1 }"
-            >
-              <div
-                class="absolute top-full right-0 mt-4 p-5 glass rounded-3xl min-w-64 border border-white/10 shadow-4xl z-50 origin-top-right"
+          <ClientOnly>
+            <div class="relative">
+              <button
+                class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-all active:scale-95"
+                aria-label="Customize Theme"
+                @click="showColorPicker = !showColorPicker"
               >
-                <div class="space-y-4">
-                  <div class="space-y-2">
-                    <label
-                      class="text-[10px] font-black uppercase tracking-widest text-slate-500"
-                      >Primary Accent</label
-                    >
-                    <div class="flex items-center gap-2">
-                      <ColorPicker
-                        v-model="primaryColor"
-                        format="hex"
-                        class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-white/10"
-                        @update:model-value="changePrimaryColor"
-                      />
-                      <span class="text-xs font-mono text-white/60 uppercase">{{
-                        primaryColor
-                      }}</span>
+                <Icon
+                  name="solar:palette-bold-duotone"
+                  class="w-5 h-5 md:w-6 md:h-6"
+                />
+              </button>
+              <!-- Color Picker Popover -->
+              <Motion
+                v-if="showColorPicker"
+                :initial="{ opacity: 0, scale: 0.9, y: 10 }"
+                :animate="{ opacity: 1, scale: 1, y: 0 }"
+                :transition="{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }"
+              >
+                <div
+                  class="absolute top-full right-0 mt-4 p-5 glass rounded-4xl min-w-64 border border-white/10 shadow-4xl z-50 origin-top-right backdrop-blur-3xl"
+                >
+                  <div class="space-y-4">
+                    <div class="space-y-2">
+                      <label
+                        class="text-[10px] font-black uppercase tracking-widest text-slate-500"
+                        >Primary Accent</label
+                      >
+                      <div class="flex items-center gap-2">
+                        <ColorPicker
+                          v-model="primaryColor"
+                          format="hex"
+                          class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-white/10"
+                          @update:model-value="changePrimaryColor"
+                        />
+                        <span
+                          class="text-xs font-mono text-white/60 uppercase"
+                          >{{ primaryColor }}</span
+                        >
+                      </div>
                     </div>
-                  </div>
-                  <div class="space-y-2">
-                    <label
-                      class="text-[10px] font-black uppercase tracking-widest text-slate-500"
-                      >Surface Tone</label
-                    >
-                    <div class="flex items-center gap-2">
-                      <ColorPicker
-                        v-model="surfaceColor"
-                        format="hex"
-                        class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-white/10"
-                        @update:model-value="changeSurfaceColor"
-                      />
-                      <span class="text-xs font-mono text-white/60 uppercase">{{
-                        surfaceColor
-                      }}</span>
+                    <div class="space-y-2">
+                      <label
+                        class="text-[10px] font-black uppercase tracking-widest text-slate-500"
+                        >Surface Tone</label
+                      >
+                      <div class="flex items-center gap-2">
+                        <ColorPicker
+                          v-model="surfaceColor"
+                          format="hex"
+                          class="w-8 h-8 rounded-full overflow-hidden ring-2 ring-white/10"
+                          @update:model-value="changeSurfaceColor"
+                        />
+                        <span
+                          class="text-xs font-mono text-white/60 uppercase"
+                          >{{ surfaceColor }}</span
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </Motion>
-          </div>
+              </Motion>
+            </div>
+          </ClientOnly>
 
           <div class="w-px h-6 bg-white/10 mx-1 hidden sm:block" />
 
@@ -272,12 +277,16 @@ import AppLanguageSwitcher from "~/components/AppLanguageSwitcher.vue";
 
 const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);
-const { isDark, toggleTheme, changePrimaryColor, changeSurfaceColor } =
-  useTheme();
+const {
+  isDark,
+  primaryColor,
+  surfaceColor,
+  toggleTheme,
+  changePrimaryColor,
+  changeSurfaceColor,
+} = useTheme();
 
 const showColorPicker = ref(false);
-const primaryColor = ref("#ff4b5c");
-const surfaceColor = ref("#0f172a");
 
 const navLinks = [
   { name: "nav.home", href: "#hero", id: "hero" },
@@ -338,4 +347,3 @@ onUnmounted(() => {
 <style scoped>
 /* Scoped styles if needed, but Tailwind handles most */
 </style>
-

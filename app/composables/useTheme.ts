@@ -1,19 +1,22 @@
 import { ref } from 'vue';
 import { updatePrimaryPalette, updateSurfacePalette, palette } from '@primeuix/themes';
 
+// Shared state
+const isDark = ref(false);
+const primaryColor = ref('#ff4b5c');
+const surfaceColor = ref('#0f172a');
+
 export const useTheme = () => {
-  const isDark = ref(false);
-  
   const applyTheme = (dark: boolean) => {
     if (import.meta.client) {
       const root = document.documentElement;
       const body = document.body;
       if (dark) {
-        root.classList.add('app-dark');
-        body.classList.add('app-dark');
+        root.classList.add('app-dark', 'dark');
+        body.classList.add('app-dark', 'dark');
       } else {
-        root.classList.remove('app-dark');
-        body.classList.remove('app-dark');
+        root.classList.remove('app-dark', 'dark');
+        body.classList.remove('app-dark', 'dark');
       }
     }
   };
@@ -37,24 +40,35 @@ export const useTheme = () => {
     }
   };
 
+  const ensureHex = (color: string) => color.startsWith('#') ? color : `#${color}`;
+
   // Cambiar color primario
   const changePrimaryColor = (color: string) => {
-    const colors = palette(color);
+    const hexColor = ensureHex(color);
+    primaryColor.value = hexColor;
+    const colors = palette(hexColor);
     if (colors && typeof colors === 'object') {
       updatePrimaryPalette(colors);
       if (import.meta.client) {
-        localStorage.setItem('primary-color', color);
+        localStorage.setItem('primary-color', hexColor);
+        document.documentElement.style.setProperty('--color-primary', hexColor);
+        // Also update hover or other variations if needed
+        document.documentElement.style.setProperty('--color-primary-hover', hexColor);
       }
     }
   };
 
   // Cambiar color de superficie
   const changeSurfaceColor = (color: string) => {
-    const colors = palette(color);
+    const hexColor = ensureHex(color);
+    surfaceColor.value = hexColor;
+    const colors = palette(hexColor);
     if (colors && typeof colors === 'object') {
       updateSurfacePalette(colors);
       if (import.meta.client) {
-        localStorage.setItem('surface-color', color);
+        localStorage.setItem('surface-color', hexColor);
+        document.documentElement.style.setProperty('--color-surface', hexColor);
+        document.documentElement.style.setProperty('--color-background', hexColor);
       }
     }
   };
@@ -63,7 +77,7 @@ export const useTheme = () => {
   if (import.meta.client) {
     const savedPrimary = localStorage.getItem('primary-color');
     const savedSurface = localStorage.getItem('surface-color');
-    
+
     if (savedPrimary) {
       changePrimaryColor(savedPrimary);
     }
@@ -74,6 +88,8 @@ export const useTheme = () => {
 
   return {
     isDark,
+    primaryColor,
+    surfaceColor,
     toggleTheme,
     changePrimaryColor,
     changeSurfaceColor
