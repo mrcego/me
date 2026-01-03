@@ -100,7 +100,7 @@
           >
             <Icon
               :name="s.icon"
-              class="w-5 h-5 transition-colors duration-300 text-muted group-hover/social:text-white"
+              class="w-5 h-5 transition-colors duration-300 text-muted group-hover/social:text-primary-contrast"
             />
           </a>
         </div>

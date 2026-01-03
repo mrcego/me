@@ -6,6 +6,7 @@
   --color-muted: var(--muted);
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
+  --color-primary-contrast: var(--primary-contrast);
   --color-secondary: var(--secondary);
   --color-surface: var(--surface);
   --color-accent: #3b82f6;

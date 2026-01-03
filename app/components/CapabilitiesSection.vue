@@ -27,7 +27,7 @@
         <h3
           class="text-5xl md:text-8xl font-black tracking-tighter text-foreground"
         >
-          {{ $t("capabilities.title") }}<br>
+          {{ $t("capabilities.title") }}<br />
           <span class="text-gradient">{{
             $t("capabilities.titleHighlight")
           }}</span>
@@ -55,7 +55,7 @@
 
           <div class="relative z-10 space-y-8">
             <div
-              class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white group-hover:rotate-6 transition-all duration-500 shadow-xl"
+              class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast group-hover:rotate-6 transition-all duration-500 shadow-xl"
             >
               <Icon :name="cap.icon" class="w-6 h-6" />
             </div>

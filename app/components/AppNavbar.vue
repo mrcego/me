@@ -192,7 +192,7 @@
           <!-- CTA Button -->
           <a
             href="#contact"
-            class="hidden sm:flex items-center gap-2 bg-primary hover:bg-primary-hover text-white px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn"
+            class="hidden sm:flex items-center gap-2 bg-primary hover:bg-primary-hover text-primary-contrast px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn"
             @click="scrollToSection($event, '#contact')"
           >
             <span>{{ $t("nav.getInTouch") }}</span>

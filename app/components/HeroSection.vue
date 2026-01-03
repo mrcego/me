@@ -119,7 +119,7 @@
           class="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 items-start sm:items-center"
         >
           <Button
-            class="btn-premium bg-primary text-white rounded-3xl! px-8! sm:px-10! md:px-12! py-4! sm:py-5! md:py-6! shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 transition-all w-full sm:w-auto text-sm sm:text-base border-none!"
+            class="btn-premium bg-primary text-primary-contrast rounded-3xl! px-8! sm:px-10! md:px-12! py-4! sm:py-5! md:py-6! shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 transition-all w-full sm:w-auto text-sm sm:text-base border-none!"
             as="a"
             href="#contact"
             aria-label="Contact CÃ©sar GÃ³mez"

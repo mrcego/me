@@ -31,7 +31,7 @@
         <h3
           class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black tracking-tighter leading-[0.9] text-foreground"
         >
-          {{ $t("techStack.title") }}<br>
+          {{ $t("techStack.title") }}<br />
           <span class="text-gradient">{{
             $t("techStack.titleHighlight")
           }}</span>
@@ -68,7 +68,7 @@
           >
             <div class="flex justify-between items-start">
               <div
-                class="w-16 h-16 md:w-20 md:h-20 glass rounded-2xl md:rounded-3xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 shadow-2xl shrink-0 group-hover:scale-110 group-hover:rotate-6"
+                class="w-16 h-16 md:w-20 md:h-20 glass rounded-2xl md:rounded-3xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-2xl shrink-0 group-hover:scale-110 group-hover:rotate-6"
               >
                 <Icon :name="t.icon" class="w-8 h-8 md:w-10 md:h-10" />
               </div>

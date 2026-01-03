@@ -74,7 +74,7 @@
                 class="flex gap-4 group/p cursor-default"
               >
                 <div
-                  class="w-10 h-10 md:w-12 md:h-12 glass rounded-xl flex items-center justify-center text-primary group-hover/p:bg-primary group-hover/p:text-white transition-all duration-500 shrink-0 shadow-lg"
+                  class="w-10 h-10 md:w-12 md:h-12 glass rounded-xl flex items-center justify-center text-primary group-hover/p:bg-primary group-hover/p:text-primary-contrast transition-all duration-500 shrink-0 shadow-lg"
                 >
                   <Icon :name="point.icon" class="w-5 h-5" />
                 </div>
@@ -121,7 +121,7 @@
             <h3
               class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-foreground"
             >
-              {{ $t("about.title") }}<br>
+              {{ $t("about.title") }}<br />
               <span class="text-gradient">{{
                 $t("about.titleHighlight")
               }}</span>
@@ -162,7 +162,7 @@
               <div class="space-y-6 relative z-10 h-full flex flex-col">
                 <div class="flex justify-between items-start">
                   <div
-                    class="px-4 py-1.5 glass rounded-xl text-[8px] font-black uppercase tracking-[0.25em] text-primary group-hover:bg-primary group-hover:text-white transition-all shadow-sm"
+                    class="px-4 py-1.5 glass rounded-xl text-[8px] font-black uppercase tracking-[0.25em] text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all shadow-sm"
                   >
                     {{ role.years }}
                   </div>

@@ -114,7 +114,7 @@
       @click="isOpen = !isOpen"
     >
       <div
-        class="absolute inset-x-0 h-px bg-white/40 animate-sweep z-20 pointer-events-none"
+        class="absolute inset-x-0 h-px bg-primary-contrast/40 animate-sweep z-20 pointer-events-none"
       />
       <div
         class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity"

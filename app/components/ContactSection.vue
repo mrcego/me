@@ -36,11 +36,11 @@
             <h3
               class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-none text-foreground whitespace-pre-line"
             >
-              {{ $t("contact.title") }}<br>
+              {{ $t("contact.title") }}<br />
               <span class="text-gradient">{{
                 $t("contact.titleHighlight")
               }}</span
-              ><br>
+              ><br />
               {{ $t("contact.titleEnd") }}
             </h3>
             <p
@@ -61,7 +61,7 @@
               class="flex items-center gap-4 sm:gap-6 md:gap-10 group cursor-pointer transition-all duration-500 hover:translate-x-3 active:scale-95"
             >
               <div
-                class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-700 shadow-xl shrink-0 group-hover:rotate-6"
+                class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-xl shrink-0 group-hover:rotate-6"
               >
                 <Icon :name="c.icon" class="w-6 h-6 md:w-8 md:h-8" />
               </div>
@@ -234,13 +234,13 @@
               type="submit"
               :disabled="isSubmitting"
               :aria-busy="isSubmitting"
-              class="w-full rounded-xl! sm:rounded-[1.8rem]! md:rounded-[2.5rem]! p-5! sm:p-6! md:p-8! bg-primary! text-white shadow-3xl shadow-primary/30 group/btn transition-all duration-500 overflow-hidden relative active:scale-95 active:shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              class="w-full rounded-xl! sm:rounded-[1.8rem]! md:rounded-[2.5rem]! p-5! sm:p-6! md:p-8! bg-primary! text-primary-contrast shadow-3xl shadow-primary/30 group/btn transition-all duration-500 overflow-hidden relative active:scale-95 active:shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               <div
-                class="absolute inset-x-0 top-0 h-px bg-white/40 animate-sweep pointer-events-none"
+                class="absolute inset-x-0 top-0 h-px bg-primary-contrast/40 animate-sweep pointer-events-none"
               />
               <div
-                class="absolute inset-0 bg-linear-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"
+                class="absolute inset-0 bg-linear-to-tr from-transparent via-primary-contrast/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"
               />
               <span
                 class="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 text-[9px] sm:text-[10px] md:text-sm font-black uppercase tracking-[0.25em] sm:tracking-[0.3em] md:tracking-[0.4em] relative z-10 transition-transform group-hover/btn:scale-105"

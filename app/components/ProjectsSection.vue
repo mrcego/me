@@ -55,7 +55,7 @@
             class="px-6 md:px-10 py-3 md:py-4 rounded-[1.8rem] text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-500 shrink-0 select-none"
             :class="[
               activeCategory === cat
-                ? 'bg-primary text-white shadow-2xl shadow-primary/30 scale-105'
+                ? 'bg-primary text-primary-contrast shadow-2xl shadow-primary/30 scale-105'
                 : 'text-muted hover:text-foreground hover:bg-foreground/5',
             ]"
             @click="activeCategory = cat"
@@ -135,7 +135,7 @@
               </div>
               <a
                 href="#"
-                class="w-12 h-12 md:w-16 md:h-16 glass rounded-full flex items-center justify-center text-muted hover:bg-primary hover:text-white hover:scale-110 active:scale-90 transition-all duration-500 shrink-0 shadow-lg"
+                class="w-12 h-12 md:w-16 md:h-16 glass rounded-full flex items-center justify-center text-muted hover:bg-primary hover:text-primary-contrast hover:scale-110 active:scale-90 transition-all duration-500 shrink-0 shadow-lg"
               >
                 <Icon name="solar:arrow-right-up-linear" class="w-6 h-6" />
               </a>
