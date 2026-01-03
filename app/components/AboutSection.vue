@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section
     id="about"
     class="py-24 md:py-32 px-6 md:px-12 relative bg-secondary/5 overflow-hidden"
@@ -39,7 +39,7 @@
 
               <NuxtImg
                 src="/img/me.jpg"
-                alt="César Gómez - Senior Fullstack Developer and Frontend Architect"
+                alt="CÃ©sar GÃ³mez - Senior Fullstack Developer and Frontend Architect"
                 width="600"
                 height="800"
                 format="webp"
@@ -121,7 +121,7 @@
             <h3
               class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-white"
             >
-              {{ $t("about.title") }}<br />
+              {{ $t("about.title") }}<br>
               <span class="text-gradient">{{
                 $t("about.titleHighlight")
               }}</span>
@@ -290,3 +290,4 @@ const roles = [
   animation: scanline-subtle 3s linear infinite;
 }
 </style>
+

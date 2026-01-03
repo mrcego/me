@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section
     class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
   >
@@ -25,7 +25,7 @@
           <div class="h-px w-10 bg-primary/40" />
         </div>
         <h3 class="text-5xl md:text-8xl font-black tracking-tighter text-white">
-          High-Velocity<br />
+          High-Velocity<br>
           <span class="text-gradient">Capabilities.</span>
         </h3>
       </Motion>
@@ -98,19 +98,10 @@ const capabilities = [
 
 <style scoped>
 .capability-scanline {
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 1px,
-    rgba(255, 75, 92, 0.03) 2px
-  );
+  background: repeating-linear-gradient(45deg, transparent, transparent 1px, rgba(255, 75, 92, 0.03) 2px);
 }
 
 .capability-ambient-glow {
-  background: radial-gradient(
-    circle at 50% 0%,
-    rgba(255, 75, 92, 0.03),
-    transparent
-  );
+  background: radial-gradient(circle at 50% 0%, rgba(255, 75, 92, 0.03), transparent);
 }
 </style>

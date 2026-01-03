@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <section
     id="hero"
     class="relative min-h-screen flex items-center justify-center overflow-hidden px-6 md:px-12 py-24 md:py-32"
@@ -122,7 +122,7 @@
             class="btn-premium bg-primary text-white rounded-3xl! px-8! sm:px-10! md:px-12! py-4! sm:py-5! md:py-6! shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 transition-all w-full sm:w-auto text-sm sm:text-base"
             as="a"
             href="#contact"
-            aria-label="Contact César Gómez"
+            aria-label="Contact CÃ©sar GÃ³mez"
           >
             <Icon
               name="solar:rocket-2-bold-duotone"
@@ -202,7 +202,7 @@
 
             <NuxtImg
               src="/img/me.jpg"
-              alt="César Gómez - Senior Fullstack Developer specializing in Vue.js and Nuxt.js frontend architecture"
+              alt="CÃ©sar GÃ³mez - Senior Fullstack Developer specializing in Vue.js and Nuxt.js frontend architecture"
               width="800"
               height="1000"
               format="webp"
@@ -332,12 +332,6 @@ onMounted(() => {
   animation: float-random linear infinite;
 }
 
-.hero-scanline {
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 1px,
-    rgba(255, 75, 92, 0.1) 2px
-  );
-}
+.hero-scanline { background: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(255, 75, 92, 0.1) 2px); }
 </style>
+

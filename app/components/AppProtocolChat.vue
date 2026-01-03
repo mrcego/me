@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div
     class="fixed bottom-8 right-8 z-9999 flex flex-col items-end gap-4 pointer-events-none"
   >
@@ -96,7 +96,7 @@
           placeholder="SEND COMMAND..."
           class="flex-1 bg-transparent border-none outline-none text-white font-mono text-xs placeholder:text-slate-700"
           @keyup.enter="sendMessage()"
-        />
+        >
         <button
           class="p-2 text-primary hover:scale-110 active:scale-95 transition-all"
           @click="sendMessage()"
@@ -149,15 +149,15 @@ const messages = ref([
 ]);
 
 const suggestions = [
-  "WHO IS CÉSAR GÓMEZ?",
+  "WHO IS CÃ‰SAR GÃ“MEZ?",
   "WHAT IS THE TECH STACK?",
   "CURRENT MISSION?",
   "EXPERIENCE LEVEL?",
 ];
 
 const responses = {
-  "WHO IS CÉSAR GÓMEZ?":
-    "OPERATOR: CÉSAR GÓMEZ IS A SENIOR FULLSTACK DEVELOPER WITH 13+ YEARS OF EXPERIENCE. SPECIALIZED IN FRONTEND ARCHITECTURE (VUE/NUXT) AND ROBUST BACKEND SYSTEMS. FOUNDING MEMBER @ LINGOQUESTO.",
+  "WHO IS CÃ‰SAR GÃ“MEZ?":
+    "OPERATOR: CÃ‰SAR GÃ“MEZ IS A SENIOR FULLSTACK DEVELOPER WITH 13+ YEARS OF EXPERIENCE. SPECIALIZED IN FRONTEND ARCHITECTURE (VUE/NUXT) AND ROBUST BACKEND SYSTEMS. FOUNDING MEMBER @ LINGOQUESTO.",
   "WHAT IS THE TECH STACK?":
     "STACK ANALYSIS: VUE 3, NUXT 4, TYPESCRIPT, NODE.JS, TAILWIND CSS 4, PRIMEVUE 4. ARCHITECTURE FOCUSED ON SCALABILITY AND IMPACT.",
   "CURRENT MISSION?":
@@ -242,3 +242,4 @@ watch(isOpen, (val) => {
   );
 }
 </style>
+
