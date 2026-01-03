@@ -18,7 +18,7 @@
           :in-view="{ opacity: 1, x: 0 }"
           :viewport="{ once: true }"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
-          class="lg:col-span-5 lg:sticky lg:top-32 w-full mx-auto"
+          class="lg:col-span-5 lg:sticky lg:top-32 w-full mx-auto -mt-32 sm:-mt-16 lg:-mt-6 xl:mt-0"
         >
           <div
             class="glass border-white/5 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden p-6 sm:p-8 md:p-10 lg:p-12 transition-all duration-1000 hover:border-primary/40 shadow-2xl relative group bg-background/20 backdrop-blur-3xl"
@@ -29,7 +29,7 @@
             />
 
             <div
-              class="relative aspect-3/4 rounded-3xl overflow-hidden mb-8 md:mb-10 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo hidden sm:block"
+              class="relative aspect-3/4 rounded-3xl overflow-hidden mb-8 md:mb-10 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo hidden lg:block"
             >
               <!-- Cinematic HUD Overlay for Photo -->
               <div
