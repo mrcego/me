@@ -20,7 +20,7 @@
           <div class="h-px w-10 bg-primary/40" />
         </div>
         <h3 class="text-5xl md:text-8xl font-black tracking-tighter text-white">
-          Trusted by<br>
+          Trusted by<br />
           <span class="text-gradient">Innovators.</span>
         </h3>
       </Motion>
@@ -66,10 +66,11 @@
               <div
                 class="w-14 h-14 rounded-2xl glass overflow-hidden border-white/10 group-hover:scale-110 transition-transform"
               >
-                <img:src="t.avatar"
+                <img
+                  :src="t.avatar"
                   class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all"
                   alt="Testimonial Avatar"
-                >
+                />
               </div>
               <div class="space-y-1">
                 <h5 class="text-lg font-black text-white tracking-tight">
@@ -97,7 +98,7 @@ const testimonials = [
     name: "Tech Lead",
     role: "Colegium Architecture",
     quote:
-      "CÃ©sar ability to bridge complex enterprise logic with high-performance frontend interfaces is extraordinary.",
+      "César ability to bridge complex enterprise logic with high-performance frontend interfaces is extraordinary.",
     avatar: "https://i.pravatar.cc/150?u=1",
   },
   {
@@ -120,4 +121,3 @@ const testimonials = [
   background-size: 20px 20px;
 }
 </style>
-

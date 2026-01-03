@@ -30,21 +30,23 @@
               <h2
                 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
               >
-                Nexus
+                {{ $t("contact.section") }}
               </h2>
             </div>
             <h3
               class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-none text-white whitespace-pre-line"
             >
-              Let's build<br >
-              <span class="text-gradient">high-fidelity</span><br >
-              products.
+              {{ $t("contact.title") }}<br />
+              <span class="text-gradient">{{
+                $t("contact.titleHighlight")
+              }}</span
+              ><br />
+              {{ $t("contact.titleEnd") }}
             </h3>
             <p
               class="text-slate-400 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto lg:mx-0"
             >
-              Bridging the gap between ambitious product roadmaps and solid
-              technical execution.
+              {{ $t("contact.description") }}
             </p>
           </div>
 
@@ -67,7 +69,7 @@
                 <p
                   class="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-slate-500 group-hover:text-primary transition-colors"
                 >
-                  {{ c.label }}
+                  {{ $t(`contact.methods.${c.key}`) }}
                 </p>
                 <p
                   class="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-black text-white tracking-tighter break-all group-hover:text-gradient transition-all"
@@ -100,7 +102,7 @@
               v-if="submitSuccess"
               class="p-4 sm:p-6 bg-green-500/10 border border-green-500/30 rounded-2xl text-green-400 text-sm sm:text-base font-medium text-center"
             >
-              âœ“ Message sent successfully! I'll get back to you soon.
+              {{ $t("contact.form.success") }}
             </div>
 
             <!-- Error Message -->
@@ -108,7 +110,9 @@
               v-if="submitError"
               class="p-4 sm:p-6 bg-red-500/10 border border-red-500/30 rounded-2xl text-red-400 text-sm sm:text-base font-medium text-center"
             >
-              {{ submitError }}
+              {{
+                submitError === true ? $t("contact.form.error") : submitError
+              }}
             </div>
 
             <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-10">
@@ -116,12 +120,12 @@
                 <label
                   for="contact-name"
                   class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
-                  >Commander Identity</label
+                  >{{ $t("contact.form.name") }}</label
                 >
                 <inputText
                   id="contact-name"
                   v-model="formData.name"
-                  placeholder="Your Name"
+                  :placeholder="$t('contact.form.namePlaceholder')"
                   :aria-invalid="!!errors.name"
                   :aria-describedby="errors.name ? 'name-error' : undefined"
                   class="w-full"
@@ -131,7 +135,7 @@
                         'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-6! bg-white/3! border-white/5! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-white/20',
                     },
                   }"
-                >
+                />
                 <span
                   v-if="errors.name"
                   id="name-error"
@@ -143,13 +147,13 @@
                 <label
                   for="contact-email"
                   class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
-                  >Signal Frequency</label
+                  >{{ $t("contact.form.email") }}</label
                 >
                 <inputText
                   id="contact-email"
                   v-model="formData.email"
                   type="email"
-                  placeholder="email@domain.com"
+                  :placeholder="$t('contact.form.emailPlaceholder')"
                   :aria-invalid="!!errors.email"
                   :aria-describedby="errors.email ? 'email-error' : undefined"
                   class="w-full"
@@ -159,7 +163,7 @@
                         'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-6! bg-white/3! border-white/5! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-white/20',
                     },
                   }"
-                >
+                />
                 <span
                   v-if="errors.email"
                   id="email-error"
@@ -173,12 +177,12 @@
               <label
                 for="contact-subject"
                 class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
-                >Mission Objective</label
+                >{{ $t("contact.form.subject") }}</label
               >
               <inputText
                 id="contact-subject"
                 v-model="formData.subject"
-                placeholder="e.g. Scaling Nuxt Ecosystem"
+                :placeholder="$t('contact.form.subjectPlaceholder')"
                 :aria-invalid="!!errors.subject"
                 :aria-describedby="errors.subject ? 'subject-error' : undefined"
                 class="w-full"
@@ -188,7 +192,7 @@
                       'rounded-xl sm:rounded-2xl md:rounded-3xl !p-3 sm:!p-4 md:!p-6 !bg-white/3 !border-white/5 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-all duration-500 text-sm md:text-base hover:border-white/20',
                   },
                 }"
-              >
+              />
               <span
                 v-if="errors.subject"
                 id="subject-error"
@@ -201,12 +205,12 @@
               <label
                 for="contact-message"
                 class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-slate-600 block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
-                >Intelligence Data</label
+                >{{ $t("contact.form.message") }}</label
               >
               <Textarea
                 id="contact-message"
                 v-model="formData.message"
-                placeholder="Detail the technical challenge..."
+                :placeholder="$t('contact.form.messagePlaceholder')"
                 rows="4"
                 :aria-invalid="!!errors.message"
                 :aria-describedby="errors.message ? 'message-error' : undefined"
@@ -251,7 +255,11 @@
                   name="solar:sort-vertical-linear"
                   class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 animate-spin"
                 />
-                {{ isSubmitting ? "Sending..." : "Initiate Secure Link" }}
+                {{
+                  isSubmitting
+                    ? $t("contact.form.sending")
+                    : $t("contact.form.submit")
+                }}
               </span>
             </Button>
           </form>
@@ -276,24 +284,28 @@ const {
 
 const contactMethods = [
   {
+    key: "email",
     label: "Direct Signal",
     value: "cesargomezh90@gmail.com",
     icon: "logos:google-gmail",
     link: "mailto:cesargomezh90@gmail.com",
   },
   {
+    key: "linkedin",
     label: "Professional Mesh",
     value: "linkedin.com/in/mrcego",
     icon: "logos:linkedin-icon",
     link: "https://linkedin.com/in/mrcego",
   },
   {
+    key: "github",
     label: "Open Protocol",
     value: "github.com/cesargomezh",
     icon: "logos:github-icon",
     link: "https://github.com/cesargomezh",
   },
   {
+    key: "whatsapp",
     label: "Secure Line",
     value: "+57 333 263 6550",
     icon: "logos:whatsapp-icon",
@@ -325,4 +337,3 @@ const contactMethods = [
   animation: sweep 4s ease-in-out infinite;
 }
 </style>
-

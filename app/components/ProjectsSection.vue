@@ -34,7 +34,7 @@
           <h3
             class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white"
           >
-            {{ $t("portfolio.title_top") }}<br>
+            {{ $t("portfolio.title_top") }}<br />
             <span class="text-gradient">{{
               $t("portfolio.title_bottom")
             }}</span>
@@ -87,10 +87,11 @@
           <div
             class="relative aspect-video rounded-4xl overflow-hidden bg-slate-900 mb-8 md:mb-12 shrink-0 border border-white/5"
           >
-            <img:src="project.image"
+            <img
+              :src="project.image"
               class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
               alt="Project Showcase"
-            >
+            />
 
             <!-- Scanline Overlay on Project Image -->
             <div
@@ -220,4 +221,3 @@ const filteredProjects = computed(() => {
   background-size: 100px 100px;
 }
 </style>
-
