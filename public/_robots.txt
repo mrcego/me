@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+Disallow: /_nuxt/
+Disallow: /.well-known/
+Disallow: /sw.js
+Disallow: /manifest.json
+
+# Allow search engines to crawl important pages
+Allow: /#about
+Allow: /#tech-stack
+Allow: /#portfolio
+Allow: /#capabilities
+Allow: /#contact
+
+# Sitemap location
+Sitemap: https://cesargomezh.github.io/sitemap.xml

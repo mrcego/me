@@ -57,7 +57,7 @@
     :initial="{ opacity: 0, scale: 0.9, y: 20, filter: 'blur(10px)' }"
     :animate="{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }"
     :exit="{ opacity: 0, scale: 0.9, y: 20, filter: 'blur(10px)' }"
-    class="w-[350px] md:w-[450px] h-[500px] md:h-[600px] glass rounded-[2.5rem] border-primary/20 shadow-4xl overflow-hidden flex flex-col pointer-events-auto fixed bottom-24 right-4 md:bottom-28 md:right-8 z-40"
+    class="w-87.5 md:w-112.5 h-125 md:h-150 glass rounded-[2.5rem] border-primary/20 shadow-4xl overflow-hidden flex flex-col pointer-events-auto fixed bottom-24 right-4 md:bottom-28 md:right-8 z-40"
   >
     <!-- HUD Scanlines Background -->
     <div

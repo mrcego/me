@@ -12,39 +12,114 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      htmlAttrs: {
-        lang: 'en'
-      },
-      title: 'César Gómez - Senior Fullstack Developer | Vue.js & Nuxt.js Expert',
-      titleTemplate: '%s',
+      title: 'César Gómez - Senior Fullstack Developer',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: 'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.' },
-        { name: 'keywords', content: 'Vue.js, Nuxt.js, Frontend Developer, Fullstack Developer, TypeScript, Senior Developer, JavaScript, Node.js, Web Development, César Gómez' },
+        { name: 'keywords', content: 'César Gómez, Fullstack Developer, Vue.js, Nuxt.js, TypeScript, Frontend, Web Development, JavaScript, Node.js' },
         { name: 'author', content: 'César Gómez' },
-        { name: 'theme-color', content: '#ff4b5c' },
-
+        { name: 'robots', content: 'index, follow' },
+        
         // Open Graph
         { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: 'César Gómez Portfolio' },
         { property: 'og:title', content: 'César Gómez - Senior Fullstack Developer' },
-        { property: 'og:description', content: 'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, and TypeScript.' },
-        { property: 'og:image', content: '/img/og-image.svg' },
-        { property: 'og:image:width', content: '1200' },
-        { property: 'og:image:height', content: '630' },
+        { property: 'og:description', content: 'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence.' },
+        { property: 'og:image', content: 'https://cesargomezh.github.io/img/og-image.svg' },
         { property: 'og:url', content: 'https://cesargomezh.github.io' },
-
-        // Twitter Card
+        { property: 'og:site_name', content: 'César Gómez Portfolio' },
+        
+        // Twitter Cards
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'César Gómez - Senior Fullstack Developer' },
-        { name: 'twitter:description', content: 'Senior Fullstack Developer specializing in Vue.js, Nuxt.js, and Frontend Excellence' },
-        { name: 'twitter:image', content: '/img/og-image.svg' },
+        { name: 'twitter:description', content: 'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence.' },
+        { name: 'twitter:image', content: 'https://cesargomezh.github.io/img/og-image.svg' },
+        { name: 'twitter:site', content: '@cesargomezh' },
         { name: 'twitter:creator', content: '@cesargomezh' },
+        
+        // Performance and PWA
+        { name: 'theme-color', content: '#ff4b5c' },
+        { name: 'msapplication-TileImage', content: '/img/logo-final.svg' },
+        { name: 'msapplication-TileColor', content: '#ff4b5c' },
+        { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
+        { 'http-equiv': 'X-XSS-Protection', content: '1; mode=block' }
       ],
       link: [
+        // Preload critical resources
+        { rel: 'preload', href: '/img/logo-final.svg', as: 'image', type: 'image/svg+xml' },
+        { rel: 'preload', href: '/img/me.jpg', as: 'image', type: 'image/jpeg' },
+        
+        // DNS prefetch for external domains
+        { rel: 'dns-prefetch', href: '//www.linkedin.com' },
+        { rel: 'dns-prefetch', href: '//github.com' },
+        { rel: 'dns-prefetch', href: '//fonts.googleapis.com' },
+        
+        // Preconnect for critical external resources
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com', crossorigin: '' },
+        { rel: 'preconnect', href: 'https://www.linkedin.com', crossorigin: '' },
+        
+        // Web App Manifest
+        { rel: 'manifest', href: '/manifest.json' },
+        { rel: 'apple-touch-icon', href: '/img/logo-final.svg' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'canonical', href: 'https://cesargomezh.github.io' }
+      ],
+      script: [
+        // Structured Data for Person
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "César Gómez",
+            "jobTitle": "Senior Fullstack Developer",
+            "description": "Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.",
+            "url": "https://cesargomezh.github.io",
+            "image": "https://cesargomezh.github.io/img/me.jpg",
+            "sameAs": [
+              "https://linkedin.com/in/mrcego",
+              "https://github.com/cesargomezh"
+            ],
+            "knowsAbout": [
+              "Vue.js", "Nuxt.js", "TypeScript", "JavaScript", "Node.js",
+              "Frontend Development", "Fullstack Development", "Web Architecture",
+              "UI/UX Design", "Performance Optimization"
+            ],
+            "offers": {
+              "@type": "Offer",
+              "jobTitle": "Senior Fullstack Developer",
+              "description": "Available for freelance and contract work specializing in Vue.js/Nuxt.js applications",
+              "skills": "Vue.js, Nuxt.js, TypeScript, JavaScript, Node.js, Frontend Development, Fullstack Development",
+              "employmentType": "Contract",
+              "availableFrom": "2025-01-01"
+            }
+          })
+        },
+        // Structured Data for Website
+        {
+          type: 'application/ld+json',
+          innerHTML: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "César Gómez Portfolio",
+            "description": "Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.",
+            "url": "https://cesargomezh.github.io",
+            "image": "https://cesargomezh.github.io/img/og-image.svg",
+            "author": {
+              "@type": "Person",
+              "name": "César Gómez",
+              "url": "https://cesargomezh.github.io"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "César Gómez",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://cesargomezh.github.io/img/logo-final.svg"
+              }
+            }
+          })
+        }
       ]
     }
   },
@@ -64,8 +139,10 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxt/scripts',
-    '@primevue/nuxt-module',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    '@nuxtjs/seo',
+    '@nuxtjs/sitemap',
+    '@primevue/nuxt-module'
   ],
 
   image: {
@@ -112,6 +189,25 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,
       routes: ['/']
+    },
+    // Performance optimizations
+    compressPublicAssets: true,
+    minify: true,
+    esbuild: {
+      options: {
+        target: 'es2020',
+        minify: true
+      }
     }
+  },
+
+  // Performance and caching
+  routeRules: {
+    '/': { prerender: true },
+    '/img/**': { cache: { maxAge: 60 * 60 * 24 * 365 } }, // 1 year
+    '/favicon.ico': { cache: { maxAge: 60 * 60 * 24 * 30 } }, // 30 days
+    '/manifest.json': { cache: { maxAge: 60 * 60 * 24 * 7 } }, // 1 week
+    '/robots.txt': { cache: { maxAge: 60 * 60 * 24 * 7 } }, // 1 week
+    '/sitemap.xml': { cache: { maxAge: 60 * 60 * 24 } } // 1 day
   }
 })

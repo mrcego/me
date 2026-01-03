@@ -4,11 +4,6 @@
       v-if="loading"
       class="fixed inset-0 z-1000000 bg-background text-foreground flex flex-col items-center justify-center overflow-hidden"
     >
-      <!-- Subtle ambient background -->
-      <div
-        class="absolute inset-0 opacity-20 pointer-events-none loader-ambient-bg"
-      />
-
       <div class="relative z-10 flex flex-col items-center gap-8 md:gap-12">
         <Motion
           :initial="{ opacity: 0, scale: 0.8, filter: 'blur(20px)' }"
@@ -27,8 +22,8 @@
 
             <NuxtImg
               src="/img/logo-final.svg"
-              alt="CÃ©sar GÃ³mez"
-              class="w-full h-full object-contain relative z-10 drop-shadow-2xl text-primary"
+              alt="César Gómez"
+              class="w-full h-full object-contain relative z-10 drop-shadow-2xl"
             />
           </div>
         </Motion>
@@ -36,7 +31,7 @@
         <!-- Minimalist Loading Line -->
         <div class="w-48 md:w-64 space-y-4">
           <div
-            class="h-0.5 bg-linear-to-r from-transparent via-primary to-transparent"
+            class="h-0.5 w-full bg-foreground/5 rounded-full overflow-hidden relative"
           >
             <Motion
               :initial="{ x: '-100%' }"
@@ -79,14 +74,6 @@ defineProps({
 </script>
 
 <style scoped>
-.loader-ambient-bg {
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 75, 92, 0.15) 0%,
-    transparent 60%
-  );
-}
-
 .loader-fade-enter-active,
 .loader-fade-leave-active {
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),

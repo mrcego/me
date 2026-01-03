@@ -27,7 +27,7 @@
             />
 
             <div
-              class="relative aspect-[3/4] rounded-3xl overflow-hidden mb-8 md:mb-10 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
+              class="relative aspect-3/4 rounded-3xl overflow-hidden mb-8 md:mb-10 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
             >
               <!-- Cinematic HUD Overlay for Photo -->
               <div

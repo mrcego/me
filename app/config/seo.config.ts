@@ -1,0 +1,15 @@
+// SEO configuration for @nuxtjs/seo
+export default {
+  seo: {
+    siteUrl: 'https://cesargomezh.github.io',
+    name: 'César Gómez',
+    description: 'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.',
+    author: 'César Gómez',
+    type: 'website',
+    locale: 'en',
+    ogImage: '/img/og-image.svg',
+    ogImageAlt: 'César Gómez - Senior Fullstack Developer',
+    twitterCard: 'summary_large_image',
+    twitterCreator: '@cesargomezh'
+  }
+}

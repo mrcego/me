@@ -42,10 +42,3 @@ onMounted(() => {
   }, 3500);
 });
 </script>
-
-<style>
-.portfolio-content {
-  opacity: 1;
-  transition: opacity 1s ease-in-out;
-}
-</style>
