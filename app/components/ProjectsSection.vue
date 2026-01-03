@@ -41,7 +41,7 @@
           <h3
             class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white"
           >
-            Frontend<br >
+            Frontend<br />
             <span class="text-gradient">Craftsmanship.</span>
           </h3>
         </Motion>
@@ -96,19 +96,11 @@
               :src="project.image"
               class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
               alt="Project Showcase"
-            >
+            />
 
             <!-- Scanline Overlay on Project Image -->
             <div
-              class="absolute inset-0 z-20 opacity-0 group-hover:opacity-30 pointer-events-none"
-              style="
-                background: repeating-linear-gradient(
-                  0deg,
-                  transparent,
-                  transparent 1px,
-                  rgba(255, 75, 92, 0.2) 2px
-                );
-              "
+              class="absolute inset-0 z-20 opacity-0 group-hover:opacity-30 pointer-events-none project-scanline"
             />
             <div
               class="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
@@ -217,3 +209,14 @@ const filteredProjects = computed(() => {
   return projects.filter((p) => p.category === activeCategory.value);
 });
 </script>
+
+<style scoped>
+.project-scanline {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(255, 75, 92, 0.2) 2px
+  );
+}
+</style>

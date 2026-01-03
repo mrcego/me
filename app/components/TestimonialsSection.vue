@@ -41,15 +41,7 @@
         >
           <!-- Holographic dust -->
           <div
-            class="absolute inset-0 bg-primary/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-            style="
-              background-image: radial-gradient(
-                circle,
-                rgba(255, 75, 92, 0.1) 1px,
-                transparent 1px
-              );
-              background-size: 20px 20px;
-            "
+            class="absolute inset-0 bg-primary/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none testimonial-dots"
           />
 
           <div class="relative z-10 space-y-10">
@@ -57,7 +49,7 @@
               class="text-slate-500 group-hover:text-primary transition-colors"
             >
               <Icon
-                name="solar:quote-up-square-bold"
+                name="solar:chat-square-code-bold-duotone"
                 class="w-10 h-10 md:w-12 md:h-12 opacity-50"
               />
             </div>
@@ -118,3 +110,14 @@ const testimonials = [
   },
 ];
 </script>
+
+<style scoped>
+.testimonial-dots {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 75, 92, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+}
+</style>
