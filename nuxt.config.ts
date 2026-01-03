@@ -45,10 +45,6 @@ export default defineNuxtConfig({
         { 'http-equiv': 'X-XSS-Protection', content: '1; mode=block' }
       ],
       link: [
-        // Preload critical resources
-        { rel: 'preload', href: '/img/logo-final.svg', as: 'image', type: 'image/svg+xml' },
-        { rel: 'preload', href: '/img/me.jpg', as: 'image', type: 'image/jpeg' },
-        
         // DNS prefetch for external domains
         { rel: 'dns-prefetch', href: '//www.linkedin.com' },
         { rel: 'dns-prefetch', href: '//github.com' },
@@ -190,24 +186,11 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ['/']
     },
-    // Performance optimizations
-    compressPublicAssets: true,
-    minify: true,
-    esbuild: {
-      options: {
-        target: 'es2020',
-        minify: true
-      }
-    }
+    compressPublicAssets: true
   },
 
-  // Performance and caching
-  routeRules: {
-    '/': { prerender: true },
-    '/img/**': { cache: { maxAge: 60 * 60 * 24 * 365 } }, // 1 year
-    '/favicon.ico': { cache: { maxAge: 60 * 60 * 24 * 30 } }, // 30 days
-    '/manifest.json': { cache: { maxAge: 60 * 60 * 24 * 7 } }, // 1 week
-    '/robots.txt': { cache: { maxAge: 60 * 60 * 24 * 7 } }, // 1 week
-    '/sitemap.xml': { cache: { maxAge: 60 * 60 * 24 } } // 1 day
+  experimental: {
+    payloadExtraction: false,
+    renderJsonPayloads: true
   }
 })

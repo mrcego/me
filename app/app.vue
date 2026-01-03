@@ -36,9 +36,9 @@ const { activeSection, scrollProgress } = usePortfolio();
 const loading = ref(true);
 
 onMounted(() => {
-  // Entrance delay for "Megawow" impact
+  // Reduced loader time for better performance
   setTimeout(() => {
     loading.value = false;
-  }, 3500);
+  }, 1000);
 });
 </script>

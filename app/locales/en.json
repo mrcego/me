@@ -6,7 +6,9 @@
     "capabilities": "Capabilities",
     "projects": "Projects",
     "contact": "Contact",
-    "getInTouch": "Get in Touch"
+    "getInTouch": "Get in Touch",
+    "modes": "Modes",
+    "themePresets": "Temas"
   },
   "hero": {
     "tagline": "Founding Member @ LingoQuesto",
@@ -18,6 +20,9 @@
       "experience": "Years Experience",
       "projects": "Projects Delivered",
       "technologies": "Technologies Mastered"
+    },
+    "tags": {
+      "frontArch": "Frontend Expert"
     }
   },
   "about": {
