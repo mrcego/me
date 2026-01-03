@@ -78,7 +78,13 @@
         <p
           class="text-[10px] font-bold uppercase tracking-widest text-slate-600 flex items-center gap-2"
         >
-          <span>© {{ new Date().getFullYear() }} Signal Protocol.</span>
+          <span
+            >©
+            <ClientOnly fallback="2025">{{
+              new Date().getFullYear()
+            }}</ClientOnly>
+            Signal Protocol.</span
+          >
           <span class="hidden md:inline text-slate-800">|</span>
           <span class="opacity-50">All Systems Operational</span>
         </p>
@@ -110,7 +116,7 @@ const footerLinks = [
     links: [
       { name: "nav.home", href: "#" },
       { name: "about.philosophy", href: "#about" },
-      { name: "projects.section", href: "#portfolio" },
+      { name: "portfolio.section_tag", href: "#portfolio" },
       { name: "capabilities.section", href: "#capabilities" },
     ],
   },

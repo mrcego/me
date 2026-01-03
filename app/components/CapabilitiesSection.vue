@@ -4,7 +4,7 @@
   >
     <!-- background grid light -->
     <div
-      class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,75,92,0.03),transparent)] pointer-events-none"
+      class="absolute inset-0 z-0 pointer-events-none capability-ambient-glow"
     />
 
     <div class="container mx-auto space-y-24">
@@ -103,6 +103,14 @@ const capabilities = [
     transparent,
     transparent 1px,
     rgba(255, 75, 92, 0.03) 2px
+  );
+}
+
+.capability-ambient-glow {
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 75, 92, 0.03),
+    transparent
   );
 }
 </style>

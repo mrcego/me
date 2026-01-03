@@ -12,15 +12,7 @@
     >
       <!-- HUD Scanlines Background -->
       <div
-        class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none"
-        style="
-          background: repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 1px,
-            rgba(255, 75, 92, 0.2) 2px
-          );
-        "
+        class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none protocol-chat-scanlines"
       />
 
       <!-- Terminal Header -->
@@ -104,7 +96,7 @@
           placeholder="SEND COMMAND..."
           class="flex-1 bg-transparent border-none outline-none text-white font-mono text-xs placeholder:text-slate-700"
           @keyup.enter="sendMessage()"
-        >
+        />
         <button
           class="p-2 text-primary hover:scale-110 active:scale-95 transition-all"
           @click="sendMessage()"
@@ -239,5 +231,14 @@ watch(isOpen, (val) => {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+.protocol-chat-scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(255, 75, 92, 0.2) 2px
+  );
 }
 </style>
