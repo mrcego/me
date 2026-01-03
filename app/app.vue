@@ -7,7 +7,7 @@
 
     <!-- Global Scroll Progress -->
     <div
-      class="fixed top-0 left-0 right-0 h-1 z-[100] origin-left bg-linear-to-r from-primary via-primary/80 to-primary/40 transition-transform duration-100 ease-out"
+      class="fixed top-0 left-0 right-0 h-1 z-100 origin-left bg-linear-to-r from-primary via-primary/80 to-primary/40 transition-transform duration-100 ease-out"
       :style="{ transform: `scaleX(${scrollProgress / 100})` }"
       role="progressbar"
       :aria-valuenow="scrollProgress"

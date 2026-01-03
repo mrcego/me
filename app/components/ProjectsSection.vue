@@ -28,14 +28,16 @@
             <h2
               class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
             >
-              Portfolio
+              {{ $t("portfolio.section_tag") }}
             </h2>
           </div>
           <h3
             class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-white"
           >
-            Frontend<br />
-            <span class="text-gradient">Craftsmanship.</span>
+            {{ $t("portfolio.title_top") }}<br />
+            <span class="text-gradient">{{
+              $t("portfolio.title_bottom")
+            }}</span>
           </h3>
         </Motion>
 
@@ -120,7 +122,7 @@
                 <h4
                   class="text-2xl md:text-3xl font-black tracking-tighter text-white group-hover:text-primary transition-colors"
                 >
-                  {{ project.title }}
+                  {{ $t(`portfolio.projects.${i}.title`) }}
                 </h4>
                 <p
                   class="text-slate-500 font-bold text-[10px] md:text-xs uppercase tracking-widest"
@@ -139,7 +141,7 @@
             <p
               class="text-slate-400 text-sm md:text-base leading-relaxed max-w-lg line-clamp-3 group-hover:line-clamp-none transition-all duration-700 font-medium"
             >
-              {{ project.desc }}
+              {{ $t(`portfolio.projects.${i}.desc`) }}
             </p>
           </div>
         </Motion>
@@ -162,7 +164,7 @@
             />
             <span
               class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em]"
-              >Full Project Nexus</span
+              >{{ $t("portfolio.nexus") }}</span
             >
           </span>
         </button>

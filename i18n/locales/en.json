@@ -25,7 +25,21 @@
       "ts": "Typescript",
       "engineer": "Engineer"
     },
-    "marquee": "FRONTEND EXPERT"
+    "marquee": "FRONTEND EXPERT",
+    "section_tag": "Portfolio",
+    "title_top": "Frontend",
+    "title_bottom": "Craftsmanship.",
+    "nexus": "Full Project Nexus",
+    "projects": {
+      "0": {
+        "title": "Colegium Cloud Architecture",
+        "desc": "Leading the technical evolution of a massive educational platform. Refactored legacy systems into modern Vue 3 architectures with 100k+ users."
+      },
+      "1": {
+        "title": "LingoQuesto Interface",
+        "desc": "Boutique frontend engineering focused on high-performance learning interfaces and seamless motion orchestration."
+      }
+    }
   },
   "about": {
     "section": "Technical Identity",

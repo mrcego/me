@@ -2,7 +2,7 @@
   <Transition name="loader-fade">
     <div
       v-if="loading"
-      class="fixed inset-0 z-[1000000] bg-background text-white flex flex-col items-center justify-center overflow-hidden"
+      class="fixed inset-0 z-1000000 bg-background text-white flex flex-col items-center justify-center overflow-hidden"
     >
       <!-- Subtle ambient background -->
       <div
