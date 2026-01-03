@@ -25,7 +25,7 @@
           <div class="h-px w-10 bg-primary/40" />
         </div>
         <h3 class="text-5xl md:text-8xl font-black tracking-tighter text-white">
-          High-Velocity<br >
+          High-Velocity<br />
           <span class="text-gradient">Capabilities.</span>
         </h3>
       </Motion>
@@ -46,15 +46,7 @@
         >
           <!-- holographic scanline internal -->
           <div
-            class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
-            style="
-              background: repeating-linear-gradient(
-                45deg,
-                transparent,
-                transparent 1px,
-                rgba(255, 75, 92, 0.03) 2px
-              );
-            "
+            class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none capability-scanline"
           />
 
           <div class="relative z-10 space-y-8">
@@ -103,3 +95,14 @@ const capabilities = [
   },
 ];
 </script>
+
+<style scoped>
+.capability-scanline {
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 1px,
+    rgba(255, 75, 92, 0.03) 2px
+  );
+}
+</style>

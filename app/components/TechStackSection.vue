@@ -121,15 +121,7 @@
           class="glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-white/5 space-y-10 md:space-y-12 group/hud relative overflow-hidden"
         >
           <div
-            class="absolute inset-0 bg-primary/5 opacity-0 group-hover/hud:opacity-40 pointer-events-none"
-            style="
-              background: repeating-linear-gradient(
-                90deg,
-                transparent,
-                transparent 1px,
-                rgba(255, 75, 92, 0.05) 2px
-              );
-            "
+            class="absolute inset-0 bg-primary/5 opacity-0 group-hover/hud:opacity-40 pointer-events-none tech-hud-horizontal"
           />
 
           <div class="flex items-center gap-4 md:gap-6 relative z-10">
@@ -170,15 +162,7 @@
           class="glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-white/5 flex flex-col justify-between space-y-16 group/hud relative overflow-hidden"
         >
           <div
-            class="absolute inset-0 bg-primary/5 opacity-0 group-hover/hud:opacity-40 pointer-events-none"
-            style="
-              background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 1px,
-                rgba(255, 75, 92, 0.05) 2px
-              );
-            "
+            class="absolute inset-0 bg-primary/5 opacity-0 group-hover/hud:opacity-40 pointer-events-none tech-hud-vertical"
           />
 
           <div class="space-y-8 md:space-y-10 relative z-10">
@@ -285,3 +269,23 @@ const languages = [
   { name: "English", level: "Professional" },
 ];
 </script>
+
+<style scoped>
+.tech-hud-horizontal {
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 1px,
+    rgba(255, 75, 92, 0.05) 2px
+  );
+}
+
+.tech-hud-vertical {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(255, 75, 92, 0.05) 2px
+  );
+}
+</style>

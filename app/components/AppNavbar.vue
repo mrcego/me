@@ -106,20 +106,22 @@
           <AppLanguageSwitcher />
 
           <!-- Theme Toggle -->
-          <button
-            class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-all active:scale-95"
-            :aria-label="isDark ? 'Switch to light' : 'Switch to dark'"
-            @click="toggleTheme"
-          >
-            <Icon
-              :name="
-                isDark
-                  ? 'solar:moon-stars-bold-duotone'
-                  : 'solar:sun-2-bold-duotone'
-              "
-              class="w-5 h-5 md:w-6 md:h-6"
-            />
-          </button>
+          <ClientOnly>
+            <button
+              class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/5 transition-all active:scale-95"
+              :aria-label="isDark ? 'Switch to light' : 'Switch to dark'"
+              @click="toggleTheme"
+            >
+              <Icon
+                :name="
+                  isDark
+                    ? 'solar:moon-stars-bold-duotone'
+                    : 'solar:sun-2-bold-duotone'
+                "
+                class="w-5 h-5 md:w-6 md:h-6"
+              />
+            </button>
+          </ClientOnly>
 
           <!-- Color Picker -->
           <div class="relative">

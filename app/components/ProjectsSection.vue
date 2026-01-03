@@ -7,14 +7,7 @@
     <div
       class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none overflow-hidden"
     >
-      <div
-        class="absolute top-0 left-0 w-full h-full"
-        style="
-          background-image: linear-gradient(0deg, #ffffff 1px, transparent 1px),
-            linear-gradient(90deg, #ffffff 1px, transparent 1px);
-          background-size: 100px 100px;
-        "
-      />
+      <div class="absolute top-0 left-0 w-full h-full project-grid-bg" />
     </div>
 
     <div class="container mx-auto space-y-20 md:space-y-32 relative z-10">
@@ -218,5 +211,11 @@ const filteredProjects = computed(() => {
     transparent 1px,
     rgba(255, 75, 92, 0.2) 2px
   );
+}
+
+.project-grid-bg {
+  background-image: linear-gradient(0deg, #ffffff 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff 1px, transparent 1px);
+  background-size: 100px 100px;
 }
 </style>

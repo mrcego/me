@@ -215,15 +215,7 @@
 
             <!-- Scanning effect specific to image -->
             <div
-              class="absolute inset-0 z-20 bg-primary/5 opacity-0 group-hover:opacity-40 pointer-events-none"
-              style="
-                background: repeating-linear-gradient(
-                  0deg,
-                  transparent,
-                  transparent 1px,
-                  rgba(255, 75, 92, 0.1) 2px
-                );
-              "
+              class="absolute inset-0 z-20 bg-primary/5 opacity-0 group-hover:opacity-40 pointer-events-none hero-scanline"
             />
 
             <!-- Floating HUD Elements -->
@@ -338,5 +330,14 @@ onMounted(() => {
 }
 .animate-float-random {
   animation: float-random linear infinite;
+}
+
+.hero-scanline {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    rgba(255, 75, 92, 0.1) 2px
+  );
 }
 </style>
