@@ -65,7 +65,9 @@
         </Motion>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-16"
+      >
         <Motion
           v-for="(project, i) in filteredProjects"
           :key="project.title"
@@ -77,7 +79,7 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="group relative glass p-6 md:p-10 rounded-[3rem] md:rounded-[5rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 flex flex-col cursor-pointer overflow-hidden"
+          class="group relative glass p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 flex flex-col cursor-pointer overflow-hidden"
         >
           <!-- holographic sweep -->
           <div
@@ -88,7 +90,7 @@
           />
 
           <div
-            class="relative aspect-video rounded-4xl overflow-hidden bg-secondary mb-8 md:mb-12 shrink-0 border border-foreground/5"
+            class="relative aspect-video rounded-2xl sm:rounded-3xl md:rounded-4xl overflow-hidden bg-secondary mb-6 sm:mb-8 md:mb-10 lg:mb-12 shrink-0 border border-foreground/5"
           >
             <img
               :src="project.image"

@@ -34,7 +34,9 @@
         </h3>
       </Motion>
 
-      <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12"
+      >
         <Motion
           v-for="(cap, i) in capabilities"
           :key="cap.key"
@@ -46,27 +48,32 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="group relative glass p-10 md:p-14 rounded-[3rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 cursor-pointer overflow-hidden"
+          class="group relative glass p-6 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-[3rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 cursor-pointer overflow-hidden"
         >
           <!-- holographic scanline internal -->
           <div
             class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none capability-scanline"
           />
 
-          <div class="relative z-10 space-y-8">
+          <div
+            class="relative z-10 space-y-4 sm:space-y-6 md:space-y-8 h-full flex flex-col justify-center items-center text-center"
+          >
             <div
-              class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast group-hover:rotate-6 transition-all duration-500 shadow-xl"
+              class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 glass rounded-xl sm:rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast group-hover:rotate-6 transition-all duration-500 shadow-xl"
             >
-              <Icon :name="cap.icon" class="w-12 h-12 sm:w-13 sm:h-13" />
+              <Icon
+                :name="cap.icon"
+                class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
+              />
             </div>
-            <div class="space-y-4">
+            <div class="space-y-3 sm:space-y-4 max-w-xs mx-auto">
               <h4
-                class="text-2xl md:text-3xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors"
+                class="text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors"
               >
                 {{ $t(`capabilities.items.${cap.key}.title`) }}
               </h4>
               <p
-                class="text-muted text-sm md:text-base leading-relaxed font-medium"
+                class="text-muted text-sm sm:text-base md:text-base leading-relaxed font-medium"
               >
                 {{ $t(`capabilities.items.${cap.key}.desc`) }}
               </p>

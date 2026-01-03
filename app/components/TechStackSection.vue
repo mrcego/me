@@ -31,7 +31,8 @@
         <h3
           class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black tracking-tighter leading-[0.9] text-foreground"
         >
-          {{ $t("techStack.title") }}<br />
+          {{ $t("techStack.title") }}
+          <br />
           <span class="text-gradient">{{
             $t("techStack.titleHighlight")
           }}</span>
@@ -57,48 +58,51 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="group relative glass p-10 md:p-14 rounded-[3rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 hover:shadow-4xl overflow-hidden min-h-100 flex flex-col justify-between cursor-crosshair"
+          class="group relative glass p-6 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-[3rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 hover:shadow-4xl overflow-hidden min-h-72 sm:min-h-80 md:min-h-96 lg:min-h-100 flex flex-col justify-between cursor-crosshair"
         >
           <div
             class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
           />
 
           <div
-            class="relative space-y-8 md:space-y-12 h-full flex flex-col z-10"
+            class="relative space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8 h-full flex flex-col z-10"
           >
             <div class="flex justify-between items-start">
               <div
-                class="w-16 h-16 md:w-20 md:h-20 glass rounded-2xl md:rounded-3xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-2xl shrink-0 group-hover:scale-110 group-hover:rotate-6"
+                class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-20 glass rounded-xl sm:rounded-2xl md:rounded-3xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-2xl shrink-0 group-hover:scale-110 group-hover:rotate-6"
               >
-                <Icon :name="t.icon" class="w-14 h-14 md:w-16 md:h-16" />
+                <Icon
+                  :name="t.icon"
+                  class="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-16"
+                />
               </div>
               <div class="flex flex-col items-end">
                 <span
-                  class="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-primary transition-colors"
+                  class="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-primary transition-colors"
                   >{{ t.years }}</span
                 >
                 <span
-                  class="text-[7px] md:text-[8px] font-bold uppercase tracking-[0.2em] text-primary/60"
+                  class="text-[6px] sm:text-[7px] md:text-[8px] font-bold uppercase tracking-[0.2em] text-primary/60"
                   >Expertise</span
                 >
               </div>
             </div>
 
-            <div class="space-y-3 md:space-y-4">
+            <div class="space-y-1.5 sm:space-y-2 md:space-y-3">
               <h4
-                class="text-2xl md:text-3xl font-black tracking-tighter text-foreground group-hover:text-gradient transition-all"
+                class="text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground group-hover:text-gradient transition-all"
               >
                 {{ t.name }}
               </h4>
               <p
-                class="text-muted text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.3em] leading-normal"
+                class="text-muted text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] leading-normal"
               >
                 {{ $t(t.level) }}
               </p>
             </div>
 
             <p
-              class="text-sm text-muted font-medium leading-relaxed group-hover:text-foreground transition-colors mt-auto"
+              class="text-xs sm:text-sm text-muted font-medium leading-relaxed group-hover:text-foreground transition-colors"
             >
               {{ $t(t.descKey) }}
             </p>
@@ -112,42 +116,47 @@
       </div>
 
       <!-- Certifications HUD -->
-      <div class="grid lg:grid-cols-2 gap-8 md:gap-12 relative px-2 md:px-0">
+      <div
+        class="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative px-2 md:px-0"
+      >
         <Motion
           :initial="{ opacity: 0, x: -30 }"
           :in-view="{ opacity: 1, x: 0 }"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
-          class="glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-foreground/5 space-y-10 md:space-y-12 group/hud relative overflow-hidden"
+          class="glass p-6 sm:p-8 md:p-10 lg:p-16 rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 group/hud relative overflow-hidden"
         >
           <div
             class="absolute inset-0 bg-primary/5 opacity-0 group-hover/hud:opacity-40 pointer-events-none tech-hud-horizontal"
           />
 
-          <div class="flex items-center gap-4 md:gap-6 relative z-10">
+          <div class="flex items-center gap-3 sm:gap-4 md:gap-6 relative z-10">
             <div
-              class="w-10 h-10 md:w-12 md:h-12 glass rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover/hud:scale-110 transition-transform"
+              class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 glass rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover/hud:scale-110 transition-transform"
             >
-              <Icon name="solar:medal-ribbon-star-linear" class="w-12 h-12" />
+              <Icon
+                name="solar:medal-ribbon-star-linear"
+                class="w-10 h-10 sm:w-12 sm:h-12"
+              />
             </div>
             <h4
-              class="text-2xl md:text-3xl font-black tracking-tight text-foreground"
+              class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-foreground"
             >
               {{ $t("techStack.creds") }}
             </h4>
           </div>
 
-          <div class="grid gap-6 md:gap-8 relative z-10">
+          <div class="grid gap-4 sm:gap-6 md:gap-8 relative z-10">
             <div
               v-for="cert in certifications"
               :key="cert"
-              class="flex items-center gap-6 md:gap-8 group/cert cursor-help"
+              class="flex items-center gap-4 sm:gap-6 md:gap-8 group/cert cursor-help"
             >
               <div
-                class="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-primary/20 group-hover/cert:bg-primary transition-all scale-100 group-hover/cert:scale-150 shrink-0 shadow-[0_0_10px_rgba(255,75,92,0.5)]"
+                class="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2 md:h-2 rounded-full bg-primary/20 group-hover/cert:bg-primary transition-all scale-100 group-hover/cert:scale-150 shrink-0 shadow-[0_0_10px_rgba(255,75,92,0.5)]"
               />
               <span
-                class="text-base md:text-lg font-bold text-muted group-hover/cert:text-foreground transition-colors"
+                class="text-sm sm:text-base md:text-lg font-bold text-muted group-hover/cert:text-foreground transition-colors"
                 >{{ cert }}</span
               >
             </div>

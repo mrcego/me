@@ -9,7 +9,9 @@
     />
 
     <div class="container mx-auto">
-      <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-start"
+      >
         <!-- Sidebar Card with Motion (Spans 5 cols) -->
         <Motion
           :initial="{ opacity: 0, x: -50 }"
@@ -19,7 +21,7 @@
           class="lg:col-span-5 lg:sticky lg:top-32 w-full mx-auto"
         >
           <div
-            class="glass border-white/5 rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden p-8 md:p-12 transition-all duration-1000 hover:border-primary/40 shadow-2xl relative group bg-background/20 backdrop-blur-3xl"
+            class="glass border-white/5 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden p-6 sm:p-8 md:p-10 lg:p-12 transition-all duration-1000 hover:border-primary/40 shadow-2xl relative group bg-background/20 backdrop-blur-3xl"
           >
             <!-- Gamified Energy Border -->
             <div
@@ -27,7 +29,7 @@
             />
 
             <div
-              class="relative aspect-3/4 rounded-3xl overflow-hidden mb-8 md:mb-10 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
+              class="relative aspect-3/4 rounded-3xl overflow-hidden mb-8 md:mb-10 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo hidden sm:block"
             >
               <!-- Cinematic HUD Overlay for Photo -->
               <div
@@ -56,38 +58,41 @@
 
             <!-- Content inside card -->
             <h3
-              class="text-xl md:text-2xl font-black tracking-tight text-foreground mb-4 px-2"
+              class="text-xl md:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4 px-2"
             >
               {{ $t("about.philosophy") }}
             </h3>
 
             <p
-              class="mb-8 md:mb-10 text-sm md:text-base font-medium text-muted leading-relaxed px-2"
+              class="mb-6 sm:mb-8 md:mb-10 text-sm md:text-base font-medium text-muted leading-relaxed px-2"
             >
               "{{ $t("about.philosophyQuote") }}"
             </p>
 
-            <div class="space-y-5">
+            <div class="space-y-4 sm:space-y-5">
               <div
                 v-for="point in aboutPoints"
                 :key="point.label"
-                class="flex gap-4 group/p cursor-default"
+                class="flex gap-3 sm:gap-4 group/p cursor-default"
               >
                 <div
-                  class="w-10 h-10 md:w-12 md:h-12 glass rounded-xl flex items-center justify-center text-primary group-hover/p:bg-primary group-hover/p:text-primary-contrast transition-all duration-500 shrink-0 shadow-lg"
+                  class="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 glass rounded-lg sm:rounded-xl flex items-center justify-center text-primary group-hover/p:bg-primary group-hover/p:text-primary-contrast transition-all duration-500 shrink-0 shadow-lg"
                 >
-                  <Icon :name="point.icon" class="w-11 h-11" />
+                  <Icon
+                    :name="point.icon"
+                    class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11"
+                  />
                 </div>
                 <div
                   class="transition-transform duration-300 group-hover/p:translate-x-1 flex flex-col justify-center"
                 >
                   <h5
-                    class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-foreground"
+                    class="text-[9px] sm:text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-foreground"
                   >
                     {{ $t(point.label) }}
                   </h5>
                   <p
-                    class="text-[9px] md:text-[10px] text-muted font-bold uppercase tracking-widest pt-0.5"
+                    class="text-[8px] sm:text-[9px] md:text-[10px] text-muted font-bold uppercase tracking-widest pt-0.5"
                   >
                     {{ $t(point.descKey) }}
                   </p>
@@ -98,7 +103,9 @@
         </Motion>
 
         <!-- Main Content Area (Spans 7 cols) -->
-        <div class="lg:col-span-7 space-y-16 md:space-y-24 pt-8 lg:pt-0">
+        <div
+          class="lg:col-span-7 space-y-16 md:space-y-24 pt-2 sm:pt-4 lg:pt-0"
+        >
           <Motion
             :initial="{ opacity: 0, y: 30 }"
             :in-view="{ opacity: 1, y: 0 }"
@@ -139,7 +146,7 @@
             </div>
           </Motion>
 
-          <div class="grid sm:grid-cols-2 gap-6 md:gap-8">
+          <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
             <Motion
               v-for="(role, i) in roles"
               :key="role.key"
@@ -151,7 +158,7 @@
                 delay: i * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }"
-              class="glass p-6 md:p-10 rounded-4xl border-foreground/5 hover:border-primary/30 transition-all duration-700 group hover:-translate-y-2 flex flex-col justify-between min-h-64 relative overflow-hidden"
+              class="glass p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl md:rounded-4xl border-foreground/5 hover:border-primary/30 transition-all duration-700 group hover:-translate-y-2 flex flex-col justify-between min-h-56 sm:min-h-64 relative overflow-hidden"
             >
               <div
                 class="absolute inset-x-0 bottom-0 h-px bg-primary/20 z-20 pointer-events-none"
@@ -159,34 +166,36 @@
               <div
                 class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
               />
-              <div class="space-y-6 relative z-10 h-full flex flex-col">
+              <div
+                class="space-y-3 sm:space-y-4 md:space-y-6 relative z-10 h-full flex flex-col"
+              >
                 <div class="flex justify-between items-start">
                   <div
-                    class="px-4 py-1.5 glass rounded-xl text-[8px] font-black uppercase tracking-[0.25em] text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all shadow-sm"
+                    class="px-3 py-1 sm:px-4 sm:py-1.5 glass rounded-lg sm:rounded-xl text-[7px] sm:text-[8px] font-black uppercase tracking-[0.25em] text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all shadow-sm"
                   >
                     {{ $t(`about.roles.${role.key}.years`) }}
                   </div>
                   <Icon
                     :name="role.icon"
-                    class="w-11 h-11 text-muted group-hover:text-primary transition-colors"
+                    class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 text-muted group-hover:text-primary transition-colors"
                   />
                 </div>
 
-                <div class="space-y-2">
+                <div class="space-y-1.5 sm:space-y-2">
                   <h4
-                    class="text-xl md:text-2xl font-black tracking-tight text-foreground group-hover:text-primary transition-colors"
+                    class="text-lg sm:text-xl md:text-2xl font-black tracking-tight text-foreground group-hover:text-primary transition-colors"
                   >
                     {{ $t(`about.roles.${role.key}.title`) }}
                   </h4>
                   <p
-                    class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-muted"
+                    class="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-muted"
                   >
                     {{ $t(`about.roles.${role.key}.company`) }}
                   </p>
                 </div>
 
                 <p
-                  class="text-xs md:text-sm text-muted leading-relaxed mt-auto pt-4 border-t border-foreground/5 group-hover:border-foreground/10 transition-colors"
+                  class="text-xs sm:text-sm text-muted leading-relaxed pt-2 sm:pt-3 md:pt-4 border-t border-foreground/5 group-hover:border-foreground/10 transition-colors"
                 >
                   {{ $t(`about.roles.${role.key}.desc`) }}
                 </p>
