@@ -60,7 +60,7 @@
             ]"
             @click="activeCategory = cat"
           >
-            {{ cat }}
+            {{ $t(`portfolio.categories.${cat}`) }}
           </button>
         </Motion>
       </div>
@@ -137,7 +137,7 @@
                 href="#"
                 class="w-12 h-12 md:w-16 md:h-16 glass rounded-full flex items-center justify-center text-muted hover:bg-primary hover:text-primary-contrast hover:scale-110 active:scale-90 transition-all duration-500 shrink-0 shadow-lg"
               >
-                <Icon name="solar:arrow-right-up-linear" class="w-6 h-6" />
+                <Icon name="solar:arrow-right-up-linear" class="w-11 h-11" />
               </a>
             </div>
 
@@ -180,8 +180,8 @@
 import { Motion } from "motion-v";
 import { ref, computed } from "vue";
 
-const activeCategory = ref("All");
-const categories = ["All", "Systems", "Fullstack", "Frontend"];
+const activeCategory = ref("all");
+const categories = ["all", "systems", "fullstack", "frontend"];
 
 const projects = [
   {

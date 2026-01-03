@@ -8,7 +8,7 @@
     />
 
     <div
-      class="absolute bottom-0 left-0 right-0 h-[300px] bg-gradient-to-t from-primary/5 to-transparent pointer-events-none opacity-30"
+      class="absolute bottom-0 left-0 right-0 h-75 bg-linear-to-t from-primary/5 to-transparent pointer-events-none opacity-30"
     />
 
     <div class="container mx-auto space-y-16 relative z-10">
@@ -19,9 +19,9 @@
         <div class="space-y-6 group cursor-pointer">
           <div class="flex items-center gap-4">
             <div
-              class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary group-hover:rotate-[-12deg] group-hover:scale-110 transition-all duration-500 shadow-lg shadow-primary/20 border-foreground/10"
+              class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary group-hover:-rotate-12 transition-transform duration-500 shadow-lg shadow-primary/20 border-foreground/10"
             >
-              <Icon name="solar:code-square-bold-duotone" class="w-7 h-7" />
+              <Icon name="solar:code-square-bold-duotone" class="w-13 h-13" />
             </div>
             <div class="flex flex-col">
               <h4
@@ -61,7 +61,7 @@
                   <span
                     class="w-0 overflow-hidden group-hover/link:w-3 transition-all duration-300 opacity-0 group-hover/link:opacity-100 text-primary"
                   >
-                    <Icon name="solar:arrow-right-linear" class="w-3 h-3" />
+                    <Icon name="solar:arrow-right-linear" class="w-6 h-6" />
                   </span>
                   {{ $t(link.name) }}
                 </a>
@@ -79,14 +79,12 @@
           class="text-[10px] font-bold uppercase tracking-widest text-muted flex items-center gap-2"
         >
           <span
-            >Â©
-            <ClientOnly fallback="2025">{{
-              new Date().getFullYear()
-            }}</ClientOnly>
-            Signal Protocol.</span
+            >{{ new Date().getFullYear() }} {{ $t("footer.protocol") }}</span
           >
           <span class="hidden md:inline text-muted/30">|</span>
-          <span class="opacity-50">All Systems Operational</span>
+          <span class="opacity-50 tracking-[0.2em]">{{
+            $t("footer.status")
+          }}</span>
         </p>
 
         <!-- Socials -->
@@ -95,12 +93,12 @@
             v-for="s in socials"
             :key="s.icon"
             :href="s.link"
-            class="w-10 h-10 rounded-full glass hover:bg-primary transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] border-foreground/10 hover:border-primary flex items-center justify-center p-0 group/social"
+            class="aspect-3/4 w-full h-full bg-foreground/5 rounded-2xl overflow-hidden relative group cursor-pointer transition-all duration-500 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] border-foreground/10 hover:border-primary flex items-center justify-center p-0 group/social"
             aria-label="Social Link"
           >
             <Icon
               :name="s.icon"
-              class="w-5 h-5 transition-colors duration-300 text-muted group-hover/social:text-primary-contrast"
+              class="w-14 h-14 transition-colors duration-300 text-muted group-hover/social:text-primary-contrast"
             />
           </a>
         </div>
@@ -137,8 +135,8 @@ const footerLinks = [
 ];
 
 const socials = [
-  { icon: "lucide:linkedin", link: "https://linkedin.com/in/mrcego" },
-  { icon: "lucide:github", link: "https://github.com/cesargomezh" },
+  { icon: "simple-icons:linkedin", link: "https://linkedin.com/in/mrcego" },
+  { icon: "simple-icons:github", link: "https://github.com/cesargomezh" },
   {
     icon: "solar:letter-bold-duotone",
     link: "mailto:cesargomezh90@gmail.com",

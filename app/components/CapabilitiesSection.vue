@@ -37,7 +37,7 @@
       <div class="grid md:grid-cols-3 gap-8 md:gap-12">
         <Motion
           v-for="(cap, i) in capabilities"
-          :key="cap.title"
+          :key="cap.key"
           :initial="{ opacity: 0, y: 20 }"
           :in-view="{ opacity: 1, y: 0 }"
           :transition="{
@@ -57,18 +57,18 @@
             <div
               class="w-14 h-14 glass rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast group-hover:rotate-6 transition-all duration-500 shadow-xl"
             >
-              <Icon :name="cap.icon" class="w-6 h-6" />
+              <Icon :name="cap.icon" class="w-12 h-12 sm:w-13 sm:h-13" />
             </div>
             <div class="space-y-4">
               <h4
                 class="text-2xl md:text-3xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors"
               >
-                {{ cap.title }}
+                {{ $t(`capabilities.items.${cap.key}.title`) }}
               </h4>
               <p
                 class="text-muted text-sm md:text-base leading-relaxed font-medium"
               >
-                {{ cap.desc }}
+                {{ $t(`capabilities.items.${cap.key}.desc`) }}
               </p>
             </div>
           </div>
@@ -83,19 +83,16 @@ import { Motion } from "motion-v";
 
 const capabilities = [
   {
-    title: "Frontend Systems",
-    desc: "Enterprise-grade Vue & Nuxt architectures focused on scalability, performance, and impact.",
-    icon: "solar:monitor-camera-bold-duotone",
+    key: "frontend",
+    icon: "solar:rocket-bold-duotone",
   },
   {
-    title: "Fullstack Logic",
-    desc: "Robust backend foundations using Node.js, ensuring 100% type safety and technical resilience.",
-    icon: "solar:server-bold-duotone",
+    key: "fullstack",
+    icon: "solar:database-bold-duotone",
   },
   {
-    title: "DevOps Flow",
-    desc: "Expert CI/CD orchestration and automated pipelines that reduce friction and boost velocity.",
-    icon: "solar:tuning-square-2-bold-duotone",
+    key: "devops",
+    icon: "solar:shield-check-bold-duotone",
   },
 ];
 </script>

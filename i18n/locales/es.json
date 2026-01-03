@@ -6,7 +6,9 @@
     "capabilities": "Capacidades",
     "projects": "Proyectos",
     "contact": "Contacto",
-    "getInTouch": "Contáctame"
+    "getInTouch": "Contáctame",
+    "themePresets": "Temas IDE",
+    "modes": "Modos"
   },
   "hero": {
     "tagline": "Miembro Fundador {'@'} LingoQuesto",
@@ -25,7 +27,11 @@
       "ts": "Typescript",
       "engineer": "Ingeniero"
     },
-    "marquee": "EXPERTO FRONTEND"
+    "marquee": "EXPERTO FRONTEND",
+    "hud": {
+      "status": "Estado",
+      "operational": "Operativo"
+    }
   },
   "about": {
     "section": "Identidad Técnica",
@@ -37,7 +43,57 @@
     "philosophyQuote": "Como Fullstack Enfocado en Frontend, creo que la interfaz es donde la ingeniería se encuentra con el impacto.",
     "expertise": "Experiencia Frontend",
     "logic": "Lógica Fullstack",
-    "userCentric": "Centrado en el Usuario"
+    "userCentric": "Centrado en el Usuario",
+    "roles": {
+      "lingoquesto": {
+        "title": "Miembro Fundador | Senior Fullstack",
+        "company": "LingoQuesto",
+        "years": "2024 - Presente",
+        "desc": "Definiendo la visión de producto y la hoja de ruta fullstack, asegurando que el frontend refleje artesanía de alto nivel."
+      },
+      "ancelab": {
+        "title": "CTO Interino",
+        "company": "AnceLab",
+        "years": "Feb '25 - Jul '25",
+        "desc": "Liderazgo técnico y definición estratégica para proyectos de alto impacto durante fases de transición."
+      },
+      "colegium": {
+        "title": "Desarrollador Frontend Senior",
+        "company": "Colegium",
+        "years": "2021 - 2025",
+        "desc": "Orquestando ecosistemas complejos y arquitecturas de micro-frontends para más de 100k estudiantes."
+      },
+      "tissini": {
+        "title": "Desarrollador Frontend Senior",
+        "company": "TISSINI",
+        "years": "2019 - 2021",
+        "desc": "Desarrollo de soluciones mobile-first con Vue 3. Reducción de tiempos de despliegue en un 60% vía CI/CD."
+      },
+      "freelance": {
+        "title": "Desarrollador de Software Freelance",
+        "company": "Independiente",
+        "years": "2017 - 2018",
+        "desc": "Desarrollo de aplicaciones web y móviles enfocado en la versatilidad multiplataforma."
+      },
+      "cuartopixel": {
+        "title": "Desarrollador Frontend Web",
+        "company": "4to Pixel",
+        "years": "2018",
+        "desc": "Creación de experiencias web UX/UI de alto rendimiento usando Angular 6+ para ecosistemas modernos."
+      },
+      "quehaypa": {
+        "title": "Desarrollador Frontend",
+        "company": "Que Hay Pa' Hacer",
+        "years": "2017",
+        "desc": "Planificación y desarrollo de tecnologías de marketing digital y web apps mobile-first."
+      },
+      "zabud": {
+        "title": "Desarrollador Frontend Junior",
+        "company": "ZABUD Technologies",
+        "years": "2016",
+        "desc": "Desarrollo visual usando AngularJS, HTML5, CSS3 y jQuery para soluciones modulares a medida."
+      }
+    }
   },
   "techStack": {
     "section": "Arsenal",
@@ -53,22 +109,61 @@
       "founding": "Ingeniero Fundador"
     },
     "creds": "Credenciales Oficiales",
-    "flow": "Lingüística y Flow"
+    "flow": "Lingüística y Flow",
+    "detailed": {
+      "vue": "Arquitecto líder para ecosistemas SPA/SSR complejos, sistemas de UI modulares y optimización de rendimiento.",
+      "ts": "Seguridad de tipos de extremo a extremo, desde APIs en Node.js hasta estados reactivos frontend sofisticados.",
+      "js": "Profundo conocimiento en patrones de ingeniería de software, modularidad y escalabilidad empresarial.",
+      "git": "Mentoría de equipos, definición de hojas de ruta técnicas y optimización de la velocidad de CI/CD."
+    },
+    "certList": [
+      "Especialista en Arquitectura Avanzada de Vue",
+      "Ingeniería de Sistemas Fullstack Senior",
+      "Orquestación de UI/UX Empresarial",
+      "Flujo Avanzado de CI/CD y Automatización"
+    ],
+    "principles": "Principios Fundamentales",
+    "langList": {
+      "es": "Español",
+      "en": "Inglés",
+      "native": "Nativo",
+      "pro": "Profesional"
+    }
   },
   "capabilities": {
     "section": "Ventaja Estratégica",
     "title": "Capacidades de",
-    "titleHighlight": "Alta Velocidad."
+    "titleHighlight": "Alta Velocidad.",
+    "items": {
+      "frontend": {
+        "title": "Sistemas Frontend",
+        "desc": "Arquitecturas Vue y Nuxt de nivel empresarial enfocadas en escalabilidad, rendimiento e impacto."
+      },
+      "fullstack": {
+        "title": "Lógica Fullstack",
+        "desc": "Bases de backend robustas usando Node.js, asegurando 100% seguridad de tipos y resiliencia técnica."
+      },
+      "devops": {
+        "title": "Flujo DevOps",
+        "desc": "Orquestación experta de CI/CD y pipelines automatizados que reducen la fricción y aumentan la velocidad."
+      }
+    }
   },
   "portfolio": {
     "section_tag": "Portafolio",
     "title_top": "Arte",
     "title_bottom": "Frontend.",
     "nexus": "Nexo de Proyectos",
+    "categories": {
+      "all": "Todos",
+      "systems": "Sistemas",
+      "fullstack": "Fullstack",
+      "frontend": "Frontend"
+    },
     "projects": {
       "0": {
         "title": "Arquitectura Cloud Colegium",
-        "desc": "Liderando la evolución técnica de una plataforma educativa masiva. Refactorización de sistemas legados hacia arquitecturas modernas en Vue 3 con más de 100k usuarios."
+        "desc": "Liderando la evolución técnica de una plataforma educativa masiva. Refactoreando sistemas legados a arquitecturas Vue 3 modernas con más de 100k usuarios."
       },
       "1": {
         "title": "Interfaz LingoQuesto",
@@ -105,10 +200,26 @@
   },
   "footer": {
     "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",
-    "rights": "Todos los derechos reservados."
+    "rights": "Todos los derechos reservados.",
+    "protocol": "Protocolo Signal.",
+    "status": "Todos los Sistemas Operativos"
   },
   "col": {
     "nav": "Navegación",
     "connect": "Conectar"
+  },
+  "themes": {
+    "dark-modern": "Oscuro Moderno",
+    "dark-plus": "Oscuro+",
+    "tokyo-night": "Tokyo Night",
+    "dracula": "Dracula",
+    "one-dark": "One Dark",
+    "nord": "Nord",
+    "catppuccin": "Catppuccin",
+    "rose-pine": "Rose Pine",
+    "github-dark": "GitHub Dark",
+    "monokai": "Monokai",
+    "cobalt2": "Cobalt2",
+    "light-modern": "Claro Moderno"
   }
 }

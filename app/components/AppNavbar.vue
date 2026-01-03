@@ -27,11 +27,11 @@
               class="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500"
             />
             <NuxtImg
-              src="/img/logo.png"
+              src="/img/logo-final.svg"
               alt="CÃ©sar GÃ³mez"
               width="48"
               height="48"
-              class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-700"
+              class="w-full h-full object-contain scale-110 group-hover:scale-100 transition-transform duration-700 text-primary"
             />
           </div>
           <div
@@ -115,7 +115,7 @@
               >
                 <Icon
                   name="solar:palette-bold-duotone"
-                  class="w-5 h-5 md:w-6 md:h-6"
+                  class="w-12 h-12 md:w-14 md:h-14"
                 />
               </button>
               <!-- Theme Preset Selector Popover -->
@@ -126,18 +126,20 @@
                 :transition="{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }"
               >
                 <div
-                  class="absolute top-full right-0 mt-4 w-72 lg:w-80 glass rounded-3xl p-6 shadow-4xl z-100 border border-foreground/10"
+                  class="absolute top-full right-0 mt-4 w-72 lg:w-80 rounded-3xl p-6 shadow-4xl z-100 border border-foreground/10 bg-background"
                 >
                   <div class="space-y-6">
-                    <div class="flex items-center justify-between">
+                    <div
+                      class="flex items-center justify-between border-b border-foreground/5 pb-4"
+                    >
                       <h4
                         class="text-xs font-black uppercase tracking-widest text-foreground"
                       >
-                        {{ $t("nav.themePresets") || "Theme Presets" }}
+                        {{ $t("nav.themePresets") }}
                       </h4>
                       <span
-                        class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-bold"
-                        >{{ THEME_PRESETS.length }} Modes</span
+                        class="text-[10px] bg-primary/10 text-primary px-2.5 py-1 rounded-full font-bold border border-primary/20"
+                        >{{ THEME_PRESETS.length }} {{ $t("nav.modes") }}</span
                       >
                     </div>
 
@@ -157,7 +159,7 @@
                       >
                         <div class="flex items-center gap-3">
                           <div
-                            class="w-8 h-8 rounded-xl flex items-center justify-center relative overflow-hidden ring-2 ring-foreground/5 shadow-sm"
+                            class="w-10 h-10 rounded-xl flex items-center justify-center relative overflow-hidden ring-2 ring-foreground/5 shadow-sm"
                             :style="{ background: preset.background }"
                           >
                             <div
@@ -166,7 +168,7 @@
                             />
                             <div
                               v-if="preset.font === 'Fira Code'"
-                              class="absolute inset-0 flex items-center justify-center text-[8px] font-mono text-white/20 select-none"
+                              class="absolute inset-0 flex items-center justify-center text-[10px] font-mono text-white/20 select-none"
                             >
                               fc
                             </div>
@@ -180,7 +182,7 @@
                                   : 'text-foreground',
                               ]"
                             >
-                              {{ preset.name }}
+                              {{ $t("themes." + preset.id) }}
                             </p>
                             <p
                               class="text-[8px] text-muted font-black uppercase tracking-widest opacity-60"
@@ -192,7 +194,7 @@
                         <Icon
                           v-if="currentThemeId === preset.id"
                           name="solar:check-circle-bold"
-                          class="w-4 h-4 text-primary"
+                          class="w-10 h-10 text-primary"
                         />
                       </button>
                     </div>
@@ -213,7 +215,7 @@
             <span>{{ $t("nav.getInTouch") }}</span>
             <Icon
               name="solar:arrow-right-up-linear"
-              class="w-4 h-4 group-hover/btn:rotate-45 transition-transform duration-300"
+              class="w-9 h-9 group-hover/btn:rotate-45 transition-transform duration-300"
             />
           </a>
 
@@ -228,7 +230,7 @@
                   ? 'solar:close-square-linear'
                   : 'solar:hamburger-menu-linear'
               "
-              class="w-6 h-6"
+              class="w-11 h-11"
             />
           </button>
         </div>
@@ -252,7 +254,7 @@
           class="absolute top-6 right-6 p-4 text-muted hover:text-foreground"
           @click="isMobileMenuOpen = false"
         >
-          <Icon name="solar:close-circle-linear" class="w-10 h-10" />
+          <Icon name="solar:close-circle-linear" class="w-16 h-16" />
         </button>
 
         <nav class="space-y-6 text-center">
@@ -273,7 +275,7 @@
             @click="scrollToSection($event, '#contact')"
           >
             {{ $t("nav.getInTouch") }}
-            <Icon name="solar:arrow-right-up-bold" class="w-5 h-5" />
+            <Icon name="solar:arrow-right-up-bold" class="w-10 h-10" />
           </a>
         </div>
       </div>
@@ -350,5 +352,17 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Scoped styles if needed, but Tailwind handles most */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(var(--primary-rgb, 255, 75, 92), 0.2);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--primary-rgb, 255, 75, 92), 0.4);
+}
 </style>

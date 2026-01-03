@@ -142,7 +142,7 @@
               :aria-label="`Visit ${social.label} profile`"
               class="p-3 sm:p-4 glass rounded-xl sm:rounded-2xl text-muted hover:text-foreground hover:border-primary/30 transition-all hover:-translate-y-1 active:scale-90"
             >
-              <Icon :name="social.icon" class="w-5 h-5 sm:w-6 sm:h-6" />
+              <Icon :name="social.icon" class="w-10 h-10 sm:w-11 sm:h-11" />
             </a>
           </div>
         </Motion>
@@ -225,12 +225,12 @@
               <div
                 class="text-[6px] md:text-[8px] uppercase font-black tracking-widest text-primary"
               >
-                Status
+                {{ $t("hero.hud.status") }}
               </div>
               <div
                 class="text-[10px] md:text-xs font-mono font-bold text-foreground uppercase"
               >
-                Operational
+                {{ $t("hero.hud.operational") }}
               </div>
             </div>
           </div>
@@ -262,12 +262,12 @@ const lastName = computed(() => t("hero.name").split(" ").slice(1).join(" "));
 
 const socials = [
   {
-    icon: "logos:linkedin-icon",
+    icon: "simple-icons:linkedin",
     link: "https://linkedin.com/in/mrcego",
     label: "LinkedIn",
   },
   {
-    icon: "logos:github-icon",
+    icon: "simple-icons:github",
     link: "https://github.com/cesargomezh",
     label: "GitHub",
   },

@@ -76,7 +76,7 @@
                 <div
                   class="w-10 h-10 md:w-12 md:h-12 glass rounded-xl flex items-center justify-center text-primary group-hover/p:bg-primary group-hover/p:text-primary-contrast transition-all duration-500 shrink-0 shadow-lg"
                 >
-                  <Icon :name="point.icon" class="w-5 h-5" />
+                  <Icon :name="point.icon" class="w-11 h-11" />
                 </div>
                 <div
                   class="transition-transform duration-300 group-hover/p:translate-x-1 flex flex-col justify-center"
@@ -89,7 +89,7 @@
                   <p
                     class="text-[9px] md:text-[10px] text-muted font-bold uppercase tracking-widest pt-0.5"
                   >
-                    {{ point.desc }}
+                    {{ $t(point.descKey) }}
                   </p>
                 </div>
               </div>
@@ -142,7 +142,7 @@
           <div class="grid sm:grid-cols-2 gap-6 md:gap-8">
             <Motion
               v-for="(role, i) in roles"
-              :key="role.company"
+              :key="role.key"
               :initial="{ opacity: 0, y: 20 }"
               :in-view="{ opacity: 1, y: 0 }"
               :viewport="{ once: true }"
@@ -164,11 +164,11 @@
                   <div
                     class="px-4 py-1.5 glass rounded-xl text-[8px] font-black uppercase tracking-[0.25em] text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all shadow-sm"
                   >
-                    {{ role.years }}
+                    {{ $t(`about.roles.${role.key}.years`) }}
                   </div>
                   <Icon
                     :name="role.icon"
-                    class="w-6 h-6 text-muted group-hover:text-primary transition-colors"
+                    class="w-11 h-11 text-muted group-hover:text-primary transition-colors"
                   />
                 </div>
 
@@ -176,19 +176,19 @@
                   <h4
                     class="text-xl md:text-2xl font-black tracking-tight text-foreground group-hover:text-primary transition-colors"
                   >
-                    {{ role.title }}
+                    {{ $t(`about.roles.${role.key}.title`) }}
                   </h4>
                   <p
                     class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] text-muted"
                   >
-                    {{ role.company }}
+                    {{ $t(`about.roles.${role.key}.company`) }}
                   </p>
                 </div>
 
                 <p
                   class="text-xs md:text-sm text-muted leading-relaxed mt-auto pt-4 border-t border-foreground/5 group-hover:border-foreground/10 transition-colors"
                 >
-                  {{ role.desc }}
+                  {{ $t(`about.roles.${role.key}.desc`) }}
                 </p>
               </div>
             </Motion>
@@ -205,77 +205,53 @@ import { Motion } from "motion-v";
 const aboutPoints = [
   {
     label: "about.expertise",
-    desc: "Vue & Nuxt Specialist",
+    descKey: "techStack.levels.architect",
     icon: "logos:vue",
   },
   {
     label: "about.logic",
-    desc: "Node.js & Systems",
+    descKey: "techStack.levels.senior",
     icon: "logos:nodejs-icon",
   },
   {
     label: "about.userCentric",
-    desc: "Interface DX Focus",
+    descKey: "techStack.levels.founding",
     icon: "logos:figma",
   },
 ];
 
 const roles = [
   {
-    title: "Founding Member | Senior Fullstack",
-    company: "LingoQuesto",
-    years: "2024 - Present",
+    key: "lingoquesto",
     icon: "logos:nuxt-icon",
-    desc: "Defining product vision and fullstack roadmap, ensuring the frontend reflects high-end craftsmanship.",
   },
   {
-    title: "Interim CTO",
-    company: "AnceLab",
-    years: "Feb '25 - Jul '25",
+    key: "ancelab",
     icon: "logos:typescript-icon",
-    desc: "Technical leadership and strategic definition for high-impact projects during transitional phases.",
   },
   {
-    title: "Senior Frontend Developer",
-    company: "Colegium",
-    years: "2021 - 2025",
+    key: "colegium",
     icon: "logos:vue",
-    desc: "Orchestrating complex ecosystems and micro-frontend architectures for 100k+ students.",
   },
   {
-    title: "Senior Frontend Developer",
-    company: "TISSINI",
-    years: "2019 - 2021",
+    key: "tissini",
     icon: "logos:vue",
-    desc: "Developed mobile-first solutions with Vue 3. Reduced deployment times by 60% via CI/CD.",
   },
   {
-    title: "Freelance Software Developer",
-    company: "Independiente",
-    years: "2017 - 2018",
+    key: "freelance",
     icon: "logos:javascript",
-    desc: "Web and mobile application development focusing on cross-platform versatility.",
   },
   {
-    title: "Web Frontend Developer",
-    company: "4to Pixel",
-    years: "2018",
+    key: "cuartopixel",
     icon: "logos:angular-icon",
-    desc: "Crafted high-performance UX/UI web experiences using Angular 6+ for modern ecosystems.",
   },
   {
-    title: "Frontend Developer",
-    company: "Que Hay Pa' Hacer",
-    years: "2017",
+    key: "quehaypa",
     icon: "logos:javascript",
-    desc: "Planned and developed digital marketing technologies and mobile-first web apps.",
   },
   {
-    title: "Junior Frontend Developer",
-    company: "ZABUD Technologies",
-    years: "2016",
+    key: "zabud",
     icon: "logos:angular-icon",
-    desc: "Visual development using AngularJS, HTML5, CSS3, and jQuery for tailored modular solutions.",
   },
 ];
 </script>

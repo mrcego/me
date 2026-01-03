@@ -26,9 +26,9 @@
             />
 
             <NuxtImg
-              src="/img/logo.png"
+              src="/img/logo-final.svg"
               alt="CÃ©sar GÃ³mez"
-              class="w-full h-full object-contain relative z-10 drop-shadow-2xl"
+              class="w-full h-full object-contain relative z-10 drop-shadow-2xl text-primary"
             />
           </div>
         </Motion>
@@ -36,7 +36,7 @@
         <!-- Minimalist Loading Line -->
         <div class="w-48 md:w-64 space-y-4">
           <div
-            class="h-[2px] w-full bg-foreground/5 rounded-full overflow-hidden relative"
+            class="h-0.5 bg-linear-to-r from-transparent via-primary to-transparent"
           >
             <Motion
               :initial="{ x: '-100%' }"

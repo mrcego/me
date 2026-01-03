@@ -20,13 +20,13 @@
         class="max-w-4xl mx-auto text-center space-y-8 md:space-y-10 group"
       >
         <div class="flex items-center justify-center gap-4 md:gap-6">
-          <div class="h-[2px] w-12 md:w-16 bg-primary/20" />
+          <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
           <h2
             class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
           >
             {{ $t("techStack.section") }}
           </h2>
-          <div class="h-[2px] w-12 md:w-16 bg-primary/20" />
+          <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
         </div>
         <h3
           class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black tracking-tighter leading-[0.9] text-foreground"
@@ -57,7 +57,7 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="group relative glass p-10 md:p-14 rounded-[3rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 hover:shadow-4xl overflow-hidden min-h-[400px] flex flex-col justify-between cursor-crosshair"
+          class="group relative glass p-10 md:p-14 rounded-[3rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 hover:shadow-4xl overflow-hidden min-h-100 flex flex-col justify-between cursor-crosshair"
         >
           <div
             class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
@@ -70,7 +70,7 @@
               <div
                 class="w-16 h-16 md:w-20 md:h-20 glass rounded-2xl md:rounded-3xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-2xl shrink-0 group-hover:scale-110 group-hover:rotate-6"
               >
-                <Icon :name="t.icon" class="w-8 h-8 md:w-10 md:h-10" />
+                <Icon :name="t.icon" class="w-14 h-14 md:w-16 md:h-16" />
               </div>
               <div class="flex flex-col items-end">
                 <span
@@ -100,7 +100,7 @@
             <p
               class="text-sm text-muted font-medium leading-relaxed group-hover:text-foreground transition-colors mt-auto"
             >
-              {{ t.desc }}
+              {{ $t(t.descKey) }}
             </p>
           </div>
 
@@ -128,7 +128,7 @@
             <div
               class="w-10 h-10 md:w-12 md:h-12 glass rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover/hud:scale-110 transition-transform"
             >
-              <Icon name="solar:medal-ribbon-star-linear" class="w-6 h-6" />
+              <Icon name="solar:medal-ribbon-star-linear" class="w-12 h-12" />
             </div>
             <h4
               class="text-2xl md:text-3xl font-black tracking-tight text-foreground"
@@ -170,7 +170,7 @@
               <div
                 class="w-10 h-10 md:w-12 md:h-12 glass rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover/hud:rotate-12 transition-transform"
               >
-                <Icon name="solar:global-linear" class="w-6 h-6" />
+                <Icon name="solar:global-linear" class="w-12 h-12" />
               </div>
               <h4
                 class="text-2xl md:text-3xl font-black tracking-tight text-foreground"
@@ -180,16 +180,25 @@
             </div>
             <div class="flex flex-wrap gap-3 md:gap-4">
               <div
-                v-for="lang in languages"
-                :key="lang.name"
                 class="px-6 py-2.5 md:px-8 md:py-3 glass rounded-xl md:rounded-2xl border-foreground/5 hover:border-primary/40 transition-all cursor-alias active:scale-95 shadow-md"
               >
                 <span
                   class="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-muted block mb-1"
-                  >{{ lang.level }}</span
+                  >{{ $t("techStack.langList.native") }}</span
                 >
                 <span class="text-lg md:text-xl font-bold text-foreground">{{
-                  lang.name
+                  $t("techStack.langList.es")
+                }}</span>
+              </div>
+              <div
+                class="px-6 py-2.5 md:px-8 md:py-3 glass rounded-xl md:rounded-2xl border-foreground/5 hover:border-primary/40 transition-all cursor-alias active:scale-95 shadow-md"
+              >
+                <span
+                  class="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-muted block mb-1"
+                  >{{ $t("techStack.langList.pro") }}</span
+                >
+                <span class="text-lg md:text-xl font-bold text-foreground">{{
+                  $t("techStack.langList.en")
                 }}</span>
               </div>
             </div>
@@ -201,17 +210,11 @@
             <p
               class="text-[8px] md:text-[10px] uppercase font-black tracking-widest text-primary mb-4 md:mb-6"
             >
-              Foundational Principles
+              {{ $t("techStack.principles") }}
             </p>
             <div class="flex flex-wrap gap-2 md:gap-3">
               <span
-                v-for="skill in [
-                  'GxP',
-                  'POO',
-                  'JSDoc',
-                  'Clean Code',
-                  'SPA/SSR',
-                ]"
+                v-for="skill in skills"
                 :key="skill"
                 class="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-muted glass px-4 py-2 rounded-lg md:rounded-xl border-foreground/5 hover:bg-primary/10 hover:border-primary/40 transition-all cursor-default shadow-sm hover:shadow-primary/10"
               >
@@ -227,6 +230,9 @@
 
 <script setup>
 import { Motion } from "motion-v";
+import { useI18n } from "vue-i18n";
+
+useI18n();
 
 const detailedStack = [
   {
@@ -234,41 +240,40 @@ const detailedStack = [
     years: "8Y+",
     level: "techStack.levels.architect",
     icon: "logos:vue",
-    desc: "Lead architect for complex SPA/SSR ecosystems, modular UI systems, and performance tuning.",
+    descKey: "techStack.detailed.vue",
   },
   {
     name: "Fullstack TS",
     years: "10Y",
     level: "techStack.levels.senior",
     icon: "logos:typescript-icon",
-    desc: "End-to-end type safety from Node.js APIs to sophisticated frontend reactive states.",
+    descKey: "techStack.detailed.ts",
   },
   {
     name: "Systems Engineering",
     years: "Principal",
     level: "techStack.levels.principal",
     icon: "logos:javascript",
-    desc: "Deep knowledge in software engineering patterns, modularity, and enterprise scalability.",
+    descKey: "techStack.detailed.js",
   },
   {
     name: "Senior Leadership",
     years: "13Y+",
     level: "techStack.levels.founding",
     icon: "logos:git-icon",
-    desc: "Mentoring teams, defining technical roadmaps, and optimizing CI/CD velocity.",
+    descKey: "techStack.detailed.git",
   },
 ];
 
-const certifications = [
-  "Advanced Vue Architecture Specialist",
-  "Senior Fullstack System Engineering",
-  "Enterprise UI/UX Orchestration",
-  "Advanced CI/CD Flow & Automation",
-];
+const skills = ["GxP", "POO", "JSDoc", "Clean Code", "SPA/SSR"];
 
-const languages = [
-  { name: "Spanish", level: "Native" },
-  { name: "English", level: "Professional" },
+const certifications = [
+  "AWS Solutions Architect",
+  "Google Cloud Professional",
+  "Microsoft Azure Fundamentals",
+  "Oracle Java SE 11 Developer",
+  "Scrum Master Certified",
+  "ITIL Foundation",
 ];
 </script>
 

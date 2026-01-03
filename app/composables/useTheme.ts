@@ -1,4 +1,5 @@
 import { ref, computed } from 'vue';
+import { useStorage } from '@vueuse/core';
 import { updatePrimaryPalette, updateSurfacePalette, palette } from '@primeuix/themes';
 
 export interface ThemePreset {
@@ -26,8 +27,8 @@ export const THEME_PRESETS: ThemePreset[] = [
   { id: 'light-modern', name: 'Light Modern', background: '#ffffff', surface: '#f3f3f3', primary: '#005fb8', font: 'Sans', isDark: false },
 ];
 
-// Shared state
-const currentThemeId = ref('dark-modern');
+// Shared state with VueUse localStorage persistence
+const currentThemeId = useStorage('theme-preset-id', 'github-dark');
 
 export const useTheme = () => {
   const currentTheme = computed(() =>
@@ -96,10 +97,6 @@ export const useTheme = () => {
 
   // Inicializar
   if (import.meta.client) {
-    const stored = localStorage.getItem('theme-preset-id');
-    if (stored && THEME_PRESETS.some(p => p.id === stored)) {
-      currentThemeId.value = stored;
-    }
     const theme = currentTheme.value;
     if (theme) applyTheme(theme);
   }
@@ -108,7 +105,6 @@ export const useTheme = () => {
     const theme = THEME_PRESETS.find(p => p.id === id);
     if (theme) {
       currentThemeId.value = id;
-      localStorage.setItem('theme-preset-id', id);
       applyTheme(theme);
     }
   };

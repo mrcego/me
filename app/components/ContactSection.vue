@@ -63,7 +63,7 @@
               <div
                 class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-xl shrink-0 group-hover:rotate-6"
               >
-                <Icon :name="c.icon" class="w-6 h-6 md:w-8 md:h-8" />
+                <Icon :name="c.icon" class="w-12 h-12 md:w-14 md:h-14" />
               </div>
               <div class="space-y-1 sm:space-y-1.5 md:space-y-2 text-left">
                 <p
@@ -301,7 +301,7 @@ const contactMethods = [
     key: "github",
     label: "Open Protocol",
     value: "github.com/cesargomezh",
-    icon: "logos:github-icon",
+    icon: "simple-icons:github",
     link: "https://github.com/cesargomezh",
   },
   {

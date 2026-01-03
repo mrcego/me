@@ -6,7 +6,9 @@
     "capabilities": "Capabilities",
     "projects": "Projects",
     "contact": "Contact",
-    "getInTouch": "Get in Touch"
+    "getInTouch": "Get in Touch",
+    "themePresets": "Theme Presets",
+    "modes": "Modes"
   },
   "hero": {
     "tagline": "Founding Member {'@'} LingoQuesto",
@@ -25,7 +27,11 @@
       "ts": "Typescript",
       "engineer": "Engineer"
     },
-    "marquee": "FRONTEND EXPERT"
+    "marquee": "FRONTEND EXPERT",
+    "hud": {
+      "status": "Status",
+      "operational": "Operational"
+    }
   },
   "about": {
     "section": "Technical Identity",
@@ -37,7 +43,57 @@
     "philosophyQuote": "As a Frontend Focused Fullstack, I believe the interface is where engineering meets impact.",
     "expertise": "Frontend Expertise",
     "logic": "Fullstack Logic",
-    "userCentric": "User Centric"
+    "userCentric": "User Centric",
+    "roles": {
+      "lingoquesto": {
+        "title": "Founding Member | Senior Fullstack",
+        "company": "LingoQuesto",
+        "years": "2024 - Present",
+        "desc": "Defining product vision and fullstack roadmap, ensuring the frontend reflects high-end craftsmanship."
+      },
+      "ancelab": {
+        "title": "Interim CTO",
+        "company": "AnceLab",
+        "years": "Feb '25 - Jul '25",
+        "desc": "Technical leadership and strategic definition for high-impact projects during transitional phases."
+      },
+      "colegium": {
+        "title": "Senior Frontend Developer",
+        "company": "Colegium",
+        "years": "2021 - 2025",
+        "desc": "Orchestrating complex ecosystems and micro-frontend architectures for 100k+ students."
+      },
+      "tissini": {
+        "title": "Senior Frontend Developer",
+        "company": "TISSINI",
+        "years": "2019 - 2021",
+        "desc": "Developed mobile-first solutions with Vue 3. Reduced deployment times by 60% via CI/CD."
+      },
+      "freelance": {
+        "title": "Freelance Software Developer",
+        "company": "Freelance",
+        "years": "2017 - 2018",
+        "desc": "Web and mobile application development focusing on cross-platform versatility."
+      },
+      "cuartopixel": {
+        "title": "Web Frontend Developer",
+        "company": "4to Pixel",
+        "years": "2018",
+        "desc": "Crafted high-performance UX/UI web experiences using Angular 6+ for modern ecosystems."
+      },
+      "quehaypa": {
+        "title": "Frontend Developer",
+        "company": "Que Hay Pa' Hacer",
+        "years": "2017",
+        "desc": "Planned and developed digital marketing technologies and mobile-first web apps."
+      },
+      "zabud": {
+        "title": "Junior Frontend Developer",
+        "company": "ZABUD Technologies",
+        "years": "2016",
+        "desc": "Visual development using AngularJS, HTML5, CSS3, and jQuery for tailored modular solutions."
+      }
+    }
   },
   "techStack": {
     "section": "Arsenal",
@@ -53,18 +109,57 @@
       "founding": "Founding Engineer"
     },
     "creds": "Official Credentials",
-    "flow": "Linguistic & Flow"
+    "flow": "Linguistic & Flow",
+    "detailed": {
+      "vue": "Lead architect for complex SPA/SSR ecosystems, modular UI systems, and performance tuning.",
+      "ts": "End-to-end type safety from Node.js APIs to sophisticated frontend reactive states.",
+      "js": "Deep knowledge in software engineering patterns, modularity, and enterprise scalability.",
+      "git": "Mentoring teams, defining technical roadmaps, and optimizing CI/CD velocity."
+    },
+    "certList": [
+      "Advanced Vue Architecture Specialist",
+      "Senior Fullstack System Engineering",
+      "Enterprise UI/UX Orchestration",
+      "Advanced CI/CD Flow & Automation"
+    ],
+    "principles": "Foundational Principles",
+    "langList": {
+      "es": "Spanish",
+      "en": "English",
+      "native": "Native",
+      "pro": "Professional"
+    }
   },
   "capabilities": {
     "section": "Strategic Edge",
     "title": "High-Velocity",
-    "titleHighlight": "Capabilities."
+    "titleHighlight": "Capabilities.",
+    "items": {
+      "frontend": {
+        "title": "Frontend Systems",
+        "desc": "Enterprise-grade Vue & Nuxt architectures focused on scalability, performance, and impact."
+      },
+      "fullstack": {
+        "title": "Fullstack Logic",
+        "desc": "Robust backend foundations using Node.js, ensuring 100% type safety and technical resilience."
+      },
+      "devops": {
+        "title": "DevOps Flow",
+        "desc": "Expert CI/CD orchestration and automated pipelines that reduce friction and boost velocity."
+      }
+    }
   },
   "portfolio": {
     "section_tag": "Portfolio",
     "title_top": "Frontend",
     "title_bottom": "Craftsmanship.",
     "nexus": "Full Project Nexus",
+    "categories": {
+      "all": "All",
+      "systems": "Systems",
+      "fullstack": "Fullstack",
+      "frontend": "Frontend"
+    },
     "projects": {
       "0": {
         "title": "Colegium Cloud Architecture",
@@ -105,10 +200,26 @@
   },
   "footer": {
     "tagline": "Building high-fidelity products with frontend excellence",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "protocol": "Signal Protocol.",
+    "status": "All Systems Operational"
   },
   "col": {
     "nav": "Navigation",
     "connect": "Connect"
+  },
+  "themes": {
+    "dark-modern": "Dark Modern",
+    "dark-plus": "Dark+",
+    "tokyo-night": "Tokyo Night",
+    "dracula": "Dracula",
+    "one-dark": "One Dark",
+    "nord": "Nord",
+    "catppuccin": "Catppuccin",
+    "rose-pine": "Rose Pine",
+    "github-dark": "GitHub Dark",
+    "monokai": "Monokai",
+    "cobalt2": "Cobalt2",
+    "light-modern": "Light Modern"
   }
 }
