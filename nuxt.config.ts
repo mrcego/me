@@ -20,7 +20,7 @@ export default defineNuxtConfig({
         { name: 'keywords', content: 'César Gómez, Fullstack Developer, Vue.js, Nuxt.js, TypeScript, Frontend, Web Development, JavaScript, Node.js' },
         { name: 'author', content: 'César Gómez' },
         { name: 'robots', content: 'index, follow' },
-        
+
         // Open Graph
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: 'César Gómez - Senior Fullstack Developer' },
@@ -28,7 +28,7 @@ export default defineNuxtConfig({
         { property: 'og:image', content: 'https://cesargomezh.github.io/img/og-image.svg' },
         { property: 'og:url', content: 'https://cesargomezh.github.io' },
         { property: 'og:site_name', content: 'César Gómez Portfolio' },
-        
+
         // Twitter Cards
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'César Gómez - Senior Fullstack Developer' },
@@ -36,7 +36,7 @@ export default defineNuxtConfig({
         { name: 'twitter:image', content: 'https://cesargomezh.github.io/img/og-image.svg' },
         { name: 'twitter:site', content: '@cesargomezh' },
         { name: 'twitter:creator', content: '@cesargomezh' },
-        
+
         // Performance and PWA
         { name: 'theme-color', content: '#ff4b5c' },
         { name: 'msapplication-TileImage', content: '/img/logo-final.svg' },
@@ -49,11 +49,11 @@ export default defineNuxtConfig({
         { rel: 'dns-prefetch', href: '//www.linkedin.com' },
         { rel: 'dns-prefetch', href: '//github.com' },
         { rel: 'dns-prefetch', href: '//fonts.googleapis.com' },
-        
+
         // Preconnect for critical external resources
         { rel: 'preconnect', href: 'https://fonts.googleapis.com', crossorigin: '' },
         { rel: 'preconnect', href: 'https://www.linkedin.com', crossorigin: '' },
-        
+
         // Web App Manifest
         { rel: 'manifest', href: '/manifest.json' },
         { rel: 'apple-touch-icon', href: '/img/logo-final.svg' },
@@ -172,7 +172,7 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'en',
     lazy: true,
-    langDir: 'locales',
+    langDir: '../i18n/locales',
     strategy: 'no_prefix',
     detectBrowserLanguage: {
       useCookie: true,

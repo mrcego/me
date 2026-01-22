@@ -39,8 +39,164 @@
     "title": "Production-Grade",
     "titleHighlight": "Tech Stack.",
     "description": "Technologies I've mastered through 13+ years of production excellence.",
-    "certifications": "Certifications & Credentials",
-    "languages": "Languages"
+    "languages": "Languages",
+    "creds": "Official Credentials",
+    "flow": "Linguistic & Flow",
+    "principles": "Foundational Principles",
+    "levels": {
+      "architect": "Frontend Architect",
+      "senior": "Senior Developer",
+      "principal": "Principal",
+      "founding": "Founding Engineer"
+    },
+    "langList": {
+      "es": "Spanish",
+      "en": "English",
+      "native": "Native",
+      "pro": "Professional"
+    },
+    "detailed": {
+      "vue": "Lead architect for complex SPA/SSR ecosystems, modular UI systems, and performance tuning.",
+      "ts": "End-to-end type safety from Node.js APIs to sophisticated frontend reactive states.",
+      "js": "Deep knowledge in software engineering patterns, modularity, and enterprise scalability.",
+      "git": "Mentoring teams, defining technical roadmaps, and optimizing CI/CD velocity."
+    }
+  },
+  "certifications": {
+    "section": "Credentials",
+    "title": "Licenses &",
+    "titleHighlight": "Certifications.",
+    "description": "Technical validation and continuous learning in high-performance ecosystems.",
+    "viewCredential": "View Credential",
+    "skills": "Skills",
+    "data": [
+      {
+        "title": "AI Programming for JavaScript Developers",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Artificial Intelligence", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/96c7cf924aa3fb572c58f76297d9b67575083a0b87d3627a087b8e0f4fb2864b"
+      },
+      {
+        "title": "Building TypeScript Applications with JSDoc",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Jsdoc", "TypeScript", "TsDoc", "Web Development", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/2bcd1f72904fbeac332c55811d0247e24229c7ac81c7f8991f943acace2b1560"
+      },
+      {
+        "title": "Building a Scalable Monorepo with JavaScript and TypeScript",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "JavaScript", "Monorepo"],
+        "url": "https://www.linkedin.com/learning/certificates/914d984cd3d771cea3925268817910cfbec50d4ae1df7bd40133e318271cf820"
+      },
+      {
+        "title": "Data Structures in JavaScript: BSTs, Queues, and Stacks",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["JavaScript", "Data Structures"],
+        "url": "https://www.linkedin.com/learning/certificates/d475520bba8320b476a8672294f03f21bdd2709726e6367120b235b13f642975"
+      },
+      {
+        "title": "Coding Challenge: Functional Programming in JavaScript",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Frontend Development", "Functional Programming", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/358c7ab887c9b9336c4d198f716c75f97ff11f83d5840b4b461726a765895139"
+      },
+      {
+        "title": "Design your own GPT: ChatGPT for your business",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Artificial Intelligence"],
+        "url": "https://www.linkedin.com/learning/certificates/63e19cc1005b97f486b16a26ccd841d8c88e0b5f6cfe93d8870c548c80da973b"
+      },
+      {
+        "title": "Programming Foundations: Fundamentals",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Programming", "Web Development", "Frontend Development", "Software Development", "Coding Standards"],
+        "url": "https://www.linkedin.com/learning/certificates/21837bee635ea2e0a3d812fea5848a0c448807c545fd826427cfe7d767f2d863"
+      },
+      {
+        "title": "Advanced JavaScript 1",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Web Development", "Frontend Development", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/6c7b29eaa587df2c60292bfb8ba7abc87a3c8b41d04a34b969da433fc20237cb"
+      },
+      {
+        "title": "Scaling TypeScript for Enterprise Developers",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "Web Development", "Frontend Development"],
+        "url": "https://www.linkedin.com/learning/certificates/d5e991f977af403a5925b7afb7b7ef0b833157e33bbf6a04518b31d923406cad"
+      },
+      {
+        "title": "Tailwind CSS 3 Essential Training",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Tailwind CSS", "Web Development", "Tailwind", "Frontend Development", "CSS"],
+        "url": "https://www.linkedin.com/learning/certificates/448ce71621db607743e44166e1a2c61aa6c09d1ec5e8d142e60d5a710e9f939a"
+      },
+      {
+        "title": "Tailwind CSS 4 Essential Training",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Tailwind CSS", "Web Development", "Tailwind", "Frontend Development", "CSS"],
+        "url": "https://www.linkedin.com/learning/certificates/fa28dbebc05524bb23c4af8db2d9d1a4dae8145cdcf564e8fd59469bccdfcdc9"
+      },
+      {
+        "title": "Advanced TypeScript",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "Web Development", "Frontend Development"],
+        "url": "https://www.linkedin.com/learning/certificates/b7bae12986a57c4f356f2056a677761b7ba52a71533200169949a2e62580507e"
+      },
+      {
+        "title": "TypeScript for JavaScript Developers",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "Frontend Development", "Web Development"],
+        "url": "https://www.linkedin.com/learning/certificates/f09e41bfbdac073f3af63ea9e6f13c80ee5349969aadf700ef2c6da08a455f3a"
+      },
+      {
+        "title": "TypeScript: Object-Oriented Programming",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "Web Development", "Frontend Development", "OOP"],
+        "url": "https://www.linkedin.com/learning/certificates/a748889d0aebdd7e61871bd7a6069701c626b7d6d2c6a385dcc8502fc23a6873"
+      },
+      {
+        "title": "JavaScript Development Specialist",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Analytic Skills", "Unit Testing", "Debugging", "JavaScript", "Web Development"],
+        "url": "https://www.linkedin.com/learning/certificates/e34c91be066bde261fc011a8dd9ce48db9a0cde76e85cdc99cdb929878c09333"
+      },
+      {
+        "title": "Debug Code: JavaScript",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Debugging", "Web Development", "Frontend Development", "Software Testing", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/b37010953715cdd72d83d920083218e663122e5d07203014e503bcfb63b87a6e"
+      },
+      {
+        "title": "Coding Challenge: Advanced JavaScript",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Web Development", "Frontend Development", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/c2ee8574e7ebdbd3199d696ff9fe5086f6caf3beeea391e48a909ddbdc717195"
+      },
+      {
+        "title": "Coding Challenge: Basic JavaScript",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Web Development", "Frontend Development", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/b45a2b1fd3d3e80d040dee6bd6ef58d27ae8c93baabb65152a53aad9f5dc5f40"
+      }
+    ]
   },
   "capabilities": {
     "section": "Strategic Edge",

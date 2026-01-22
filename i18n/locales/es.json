@@ -5,6 +5,7 @@
     "techStack": "Stack Técnico",
     "capabilities": "Capacidades",
     "projects": "Proyectos",
+    "certifications": "Certificaciones",
     "contact": "Contacto",
     "getInTouch": "Contáctame",
     "themePresets": "Temas IDE",
@@ -100,7 +101,7 @@
     "title": "Stack Técnico",
     "titleHighlight": "Nivel Producción.",
     "description": "Tecnologías que he dominado a través de 13+ años de excelencia en producción.",
-    "certifications": "Certificaciones y Credenciales",
+    "officialCertifications": "Certificaciones y Credenciales",
     "languages": "Idiomas",
     "levels": {
       "architect": "Arquitecto Frontend",
@@ -117,10 +118,24 @@
       "git": "Mentoría de equipos, definición de hojas de ruta técnicas y optimización de la velocidad de CI/CD."
     },
     "certList": [
-      "Especialista en Arquitectura Avanzada de Vue",
-      "Ingeniería de Sistemas Fullstack Senior",
-      "Orquestación de UI/UX Empresarial",
-      "Flujo Avanzado de CI/CD y Automatización"
+      "AI Programming for JavaScript Developers (LinkedIn)",
+      "Building TypeScript Applications with JSDoc (LinkedIn)",
+      "Building a Scalable Monorepo (JS/TS) (LinkedIn)",
+      "Data Structures in JavaScript: BSTs, Queues, and Stacks",
+      "Desafío de programación: Programación funcional en JavaScript (LinkedIn)",
+      "Diseña tu propio GPT: ChatGPT como tu empresa lo necesita (LinkedIn)",
+      "Fundamentos esenciales de la programación (LinkedIn)",
+      "JavaScript Avanzado 1 (LinkedIn)",
+      "Scaling TypeScript for Enterprise Developers (LinkedIn)",
+      "Tailwind CSS 3 Essential Training (LinkedIn)",
+      "Tailwind CSS 4 Essential Training (LinkedIn)",
+      "TypeScript Avanzado (LinkedIn)",
+      "TypeScript for JavaScript Developers (LinkedIn)",
+      "TypeScript: Object-Oriented Programming (LinkedIn)",
+      "Conviértete en especialista en desarrollo JavaScript (LinkedIn)",
+      "Depura el código: JavaScript (LinkedIn)",
+      "Desafío de programación: JavaScript avanzado (LinkedIn)",
+      "Desafío de programación: JavaScript básico (LinkedIn)"
     ],
     "principles": "Principios Fundamentales",
     "langList": {
@@ -129,6 +144,142 @@
       "native": "Nativo",
       "pro": "Profesional"
     }
+  },
+  "certifications": {
+    "section": "Credenciales",
+    "title": "Licencias y",
+    "titleHighlight": "Certificaciones.",
+    "description": "Validación técnica y aprendizaje continuo en ecosistemas de alto rendimiento.",
+    "viewCredential": "Ver Credencial",
+    "skills": "Aptitudes",
+    "data": [
+      {
+        "title": "AI Programming for JavaScript Developers",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Inteligencia artificial", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/96c7cf924aa3fb572c58f76297d9b67575083a0b87d3627a087b8e0f4fb2864b"
+      },
+      {
+        "title": "Building TypeScript Applications with JSDoc",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Jsdoc", "TypeScript", "TsDoc", "Desarrollo web", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/2bcd1f72904fbeac332c55811d0247e24229c7ac81c7f8991f943acace2b1560"
+      },
+      {
+        "title": "Building a Scalable Monorepo with JavaScript and TypeScript",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "JavaScript", "Monorepo"],
+        "url": "https://www.linkedin.com/learning/certificates/914d984cd3d771cea3925268817910cfbec50d4ae1df7bd40133e318271cf820"
+      },
+      {
+        "title": "Data Structures in JavaScript: BSTs, Queues, and Stacks",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["JavaScript", "Estructuras de datos"],
+        "url": "https://www.linkedin.com/learning/certificates/d475520bba8320b476a8672294f03f21bdd2709726e6367120b235b13f642975"
+      },
+      {
+        "title": "Desafío de programación: Programación funcional en JavaScript",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Desarrollo front end", "Programación funcional", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/358c7ab887c9b9336c4d198f716c75f97ff11f83d5840b4b461726a765895139"
+      },
+      {
+        "title": "Diseña tu propio GPT: ChatGPT como tu empresa lo necesita",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Inteligencia artificial"],
+        "url": "https://www.linkedin.com/learning/certificates/63e19cc1005b97f486b16a26ccd841d8c88e0b5f6cfe93d8870c548c80da973b"
+      },
+      {
+        "title": "Fundamentos esenciales de la programación",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Programación", "Desarrollo web", "Desarrollo front end", "Desarrollo de programas", "Coding Standards"],
+        "url": "https://www.linkedin.com/learning/certificates/21837bee635ea2e0a3d812fea5848a0c448807c545fd826427cfe7d767f2d863"
+      },
+      {
+        "title": "JavaScript Avanzado 1",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Desarrollo web", "Desarrollo front end", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/6c7b29eaa587df2c60292bfb8ba7abc87a3c8b41d04a34b969da433fc20237cb"
+      },
+      {
+        "title": "Scaling TypeScript for Enterprise Developers",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "Desarrollo web", "Desarrollo front end"],
+        "url": "https://www.linkedin.com/learning/certificates/d5e991f977af403a5925b7afb7b7ef0b833157e33bbf6a04518b31d923406cad"
+      },
+      {
+        "title": "Tailwind CSS 3 Essential Training",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Tailwind CSS", "Desarrollo web", "Tailwind", "Desarrollo front end", "CSS"],
+        "url": "https://www.linkedin.com/learning/certificates/448ce71621db607743e44166e1a2c61aa6c09d1ec5e8d142e60d5a710e9f939a"
+      },
+      {
+        "title": "Tailwind CSS 4 Essential Training",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Tailwind CSS", "Desarrollo web", "Tailwind", "Desarrollo front end", "CSS"],
+        "url": "https://www.linkedin.com/learning/certificates/fa28dbebc05524bb23c4af8db2d9d1a4dae8145cdcf564e8fd59469bccdfcdc9"
+      },
+      {
+        "title": "TypeScript avanzado",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "Desarrollo web", "Desarrollo front end"],
+        "url": "https://www.linkedin.com/learning/certificates/b7bae12986a57c4f356f2056a677761b7ba52a71533200169949a2e62580507e"
+      },
+      {
+        "title": "TypeScript for JavaScript Developers",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "Desarrollo front end", "Desarrollo web"],
+        "url": "https://www.linkedin.com/learning/certificates/f09e41bfbdac073f3af63ea9e6f13c80ee5349969aadf700ef2c6da08a455f3a"
+      },
+      {
+        "title": "TypeScript: Object-Oriented Programming",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "Desarrollo web", "Desarrollo front end", "POO"],
+        "url": "https://www.linkedin.com/learning/certificates/a748889d0aebdd7e61871bd7a6069701c626b7d6d2c6a385dcc8502fc23a6873"
+      },
+      {
+        "title": "Conviértete en especialista en desarrollo JavaScript",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Capacidad de análisis", "Prueba unitaria", "Depuración", "JavaScript", "Desarrollo web"],
+        "url": "https://www.linkedin.com/learning/certificates/e34c91be066bde261fc011a8dd9ce48db9a0cde76e85cdc99cdb929878c09333"
+      },
+      {
+        "title": "Depura el código: JavaScript",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Depuración", "Desarrollo web", "Desarrollo front end", "Pruebas", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/b37010953715cdd72d83d920083218e663122e5d07203014e503bcfb63b87a6e"
+      },
+      {
+        "title": "Desafío de programación: JavaScript avanzado",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Desarrollo web", "Desarrollo front end", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/c2ee8574e7ebdbd3199d696ff9fe5086f6caf3beeea391e48a909ddbdc717195"
+      },
+      {
+        "title": "Desafío de programación: JavaScript básico",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Desarrollo web", "Desarrollo front end", "JavaScript"],
+        "url": "https://www.linkedin.com/learning/certificates/b45a2b1fd3d3e80d040dee6bd6ef58d27ae8c93baabb65152a53aad9f5dc5f40"
+      }
+    ]
   },
   "capabilities": {
     "section": "Ventaja Estratégica",
@@ -197,6 +348,50 @@
       "success": "✓ ¡Mensaje enviado exitosamente! Te responderé pronto.",
       "error": "Error al enviar mensaje. Por favor intenta de nuevo o contacta directamente vía email."
     }
+  },
+  "testimonials": {
+    "section": "Ecosystem Feedback",
+    "title": "Confianza de",
+    "titleHighlight": "Innovadores.",
+    "quote": "Referencia",
+    "data": [
+      {
+        "name": "Carol Valdebenito",
+        "role": "Scrum Master | Liderazgo Ágil",
+        "quote": "Trabajé casi 5 años con César en dos equipos distintos, desde mi rol de Scrum Master, y si algo puedo decir con total certeza es que es uno de los mejores front-end con los que he trabajado. Tiene una habilidad poco común: desarrolla pensando en el fallo. No se enfoca solo en “cómo hacer que funcione”, sino en “cómo evitar que falle”, contemplando mil escenarios posibles, incluso los más improbables. Esa obsesión por los casos de uso hace que sus desarrollos sean estables, robustos y difíciles de romper. Es metódico, comprometido y tiene una ética de trabajo admirable. Fue un gusto trabajar con él, y sin duda, lo volvería a hacer.",
+        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQGk2IeE57rHBA/profile-displayphoto-shrink_100_100/B4EZUWjT.XH0AU-/0/1739840110897?e=1770854400&v=beta&t=6GaMmIxqMP2art0QxAe8nxZh3A0mx89T-vB4AfbpHXs"
+      },
+      {
+        "name": "Michell Jose Gutierrez Rincon",
+        "role": "Fullstack Developer",
+        "quote": "Excelente compañero, gran desarrollador y experto en tecnologías frontend",
+        "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQFACsZM6Wugcw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1609879783274?e=1770854400&v=beta&t=m8V_55NNTzqN0iKxc1o1pph0TOsEvbxT3iLtkcMWjXw"
+      },
+      {
+        "name": "Fernando Delgado",
+        "role": "Director of IT | TISSINI",
+        "quote": "Uno de mis mejores Ingenieros!!",
+        "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQHOFDWUtEea9w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1613007031033?e=1770854400&v=beta&t=qmoe_cSNsYx_ghmuIgTF2hF5OdoTTefdmX7cTKZiNm8"
+      },
+      {
+        "name": "Genito Javier Andrade Perez",
+        "role": "Sr Full Stack Developer",
+        "quote": "Tuve el privilegio de trabajar junto a César G. en varios proyectos y puedo decir con total confianza que es un desarrollador altamente competente, comprometido y con una gran atención al detalle. Destaca por su dominio de tecnologías modernas, su capacidad para convertir diseños complejos en interfaces funcionales y eficientes, y su enfoque centrado en la experiencia del usuario. Además de sus habilidades técnicas, César tiene una actitud colaborativa ejemplar, siempre dispuesto a compartir conocimientos y aportar soluciones efectivas.",
+        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQFIoOj1FmGyRw/profile-displayphoto-shrink_100_100/B4EZUbXxrzHcAU-/0/1739920973040?e=1770854400&v=beta&t=m1S5M0ApAI6xhaNtvS6odC6kSORTWhVne3MNhauLkUk"
+      },
+      {
+        "name": "Andres Felipe Ordoñez Zuluaga",
+        "role": "Product Owner | Engineering Lead",
+        "quote": "Es un placer recomendar a César, un excepcional profesional con quien tuve el privilegio de trabajar. César no solo posee una profunda experiencia técnica, sino que también se destaca por sus sobresalientes capacidades de gestión e innovación. Constantemente demostró una habilidad única para liderar proyectos, optimizar procesos y proponer soluciones creativas que impulsaron el éxito del equipo. Su compromiso con la excelencia y su visión innovadora lo convierten en un activo invaluable para cualquier organización.",
+        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQG4ALMx5STP_g/profile-displayphoto-shrink_100_100/B4EZTnyujEGgAU-/0/1739055623564?e=1770854400&v=beta&t=oOy0ly0eIIEpRd0-vMauM7GewsxUJdPQiaA7biqZ5Qk"
+      },
+      {
+        "name": "María de los Ángeles Rodríguez",
+        "role": "Gestión y Control Administrativo",
+        "quote": "Es grato recomendar a personas con gran compromiso y crecimiento. Si de un talento integral se habla. Cesar cumple los requisitos. Es apasionado en lo que hace, responsable, organizado, inteligente, líder y excelente servicio humano.",
+        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQF5xYs5k3etTQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1728095951600?e=1770854400&v=beta&t=RQa4xnbCK4_8Fcw4CKugnWLTJxrVWbi6i5gAFDstDqs"
+      }
+    ]
   },
   "footer": {
     "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",

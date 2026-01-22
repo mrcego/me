@@ -32,7 +32,7 @@
           class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black tracking-tighter leading-[0.9] text-foreground"
         >
           {{ $t("techStack.title") }}
-          <br />
+          <br>
           <span class="text-gradient">{{
             $t("techStack.titleHighlight")
           }}</span>
@@ -115,7 +115,7 @@
         </Motion>
       </div>
 
-      <!-- Certifications HUD -->
+      <!-- Stats & Bio HUD -->
       <div
         class="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative px-2 md:px-0"
       >
@@ -135,31 +135,25 @@
               class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 glass rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover/hud:scale-110 transition-transform"
             >
               <Icon
-                name="solar:medal-ribbon-star-linear"
+                name="solar:crown-star-bold"
                 class="w-10 h-10 sm:w-12 sm:h-12"
               />
             </div>
             <h4
               class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-foreground"
             >
-              {{ $t("techStack.creds") }}
+              {{ $t("techStack.principles") }}
             </h4>
           </div>
 
-          <div class="grid gap-4 sm:gap-6 md:gap-8 relative z-10">
-            <div
-              v-for="cert in certifications"
-              :key="cert"
-              class="flex items-center gap-4 sm:gap-6 md:gap-8 group/cert cursor-help"
+          <div class="flex flex-wrap gap-2 md:gap-3 relative z-10">
+            <span
+              v-for="skill in skills"
+              :key="skill"
+              class="text-xs md:text-sm font-bold uppercase tracking-wider text-muted glass px-6 py-3 rounded-xl border-foreground/5 hover:bg-primary/10 hover:border-primary/40 transition-all cursor-default shadow-sm"
             >
-              <div
-                class="w-1.5 h-1.5 sm:w-2 sm:h-2 md:w-2 md:h-2 rounded-full bg-primary/20 group-hover/cert:bg-primary transition-all scale-100 group-hover/cert:scale-150 shrink-0 shadow-[0_0_10px_rgba(255,75,92,0.5)]"
-              />
-              <span
-                class="text-sm sm:text-base md:text-lg font-bold text-muted group-hover/cert:text-foreground transition-colors"
-                >{{ cert }}</span
-              >
-            </div>
+              {{ skill }}
+            </span>
           </div>
         </Motion>
 
@@ -275,15 +269,6 @@ const detailedStack = [
 ];
 
 const skills = ["GxP", "POO", "JSDoc", "Clean Code", "SPA/SSR"];
-
-const certifications = [
-  "AWS Solutions Architect",
-  "Google Cloud Professional",
-  "Microsoft Azure Fundamentals",
-  "Oracle Java SE 11 Developer",
-  "Scrum Master Certified",
-  "ITIL Foundation",
-];
 </script>
 
 <style scoped>

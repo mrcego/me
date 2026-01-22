@@ -15,22 +15,24 @@
           <h2
             class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
           >
-            Ecosystem Feedback
+            {{ $t("testimonials.section") }}
           </h2>
           <div class="h-px w-10 bg-primary/40" />
         </div>
         <h3
           class="text-5xl md:text-8xl font-black tracking-tighter text-foreground"
         >
-          Trusted by<br>
-          <span class="text-gradient">Innovators.</span>
+          {{ $t("testimonials.title") }}<br />
+          <span class="text-gradient">{{
+            $t("testimonials.titleHighlight")
+          }}</span>
         </h3>
       </Motion>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
         <Motion
           v-for="(t, i) in testimonials"
-          :key="t.name"
+          :key="i"
           :initial="{ opacity: 0, scale: 0.98, y: 5 }"
           :in-view="{ opacity: 1, scale: 1, y: 0 }"
           :transition="{
@@ -55,11 +57,10 @@
             </div>
 
             <p
-              class="text-lg md:text-xl text-muted font-medium leading-relaxed italic group-hover:text-foreground transition-colors"
+              class="text-lg md:text-xl text-muted font-medium leading-relaxed italic group-hover:text-foreground transition-colors max-h-[9.2rem] md:max-h-[10.2rem] overflow-y-auto pr-4 custom-scrollbar"
             >
               "{{ t.quote }}"
             </p>
-
             <div
               class="flex items-center gap-6 pt-6 border-t border-foreground/5 group-hover:border-primary/20 transition-all"
             >
@@ -70,7 +71,7 @@
                   :src="t.avatar"
                   class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all"
                   alt="Testimonial Avatar"
-                />
+                >
               </div>
               <div class="space-y-1">
                 <h5 class="text-lg font-black text-foreground tracking-tight">
@@ -91,24 +92,17 @@
 </template>
 
 <script setup>
-import { Motion } from "motion-v";
-
-const testimonials = [
-  {
-    name: "Tech Lead",
-    role: "Colegium Architecture",
-    quote:
-      "César ability to bridge complex enterprise logic with high-performance frontend interfaces is extraordinary.",
-    avatar: "https://i.pravatar.cc/150?u=1",
-  },
-  {
-    name: "Product Manager",
-    role: "LingoQuesto",
-    quote:
-      "Design becomes engineering excellence under his guidance. The attention to detail is truly world-class.",
-    avatar: "https://i.pravatar.cc/150?u=2",
-  },
-];
+const { tm, rt } = useI18n();
+const testimonials = computed(() => {
+  const data = tm("testimonials.data");
+  if (!data || !Array.isArray(data)) return [];
+  return data.map((t) => ({
+    name: rt(t.name),
+    role: rt(t.role),
+    quote: rt(t.quote),
+    avatar: rt(t.avatar),
+  }));
+});
 </script>
 
 <style scoped>
@@ -119,5 +113,28 @@ const testimonials = [
     transparent 1px
   );
   background-size: 20px 20px;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 75, 92, 0.2);
+  border-radius: 10px;
+}
+
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 75, 92, 0.6);
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 75, 92, 0.2) transparent;
 }
 </style>

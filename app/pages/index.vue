@@ -3,8 +3,9 @@
     <HeroSection />
     <AboutSection />
     <TechStackSection />
+    <CertificationsSection />
     <CapabilitiesSection />
-    <ProjectsSection />
+    <!-- <ProjectsSection /> -->
     <TestimonialsSection />
     <ContactSection />
     <AppFooter />

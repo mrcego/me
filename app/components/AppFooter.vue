@@ -114,7 +114,7 @@ const footerLinks = [
     links: [
       { name: "nav.home", href: "#" },
       { name: "about.philosophy", href: "#about" },
-      { name: "portfolio.section_tag", href: "#portfolio" },
+      { name: "nav.certifications", href: "#certifications" },
       { name: "capabilities.section", href: "#capabilities" },
     ],
   },

@@ -317,7 +317,7 @@ const navLinks = [
   { name: "nav.home", href: "#hero", id: "hero" },
   { name: "nav.about", href: "#about", id: "about" },
   { name: "nav.techStack", href: "#tech-stack", id: "tech-stack" },
-  { name: "nav.projects", href: "#portfolio", id: "portfolio" },
+  { name: "nav.certifications", href: "#certifications", id: "certifications" },
   { name: "nav.contact", href: "#contact", id: "contact" },
 ];
 
