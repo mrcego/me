@@ -21,7 +21,7 @@
             <div
               class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary group-hover:-rotate-12 transition-transform duration-500 shadow-lg shadow-primary/20 border-foreground/10"
             >
-              <Icon name="solar:code-square-bold-duotone" class="w-13 h-13" />
+              <Icon name="solar:code-square-bold-duotone" class="w-14 h-14" />
             </div>
             <div class="flex flex-col">
               <h4
@@ -83,7 +83,7 @@
           >
           <span class="hidden md:inline text-muted/30">|</span>
           <span class="opacity-50 tracking-[0.2em]">{{
-            $t("footer.status")
+            $t("footer.rights")
           }}</span>
         </p>
 
@@ -98,7 +98,7 @@
           >
             <Icon
               :name="s.icon"
-              class="w-14 h-14 transition-colors duration-300 text-muted group-hover/social:text-primary-contrast"
+              class="w-12 h-12 transition-colors duration-300 text-muted group-hover/social:text-primary-contrast"
             />
           </a>
         </div>
@@ -128,7 +128,7 @@ const footerLinks = [
       },
       {
         name: "contact.methods.github",
-        href: "https://github.com/cesargomezh",
+        href: "https://github.com/mrcego",
       },
     ],
   },
@@ -136,7 +136,7 @@ const footerLinks = [
 
 const socials = [
   { icon: "simple-icons:linkedin", link: "https://linkedin.com/in/mrcego" },
-  { icon: "simple-icons:github", link: "https://github.com/cesargomezh" },
+  { icon: "simple-icons:github", link: "https://github.com/mrcego" },
   {
     icon: "solar:letter-bold-duotone",
     link: "mailto:cesargomezh90@gmail.com",

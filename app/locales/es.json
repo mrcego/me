@@ -6,6 +6,7 @@
     "capabilities": "Capacidades",
     "projects": "Proyectos",
     "contact": "Contacto",
+    "testimonials": "Testimonios",
     "getInTouch": "Contáctame",
     "themePresets": "Temas"
   },
@@ -28,7 +29,39 @@
     "description1": "Como Desarrollador Fullstack Senior con enfoque especializado en Arquitectura Frontend, he pasado 13+ años conectando el diseño pixel-perfect con sistemas escalables.",
     "description2": "Mi trayectoria en Colegium y LingoQuesto ha sido definida por una sola obsesión: crear experiencias de usuario de alto rendimiento impulsadas por fundamentos backend robustos y resilientes.",
     "philosophy": "Filosofía",
-    "philosophyQuote": "Como Fullstack Enfocado en Frontend, creo que la interfaz es donde la ingeniería se encuentra con el impacto."
+    "philosophyQuote": "Como Fullstack Enfocado en Frontend, creo que la interfaz es donde la ingeniería se encuentra con el impacto.",
+    "roles": {
+      "lingoquesto": {
+        "years": "2024 - Presente",
+        "title": "Ingeniero Fundador",
+        "company": "LingoQuesto",
+        "desc": "Liderando la arquitectura frontend y mejorando la experiencia de usuario para una plataforma de aprendizaje."
+      },
+      "colegium": {
+        "years": "2021 - 2024",
+        "title": "Desarrollador Frontend Senior",
+        "company": "Colegium",
+        "desc": "Orquestando ecosistemas complejos y arquitecturas de micro-frontends para más de 100k estudiantes."
+      },
+      "tissini": {
+        "years": "2019 - 2021",
+        "title": "Desarrollador Frontend Senior",
+        "company": "TISSINI",
+        "desc": "Desarrollo de soluciones mobile-first con Vue 3. Reducción de tiempos de despliegue en un 60% vía CI/CD."
+      },
+      "cuartopixel": {
+        "years": "2018 - 2019",
+        "title": "Desarrollador Web Frontend",
+        "company": "4to Pixel",
+        "desc": "Creación de experiencias web UX/UI de alto rendimiento usando Angular 6+ para ecosistemas modernos."
+      },
+      "zabud": {
+        "years": "2016 - 2018",
+        "title": "Desarrollador Frontend Junior",
+        "company": "ZABUD Technologies",
+        "desc": "Desarrollo visual usando AngularJS, HTML5, CSS3 y jQuery para soluciones modulares a medida."
+      }
+    }
   },
   "techStack": {
     "section": "Arsenal",
@@ -49,7 +82,7 @@
       "es": "Español",
       "en": "Inglés",
       "native": "Nativo",
-      "pro": "Profesional"
+      "pro": "Intermedio"
     },
     "detailed": {
       "vue": "Arquitecto líder para ecosistemas SPA/SSR complejos, sistemas de UI modulares y optimización de rendimiento.",
@@ -236,6 +269,25 @@
       "success": "✓ ¡Mensaje enviado exitosamente! Te responderé pronto.",
       "error": "Error al enviar mensaje. Por favor intenta de nuevo o contacta directamente vía email."
     }
+  },
+  "testimonials": {
+    "section": "Recomendaciones",
+    "title": "Con la confianza de",
+    "titleHighlight": "Líderes de la Industria.",
+    "data": [
+      {
+        "name": "Sarah Jenkins",
+        "role": "CTO @ TechFlow",
+        "quote": "Las decisiones arquitectónicas de César nos ahorraron meses de desarrollo. Su entendimiento de Vue/Nuxt a escala es inigualable.",
+        "avatar": "/avatars/placeholder.jpg"
+      },
+      {
+        "name": "David Chen",
+        "role": "Director de Producto",
+        "quote": "Las mejoras de rendimiento que implementó aumentaron nuestra tasa de conversión en un 40%. Un verdadero maestro de su oficio.",
+        "avatar": "/avatars/placeholder.jpg"
+      }
+    ]
   },
   "footer": {
     "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",

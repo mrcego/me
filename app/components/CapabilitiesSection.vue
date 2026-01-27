@@ -1,5 +1,6 @@
 <template>
   <section
+    id="capabilities"
     class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
   >
     <!-- background grid light -->
@@ -35,7 +36,7 @@
       </Motion>
 
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12"
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 md:gap-12"
       >
         <Motion
           v-for="(cap, i) in capabilities"

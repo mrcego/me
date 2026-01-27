@@ -64,7 +64,7 @@
 
         <!-- Desktop Navigation -->
         <div
-          class="hidden lg:flex items-center gap-1 bg-foreground/3 backdrop-blur-md rounded-full px-2 py-1.5 border transition-all duration-500"
+          class="hidden xl:flex items-center gap-1 bg-foreground/3 backdrop-blur-md rounded-full px-2 py-1.5 border transition-all duration-500"
           :class="[
             isScrolled
               ? 'opacity-100 scale-100 border-foreground/5 shadow-inner shadow-white/5'
@@ -124,7 +124,7 @@
               >
                 <Icon
                   name="solar:palette-bold-duotone"
-                  class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 lg:w-12 lg:h-12"
+                  class="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 lg:w-13 lg:h-13"
                 />
               </button>
               <!-- Theme Preset Selector Popover -->
@@ -227,13 +227,13 @@
             <span class="sm:hidden block">CTA</span>
             <Icon
               name="solar:arrow-right-up-linear"
-              class="w-7 h-7 sm:w-8 sm:h-8 group-hover/btn:rotate-45 transition-transform duration-300"
+              class="w-8 h-8 sm:w-9 sm:h-9 group-hover/btn:rotate-45 transition-transform duration-300"
             />
           </a>
 
           <!-- Mobile Toggle -->
           <button
-            class="lg:hidden w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-10 flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors"
+            class="xl:hidden w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-10 flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors"
             @click="isMobileMenuOpen = !isMobileMenuOpen"
           >
             <Icon
@@ -242,7 +242,7 @@
                   ? 'solar:close-square-linear'
                   : 'solar:hamburger-menu-linear'
               "
-              class="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10"
+              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11"
             />
           </button>
         </div>
@@ -260,7 +260,7 @@
     >
       <div
         v-if="isMobileMenuOpen"
-        class="fixed inset-2 sm:inset-4 md:inset-6 lg:inset-8 z-90 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex flex-col items-center justify-center overflow-hidden border border-foreground/10 shadow-4xl lg:hidden"
+        class="fixed inset-2 sm:inset-4 md:inset-6 lg:inset-8 z-90 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex flex-col items-center justify-center overflow-hidden border border-foreground/10 shadow-4xl xl:hidden"
       >
         <button
           class="absolute top-3 sm:top-4 md:top-6 right-3 sm:right-4 md:right-6 p-2 sm:p-3 text-muted hover:text-foreground"
@@ -268,7 +268,7 @@
         >
           <Icon
             name="solar:close-circle-linear"
-            class="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14"
+            class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
           />
         </button>
 
@@ -292,7 +292,7 @@
             {{ $t("nav.getInTouch") }}
             <Icon
               name="solar:arrow-right-up-bold"
-              class="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10"
+              class="w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11"
             />
           </a>
         </div>
@@ -318,7 +318,7 @@ const navLinks = [
   { name: "nav.about", href: "#about", id: "about" },
   { name: "nav.techStack", href: "#tech-stack", id: "tech-stack" },
   { name: "nav.certifications", href: "#certifications", id: "certifications" },
-  { name: "nav.contact", href: "#contact", id: "contact" },
+  { name: "nav.testimonials", href: "#testimonials", id: "testimonials" },
 ];
 
 const activeSection = ref("hero");

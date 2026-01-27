@@ -7,6 +7,7 @@
     "projects": "Projects",
     "certifications": "Certifications",
     "contact": "Contact",
+    "testimonials": "Testimonials",
     "getInTouch": "Get in Touch",
     "themePresets": "Theme Presets",
     "modes": "Modes"
@@ -378,7 +379,7 @@
   "footer": {
     "tagline": "Building high-fidelity products with frontend excellence",
     "rights": "All rights reserved.",
-    "protocol": "Signal Protocol.",
+    "protocol": "Ancelabs.",
     "status": "All Systems Operational"
   },
   "col": {

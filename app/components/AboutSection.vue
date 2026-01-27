@@ -58,13 +58,13 @@
 
             <!-- Content inside card -->
             <h3
-              class="text-xl md:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4 px-2"
+              class="text-xl md:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4 px-2 text-center lg:text-left"
             >
               {{ $t("about.philosophy") }}
             </h3>
 
             <p
-              class="mb-6 sm:mb-8 md:mb-10 text-sm md:text-base font-medium text-muted leading-relaxed px-2"
+              class="mb-6 sm:mb-8 md:mb-10 text-sm md:text-base font-medium text-muted leading-relaxed px-2 text-center lg:text-left"
             >
               "{{ $t("about.philosophyQuote") }}"
             </p>
@@ -80,7 +80,7 @@
                 >
                   <Icon
                     :name="point.icon"
-                    class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11"
+                    class="w-11 h-11 sm:w-12 sm:h-12 md:w-13 md:h-13"
                   />
                 </div>
                 <div
@@ -113,7 +113,9 @@
             :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
             class="space-y-6 md:space-y-10"
           >
-            <div class="flex items-center gap-4">
+            <div
+              class="flex items-center gap-4 justify-center lg:justify-start"
+            >
               <div class="h-px w-12 bg-foreground/10" />
               <div class="flex items-center gap-3 shrink-0">
                 <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -126,7 +128,7 @@
             </div>
 
             <h3
-              class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-foreground"
+              class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-foreground text-center lg:text-left"
             >
               {{ $t("about.title") }}<br />
               <span class="text-gradient">{{
@@ -135,7 +137,7 @@
             </h3>
 
             <div
-              class="prose prose-invert prose-lg md:prose-xl max-w-none text-muted font-medium leading-relaxed space-y-6"
+              class="prose prose-invert prose-lg md:prose-xl max-w-none text-muted font-medium leading-relaxed space-y-6 text-center lg:text-left mx-auto lg:mx-0"
             >
               <p>
                 {{ $t("about.description1") }}
@@ -177,7 +179,7 @@
                   </div>
                   <Icon
                     :name="role.icon"
-                    class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 text-muted group-hover:text-primary transition-colors"
+                    class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 text-muted group-hover:text-primary transition-colors"
                   />
                 </div>
 

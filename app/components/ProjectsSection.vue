@@ -12,7 +12,7 @@
 
     <div class="container mx-auto space-y-20 md:space-y-32 relative z-10">
       <div
-        class="flex flex-col lg:flex-row justify-between lg:items-end gap-12 lg:gap-24"
+        class="flex flex-col lg:flex-row justify-between lg:items-end gap-12 lg:gap-24 items-center text-center lg:text-left"
       >
         <Motion
           :initial="{ opacity: 0, x: -50 }"
@@ -21,7 +21,9 @@
           :viewport="{ once: true }"
           class="space-y-8 md:space-y-10 group"
         >
-          <div class="flex items-center gap-4 md:gap-6">
+          <div
+            class="flex items-center gap-4 md:gap-6 justify-center lg:justify-start"
+          >
             <div
               class="h-px w-12 md:w-16 bg-primary shadow-[0_0_10px_rgba(255,75,92,0.5)]"
             />
@@ -47,7 +49,7 @@
           :in-view="{ opacity: 1, scale: 1 }"
           :transition="{ duration: 0.8, delay: 0.2 }"
           :viewport="{ once: true }"
-          class="flex flex-wrap gap-2 md:gap-4 p-2 md:p-3 glass rounded-[2.5rem] border-foreground/5 w-fit shadow-xl"
+          class="flex flex-wrap gap-2 md:gap-4 p-2 md:p-3 glass rounded-[2.5rem] border-foreground/5 w-fit shadow-xl justify-center lg:justify-start"
         >
           <button
             v-for="cat in categories"
@@ -66,7 +68,7 @@
       </div>
 
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-16"
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-16"
       >
         <Motion
           v-for="(project, i) in filteredProjects"
@@ -139,7 +141,10 @@
                 href="#"
                 class="w-12 h-12 md:w-16 md:h-16 glass rounded-full flex items-center justify-center text-muted hover:bg-primary hover:text-primary-contrast hover:scale-110 active:scale-90 transition-all duration-500 shrink-0 shadow-lg"
               >
-                <Icon name="solar:arrow-right-up-linear" class="w-11 h-11" />
+                <Icon
+                  name="solar:arrow-right-up-linear"
+                  class="w-12 h-12 md:w-14 md:h-14"
+                />
               </a>
             </div>
 
@@ -165,7 +170,7 @@
           <span class="flex items-center gap-4 md:gap-6">
             <Icon
               name="solar:case-round-minimalistic-bold-duotone"
-              class="w-5 h-5 md:w-6 md:h-6"
+              class="w-6 h-6 md:w-7 md:h-7"
             />
             <span
               class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em]"
@@ -221,11 +226,8 @@ const filteredProjects = computed(() => {
 }
 
 .project-grid-bg {
-  background-image: linear-gradient(
-      0deg,
-      var(--foreground) 1px,
-      transparent 1px
-    ),
+  background-image:
+    linear-gradient(0deg, var(--foreground) 1px, transparent 1px),
     linear-gradient(90deg, var(--foreground) 1px, transparent 1px);
   background-size: 100px 100px;
 }

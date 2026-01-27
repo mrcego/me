@@ -63,7 +63,7 @@
               <div
                 class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-xl shrink-0 group-hover:rotate-6"
               >
-                <Icon :name="c.icon" class="w-12 h-12 md:w-14 md:h-14" />
+                <Icon :name="c.icon" class="w-14 h-14 md:w-16 md:h-16" />
               </div>
               <div class="space-y-1 sm:space-y-1.5 md:space-y-2 text-left">
                 <p
@@ -248,12 +248,12 @@
                 <Icon
                   v-if="!isSubmitting"
                   name="solar:plain-linear"
-                  class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5"
+                  class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
                 />
                 <Icon
                   v-else
                   name="solar:sort-vertical-linear"
-                  class="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 animate-spin"
+                  class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 animate-spin"
                 />
                 {{
                   isSubmitting
@@ -300,9 +300,9 @@ const contactMethods = [
   {
     key: "github",
     label: "Open Protocol",
-    value: "github.com/cesargomezh",
+    value: "github.com/mrcego",
     icon: "simple-icons:github",
-    link: "https://github.com/cesargomezh",
+    link: "https://github.com/mrcego",
   },
   {
     key: "whatsapp",

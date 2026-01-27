@@ -1,5 +1,6 @@
 <template>
   <section
+    id="testimonials"
     class="py-24 md:py-48 px-6 md:px-12 bg-secondary/5 relative overflow-hidden"
   >
     <div class="container mx-auto space-y-24">
@@ -29,7 +30,7 @@
         </h3>
       </Motion>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-12">
         <Motion
           v-for="(t, i) in testimonials"
           :key="i"
@@ -52,7 +53,7 @@
             <div class="text-muted group-hover:text-primary transition-colors">
               <Icon
                 name="solar:chat-square-code-bold-duotone"
-                class="w-10 h-10 md:w-12 md:h-12 opacity-50"
+                class="w-12 h-12 md:w-14 md:h-14 opacity-50"
               />
             </div>
 

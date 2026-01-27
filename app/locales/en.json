@@ -6,6 +6,7 @@
     "capabilities": "Capabilities",
     "projects": "Projects",
     "contact": "Contact",
+    "testimonials": "Testimonials",
     "getInTouch": "Get in Touch",
     "modes": "Modes",
     "themePresets": "Themes"
@@ -32,7 +33,39 @@
     "description1": "As a Senior Fullstack Developer with a specialized focus on Frontend Architecture, I've spent 13+ years bridging the gap between pixel-perfect design and scalable systems.",
     "description2": "My trajectory through Colegium and LingoQuesto has been defined by a single obsession: creating high-performance user experiences powered by robust, resilient backend foundations.",
     "philosophy": "Philosophy",
-    "philosophyQuote": "As a Frontend Focused Fullstack, I believe the interface is where engineering meets impact."
+    "philosophyQuote": "As a Frontend Focused Fullstack, I believe the interface is where engineering meets impact.",
+    "roles": {
+      "lingoquesto": {
+        "years": "2024 - Present",
+        "title": "Founding Engineer",
+        "company": "LingoQuesto",
+        "desc": "Leading the frontend architecture and improved the user experience for a language learning platform."
+      },
+      "colegium": {
+        "years": "2021 - 2024",
+        "title": "Senior Frontend Developer",
+        "company": "Colegium",
+        "desc": "Orchestrating complex ecosystems and micro-frontend architectures for 100k+ students."
+      },
+      "tissini": {
+        "years": "2019 - 2021",
+        "title": "Senior Frontend Developer",
+        "company": "TISSINI",
+        "desc": "Developed mobile-first solutions with Vue 3. Reduced deployment times by 60% via CI/CD."
+      },
+      "cuartopixel": {
+        "years": "2018 - 2019",
+        "title": "Web Frontend Developer",
+        "company": "4to Pixel",
+        "desc": "Crafted high-performance UX/UI web experiences using Angular 6+ for modern ecosystems."
+      },
+      "zabud": {
+        "years": "2016 - 2018",
+        "title": "Junior Frontend Developer",
+        "company": "ZABUD Technologies",
+        "desc": "Visual development using AngularJS, HTML5, CSS3, and jQuery for tailored modular solutions."
+      }
+    }
   },
   "techStack": {
     "section": "Arsenal",
@@ -53,7 +86,7 @@
       "es": "Spanish",
       "en": "English",
       "native": "Native",
-      "pro": "Professional"
+      "pro": "Intermediate"
     },
     "detailed": {
       "vue": "Lead architect for complex SPA/SSR ecosystems, modular UI systems, and performance tuning.",
@@ -240,6 +273,25 @@
       "success": "✓ Message sent successfully! I'll get back to you soon.",
       "error": "Failed to send message. Please try again or contact directly via email."
     }
+  },
+  "testimonials": {
+    "section": "Endorsements",
+    "title": "Trusted by",
+    "titleHighlight": "Industry Leaders.",
+    "data": [
+      {
+        "name": "Sarah Jenkins",
+        "role": "CTO @ TechFlow",
+        "quote": "César's architectural decisions saved us months of development time. His understanding of Vue/Nuxt at scale is unmatched.",
+        "avatar": "/avatars/placeholder.jpg"
+      },
+      {
+        "name": "David Chen",
+        "role": "Product Director",
+        "quote": "The performance improvements he implemented increased our conversion rate by 40%. A true master of his craft.",
+        "avatar": "/avatars/placeholder.jpg"
+      }
+    ]
   },
   "footer": {
     "tagline": "Building high-fidelity products with frontend excellence",

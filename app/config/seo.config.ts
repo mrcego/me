@@ -10,6 +10,6 @@ export default {
     ogImage: '/img/og-image.svg',
     ogImageAlt: 'César Gómez - Senior Fullstack Developer',
     twitterCard: 'summary_large_image',
-    twitterCreator: '@cesargomezh'
+    twitterCreator: '@codingwithcego'
   }
 }

@@ -32,7 +32,7 @@
           class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black tracking-tighter leading-[0.9] text-foreground"
         >
           {{ $t("techStack.title") }}
-          <br>
+          <br />
           <span class="text-gradient">{{
             $t("techStack.titleHighlight")
           }}</span>
@@ -45,7 +45,7 @@
       </Motion>
 
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 px-2 md:px-0"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 px-2 md:px-0"
       >
         <Motion
           v-for="(t, i) in detailedStack"
@@ -73,7 +73,7 @@
               >
                 <Icon
                   :name="t.icon"
-                  class="w-8 h-8 sm:w-10 sm:h-10 md:w-14 md:h-16"
+                  class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20"
                 />
               </div>
               <div class="flex flex-col items-end">
@@ -136,7 +136,7 @@
             >
               <Icon
                 name="solar:crown-star-bold"
-                class="w-10 h-10 sm:w-12 sm:h-12"
+                class="w-12 h-12 sm:w-14 sm:h-14"
               />
             </div>
             <h4
@@ -173,7 +173,7 @@
               <div
                 class="w-10 h-10 md:w-12 md:h-12 glass rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover/hud:rotate-12 transition-transform"
               >
-                <Icon name="solar:global-linear" class="w-12 h-12" />
+                <Icon name="solar:global-linear" class="w-14 h-14" />
               </div>
               <h4
                 class="text-2xl md:text-3xl font-black tracking-tight text-foreground"
@@ -204,25 +204,6 @@
                   $t("techStack.langList.en")
                 }}</span>
               </div>
-            </div>
-          </div>
-
-          <div
-            class="pt-10 md:pt-16 border-t border-foreground/5 relative z-10"
-          >
-            <p
-              class="text-[8px] md:text-[10px] uppercase font-black tracking-widest text-primary mb-4 md:mb-6"
-            >
-              {{ $t("techStack.principles") }}
-            </p>
-            <div class="flex flex-wrap gap-2 md:gap-3">
-              <span
-                v-for="skill in skills"
-                :key="skill"
-                class="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-muted glass px-4 py-2 rounded-lg md:rounded-xl border-foreground/5 hover:bg-primary/10 hover:border-primary/40 transition-all cursor-default shadow-sm hover:shadow-primary/10"
-              >
-                {{ skill }}
-              </span>
             </div>
           </div>
         </Motion>
@@ -268,7 +249,23 @@ const detailedStack = [
   },
 ];
 
-const skills = ["GxP", "POO", "JSDoc", "Clean Code", "SPA/SSR"];
+const skills = [
+  "Artificial Intelligence",
+  "TypeScript",
+  "Tailwind CSS",
+  "Monorepo Architecture",
+  "Functional Programming",
+  "Frontend Architecture",
+  "System Design",
+  "Testing Strategy",
+  "Web Performance",
+  "Clean Code",
+  "CI/CD Pipelines",
+  "State Management",
+  "Design Systems",
+  "Accessibility",
+  "SEO Optimization",
+];
 </script>
 
 <style scoped>

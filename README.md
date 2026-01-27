@@ -60,4 +60,4 @@ npm run preview
 
 ## 📄 License
 
-© 2026 Signal Protocol. All rights reserved. Built with passion by César Gómez.
+© 2026 Ancelabs. All rights reserved. Built with passion by César Gómez.

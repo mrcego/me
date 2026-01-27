@@ -33,7 +33,9 @@
     <div
       class="container mx-auto grid lg:grid-cols-[1.2fr_1fr] items-center gap-16 md:gap-24 z-10 relative"
     >
-      <div class="space-y-10 md:space-y-16">
+      <div
+        class="space-y-10 md:space-y-16 flex flex-col items-center lg:items-start text-center lg:text-left"
+      >
         <div class="space-y-6 md:space-y-10 group">
           <Motion
             :initial="{ opacity: 0, scale: 0.9, y: -10 }"
@@ -98,7 +100,7 @@
               {{ $t("hero.description") }}
             </p>
             <div
-              class="flex flex-wrap gap-x-4 sm:gap-x-6 md:gap-x-10 gap-y-2 sm:gap-y-3 md:gap-y-4"
+              class="flex flex-wrap justify-center lg:justify-start gap-x-4 sm:gap-x-6 md:gap-x-10 gap-y-2 sm:gap-y-3 md:gap-y-4"
             >
               <div
                 v-for="tag in heroTags"
@@ -116,7 +118,7 @@
           :initial="{ opacity: 0, y: 15 }"
           :animate="{ opacity: 1, y: 0 }"
           :transition="{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }"
-          class="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 items-start sm:items-center"
+          class="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 items-center lg:items-start justify-center lg:justify-start w-full lg:w-auto"
         >
           <Button
             class="btn-premium bg-primary text-primary-contrast rounded-3xl! px-8! sm:px-10! md:px-12! py-4! sm:py-5! md:py-6! shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 transition-all w-full sm:w-auto text-sm sm:text-base border-none!"
@@ -126,12 +128,12 @@
           >
             <Icon
               name="solar:rocket-2-bold-duotone"
-              class="w-5 h-5 sm:w-6 sm:h-6"
+              class="w-6 h-6 sm:w-7 sm:h-7"
             />
             <span>{{ $t("hero.cta") }}</span>
           </Button>
           <div
-            class="flex gap-3 sm:gap-4 md:gap-6 items-center border-t sm:border-t-0 sm:border-l border-foreground/10 pt-4 sm:pt-0 sm:pl-6 md:pl-8 w-full sm:w-auto justify-center sm:justify-start"
+            class="flex gap-3 sm:gap-4 md:gap-6 items-center border-t sm:border-t-0 sm:border-l border-foreground/10 pt-4 sm:pt-0 sm:pl-6 md:pl-8 w-full sm:w-auto justify-center lg:justify-start"
           >
             <a
               v-for="social in socials"
@@ -142,13 +144,13 @@
               :aria-label="`Visit ${social.label} profile`"
               class="p-3 sm:p-4 glass rounded-xl sm:rounded-2xl text-muted hover:text-foreground hover:border-primary/30 transition-all hover:-translate-y-1 active:scale-90"
             >
-              <Icon :name="social.icon" class="w-10 h-10 sm:w-11 sm:h-11" />
+              <Icon :name="social.icon" class="w-11 h-11 sm:w-12 sm:h-12" />
             </a>
           </div>
         </Motion>
 
         <div
-          class="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 pt-8 sm:pt-10 md:pt-12 border-t border-foreground/5"
+          class="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 pt-8 sm:pt-10 md:pt-12 border-t border-foreground/5 w-full max-w-lg lg:max-w-none mx-auto lg:mx-0"
         >
           <Motion
             v-for="(stat, i) in heroStats"
@@ -220,17 +222,27 @@
 
             <!-- Floating HUD Elements -->
             <div
-              class="absolute top-6 right-6 md:top-10 md:right-10 z-20 glass px-4 md:px-5 py-2 md:py-3 rounded-xl md:rounded-2xl animate-pulse-slow"
+              class="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-20 glass px-4 py-2.5 rounded-full flex items-center gap-3 border border-primary/20 bg-background/60 backdrop-blur-md shadow-lg animate-pulse-slow"
             >
-              <div
-                class="text-[6px] md:text-[8px] uppercase font-black tracking-widest text-primary"
-              >
-                {{ $t("hero.hud.status") }}
-              </div>
-              <div
-                class="text-[10px] md:text-xs font-mono font-bold text-foreground uppercase"
-              >
-                {{ $t("hero.hud.operational") }}
+              <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"
+                ></span>
+                <span
+                  class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-emerald-500"
+                ></span>
+              </span>
+              <div class="flex flex-col gap-0.5">
+                <span
+                  class="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-primary leading-none"
+                >
+                  {{ $t("hero.hud.status") }}
+                </span>
+                <span
+                  class="text-[9px] md:text-[11px] font-mono font-bold text-foreground uppercase leading-none"
+                >
+                  {{ $t("hero.hud.operational") }}
+                </span>
               </div>
             </div>
           </div>
@@ -268,7 +280,7 @@ const socials = [
   },
   {
     icon: "simple-icons:github",
-    link: "https://github.com/cesargomezh",
+    link: "https://github.com/mrcego",
     label: "GitHub",
   },
   {

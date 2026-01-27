@@ -47,7 +47,7 @@
 
       <!-- Certifications Grid -->
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8"
       >
         <Motion
           v-for="(cert, i) in certifications"
@@ -68,7 +68,7 @@
               <div
                 class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-500 shadow-xl"
               >
-                <Icon name="solar:medal-ribbon-bold" class="w-7 h-7" />
+                <Icon name="solar:medal-ribbon-bold" class="w-10 h-10" />
               </div>
               <span
                 class="text-[10px] font-black uppercase tracking-widest text-muted"
@@ -86,7 +86,7 @@
               <div
                 class="flex items-center gap-2 text-sm font-medium text-muted"
               >
-                <Icon name="simple-icons:linkedin" class="w-4 h-4" />
+                <Icon name="simple-icons:linkedin" class="w-5 h-5" />
                 <span>{{ cert.issuer }}</span>
               </div>
             </div>
@@ -113,7 +113,7 @@
               {{ $t("certifications.viewCredential") }}
               <Icon
                 name="solar:arrow-right-up-linear"
-                class="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                class="w-5 h-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
               />
             </NuxtLink>
           </div>
