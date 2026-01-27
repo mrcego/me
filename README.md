@@ -15,12 +15,17 @@ A high-fidelity, cinematic portfolio built with **Nuxt 3**, **Vue 3**, and **Mot
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Nuxt 3](https://nuxt.com/) (Vue 3)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Framework**: [Nuxt 4](https://nuxt.com/) (Vue 3)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) con Vite
 - **Animations**: [Motion-V](https://motion-v.com/) (Motion for Vue)
-- **Icons**: [Nuxt Icon](https://nuxt.com/modules/icon) (Solar Duotone Set)
+- **Icons**: [Lucide Vue Next](https://lucide.dev/) + [Nuxt Icon](https://nuxt.com/modules/icon) (Solar, Simple Icons, Logos)
 - **Internationalization**: [@nuxtjs/i18n](https://i18n.nuxtjs.org/)
-- **UI Components**: [PrimeVue](https://primevue.org/)
+- **UI Components**: [PrimeVue 4](https://primevue.org/) con tema Aura
+- **SEO**: [@nuxtjs/seo](https://nuxtseo.com/) + Robots + Sitemap
+- **Image Optimization**: [@nuxt/image](https://nuxt.com/modules/image)
+- **Fonts**: [@nuxt/fonts](https://nuxt.com/modules/fonts)
+- **Utilities**: [VueUse](https://vueuse.org/)
+- **Development**: ESLint + Nuxt Hints
 
 ## 🚀 Getting Started
 
