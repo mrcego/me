@@ -6,7 +6,7 @@
 ```bash
 # Asegúrate que tu repositorio está en GitHub
 git remote -v
-# Deberías ver: origin https://github.com/cesargomezh/me.git (o tu repo)
+# Deberías ver: origin https://github.com/mrcego/me.git (o tu repo)
 ```
 
 ### 2. Configurar GitHub Pages
@@ -36,7 +36,7 @@ git push origin main
 1. Ve a **Actions** tab en tu repositorio
 2. Verás el workflow "Deploy to GitHub Pages" corriendo
 3. Cuando termine, tu sitio estará disponible en:
-   - `https://cesargomezh.github.io/me`
+   - `https://mrcego.github.io/me`
 
 ## 📝 Notas importantes
 
@@ -44,7 +44,7 @@ git push origin main
 El sitio está configurado para funcionar en `/me` (el nombre del repositorio). Si cambias el nombre del repo, actualiza esta línea en `nuxt.config.ts`:
 
 ```typescript
-baseURL: process.env.NODE_ENV === 'production' ? '/nuevo-nombre' : '/'
+baseURL: '/me'
 ```
 
 ### Generación estática
@@ -66,6 +66,6 @@ Cada vez que hagas push a la rama `main`, el sitio se reconstruirá y desplegar�
 3. Revisa las rutas en `nuxt.config.ts`
 
 ## 🎯 Resultado final
-Tu portfolio estará disponible en: `https://cesargomezh.github.io/me`
+Tu portfolio estará disponible en: `https://mrcego.github.io/me`
 
 Con favicon personalizado, OG images optimizados y todo funcionando perfectamente.

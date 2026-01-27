@@ -151,8 +151,9 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
     ['@nuxtjs/sitemap', {
-      sitemapUrl: 'https://mrcego.github.io/me',
-      baseURL: '/me'
+      site: {
+        url: 'https://mrcego.github.io/me'
+      }
     }],
     ['@nuxtjs/robots', {
       robots: {
