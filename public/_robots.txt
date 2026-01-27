@@ -14,4 +14,4 @@ Allow: /#capabilities
 Allow: /#contact
 
 # Sitemap location
-Sitemap: https://cesargomezh.github.io/sitemap.xml
+Sitemap: https://cesargomezh.github.io/me/sitemap.xml

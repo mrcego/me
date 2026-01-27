@@ -35,17 +35,17 @@ export default defineNuxtConfig({
         { property: 'og:type', content: 'website' },
         { property: 'og:title', content: 'César Gómez - Senior Fullstack Developer' },
         { property: 'og:description', content: 'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence.' },
-        { property: 'og:image', content: 'https://cesargomezh.github.io/img/og-image.svg' },
-        { property: 'og:url', content: 'https://cesargomezh.github.io' },
+        { property: 'og:image', content: 'https://mrcego.github.io/img/og-image.svg' },
+        { property: 'og:url', content: 'https://mrcego.github.io' },
         { property: 'og:site_name', content: 'César Gómez Portfolio' },
 
         // Twitter Cards
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'César Gómez - Senior Fullstack Developer' },
         { name: 'twitter:description', content: 'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence.' },
-        { name: 'twitter:image', content: 'https://cesargomezh.github.io/img/og-image.svg' },
-        { name: 'twitter:site', content: '@cesargomezh' },
-        { name: 'twitter:creator', content: '@cesargomezh' },
+        { name: 'twitter:image', content: 'https://mrcego.github.io/img/og-image.svg' },
+        { name: 'twitter:site', content: '@mrcego' },
+        { name: 'twitter:creator', content: '@mrcego' },
 
         // Performance and PWA
         { name: 'theme-color', content: '#ff4b5c' },
@@ -71,7 +71,7 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'canonical', href: 'https://cesargomezh.github.io' }
+        { rel: 'canonical', href: 'https://mrcego.github.io' }
       ],
       script: [
         // Structured Data for Person
@@ -83,11 +83,11 @@ export default defineNuxtConfig({
             "name": "César Gómez",
             "jobTitle": "Senior Fullstack Developer",
             "description": "Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.",
-            "url": "https://cesargomezh.github.io",
-            "image": "https://cesargomezh.github.io/img/me.jpg",
+            "url": "https://mrcego.github.io",
+            "image": "https://mrcego.github.io/img/me.jpg",
             "sameAs": [
               "https://linkedin.com/in/mrcego",
-              "https://github.com/cesargomezh"
+              "https://github.com/mrcego"
             ],
             "knowsAbout": [
               "Vue.js", "Nuxt.js", "TypeScript", "JavaScript", "Node.js",
@@ -112,19 +112,19 @@ export default defineNuxtConfig({
             "@type": "WebSite",
             "name": "César Gómez Portfolio",
             "description": "Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.",
-            "url": "https://cesargomezh.github.io",
-            "image": "https://cesargomezh.github.io/img/og-image.svg",
+            "url": "https://mrcego.github.io",
+            "image": "https://mrcego.github.io/img/og-image.svg",
             "author": {
               "@type": "Person",
               "name": "César Gómez",
-              "url": "https://cesargomezh.github.io"
+              "url": "https://mrcego.github.io"
             },
             "publisher": {
               "@type": "Organization",
               "name": "César Gómez",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://cesargomezh.github.io/img/logo-final.svg"
+                "url": "https://mrcego.github.io/img/logo-final.svg"
               }
             }
           })
@@ -151,10 +151,14 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
     ['@nuxtjs/sitemap', {
-      sitemapUrl: 'https://cesargomezh.github.io/me',
+      sitemapUrl: 'https://mrcego.github.io/me',
       baseURL: '/me'
     }],
-    '@nuxtjs/robots',
+    ['@nuxtjs/robots', {
+      robots: {
+        robotsTxt: false
+      }
+    }],
     '@primevue/nuxt-module'
   ],
 
