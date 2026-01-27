@@ -10,6 +10,12 @@ export default defineNuxtConfig({
     compatibilityVersion: 4
   },
 
+  // Site configuration for SEO modules
+  site: {
+    url: 'https://mrcego.github.io',
+    name: 'César Gómez Portfolio'
+  },
+
   // GitHub Pages configuration
   nitro: {
     prerender: {
@@ -150,13 +156,18 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
-    ['@nuxtjs/sitemap', {
-      site: {
-        url: 'https://mrcego.github.io/me'
-      }
-    }],
     '@primevue/nuxt-module'
   ],
+
+  // SEO module configuration
+  robots: {
+    disallow: [],
+    robotsTxt: false
+  },
+
+  sitemap: {
+    strictNuxtContentPaths: true
+  },
 
   image: {
     quality: 80,
