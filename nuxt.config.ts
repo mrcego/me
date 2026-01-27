@@ -55,7 +55,6 @@ export default defineNuxtConfig({
 
         // Performance and PWA
         { name: 'theme-color', content: '#ff4b5c' },
-        { name: 'msapplication-TileImage', content: '/apple-touch-icon.png' },
         { name: 'msapplication-TileColor', content: '#ff4b5c' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
         { 'http-equiv': 'X-XSS-Protection', content: '1; mode=block' }
@@ -70,13 +69,7 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.googleapis.com', crossorigin: '' },
         { rel: 'preconnect', href: 'https://www.linkedin.com', crossorigin: '' },
 
-        // Web App Manifest
-        { rel: 'manifest', href: '/manifest.json' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        // Canonical URL
         { rel: 'canonical', href: 'https://mrcego.github.io/me' }
       ],
       script: [
