@@ -16,12 +16,11 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ['/']
     },
-    compressPublicAssets: true,
-    // Base URL for GitHub Pages
-    baseURL: process.env.NODE_ENV === 'production' ? '/me' : '/'
+    compressPublicAssets: true
   },
 
   app: {
+    baseURL: '/me',
     head: {
       title: 'César Gómez - Senior Fullstack Developer',
       meta: [
@@ -151,7 +150,11 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
-    '@nuxtjs/sitemap',
+    ['@nuxtjs/sitemap', {
+      sitemapUrl: 'https://cesargomezh.github.io/me',
+      baseURL: '/me'
+    }],
+    '@nuxtjs/robots',
     '@primevue/nuxt-module'
   ],
 
