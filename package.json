@@ -22,7 +22,8 @@
     "motion-v": "^1.7.5",
     "nuxt": "^4.2.2",
     "primeicons": "^7.0.0",
-    "primevue": "^4.5.4"
+    "primevue": "^4.5.4",
+    "sharp": "^0.34.5"
   },
   "devDependencies": {
     "@iconify-json/logos": "^1.2.10",

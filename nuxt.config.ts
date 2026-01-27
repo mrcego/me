@@ -39,7 +39,7 @@ export default defineNuxtConfig({
 
         // Performance and PWA
         { name: 'theme-color', content: '#ff4b5c' },
-        { name: 'msapplication-TileImage', content: '/img/logo-final.svg' },
+        { name: 'msapplication-TileImage', content: '/apple-touch-icon.png' },
         { name: 'msapplication-TileColor', content: '#ff4b5c' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
         { 'http-equiv': 'X-XSS-Protection', content: '1; mode=block' }
@@ -56,7 +56,10 @@ export default defineNuxtConfig({
 
         // Web App Manifest
         { rel: 'manifest', href: '/manifest.json' },
-        { rel: 'apple-touch-icon', href: '/img/logo-final.svg' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'canonical', href: 'https://cesargomezh.github.io' }
       ],
