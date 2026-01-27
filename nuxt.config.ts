@@ -155,11 +155,6 @@ export default defineNuxtConfig({
         url: 'https://mrcego.github.io/me'
       }
     }],
-    ['@nuxtjs/robots', {
-      robots: {
-        robotsTxt: false
-      }
-    }],
     '@primevue/nuxt-module'
   ],
 
