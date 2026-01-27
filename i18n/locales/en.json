@@ -13,7 +13,7 @@
   },
   "hero": {
     "tagline": "Founding Member {'@'} LingoQuesto",
-    "name": "CÉSAR GÓMEZ",
+    "name": "CESAR GOMEZ",
     "title": "Senior Fullstack Developer",
     "description": "13+ years specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.",
     "cta": "Get in Touch",
@@ -52,12 +52,6 @@
         "years": "2024 - Present",
         "desc": "Defining product vision and fullstack roadmap, ensuring the frontend reflects high-end craftsmanship."
       },
-      "ancelab": {
-        "title": "Interim CTO",
-        "company": "AnceLab",
-        "years": "Feb '25 - Jul '25",
-        "desc": "Technical leadership and strategic definition for high-impact projects during transitional phases."
-      },
       "colegium": {
         "title": "Senior Frontend Developer",
         "company": "Colegium",
@@ -69,12 +63,6 @@
         "company": "TISSINI",
         "years": "2019 - 2021",
         "desc": "Developed mobile-first solutions with Vue 3. Reduced deployment times by 60% via CI/CD."
-      },
-      "freelance": {
-        "title": "Freelance Software Developer",
-        "company": "Freelance",
-        "years": "2017 - 2018",
-        "desc": "Web and mobile application development focusing on cross-platform versatility."
       },
       "cuartopixel": {
         "title": "Web Frontend Developer",
