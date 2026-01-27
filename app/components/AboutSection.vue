@@ -235,10 +235,6 @@ const roles = [
     icon: "logos:nuxt-icon",
   },
   {
-    key: "ancelab",
-    icon: "logos:typescript-icon",
-  },
-  {
     key: "colegium",
     icon: "logos:vue",
   },
@@ -247,16 +243,8 @@ const roles = [
     icon: "logos:vue",
   },
   {
-    key: "freelance",
-    icon: "logos:javascript",
-  },
-  {
     key: "cuartopixel",
     icon: "logos:angular-icon",
-  },
-  {
-    key: "quehaypa",
-    icon: "logos:javascript",
   },
   {
     key: "zabud",

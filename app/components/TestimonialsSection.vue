@@ -92,6 +92,8 @@
 </template>
 
 <script setup>
+import { Motion } from "motion-v";
+
 const { tm, rt } = useI18n();
 const testimonials = computed(() => {
   const data = tm("testimonials.data");

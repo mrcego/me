@@ -178,6 +178,9 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: 'i18n_locale',
       redirectOn: 'root'
+    },
+    bundle: {
+      optimizeTranslationDirective: false
     }
   },
 

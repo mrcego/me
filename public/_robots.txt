@@ -1,8 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
-Disallow: /api
-Disallow: /_nuxt/
+
 Disallow: /.well-known/
 Disallow: /sw.js
 Disallow: /manifest.json
