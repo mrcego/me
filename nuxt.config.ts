@@ -10,6 +10,17 @@ export default defineNuxtConfig({
     compatibilityVersion: 4
   },
 
+  // GitHub Pages configuration
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/']
+    },
+    compressPublicAssets: true,
+    // Base URL for GitHub Pages
+    baseURL: process.env.NODE_ENV === 'production' ? '/me' : '/'
+  },
+
   app: {
     head: {
       title: 'César Gómez - Senior Fullstack Developer',
@@ -185,14 +196,6 @@ export default defineNuxtConfig({
     bundle: {
       optimizeTranslationDirective: false
     }
-  },
-
-  nitro: {
-    prerender: {
-      crawlLinks: true,
-      routes: ['/']
-    },
-    compressPublicAssets: true
   },
 
   experimental: {
