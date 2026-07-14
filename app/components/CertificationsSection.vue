@@ -14,46 +14,40 @@
     <div class="container mx-auto">
       <!-- Section Header -->
       <Motion
-        :initial="{ opacity: 0, y: 20 }"
-        :in-view="{ opacity: 1, y: 0 }"
+        :initial="motionInitial({ opacity: 0, y: 20 })"
+        :in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }"
         :viewport="{ once: true }"
         class="max-w-4xl mx-auto text-center space-y-8 md:space-y-10 mb-24 md:mb-32"
       >
         <div class="flex items-center justify-center gap-4 md:gap-6">
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
-          <h2
-            class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
-          >
-            {{ $t("certifications.section") }}
+          <h2 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+            {{ $t('certifications.section') }}
           </h2>
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
         </div>
         <h3
           class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-foreground"
         >
-          {{ $t("certifications.title") }}
+          {{ $t('certifications.title') }}
           <br />
-          <span class="text-gradient">{{
-            $t("certifications.titleHighlight")
-          }}</span>
+          <span class="text-gradient">{{ $t('certifications.titleHighlight') }}</span>
         </h3>
         <p
           class="text-muted text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto"
         >
-          {{ $t("certifications.description") }}
+          {{ $t('certifications.description') }}
         </p>
       </Motion>
 
       <!-- Certifications Grid -->
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8"
-      >
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
         <Motion
           v-for="(cert, i) in certifications"
           :key="i"
-          :initial="{ opacity: 0, y: 20 }"
-          :in-view="{ opacity: 1, y: 0 }"
+          :initial="motionInitial({ opacity: 0, y: 20 })"
+          :in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="{
             duration: 0.5,
             delay: i * 0.05,
@@ -70,10 +64,9 @@
               >
                 <Icon name="solar:medal-ribbon-bold" class="w-10 h-10" />
               </div>
-              <span
-                class="text-[10px] font-black uppercase tracking-widest text-muted"
-                >{{ cert.date }}</span
-              >
+              <span class="text-[10px] font-black uppercase tracking-widest text-muted">{{
+                cert.date
+              }}</span>
             </div>
 
             <!-- Title and Issuer -->
@@ -83,9 +76,7 @@
               >
                 {{ cert.title }}
               </h4>
-              <div
-                class="flex items-center gap-2 text-sm font-medium text-muted"
-              >
+              <div class="flex items-center gap-2 text-sm font-medium text-muted">
                 <Icon name="simple-icons:linkedin" class="w-5 h-5" />
                 <span>{{ cert.issuer }}</span>
               </div>
@@ -110,7 +101,7 @@
               target="_blank"
               class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-xs font-black uppercase tracking-[0.2em] text-foreground hover:bg-primary hover:text-primary-contrast transition-all duration-500 group/btn"
             >
-              {{ $t("certifications.viewCredential") }}
+              {{ $t('certifications.viewCredential') }}
               <Icon
                 name="solar:arrow-right-up-linear"
                 class="w-5 h-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
@@ -124,14 +115,15 @@
 </template>
 
 <script setup>
-import { Motion } from "motion-v";
-import { useI18n } from "vue-i18n";
+import { Motion } from 'motion-v';
+import { useI18n } from 'vue-i18n';
 
 const { tm, rt } = useI18n();
 
+const { motionInitial, motionInView } = useMotionConfig();
 // Acceder directamente a los datos de certificaciones desde i18n
 const certifications = computed(() => {
-  const data = tm("certifications.data");
+  const data = tm('certifications.data');
   if (!data || !Array.isArray(data)) return [];
 
   return data.map((item) => ({

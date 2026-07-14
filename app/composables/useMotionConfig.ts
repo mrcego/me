@@ -3,7 +3,17 @@
  * Configuración óptima para evitar el efecto "latido" durante scroll
  */
 
+import { usePreferredReducedMotion } from '@vueuse/core';
+
 export const useMotionConfig = () => {
+  const prefersReducedMotion = usePreferredReducedMotion();
+  const motionEnabled = computed(() => prefersReducedMotion.value !== 'reduce');
+
+  const motionInitial = <T>(value: T): T | false => (motionEnabled.value ? value : false);
+
+  const motionInView = <T>(value: T): T | undefined => (motionEnabled.value ? value : undefined);
+
+  const motionAnimate = <T>(value: T): T | undefined => (motionEnabled.value ? value : undefined);
   /**
    * Configuración base para animaciones sin latido
    * - amount: 0.1 = solo requiere 10% de visibilidad
@@ -13,7 +23,7 @@ export const useMotionConfig = () => {
   const baseViewport = {
     once: true,
     amount: 0.1,
-    margin: '0px 0px -400px 0px'
+    margin: '0px 0px -400px 0px',
   };
 
   /**
@@ -28,7 +38,7 @@ export const useMotionConfig = () => {
     initial: { opacity: 0, x: -40, scale: 0.9 },
     inView: { opacity: 1, x: 0, scale: 1 },
     transition: { duration, ease: smoothEase },
-    viewport: baseViewport
+    viewport: baseViewport,
   });
 
   /**
@@ -38,7 +48,7 @@ export const useMotionConfig = () => {
     initial: { opacity: 0, x: 40, scale: 0.9 },
     inView: { opacity: 1, x: 0, scale: 1 },
     transition: { duration, ease: smoothEase },
-    viewport: baseViewport
+    viewport: baseViewport,
   });
 
   /**
@@ -48,7 +58,7 @@ export const useMotionConfig = () => {
     initial: { opacity: 0, y: 50, scale: 0.92 },
     inView: { opacity: 1, y: 0, scale: 1 },
     transition: { duration, ease: smoothEase },
-    viewport: baseViewport
+    viewport: baseViewport,
   });
 
   /**
@@ -58,7 +68,7 @@ export const useMotionConfig = () => {
     initial: { opacity: 0, scale: 0.95 },
     inView: { opacity: 1, scale: 1 },
     transition: { duration, ease: smoothEase },
-    viewport: baseViewport
+    viewport: baseViewport,
   });
 
   /**
@@ -67,21 +77,25 @@ export const useMotionConfig = () => {
   const staggerItem = (index: number, duration = 1.2, delayMultiplier = 0.15) => ({
     initial: { opacity: 0, y: 50, scale: 0.92 },
     inView: { opacity: 1, y: 0, scale: 1 },
-    transition: { 
-      duration, 
-      delay: index * delayMultiplier, 
-      ease: smoothEase 
+    transition: {
+      duration,
+      delay: index * delayMultiplier,
+      ease: smoothEase,
     },
-    viewport: baseViewport
+    viewport: baseViewport,
   });
 
   return {
+    motionEnabled,
+    motionInitial,
+    motionInView,
+    motionAnimate,
     baseViewport,
     smoothEase,
     slideInLeft,
     slideInRight,
     slideInUp,
     fadeIn,
-    staggerItem
+    staggerItem,
   };
 };

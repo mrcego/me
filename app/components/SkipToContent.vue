@@ -1,16 +1,14 @@
 ﻿<template>
-  <a href="#main-content" class="skip-to-content" @click="skipToContent">
-    Skip to main content
-  </a>
+  <a href="#main-content" class="skip-to-content" @click="skipToContent"> Skip to main content </a>
 </template>
 
 <script setup>
 const skipToContent = (e) => {
   e.preventDefault();
-  const mainContent = document.getElementById("main-content");
+  const mainContent = document.getElementById('main-content');
   if (mainContent) {
     mainContent.focus();
-    mainContent.scrollIntoView({ behavior: "smooth" });
+    mainContent.scrollIntoView({ behavior: 'smooth' });
   }
 };
 </script>
@@ -40,4 +38,3 @@ const skipToContent = (e) => {
   outline-offset: 4px;
 }
 </style>
-

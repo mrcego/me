@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from 'vue';
 
 const canvas = ref(null);
 let ctx = null;
@@ -46,10 +46,7 @@ const initParticles = () => {
 
   const canvasWidth = canvas.value.width;
   const canvasHeight = canvas.value.height;
-  const particleCount = Math.min(
-    60,
-    Math.floor((canvasWidth * canvasHeight) / 15000)
-  );
+  const particleCount = Math.min(60, Math.floor((canvasWidth * canvasHeight) / 15000));
 
   particles = [];
   for (let i = 0; i < particleCount; i++) {
@@ -104,21 +101,21 @@ const handleResize = () => {
 onMounted(() => {
   if (!canvas.value) return;
 
-  ctx = canvas.value.getContext("2d");
+  ctx = canvas.value.getContext('2d');
   canvas.value.width = window.innerWidth;
   canvas.value.height = window.innerHeight;
 
   initParticles();
   animate();
 
-  window.addEventListener("resize", handleResize);
+  window.addEventListener('resize', handleResize);
 });
 
 onUnmounted(() => {
   if (animationFrameId) {
     cancelAnimationFrame(animationFrameId);
   }
-  window.removeEventListener("resize", handleResize);
+  window.removeEventListener('resize', handleResize);
 });
 </script>
 
@@ -139,4 +136,3 @@ onUnmounted(() => {
   display: block;
 }
 </style>
-

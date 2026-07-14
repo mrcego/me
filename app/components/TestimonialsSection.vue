@@ -5,46 +5,41 @@
   >
     <div class="container mx-auto space-y-24">
       <Motion
-        :initial="{ opacity: 0, y: 5 }"
-        :in-view="{ opacity: 1, y: 0 }"
+        :initial="motionInitial({ opacity: 0, y: 5 })"
+        :in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }"
         :viewport="{ once: true, amount: 0.1 }"
         class="max-w-4xl mx-auto text-center space-y-8"
       >
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
-          <h2
-            class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
-          >
-            {{ $t("testimonials.section") }}
+          <h2 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+            {{ $t('testimonials.section') }}
           </h2>
           <div class="h-px w-10 bg-primary/40" />
         </div>
         <h3
-          class="text-5xl md:text-8xl font-black tracking-tighter text-foreground pb-24"
+          class="text-5xl md:text-8xl font-black tracking-tighter text-foreground pb-24 text-balance"
         >
-          {{ $t("testimonials.title") }}<br />
-          <span class="text-gradient">{{
-            $t("testimonials.titleHighlight")
-          }}</span>
+          {{ $t('testimonials.title') }}<br />
+          <span class="text-gradient">{{ $t('testimonials.titleHighlight') }}</span>
         </h3>
       </Motion>
 
       <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-12">
         <Motion
           v-for="(t, i) in testimonials"
-          :key="i"
-          :initial="{ opacity: 0, scale: 0.98, y: 5 }"
-          :in-view="{ opacity: 1, scale: 1, y: 0 }"
+          :key="t.name"
+          :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 })"
+          :in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
           :transition="{
             duration: 0.5,
             delay: i * 0.1,
             ease: [0.22, 1, 0.36, 1],
           }"
           :viewport="{ once: true, amount: 0.1 }"
-          class="group relative glass p-10 md:p-14 rounded-[3.5rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 cursor-alias overflow-hidden"
+          class="group relative glass p-10 md:p-14 rounded-[3.5rem] border-foreground/5 hover:border-primary/40 transition-[border-color,box-shadow] duration-700 overflow-hidden"
         >
-          <!-- Holographic dust -->
           <div
             class="absolute inset-0 bg-primary/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none testimonial-dots"
           />
@@ -54,37 +49,53 @@
               <Icon
                 name="solar:chat-square-code-bold-duotone"
                 class="w-12 h-12 md:w-14 md:h-14 opacity-50"
+                aria-hidden="true"
               />
             </div>
 
-            <p
+            <blockquote
               class="text-lg md:text-xl text-muted font-medium leading-relaxed italic group-hover:text-foreground transition-colors max-h-[9.2rem] md:max-h-[10.2rem] overflow-y-auto pr-4 custom-scrollbar"
             >
-              "{{ t.quote }}"
-            </p>
-            <div
-              class="flex items-center gap-6 pt-6 border-t border-foreground/5 group-hover:border-primary/20 transition-all"
+              <p>"{{ t.quote }}"</p>
+            </blockquote>
+
+            <footer
+              class="flex items-center gap-6 pt-6 border-t border-foreground/5 group-hover:border-primary/20 transition-[border-color]"
             >
               <div
-                class="w-14 h-14 rounded-2xl glass overflow-hidden border-foreground/10 group-hover:scale-110 transition-transform"
+                class="w-14 h-14 rounded-2xl glass overflow-hidden border border-foreground/10 group-hover:scale-110 transition-transform shrink-0"
               >
-                <img
-                  :src="t.avatar"
-                  class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-all"
-                  alt="Testimonial Avatar"
+                <NuxtImg
+                  v-if="!failedAvatars.has(t.name)"
+                  :src="avatarSrc(t.name)"
+                  :alt="`${t.name} — ${t.role}`"
+                  width="56"
+                  height="56"
+                  loading="lazy"
+                  class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-[filter,transform]"
+                  @error="markAvatarFailed(t.name)"
                 />
+                <div
+                  v-else
+                  class="w-full h-full flex items-center justify-center bg-primary/15 text-primary font-black text-sm"
+                  :aria-label="t.name"
+                >
+                  {{ getInitials(t.name) }}
+                </div>
               </div>
-              <div class="space-y-1">
-                <h5 class="text-lg font-black text-foreground tracking-tight">
+              <div class="space-y-1 min-w-0">
+                <cite
+                  class="text-lg font-black text-foreground tracking-tight not-italic block truncate"
+                >
                   {{ t.name }}
-                </h5>
+                </cite>
                 <p
-                  class="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-primary transition-colors"
+                  class="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-primary transition-colors line-clamp-2"
                 >
                   {{ t.role }}
                 </p>
               </div>
-            </div>
+            </footer>
           </div>
         </Motion>
       </div>
@@ -92,29 +103,45 @@
   </section>
 </template>
 
-<script setup>
-import { Motion } from "motion-v";
+<script setup lang="ts">
+import { Motion } from 'motion-v';
 
 const { tm, rt } = useI18n();
+const { getLocalAvatar, getInitials } = useTestimonialAvatar();
+const { motionInitial, motionInView } = useMotionConfig();
+
+const failedAvatars = ref(new Set<string>());
+
+interface TestimonialEntry {
+  name: string;
+  role: string;
+  quote: string;
+}
+
 const testimonials = computed(() => {
-  const data = tm("testimonials.data");
-  if (!data || !Array.isArray(data)) return [];
+  const data = tm('testimonials.data') as TestimonialEntry[] | unknown;
+  if (!Array.isArray(data)) return [];
   return data.map((t) => ({
     name: rt(t.name),
     role: rt(t.role),
     quote: rt(t.quote),
-    avatar: rt(t.avatar),
   }));
+});
+
+const avatarSrc = (name: string) => getLocalAvatar(name);
+
+const markAvatarFailed = (name: string) => {
+  failedAvatars.value = new Set([...failedAvatars.value, name]);
+};
+
+watch(testimonials, () => {
+  failedAvatars.value = new Set();
 });
 </script>
 
 <style scoped>
 .testimonial-dots {
-  background-image: radial-gradient(
-    circle,
-    rgba(255, 75, 92, 0.1) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(circle, rgba(255, 75, 92, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -135,7 +162,6 @@ const testimonials = computed(() => {
   background: rgba(255, 75, 92, 0.6);
 }
 
-/* Firefox */
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 75, 92, 0.2) transparent;

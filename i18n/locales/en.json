@@ -13,7 +13,7 @@
     "modes": "Modes"
   },
   "hero": {
-    "tagline": "Founding Member {'@'} LingoQuesto",
+    "tagline": "Founding Member {'@'} LingoQuesto · Available Aug 2026",
     "name": "CESAR GOMEZ",
     "title": "Senior Fullstack Developer",
     "description": "13+ years specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.",
@@ -50,8 +50,8 @@
       "lingoquesto": {
         "title": "Founding Member | Senior Fullstack",
         "company": "LingoQuesto",
-        "years": "2024 - Present",
-        "desc": "Defining product vision and fullstack roadmap, ensuring the frontend reflects high-end craftsmanship."
+        "years": "2025 - Aug 2026",
+        "desc": "Defining product vision and fullstack roadmap as founding engineer. Wrapping up role in August 2026 to pursue new opportunities."
       },
       "colegium": {
         "title": "Senior Frontend Developer",
@@ -182,7 +182,13 @@
         "title": "Programming Foundations: Fundamentals",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
-        "skills": ["Programming", "Web Development", "Frontend Development", "Software Development", "Coding Standards"],
+        "skills": [
+          "Programming",
+          "Web Development",
+          "Frontend Development",
+          "Software Development",
+          "Coding Standards"
+        ],
         "url": "https://www.linkedin.com/learning/certificates/21837bee635ea2e0a3d812fea5848a0c448807c545fd826427cfe7d767f2d863"
       },
       {
@@ -245,7 +251,13 @@
         "title": "Debug Code: JavaScript",
         "issuer": "LinkedIn",
         "date": "Feb. 2025",
-        "skills": ["Debugging", "Web Development", "Frontend Development", "Software Testing", "JavaScript"],
+        "skills": [
+          "Debugging",
+          "Web Development",
+          "Frontend Development",
+          "Software Testing",
+          "JavaScript"
+        ],
         "url": "https://www.linkedin.com/learning/certificates/b37010953715cdd72d83d920083218e663122e5d07203014e503bcfb63b87a6e"
       },
       {
@@ -341,38 +353,32 @@
       {
         "name": "Carol Valdebenito",
         "role": "Scrum Master | Agile Leadership",
-        "quote": "I worked for almost 5 years with César in two different teams, from my role as Scrum Master, and if there is one thing I can say with total certainty is that he is one of the best front-ends I have worked with. He has a rare ability: he develops thinking about failure. He doesn't just focus on 'how to make it work', but on 'how to prevent it from failing', contemplating a thousand possible scenarios, even the most improbable ones. That obsession with use cases makes his developments stable, robust, and hard to break. He is methodical, committed, and has an admirable work ethic. It was a pleasure working with him, and without a doubt, I would do it again.",
-        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQGk2IeE57rHBA/profile-displayphoto-shrink_100_100/B4EZUWjT.XH0AU-/0/1739840110897?e=1770854400&v=beta&t=6GaMmIxqMP2art0QxAe8nxZh3A0mx89T-vB4AfbpHXs"
+        "quote": "I worked for almost 5 years with César in two different teams, from my role as Scrum Master, and if there is one thing I can say with total certainty is that he is one of the best front-ends I have worked with. He has a rare ability: he develops thinking about failure. He doesn't just focus on 'how to make it work', but on 'how to prevent it from failing', contemplating a thousand possible scenarios, even the most improbable ones. That obsession with use cases makes his developments stable, robust, and hard to break. He is methodical, committed, and has an admirable work ethic. It was a pleasure working with him, and without a doubt, I would do it again."
       },
       {
         "name": "Michell Jose Gutierrez Rincon",
         "role": "Fullstack Developer",
-        "quote": "Excellent colleague, great developer and expert in frontend technologies",
-        "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQFACsZM6Wugcw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1609879783274?e=1770854400&v=beta&t=m8V_55NNTzqN0iKxc1o1pph0TOsEvbxT3iLtkcMWjXw"
+        "quote": "Excellent colleague, great developer and expert in frontend technologies"
       },
       {
         "name": "Fernando Delgado",
         "role": "Director of IT | TISSINI",
-        "quote": "One of my best Engineers!!",
-        "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQHOFDWUtEea9w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1613007031033?e=1770854400&v=beta&t=qmoe_cSNsYx_ghmuIgTF2hF5OdoTTefdmX7cTKZiNm8"
+        "quote": "One of my best Engineers!!"
       },
       {
         "name": "Genito Javier Andrade Perez",
         "role": "Sr Full Stack Developer",
-        "quote": "I had the privilege of working alongside César G. on several projects and I can say with total confidence that he is a highly competent, committed developer with great attention to detail. He stands out for his mastery of modern technologies, his ability to turn complex designs into functional and efficient interfaces, and his focus centered on user experience. In addition to his technical skills, César has an exemplary collaborative attitude, always willing to share knowledge and provide effective solutions.",
-        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQFIoOj1FmGyRw/profile-displayphoto-shrink_100_100/B4EZUbXxrzHcAU-/0/1739920973040?e=1770854400&v=beta&t=m1S5M0ApAI6xhaNtvS6odC6kSORTWhVne3MNhauLkUk"
+        "quote": "I had the privilege of working alongside César G. on several projects and I can say with total confidence that he is a highly competent, committed developer with great attention to detail. He stands out for his mastery of modern technologies, his ability to turn complex designs into functional and efficient interfaces, and his focus centered on user experience. In addition to his technical skills, César has an exemplary collaborative attitude, always willing to share knowledge and provide effective solutions."
       },
       {
         "name": "Andres Felipe Ordoñez Zuluaga",
         "role": "Product Owner | Engineering Lead",
-        "quote": "It is a pleasure to recommend César, an exceptional professional with whom I had the privilege of working. César not only possesses deep technical experience, but also stands out for his outstanding management and innovation capabilities. He constantly demonstrated a unique ability to lead projects, optimize processes, and propose creative solutions that drove the team's success. His commitment to excellence and his innovative vision make him an invaluable asset to any organization.",
-        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQG4ALMx5STP_g/profile-displayphoto-shrink_100_100/B4EZTnyujEGgAU-/0/1739055623564?e=1770854400&v=beta&t=oOy0ly0eIIEpRd0-vMauM7GewsxUJdPQiaA7biqZ5Qk"
+        "quote": "It is a pleasure to recommend César, an exceptional professional with whom I had the privilege of working. César not only possesses deep technical experience, but also stands out for his outstanding management and innovation capabilities. He constantly demonstrated a unique ability to lead projects, optimize processes, and propose creative solutions that drove the team's success. His commitment to excellence and his innovative vision make him an invaluable asset to any organization."
       },
       {
         "name": "María de los Ángeles Rodríguez",
         "role": "Management & Administrative Control",
-        "quote": "It is a pleasure to recommend people with great commitment and growth. If we are talking about an integral talent, Cesar meets the requirements. He is passionate about what he does, responsible, organized, intelligent, leader and excellent human service.",
-        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQF5xYs5k3etTQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1728095951600?e=1770854400&v=beta&t=RQa4xnbCK4_8Fcw4CKugnWLTJxrVWbi6i5gAFDstDqs"
+        "quote": "It is a pleasure to recommend people with great commitment and growth. If we are talking about an integral talent, Cesar meets the requirements. He is passionate about what he does, responsible, organized, intelligent, leader and excellent human service."
       }
     ]
   },

@@ -4,9 +4,7 @@
     class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
   >
     <!-- Architecture Background -->
-    <div
-      class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none overflow-hidden"
-    >
+    <div class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none overflow-hidden">
       <div class="absolute top-0 left-0 w-full h-full project-grid-bg" />
     </div>
 
@@ -15,38 +13,30 @@
         class="flex flex-col lg:flex-row justify-between lg:items-end gap-12 lg:gap-24 items-center text-center lg:text-left"
       >
         <Motion
-          :initial="{ opacity: 0, x: -50 }"
-          :in-view="{ opacity: 1, x: 0 }"
+          :initial="motionInitial({ opacity: 0, x: -50 })"
+          :in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
           class="space-y-8 md:space-y-10 group"
         >
-          <div
-            class="flex items-center gap-4 md:gap-6 justify-center lg:justify-start"
-          >
-            <div
-              class="h-px w-12 md:w-16 bg-primary shadow-[0_0_10px_rgba(255,75,92,0.5)]"
-            />
-            <h2
-              class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
-            >
-              {{ $t("portfolio.section_tag") }}
+          <div class="flex items-center gap-4 md:gap-6 justify-center lg:justify-start">
+            <div class="h-px w-12 md:w-16 bg-primary shadow-[0_0_10px_rgba(255,75,92,0.5)]" />
+            <h2 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+              {{ $t('portfolio.section_tag') }}
             </h2>
           </div>
           <h3
             class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-foreground"
           >
-            {{ $t("portfolio.title_top") }}<br />
-            <span class="text-gradient">{{
-              $t("portfolio.title_bottom")
-            }}</span>
+            {{ $t('portfolio.title_top') }}<br />
+            <span class="text-gradient">{{ $t('portfolio.title_bottom') }}</span>
           </h3>
         </Motion>
 
         <!-- Filter Tabs with Motion -->
         <Motion
-          :initial="{ opacity: 0, scale: 0.9 }"
-          :in-view="{ opacity: 1, scale: 1 }"
+          :initial="motionInitial({ opacity: 0, scale: 0.9 })"
+          :in-view="motionInView({ opacity: 1, scale: 1 })"
           :transition="{ duration: 0.8, delay: 0.2 }"
           :viewport="{ once: true }"
           class="flex flex-wrap gap-2 md:gap-4 p-2 md:p-3 glass rounded-[2.5rem] border-foreground/5 w-fit shadow-xl justify-center lg:justify-start"
@@ -73,8 +63,8 @@
         <Motion
           v-for="(project, i) in filteredProjects"
           :key="project.title"
-          :initial="{ opacity: 0, y: 30 }"
-          :in-view="{ opacity: 1, y: 0 }"
+          :initial="motionInitial({ opacity: 0, y: 30 })"
+          :in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="{
             duration: 0.8,
             delay: i * 0.15,
@@ -84,9 +74,7 @@
           class="group relative glass p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 flex flex-col cursor-pointer overflow-hidden"
         >
           <!-- holographic sweep -->
-          <div
-            class="absolute inset-x-0 bottom-0 h-px bg-primary/20 z-20 pointer-events-none"
-          />
+          <div class="absolute inset-x-0 bottom-0 h-px bg-primary/20 z-20 pointer-events-none" />
           <div
             class="absolute inset-0 bg-linear-to-tr from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"
           />
@@ -131,9 +119,7 @@
                 >
                   {{ $t(`portfolio.projects.${i}.title`) }}
                 </h4>
-                <p
-                  class="text-muted font-bold text-[10px] md:text-xs uppercase tracking-widest"
-                >
+                <p class="text-muted font-bold text-[10px] md:text-xs uppercase tracking-widest">
                   {{ project.category }}
                 </p>
               </div>
@@ -141,10 +127,7 @@
                 href="#"
                 class="w-12 h-12 md:w-16 md:h-16 glass rounded-full flex items-center justify-center text-muted hover:bg-primary hover:text-primary-contrast hover:scale-110 active:scale-90 transition-all duration-500 shrink-0 shadow-lg"
               >
-                <Icon
-                  name="solar:arrow-right-up-linear"
-                  class="w-12 h-12 md:w-14 md:h-14"
-                />
+                <Icon name="solar:arrow-right-up-linear" class="w-12 h-12 md:w-14 md:h-14" />
               </a>
             </div>
 
@@ -158,8 +141,8 @@
       </div>
 
       <Motion
-        :initial="{ opacity: 0, y: 5 }"
-        :in-view="{ opacity: 1, y: 0 }"
+        :initial="motionInitial({ opacity: 0, y: 5 })"
+        :in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }"
         :viewport="{ once: true }"
         class="text-center pt-8 md:pt-16"
@@ -168,14 +151,10 @@
           class="btn-premium px-12 md:px-16 py-6 md:py-8 border-foreground/10 text-foreground hover:text-white rounded-[3rem] hover:border-primary hover:shadow-primary/20 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto mx-auto flex items-center justify-center border!"
         >
           <span class="flex items-center gap-4 md:gap-6">
-            <Icon
-              name="solar:case-round-minimalistic-bold-duotone"
-              class="w-6 h-6 md:w-7 md:h-7"
-            />
-            <span
-              class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em]"
-              >{{ $t("portfolio.nexus") }}</span
-            >
+            <Icon name="solar:case-round-minimalistic-bold-duotone" class="w-6 h-6 md:w-7 md:h-7" />
+            <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">{{
+              $t('portfolio.nexus')
+            }}</span>
           </span>
         </button>
       </Motion>
@@ -184,33 +163,35 @@
 </template>
 
 <script setup>
-import { Motion } from "motion-v";
-import { ref, computed } from "vue";
+import { Motion } from 'motion-v';
+import { ref, computed } from 'vue';
 
-const activeCategory = ref("all");
-const categories = ["all", "systems", "fullstack", "frontend"];
+const { motionInitial, motionInView } = useMotionConfig();
+
+const activeCategory = ref('all');
+const categories = ['all', 'systems', 'fullstack', 'frontend'];
 
 const projects = [
   {
-    title: "Colegium Cloud Architecture",
-    category: "Fullstack",
-    tags: ["Vue 3", "Node.js"],
+    title: 'Colegium Cloud Architecture',
+    category: 'Fullstack',
+    tags: ['Vue 3', 'Node.js'],
     image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800",
-    desc: "Leading the technical evolution of a massive educational platform. Refactored legacy systems into modern Vue 3 architectures with 100k+ users.",
+      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800',
+    desc: 'Leading the technical evolution of a massive educational platform. Refactored legacy systems into modern Vue 3 architectures with 100k+ users.',
   },
   {
-    title: "LingoQuesto Interface",
-    category: "Frontend",
-    tags: ["Nuxt 4", "Motion"],
+    title: 'LingoQuesto Interface',
+    category: 'Frontend',
+    tags: ['Nuxt 4', 'Motion'],
     image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
-    desc: "Boutique frontend engineering focused on high-performance learning interfaces and seamless motion orchestration.",
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
+    desc: 'Boutique frontend engineering focused on high-performance learning interfaces and seamless motion orchestration.',
   },
 ];
 
 const filteredProjects = computed(() => {
-  if (activeCategory.value === "All") return projects;
+  if (activeCategory.value === 'All') return projects;
   return projects.filter((p) => p.category === activeCategory.value);
 });
 </script>

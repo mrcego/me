@@ -145,7 +145,13 @@
         "title": "Fundamentos esenciales de la programación",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
-        "skills": ["Programación", "Desarrollo web", "Desarrollo front end", "Desarrollo de programas", "Coding Standards"],
+        "skills": [
+          "Programación",
+          "Desarrollo web",
+          "Desarrollo front end",
+          "Desarrollo de programas",
+          "Coding Standards"
+        ],
         "url": "https://www.linkedin.com/learning/certificates/21837bee635ea2e0a3d812fea5848a0c448807c545fd826427cfe7d767f2d863"
       },
       {
@@ -201,7 +207,13 @@
         "title": "Conviértete en especialista en desarrollo JavaScript",
         "issuer": "LinkedIn",
         "date": "Feb. 2025",
-        "skills": ["Capacidad de análisis", "Prueba unitaria", "Depuración", "JavaScript", "Desarrollo web"],
+        "skills": [
+          "Capacidad de análisis",
+          "Prueba unitaria",
+          "Depuración",
+          "JavaScript",
+          "Desarrollo web"
+        ],
         "url": "https://www.linkedin.com/learning/certificates/e34c91be066bde261fc011a8dd9ce48db9a0cde76e85cdc99cdb929878c09333"
       },
       {

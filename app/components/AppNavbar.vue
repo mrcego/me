@@ -16,8 +16,8 @@
       >
         <!-- Logo Area -->
         <Motion
-          :initial="{ opacity: 0, x: -20, filter: 'blur(10px)' }"
-          :animate="{ opacity: 1, x: 0, filter: 'blur(0px)' }"
+          :initial="motionInitial({ opacity: 0, x: -20, filter: 'blur(10px)' })"
+          :animate="motionAnimate({ opacity: 1, x: 0, filter: 'blur(0px)' })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           class="flex items-center gap-2 sm:gap-3 group cursor-pointer"
           @click="scrollToSection($event, '#hero')"
@@ -49,7 +49,7 @@
                 'lg:text-sm lg:tracking-tight': isScrolled,
               }"
             >
-              {{ $t("hero.name") }}
+              {{ $t('hero.name') }}
             </span>
             <span
               class="text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] text-muted transition-all duration-500"
@@ -57,7 +57,7 @@
                 'lg:text-[6px] lg:opacity-0': isScrolled,
               }"
             >
-              {{ $t("hero.tags.frontArch") }}
+              {{ $t('hero.tags.frontArch') }}
             </span>
           </div>
         </Motion>
@@ -73,8 +73,8 @@
         >
           <template v-for="(link, i) in navLinks" :key="link.id">
             <Motion
-              :initial="{ opacity: 0, y: -10 }"
-              :animate="{ opacity: 1, y: 0 }"
+              :initial="motionInitial({ opacity: 0, y: -10 })"
+              :animate="motionAnimate({ opacity: 1, y: 0 })"
               :transition="{
                 duration: 0.6,
                 delay: 0.2 + i * 0.05,
@@ -85,9 +85,7 @@
                 :href="link.href"
                 class="relative px-3 lg:px-4 xl:px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 isolate group/link overflow-hidden cursor-pointer"
                 :class="[
-                  isActiveSection(link.id)
-                    ? 'text-foreground'
-                    : 'text-muted hover:text-foreground',
+                  isActiveSection(link.id) ? 'text-foreground' : 'text-muted hover:text-foreground',
                 ]"
                 @click="scrollToSection($event, link.href)"
               >
@@ -130,8 +128,8 @@
               <!-- Theme Preset Selector Popover -->
               <Motion
                 v-if="showThemeSelector"
-                :initial="{ opacity: 0, scale: 0.9, y: 10 }"
-                :animate="{ opacity: 1, scale: 1, y: 0 }"
+                :initial="motionInitial({ opacity: 0, scale: 0.9, y: 10 })"
+                :animate="motionAnimate({ opacity: 1, scale: 1, y: 0 })"
                 :transition="{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }"
               >
                 <div
@@ -144,11 +142,11 @@
                       <h4
                         class="text-[9px] sm:text-xs font-black uppercase tracking-widest text-foreground"
                       >
-                        {{ $t("nav.themePresets") }}
+                        {{ $t('nav.themePresets') }}
                       </h4>
                       <span
                         class="text-[7px] sm:text-[9px] bg-primary/10 text-primary px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-bold border border-primary/20"
-                        >{{ THEME_PRESETS.length }} {{ $t("nav.modes") }}</span
+                        >{{ THEME_PRESETS.length }} {{ $t('nav.modes') }}</span
                       >
                     </div>
 
@@ -186,12 +184,10 @@
                             <p
                               class="text-[9px] sm:text-[11px] font-bold transition-colors"
                               :class="[
-                                currentThemeId === preset.id
-                                  ? 'text-primary'
-                                  : 'text-foreground',
+                                currentThemeId === preset.id ? 'text-primary' : 'text-foreground',
                               ]"
                             >
-                              {{ $t("themes." + preset.id) }}
+                              {{ $t('themes.' + preset.id) }}
                             </p>
                             <p
                               class="text-[6px] sm:text-[8px] text-muted font-black uppercase tracking-widest opacity-60"
@@ -213,9 +209,7 @@
             </div>
           </ClientOnly>
 
-          <div
-            class="w-px h-3 sm:h-4 md:h-5 bg-foreground/10 mx-0.5 sm:mx-1 hidden sm:block"
-          />
+          <div class="w-px h-3 sm:h-4 md:h-5 bg-foreground/10 mx-0.5 sm:mx-1 hidden sm:block" />
 
           <!-- CTA Button -->
           <a
@@ -223,7 +217,7 @@
             class="hidden md:flex items-center gap-1.5 sm:gap-2 bg-primary hover:bg-primary-hover text-primary-contrast px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-full font-bold text-[9px] sm:text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn"
             @click="scrollToSection($event, '#contact')"
           >
-            <span class="hidden sm:block">{{ $t("nav.getInTouch") }}</span>
+            <span class="hidden sm:block">{{ $t('nav.getInTouch') }}</span>
             <span class="sm:hidden block">CTA</span>
             <Icon
               name="solar:arrow-right-up-linear"
@@ -233,15 +227,13 @@
 
           <!-- Mobile Toggle -->
           <button
-            class="xl:hidden w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-10 flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors"
+            class="xl:hidden w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-10 flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors focus-visible:ring-2 focus-visible:ring-primary"
+            :aria-label="isMobileMenuOpen ? 'Close menu' : 'Open menu'"
+            :aria-expanded="isMobileMenuOpen"
             @click="isMobileMenuOpen = !isMobileMenuOpen"
           >
             <Icon
-              :name="
-                isMobileMenuOpen
-                  ? 'solar:close-square-linear'
-                  : 'solar:hamburger-menu-linear'
-              "
+              :name="isMobileMenuOpen ? 'solar:close-square-linear' : 'solar:hamburger-menu-linear'"
               class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11"
             />
           </button>
@@ -289,11 +281,8 @@
             class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-foreground text-background rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform text-xs sm:text-sm md:text-base"
             @click="scrollToSection($event, '#contact')"
           >
-            {{ $t("nav.getInTouch") }}
-            <Icon
-              name="solar:arrow-right-up-bold"
-              class="w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11"
-            />
+            {{ $t('nav.getInTouch') }}
+            <Icon name="solar:arrow-right-up-bold" class="w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11" />
           </a>
         </div>
       </div>
@@ -302,10 +291,12 @@
 </template>
 
 <script setup>
-import { Motion } from "motion-v";
-import { ref, onMounted, onUnmounted } from "vue";
-import { useTheme } from "~/composables/useTheme";
-import AppLanguageSwitcher from "~/components/AppLanguageSwitcher.vue";
+import { Motion } from 'motion-v';
+import { ref, onMounted, onUnmounted } from 'vue';
+import { useTheme } from '~/composables/useTheme';
+import AppLanguageSwitcher from '~/components/AppLanguageSwitcher.vue';
+
+const { motionInitial, motionAnimate } = useMotionConfig();
 
 const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);
@@ -314,25 +305,25 @@ const { currentThemeId, THEME_PRESETS, setThemePreset } = useTheme();
 const showThemeSelector = ref(false);
 
 const navLinks = [
-  { name: "nav.home", href: "#hero", id: "hero" },
-  { name: "nav.about", href: "#about", id: "about" },
-  { name: "nav.techStack", href: "#tech-stack", id: "tech-stack" },
-  { name: "nav.certifications", href: "#certifications", id: "certifications" },
-  { name: "nav.testimonials", href: "#testimonials", id: "testimonials" },
+  { name: 'nav.home', href: '#hero', id: 'hero' },
+  { name: 'nav.about', href: '#about', id: 'about' },
+  { name: 'nav.techStack', href: '#tech-stack', id: 'tech-stack' },
+  { name: 'nav.certifications', href: '#certifications', id: 'certifications' },
+  { name: 'nav.testimonials', href: '#testimonials', id: 'testimonials' },
 ];
 
-const activeSection = ref("hero");
+const activeSection = ref('hero');
 
 const isActiveSection = (id) => activeSection.value === id;
 
 const scrollToSection = (e, href) => {
   e.preventDefault();
-  const targetId = href.replace("#", "");
+  const targetId = href.replace('#', '');
   const element = document.getElementById(targetId);
   if (element) {
     window.scrollTo({
       top: element.offsetTop - 100,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
     activeSection.value = targetId;
   }
@@ -348,11 +339,7 @@ const handleScroll = () => {
 
   for (const id of sections) {
     const el = document.getElementById(id);
-    if (
-      el &&
-      el.offsetTop <= scrollPos &&
-      el.offsetTop + el.offsetHeight > scrollPos
-    ) {
+    if (el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
       activeSection.value = id;
       break;
     }
@@ -360,12 +347,12 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener('scroll', handleScroll);
   handleScroll();
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
+  window.removeEventListener('scroll', handleScroll);
 });
 </script>
 

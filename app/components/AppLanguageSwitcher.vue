@@ -5,19 +5,17 @@
       aria-label="Switch Language"
       @click="toggleLanguage"
     >
-      <span class="font-black text-xs uppercase tracking-widest">{{
-        locale
-      }}</span>
+      <span class="font-black text-xs uppercase tracking-widest">{{ locale }}</span>
     </button>
   </div>
 </template>
 
 <script setup>
-import { useI18n } from "vue-i18n";
+import { useI18n } from 'vue-i18n';
 
 const { locale, setLocale } = useI18n();
 
 const toggleLanguage = () => {
-  setLocale(locale.value === "en" ? "es" : "en");
+  setLocale(locale.value === 'en' ? 'es' : 'en');
 };
 </script>

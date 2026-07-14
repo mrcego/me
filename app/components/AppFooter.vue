@@ -3,18 +3,14 @@
     class="py-20 md:py-32 px-6 md:px-12 bg-background relative overflow-hidden border-t border-foreground/5"
   >
     <!-- Cinematic Background -->
-    <div
-      class="absolute inset-0 bg-primary/5 opacity-20 pointer-events-none footer-ambient-bg"
-    />
+    <div class="absolute inset-0 bg-primary/5 opacity-20 pointer-events-none footer-ambient-bg" />
 
     <div
       class="absolute bottom-0 left-0 right-0 h-75 bg-linear-to-t from-primary/5 to-transparent pointer-events-none opacity-30"
     />
 
     <div class="container mx-auto space-y-16 relative z-10">
-      <div
-        class="flex flex-col md:flex-row justify-between items-start md:items-center gap-12"
-      >
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
         <!-- Brand Identity -->
         <div class="space-y-6 group cursor-pointer">
           <div class="flex items-center gap-4">
@@ -27,19 +23,19 @@
               <h4
                 class="text-2xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors duration-300 uppercase"
               >
-                {{ $t("hero.name") }}
+                {{ $t('hero.name') }}
               </h4>
               <span
                 class="text-[10px] tracking-[0.2em] text-muted uppercase font-bold group-hover:text-foreground transition-colors delay-75"
               >
-                {{ $t("hero.tags.frontArch") }}
+                {{ $t('hero.tags.frontArch') }}
               </span>
             </div>
           </div>
           <p
             class="text-muted text-xs font-medium uppercase tracking-[0.2em] max-w-xs leading-loose pl-1"
           >
-            {{ $t("footer.tagline") }}
+            {{ $t('footer.tagline') }}
           </p>
         </div>
 
@@ -78,13 +74,9 @@
         <p
           class="text-[10px] font-bold uppercase tracking-widest text-muted flex items-center gap-2"
         >
-          <span
-            >{{ new Date().getFullYear() }} {{ $t("footer.protocol") }}</span
-          >
+          <span>{{ new Date().getFullYear() }} {{ $t('footer.protocol') }}</span>
           <span class="hidden md:inline text-muted/30">|</span>
-          <span class="opacity-50 tracking-[0.2em]">{{
-            $t("footer.rights")
-          }}</span>
+          <span class="opacity-50 tracking-[0.2em]">{{ $t('footer.rights') }}</span>
         </p>
 
         <!-- Socials -->
@@ -110,47 +102,43 @@
 <script setup>
 const footerLinks = [
   {
-    title: "col.nav",
+    title: 'col.nav',
     links: [
-      { name: "nav.home", href: "#" },
-      { name: "about.philosophy", href: "#about" },
-      { name: "nav.certifications", href: "#certifications" },
-      { name: "capabilities.section", href: "#capabilities" },
+      { name: 'nav.home', href: '#' },
+      { name: 'about.philosophy', href: '#about' },
+      { name: 'nav.certifications', href: '#certifications' },
+      { name: 'capabilities.section', href: '#capabilities' },
     ],
   },
   {
-    title: "col.connect",
+    title: 'col.connect',
     links: [
-      { name: "nav.getInTouch", href: "mailto:cesargomezh90@gmail.com" },
+      { name: 'nav.getInTouch', href: 'mailto:cesargomezh90@gmail.com' },
       {
-        name: "contact.methods.linkedin",
-        href: "https://linkedin.com/in/mrcego",
+        name: 'contact.methods.linkedin',
+        href: 'https://linkedin.com/in/mrcego',
       },
       {
-        name: "contact.methods.github",
-        href: "https://github.com/mrcego",
+        name: 'contact.methods.github',
+        href: 'https://github.com/mrcego',
       },
     ],
   },
 ];
 
 const socials = [
-  { icon: "simple-icons:linkedin", link: "https://linkedin.com/in/mrcego" },
-  { icon: "simple-icons:github", link: "https://github.com/mrcego" },
+  { icon: 'simple-icons:linkedin', link: 'https://linkedin.com/in/mrcego' },
+  { icon: 'simple-icons:github', link: 'https://github.com/mrcego' },
   {
-    icon: "solar:letter-bold-duotone",
-    link: "mailto:cesargomezh90@gmail.com",
+    icon: 'solar:letter-bold-duotone',
+    link: 'mailto:cesargomezh90@gmail.com',
   },
 ];
 </script>
 
 <style scoped>
 .footer-ambient-bg {
-  background-image: radial-gradient(
-    circle,
-    rgba(255, 75, 92, 0.15) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(circle, rgba(255, 75, 92, 0.15) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: linear-gradient(to bottom, black, transparent);
 }

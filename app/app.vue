@@ -28,9 +28,9 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import "primeicons/primeicons.css";
-import { usePortfolio } from "~/composables/usePortfolio";
+import { ref, onMounted } from 'vue';
+import 'primeicons/primeicons.css';
+import { usePortfolio } from '~/composables/usePortfolio';
 
 const { activeSection, scrollProgress } = usePortfolio();
 const loading = ref(true);

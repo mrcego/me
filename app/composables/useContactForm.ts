@@ -9,14 +9,14 @@ export const useContactForm = () => {
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
 
   const errors = reactive({
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
   });
 
   const validateEmail = (email: string): boolean => {
@@ -95,18 +95,18 @@ export const useContactForm = () => {
     try {
       // Create mailto link as fallback
       const mailtoLink = `mailto:cesargomezh90@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
       )}`;
 
       // Open mailto link
       window.location.href = mailtoLink;
 
       // Simulate success after a short delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       submitSuccess.value = true;
       resetForm();
-      
+
       return true;
     } catch (error) {
       console.error('Form submission error:', error);
@@ -125,6 +125,6 @@ export const useContactForm = () => {
     submitError,
     validateForm,
     submitForm,
-    resetForm
+    resetForm,
   };
 };

@@ -1,21 +1,14 @@
 <template>
-  <section
-    id="about"
-    class="py-24 md:py-32 px-6 md:px-12 relative bg-secondary/5 overflow-hidden"
-  >
+  <section id="about" class="py-24 md:py-32 px-6 md:px-12 relative bg-secondary/5 overflow-hidden">
     <!-- Background Decorative Element -->
-    <div
-      class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] -z-10"
-    />
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] -z-10" />
 
     <div class="container mx-auto">
-      <div
-        class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-start"
-      >
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-start">
         <!-- Sidebar Card with Motion (Spans 5 cols) -->
         <Motion
-          :initial="{ opacity: 0, x: -50 }"
-          :in-view="{ opacity: 1, x: 0 }"
+          :initial="motionInitial({ opacity: 0, x: -50 })"
+          :in-view="motionInView({ opacity: 1, x: 0 })"
           :viewport="{ once: true }"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           class="lg:col-span-5 lg:sticky lg:top-32 w-full mx-auto -mt-32 sm:-mt-16 lg:-mt-6 xl:mt-0"
@@ -60,13 +53,13 @@
             <h3
               class="text-xl md:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4 px-2 text-center lg:text-left"
             >
-              {{ $t("about.philosophy") }}
+              {{ $t('about.philosophy') }}
             </h3>
 
             <p
               class="mb-6 sm:mb-8 md:mb-10 text-sm md:text-base font-medium text-muted leading-relaxed px-2 text-center lg:text-left"
             >
-              "{{ $t("about.philosophyQuote") }}"
+              "{{ $t('about.philosophyQuote') }}"
             </p>
 
             <div class="space-y-4 sm:space-y-5">
@@ -78,10 +71,7 @@
                 <div
                   class="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 glass rounded-lg sm:rounded-xl flex items-center justify-center text-primary group-hover/p:bg-primary group-hover/p:text-primary-contrast transition-all duration-500 shrink-0 shadow-lg"
                 >
-                  <Icon
-                    :name="point.icon"
-                    class="w-11 h-11 sm:w-12 sm:h-12 md:w-13 md:h-13"
-                  />
+                  <Icon :name="point.icon" class="w-11 h-11 sm:w-12 sm:h-12 md:w-13 md:h-13" />
                 </div>
                 <div
                   class="transition-transform duration-300 group-hover/p:translate-x-1 flex flex-col justify-center"
@@ -103,26 +93,22 @@
         </Motion>
 
         <!-- Main Content Area (Spans 7 cols) -->
-        <div
-          class="lg:col-span-7 space-y-16 md:space-y-24 pt-2 sm:pt-4 lg:pt-0"
-        >
+        <div class="lg:col-span-7 space-y-16 md:space-y-24 pt-2 sm:pt-4 lg:pt-0">
           <Motion
-            :initial="{ opacity: 0, y: 30 }"
-            :in-view="{ opacity: 1, y: 0 }"
+            :initial="motionInitial({ opacity: 0, y: 30 })"
+            :in-view="motionInView({ opacity: 1, y: 0 })"
             :viewport="{ once: true }"
             :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
             class="space-y-6 md:space-y-10"
           >
-            <div
-              class="flex items-center gap-4 justify-center lg:justify-start"
-            >
+            <div class="flex items-center gap-4 justify-center lg:justify-start">
               <div class="h-px w-12 bg-foreground/10" />
               <div class="flex items-center gap-3 shrink-0">
                 <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 <h2
                   class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
                 >
-                  {{ $t("about.section") }}
+                  {{ $t('about.section') }}
                 </h2>
               </div>
             </div>
@@ -130,20 +116,18 @@
             <h3
               class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-foreground text-center lg:text-left"
             >
-              {{ $t("about.title") }}<br />
-              <span class="text-gradient">{{
-                $t("about.titleHighlight")
-              }}</span>
+              {{ $t('about.title') }}<br />
+              <span class="text-gradient">{{ $t('about.titleHighlight') }}</span>
             </h3>
 
             <div
               class="prose prose-invert prose-lg md:prose-xl max-w-none text-muted font-medium leading-relaxed space-y-6 text-center lg:text-left mx-auto lg:mx-0"
             >
               <p>
-                {{ $t("about.description1") }}
+                {{ $t('about.description1') }}
               </p>
               <p>
-                {{ $t("about.description2") }}
+                {{ $t('about.description2') }}
               </p>
             </div>
           </Motion>
@@ -152,8 +136,8 @@
             <Motion
               v-for="(role, i) in roles"
               :key="role.key"
-              :initial="{ opacity: 0, y: 20 }"
-              :in-view="{ opacity: 1, y: 0 }"
+              :initial="motionInitial({ opacity: 0, y: 20 })"
+              :in-view="motionInView({ opacity: 1, y: 0 })"
               :viewport="{ once: true }"
               :transition="{
                 duration: 0.8,
@@ -168,9 +152,7 @@
               <div
                 class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
               />
-              <div
-                class="space-y-3 sm:space-y-4 md:space-y-6 relative z-10 h-full flex flex-col"
-              >
+              <div class="space-y-3 sm:space-y-4 md:space-y-6 relative z-10 h-full flex flex-col">
                 <div class="flex justify-between items-start">
                   <div
                     class="px-3 py-1 sm:px-4 sm:py-1.5 glass rounded-lg sm:rounded-xl text-[7px] sm:text-[8px] font-black uppercase tracking-[0.25em] text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all shadow-sm"
@@ -211,46 +193,48 @@
 </template>
 
 <script setup>
-import { Motion } from "motion-v";
+import { Motion } from 'motion-v';
+
+const { motionInitial, motionInView } = useMotionConfig();
 
 const aboutPoints = [
   {
-    label: "about.expertise",
-    descKey: "techStack.levels.architect",
-    icon: "logos:vue",
+    label: 'about.expertise',
+    descKey: 'techStack.levels.architect',
+    icon: 'logos:vue',
   },
   {
-    label: "about.logic",
-    descKey: "techStack.levels.senior",
-    icon: "logos:nodejs-icon",
+    label: 'about.logic',
+    descKey: 'techStack.levels.senior',
+    icon: 'logos:nodejs-icon',
   },
   {
-    label: "about.userCentric",
-    descKey: "techStack.levels.founding",
-    icon: "logos:figma",
+    label: 'about.userCentric',
+    descKey: 'techStack.levels.founding',
+    icon: 'logos:figma',
   },
 ];
 
 const roles = [
   {
-    key: "lingoquesto",
-    icon: "logos:nuxt-icon",
+    key: 'lingoquesto',
+    icon: 'logos:nuxt-icon',
   },
   {
-    key: "colegium",
-    icon: "logos:vue",
+    key: 'colegium',
+    icon: 'logos:vue',
   },
   {
-    key: "tissini",
-    icon: "logos:vue",
+    key: 'tissini',
+    icon: 'logos:vue',
   },
   {
-    key: "cuartopixel",
-    icon: "logos:angular-icon",
+    key: 'cuartopixel',
+    icon: 'logos:angular-icon',
   },
   {
-    key: "zabud",
-    icon: "logos:angular-icon",
+    key: 'zabud',
+    icon: 'logos:angular-icon',
   },
 ];
 </script>

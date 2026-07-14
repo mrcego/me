@@ -1,6 +1,6 @@
 export default defineNuxtPlugin(() => {
-  const config = useRuntimeConfig()
-  const baseURL = config.app.baseURL
+  const config = useRuntimeConfig();
+  const baseURL = config.app.baseURL;
 
   useHead({
     link: [
@@ -9,10 +9,8 @@ export default defineNuxtPlugin(() => {
       { rel: 'icon', type: 'image/svg+xml', href: `${baseURL}/favicon.svg` },
       { rel: 'icon', type: 'image/png', sizes: '16x16', href: `${baseURL}/favicon-16x16.png` },
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: `${baseURL}/favicon-32x32.png` },
-      { rel: 'icon', type: 'image/x-icon', href: `${baseURL}/favicon.ico` }
+      { rel: 'icon', type: 'image/x-icon', href: `${baseURL}/favicon.ico` },
     ],
-    meta: [
-      { name: 'msapplication-TileImage', content: `${baseURL}/apple-touch-icon.png` }
-    ]
-  })
-})
+    meta: [{ name: 'msapplication-TileImage', content: `${baseURL}/apple-touch-icon.png` }],
+  });
+});

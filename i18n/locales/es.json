@@ -13,7 +13,7 @@
     "modes": "Modos"
   },
   "hero": {
-    "tagline": "Miembro Fundador {'@'} LingoQuesto",
+    "tagline": "Miembro Fundador {'@'} LingoQuesto · Disponible desde Ago 2026",
     "name": "CÉSAR GÓMEZ",
     "title": "Desarrollador Fullstack Senior",
     "description": "13+ años especializándome en Excelencia Frontend. Experto en Vue.js, Nuxt.js, TypeScript y arquitecturas web modernas.",
@@ -50,8 +50,8 @@
       "lingoquesto": {
         "title": "Miembro Fundador | Senior Fullstack",
         "company": "LingoQuesto",
-        "years": "2024 - Presente",
-        "desc": "Definiendo la visión de producto y la hoja de ruta fullstack, asegurando que el frontend refleje artesanía de alto nivel."
+        "years": "2025 - Ago 2026",
+        "desc": "Definiendo la visión de producto y la hoja de ruta fullstack como ingeniero fundador. Finalizando rol en agosto de 2026 para nuevas oportunidades."
       },
       "colegium": {
         "title": "Desarrollador Frontend Senior",
@@ -182,7 +182,13 @@
         "title": "Fundamentos esenciales de la programación",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
-        "skills": ["Programación", "Desarrollo web", "Desarrollo front end", "Desarrollo de programas", "Coding Standards"],
+        "skills": [
+          "Programación",
+          "Desarrollo web",
+          "Desarrollo front end",
+          "Desarrollo de programas",
+          "Coding Standards"
+        ],
         "url": "https://www.linkedin.com/learning/certificates/21837bee635ea2e0a3d812fea5848a0c448807c545fd826427cfe7d767f2d863"
       },
       {
@@ -238,7 +244,13 @@
         "title": "Conviértete en especialista en desarrollo JavaScript",
         "issuer": "LinkedIn",
         "date": "Feb. 2025",
-        "skills": ["Capacidad de análisis", "Prueba unitaria", "Depuración", "JavaScript", "Desarrollo web"],
+        "skills": [
+          "Capacidad de análisis",
+          "Prueba unitaria",
+          "Depuración",
+          "JavaScript",
+          "Desarrollo web"
+        ],
         "url": "https://www.linkedin.com/learning/certificates/e34c91be066bde261fc011a8dd9ce48db9a0cde76e85cdc99cdb929878c09333"
       },
       {
@@ -341,38 +353,32 @@
       {
         "name": "Carol Valdebenito",
         "role": "Scrum Master | Liderazgo Ágil",
-        "quote": "Trabajé casi 5 años con César en dos equipos distintos, desde mi rol de Scrum Master, y si algo puedo decir con total certeza es que es uno de los mejores front-end con los que he trabajado. Tiene una habilidad poco común: desarrolla pensando en el fallo. No se enfoca solo en “cómo hacer que funcione”, sino en “cómo evitar que falle”, contemplando mil escenarios posibles, incluso los más improbables. Esa obsesión por los casos de uso hace que sus desarrollos sean estables, robustos y difíciles de romper. Es metódico, comprometido y tiene una ética de trabajo admirable. Fue un gusto trabajar con él, y sin duda, lo volvería a hacer.",
-        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQGk2IeE57rHBA/profile-displayphoto-shrink_100_100/B4EZUWjT.XH0AU-/0/1739840110897?e=1770854400&v=beta&t=6GaMmIxqMP2art0QxAe8nxZh3A0mx89T-vB4AfbpHXs"
+        "quote": "Trabajé casi 5 años con César en dos equipos distintos, desde mi rol de Scrum Master, y si algo puedo decir con total certeza es que es uno de los mejores front-end con los que he trabajado. Tiene una habilidad poco común: desarrolla pensando en el fallo. No se enfoca solo en “cómo hacer que funcione”, sino en “cómo evitar que falle”, contemplando mil escenarios posibles, incluso los más improbables. Esa obsesión por los casos de uso hace que sus desarrollos sean estables, robustos y difíciles de romper. Es metódico, comprometido y tiene una ética de trabajo admirable. Fue un gusto trabajar con él, y sin duda, lo volvería a hacer."
       },
       {
         "name": "Michell Jose Gutierrez Rincon",
         "role": "Fullstack Developer",
-        "quote": "Excelente compañero, gran desarrollador y experto en tecnologías frontend",
-        "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQFACsZM6Wugcw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1609879783274?e=1770854400&v=beta&t=m8V_55NNTzqN0iKxc1o1pph0TOsEvbxT3iLtkcMWjXw"
+        "quote": "Excelente compañero, gran desarrollador y experto en tecnologías frontend"
       },
       {
         "name": "Fernando Delgado",
         "role": "Director of IT | TISSINI",
-        "quote": "Uno de mis mejores Ingenieros!!",
-        "avatar": "https://media.licdn.com/dms/image/v2/C4E03AQHOFDWUtEea9w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1613007031033?e=1770854400&v=beta&t=qmoe_cSNsYx_ghmuIgTF2hF5OdoTTefdmX7cTKZiNm8"
+        "quote": "Uno de mis mejores Ingenieros!!"
       },
       {
         "name": "Genito Javier Andrade Perez",
         "role": "Sr Full Stack Developer",
-        "quote": "Tuve el privilegio de trabajar junto a César G. en varios proyectos y puedo decir con total confianza que es un desarrollador altamente competente, comprometido y con una gran atención al detalle. Destaca por su dominio de tecnologías modernas, su capacidad para convertir diseños complejos en interfaces funcionales y eficientes, y su enfoque centrado en la experiencia del usuario. Además de sus habilidades técnicas, César tiene una actitud colaborativa ejemplar, siempre dispuesto a compartir conocimientos y aportar soluciones efectivas.",
-        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQFIoOj1FmGyRw/profile-displayphoto-shrink_100_100/B4EZUbXxrzHcAU-/0/1739920973040?e=1770854400&v=beta&t=m1S5M0ApAI6xhaNtvS6odC6kSORTWhVne3MNhauLkUk"
+        "quote": "Tuve el privilegio de trabajar junto a César G. en varios proyectos y puedo decir con total confianza que es un desarrollador altamente competente, comprometido y con una gran atención al detalle. Destaca por su dominio de tecnologías modernas, su capacidad para convertir diseños complejos en interfaces funcionales y eficientes, y su enfoque centrado en la experiencia del usuario. Además de sus habilidades técnicas, César tiene una actitud colaborativa ejemplar, siempre dispuesto a compartir conocimientos y aportar soluciones efectivas."
       },
       {
         "name": "Andres Felipe Ordoñez Zuluaga",
         "role": "Product Owner | Engineering Lead",
-        "quote": "Es un placer recomendar a César, un excepcional profesional con quien tuve el privilegio de trabajar. César no solo posee una profunda experiencia técnica, sino que también se destaca por sus sobresalientes capacidades de gestión e innovación. Constantemente demostró una habilidad única para liderar proyectos, optimizar procesos y proponer soluciones creativas que impulsaron el éxito del equipo. Su compromiso con la excelencia y su visión innovadora lo convierten en un activo invaluable para cualquier organización.",
-        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQG4ALMx5STP_g/profile-displayphoto-shrink_100_100/B4EZTnyujEGgAU-/0/1739055623564?e=1770854400&v=beta&t=oOy0ly0eIIEpRd0-vMauM7GewsxUJdPQiaA7biqZ5Qk"
+        "quote": "Es un placer recomendar a César, un excepcional profesional con quien tuve el privilegio de trabajar. César no solo posee una profunda experiencia técnica, sino que también se destaca por sus sobresalientes capacidades de gestión e innovación. Constantemente demostró una habilidad única para liderar proyectos, optimizar procesos y proponer soluciones creativas que impulsaron el éxito del equipo. Su compromiso con la excelencia y su visión innovadora lo convierten en un activo invaluable para cualquier organización."
       },
       {
         "name": "María de los Ángeles Rodríguez",
         "role": "Gestión y Control Administrativo",
-        "quote": "Es grato recomendar a personas con gran compromiso y crecimiento. Si de un talento integral se habla. Cesar cumple los requisitos. Es apasionado en lo que hace, responsable, organizado, inteligente, líder y excelente servicio humano.",
-        "avatar": "https://media.licdn.com/dms/image/v2/D4E03AQF5xYs5k3etTQ/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1728095951600?e=1770854400&v=beta&t=RQa4xnbCK4_8Fcw4CKugnWLTJxrVWbi6i5gAFDstDqs"
+        "quote": "Es grato recomendar a personas con gran compromiso y crecimiento. Si de un talento integral se habla. Cesar cumple los requisitos. Es apasionado en lo que hace, responsable, organizado, inteligente, líder y excelente servicio humano."
       }
     ]
   },

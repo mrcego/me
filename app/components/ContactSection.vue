@@ -1,8 +1,5 @@
 <template>
-  <section
-    id="contact"
-    class="py-24 md:py-64 px-6 md:px-12 relative overflow-hidden bg-background"
-  >
+  <section id="contact" class="py-24 md:py-64 px-6 md:px-12 relative overflow-hidden bg-background">
     <!-- Abstract Architecture blueprint behind -->
     <div
       class="absolute inset-x-[-10%] top-1/2 -translate-y-1/2 h-px bg-primary/10 rotate-15 z-0"
@@ -14,39 +11,31 @@
     <div class="container mx-auto z-10 relative">
       <div class="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
         <Motion
-          :initial="{ opacity: 0, x: -50 }"
-          :in-view="{ opacity: 1, x: 0 }"
+          :initial="motionInitial({ opacity: 0, x: -50 })"
+          :in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
           class="space-y-8 sm:space-y-12 md:space-y-20"
         >
-          <div
-            class="space-y-6 sm:space-y-8 md:space-y-12 group text-center lg:text-left"
-          >
-            <div
-              class="flex items-center justify-center lg:justify-start gap-4 md:gap-6"
-            >
+          <div class="space-y-6 sm:space-y-8 md:space-y-12 group text-center lg:text-left">
+            <div class="flex items-center justify-center lg:justify-start gap-4 md:gap-6">
               <div class="h-px w-12 md:w-16 bg-primary" />
-              <h2
-                class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
-              >
-                {{ $t("contact.section") }}
+              <h2 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+                {{ $t('contact.section') }}
               </h2>
             </div>
             <h3
               class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-none text-foreground whitespace-pre-line"
             >
-              {{ $t("contact.title") }}<br />
-              <span class="text-gradient">{{
-                $t("contact.titleHighlight")
-              }}</span
+              {{ $t('contact.title') }}<br />
+              <span class="text-gradient">{{ $t('contact.titleHighlight') }}</span
               ><br />
-              {{ $t("contact.titleEnd") }}
+              {{ $t('contact.titleEnd') }}
             </h3>
             <p
               class="text-muted text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto lg:mx-0"
             >
-              {{ $t("contact.description") }}
+              {{ $t('contact.description') }}
             </p>
           </div>
 
@@ -83,8 +72,8 @@
 
         <!-- PrimeVue Form with Motion -->
         <Motion
-          :initial="{ opacity: 0, x: 50 }"
-          :in-view="{ opacity: 1, x: 0 }"
+          :initial="motionInitial({ opacity: 0, x: 50 })"
+          :in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
           class="glass p-6 sm:p-8 md:p-12 lg:p-16 xl:p-24 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] border-foreground/5 relative overflow-hidden group shadow-4xl mt-12 lg:mt-0"
@@ -102,7 +91,7 @@
               v-if="submitSuccess"
               class="p-4 sm:p-6 bg-green-500/10 border border-green-500/30 rounded-2xl text-green-400 text-sm sm:text-base font-medium text-center"
             >
-              {{ $t("contact.form.success") }}
+              {{ $t('contact.form.success') }}
             </div>
 
             <!-- Error Message -->
@@ -110,9 +99,7 @@
               v-if="submitError"
               class="p-4 sm:p-6 bg-red-500/10 border border-red-500/30 rounded-2xl text-red-400 text-sm sm:text-base font-medium text-center"
             >
-              {{
-                submitError === true ? $t("contact.form.error") : submitError
-              }}
+              {{ submitError === true ? $t('contact.form.error') : submitError }}
             </div>
 
             <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-10">
@@ -120,7 +107,7 @@
                 <label
                   for="contact-name"
                   class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
-                  >{{ $t("contact.form.name") }}</label
+                  >{{ $t('contact.form.name') }}</label
                 >
                 <inputText
                   id="contact-name"
@@ -147,7 +134,7 @@
                 <label
                   for="contact-email"
                   class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
-                  >{{ $t("contact.form.email") }}</label
+                  >{{ $t('contact.form.email') }}</label
                 >
                 <inputText
                   id="contact-email"
@@ -177,7 +164,7 @@
               <label
                 for="contact-subject"
                 class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
-                >{{ $t("contact.form.subject") }}</label
+                >{{ $t('contact.form.subject') }}</label
               >
               <inputText
                 id="contact-subject"
@@ -205,7 +192,7 @@
               <label
                 for="contact-message"
                 class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
-                >{{ $t("contact.form.message") }}</label
+                >{{ $t('contact.form.message') }}</label
               >
               <Textarea
                 id="contact-message"
@@ -255,11 +242,7 @@
                   name="solar:sort-vertical-linear"
                   class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 animate-spin"
                 />
-                {{
-                  isSubmitting
-                    ? $t("contact.form.sending")
-                    : $t("contact.form.submit")
-                }}
+                {{ isSubmitting ? $t('contact.form.sending') : $t('contact.form.submit') }}
               </span>
             </Button>
           </form>
@@ -270,46 +253,41 @@
 </template>
 
 <script setup>
-import { Motion } from "motion-v";
-import { useContactForm } from "~/composables/useContactForm";
+import { Motion } from 'motion-v';
+import { useContactForm } from '~/composables/useContactForm';
 
-const {
-  formData,
-  errors,
-  isSubmitting,
-  submitSuccess,
-  submitError,
-  submitForm,
-} = useContactForm();
+const { motionInitial, motionInView } = useMotionConfig();
+
+const { formData, errors, isSubmitting, submitSuccess, submitError, submitForm } = useContactForm();
 
 const contactMethods = [
   {
-    key: "email",
-    label: "Direct Signal",
-    value: "cesargomezh90@gmail.com",
-    icon: "logos:google-gmail",
-    link: "mailto:cesargomezh90@gmail.com",
+    key: 'email',
+    label: 'Direct Signal',
+    value: 'cesargomezh90@gmail.com',
+    icon: 'logos:google-gmail',
+    link: 'mailto:cesargomezh90@gmail.com',
   },
   {
-    key: "linkedin",
-    label: "Professional Mesh",
-    value: "linkedin.com/in/mrcego",
-    icon: "logos:linkedin-icon",
-    link: "https://linkedin.com/in/mrcego",
+    key: 'linkedin',
+    label: 'Professional Mesh',
+    value: 'linkedin.com/in/mrcego',
+    icon: 'logos:linkedin-icon',
+    link: 'https://linkedin.com/in/mrcego',
   },
   {
-    key: "github",
-    label: "Open Protocol",
-    value: "github.com/mrcego",
-    icon: "simple-icons:github",
-    link: "https://github.com/mrcego",
+    key: 'github',
+    label: 'Open Protocol',
+    value: 'github.com/mrcego',
+    icon: 'simple-icons:github',
+    link: 'https://github.com/mrcego',
   },
   {
-    key: "whatsapp",
-    label: "Secure Line",
-    value: "+57 333 263 6550",
-    icon: "logos:whatsapp-icon",
-    link: "https://wa.me/573332636550",
+    key: 'whatsapp',
+    label: 'Secure Line',
+    value: '+57 333 263 6550',
+    icon: 'logos:whatsapp-icon',
+    link: 'https://wa.me/573332636550',
   },
 ];
 </script>

@@ -20,10 +20,7 @@
         <div
           class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity"
         />
-        <Icon
-          name="lucide:chevron-up"
-          class="w-11 h-11 md:w-12 md:h-12 relative z-10"
-        />
+        <Icon name="lucide:chevron-up" class="w-11 h-11 md:w-12 md:h-12 relative z-10" />
       </button>
     </Transition>
 
@@ -43,26 +40,20 @@
         name="lucide:message-square"
         class="w-13 h-13 md:w-14 md:h-14 relative z-10"
       />
-      <Icon
-        v-else
-        name="lucide:x"
-        class="w-13 h-13 md:w-14 md:h-14 relative z-10"
-      />
+      <Icon v-else name="lucide:x" class="w-13 h-13 md:w-14 md:h-14 relative z-10" />
     </button>
   </div>
 
   <!-- Chat Window with Motion -->
   <Motion
     v-if="isOpen"
-    :initial="{ opacity: 0, scale: 0.9, y: 20, filter: 'blur(10px)' }"
-    :animate="{ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' }"
+    :initial="motionInitial({ opacity: 0, scale: 0.9, y: 20, filter: 'blur(10px)' })"
+    :animate="motionAnimate({ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' })"
     :exit="{ opacity: 0, scale: 0.9, y: 20, filter: 'blur(10px)' }"
     class="w-87.5 md:w-112.5 h-125 md:h-150 glass rounded-[2.5rem] border-primary/20 shadow-4xl overflow-hidden flex flex-col pointer-events-auto fixed bottom-24 right-4 md:bottom-28 md:right-8 z-40"
   >
     <!-- HUD Scanlines Background -->
-    <div
-      class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none protocol-chat-scanlines"
-    />
+    <div class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none protocol-chat-scanlines" />
 
     <!-- Terminal Header -->
     <div
@@ -70,9 +61,7 @@
     >
       <div class="flex items-center gap-3">
         <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
-        <h4
-          class="text-[10px] font-black uppercase tracking-[0.3em] text-foreground"
-        >
+        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-foreground">
           Signal Protocol v4.0
         </h4>
       </div>
@@ -102,12 +91,8 @@
               : 'bg-foreground/5 text-foreground border border-foreground/10',
           ]"
         >
-          <span
-            class="block text-[8px] font-black uppercase tracking-widest opacity-40 mb-1"
-          >
-            {{
-              msg.role === "bot" ? "SIGNAL RECEIVED" : "OPERATOR TRANSMISSION"
-            }}
+          <span class="block text-[8px] font-black uppercase tracking-widest opacity-40 mb-1">
+            {{ msg.role === 'bot' ? 'SIGNAL RECEIVED' : 'OPERATOR TRANSMISSION' }}
           </span>
           {{ msg.content }}
         </div>
@@ -136,9 +121,7 @@
     </div>
 
     <!-- Input Area -->
-    <div
-      class="p-4 bg-foreground/5 border-t border-foreground/10 relative z-10 flex gap-3"
-    >
+    <div class="p-4 bg-foreground/5 border-t border-foreground/10 relative z-10 flex gap-3">
       <input
         v-model="userInput"
         type="text"
@@ -157,11 +140,13 @@
 </template>
 
 <script setup>
-import { Motion } from "motion-v";
-import { ref, watch, nextTick, onMounted, onUnmounted } from "vue";
+import { Motion } from 'motion-v';
+import { ref, watch, nextTick, onMounted, onUnmounted } from 'vue';
+
+const { motionInitial, motionAnimate } = useMotionConfig();
 
 const isOpen = ref(false);
-const userInput = ref("");
+const userInput = ref('');
 const isTyping = ref(false);
 const showScrollTop = ref(false);
 const chatLog = ref(null);
@@ -174,51 +159,50 @@ const handleScroll = () => {
 const scrollToTop = () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth",
+    behavior: 'smooth',
   });
 };
 
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
+  window.addEventListener('scroll', handleScroll);
   handleScroll(); // Check initial scroll position
 });
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
+  window.removeEventListener('scroll', handleScroll);
 });
 
 const messages = ref([
   {
-    role: "bot",
-    content:
-      "INITIALIZING CORE COMMUNICATION PROTOCOL... WAITING FOR OPERATOR COMMAND.",
+    role: 'bot',
+    content: 'INITIALIZING CORE COMMUNICATION PROTOCOL... WAITING FOR OPERATOR COMMAND.',
   },
 ]);
 
 const suggestions = [
-  "WHO IS CÉSAR GÓMEZ?",
-  "WHAT IS THE TECH STACK?",
-  "CURRENT MISSION?",
-  "EXPERIENCE LEVEL?",
+  'WHO IS CÉSAR GÓMEZ?',
+  'WHAT IS THE TECH STACK?',
+  'CURRENT MISSION?',
+  'EXPERIENCE LEVEL?',
 ];
 
 const responses = {
-  "WHO IS CÉSAR GÓMEZ?":
-    "OPERATOR: CÉSAR GÓMEZ IS A SENIOR FULLSTACK DEVELOPER WITH 13+ YEARS OF EXPERIENCE. SPECIALIZED IN FRONTEND ARCHITECTURE (VUE/NUXT) AND ROBUST BACKEND SYSTEMS. FOUNDING MEMBER @ LINGOQUESTO.",
-  "WHAT IS THE TECH STACK?":
-    "STACK ANALYSIS: VUE 3, NUXT 4, TYPESCRIPT, NODE.JS, TAILWIND CSS 4, PRIMEVUE 4. ARCHITECTURE FOCUSED ON SCALABILITY AND IMPACT.",
-  "CURRENT MISSION?":
-    "ACTIVE MISSION: DEFINING THE NEXT GENERATION OF ED-TECH PLATFORMS AT LINGOQUESTO AND MAINTAINING HIGH-PERFORMANCE CLOUD ARCHITECTURES.",
-  "EXPERIENCE LEVEL?":
-    "LEVEL: 13+ YEARS IN PRODUCTION. FRONTEND ARCHITECT. 600K+ LINES OF CODE WRITTEN. CITIZEN OF THE FULLSTACK ECOSYSTEM.",
+  'WHO IS CÉSAR GÓMEZ?':
+    'OPERATOR: CÉSAR GÓMEZ IS A SENIOR FULLSTACK DEVELOPER WITH 13+ YEARS OF EXPERIENCE. SPECIALIZED IN FRONTEND ARCHITECTURE (VUE/NUXT) AND ROBUST BACKEND SYSTEMS. FOUNDING MEMBER @ LINGOQUESTO.',
+  'WHAT IS THE TECH STACK?':
+    'STACK ANALYSIS: VUE 3, NUXT 4, TYPESCRIPT, NODE.JS, TAILWIND CSS 4, PRIMEVUE 4. ARCHITECTURE FOCUSED ON SCALABILITY AND IMPACT.',
+  'CURRENT MISSION?':
+    'ACTIVE MISSION: DEFINING THE NEXT GENERATION OF ED-TECH PLATFORMS AT LINGOQUESTO AND MAINTAINING HIGH-PERFORMANCE CLOUD ARCHITECTURES.',
+  'EXPERIENCE LEVEL?':
+    'LEVEL: 13+ YEARS IN PRODUCTION. FRONTEND ARCHITECT. 600K+ LINES OF CODE WRITTEN. CITIZEN OF THE FULLSTACK ECOSYSTEM.',
 };
 
 const sendMessage = (content) => {
   const text = content || userInput.value.trim().toUpperCase();
   if (!text) return;
 
-  messages.value.push({ role: "user", content: text });
-  userInput.value = "";
+  messages.value.push({ role: 'user', content: text });
+  userInput.value = '';
   isTyping.value = true;
 
   scrollToBottom();
@@ -226,8 +210,8 @@ const sendMessage = (content) => {
   setTimeout(() => {
     const botResponse =
       responses[text] ||
-      "COMMAND NOT RECOGNIZED. PLEASE USE ESTABLISHED PROTOCOLS OR CONTACT DIRECTLY VIA SIGNAL FREQUENCY.";
-    messages.value.push({ role: "bot", content: botResponse });
+      'COMMAND NOT RECOGNIZED. PLEASE USE ESTABLISHED PROTOCOLS OR CONTACT DIRECTLY VIA SIGNAL FREQUENCY.';
+    messages.value.push({ role: 'bot', content: botResponse });
     isTyping.value = false;
     scrollToBottom();
   }, 1000);
@@ -238,7 +222,7 @@ const scrollToBottom = () => {
     if (chatLog.value) {
       chatLog.value.scrollTo({
         top: chatLog.value.scrollHeight,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   });

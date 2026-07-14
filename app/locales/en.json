@@ -149,7 +149,13 @@
         "title": "Programming Foundations: Fundamentals",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
-        "skills": ["Programming", "Web Development", "Frontend Development", "Software Development", "Coding Standards"],
+        "skills": [
+          "Programming",
+          "Web Development",
+          "Frontend Development",
+          "Software Development",
+          "Coding Standards"
+        ],
         "url": "https://www.linkedin.com/learning/certificates/21837bee635ea2e0a3d812fea5848a0c448807c545fd826427cfe7d767f2d863"
       },
       {
@@ -212,7 +218,13 @@
         "title": "Debug Code: JavaScript",
         "issuer": "LinkedIn",
         "date": "Feb. 2025",
-        "skills": ["Debugging", "Web Development", "Frontend Development", "Software Testing", "JavaScript"],
+        "skills": [
+          "Debugging",
+          "Web Development",
+          "Frontend Development",
+          "Software Testing",
+          "JavaScript"
+        ],
         "url": "https://www.linkedin.com/learning/certificates/b37010953715cdd72d83d920083218e663122e5d07203014e503bcfb63b87a6e"
       },
       {
