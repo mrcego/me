@@ -437,6 +437,7 @@
 /* Surface cards — unlayered so hover colors beat Tailwind text-* utilities */
 .surface-card {
   --surface-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
   transition:
     transform 0.55s var(--surface-ease),
     border-color 0.55s var(--surface-ease),
@@ -616,6 +617,8 @@
   transform: scaleX(0);
   transform-origin: left;
   opacity: 1;
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
 }
 
 .surface-card:hover .surface-card__tag,

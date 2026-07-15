@@ -54,7 +54,7 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-6 md:p-8 rounded-4xl border-foreground/5 flex flex-col justify-between h-full"
+          class="surface-card group relative glass p-6 md:p-8 rounded-4xl border-foreground/5 flex flex-col justify-between h-full overflow-hidden"
         >
           <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
 
