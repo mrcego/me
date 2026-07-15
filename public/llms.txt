@@ -1,6 +1,6 @@
-# César Gómez — Senior Fullstack Developer
+# César Gómez — Frontend-Focused Senior Fullstack Developer
 
-> Portfolio and professional profile for César Gómez (mrcego), a senior fullstack developer with 13+ years of experience, specialized in Vue.js, Nuxt.js, TypeScript, and frontend architecture. Based in Colombia. Available for remote contract work from August 2026.
+> Portfolio and professional profile for César Gómez (mrcego), a senior fullstack developer with a frontend focus and 13+ years of experience in Vue.js, Nuxt.js, TypeScript, and frontend architecture. Based in Colombia. Available for remote contract work from August 2026.
 
 ## Canonical URLs
 
@@ -10,7 +10,7 @@
 
 ## Professional summary
 
-César Gómez is a Senior Fullstack Developer with a frontend-first specialization. He builds high-performance web products with Vue 3, Nuxt 4, TypeScript, PrimeVue, and Tailwind CSS. He has led frontend architecture for ed-tech platforms serving 100,000+ students and contributed as a founding engineer on speech-based language learning products.
+César Gómez is a senior fullstack developer with a frontend focus. He builds high-performance web products with Vue 3, Nuxt 4, TypeScript, PrimeVue, and Tailwind CSS. He has led frontend architecture for ed-tech platforms serving 100,000+ students and contributed as a founding engineer on speech-based language learning products.
 
 ## Core expertise
 

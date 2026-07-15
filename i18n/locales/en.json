@@ -16,8 +16,8 @@
   "hero": {
     "tagline": "Available Aug 2026",
     "name": "CESAR GOMEZ",
-    "title": "Senior Fullstack Developer",
-    "description": "13+ years specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.",
+    "title": "Frontend-Focused Senior Fullstack Developer",
+    "description": "Fullstack by trade, frontend at heart. 13+ years building with Vue.js, Nuxt.js, TypeScript, and modern web architectures.",
     "cta": "Get in Touch",
     "stats": {
       "experience": "Years Experience",
@@ -425,12 +425,12 @@
     ]
   },
   "seo": {
-    "title": "Cesar Gomez — Senior Fullstack Developer | Vue.js & Nuxt Expert",
-    "description": "Cesar Gomez is a Senior Fullstack Developer with 13+ years of experience, specialized in Vue.js, Nuxt.js, TypeScript, and frontend architecture. Colombia-based, remote-friendly, available for contract work from August 2026.",
+    "title": "Cesar Gomez — Frontend-Focused Fullstack Developer | Vue.js & Nuxt Expert",
+    "description": "Cesar Gomez is a senior fullstack developer with a frontend focus and 13+ years of experience in Vue.js, Nuxt.js, TypeScript, and frontend architecture. Colombia-based, remote-friendly, available for contract work from August 2026.",
     "keywords": "Cesar Gomez, César Gómez, mrcego, Senior Fullstack Developer, Vue.js Developer, Nuxt.js Developer, TypeScript Developer, Frontend Architect, Colombia developer, remote developer, hire Vue developer, hire Nuxt developer, frontend engineer, web developer portfolio",
-    "ogTitle": "Cesar Gomez — Senior Fullstack Developer | Vue.js & Nuxt Expert",
-    "ogDescription": "13+ years building high-performance products with Vue.js, Nuxt.js, and TypeScript. Frontend architecture, fullstack delivery, available Aug 2026.",
-    "jobTitle": "Senior Fullstack Developer",
+    "ogTitle": "Cesar Gomez — Frontend-Focused Fullstack Developer | Vue.js & Nuxt Expert",
+    "ogDescription": "Fullstack developer with a frontend focus. 13+ years with Vue.js, Nuxt.js, and TypeScript. Available Aug 2026.",
+    "jobTitle": "Frontend-Focused Senior Fullstack Developer",
     "siteName": "Cesar Gomez Portfolio",
     "serviceName": "Cesar Gomez — Frontend & Fullstack Development",
     "serviceDescription": "Senior fullstack and frontend architecture services with Vue.js, Nuxt.js, TypeScript, design systems, and performance-focused product engineering.",
@@ -448,7 +448,7 @@
     "items": [
       {
         "question": "Who is Cesar Gomez?",
-        "answer": "Cesar Gomez is a Senior Fullstack Developer with 13+ years of experience, focused on frontend excellence with Vue.js, Nuxt.js, and TypeScript. He has built products for ed-tech platforms including Colegium (100k+ students) and LingoQuesto."
+        "answer": "Cesar Gomez is a senior fullstack developer with a frontend focus and 13+ years of experience in Vue.js, Nuxt.js, and TypeScript. He has built products for ed-tech platforms including Colegium (100k+ students) and LingoQuesto."
       },
       {
         "question": "What technologies does Cesar Gomez specialize in?",
