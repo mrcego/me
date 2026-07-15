@@ -29,13 +29,15 @@
             <div
               class="relative aspect-square max-h-56 sm:max-h-64 md:max-h-72 xl:max-h-[26rem] w-full max-w-xs sm:max-w-sm xl:max-w-none mx-auto rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
             >
-              <img
+              <NuxtImg
                 src="/img/technical-identity.jpg"
                 alt="César Gómez - Frontend-focused senior fullstack developer"
                 width="600"
                 height="600"
-                loading="eager"
-                decoding="async"
+                format="webp"
+                quality="80"
+                loading="lazy"
+                sizes="(max-width: 1280px) 384px, 416px"
                 class="absolute inset-0 z-0 h-full w-full object-cover object-center grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-1000 scale-105 group-hover:scale-100"
               />
 
@@ -152,7 +154,7 @@
               <div
                 role="button"
                 tabindex="0"
-                class="surface-card glass p-4 sm:p-5 xl:p-6 rounded-2xl sm:rounded-3xl border-foreground/5 group flex h-full min-h-48 sm:min-h-52 xl:min-h-56 flex-col relative overflow-hidden w-full min-w-0 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation"
+                class="surface-card role-experience-card glass p-4 sm:p-5 xl:p-6 rounded-2xl sm:rounded-3xl border-foreground/5 group flex h-full min-h-48 sm:min-h-52 xl:min-h-56 flex-col relative w-full min-w-0 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation"
                 :aria-label="`${$t('about.roles.viewDetails')}: ${$t(`about.roles.${role.key}.title`)}`"
                 @click="openRoleModal(role.key)"
                 @keydown="onRoleCardKeydown($event, role.key)"
@@ -161,7 +163,7 @@
                 <div class="relative z-10 flex min-h-0 flex-1 flex-col gap-3 sm:gap-4 md:gap-6">
                   <div class="flex items-start justify-between gap-2 sm:gap-3 min-w-0">
                     <div
-                      class="surface-card__chip type-chip glass rounded-lg sm:rounded-xl shadow-sm shrink-0 max-w-[58%] sm:max-w-none px-3 py-1 sm:px-4 sm:py-1.5"
+                      class="surface-card__chip type-chip glass rounded-lg sm:rounded-xl shadow-sm min-w-0 shrink max-w-[52%] sm:max-w-none px-3 py-1 sm:px-4 sm:py-1.5"
                     >
                       {{ $t(`about.roles.${role.key}.years`) }}
                     </div>
@@ -170,17 +172,19 @@
                       class="role-card__logo-wrap"
                       aria-hidden="true"
                     >
-                      <img
+                      <NuxtImg
                         :src="COMPANY_LOGOS[role.key].src"
                         :alt="COMPANY_LOGOS[role.key].alt"
                         class="role-card__company-logo"
                         :class="{
                           'role-card__company-logo--on-light': 'onLight' in COMPANY_LOGOS[role.key],
                         }"
-                        width="128"
-                        height="64"
-                        loading="eager"
-                        decoding="async"
+                        :width="COMPANY_LOGOS[role.key].width"
+                        :height="COMPANY_LOGOS[role.key].height"
+                        fit="inside"
+                        loading="lazy"
+                        :format="COMPANY_LOGOS[role.key].src.endsWith('.svg') ? undefined : 'webp'"
+                        quality="85"
                       />
                     </div>
                   </div>
@@ -245,7 +249,7 @@
       <header class="experience-modal__header">
         <div class="flex items-start gap-4 md:gap-5 min-w-0">
           <div class="experience-modal__icon-wrap shrink-0" aria-hidden="true">
-            <img
+            <NuxtImg
               v-if="selectedCompanyLogo"
               :src="selectedCompanyLogo.src"
               :alt="selectedCompanyLogo.alt"
@@ -256,7 +260,8 @@
               width="56"
               height="56"
               loading="lazy"
-              decoding="async"
+              :format="selectedCompanyLogo.src.endsWith('.svg') ? undefined : 'webp'"
+              quality="85"
             />
           </div>
 
@@ -352,11 +357,22 @@ const roleModalVisible = ref(false);
 const selectedRoleKey = ref<string | null>(null);
 
 const COMPANY_LOGOS = {
-  lingoquesto: { src: '/img/companies/lingoquesto.png', alt: 'LingoQuesto' },
-  colegium: { src: '/img/companies/colegium.svg', alt: 'Colegium' },
-  tissini: { src: '/img/companies/tissini.png', alt: 'TISSINI' },
-  cuartopixel: { src: '/img/companies/cuartopixel.jpg', alt: '4to Pixel', onLight: true },
-  zabud: { src: '/img/companies/zabud.png', alt: 'ZABUD Technologies' },
+  lingoquesto: {
+    src: '/img/companies/lingoquesto.png',
+    alt: 'LingoQuesto',
+    width: 565,
+    height: 322,
+  },
+  colegium: { src: '/img/companies/colegium.svg', alt: 'Colegium', width: 200, height: 200 },
+  tissini: { src: '/img/companies/tissini.png', alt: 'TISSINI', width: 834, height: 283 },
+  cuartopixel: {
+    src: '/img/companies/cuartopixel.jpg',
+    alt: '4to Pixel',
+    width: 193,
+    height: 186,
+    onLight: true,
+  },
+  zabud: { src: '/img/companies/zabud.png', alt: 'ZABUD Technologies', width: 490, height: 104 },
 } as const;
 
 type CompanyLogoId = keyof typeof COMPANY_LOGOS;
@@ -433,59 +449,52 @@ const aboutPoints = [
   animation: scanline-subtle 3s linear infinite;
 }
 
+.role-experience-card.surface-card {
+  overflow: visible;
+}
+
 .role-card__logo-wrap {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-shrink: 0;
-  width: 4rem;
-  height: 2.25rem;
-  overflow: hidden;
+  flex: 0 0 auto;
+  width: 7rem;
+  height: 4.5rem;
+  padding: 0.2rem;
+  overflow: visible;
 }
 
 @media (min-width: 640px) {
   .role-card__logo-wrap {
-    width: 4.5rem;
-    height: 2.5rem;
-  }
-}
-
-@media (min-width: 1280px) {
-  .role-card__logo-wrap {
-    width: 5rem;
-    height: 2.75rem;
+    width: 7.5rem;
+    height: 5rem;
+    padding: 0.25rem;
   }
 }
 
 .role-card__company-logo {
   display: block;
-  max-width: 100%;
-  max-height: 100%;
   width: auto;
   height: auto;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
-  object-position: center right;
-  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  object-position: center center;
 }
 
 .role-card__company-logo--on-light {
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
   border-radius: 0.4rem;
-  padding: 0.2rem;
+  padding: 0.2rem 0.3rem;
   background: rgba(255, 255, 255, 0.94);
   box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);
 }
 
-.surface-card:hover .role-card__company-logo,
-.surface-card:focus-visible .role-card__company-logo {
-  transform: scale(1.06);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .role-card__company-logo,
-  .surface-card:hover .role-card__company-logo,
-  .surface-card:focus-visible .role-card__company-logo {
-    transition-duration: 0.01ms;
-    transform: none;
+  .role-card__company-logo {
+    transition: none;
   }
 }
 </style>

@@ -139,7 +139,6 @@
             class="btn-premium bg-primary text-primary-contrast rounded-3xl! px-8! sm:px-10! md:px-12! py-4! sm:py-5! md:py-6! shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 transition-all w-full sm:w-auto text-sm sm:text-base border-none!"
             as="a"
             href="#contact"
-            aria-label="Contact César Gómez"
           >
             <Icon name="solar:rocket-2-bold-duotone" class="w-6 h-6 sm:w-7 sm:h-7" />
             <span>{{ $t('hero.cta') }}</span>
@@ -222,6 +221,7 @@
               format="webp"
               quality="85"
               loading="eager"
+              preload
               fetchpriority="high"
               sizes="sm:400px md:500px lg:600px xl:800px"
               class="surface-card__image surface-card__image--zoom w-full h-full object-cover grayscale brightness-90 scale-105"

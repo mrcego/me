@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: { enabled: process.env.NODE_ENV === 'development' },
   future: {
     compatibilityVersion: 4,
   },
@@ -39,13 +39,6 @@ export default defineNuxtConfig({
       link: [
         { rel: 'dns-prefetch', href: '//www.linkedin.com' },
         { rel: 'dns-prefetch', href: '//github.com' },
-        { rel: 'dns-prefetch', href: '//fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com', crossorigin: '' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap',
-        },
         { rel: 'preconnect', href: 'https://www.linkedin.com', crossorigin: '' },
         { rel: 'manifest', href: '/manifest.json' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
@@ -58,7 +51,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['~/assets/css/main.css', 'primeicons/primeicons.css'],
+  css: ['~/assets/css/main.css'],
 
   vite: {
     plugins: [tailwindcss()],
@@ -66,14 +59,26 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxt/eslint',
-    '@nuxt/hints',
+    '@nuxt/fonts',
+    ...(process.env.NODE_ENV === 'development' ? (['@nuxt/hints'] as const) : []),
     '@nuxt/icon',
     '@nuxt/image',
-    '@nuxt/scripts',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
     '@primevue/nuxt-module',
   ],
+
+  fonts: {
+    defaults: {
+      weights: [400, 500, 600, 700],
+      styles: ['normal'],
+      subsets: ['latin'],
+    },
+    families: [
+      { name: 'Outfit', provider: 'google', weights: [400, 500, 600, 700, 800, 900] },
+      { name: 'Fira Code', provider: 'google', weights: [400, 500, 600, 700] },
+    ],
+  },
 
   // SEO module configuration
   robots: {

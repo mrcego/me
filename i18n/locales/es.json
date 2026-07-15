@@ -10,6 +10,7 @@
     "testimonials": "Testimonios",
     "getInTouch": "Contáctame",
     "switchLanguage": "Cambiar idioma",
+    "switchLanguageLabel": "Cambiar idioma: {locale}",
     "themePresets": "Temas IDE",
     "modes": "Modos"
   },
@@ -54,6 +55,11 @@
       "close": "Cerrar anuncio",
       "dontShowAgain": "No volver a mostrar"
     }
+  },
+  "chat": {
+    "open": "Abrir asistente de chat",
+    "close": "Cerrar asistente de chat",
+    "closeWindow": "Cerrar ventana de chat"
   },
   "about": {
     "section": "Identidad Técnica",
@@ -555,6 +561,7 @@
   "footer": {
     "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",
     "rights": "Todos los derechos reservados.",
+    "copyrightYear": "2026",
     "protocol": "Protocolo Signal.",
     "status": "Todos los Sistemas Operativos"
   },

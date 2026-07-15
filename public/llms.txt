@@ -4,11 +4,11 @@
 
 ## Canonical URLs
 
-- English: https://cesargomez.dev/
-- Spanish: https://cesargomez.dev/es
-- Vue developer (EN): https://cesargomez.dev/vue-frontend-developer
-- Desarrollador Vue (ES): https://cesargomez.dev/es/desarrollador-vue
-- Sitemap: https://cesargomez.dev/sitemap.xml
+- [English home](https://cesargomez.dev/)
+- [Spanish home](https://cesargomez.dev/es)
+- [Vue developer (EN)](https://cesargomez.dev/vue-frontend-developer)
+- [Desarrollador Vue (ES)](https://cesargomez.dev/es/desarrollador-vue)
+- [Sitemap](https://cesargomez.dev/sitemap.xml)
 
 ## Professional summary
 
@@ -34,10 +34,10 @@ Open to senior frontend, fullstack, and architecture roles — contract and remo
 
 ## Contact
 
-- Website: https://cesargomez.dev/#contact
-- LinkedIn: https://www.linkedin.com/in/mrcego
-- GitHub: https://github.com/mrcego
-- Email: via contact form on https://cesargomez.dev/#contact
+- [Contact form](https://cesargomez.dev/#contact)
+- [LinkedIn](https://www.linkedin.com/in/mrcego)
+- [GitHub](https://github.com/mrcego)
+- Email: via [contact form](https://cesargomez.dev/#contact)
 
 ## Languages
 
@@ -46,9 +46,9 @@ Open to senior frontend, fullstack, and architecture roles — contract and remo
 
 ## Optional pages
 
-- Vue frontend developer profile: https://cesargomez.dev/vue-frontend-developer
-- Desarrollador Vue.js senior: https://cesargomez.dev/es/desarrollador-vue
-- About / Technical Identity: https://cesargomez.dev/#about
-- Tech stack: https://cesargomez.dev/#tech-stack
-- Certifications: https://cesargomez.dev/#certifications
-- Testimonials: https://cesargomez.dev/#testimonials
+- [Vue frontend developer profile](https://cesargomez.dev/vue-frontend-developer)
+- [Desarrollador Vue.js senior](https://cesargomez.dev/es/desarrollador-vue)
+- [About / Technical Identity](https://cesargomez.dev/#about)
+- [Tech stack](https://cesargomez.dev/#tech-stack)
+- [Certifications](https://cesargomez.dev/#certifications)
+- [Testimonials](https://cesargomez.dev/#testimonials)

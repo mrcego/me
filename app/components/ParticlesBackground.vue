@@ -1,19 +1,31 @@
 ﻿<template>
-  <div class="particles-container" aria-hidden="true">
+  <div v-if="enabled" class="particles-container" aria-hidden="true">
     <canvas ref="canvas" class="particles-canvas" />
   </div>
 </template>
 
-<script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+import { usePreferredReducedMotion } from '@vueuse/core';
 
-const canvas = ref(null);
-let ctx = null;
-let particles = [];
-let animationFrameId = null;
+const canvas = ref<HTMLCanvasElement | null>(null);
+const enabled = ref(false);
+const prefersReducedMotion = usePreferredReducedMotion();
+
+let ctx: CanvasRenderingContext2D | null = null;
+let particles: Particle[] = [];
+let animationFrameId: number | null = null;
+let isPageVisible = true;
 
 class Particle {
-  constructor(canvasWidth, canvasHeight) {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  opacity: number;
+
+  constructor(canvasWidth: number, canvasHeight: number) {
     this.x = Math.random() * canvasWidth;
     this.y = Math.random() * canvasHeight;
     this.size = Math.random() * 2 + 1;
@@ -22,7 +34,7 @@ class Particle {
     this.opacity = Math.random() * 0.3 + 0.1;
   }
 
-  update(canvasWidth, canvasHeight) {
+  update(canvasWidth: number, canvasHeight: number) {
     this.x += this.speedX;
     this.y += this.speedY;
 
@@ -33,33 +45,43 @@ class Particle {
     else if (this.y < 0) this.y = canvasHeight;
   }
 
-  draw(ctx) {
-    ctx.fillStyle = `rgba(255, 75, 92, ${this.opacity})`;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fill();
+  draw(context: CanvasRenderingContext2D) {
+    context.fillStyle = `rgba(255, 75, 92, ${this.opacity})`;
+    context.beginPath();
+    context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    context.fill();
   }
 }
 
-const initParticles = () => {
+function shouldAnimate() {
+  return enabled.value && isPageVisible && prefersReducedMotion.value !== 'reduce';
+}
+
+function initParticles() {
   if (!canvas.value) return;
 
   const canvasWidth = canvas.value.width;
   const canvasHeight = canvas.value.height;
-  const particleCount = Math.min(60, Math.floor((canvasWidth * canvasHeight) / 15000));
+  const particleCount = Math.min(40, Math.floor((canvasWidth * canvasHeight) / 18000));
 
   particles = [];
   for (let i = 0; i < particleCount; i++) {
     particles.push(new Particle(canvasWidth, canvasHeight));
   }
-};
+}
 
-const connectParticles = () => {
-  const maxDistance = 150;
+function connectParticles() {
+  if (!ctx) return;
+
+  const maxDistance = 120;
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
+      const a = particles[i];
+      const b = particles[j];
+      if (!a || !b) continue;
+
+      const dx = a.x - b.x;
+      const dy = a.y - b.y;
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < maxDistance) {
@@ -67,55 +89,89 @@ const connectParticles = () => {
         ctx.strokeStyle = `rgba(255, 75, 92, ${opacity})`;
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
         ctx.stroke();
       }
     }
   }
-};
+}
 
-const animate = () => {
+function animate() {
   if (!canvas.value || !ctx) return;
+
+  if (!shouldAnimate()) {
+    animationFrameId = requestAnimationFrame(animate);
+    return;
+  }
 
   ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
 
   particles.forEach((particle) => {
-    particle.update(canvas.value.width, canvas.value.height);
-    particle.draw(ctx);
+    particle.update(canvas.value!.width, canvas.value!.height);
+    particle.draw(ctx!);
   });
 
   connectParticles();
 
   animationFrameId = requestAnimationFrame(animate);
-};
+}
 
-const handleResize = () => {
+function startAnimation() {
+  if (animationFrameId !== null) return;
+  animationFrameId = requestAnimationFrame(animate);
+}
+
+function stopAnimation() {
+  if (animationFrameId === null) return;
+  cancelAnimationFrame(animationFrameId);
+  animationFrameId = null;
+}
+
+function handleResize() {
   if (!canvas.value) return;
 
   canvas.value.width = window.innerWidth;
   canvas.value.height = window.innerHeight;
   initParticles();
-};
+}
 
-onMounted(() => {
+function handleVisibilityChange() {
+  isPageVisible = document.visibilityState === 'visible';
+}
+
+function setupCanvas() {
   if (!canvas.value) return;
 
   ctx = canvas.value.getContext('2d');
   canvas.value.width = window.innerWidth;
   canvas.value.height = window.innerHeight;
-
   initParticles();
-  animate();
+  startAnimation();
+}
 
+watch(prefersReducedMotion, (value) => {
+  enabled.value = value !== 'reduce';
+  if (!enabled.value) {
+    stopAnimation();
+  } else if (canvas.value && !animationFrameId) {
+    setupCanvas();
+  }
+});
+
+onMounted(() => {
+  enabled.value = prefersReducedMotion.value !== 'reduce';
+  if (!enabled.value) return;
+
+  setupCanvas();
   window.addEventListener('resize', handleResize);
+  document.addEventListener('visibilitychange', handleVisibilityChange);
 });
 
 onUnmounted(() => {
-  if (animationFrameId) {
-    cancelAnimationFrame(animationFrameId);
-  }
+  stopAnimation();
   window.removeEventListener('resize', handleResize);
+  document.removeEventListener('visibilitychange', handleVisibilityChange);
 });
 </script>
 

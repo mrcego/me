@@ -72,7 +72,7 @@
         <p
           class="text-xs md:text-sm font-bold uppercase tracking-widest text-muted flex items-center gap-2"
         >
-          <span>{{ new Date().getFullYear() }} {{ $t('footer.protocol') }}</span>
+          <span>{{ $t('footer.copyrightYear') }} {{ $t('footer.protocol') }}</span>
           <span class="hidden md:inline text-muted/30">|</span>
           <span class="opacity-50 tracking-[0.2em]">{{ $t('footer.rights') }}</span>
         </p>

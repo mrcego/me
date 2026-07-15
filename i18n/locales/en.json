@@ -10,6 +10,7 @@
     "testimonials": "Testimonials",
     "getInTouch": "Get in Touch",
     "switchLanguage": "Switch language",
+    "switchLanguageLabel": "Switch language: {locale}",
     "themePresets": "Theme Presets",
     "modes": "Modes"
   },
@@ -54,6 +55,11 @@
       "close": "Close announcement",
       "dontShowAgain": "Don't show again"
     }
+  },
+  "chat": {
+    "open": "Open chat assistant",
+    "close": "Close chat assistant",
+    "closeWindow": "Close chat window"
   },
   "about": {
     "section": "Technical Identity",
@@ -555,6 +561,7 @@
   "footer": {
     "tagline": "Building high-fidelity products with frontend excellence",
     "rights": "All rights reserved.",
+    "copyrightYear": "2026",
     "protocol": "Ancelabs.",
     "status": "All Systems Operational"
   },

@@ -28,6 +28,8 @@
     <!-- Chat Trigger Toggle -->
     <button
       class="w-16 h-16 md:w-20 md:h-20 glass rounded-4xl flex items-center justify-center text-primary border-primary/20 shadow-4xl hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group overflow-hidden"
+      :aria-label="isOpen ? $t('chat.close') : $t('chat.open')"
+      :aria-expanded="isOpen"
       @click="isOpen = !isOpen"
     >
       <span
@@ -68,6 +70,7 @@
       </div>
       <button
         class="p-2 text-muted hover:text-foreground transition-colors"
+        :aria-label="$t('chat.closeWindow')"
         @click="isOpen = false"
       >
         <Icon name="lucide:x" class="w-7 h-7" />

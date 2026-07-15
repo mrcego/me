@@ -17,15 +17,19 @@
     />
 
     <!-- Particles Background -->
-    <ParticlesBackground />
+    <ClientOnly>
+      <ParticlesBackground />
+    </ClientOnly>
 
     <AppNavbar :active-section="activeSection" />
 
     <NuxtPage />
 
-    <AppProtocolChat />
+    <LazyAppProtocolChat />
 
     <AvailabilityAnnouncement :ready="announcementReady" />
+
+    <PerformanceOptimizations />
   </div>
 </template>
 
@@ -44,8 +48,16 @@ function onLoaderAfterLeave() {
 }
 
 onMounted(() => {
-  setTimeout(() => {
+  const hideLoader = () => {
     loading.value = false;
-  }, 1000);
+  };
+
+  const maxWaitMs = 450;
+  const maxTimer = window.setTimeout(hideLoader, maxWaitMs);
+
+  void document.fonts?.ready.then(() => {
+    window.clearTimeout(maxTimer);
+    hideLoader();
+  });
 });
 </script>

@@ -29,8 +29,14 @@ export const useSmoothedScroll = createSharedComposable((lerp = 0.12) => {
 
   const progress = (distance = 120) => computed(() => Math.min(1, Math.max(0, y.value / distance)));
 
+  const scrollReady = ref(false);
+
+  onMounted(() => {
+    scrollReady.value = true;
+  });
+
   const pageProgress = computed(() => {
-    if (typeof document === 'undefined') return 0;
+    if (!scrollReady.value || typeof document === 'undefined') return 0;
 
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     if (height <= 0) return 0;

@@ -2,14 +2,14 @@
   <main id="main-content" class="portfolio-content relative" tabindex="-1">
     <HeroSection />
     <AboutSection />
-    <TechStackSection />
-    <CertificationsSection />
-    <CapabilitiesSection />
+    <LazyTechStackSection />
+    <LazyCertificationsSection />
+    <LazyCapabilitiesSection />
     <!-- <ProjectsSection /> -->
-    <TestimonialsSection />
-    <ContactSection />
-    <SeoFaqSection />
-    <AppFooter />
+    <LazyTestimonialsSection />
+    <LazyContactSection />
+    <LazySeoFaqSection />
+    <LazyAppFooter />
   </main>
 </template>
 

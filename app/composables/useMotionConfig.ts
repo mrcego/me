@@ -15,7 +15,7 @@ export const useMotionConfig = () => {
   });
 
   const motionEnabled = computed(
-    () => !motionReady.value || prefersReducedMotion.value !== 'reduce',
+    () => motionReady.value && prefersReducedMotion.value !== 'reduce',
   );
 
   const motionInitial = <T>(value: T): T | false => (motionEnabled.value ? value : false);

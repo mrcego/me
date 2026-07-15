@@ -26,7 +26,7 @@ export function useAvailability() {
   );
 
   function isAnnouncementDismissed() {
-    if (!import.meta.client) return true;
+    if (!import.meta.client) return false;
     return localStorage.getItem(DISMISS_STORAGE_KEY) === '1';
   }
 
