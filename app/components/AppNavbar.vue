@@ -66,14 +66,12 @@
               >
                 <span class="relative z-10">{{ $t(link.name) }}</span>
                 <!-- Active Background Pill -->
-                <div
+                <span
                   v-if="isActiveSection(link.id)"
                   class="absolute inset-0 bg-foreground/10 rounded-full z-0"
-                  layoutId="nav-pill"
-                  transition="{ type: 'spring', stiffness: 300, damping: 30 }"
                 />
                 <!-- Hover Glow -->
-                <div
+                <span
                   v-else
                   class="absolute inset-0 bg-foreground/5 rounded-full opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 z-0"
                 />
@@ -129,7 +127,8 @@
                       <button
                         v-for="preset in THEME_PRESETS"
                         :key="preset.id"
-                        class="flex items-center justify-between p-2 sm:p-2.5 rounded-xl sm:rounded-2xl transition-all duration-300 group/item border"
+                        type="button"
+                        class="flex w-full items-center justify-between p-2 sm:p-2.5 rounded-xl sm:rounded-2xl transition-all duration-300 group/item border"
                         :class="[
                           currentThemeId === preset.id
                             ? 'bg-primary/10 border-primary/20 scale-[1.02]'
@@ -137,42 +136,43 @@
                         ]"
                         @click="setThemePreset(preset.id)"
                       >
-                        <div class="flex items-center gap-2 sm:gap-3">
-                          <div
-                            class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl flex items-center justify-center relative overflow-hidden ring-2 ring-foreground/5 shadow-sm"
+                        <span class="flex items-center gap-2 sm:gap-3 min-w-0 text-left">
+                          <span
+                            class="inline-flex w-8 h-8 sm:w-10 sm:h-10 shrink-0 rounded-lg sm:rounded-xl items-center justify-center relative overflow-hidden ring-2 ring-foreground/5 shadow-sm"
                             :style="{ background: preset.background }"
+                            aria-hidden="true"
                           >
-                            <div
+                            <span
                               class="absolute top-0 right-0 w-1/2 h-1/2"
                               :style="{ background: preset.primary }"
                             />
-                            <div
+                            <span
                               v-if="preset.font === 'Fira Code'"
                               class="absolute inset-0 flex items-center justify-center text-[8px] sm:text-[10px] font-mono text-white/20 select-none"
                             >
                               fc
-                            </div>
-                          </div>
-                          <div class="text-left">
-                            <p
-                              class="text-[9px] sm:text-[11px] font-bold transition-colors"
+                            </span>
+                          </span>
+                          <span class="min-w-0">
+                            <span
+                              class="block text-[9px] sm:text-[11px] font-bold transition-colors"
                               :class="[
                                 currentThemeId === preset.id ? 'text-primary' : 'text-foreground',
                               ]"
                             >
                               {{ $t('themes.' + preset.id) }}
-                            </p>
-                            <p
-                              class="text-[6px] sm:text-[8px] text-muted font-black uppercase tracking-widest opacity-60"
+                            </span>
+                            <span
+                              class="block text-[6px] sm:text-[8px] text-muted font-black uppercase tracking-widest opacity-60"
                             >
                               {{ preset.font }}
-                            </p>
-                          </div>
-                        </div>
+                            </span>
+                          </span>
+                        </span>
                         <Icon
                           v-if="currentThemeId === preset.id"
                           name="solar:check-circle-bold"
-                          class="w-8 h-8 sm:w-10 sm:h-10 text-primary"
+                          class="w-8 h-8 sm:w-10 sm:h-10 text-primary shrink-0"
                         />
                       </button>
                     </div>

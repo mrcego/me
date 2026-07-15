@@ -28,31 +28,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted } from 'vue';
 import 'primeicons/primeicons.css';
 import { usePortfolio } from '~/composables/usePortfolio';
 import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
-
-const { locale, setLocale } = useI18n();
-const localeCookie = useCookie<'en' | 'es'>('i18n_locale');
 
 const { activeSection } = usePortfolio();
 const { pageProgress } = useSmoothedScroll(0.14);
 const loading = ref(true);
 
 onMounted(() => {
-  const saved = localeCookie.value;
-  if (saved && saved !== locale.value) {
-    setLocale(saved);
-  }
-
-  // Reduced loader time for better performance
   setTimeout(() => {
     loading.value = false;
   }, 1000);
-});
-
-watch(locale, (value) => {
-  localeCookie.value = value as 'en' | 'es';
 });
 </script>

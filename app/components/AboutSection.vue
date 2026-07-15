@@ -27,31 +27,28 @@
             />
 
             <div
-              class="relative aspect-square max-h-[22rem] xl:max-h-[26rem] rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo hidden xl:block"
+              class="relative aspect-square max-h-56 sm:max-h-64 md:max-h-72 xl:max-h-[26rem] w-full max-w-xs sm:max-w-sm xl:max-w-none mx-auto rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
             >
-              <!-- Cinematic HUD Overlay for Photo -->
-              <div
-                class="absolute inset-0 z-20 pointer-events-none border-8 md:border-12 border-white/5 rounded-3xl"
-              />
-              <div
-                class="absolute inset-0 z-20 pointer-events-none bg-linear-to-t from-background/80 via-transparent to-transparent opacity-60"
-              />
-
-              <NuxtImg
+              <img
                 src="/img/technical-identity.jpg"
                 alt="César Gómez - Senior Fullstack Developer and Frontend Architect"
                 width="600"
                 height="600"
-                format="webp"
-                quality="85"
                 loading="eager"
                 decoding="async"
-                sizes="(min-width: 1280px) 420px, 0px"
-                class="w-full h-full object-cover object-center grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-1000 scale-105 group-hover:scale-100"
+                class="absolute inset-0 z-0 h-full w-full object-cover object-center grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-1000 scale-105 group-hover:scale-100"
+              />
+
+              <!-- Cinematic HUD Overlay for Photo -->
+              <div
+                class="absolute inset-0 z-10 pointer-events-none border-8 md:border-12 border-white/5 rounded-3xl"
+              />
+              <div
+                class="absolute inset-0 z-10 pointer-events-none bg-linear-to-t from-background/80 via-transparent to-transparent opacity-60"
               />
 
               <div
-                class="absolute inset-x-0 top-0 h-1 bg-primary/40 blur-sm animate-scanline z-30 opacity-0 group-hover:opacity-100"
+                class="absolute inset-x-0 top-0 z-20 h-1 bg-primary/40 blur-sm animate-scanline opacity-0 group-hover:opacity-100"
               />
             </div>
 

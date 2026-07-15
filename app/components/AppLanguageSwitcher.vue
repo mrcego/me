@@ -10,10 +10,27 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import { watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { locale, setLocale } = useI18n();
+const localeCookie = useCookie<'en' | 'es'>('i18n_locale');
+
+onNuxtReady(() => {
+  const saved = localeCookie.value;
+  if (saved && saved !== locale.value) {
+    setLocale(saved);
+  }
+});
+
+watch(
+  locale,
+  (value) => {
+    localeCookie.value = value as 'en' | 'es';
+  },
+  { flush: 'post' },
+);
 
 const toggleLanguage = () => {
   setLocale(locale.value === 'en' ? 'es' : 'en');
