@@ -188,6 +188,31 @@
   .section-title {
     @apply text-5xl md:text-8xl font-black tracking-tighter leading-[0.85];
   }
+
+  /* Readable type scale — 12px floor (WCAG 1.4.4 resize text) */
+  .type-eyebrow {
+    @apply text-xs sm:text-sm font-black uppercase tracking-[0.35em] text-primary;
+  }
+
+  .type-overline {
+    @apply text-xs sm:text-sm font-black uppercase tracking-[0.25em];
+  }
+
+  .type-label {
+    @apply text-xs sm:text-sm font-bold uppercase tracking-[0.2em] leading-snug;
+  }
+
+  .type-meta {
+    @apply text-xs sm:text-sm font-black uppercase tracking-widest leading-snug;
+  }
+
+  .type-chip {
+    @apply text-xs sm:text-sm font-black uppercase tracking-[0.2em];
+  }
+
+  .type-stat-label {
+    @apply text-xs sm:text-sm md:text-base font-bold uppercase tracking-[0.2em] sm:tracking-[0.25em] leading-snug;
+  }
 }
 
 /* PrimeVue Overrides */
@@ -305,7 +330,7 @@
   gap: 0.4rem;
   padding: 0.35rem 0.65rem;
   border-radius: 9999px;
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -385,7 +410,7 @@
 }
 
 .experience-modal__index {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.15em;
   color: var(--color-primary);
@@ -413,7 +438,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 900;
   letter-spacing: 0.16em;
   text-transform: uppercase;

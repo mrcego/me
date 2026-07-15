@@ -16,7 +16,7 @@
       >
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
-          <h2 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+          <h2 class="type-eyebrow tracking-[0.4em]">
             {{ $t('capabilities.section') }}
           </h2>
           <div class="h-px w-10 bg-primary/40" />
@@ -63,7 +63,7 @@
                 {{ $t(`capabilities.items.${cap.key}.title`) }}
               </h4>
               <p
-                class="surface-card__text text-muted text-sm sm:text-base md:text-base leading-relaxed font-medium"
+                class="surface-card__text text-muted text-base sm:text-lg leading-relaxed font-medium"
               >
                 {{ $t(`capabilities.items.${cap.key}.desc`) }}
               </p>

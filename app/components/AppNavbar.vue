@@ -35,7 +35,7 @@
               {{ $t('hero.name') }}
             </span>
             <span
-              class="hidden sm:block text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] text-muted truncate site-nav__brand-subtitle"
+              class="hidden sm:block text-xs md:text-sm font-bold uppercase tracking-[0.2em] text-muted truncate site-nav__brand-subtitle"
             >
               {{ $t('hero.tags.frontArch') }}
             </span>
@@ -58,7 +58,7 @@
             >
               <a
                 :href="link.href"
-                class="relative px-2 lg:px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-[10px] xl:text-xs font-bold uppercase tracking-widest transition-all duration-300 isolate group/link overflow-hidden cursor-pointer"
+                class="relative px-2 lg:px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-bold uppercase tracking-widest transition-all duration-300 isolate group/link overflow-hidden cursor-pointer"
                 :class="[
                   isActiveSection(link.id) ? 'text-foreground' : 'text-muted hover:text-foreground',
                 ]"
@@ -111,12 +111,12 @@
                       class="flex items-center justify-between border-b border-foreground/5 pb-2 sm:pb-3"
                     >
                       <h3
-                        class="text-[9px] sm:text-xs font-black uppercase tracking-widest text-foreground"
+                        class="text-xs sm:text-sm font-black uppercase tracking-widest text-foreground"
                       >
                         {{ $t('nav.themePresets') }}
                       </h3>
                       <span
-                        class="text-[7px] sm:text-[9px] bg-primary/10 text-primary px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-bold border border-primary/20"
+                        class="text-xs sm:text-sm bg-primary/10 text-primary px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-bold border border-primary/20"
                         >{{ THEME_PRESETS.length }} {{ $t('nav.modes') }}</span
                       >
                     </div>
@@ -155,7 +155,7 @@
                           </span>
                           <span class="min-w-0">
                             <span
-                              class="block text-[9px] sm:text-[11px] font-bold transition-colors"
+                              class="block text-xs sm:text-sm font-bold transition-colors"
                               :class="[
                                 currentThemeId === preset.id ? 'text-primary' : 'text-foreground',
                               ]"
@@ -163,7 +163,7 @@
                               {{ $t('themes.' + preset.id) }}
                             </span>
                             <span
-                              class="block text-[6px] sm:text-[8px] text-muted font-black uppercase tracking-widest opacity-60"
+                              class="block text-xs sm:text-sm text-muted font-black uppercase tracking-widest opacity-60"
                             >
                               {{ preset.font }}
                             </span>
@@ -187,7 +187,7 @@
           <!-- CTA Button -->
           <a
             href="#contact"
-            class="hidden lg:flex items-center gap-1.5 xl:gap-2 bg-primary hover:bg-primary-hover text-primary-contrast px-3 xl:px-4 py-1.5 xl:py-2 rounded-full font-bold text-[9px] xl:text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn shrink-0"
+            class="hidden lg:flex items-center gap-1.5 xl:gap-2 bg-primary hover:bg-primary-hover text-primary-contrast px-3 xl:px-4 py-1.5 xl:py-2 rounded-full font-bold text-xs xl:text-sm uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn shrink-0"
             @click="scrollToSection($event, '#contact')"
           >
             <span>{{ $t('nav.getInTouch') }}</span>

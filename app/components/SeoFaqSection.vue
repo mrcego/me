@@ -8,7 +8,7 @@
       <header class="space-y-4 text-center">
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
-          <p class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+          <p class="type-eyebrow tracking-[0.4em]">
             {{ $t('faq.section') }}
           </p>
           <div class="h-px w-10 bg-primary/40" />
@@ -33,8 +33,13 @@
           <dt class="text-base md:text-lg font-bold text-foreground text-pretty">
             {{ item.question }}
           </dt>
-          <dd class="mt-3 text-sm md:text-base text-muted leading-relaxed text-pretty">
-            <I18nT v-if="isContactItem(item)" keypath="faq.contact.answer" tag="span">
+          <dd class="mt-3 text-base md:text-lg text-muted leading-relaxed text-pretty">
+            <I18nT
+              v-if="isContactItem(item)"
+              keypath="faq.contact.answer"
+              tag="span"
+              scope="global"
+            >
               <template #form>
                 <NuxtLink :to="contactFormTo" :class="faqLinkClass">{{
                   $t('faq.contact.linkForm')

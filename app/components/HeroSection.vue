@@ -51,10 +51,9 @@
                 class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-primary"
               />
             </span>
-            <span
-              class="text-[8px] sm:text-[9px] md:text-[11px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-primary"
-              >{{ $t('hero.tagline') }}</span
-            >
+            <span class="type-overline text-primary tracking-[0.3em] sm:tracking-[0.4em]">{{
+              $t('hero.tagline')
+            }}</span>
           </Motion>
 
           <Motion
@@ -101,7 +100,7 @@
               <div
                 v-for="tag in heroTags"
                 :key="tag"
-                class="flex items-center gap-1.5 sm:gap-2 md:gap-3 text-[7px] sm:text-[8px] md:text-[10px] font-black uppercase tracking-[0.25em] sm:tracking-[0.3em] text-muted hover:text-primary transition-all cursor-default"
+                class="flex items-center gap-1.5 sm:gap-2 md:gap-3 type-label text-muted hover:text-primary transition-all cursor-default"
               >
                 <div class="w-1 h-1 rounded-full bg-primary/40" />
                 {{ $t(tag) }}
@@ -114,7 +113,7 @@
           :initial="motionInitial({ opacity: 0, y: 15 })"
           :animate="motionAnimate({ opacity: 1, y: 0 })"
           :transition="{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }"
-          class="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 items-center lg:items-start justify-center lg:justify-start w-full lg:w-auto"
+          class="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 items-center justify-center lg:justify-start w-full lg:w-auto"
         >
           <Button
             class="btn-premium bg-primary text-primary-contrast rounded-3xl! px-8! sm:px-10! md:px-12! py-4! sm:py-5! md:py-6! shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 transition-all w-full sm:w-auto text-sm sm:text-base border-none!"
@@ -126,7 +125,11 @@
             <span>{{ $t('hero.cta') }}</span>
           </Button>
           <div
-            class="flex gap-3 sm:gap-4 md:gap-6 items-center border-t sm:border-t-0 sm:border-l border-foreground/10 pt-4 sm:pt-0 sm:pl-6 md:pl-8 w-full sm:w-auto justify-center lg:justify-start"
+            class="hidden sm:block w-px self-stretch bg-foreground/10 shrink-0"
+            aria-hidden="true"
+          />
+          <div
+            class="flex gap-3 sm:gap-4 md:gap-6 items-center border-t border-foreground/10 pt-4 sm:border-t-0 sm:pt-0 w-full sm:w-auto justify-center lg:justify-start"
           >
             <a
               v-for="social in socials"
@@ -135,9 +138,9 @@
               target="_blank"
               rel="noopener noreferrer"
               :aria-label="`Visit ${social.label} profile`"
-              class="surface-card group p-3 sm:p-4 glass rounded-xl sm:rounded-2xl text-muted active:scale-90"
+              class="surface-card group inline-flex items-center justify-center size-[4.5rem] sm:size-20 glass rounded-xl sm:rounded-2xl text-muted active:scale-90 shrink-0"
             >
-              <Icon :name="social.icon" class="surface-card__glyph w-11 h-11 sm:w-12 sm:h-12" />
+              <Icon :name="social.icon" class="surface-card__glyph size-9 sm:size-10 shrink-0" />
             </a>
           </div>
         </Motion>
@@ -163,7 +166,7 @@
               {{ stat.value }}
             </div>
             <div
-              class="text-[6px] sm:text-[7px] md:text-[9px] uppercase font-bold tracking-[0.2em] sm:tracking-[0.3em] text-muted group-hover/stat:text-foreground transition-colors"
+              class="type-stat-label text-muted group-hover/stat:text-foreground transition-colors"
             >
               {{ $t(stat.label) }}
             </div>
@@ -222,13 +225,11 @@
                 />
               </span>
               <div class="flex flex-col gap-0.5">
-                <span
-                  class="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-primary leading-none"
-                >
+                <span class="type-meta text-primary leading-none">
                   {{ $t('hero.hud.status') }}
                 </span>
                 <span
-                  class="text-[9px] md:text-[11px] font-mono font-bold text-foreground uppercase leading-none"
+                  class="text-xs md:text-sm font-mono font-bold text-foreground uppercase leading-none"
                 >
                   {{ $t('hero.hud.operational') }}
                 </span>

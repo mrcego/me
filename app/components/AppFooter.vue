@@ -26,14 +26,14 @@
                 {{ $t('hero.name') }}
               </h3>
               <span
-                class="text-[10px] tracking-[0.2em] text-muted uppercase font-bold group-hover:text-foreground transition-colors delay-75"
+                class="text-xs sm:text-sm tracking-[0.2em] text-muted uppercase font-bold group-hover:text-foreground transition-colors delay-75"
               >
                 {{ $t('hero.tags.frontArch') }}
               </span>
             </div>
           </div>
           <p
-            class="text-muted text-xs font-medium uppercase tracking-[0.2em] max-w-xs leading-loose pl-1"
+            class="text-muted text-sm font-medium uppercase tracking-[0.2em] max-w-xs leading-loose pl-1"
           >
             {{ $t('footer.tagline') }}
           </p>
@@ -42,9 +42,7 @@
         <!-- Navigation Columns -->
         <div class="flex flex-wrap gap-12 md:gap-24">
           <div v-for="col in footerLinks" :key="col.title" class="space-y-6">
-            <h3
-              class="text-[10px] font-black uppercase tracking-[0.4em] text-primary flex items-center gap-2"
-            >
+            <h3 class="type-eyebrow tracking-[0.4em] flex items-center gap-2">
               <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               {{ $t(col.title) }}
             </h3>
@@ -72,7 +70,7 @@
         class="pt-12 border-t border-foreground/5 flex flex-col md:flex-row justify-between items-center gap-8"
       >
         <p
-          class="text-[10px] font-bold uppercase tracking-widest text-muted flex items-center gap-2"
+          class="text-xs md:text-sm font-bold uppercase tracking-widest text-muted flex items-center gap-2"
         >
           <span>{{ new Date().getFullYear() }} {{ $t('footer.protocol') }}</span>
           <span class="hidden md:inline text-muted/30">|</span>
@@ -90,7 +88,7 @@
           >
             <Icon
               :name="s.icon"
-              class="w-12 h-12 transition-colors duration-300 text-muted group-hover/social:text-primary-contrast"
+              class="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] transition-colors duration-300 text-muted group-hover/social:text-primary-contrast"
             />
           </a>
         </div>

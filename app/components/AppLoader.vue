@@ -35,9 +35,7 @@
             />
           </div>
 
-          <div
-            class="flex justify-between items-center text-[10px] uppercase font-black tracking-[0.3em] text-muted"
-          >
+          <div class="flex justify-between items-center type-label text-muted tracking-[0.3em]">
             <Motion
               :initial="motionInitial({ opacity: 0, y: 5 })"
               :animate="motionAnimate({ opacity: 1, y: 0 })"

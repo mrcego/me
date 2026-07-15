@@ -1,10 +1,18 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
 export const usePortfolio = () => {
-  const activeSection = ref('home');
+  const activeSection = ref('hero');
 
   const handleScroll = () => {
-    const sections = ['home', 'about', 'portfolio', 'contact'];
+    const sections = [
+      'hero',
+      'about',
+      'tech-stack',
+      'certifications',
+      'capabilities',
+      'testimonials',
+      'contact',
+    ];
 
     for (const section of sections) {
       const el = document.getElementById(section);
@@ -13,9 +21,6 @@ export const usePortfolio = () => {
         if (rect.top <= 150 && rect.bottom >= 150) {
           if (activeSection.value !== section) {
             activeSection.value = section;
-            if (window.location.hash !== `#${section}`) {
-              window.history.replaceState(null, '', `#${section}`);
-            }
           }
           break;
         }

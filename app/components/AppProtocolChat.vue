@@ -64,9 +64,7 @@
     >
       <div class="flex items-center gap-3">
         <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
-        <h4 class="text-[10px] font-black uppercase tracking-[0.3em] text-foreground">
-          Signal Protocol v4.0
-        </h4>
+        <h4 class="type-overline text-foreground tracking-[0.3em]">Signal Protocol v4.0</h4>
       </div>
       <button
         class="p-2 text-muted hover:text-foreground transition-colors"
@@ -94,7 +92,7 @@
               : 'bg-foreground/5 text-foreground border border-foreground/10',
           ]"
         >
-          <span class="block text-[8px] font-black uppercase tracking-widest opacity-40 mb-1">
+          <span class="block type-label opacity-40 mb-1">
             {{ msg.role === 'bot' ? 'SIGNAL RECEIVED' : 'OPERATOR TRANSMISSION' }}
           </span>
           {{ msg.content }}
@@ -115,7 +113,7 @@
         <button
           v-for="s in suggestions"
           :key="s"
-          class="px-3 py-1.5 glass rounded-xl text-[9px] font-black uppercase tracking-widest text-muted hover:text-primary hover:border-primary/30 transition-all"
+          class="px-3 py-1.5 glass rounded-xl type-label text-muted hover:text-primary hover:border-primary/30 transition-all"
           @click="sendMessage(s)"
         >
           {{ s }}

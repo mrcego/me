@@ -60,7 +60,7 @@
             </h2>
 
             <p
-              class="mb-6 sm:mb-8 text-sm sm:text-base font-medium text-muted leading-relaxed text-center xl:text-left text-pretty"
+              class="mb-6 sm:mb-8 text-base sm:text-lg font-medium text-muted leading-relaxed text-center xl:text-left text-pretty"
             >
               "{{ $t('about.philosophyQuote') }}"
             </p>
@@ -79,14 +79,10 @@
                 <div
                   class="transition-transform duration-300 group-hover/p:translate-x-1 flex flex-col justify-center"
                 >
-                  <h3
-                    class="text-[9px] sm:text-[10px] md:text-[11px] font-black uppercase tracking-[0.2em] text-foreground"
-                  >
+                  <h3 class="type-overline text-foreground">
                     {{ $t(point.label) }}
                   </h3>
-                  <p
-                    class="text-[8px] sm:text-[9px] md:text-[10px] text-muted font-bold uppercase tracking-widest pt-0.5"
-                  >
+                  <p class="type-meta text-muted pt-0.5">
                     {{ $t(point.descKey) }}
                   </p>
                 </div>
@@ -112,9 +108,7 @@
               <div class="h-px w-12 bg-foreground/10" />
               <div class="flex items-center gap-3 shrink-0">
                 <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <h2
-                  class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary"
-                >
+                <h2 class="type-eyebrow">
                   {{ $t('about.section') }}
                 </h2>
               </div>
@@ -128,7 +122,7 @@
             </h3>
 
             <div
-              class="prose prose-invert prose-base sm:prose-lg xl:prose-xl max-w-none text-muted font-medium leading-relaxed space-y-4 sm:space-y-6 text-center xl:text-left mx-auto xl:mx-0 text-pretty"
+              class="prose prose-invert prose-lg sm:prose-xl xl:prose-2xl max-w-none text-muted font-medium leading-relaxed space-y-4 sm:space-y-6 text-center xl:text-left mx-auto xl:mx-0 text-pretty"
             >
               <p>
                 {{ $t('about.description1') }}
@@ -167,7 +161,7 @@
                 <div class="relative z-10 flex min-h-0 flex-1 flex-col gap-3 sm:gap-4 md:gap-6">
                   <div class="flex items-start justify-between gap-2 sm:gap-3 min-w-0">
                     <div
-                      class="surface-card__chip px-3 py-1 sm:px-4 sm:py-1.5 glass rounded-lg sm:rounded-xl text-[7px] sm:text-[8px] font-black uppercase tracking-[0.25em] shadow-sm shrink-0 max-w-[58%] sm:max-w-none"
+                      class="surface-card__chip type-chip glass rounded-lg sm:rounded-xl shadow-sm shrink-0 max-w-[58%] sm:max-w-none px-3 py-1 sm:px-4 sm:py-1.5"
                     >
                       {{ $t(`about.roles.${role.key}.years`) }}
                     </div>
@@ -197,22 +191,18 @@
                     >
                       {{ $t(`about.roles.${role.key}.title`) }}
                     </h4>
-                    <p
-                      class="surface-card__meta text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em]"
-                    >
+                    <p class="surface-card__meta type-meta">
                       {{ $t(`about.roles.${role.key}.company`) }}
                     </p>
                   </div>
 
                   <p
-                    class="surface-card__desc flex-1 text-xs sm:text-sm leading-relaxed border-t border-foreground/5 pt-2 sm:pt-3 line-clamp-4 sm:line-clamp-5 text-pretty"
+                    class="surface-card__desc flex-1 text-sm sm:text-base leading-relaxed border-t border-foreground/5 pt-2 sm:pt-3 line-clamp-4 sm:line-clamp-5 text-pretty"
                   >
                     {{ $t(`about.roles.${role.key}.desc`) }}
                   </p>
 
-                  <span
-                    class="surface-card__cta mt-auto pt-3 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.25em]"
-                  >
+                  <span class="surface-card__cta type-label mt-auto pt-3">
                     {{ $t('about.roles.viewDetails') }} →
                   </span>
                 </div>
@@ -283,9 +273,7 @@
             </div>
 
             <div class="space-y-1.5">
-              <p
-                class="text-[10px] md:text-[11px] font-black uppercase tracking-[0.35em] text-primary"
-              >
+              <p class="type-meta text-primary tracking-[0.35em]">
                 {{ $t(`about.roles.${selectedRoleKey}.company`) }}
               </p>
               <h3
@@ -308,12 +296,12 @@
       </header>
 
       <div class="experience-modal__body">
-        <p class="experience-modal__summary text-sm md:text-base text-muted leading-relaxed">
+        <p class="experience-modal__summary text-base md:text-lg text-muted leading-relaxed">
           {{ $t(`about.roles.${selectedRoleKey}.desc`) }}
         </p>
 
         <div class="space-y-4">
-          <h4 class="text-[9px] md:text-[10px] font-black uppercase tracking-[0.4em] text-primary">
+          <h4 class="type-eyebrow">
             {{ $t('about.roles.highlightsTitle') }}
           </h4>
 
@@ -326,7 +314,7 @@
               <span class="experience-modal__index" aria-hidden="true">
                 {{ String(index + 1).padStart(2, '0') }}
               </span>
-              <p class="text-sm text-muted leading-relaxed">
+              <p class="text-sm md:text-base text-muted leading-relaxed">
                 {{ highlight }}
               </p>
             </li>
@@ -335,7 +323,7 @@
       </div>
 
       <footer class="experience-modal__footer">
-        <span class="text-[9px] font-black uppercase tracking-[0.3em] text-muted">
+        <span class="type-label text-muted tracking-[0.3em]">
           {{ $t('about.section') }}
         </span>
         <a
@@ -344,7 +332,7 @@
           rel="noopener noreferrer"
           class="experience-modal__linkedin"
         >
-          <Icon name="simple-icons:linkedin" class="w-4 h-4" />
+          <Icon name="simple-icons:linkedin" class="w-6 h-6" />
           LinkedIn
         </a>
       </footer>

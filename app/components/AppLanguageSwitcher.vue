@@ -12,17 +12,22 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
+import { storeLocaleSwitchScroll } from '~/utils/locale-switch-scroll';
 
 const { locale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
-const route = useRoute();
+const router = useRouter();
 
 const toggleLanguage = async () => {
   const nextLocale = locale.value === 'en' ? 'es' : 'en';
-  await navigateTo({
-    path: switchLocalePath(nextLocale),
-    hash: route.hash,
-  });
+  const path = switchLocalePath(nextLocale);
+
+  storeLocaleSwitchScroll();
+
+  if (window.location.hash) {
+    history.replaceState(history.state, '', `${window.location.pathname}${window.location.search}`);
+  }
+
+  await router.replace({ path, hash: '' });
 };
 </script>

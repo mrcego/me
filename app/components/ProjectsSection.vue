@@ -21,7 +21,7 @@
         >
           <div class="flex items-center gap-4 md:gap-6 justify-center lg:justify-start">
             <div class="h-px w-12 md:w-16 bg-primary shadow-[0_0_10px_rgba(255,75,92,0.5)]" />
-            <h2 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+            <h2 class="type-eyebrow tracking-[0.4em]">
               {{ $t('portfolio.section_tag') }}
             </h2>
           </div>
@@ -44,7 +44,7 @@
           <button
             v-for="cat in categories"
             :key="cat"
-            class="px-6 md:px-10 py-3 md:py-4 rounded-[1.8rem] text-[9px] md:text-[10px] font-black uppercase tracking-widest transition-all duration-500 shrink-0 select-none"
+            class="px-6 md:px-10 py-3 md:py-4 rounded-[1.8rem] type-chip transition-all duration-500 shrink-0 select-none"
             :class="[
               activeCategory === cat
                 ? 'bg-primary text-primary-contrast shadow-2xl shadow-primary/30 scale-105'
@@ -103,7 +103,7 @@
               <div
                 v-for="tag in project.tags"
                 :key="tag"
-                class="bg-foreground/10 backdrop-blur-md border border-foreground/10 text-foreground text-[8px] md:text-[9px] font-black uppercase tracking-widest px-4 md:px-5 py-1.5 md:py-2 rounded-xl shadow-2xl shrink-0 hover:bg-primary transition-colors cursor-default"
+                class="bg-foreground/10 backdrop-blur-md border border-foreground/10 text-foreground type-label px-4 md:px-5 py-1.5 md:py-2 rounded-xl shadow-2xl shrink-0 hover:bg-primary transition-colors cursor-default"
               >
                 {{ tag }}
               </div>
@@ -120,7 +120,7 @@
                 >
                   {{ $t(`portfolio.projects.${i}.title`) }}
                 </h4>
-                <p class="text-muted font-bold text-[10px] md:text-xs uppercase tracking-widest">
+                <p class="text-muted font-bold type-meta">
                   {{ project.category }}
                 </p>
               </div>
@@ -133,7 +133,7 @@
             </div>
 
             <p
-              class="surface-card__text text-muted text-sm md:text-base leading-relaxed max-w-lg line-clamp-3 group-hover:line-clamp-none font-medium"
+              class="surface-card__text text-muted text-base md:text-lg leading-relaxed max-w-lg line-clamp-3 group-hover:line-clamp-none font-medium"
             >
               {{ $t(`portfolio.projects.${i}.desc`) }}
             </p>
@@ -157,9 +157,9 @@
         >
           <span class="flex items-center gap-4 md:gap-6">
             <Icon name="solar:case-round-minimalistic-bold-duotone" class="w-6 h-6 md:w-7 md:h-7" />
-            <span class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">{{
-              $t('portfolio.nexus')
-            }}</span>
+            <span class="type-eyebrow tracking-[0.4em] text-foreground">
+              {{ $t('portfolio.nexus') }}
+            </span>
           </span>
         </button>
       </Motion>

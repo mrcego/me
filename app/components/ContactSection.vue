@@ -20,7 +20,7 @@
           <div class="space-y-6 sm:space-y-8 md:space-y-12 group text-center lg:text-left">
             <div class="flex items-center justify-center lg:justify-start gap-4 md:gap-6">
               <div class="h-px w-12 md:w-16 bg-primary" />
-              <h2 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+              <h2 class="type-eyebrow tracking-[0.4em]">
                 {{ $t('contact.section') }}
               </h2>
             </div>
@@ -50,14 +50,15 @@
               class="flex items-center gap-4 sm:gap-6 md:gap-10 group cursor-pointer transition-all duration-500 hover:translate-x-3 active:scale-95"
             >
               <div
-                class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-xl shrink-0 group-hover:rotate-6"
+                class="w-[4.5rem] h-[4.5rem] sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-xl shrink-0 group-hover:rotate-6"
               >
-                <Icon :name="c.icon" class="w-14 h-14 md:w-16 md:h-16" />
+                <Icon
+                  :name="c.icon"
+                  class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+                />
               </div>
               <div class="space-y-1 sm:space-y-1.5 md:space-y-2 text-left">
-                <p
-                  class="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-primary transition-colors"
-                >
+                <p class="type-meta text-muted group-hover:text-primary transition-colors">
                   {{ $t(`contact.methods.${c.key}`) }}
                 </p>
                 <p
@@ -115,7 +116,7 @@
               <div class="space-y-2 sm:space-y-3 md:space-y-4 group/input">
                 <label
                   for="contact-name"
-                  class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
+                  class="type-label text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                   >{{ $t('contact.form.name') }}</label
                 >
                 <inputText
@@ -142,7 +143,7 @@
               <div class="space-y-2 sm:space-y-3 md:space-y-4 group/input">
                 <label
                   for="contact-email"
-                  class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
+                  class="type-label text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                   >{{ $t('contact.form.email') }}</label
                 >
                 <inputText
@@ -172,7 +173,7 @@
             <div class="space-y-2 sm:space-y-3 md:space-y-4 group/input">
               <label
                 for="contact-subject"
-                class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
+                class="type-label text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                 >{{ $t('contact.form.subject') }}</label
               >
               <inputText
@@ -200,7 +201,7 @@
             <div class="space-y-2 sm:space-y-3 md:space-y-4 group/input">
               <label
                 for="contact-message"
-                class="text-[8px] sm:text-[9px] md:text-[10px] uppercase font-black tracking-widest text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
+                class="type-label text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                 >{{ $t('contact.form.message') }}</label
               >
               <Textarea
@@ -241,7 +242,7 @@
                 aria-hidden="true"
               />
               <span
-                class="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 text-[9px] sm:text-[10px] md:text-sm font-black uppercase tracking-[0.25em] sm:tracking-[0.3em] md:tracking-[0.4em] relative z-10 transition-transform group-hover/btn:scale-105"
+                class="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 text-sm sm:text-base font-black uppercase tracking-[0.25em] sm:tracking-[0.3em] md:tracking-[0.4em] relative z-10 transition-transform group-hover/btn:scale-105"
               >
                 <Icon
                   v-if="!isSubmitting"

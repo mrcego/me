@@ -22,7 +22,7 @@
       >
         <div class="flex items-center justify-center gap-4 md:gap-6">
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
-          <h2 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+          <h2 class="type-eyebrow tracking-[0.4em]">
             {{ $t('certifications.section') }}
           </h2>
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
@@ -66,10 +66,7 @@
               >
                 <Icon name="solar:medal-ribbon-bold" class="w-10 h-10" />
               </div>
-              <span
-                class="surface-card__meta text-[10px] font-black uppercase tracking-widest text-muted"
-                >{{ cert.date }}</span
-              >
+              <span class="surface-card__meta type-meta text-muted">{{ cert.date }}</span>
             </div>
 
             <!-- Title and Issuer -->
@@ -80,7 +77,7 @@
                 {{ cert.title }}
               </h4>
               <div class="flex items-center gap-2 text-sm font-medium text-muted">
-                <Icon name="simple-icons:linkedin" class="w-5 h-5" />
+                <Icon name="simple-icons:linkedin" class="w-7 h-7" />
                 <span>{{ cert.issuer }}</span>
               </div>
             </div>
@@ -90,7 +87,7 @@
               <span
                 v-for="skill in cert.skills"
                 :key="skill"
-                class="surface-card__tag text-[9px] font-black uppercase tracking-wider text-muted/80 bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5"
+                class="surface-card__tag type-label text-muted/80 bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5"
               >
                 {{ skill }}
               </span>
@@ -102,7 +99,7 @@
             <NuxtLink
               :to="cert.url"
               target="_blank"
-              class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-xs font-black uppercase tracking-[0.2em] text-foreground hover:bg-primary hover:text-primary-contrast transition-all duration-500 group/btn"
+              class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground hover:bg-primary hover:text-primary-contrast transition-all duration-500 group/btn"
             >
               {{ $t('certifications.viewCredential') }}
               <Icon

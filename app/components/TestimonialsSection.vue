@@ -13,7 +13,7 @@
       >
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
-          <h2 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+          <h2 class="type-eyebrow tracking-[0.4em]">
             {{ $t('testimonials.section') }}
           </h2>
           <div class="h-px w-10 bg-primary/40" />
@@ -89,9 +89,7 @@
                 >
                   {{ t.name }}
                 </cite>
-                <p
-                  class="surface-card__meta text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted line-clamp-2"
-                >
+                <p class="surface-card__meta type-meta text-muted line-clamp-2">
                   {{ t.role }}
                 </p>
               </div>

@@ -21,7 +21,7 @@
       >
         <div class="flex items-center justify-center gap-4 md:gap-6">
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
-          <h2 class="text-[10px] md:text-xs font-black uppercase tracking-[0.4em] text-primary">
+          <h2 class="type-eyebrow tracking-[0.4em]">
             {{ $t('techStack.section') }}
           </h2>
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
@@ -74,10 +74,7 @@
                   class="surface-card__meta text-xs sm:text-sm md:text-base font-black uppercase tracking-widest text-muted"
                   >{{ t.years }}</span
                 >
-                <span
-                  class="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-primary/70"
-                  >Expertise</span
-                >
+                <span class="type-label text-primary/70">Expertise</span>
               </div>
             </div>
 
@@ -87,14 +84,14 @@
               >
                 {{ t.name }}
               </h4>
-              <p
-                class="text-muted text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] leading-normal"
-              >
+              <p class="type-meta text-muted leading-normal">
                 {{ $t(t.level) }}
               </p>
             </div>
 
-            <p class="surface-card__text text-xs sm:text-sm text-muted font-medium leading-relaxed">
+            <p
+              class="surface-card__text text-sm sm:text-base text-muted font-medium leading-relaxed"
+            >
               {{ $t(t.descKey) }}
             </p>
           </div>
@@ -171,10 +168,9 @@
               <div
                 class="surface-card surface-card--soft px-6 py-2.5 md:px-8 md:py-3 glass rounded-xl md:rounded-2xl border-foreground/5 cursor-alias active:scale-95 shadow-md"
               >
-                <span
-                  class="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-muted block mb-1"
-                  >{{ $t('techStack.langList.native') }}</span
-                >
+                <span class="type-label text-muted block mb-1">{{
+                  $t('techStack.langList.native')
+                }}</span>
                 <span class="text-lg md:text-xl font-bold text-foreground">{{
                   $t('techStack.langList.es')
                 }}</span>
@@ -182,10 +178,9 @@
               <div
                 class="surface-card surface-card--soft px-6 py-2.5 md:px-8 md:py-3 glass rounded-xl md:rounded-2xl border-foreground/5 cursor-alias active:scale-95 shadow-md"
               >
-                <span
-                  class="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-muted block mb-1"
-                  >{{ $t('techStack.langList.pro') }}</span
-                >
+                <span class="type-label text-muted block mb-1">{{
+                  $t('techStack.langList.pro')
+                }}</span>
                 <span class="text-lg md:text-xl font-bold text-foreground">{{
                   $t('techStack.langList.en')
                 }}</span>
