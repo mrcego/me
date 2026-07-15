@@ -27,7 +27,7 @@
             />
 
             <div
-              class="relative aspect-3/4 max-h-[28rem] rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo hidden xl:block"
+              class="relative aspect-square max-h-[22rem] xl:max-h-[26rem] rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo hidden xl:block"
             >
               <!-- Cinematic HUD Overlay for Photo -->
               <div
@@ -38,16 +38,16 @@
               />
 
               <NuxtImg
-                src="/img/me.jpg"
+                src="/img/technical-identity.jpg"
                 alt="César Gómez - Senior Fullstack Developer and Frontend Architect"
                 width="600"
-                height="800"
+                height="600"
                 format="webp"
                 quality="85"
                 loading="eager"
                 decoding="async"
-                sizes="sm:300px md:400px lg:500px xl:600px"
-                class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-1000 scale-105 group-hover:scale-100"
+                sizes="(min-width: 1280px) 420px, 0px"
+                class="w-full h-full object-cover object-center grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-1000 scale-105 group-hover:scale-100"
               />
 
               <div
