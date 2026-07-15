@@ -31,7 +31,7 @@
             >
               <img
                 src="/img/technical-identity.jpg"
-                alt="César Gómez - Senior Fullstack Developer and Frontend Architect"
+                alt="César Gómez - Frontend-focused senior fullstack developer"
                 width="600"
                 height="600"
                 loading="eager"

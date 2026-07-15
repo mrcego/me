@@ -25,7 +25,7 @@
       "technologies": "Tecnologías Dominadas"
     },
     "tags": {
-      "frontArch": "Arquitecto Frontend",
+      "frontArch": "Ingeniero Frontend Senior",
       "nuxt": "Nuxt.js",
       "ts": "Typescript",
       "engineer": "Ingeniero"
@@ -129,7 +129,7 @@
     "officialCertifications": "Certificaciones y Credenciales",
     "languages": "Idiomas",
     "levels": {
-      "architect": "Arquitecto Frontend",
+      "architect": "Ingeniero Frontend Senior",
       "senior": "Desarrollador Senior",
       "principal": "Principal",
       "founding": "Ingeniero Fundador"
@@ -137,7 +137,7 @@
     "creds": "Credenciales Oficiales",
     "flow": "Lingüística y Flow",
     "detailed": {
-      "vue": "Arquitecto líder para ecosistemas SPA/SSR complejos, sistemas de UI modulares y optimización de rendimiento.",
+      "vue": "Ingeniero frontend líder en ecosistemas SPA/SSR complejos, sistemas de UI modulares y optimización de rendimiento.",
       "ts": "Seguridad de tipos de extremo a extremo, desde APIs en Node.js hasta estados reactivos frontend sofisticados.",
       "js": "Profundo conocimiento en patrones de ingeniería de software, modularidad y escalabilidad empresarial.",
       "git": "Mentoría de equipos, definición de hojas de ruta técnicas y optimización de la velocidad de CI/CD."

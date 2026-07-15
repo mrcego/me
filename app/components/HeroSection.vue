@@ -196,7 +196,7 @@
 
             <NuxtImg
               src="/img/me.jpg"
-              alt="César Gómez - Senior Fullstack Developer specializing in Vue.js and Nuxt.js frontend architecture"
+              alt="César Gómez - Frontend-focused senior fullstack developer specializing in Vue.js and Nuxt.js"
               width="800"
               height="1000"
               format="webp"
@@ -290,7 +290,7 @@ const heroTags = ['hero.tags.frontArch', 'hero.tags.nuxt', 'hero.tags.ts', 'hero
 
 const heroStats = [
   { value: '13+', label: 'hero.stats.experience' },
-  { value: '600k+', label: 'hero.stats.projects' },
+  { value: '500+', label: 'hero.stats.projects' },
   { value: '60%', label: 'hero.stats.technologies' },
 ];
 

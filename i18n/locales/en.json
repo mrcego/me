@@ -25,7 +25,7 @@
       "technologies": "Technologies Mastered"
     },
     "tags": {
-      "frontArch": "Frontend Architect",
+      "frontArch": "Senior Frontend Engineer",
       "nuxt": "Nuxt.js",
       "ts": "Typescript",
       "engineer": "Engineer"
@@ -129,7 +129,7 @@
     "officialCertifications": "Certifications & Credentials",
     "languages": "Languages",
     "levels": {
-      "architect": "Frontend Architect",
+      "architect": "Senior Frontend Engineer",
       "senior": "Senior Developer",
       "principal": "Principal",
       "founding": "Founding Engineer"
@@ -137,7 +137,7 @@
     "creds": "Official Credentials",
     "flow": "Linguistic & Flow",
     "detailed": {
-      "vue": "Lead architect for complex SPA/SSR ecosystems, modular UI systems, and performance tuning.",
+      "vue": "Lead frontend engineer for complex SPA/SSR ecosystems, modular UI systems, and performance tuning.",
       "ts": "End-to-end type safety from Node.js APIs to sophisticated frontend reactive states.",
       "js": "Deep knowledge in software engineering patterns, modularity, and enterprise scalability.",
       "git": "Mentoring teams, defining technical roadmaps, and optimizing CI/CD velocity."
