@@ -3,11 +3,20 @@
  * Configuración óptima para evitar el efecto "latido" durante scroll
  */
 
+import { onMounted, ref } from 'vue';
 import { usePreferredReducedMotion } from '@vueuse/core';
 
 export const useMotionConfig = () => {
   const prefersReducedMotion = usePreferredReducedMotion();
-  const motionEnabled = computed(() => prefersReducedMotion.value !== 'reduce');
+  // Defer reduced-motion reads until after hydration to match prerendered HTML.
+  const motionReady = ref(false);
+  onMounted(() => {
+    motionReady.value = true;
+  });
+
+  const motionEnabled = computed(
+    () => !motionReady.value || prefersReducedMotion.value !== 'reduce',
+  );
 
   const motionInitial = <T>(value: T): T | false => (motionEnabled.value ? value : false);
 

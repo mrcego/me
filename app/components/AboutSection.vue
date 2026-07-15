@@ -4,14 +4,16 @@
     <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] -z-10" />
 
     <div class="container mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 xl:gap-20 items-start">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 xl:gap-20 items-start"
+      >
         <!-- Sidebar Card with Motion (Spans 5 cols) -->
         <Motion
           :initial="motionInitial({ opacity: 0, x: -50 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :viewport="{ once: true }"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
-          class="lg:col-span-5 lg:sticky lg:top-32 w-full mx-auto -mt-32 sm:-mt-16 lg:-mt-6 xl:mt-0"
+          class="lg:col-span-5 lg:sticky lg:top-32 w-full max-w-xl mx-auto lg:max-w-none lg:mx-0"
         >
           <div
             class="surface-card group glass border-white/5 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl relative bg-background/20 backdrop-blur-3xl"
@@ -39,7 +41,8 @@
                 height="800"
                 format="webp"
                 quality="85"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
                 sizes="sm:300px md:400px lg:500px xl:600px"
                 class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-1000 scale-105 group-hover:scale-100"
               />
@@ -69,9 +72,9 @@
                 class="flex gap-3 sm:gap-4 group/p cursor-default"
               >
                 <div
-                  class="surface-card__icon w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 glass rounded-lg sm:rounded-xl flex items-center justify-center text-primary shrink-0 shadow-lg"
+                  class="surface-card__icon w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 glass rounded-lg sm:rounded-xl flex items-center justify-center text-primary shrink-0 shadow-lg overflow-hidden"
                 >
-                  <Icon :name="point.icon" class="w-11 h-11 sm:w-12 sm:h-12 md:w-13 md:h-13" />
+                  <Icon :name="point.icon" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
                 </div>
                 <div
                   class="transition-transform duration-300 group-hover/p:translate-x-1 flex flex-col justify-center"
@@ -136,7 +139,9 @@
             </div>
           </Motion>
 
-          <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-stretch">
+          <div
+            class="grid grid-cols-1 min-[480px]:grid-cols-2 gap-4 sm:gap-5 md:gap-6 items-stretch"
+          >
             <Motion
               v-for="(role, i) in roles"
               :key="role.key"
@@ -153,33 +158,37 @@
               <div
                 role="button"
                 tabindex="0"
-                class="surface-card glass p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl md:rounded-4xl border-foreground/5 group flex h-full min-h-56 sm:min-h-72 flex-col relative overflow-hidden w-full text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation"
+                class="surface-card glass p-4 sm:p-5 md:p-7 lg:p-8 rounded-2xl sm:rounded-3xl md:rounded-4xl border-foreground/5 group flex h-full min-h-52 sm:min-h-60 md:min-h-64 flex-col relative overflow-hidden w-full min-w-0 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation"
                 :aria-label="`${$t('about.roles.viewDetails')}: ${$t(`about.roles.${role.key}.title`)}`"
                 @click="openRoleModal(role.key)"
                 @keydown="onRoleCardKeydown($event, role.key)"
               >
                 <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
                 <div class="relative z-10 flex min-h-0 flex-1 flex-col gap-3 sm:gap-4 md:gap-6">
-                  <div class="flex items-start justify-between gap-3">
+                  <div class="flex items-start justify-between gap-2 sm:gap-3 min-w-0">
                     <div
-                      class="surface-card__chip px-3 py-1 sm:px-4 sm:py-1.5 glass rounded-lg sm:rounded-xl text-[7px] sm:text-[8px] font-black uppercase tracking-[0.25em] shadow-sm shrink-0"
+                      class="surface-card__chip px-3 py-1 sm:px-4 sm:py-1.5 glass rounded-lg sm:rounded-xl text-[7px] sm:text-[8px] font-black uppercase tracking-[0.25em] shadow-sm shrink-0 max-w-[58%] sm:max-w-none"
                     >
                       {{ $t(`about.roles.${role.key}.years`) }}
                     </div>
-                    <img
+                    <div
                       v-if="COMPANY_LOGOS[role.key]"
-                      :src="COMPANY_LOGOS[role.key].src"
-                      :alt="COMPANY_LOGOS[role.key].alt"
-                      class="role-card__company-logo object-contain shrink-0"
-                      :class="{
-                        'role-card__company-logo--on-light': 'onLight' in COMPANY_LOGOS[role.key],
-                      }"
-                      width="128"
-                      height="64"
-                      loading="eager"
-                      decoding="async"
+                      class="role-card__logo-wrap"
                       aria-hidden="true"
-                    />
+                    >
+                      <img
+                        :src="COMPANY_LOGOS[role.key].src"
+                        :alt="COMPANY_LOGOS[role.key].alt"
+                        class="role-card__company-logo"
+                        :class="{
+                          'role-card__company-logo--on-light': 'onLight' in COMPANY_LOGOS[role.key],
+                        }"
+                        width="128"
+                        height="64"
+                        loading="eager"
+                        decoding="async"
+                      />
+                    </div>
                   </div>
 
                   <div class="space-y-1.5 sm:space-y-2 min-w-0">
@@ -436,25 +445,39 @@ const aboutPoints = [
   animation: scanline-subtle 3s linear infinite;
 }
 
-.role-card__company-logo {
-  height: 3rem;
-  width: auto;
-  max-width: 6.5rem;
-  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+.role-card__logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  width: 4.75rem;
+  height: 2.5rem;
+  overflow: hidden;
 }
 
 @media (min-width: 640px) {
-  .role-card__company-logo {
-    height: 3.5rem;
-    max-width: 7.5rem;
+  .role-card__logo-wrap {
+    width: 5.25rem;
+    height: 2.75rem;
   }
 }
 
 @media (min-width: 768px) {
-  .role-card__company-logo {
-    height: 4rem;
-    max-width: 8.5rem;
+  .role-card__logo-wrap {
+    width: 6rem;
+    height: 3rem;
   }
+}
+
+.role-card__company-logo {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: center right;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .role-card__company-logo--on-light {

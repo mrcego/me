@@ -1,9 +1,9 @@
 # Nuxt 4 portfolio — primary host: https://cesargomez.dev
 
 [build]
-  command = "pnpm run generate"
-  # Nitro netlify-static preset writes here during Netlify builds (not .output/public)
-  publish = "dist"
+  command = "pnpm run generate:netlify"
+  # nuxt generate writes the full static site here (dist/_nuxt can be stale — do not publish dist)
+  publish = ".output/public"
 
 [build.environment]
   NODE_VERSION = "20"
@@ -26,6 +26,21 @@
   to = "https://cesargomez.dev/:splat"
   status = 301
   force = true
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/200.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
 
 [[headers]]
   for = "/*"

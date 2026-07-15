@@ -226,11 +226,8 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
     langDir: '../i18n/locales',
     strategy: 'no_prefix',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_locale',
-      redirectOn: 'root',
-    },
+    // Disabled for SSG: cookie/locale applied only after hydration (see locale-persistence plugin).
+    detectBrowserLanguage: false,
   },
 
   runtimeConfig: {

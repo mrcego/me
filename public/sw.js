@@ -1,71 +1,69 @@
-const CACHE_NAME = 'cesar-gomez-portfolio-v1';
+const CACHE_NAME = 'cesar-gomez-portfolio-v2';
 const urlsToCache = [
-  '/',
   '/img/logo-final.svg',
   '/img/me.jpg',
   '/img/og-image.svg',
-  '/favicon.ico'
+  '/favicon.ico',
 ];
 
-// Install event - cache resources
+const isNavigationRequest = (request) =>
+  request.mode === 'navigate' ||
+  (request.method === 'GET' && request.headers.get('accept')?.includes('text/html'));
+
+// Install event - cache static assets only (not HTML — hashes change each deploy)
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
   );
+  self.skipWaiting();
 });
 
-// Fetch event - serve from cache when offline
+// Fetch event - network-first for pages; cache-first for static assets
 self.addEventListener('fetch', (event) => {
+  if (isNavigationRequest(event.request)) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
+    caches.match(event.request).then((response) => {
+      if (response) {
+        return response;
+      }
 
-        // Clone the request
-        const fetchRequest = event.request.clone();
+      const fetchRequest = event.request.clone();
 
-        return fetch(fetchRequest).then(
-          (response) => {
-            // Check if valid response
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-
-            // Clone the response
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-
+      return fetch(fetchRequest)
+        .then((response) => {
+          if (!response || response.status !== 200 || response.type !== 'basic') {
             return response;
           }
-        ).catch(() => {
-          // Return cached version if available
-          return caches.match(event.request);
-        });
-      })
+
+          const responseToCache = response.clone();
+
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
+
+          return response;
+        })
+        .catch(() => caches.match(event.request));
+    })
   );
 });
 
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
+    caches.keys().then((cacheNames) =>
+      Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME) {
             return caches.delete(cacheName);
           }
         })
-      );
-    })
+      )
+    )
   );
+  self.clients.claim();
 });

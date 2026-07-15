@@ -11,6 +11,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev --port 3000",
     "generate": "nuxt generate",
+    "generate:netlify": "nuxt prepare && node --input-type=module -e \"import fs from 'node:fs'; for (const dir of ['.output', 'dist', 'node_modules/.cache/nuxt']) fs.rmSync(dir, { recursive: true, force: true });\" && nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky",
