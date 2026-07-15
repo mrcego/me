@@ -1,11 +1,14 @@
 <template>
-  <section id="about" class="py-24 md:py-32 px-6 md:px-12 relative bg-secondary/5 overflow-hidden">
+  <section
+    id="about"
+    class="about-section py-20 sm:py-24 md:py-28 xl:py-32 px-4 sm:px-6 md:px-8 lg:px-10 relative bg-secondary/5 overflow-x-clip"
+  >
     <!-- Background Decorative Element -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] -z-10" />
 
-    <div class="container mx-auto">
+    <div class="container mx-auto min-w-0 max-w-7xl">
       <div
-        class="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-16 xl:gap-20 items-start"
+        class="grid grid-cols-1 xl:grid-cols-12 gap-8 sm:gap-10 xl:gap-14 2xl:gap-20 items-start min-w-0"
       >
         <!-- Sidebar Card with Motion (Spans 5 cols) -->
         <Motion
@@ -13,10 +16,10 @@
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :viewport="{ once: true }"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
-          class="lg:col-span-5 lg:sticky lg:top-32 w-full max-w-xl mx-auto lg:max-w-none lg:mx-0"
+          class="xl:col-span-5 xl:sticky xl:top-28 2xl:top-32 w-full max-w-lg mx-auto xl:max-w-none xl:mx-0 min-w-0"
         >
           <div
-            class="surface-card group glass border-white/5 rounded-2xl sm:rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden p-6 sm:p-8 md:p-10 lg:p-12 shadow-2xl relative bg-background/20 backdrop-blur-3xl"
+            class="surface-card group glass border-white/5 rounded-2xl sm:rounded-3xl xl:rounded-[2.5rem] overflow-hidden p-5 sm:p-7 md:p-8 xl:p-10 shadow-2xl relative bg-background/20 backdrop-blur-3xl min-w-0"
           >
             <!-- Gamified Energy Border -->
             <div
@@ -24,7 +27,7 @@
             />
 
             <div
-              class="relative aspect-3/4 rounded-3xl overflow-hidden mb-8 md:mb-10 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo hidden lg:block"
+              class="relative aspect-3/4 max-h-[28rem] rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 mx-auto transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo hidden xl:block"
             >
               <!-- Cinematic HUD Overlay for Photo -->
               <div
@@ -54,13 +57,13 @@
 
             <!-- Content inside card -->
             <h2
-              class="text-xl md:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4 px-2 text-center lg:text-left"
+              class="text-xl sm:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4 text-center xl:text-left"
             >
               {{ $t('about.philosophy') }}
             </h2>
 
             <p
-              class="mb-6 sm:mb-8 md:mb-10 text-sm md:text-base font-medium text-muted leading-relaxed px-2 text-center lg:text-left"
+              class="mb-6 sm:mb-8 text-sm sm:text-base font-medium text-muted leading-relaxed text-center xl:text-left text-pretty"
             >
               "{{ $t('about.philosophyQuote') }}"
             </p>
@@ -100,7 +103,7 @@
         </Motion>
 
         <!-- Main Content Area (Spans 7 cols) -->
-        <div class="lg:col-span-7 space-y-16 md:space-y-24 pt-2 sm:pt-4 lg:pt-0">
+        <div class="xl:col-span-7 space-y-10 sm:space-y-14 xl:space-y-16 min-w-0">
           <Motion
             :initial="motionInitial({ opacity: 0, y: 30 })"
             :while-in-view="motionInView({ opacity: 1, y: 0 })"
@@ -108,7 +111,7 @@
             :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
             class="space-y-6 md:space-y-10"
           >
-            <div class="flex items-center gap-4 justify-center lg:justify-start">
+            <div class="flex items-center gap-3 sm:gap-4 justify-center xl:justify-start">
               <div class="h-px w-12 bg-foreground/10" />
               <div class="flex items-center gap-3 shrink-0">
                 <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
@@ -121,14 +124,14 @@
             </div>
 
             <h3
-              class="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-foreground text-center lg:text-left"
+              class="text-3xl sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-black tracking-tighter leading-[0.92] sm:leading-[0.9] text-foreground text-center xl:text-left text-balance"
             >
               {{ $t('about.title') }}<br />
               <span class="text-gradient">{{ $t('about.titleHighlight') }}</span>
             </h3>
 
             <div
-              class="prose prose-invert prose-lg md:prose-xl max-w-none text-muted font-medium leading-relaxed space-y-6 text-center lg:text-left mx-auto lg:mx-0"
+              class="prose prose-invert prose-base sm:prose-lg xl:prose-xl max-w-none text-muted font-medium leading-relaxed space-y-4 sm:space-y-6 text-center xl:text-left mx-auto xl:mx-0 text-pretty"
             >
               <p>
                 {{ $t('about.description1') }}
@@ -140,7 +143,7 @@
           </Motion>
 
           <div
-            class="grid grid-cols-1 min-[480px]:grid-cols-2 gap-4 sm:gap-5 md:gap-6 items-stretch"
+            class="about-roles-grid grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-2 gap-4 sm:gap-5 xl:gap-6 items-stretch min-w-0"
           >
             <Motion
               v-for="(role, i) in roles"
@@ -153,12 +156,12 @@
                 delay: i * 0.1,
                 ease: [0.16, 1, 0.3, 1],
               }"
-              class="h-full"
+              class="h-full min-w-0"
             >
               <div
                 role="button"
                 tabindex="0"
-                class="surface-card glass p-4 sm:p-5 md:p-7 lg:p-8 rounded-2xl sm:rounded-3xl md:rounded-4xl border-foreground/5 group flex h-full min-h-52 sm:min-h-60 md:min-h-64 flex-col relative overflow-hidden w-full min-w-0 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation"
+                class="surface-card glass p-4 sm:p-5 xl:p-6 rounded-2xl sm:rounded-3xl border-foreground/5 group flex h-full min-h-48 sm:min-h-52 xl:min-h-56 flex-col relative overflow-hidden w-full min-w-0 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation"
                 :aria-label="`${$t('about.roles.viewDetails')}: ${$t(`about.roles.${role.key}.title`)}`"
                 @click="openRoleModal(role.key)"
                 @keydown="onRoleCardKeydown($event, role.key)"
@@ -193,7 +196,7 @@
 
                   <div class="space-y-1.5 sm:space-y-2 min-w-0">
                     <h4
-                      class="surface-card__title text-lg sm:text-xl md:text-2xl font-black tracking-tight text-pretty"
+                      class="surface-card__title text-base sm:text-lg xl:text-xl font-black tracking-tight text-pretty line-clamp-2"
                     >
                       {{ $t(`about.roles.${role.key}.title`) }}
                     </h4>
@@ -205,7 +208,7 @@
                   </div>
 
                   <p
-                    class="surface-card__desc flex-1 text-xs sm:text-sm leading-relaxed border-t border-foreground/5 pt-2 sm:pt-3 md:pt-4 text-pretty"
+                    class="surface-card__desc flex-1 text-xs sm:text-sm leading-relaxed border-t border-foreground/5 pt-2 sm:pt-3 line-clamp-4 sm:line-clamp-5 text-pretty"
                   >
                     {{ $t(`about.roles.${role.key}.desc`) }}
                   </p>
@@ -450,22 +453,22 @@ const aboutPoints = [
   align-items: center;
   justify-content: flex-end;
   flex-shrink: 0;
-  width: 4.75rem;
-  height: 2.5rem;
+  width: 4rem;
+  height: 2.25rem;
   overflow: hidden;
 }
 
 @media (min-width: 640px) {
   .role-card__logo-wrap {
-    width: 5.25rem;
-    height: 2.75rem;
+    width: 4.5rem;
+    height: 2.5rem;
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .role-card__logo-wrap {
-    width: 6rem;
-    height: 3rem;
+    width: 5rem;
+    height: 2.75rem;
   }
 }
 

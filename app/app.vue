@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container bg-background">
+  <div class="main-container bg-background overflow-x-clip min-w-0">
     <!-- Entrance Loader -->
     <AppLoader :loading="loading" />
 

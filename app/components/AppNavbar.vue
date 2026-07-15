@@ -4,14 +4,14 @@
       class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 pointer-events-none"
     >
       <div
-        class="site-nav__shell flex items-center justify-between rounded-full pointer-events-auto border"
+        class="site-nav__shell flex items-center justify-between gap-2 sm:gap-3 rounded-full pointer-events-auto border min-w-0"
       >
         <!-- Logo Area -->
         <Motion
           :initial="motionInitial({ opacity: 0, x: -20, filter: 'blur(10px)' })"
           :animate="motionAnimate({ opacity: 1, x: 0, filter: 'blur(0px)' })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
-          class="flex items-center gap-2 sm:gap-3 group cursor-pointer"
+          class="flex items-center gap-1.5 sm:gap-2 group cursor-pointer min-w-0 shrink"
           @click="scrollToSection($event, '#hero')"
         >
           <div
@@ -30,12 +30,12 @@
           </div>
           <div class="site-nav__brand flex flex-col justify-center min-w-0">
             <span
-              class="text-xs sm:text-sm md:text-base font-black tracking-tight text-foreground group-hover:text-primary leading-none uppercase whitespace-nowrap transition-colors duration-300 site-nav__brand-title"
+              class="text-[11px] sm:text-sm md:text-base font-black tracking-tight text-foreground group-hover:text-primary leading-none uppercase truncate transition-colors duration-300 site-nav__brand-title"
             >
               {{ $t('hero.name') }}
             </span>
             <span
-              class="text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] text-muted whitespace-nowrap site-nav__brand-subtitle"
+              class="hidden sm:block text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] text-muted truncate site-nav__brand-subtitle"
             >
               {{ $t('hero.tags.frontArch') }}
             </span>
@@ -44,7 +44,7 @@
 
         <!-- Desktop Navigation -->
         <div
-          class="site-nav__links hidden xl:flex items-center gap-1 rounded-full px-2 py-1.5 border"
+          class="site-nav__links hidden lg:flex items-center gap-0.5 xl:gap-1 rounded-full px-1.5 xl:px-2 py-1 border shrink-0"
         >
           <template v-for="(link, i) in navLinks" :key="link.id">
             <Motion
@@ -58,7 +58,7 @@
             >
               <a
                 :href="link.href"
-                class="relative px-3 lg:px-4 xl:px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 isolate group/link overflow-hidden cursor-pointer"
+                class="relative px-2 lg:px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-[10px] xl:text-xs font-bold uppercase tracking-widest transition-all duration-300 isolate group/link overflow-hidden cursor-pointer"
                 :class="[
                   isActiveSection(link.id) ? 'text-foreground' : 'text-muted hover:text-foreground',
                 ]"
@@ -83,7 +83,7 @@
         </div>
 
         <!-- Right Utilities -->
-        <div class="flex items-center gap-1.5 sm:gap-2 md:gap-3">
+        <div class="flex items-center gap-1 sm:gap-1.5 md:gap-2 shrink-0">
           <!-- Language Switcher -->
           <AppLanguageSwitcher />
 
@@ -91,14 +91,12 @@
           <ClientOnly>
             <div class="relative">
               <button
-                class="w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-10 lg:w-10 lg:h-11 flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
+                type="button"
+                class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
                 aria-label="Customize Theme"
                 @click="showThemeSelector = !showThemeSelector"
               >
-                <Icon
-                  name="solar:palette-bold-duotone"
-                  class="w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 lg:w-13 lg:h-13"
-                />
+                <Icon name="solar:palette-bold-duotone" class="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
               <!-- Theme Preset Selector Popover -->
               <Motion
@@ -184,32 +182,32 @@
             </div>
           </ClientOnly>
 
-          <div class="w-px h-3 sm:h-4 md:h-5 bg-foreground/10 mx-0.5 sm:mx-1 hidden sm:block" />
+          <div class="w-px h-3 sm:h-4 bg-foreground/10 mx-0.5 hidden lg:block" />
 
           <!-- CTA Button -->
           <a
             href="#contact"
-            class="hidden md:flex items-center gap-1.5 sm:gap-2 bg-primary hover:bg-primary-hover text-primary-contrast px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-full font-bold text-[9px] sm:text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn"
+            class="hidden lg:flex items-center gap-1.5 xl:gap-2 bg-primary hover:bg-primary-hover text-primary-contrast px-3 xl:px-4 py-1.5 xl:py-2 rounded-full font-bold text-[9px] xl:text-xs uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn shrink-0"
             @click="scrollToSection($event, '#contact')"
           >
-            <span class="hidden sm:block">{{ $t('nav.getInTouch') }}</span>
-            <span class="sm:hidden block">CTA</span>
+            <span>{{ $t('nav.getInTouch') }}</span>
             <Icon
               name="solar:arrow-right-up-linear"
-              class="w-8 h-8 sm:w-9 sm:h-9 group-hover/btn:rotate-45 transition-transform duration-300"
+              class="w-4 h-4 xl:w-5 xl:h-5 group-hover/btn:rotate-45 transition-transform duration-300"
             />
           </a>
 
           <!-- Mobile Toggle -->
           <button
-            class="xl:hidden w-7 h-7 sm:w-8 sm:h-8 md:w-9 md:h-10 flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors focus-visible:ring-2 focus-visible:ring-primary"
+            type="button"
+            class="lg:hidden w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors focus-visible:ring-2 focus-visible:ring-primary shrink-0"
             :aria-label="isMobileMenuOpen ? 'Close menu' : 'Open menu'"
             :aria-expanded="isMobileMenuOpen"
             @click="isMobileMenuOpen = !isMobileMenuOpen"
           >
             <Icon
               :name="isMobileMenuOpen ? 'solar:close-square-linear' : 'solar:hamburger-menu-linear'"
-              class="w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11"
+              class="w-5 h-5 sm:w-6 sm:h-6"
             />
           </button>
         </div>
@@ -227,7 +225,7 @@
     >
       <div
         v-if="isMobileMenuOpen"
-        class="fixed inset-2 sm:inset-4 md:inset-6 lg:inset-8 z-90 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex flex-col items-center justify-center overflow-hidden border border-foreground/10 shadow-4xl xl:hidden"
+        class="fixed inset-2 sm:inset-4 md:inset-6 z-90 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex flex-col items-center justify-center overflow-hidden border border-foreground/10 shadow-4xl lg:hidden"
       >
         <button
           class="absolute top-3 sm:top-4 md:top-6 right-3 sm:right-4 md:right-6 p-2 sm:p-3 text-muted hover:text-foreground"
