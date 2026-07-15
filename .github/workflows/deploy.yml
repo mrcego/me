@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Redirect GitHub Pages to cesargomez.dev
 
 on:
   push:
@@ -22,27 +22,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.30.1
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build with Nuxt
-        run: pnpm run generate
+      - name: Prepare redirect artifact
+        run: |
+          mkdir -p .gh-pages
+          cp redirect/gh-pages/index.html .gh-pages/index.html
+          cp redirect/gh-pages/404.html .gh-pages/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public
+          path: .gh-pages
 
   deploy:
     environment:
@@ -52,6 +41,6 @@ jobs:
     needs: build
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Deploy redirect to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

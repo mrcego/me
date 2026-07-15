@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Portfolio contact form registration</title>
+  </head>
+  <body>
+    <!--
+      Netlify build-time form detection for the Vue-rendered contact form.
+      Field names must match useContactForm.ts submissions exactly.
+    -->
+    <form name="portfolio-contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="portfolio-contact" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="subject" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
+  </body>
+</html>

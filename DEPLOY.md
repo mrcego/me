@@ -1,83 +1,72 @@
-# GitHub Pages Deployment Guide
+# Deployment Guide
 
-## 🚀 Pasos para hacer deploy en GitHub Pages
+## Production: Netlify (`cesargomez.dev`)
 
-### 1. Configurar el repositorio
-
-```bash
-# Asegúrate que tu repositorio está en GitHub
-git remote -v
-# Deberías ver: origin https://github.com/mrcego/me.git (o tu repo)
-```
-
-### 2. Configurar GitHub Pages
-
-1. Ve a tu repositorio en GitHub
-2. Click en **Settings** → **Pages**
-3. En **Source**, selecciona **GitHub Actions**
-
-### 3. El workflow ya está configurado
-
-El archivo `.github/workflows/deploy.yml` ya contiene:
-
-- Build automático con Node.js y pnpm
-- Generación estática con `pnpm run generate`
-- Deploy automático a GitHub Pages
-
-### 4. Hacer commit y push
+### 1. Login and link the site
 
 ```bash
-# Agregar todos los cambios
-git add .
-
-# Commit
-git commit -m "Add GitHub Pages deployment workflow and favicon updates"
-
-# Push a GitHub
-git push origin main
+npx netlify login
+npx netlify link --git-remote-url https://github.com/mrcego/me.git
+# or: npx netlify init
 ```
 
-### 5. Verificar el deploy
+### 2. Custom domain
 
-1. Ve a **Actions** tab en tu repositorio
-2. Verás el workflow "Deploy to GitHub Pages" corriendo
-3. Cuando termine, tu sitio estará disponible en:
-   - `https://mrcego.github.io/me`
+Add `cesargomez.dev` in **Project configuration → Domain management**, then configure DNS at your registrar:
 
-## 📝 Notas importantes
+| Type    | Host  | Value                        |
+| ------- | ----- | ---------------------------- |
+| `A`     | `@`   | `75.2.60.5`                  |
+| `CNAME` | `www` | `cesargomez-dev.netlify.app` |
 
-### Base URL
+Netlify provisions HTTPS automatically once DNS propagates (can take up to 24h).
 
-El sitio está configurado para funcionar en `/me` (el nombre del repositorio). Si cambias el nombre del repo, actualiza esta línea en `nuxt.config.ts`:
+Or open domain settings directly:
 
-```typescript
-baseURL: '/me';
+```bash
+npx netlify open --admin
 ```
 
-### Generación estática
+### 3. Deploy
 
-El comando `pnpm run generate` crea una versión estática del sitio perfecta para GitHub Pages.
+```bash
+pnpm install
+npx netlify deploy --build --prod
+```
 
-### Automatización
+Or connect the GitHub repo in the Netlify UI for automatic deploys on push.
 
-Cada vez que hagas push a la rama `main`, el sitio se reconstruirá y desplegará automáticamente.
+### 4. Forms
 
-## 🔧 Troubleshooting
+After deploy, confirm `portfolio-contact` appears under **Forms** in the Netlify UI. Enable email notifications there.
 
-### Si el deploy falla:
+The static skeleton lives at `public/netlify-forms.html` (Nuxt excludes `__*` files from output).
 
-1. Revisa la pestaña **Actions** para ver los errores
-2. Asegúrate que todos los archivos están commiteados
-3. Verifica que el workflow tiene los permisos correctos
+---
 
-### Si los assets no cargan:
+## Legacy redirect: GitHub Pages
 
-1. Verifica que la baseURL sea correcta
-2. Limpia el cache del navegador
-3. Revisa las rutas en `nuxt.config.ts`
+`https://mrcego.github.io/me` now serves a static redirect to `https://cesargomez.dev`.
 
-## 🎯 Resultado final
+The workflow `.github/workflows/deploy.yml` publishes only `redirect/gh-pages/` (no Nuxt build).
 
-Tu portfolio estará disponible en: `https://mrcego.github.io/me`
+---
 
-Con favicon personalizado, OG images optimizados y todo funcionando perfectamente.
+## Local development
+
+```bash
+pnpm dev
+# http://localhost:3000/
+```
+
+For local Netlify features (forms, headers):
+
+```bash
+npx netlify dev
+```
+
+---
+
+## Commands
+
+`pnpm generate` · `pnpm lint` · `pnpm typecheck` · `pnpm prepush:validate`

@@ -12,11 +12,10 @@ export default defineNuxtConfig({
 
   // Site configuration for SEO modules
   site: {
-    url: 'https://mrcego.github.io',
+    url: 'https://cesargomez.dev',
     name: 'César Gómez Portfolio',
   },
 
-  // GitHub Pages configuration
   nitro: {
     prerender: {
       crawlLinks: true,
@@ -26,7 +25,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: '/me',
+    baseURL: '/',
     head: {
       title: 'César Gómez - Senior Fullstack Developer',
       meta: [
@@ -53,8 +52,8 @@ export default defineNuxtConfig({
           content:
             'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence.',
         },
-        { property: 'og:image', content: 'https://mrcego.github.io/img/og-image.svg' },
-        { property: 'og:url', content: 'https://mrcego.github.io' },
+        { property: 'og:image', content: 'https://cesargomez.dev/img/og-image.svg' },
+        { property: 'og:url', content: 'https://cesargomez.dev' },
         { property: 'og:site_name', content: 'César Gómez Portfolio' },
 
         // Twitter Cards
@@ -65,13 +64,14 @@ export default defineNuxtConfig({
           content:
             'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence.',
         },
-        { name: 'twitter:image', content: 'https://mrcego.github.io/img/og-image.svg' },
+        { name: 'twitter:image', content: 'https://cesargomez.dev/img/og-image.svg' },
         { name: 'twitter:site', content: '@mrcego' },
         { name: 'twitter:creator', content: '@mrcego' },
 
         // Performance and PWA
         { name: 'theme-color', content: '#ff4b5c' },
         { name: 'msapplication-TileColor', content: '#ff4b5c' },
+        { name: 'msapplication-TileImage', content: '/apple-touch-icon.png' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
         { 'http-equiv': 'X-XSS-Protection', content: '1; mode=block' },
       ],
@@ -86,7 +86,15 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://www.linkedin.com', crossorigin: '' },
 
         // Canonical URL
-        { rel: 'canonical', href: 'https://mrcego.github.io/me' },
+        { rel: 'canonical', href: 'https://cesargomez.dev' },
+
+        // PWA + favicons (paths are baseURL-aware in Nuxt; do not prefix manually)
+        { rel: 'manifest', href: '/manifest.json' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       ],
       script: [
         // Structured Data for Person
@@ -99,8 +107,8 @@ export default defineNuxtConfig({
             jobTitle: 'Senior Fullstack Developer',
             description:
               'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.',
-            url: 'https://mrcego.github.io',
-            image: 'https://mrcego.github.io/img/me.jpg',
+            url: 'https://cesargomez.dev',
+            image: 'https://cesargomez.dev/img/me.jpg',
             sameAs: ['https://linkedin.com/in/mrcego', 'https://github.com/mrcego'],
             knowsAbout: [
               'Vue.js',
@@ -135,19 +143,19 @@ export default defineNuxtConfig({
             name: 'César Gómez Portfolio',
             description:
               'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.',
-            url: 'https://mrcego.github.io',
-            image: 'https://mrcego.github.io/img/og-image.svg',
+            url: 'https://cesargomez.dev',
+            image: 'https://cesargomez.dev/img/og-image.svg',
             author: {
               '@type': 'Person',
               name: 'César Gómez',
-              url: 'https://mrcego.github.io',
+              url: 'https://cesargomez.dev',
             },
             publisher: {
               '@type': 'Organization',
               name: 'César Gómez',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://mrcego.github.io/img/logo-final.svg',
+                url: 'https://cesargomez.dev/img/logo-final.svg',
               },
             },
           }),
@@ -222,6 +230,13 @@ export default defineNuxtConfig({
       useCookie: true,
       cookieKey: 'i18n_locale',
       redirectOn: 'root',
+    },
+  },
+
+  runtimeConfig: {
+    public: {
+      // Netlify production default; GitHub Pages redirect artifact does not use the form
+      contactProvider: 'netlify',
     },
   },
 

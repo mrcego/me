@@ -14,4 +14,4 @@ Allow: /#capabilities
 Allow: /#contact
 
 # Sitemap location
-Sitemap: https://mrcego.github.io/me/sitemap.xml
+Sitemap: https://cesargomez.dev/sitemap.xml

@@ -65,6 +65,7 @@
     background-color: var(--background);
     color: var(--foreground);
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
   }
 
   body {
@@ -202,4 +203,506 @@
 .p-inputtext,
 .p-textarea {
   @apply bg-foreground/5! border-foreground/5! text-foreground! rounded-2xl! p-5! focus:border-primary/40! focus:ring-4! focus:ring-primary/10! transition-all duration-500 outline-none;
+}
+
+/* Experience role modal — global so teleported PrimeVue Dialog always picks up styles */
+.p-dialog-mask:has(.experience-dialog) {
+  background: color-mix(in srgb, #030612 88%, transparent) !important;
+  backdrop-filter: blur(10px);
+}
+
+.p-dialog.experience-dialog {
+  border: 1px solid color-mix(in srgb, #ffffff 12%, transparent);
+  border-radius: 1.75rem;
+  background: #0a0f1a;
+  box-shadow: 0 24px 64px color-mix(in srgb, black 50%, transparent);
+  max-height: calc(100dvh - 2rem);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .p-dialog.experience-dialog {
+    border-radius: 2rem;
+  }
+}
+
+.p-dialog.experience-dialog .p-dialog-content {
+  background: #0a0f1a;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+}
+
+.experience-modal {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100dvh - 2rem);
+  background: #0a0f1a;
+}
+
+.experience-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid color-mix(in srgb, #ffffff 10%, transparent);
+  background: color-mix(in srgb, #ff4b5c 6%, #0a0f1a);
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .experience-modal__header {
+    padding: 1.5rem 1.5rem 1.25rem;
+  }
+}
+
+.experience-modal__icon-wrap {
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0.45rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, #ffffff 5%, #0a0f1a);
+  border: 1px solid color-mix(in srgb, #ff4b5c 25%, transparent);
+}
+
+.experience-modal__company-logo {
+  width: 100%;
+  height: 100%;
+  max-width: 2.6rem;
+  max-height: 2.6rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.experience-modal__company-logo--on-light {
+  border-radius: 0.45rem;
+  padding: 0.25rem;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+
+@media (min-width: 768px) {
+  .experience-modal__icon-wrap {
+    width: 4rem;
+    height: 4rem;
+    padding: 0.55rem;
+    border-radius: 1.25rem;
+  }
+
+  .experience-modal__company-logo {
+    max-width: 3rem;
+    max-height: 3rem;
+  }
+}
+
+.experience-modal__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: color-mix(in srgb, #ff4b5c 14%, #0a0f1a);
+  border: 1px solid color-mix(in srgb, #ff4b5c 28%, transparent);
+}
+
+.experience-modal__chip--muted {
+  color: var(--color-muted);
+  background: color-mix(in srgb, #ffffff 6%, #0a0f1a);
+  border-color: color-mix(in srgb, #ffffff 12%, transparent);
+}
+
+.experience-modal__close {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-muted);
+  background: color-mix(in srgb, #ffffff 6%, #0a0f1a);
+  border: 1px solid color-mix(in srgb, #ffffff 10%, transparent);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.experience-modal__close:hover {
+  color: var(--color-foreground);
+  border-color: color-mix(in srgb, #ff4b5c 35%, transparent);
+}
+
+.experience-modal__body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, #ff4b5c 45%, transparent) transparent;
+}
+
+.experience-modal__body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.experience-modal__body::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, #ff4b5c 45%, transparent);
+  border-radius: 9999px;
+}
+
+@media (min-width: 768px) {
+  .experience-modal__body {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+}
+
+.experience-modal__summary {
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  background: #111827;
+  border: 1px solid color-mix(in srgb, #ffffff 8%, transparent);
+}
+
+.experience-modal__highlight {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: start;
+  padding: 0.85rem 1rem;
+  border-radius: 0.9rem;
+  background: #111827;
+  border: 1px solid color-mix(in srgb, #ffffff 8%, transparent);
+}
+
+.experience-modal__index {
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+  padding-top: 0.1rem;
+}
+
+.experience-modal__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid color-mix(in srgb, #ffffff 10%, transparent);
+  background: #0d1320;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .experience-modal__footer {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+}
+
+.experience-modal__linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  transition: color 0.2s ease;
+}
+
+.experience-modal__linkedin:hover {
+  color: var(--color-primary);
+}
+
+.experience-modal__highlights::-webkit-scrollbar {
+  width: 6px;
+}
+
+.experience-modal__highlights::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, #ff4b5c 45%, transparent);
+  border-radius: 9999px;
+}
+
+/* Surface cards — unlayered so hover colors beat Tailwind text-* utilities */
+.surface-card {
+  --surface-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  transition:
+    transform 0.55s var(--surface-ease),
+    border-color 0.55s var(--surface-ease),
+    box-shadow 0.55s var(--surface-ease);
+}
+
+.surface-card:hover,
+.surface-card:focus-within,
+.surface-card:focus-visible {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  box-shadow:
+    0 20px 40px color-mix(in srgb, var(--color-primary) 8%, transparent),
+    0 8px 24px color-mix(in srgb, black 20%, transparent);
+}
+
+.surface-card--soft:hover,
+.surface-card--soft:focus-within,
+.surface-card--soft:focus-visible {
+  transform: none;
+}
+
+.surface-card__glow,
+.surface-card__icon,
+.surface-card__glyph,
+.surface-card__chip,
+.surface-card__title,
+.surface-card__text,
+.surface-card__desc,
+.surface-card__meta,
+.surface-card__cta,
+.surface-card__line,
+.surface-card__footer,
+.surface-card__avatar,
+.surface-card__tag,
+.surface-card__quote-icon,
+.surface-card__image,
+.surface-card__blob {
+  transition:
+    opacity 0.55s var(--surface-ease),
+    color 0.55s var(--surface-ease),
+    background-color 0.55s var(--surface-ease),
+    border-color 0.55s var(--surface-ease),
+    transform 0.55s var(--surface-ease),
+    filter 0.55s var(--surface-ease);
+}
+
+.surface-card__chip {
+  color: var(--color-primary);
+}
+
+.surface-card__title:not(.surface-card__title--gradient) {
+  color: var(--color-foreground);
+}
+
+.surface-card__text,
+.surface-card__desc {
+  color: var(--color-muted);
+}
+
+.surface-card__meta {
+  color: var(--color-muted);
+}
+
+.surface-card__cta {
+  color: color-mix(in srgb, var(--color-primary) 70%, transparent);
+}
+
+.surface-card__tag {
+  color: color-mix(in srgb, var(--color-muted) 80%, transparent);
+}
+
+.surface-card__quote-icon {
+  color: var(--color-muted);
+}
+
+.surface-card__glow {
+  opacity: 0;
+}
+
+.surface-card:hover .surface-card__glow,
+.surface-card:focus-within .surface-card__glow,
+.surface-card:focus-visible .surface-card__glow {
+  opacity: 1;
+}
+
+.surface-card:hover .surface-card__glyph,
+.surface-card:focus-within .surface-card__glyph,
+.surface-card:focus-visible .surface-card__glyph {
+  color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.surface-card:hover .surface-card__chip,
+.surface-card:focus-within .surface-card__chip,
+.surface-card:focus-visible .surface-card__chip {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+  border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+}
+
+.surface-card:hover .surface-card__icon,
+.surface-card:focus-within .surface-card__icon,
+.surface-card:focus-visible .surface-card__icon {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+  transform: scale(1.05);
+}
+
+.surface-card:hover .surface-card__icon--tilt,
+.surface-card:focus-within .surface-card__icon--tilt,
+.surface-card:focus-visible .surface-card__icon--tilt {
+  transform: scale(1.05) rotate(4deg);
+}
+
+.surface-card:hover .surface-card__title:not(.surface-card__title--gradient),
+.surface-card:focus-within .surface-card__title:not(.surface-card__title--gradient),
+.surface-card:focus-visible .surface-card__title:not(.surface-card__title--gradient) {
+  color: var(--color-primary);
+}
+
+.surface-card:hover .surface-card__title--gradient,
+.surface-card:focus-within .surface-card__title--gradient,
+.surface-card:focus-visible .surface-card__title--gradient {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-foreground),
+    color-mix(in srgb, var(--color-foreground) 80%, transparent),
+    color-mix(in srgb, var(--color-primary) 40%, transparent)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.surface-card:hover .surface-card__text,
+.surface-card:focus-within .surface-card__text,
+.surface-card:focus-visible .surface-card__text {
+  color: color-mix(in srgb, var(--color-foreground) 55%, var(--color-muted));
+}
+
+.surface-card:hover .surface-card__desc,
+.surface-card:focus-within .surface-card__desc,
+.surface-card:focus-visible .surface-card__desc {
+  color: color-mix(in srgb, var(--color-foreground) 50%, var(--color-muted));
+  border-color: color-mix(in srgb, var(--color-foreground) 10%, transparent);
+}
+
+.surface-card:hover .surface-card__meta,
+.surface-card:focus-within .surface-card__meta,
+.surface-card:focus-visible .surface-card__meta {
+  color: color-mix(in srgb, var(--color-primary) 45%, var(--color-muted));
+}
+
+.surface-card:hover .surface-card__cta,
+.surface-card:focus-within .surface-card__cta,
+.surface-card:focus-visible .surface-card__cta {
+  color: var(--color-primary);
+}
+
+.surface-card:hover .surface-card__footer,
+.surface-card:focus-within .surface-card__footer,
+.surface-card:focus-visible .surface-card__footer {
+  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.surface-card:hover .surface-card__line,
+.surface-card:focus-within .surface-card__line,
+.surface-card:focus-visible .surface-card__line {
+  opacity: 1;
+  background-color: color-mix(in srgb, var(--color-primary) 55%, transparent);
+  transform: scaleX(1);
+}
+
+.surface-card__line--grow {
+  transform: scaleX(0);
+  transform-origin: left;
+  opacity: 1;
+}
+
+.surface-card:hover .surface-card__tag,
+.surface-card:focus-within .surface-card__tag,
+.surface-card:focus-visible .surface-card__tag {
+  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  color: color-mix(in srgb, var(--color-foreground) 75%, var(--color-muted));
+}
+
+.surface-card:hover .surface-card__avatar,
+.surface-card:focus-within .surface-card__avatar,
+.surface-card:focus-visible .surface-card__avatar {
+  transform: scale(1.05);
+}
+
+.surface-card:hover .surface-card__avatar .surface-card__image,
+.surface-card:focus-within .surface-card__avatar .surface-card__image,
+.surface-card:focus-visible .surface-card__avatar .surface-card__image {
+  filter: grayscale(0) brightness(1);
+}
+
+.surface-card:hover .surface-card__quote-icon,
+.surface-card:focus-within .surface-card__quote-icon,
+.surface-card:focus-visible .surface-card__quote-icon {
+  color: var(--color-primary);
+}
+
+.surface-card:hover .surface-card__image--zoom,
+.surface-card:focus-within .surface-card__image--zoom,
+.surface-card:focus-visible .surface-card__image--zoom {
+  filter: grayscale(0) brightness(1.05);
+  transform: scale(1.03);
+}
+
+.surface-card:hover .surface-card__blob,
+.surface-card:focus-within .surface-card__blob,
+.surface-card:focus-visible .surface-card__blob {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-card,
+  .surface-card__glow,
+  .surface-card__icon,
+  .surface-card__glyph,
+  .surface-card__chip,
+  .surface-card__title,
+  .surface-card__text,
+  .surface-card__desc,
+  .surface-card__meta,
+  .surface-card__cta,
+  .surface-card__line,
+  .surface-card__footer,
+  .surface-card__avatar,
+  .surface-card__tag,
+  .surface-card__quote-icon,
+  .surface-card__image,
+  .surface-card__blob {
+    transition-duration: 0.01ms;
+  }
+
+  .surface-card:hover,
+  .surface-card:focus-within,
+  .surface-card:focus-visible {
+    transform: none;
+  }
+
+  .surface-card:hover .surface-card__icon,
+  .surface-card:focus-within .surface-card__icon,
+  .surface-card:focus-visible .surface-card__icon,
+  .surface-card:hover .surface-card__glyph,
+  .surface-card:focus-within .surface-card__glyph,
+  .surface-card:focus-visible .surface-card__glyph,
+  .surface-card:hover .surface-card__avatar,
+  .surface-card:focus-within .surface-card__avatar,
+  .surface-card:focus-visible .surface-card__avatar,
+  .surface-card:hover .surface-card__image--zoom,
+  .surface-card:focus-within .surface-card__image--zoom,
+  .surface-card:focus-visible .surface-card__image--zoom {
+    transform: none;
+  }
+
+  .surface-card__line--grow,
+  .surface-card:hover .surface-card__line--grow,
+  .surface-card:focus-within .surface-card__line--grow,
+  .surface-card:focus-visible .surface-card__line--grow {
+    transform: scaleX(1);
+  }
 }

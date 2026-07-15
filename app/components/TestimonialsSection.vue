@@ -6,7 +6,7 @@
     <div class="container mx-auto space-y-24">
       <Motion
         :initial="motionInitial({ opacity: 0, y: 5 })"
-        :in-view="motionInView({ opacity: 1, y: 0 })"
+        :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }"
         :viewport="{ once: true, amount: 0.1 }"
         class="max-w-4xl mx-auto text-center space-y-8"
@@ -26,26 +26,26 @@
         </h3>
       </Motion>
 
-      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-12">
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-12 items-stretch">
         <Motion
           v-for="(t, i) in testimonials"
           :key="t.name"
           :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 })"
-          :in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
+          :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
           :transition="{
             duration: 0.5,
             delay: i * 0.1,
             ease: [0.22, 1, 0.36, 1],
           }"
           :viewport="{ once: true, amount: 0.1 }"
-          class="group relative glass p-10 md:p-14 rounded-[3.5rem] border-foreground/5 hover:border-primary/40 transition-[border-color,box-shadow] duration-700 overflow-hidden"
+          class="surface-card group relative glass p-10 md:p-14 rounded-[3.5rem] border-foreground/5 overflow-hidden h-full"
         >
           <div
-            class="absolute inset-0 bg-primary/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none testimonial-dots"
+            class="surface-card__glow absolute inset-0 bg-primary/2 pointer-events-none testimonial-dots"
           />
 
           <div class="relative z-10 space-y-10">
-            <div class="text-muted group-hover:text-primary transition-colors">
+            <div class="surface-card__quote-icon text-muted">
               <Icon
                 name="solar:chat-square-code-bold-duotone"
                 class="w-12 h-12 md:w-14 md:h-14 opacity-50"
@@ -54,16 +54,16 @@
             </div>
 
             <blockquote
-              class="text-lg md:text-xl text-muted font-medium leading-relaxed italic group-hover:text-foreground transition-colors max-h-[9.2rem] md:max-h-[10.2rem] overflow-y-auto pr-4 custom-scrollbar"
+              class="surface-card__text text-lg md:text-xl text-muted font-medium leading-relaxed italic max-h-[9.2rem] md:max-h-[10.2rem] overflow-y-auto pr-4 custom-scrollbar"
             >
               <p>"{{ t.quote }}"</p>
             </blockquote>
 
             <footer
-              class="flex items-center gap-6 pt-6 border-t border-foreground/5 group-hover:border-primary/20 transition-[border-color]"
+              class="surface-card__footer flex items-center gap-6 pt-6 border-t border-foreground/5"
             >
               <div
-                class="w-14 h-14 rounded-2xl glass overflow-hidden border border-foreground/10 group-hover:scale-110 transition-transform shrink-0"
+                class="surface-card__avatar w-14 h-14 rounded-2xl glass overflow-hidden border border-foreground/10 shrink-0"
               >
                 <NuxtImg
                   v-if="!failedAvatars.has(t.name)"
@@ -72,7 +72,7 @@
                   width="56"
                   height="56"
                   loading="lazy"
-                  class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 transition-[filter,transform]"
+                  class="surface-card__image w-full h-full object-cover grayscale brightness-90"
                   @error="markAvatarFailed(t.name)"
                 />
                 <div
@@ -90,13 +90,17 @@
                   {{ t.name }}
                 </cite>
                 <p
-                  class="text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-primary transition-colors line-clamp-2"
+                  class="surface-card__meta text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted line-clamp-2"
                 >
                   {{ t.role }}
                 </p>
               </div>
             </footer>
           </div>
+
+          <div
+            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
+          />
         </Motion>
       </div>
     </div>

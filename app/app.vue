@@ -7,10 +7,10 @@
 
     <!-- Global Scroll Progress -->
     <div
-      class="fixed top-0 left-0 right-0 h-1 z-100 origin-left bg-linear-to-r from-primary via-primary/80 to-primary/40 transition-transform duration-100 ease-out"
-      :style="{ transform: `scaleX(${scrollProgress / 100})` }"
+      class="fixed top-0 left-0 right-0 h-1 z-100 origin-left bg-linear-to-r from-primary via-primary/80 to-primary/40 will-change-transform"
+      :style="{ transform: `scaleX(${pageProgress / 100})` }"
       role="progressbar"
-      :aria-valuenow="scrollProgress"
+      :aria-valuenow="pageProgress"
       aria-valuemin="0"
       aria-valuemax="100"
       aria-label="Page scroll progress"
@@ -31,8 +31,10 @@
 import { ref, onMounted } from 'vue';
 import 'primeicons/primeicons.css';
 import { usePortfolio } from '~/composables/usePortfolio';
+import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
 
-const { activeSection, scrollProgress } = usePortfolio();
+const { activeSection } = usePortfolio();
+const { pageProgress } = useSmoothedScroll(0.14);
 const loading = ref(true);
 
 onMounted(() => {

@@ -1,0 +1,48 @@
+---
+description: Portfolio Nuxt app structure, TypeScript, Vue, i18n, and deploy conventions
+alwaysApply: true
+---
+
+# César Gómez Portfolio — core conventions
+
+## Project structure
+
+| Path | Purpose |
+| ---- | ------- |
+| `app/components/` | Section components (`HeroSection`, `AboutSection`, etc.) |
+| `app/composables/` | Shared composables (`useTheme`, `useMotionConfig`) |
+| `app/assets/css/` | Global styles (`main.css`, Tailwind 4) |
+| `i18n/locales/` | en.json, es.json — canonical i18n (not `app/locales/`) |
+| `public/img/` | Static images, avatars, logo |
+| `scripts/` | Avatar fetch/scrape utilities |
+
+## Stack
+
+Nuxt 4 · Vue 3 `<script setup>` · TypeScript · PrimeVue · Tailwind 4 · motion-v · @nuxtjs/i18n · Netlify (`cesargomez.dev`)
+
+## Dev vs production URLs
+
+- **Dev:** `http://localhost:3000/`
+- **Prod:** `https://cesargomez.dev` (Netlify)
+- **Legacy redirect:** `https://mrcego.github.io/me` → `https://cesargomez.dev`
+
+## TypeScript & Vue
+
+- Composition API with `<script setup lang="ts">`
+- `defineProps` / `defineEmits` with types; avoid `any`
+- motion-v: use `:while-in-view`, not `:in-view`
+- PrimeVue Dialog teleported to body — modal styles belong in `main.css`, not transparent `glass`
+
+## i18n
+
+- All user-facing strings via `$t()` / `useI18n()`
+- Role modal content under `about.roles.{key}.*`
+- Edit `i18n/locales/en.json` and `es.json` together
+
+## Commands
+
+`pnpm dev` · `pnpm lint` · `pnpm typecheck` · `pnpm generate` · `pnpm prepush:validate`
+
+## Fix as you go
+
+In files you touch: keep scope minimal, match existing patterns, run lint/typecheck before push.

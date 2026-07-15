@@ -14,7 +14,7 @@
       >
         <Motion
           :initial="motionInitial({ opacity: 0, x: -50 })"
-          :in-view="motionInView({ opacity: 1, x: 0 })"
+          :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
           class="space-y-8 md:space-y-10 group"
@@ -36,7 +36,7 @@
         <!-- Filter Tabs with Motion -->
         <Motion
           :initial="motionInitial({ opacity: 0, scale: 0.9 })"
-          :in-view="motionInView({ opacity: 1, scale: 1 })"
+          :while-in-view="motionInView({ opacity: 1, scale: 1 })"
           :transition="{ duration: 0.8, delay: 0.2 }"
           :viewport="{ once: true }"
           class="flex flex-wrap gap-2 md:gap-4 p-2 md:p-3 glass rounded-[2.5rem] border-foreground/5 w-fit shadow-xl justify-center lg:justify-start"
@@ -58,25 +58,25 @@
       </div>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-16"
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-10 md:gap-12 lg:gap-16 items-stretch"
       >
         <Motion
           v-for="(project, i) in filteredProjects"
           :key="project.title"
           :initial="motionInitial({ opacity: 0, y: 30 })"
-          :in-view="motionInView({ opacity: 1, y: 0 })"
+          :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="{
             duration: 0.8,
             delay: i * 0.15,
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="group relative glass p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 flex flex-col cursor-pointer overflow-hidden"
+          class="surface-card group relative glass p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] border-foreground/5 flex flex-col cursor-pointer overflow-hidden h-full"
         >
           <!-- holographic sweep -->
-          <div class="absolute inset-x-0 bottom-0 h-px bg-primary/20 z-20 pointer-events-none" />
           <div
-            class="absolute inset-0 bg-linear-to-tr from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none"
+            class="absolute inset-0 bg-linear-to-tr from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[0.85s] pointer-events-none"
+            style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1)"
           />
 
           <div
@@ -84,7 +84,7 @@
           >
             <img
               :src="project.image"
-              class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+              class="surface-card__image surface-card__image--zoom w-full h-full object-cover grayscale brightness-90"
               alt="Project Showcase"
             />
 
@@ -97,7 +97,8 @@
             />
 
             <div
-              class="absolute bottom-6 left-6 md:bottom-10 md:left-10 flex flex-wrap gap-2 translate-y-6 group-hover:translate-y-0 transition-all duration-700 delay-100 px-2 opacity-0 group-hover:opacity-100"
+              class="absolute bottom-6 left-6 md:bottom-10 md:left-10 flex flex-wrap gap-2 translate-y-6 group-hover:translate-y-0 transition-transform duration-[0.55s] delay-100 px-2 opacity-0 group-hover:opacity-100"
+              style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1)"
             >
               <div
                 v-for="tag in project.tags"
@@ -115,7 +116,7 @@
             <div class="flex justify-between items-start gap-4">
               <div class="space-y-1">
                 <h4
-                  class="text-2xl md:text-3xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors"
+                  class="surface-card__title text-2xl md:text-3xl font-black tracking-tighter text-foreground"
                 >
                   {{ $t(`portfolio.projects.${i}.title`) }}
                 </h4>
@@ -125,24 +126,28 @@
               </div>
               <a
                 href="#"
-                class="w-12 h-12 md:w-16 md:h-16 glass rounded-full flex items-center justify-center text-muted hover:bg-primary hover:text-primary-contrast hover:scale-110 active:scale-90 transition-all duration-500 shrink-0 shadow-lg"
+                class="surface-card__icon w-12 h-12 md:w-16 md:h-16 glass rounded-full flex items-center justify-center text-muted active:scale-90 shrink-0 shadow-lg"
               >
                 <Icon name="solar:arrow-right-up-linear" class="w-12 h-12 md:w-14 md:h-14" />
               </a>
             </div>
 
             <p
-              class="text-muted text-sm md:text-base leading-relaxed max-w-lg line-clamp-3 group-hover:line-clamp-none transition-all duration-700 font-medium"
+              class="surface-card__text text-muted text-sm md:text-base leading-relaxed max-w-lg line-clamp-3 group-hover:line-clamp-none font-medium"
             >
               {{ $t(`portfolio.projects.${i}.desc`) }}
             </p>
           </div>
+
+          <div
+            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
+          />
         </Motion>
       </div>
 
       <Motion
         :initial="motionInitial({ opacity: 0, y: 5 })"
-        :in-view="motionInView({ opacity: 1, y: 0 })"
+        :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }"
         :viewport="{ once: true }"
         class="text-center pt-8 md:pt-16"

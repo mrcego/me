@@ -5,6 +5,7 @@
 .nitro
 .cache
 dist
+.netlify
 
 # Node dependencies
 node_modules
@@ -17,6 +18,14 @@ logs
 .DS_Store
 .fleet
 .idea
+
+# Cursor — keep rules and agents in git
+.cursor/*
+!.cursor/README.md
+!.cursor/rules/
+!.cursor/rules/**
+!.cursor/agents/
+!.cursor/agents/**
 
 # Local env files
 .env

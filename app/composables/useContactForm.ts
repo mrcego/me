@@ -1,6 +1,9 @@
 import { ref, reactive } from 'vue';
 
+const NETLIFY_FORM_NAME = 'portfolio-contact';
+
 export const useContactForm = () => {
+  const runtimeConfig = useRuntimeConfig();
   const isSubmitting = ref(false);
   const submitSuccess = ref(false);
   const submitError = ref('');
@@ -83,6 +86,35 @@ export const useContactForm = () => {
     errors.message = '';
   };
 
+  const submitViaMailto = (): void => {
+    const mailtoLink = `mailto:cesargomezh90@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
+    )}`;
+    window.location.href = mailtoLink;
+  };
+
+  const submitViaNetlify = async (): Promise<boolean> => {
+    const base = runtimeConfig.app.baseURL.replace(/\/$/, '');
+    const endpoint = `${base}/netlify-forms.html`;
+
+    const body = new URLSearchParams({
+      'form-name': NETLIFY_FORM_NAME,
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      subject: formData.subject.trim(),
+      message: formData.message.trim(),
+      'bot-field': '',
+    });
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: body.toString(),
+    });
+
+    return response.ok;
+  };
+
   const submitForm = async (): Promise<boolean> => {
     if (!validateForm()) {
       return false;
@@ -93,16 +125,19 @@ export const useContactForm = () => {
     submitSuccess.value = false;
 
     try {
-      // Create mailto link as fallback
-      const mailtoLink = `mailto:cesargomezh90@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
-      )}`;
+      const useNetlify = import.meta.client && runtimeConfig.public.contactProvider === 'netlify';
 
-      // Open mailto link
-      window.location.href = mailtoLink;
-
-      // Simulate success after a short delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (useNetlify) {
+        const sent = await submitViaNetlify();
+        if (!sent) {
+          submitError.value =
+            'Failed to send message. Please try again or contact directly via email.';
+          return false;
+        }
+      } else {
+        submitViaMailto();
+        await new Promise((resolve) => setTimeout(resolve, 500));
+      }
 
       submitSuccess.value = true;
       resetForm();

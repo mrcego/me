@@ -41,7 +41,7 @@
             :initial="motionInitial({ opacity: 0, scale: 0.9, y: -10 })"
             :animate="motionAnimate({ opacity: 1, scale: 1, y: 0 })"
             :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
-            class="inline-flex items-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-5 py-2 rounded-2xl glass border-primary/20 hover:border-primary/40 transition-all duration-500 cursor-alias"
+            class="surface-card surface-card--soft inline-flex items-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-5 py-2 rounded-2xl glass border-primary/20 cursor-alias"
           >
             <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
               <span
@@ -57,32 +57,28 @@
             >
           </Motion>
 
-          <h1
-            class="text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem] font-black leading-[0.85] sm:leading-[0.8] md:leading-[0.75] tracking-tighter"
+          <Motion
+            :initial="motionInitial({ opacity: 0, y: 20, scale: 0.95 })"
+            :animate="motionAnimate({ opacity: 1, y: 0, scale: 1 })"
+            :transition="{
+              duration: 1.2,
+              ease: [0.16, 1, 0.3, 1],
+              delay: 0.2,
+            }"
           >
-            <Motion
-              :initial="motionInitial({ opacity: 0, y: 20, scale: 0.95 })"
-              :animate="motionAnimate({ opacity: 1, y: 0, scale: 1 })"
-              :transition="{
-                duration: 1.2,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.2,
-              }"
-              class="text-gradient block hover:text-foreground transition-colors duration-700"
-              >{{ firstName }}</Motion
+            <h1
+              class="text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem] font-black leading-[0.85] sm:leading-[0.8] md:leading-[0.75] tracking-tighter"
             >
-            <Motion
-              :initial="motionInitial({ opacity: 0, y: 20, scale: 0.95 })"
-              :animate="motionAnimate({ opacity: 1, y: 0, scale: 1 })"
-              :transition="{
-                duration: 1.2,
-                ease: [0.16, 1, 0.3, 1],
-                delay: 0.4,
-              }"
-              class="text-foreground block hover:text-primary transition-colors duration-700"
-              >{{ lastName }}</Motion
-            >
-          </h1>
+              <span
+                class="text-gradient block hover:text-foreground transition-colors duration-700"
+                >{{ firstName }}</span
+              >
+              <span
+                class="text-foreground block hover:text-primary transition-colors duration-700"
+                >{{ lastName }}</span
+              >
+            </h1>
+          </Motion>
 
           <Motion
             :initial="motionInitial({ opacity: 0, y: 15 })"
@@ -139,9 +135,9 @@
               target="_blank"
               rel="noopener noreferrer"
               :aria-label="`Visit ${social.label} profile`"
-              class="p-3 sm:p-4 glass rounded-xl sm:rounded-2xl text-muted hover:text-foreground hover:border-primary/30 transition-all hover:-translate-y-1 active:scale-90"
+              class="surface-card group p-3 sm:p-4 glass rounded-xl sm:rounded-2xl text-muted active:scale-90"
             >
-              <Icon :name="social.icon" class="w-11 h-11 sm:w-12 sm:h-12" />
+              <Icon :name="social.icon" class="surface-card__glyph w-11 h-11 sm:w-12 sm:h-12" />
             </a>
           </div>
         </Motion>
@@ -183,7 +179,7 @@
       >
         <!-- Photo with Master Frame -->
         <div
-          class="relative z-20 rounded-[3rem] md:rounded-[4rem] overflow-hidden border border-white/10 glass p-3 md:p-5 animate-float transform transition-all duration-1000 max-w-sm lg:max-w-none mx-auto group"
+          class="surface-card group relative z-20 rounded-[3rem] md:rounded-[4rem] overflow-hidden border border-white/10 glass p-3 md:p-5 animate-float max-w-sm lg:max-w-none mx-auto"
         >
           <div
             class="relative aspect-4/5 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden bg-secondary"
@@ -205,12 +201,12 @@
               loading="eager"
               fetchpriority="high"
               sizes="sm:400px md:500px lg:600px xl:800px"
-              class="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-1000 scale-105 group-hover:scale-100"
+              class="surface-card__image surface-card__image--zoom w-full h-full object-cover grayscale brightness-90 scale-105"
             />
 
             <!-- Scanning effect specific to image -->
             <div
-              class="absolute inset-0 z-20 bg-primary/5 opacity-0 group-hover:opacity-40 pointer-events-none hero-scanline"
+              class="surface-card__glow absolute inset-0 z-20 bg-primary/5 pointer-events-none hero-scanline"
             />
 
             <!-- Floating HUD Elements -->
@@ -239,6 +235,10 @@
               </div>
             </div>
           </div>
+
+          <div
+            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-30"
+          />
         </div>
 
         <!-- Decorative Glows -->

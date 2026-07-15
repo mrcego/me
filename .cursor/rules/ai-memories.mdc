@@ -1,0 +1,28 @@
+---
+description: Personal AI memories in ~/.cursor/memories — user prefs, repo notes, PR session checkpoints
+alwaysApply: true
+---
+
+# AI memories (user profile)
+
+Personal persistent context lives in **`~/.cursor/memories/`** (Windows: `%USERPROFILE%\.cursor\memories\`). Not in the git repo.
+
+| Folder | When to read |
+| ------ | ------------ |
+| `global/` | User-wide preferences — always respect |
+| `repo/` | Repo-specific gotchas before non-trivial work in that service |
+| `session/` | Active PR checkpoints (`pr-*.md`) — `@create-pr` writes, `@resume-pr` reads first |
+| `archive/` | Historical session plans and exploration notes |
+
+Import or refresh from VS Code Insiders: `pnpm cursor:import-memories`
+
+## Global preferences (summary)
+
+- **Action over ask**: when a fix is actionable, apply it directly — do not ask "fix or document?"
+- **Linear on /create-pr**: always move issues to **In Review**; never to another column
+- **PR flow**: branches from `main`, PRs target `staging`; Husky owns pre-push checks — never `--no-verify`; fix and retry push on hook failure
+- **Fallbacks**: MCP → `gh` CLI → manual instructions; never abort because MCP is down
+- **LingoQuesto copy**: use `Actividad/Actividades` (not `Escenario/Escenarios`) for AI Studio content items
+- **Spec audits**: if implementation reveals missing actions/types/code, add them proactively and update the spec
+
+For full detail, read markdown files under `~/.cursor/memories/global/` and relevant `repo/` notes for the service you are touching.

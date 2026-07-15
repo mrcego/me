@@ -1,0 +1,22 @@
+---
+description: How to use project agents and skills before non-trivial work
+alwaysApply: true
+---
+
+# AI governance
+
+Before non-trivial changes, pick the right specialist:
+
+| Task | Invoke |
+| ---- | ------ |
+| Nuxt / SSR / routing / Nitro | `@nuxt-expert` |
+| Vue components / reactivity | `@vuejs-expert` |
+| UI / layout / visual polish | `@gem-designer` |
+| Bugs / regressions | `@gem-debugger` |
+| Performance / Web Vitals | `@frontend-performance-investigator` |
+| Large feature scope | `@implementation-plan` |
+| PR / commits | `@create-pr` or `@resume-pr` |
+
+Global skills in `~/.agents/skills/` (vue-best-practices, nuxt4-patterns, web-design-guidelines) apply here too.
+
+**Golden rule:** read surrounding code before adding new abstractions; prefer the smallest correct diff.

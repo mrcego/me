@@ -12,7 +12,7 @@
       <div class="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
         <Motion
           :initial="motionInitial({ opacity: 0, x: -50 })"
-          :in-view="motionInView({ opacity: 1, x: 0 })"
+          :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
           class="space-y-8 sm:space-y-12 md:space-y-20"
@@ -73,19 +73,28 @@
         <!-- PrimeVue Form with Motion -->
         <Motion
           :initial="motionInitial({ opacity: 0, x: 50 })"
-          :in-view="motionInView({ opacity: 1, x: 0 })"
+          :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
-          class="glass p-6 sm:p-8 md:p-12 lg:p-16 xl:p-24 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] border-foreground/5 relative overflow-hidden group shadow-4xl mt-12 lg:mt-0"
+          class="surface-card group glass p-6 sm:p-8 md:p-12 lg:p-16 xl:p-24 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] border-foreground/5 relative overflow-hidden shadow-4xl mt-12 lg:mt-0"
         >
-          <div
-            class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-[0.03] transition-opacity duration-1000 pointer-events-none"
-          />
+          <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
 
           <form
+            name="portfolio-contact"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
             class="space-y-6 sm:space-y-8 md:space-y-12 relative z-10"
             @submit.prevent="submitForm"
           >
+            <input type="hidden" name="form-name" value="portfolio-contact" />
+            <p class="hidden" aria-hidden="true">
+              <label>
+                Don't fill this out:
+                <input name="bot-field" tabindex="-1" autocomplete="off" />
+              </label>
+            </p>
             <!-- Success Message -->
             <div
               v-if="submitSuccess"
@@ -246,6 +255,10 @@
               </span>
             </Button>
           </form>
+
+          <div
+            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
+          />
         </Motion>
       </div>
     </div>

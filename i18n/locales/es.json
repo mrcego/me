@@ -13,7 +13,7 @@
     "modes": "Modos"
   },
   "hero": {
-    "tagline": "Miembro Fundador {'@'} LingoQuesto · Disponible desde Ago 2026",
+    "tagline": "Disponible desde Ago 2026",
     "name": "CÉSAR GÓMEZ",
     "title": "Desarrollador Fullstack Senior",
     "description": "13+ años especializándome en Excelencia Frontend. Experto en Vue.js, Nuxt.js, TypeScript y arquitecturas web modernas.",
@@ -47,35 +47,76 @@
     "logic": "Lógica Fullstack",
     "userCentric": "Centrado en el Usuario",
     "roles": {
+      "viewDetails": "Ver detalles del rol",
+      "highlightsTitle": "Contribuciones clave",
+      "close": "Cerrar",
       "lingoquesto": {
         "title": "Miembro Fundador | Senior Fullstack",
         "company": "LingoQuesto",
         "years": "2025 - Ago 2026",
-        "desc": "Definiendo la visión de producto y la hoja de ruta fullstack como ingeniero fundador. Finalizando rol en agosto de 2026 para nuevas oportunidades."
+        "location": "Colombia · Remoto",
+        "desc": "Definiendo la visión de producto y la hoja de ruta fullstack como ingeniero fundador. Finalizando rol en agosto de 2026 para nuevas oportunidades.",
+        "highlights": [
+          "Ingeniero fundador definiendo la visión de producto y la hoja de ruta técnica fullstack en una plataforma ed-tech de práctica oral.",
+          "Construcción de experiencias conversacionales interactivas y personalizadas que simulan aprendizaje inmersivo para educadores y estudiantes.",
+          "Liderazgo de arquitectura frontend con Vue.js, Nuxt.js y TypeScript, con contribución transversal en el stack del producto.",
+          "Impulso de estándares de ingeniería, velocidad de entrega y decisiones de producto como parte del equipo fundador."
+        ]
       },
       "colegium": {
         "title": "Desarrollador Frontend Senior",
         "company": "Colegium",
         "years": "2021 - 2025",
-        "desc": "Orquestando ecosistemas complejos y arquitecturas de micro-frontends para más de 100k estudiantes."
+        "location": "Colombia",
+        "desc": "Orquestando ecosistemas complejos y arquitecturas de micro-frontends para más de 100k estudiantes.",
+        "highlights": [
+          "Desarrollo de 12 módulos, 3 herramientas y 3 bibliotecas internas usadas en Colegium Cloud con Web Components en Vue.js 3 y modelos híbridos.",
+          "Contribución a la próxima generación de herramientas educativas en la nube, mejorando la experiencia de más de 100.000 estudiantes.",
+          "Apoyo al ecosistema de Design System, estableciendo estándares de UI/UX que redujeron los tiempos de desarrollo en un 30%.",
+          "Participación en laboratorios de innovación, prototipando y promoviendo nuevas soluciones tecnológicas educativas.",
+          "Integración de aplicaciones SPA con motores Blade de CodeIgniter para optimizar el rendimiento web.",
+          "4.º puesto en la Colegium Hackathon 2024 con un chatbot de IA para administración y gestión de ticketing en helpdesk."
+        ]
       },
       "tissini": {
         "title": "Desarrollador Frontend Senior",
         "company": "TISSINI",
         "years": "2019 - 2021",
-        "desc": "Desarrollo de soluciones mobile-first con Vue 3. Reducción de tiempos de despliegue en un 60% vía CI/CD."
+        "location": "Colombia",
+        "desc": "Desarrollo de soluciones mobile-first con Vue 3. Reducción de tiempos de despliegue en un 60% vía CI/CD.",
+        "highlights": [
+          "Desarrollo de soluciones mobile-first con Vue.js 2 y 3 usando las APIs de Options y Composition.",
+          "Apoyo en procesos de ingeniería implementando metodologías ágiles en el ciclo de desarrollo.",
+          "Establecimiento de pipelines de CI/CD que redujeron los tiempos de despliegue en un 60%.",
+          "Mentoría a desarrolladores junior en buenas prácticas de Vue.js y calidad frontend.",
+          "Contribución a productos como Mitiendatissini.com y la TISSINI App."
+        ]
       },
       "cuartopixel": {
         "title": "Desarrollador Frontend Web",
         "company": "4to Pixel",
         "years": "2018",
-        "desc": "Creación de experiencias web UX/UI de alto rendimiento usando Angular 6+ para ecosistemas modernos."
+        "location": "Colombia",
+        "desc": "Creación de experiencias web UX/UI de alto rendimiento usando Angular 6+ para ecosistemas modernos.",
+        "highlights": [
+          "Desarrollo de experiencias webapp basadas en UX y UI con Angular 6+.",
+          "Entrega de interfaces performantes y centradas en el usuario para plataformas de marketing digital y contenido.",
+          "Trabajo en equipo multidisciplinario entre ingeniería, contenido y estrategia digital.",
+          "Aplicación de prácticas frontend modernas para lanzar experiencias web pulidas en ciclos ágiles."
+        ]
       },
       "zabud": {
         "title": "Desarrollador Frontend Junior",
         "company": "ZABUD Technologies",
         "years": "2016",
-        "desc": "Desarrollo visual usando AngularJS, HTML5, CSS3 y jQuery para soluciones modulares a medida."
+        "location": "Colombia",
+        "desc": "Desarrollo visual usando AngularJS, HTML5, CSS3 y jQuery para soluciones modulares a medida.",
+        "highlights": [
+          "Desarrollo de software a la medida con foco en la capa visual de aplicaciones web.",
+          "Construcción de webapps modulares con AngularJS, HTML5, CSS3 y jQuery.",
+          "Traducción de requerimientos de negocio en implementaciones frontend mantenibles.",
+          "Experiencia base en arquitectura cliente y interfaces empresariales personalizadas."
+        ]
       }
     }
   },

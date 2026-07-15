@@ -14,7 +14,7 @@
     <div class="container mx-auto space-y-24 md:space-y-32">
       <Motion
         :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 })"
-        :in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
+        :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
         :transition="{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }"
         :viewport="{ once: true, amount: 0.1 }"
         class="max-w-4xl mx-auto text-center space-y-8 md:space-y-10 group"
@@ -41,23 +41,23 @@
       </Motion>
 
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 px-2 md:px-0"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 px-2 md:px-0 items-stretch"
       >
         <Motion
           v-for="(t, i) in detailedStack"
           :key="t.name"
           :initial="motionInitial({ opacity: 0, y: 20 })"
-          :in-view="motionInView({ opacity: 1, y: 0 })"
+          :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="{
             duration: 0.8,
             delay: i * 0.1,
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="group relative glass p-6 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-[3rem] border-foreground/5 hover:border-primary/40 transition-all duration-700 hover:shadow-4xl overflow-hidden min-h-72 sm:min-h-80 md:min-h-96 lg:min-h-100 flex flex-col justify-between cursor-crosshair"
+          class="surface-card group relative glass p-6 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-[3rem] border-foreground/5 overflow-hidden min-h-72 sm:min-h-80 md:min-h-96 lg:min-h-100 flex flex-col justify-between cursor-crosshair h-full"
         >
           <div
-            class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000"
+            class="surface-card__blob absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-0"
           />
 
           <div
@@ -65,17 +65,17 @@
           >
             <div class="flex justify-between items-start">
               <div
-                class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-20 glass rounded-xl sm:rounded-2xl md:rounded-3xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-2xl shrink-0 group-hover:scale-110 group-hover:rotate-6"
+                class="surface-card__icon surface-card__icon--tilt w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-20 glass rounded-xl sm:rounded-2xl md:rounded-3xl flex items-center justify-center text-primary shadow-2xl shrink-0"
               >
                 <Icon :name="t.icon" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20" />
               </div>
-              <div class="flex flex-col items-end">
+              <div class="flex flex-col items-end gap-0.5 sm:gap-1">
                 <span
-                  class="text-[8px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-widest text-muted group-hover:text-primary transition-colors"
+                  class="surface-card__meta text-xs sm:text-sm md:text-base font-black uppercase tracking-widest text-muted"
                   >{{ t.years }}</span
                 >
                 <span
-                  class="text-[6px] sm:text-[7px] md:text-[8px] font-bold uppercase tracking-[0.2em] text-primary/60"
+                  class="text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-primary/70"
                   >Expertise</span
                 >
               </div>
@@ -83,7 +83,7 @@
 
             <div class="space-y-1.5 sm:space-y-2 md:space-y-3">
               <h4
-                class="text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground group-hover:text-gradient transition-all"
+                class="surface-card__title surface-card__title--gradient text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground"
               >
                 {{ t.name }}
               </h4>
@@ -94,16 +94,14 @@
               </p>
             </div>
 
-            <p
-              class="text-xs sm:text-sm text-muted font-medium leading-relaxed group-hover:text-foreground transition-colors"
-            >
+            <p class="surface-card__text text-xs sm:text-sm text-muted font-medium leading-relaxed">
               {{ $t(t.descKey) }}
             </p>
           </div>
 
           <!-- Subtle Inner Glow on Hover -->
           <div
-            class="absolute inset-x-0 bottom-0 h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"
+            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left"
           />
         </Motion>
       </div>
@@ -112,18 +110,18 @@
       <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative px-2 md:px-0">
         <Motion
           :initial="motionInitial({ opacity: 0, x: -30 })"
-          :in-view="motionInView({ opacity: 1, x: 0 })"
+          :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
-          class="glass p-6 sm:p-8 md:p-10 lg:p-16 rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 group/hud relative overflow-hidden"
+          class="surface-card surface-card--soft group/hud glass p-6 sm:p-8 md:p-10 lg:p-16 rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 relative overflow-hidden"
         >
           <div
-            class="absolute inset-0 bg-primary/5 opacity-0 group-hover/hud:opacity-40 pointer-events-none tech-hud-horizontal"
+            class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none tech-hud-horizontal"
           />
 
           <div class="flex items-center gap-3 sm:gap-4 md:gap-6 relative z-10">
             <div
-              class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 glass rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover/hud:scale-110 transition-transform"
+              class="surface-card__icon w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 glass rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center text-primary"
             >
               <Icon name="solar:crown-star-bold" class="w-12 h-12 sm:w-14 sm:h-14" />
             </div>
@@ -136,28 +134,32 @@
             <span
               v-for="skill in skills"
               :key="skill"
-              class="text-xs md:text-sm font-bold uppercase tracking-wider text-muted glass px-6 py-3 rounded-xl border-foreground/5 hover:bg-primary/10 hover:border-primary/40 transition-all cursor-default shadow-sm"
+              class="surface-card__tag text-xs md:text-sm font-bold uppercase tracking-wider text-muted glass px-6 py-3 rounded-xl border-foreground/5 cursor-default shadow-sm"
             >
               {{ skill }}
             </span>
           </div>
+
+          <div
+            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
+          />
         </Motion>
 
         <Motion
           :initial="motionInitial({ opacity: 0, x: 30 })"
-          :in-view="motionInView({ opacity: 1, x: 0 })"
+          :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
-          class="glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-foreground/5 flex flex-col justify-between space-y-16 group/hud relative overflow-hidden"
+          class="surface-card surface-card--soft group/hud glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-foreground/5 flex flex-col justify-between space-y-16 relative overflow-hidden"
         >
           <div
-            class="absolute inset-0 bg-primary/5 opacity-0 group-hover/hud:opacity-40 pointer-events-none tech-hud-vertical"
+            class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none tech-hud-vertical"
           />
 
           <div class="space-y-8 md:space-y-10 relative z-10">
             <div class="flex items-center gap-4 md:gap-6 relative z-10">
               <div
-                class="w-10 h-10 md:w-12 md:h-12 glass rounded-xl md:rounded-2xl flex items-center justify-center text-primary group-hover/hud:rotate-12 transition-transform"
+                class="surface-card__icon surface-card__icon--tilt w-10 h-10 md:w-12 md:h-12 glass rounded-xl md:rounded-2xl flex items-center justify-center text-primary"
               >
                 <Icon name="solar:global-linear" class="w-14 h-14" />
               </div>
@@ -167,7 +169,7 @@
             </div>
             <div class="flex flex-wrap gap-3 md:gap-4">
               <div
-                class="px-6 py-2.5 md:px-8 md:py-3 glass rounded-xl md:rounded-2xl border-foreground/5 hover:border-primary/40 transition-all cursor-alias active:scale-95 shadow-md"
+                class="surface-card surface-card--soft px-6 py-2.5 md:px-8 md:py-3 glass rounded-xl md:rounded-2xl border-foreground/5 cursor-alias active:scale-95 shadow-md"
               >
                 <span
                   class="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-muted block mb-1"
@@ -178,7 +180,7 @@
                 }}</span>
               </div>
               <div
-                class="px-6 py-2.5 md:px-8 md:py-3 glass rounded-xl md:rounded-2xl border-foreground/5 hover:border-primary/40 transition-all cursor-alias active:scale-95 shadow-md"
+                class="surface-card surface-card--soft px-6 py-2.5 md:px-8 md:py-3 glass rounded-xl md:rounded-2xl border-foreground/5 cursor-alias active:scale-95 shadow-md"
               >
                 <span
                   class="text-[8px] md:text-[10px] font-black uppercase tracking-widest text-muted block mb-1"
@@ -190,6 +192,10 @@
               </div>
             </div>
           </div>
+
+          <div
+            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
+          />
         </Motion>
       </div>
     </div>

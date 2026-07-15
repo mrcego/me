@@ -13,7 +13,7 @@ export const useMotionConfig = () => {
 
   const motionInView = <T>(value: T): T | undefined => (motionEnabled.value ? value : undefined);
 
-  const motionAnimate = <T>(value: T): T | undefined => (motionEnabled.value ? value : undefined);
+  const motionAnimate = <T>(value: T): T => value;
   /**
    * Configuración base para animaciones sin latido
    * - amount: 0.1 = solo requiere 10% de visibilidad
@@ -36,7 +36,7 @@ export const useMotionConfig = () => {
    */
   const slideInLeft = (duration = 1.4) => ({
     initial: { opacity: 0, x: -40, scale: 0.9 },
-    inView: { opacity: 1, x: 0, scale: 1 },
+    whileInView: { opacity: 1, x: 0, scale: 1 },
     transition: { duration, ease: smoothEase },
     viewport: baseViewport,
   });
@@ -46,7 +46,7 @@ export const useMotionConfig = () => {
    */
   const slideInRight = (duration = 1.4) => ({
     initial: { opacity: 0, x: 40, scale: 0.9 },
-    inView: { opacity: 1, x: 0, scale: 1 },
+    whileInView: { opacity: 1, x: 0, scale: 1 },
     transition: { duration, ease: smoothEase },
     viewport: baseViewport,
   });
@@ -56,7 +56,7 @@ export const useMotionConfig = () => {
    */
   const slideInUp = (duration = 1.2) => ({
     initial: { opacity: 0, y: 50, scale: 0.92 },
-    inView: { opacity: 1, y: 0, scale: 1 },
+    whileInView: { opacity: 1, y: 0, scale: 1 },
     transition: { duration, ease: smoothEase },
     viewport: baseViewport,
   });
@@ -66,7 +66,7 @@ export const useMotionConfig = () => {
    */
   const fadeIn = (duration = 1.2) => ({
     initial: { opacity: 0, scale: 0.95 },
-    inView: { opacity: 1, scale: 1 },
+    whileInView: { opacity: 1, scale: 1 },
     transition: { duration, ease: smoothEase },
     viewport: baseViewport,
   });
@@ -76,7 +76,7 @@ export const useMotionConfig = () => {
    */
   const staggerItem = (index: number, duration = 1.2, delayMultiplier = 0.15) => ({
     initial: { opacity: 0, y: 50, scale: 0.92 },
-    inView: { opacity: 1, y: 0, scale: 1 },
+    whileInView: { opacity: 1, y: 0, scale: 1 },
     transition: {
       duration,
       delay: index * delayMultiplier,

@@ -1,18 +1,10 @@
 ﻿<template>
-  <nav
-    class="fixed top-0 left-0 right-0 z-100 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
-    :class="[isScrolled ? 'py-2 sm:py-3' : 'py-4 sm:py-6']"
-  >
+  <nav class="site-nav fixed top-0 left-0 right-0 z-100" :style="{ '--nav-progress': navProgress }">
     <div
       class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 pointer-events-none"
     >
       <div
-        class="flex items-center justify-between rounded-full transition-all duration-500 pointer-events-auto border"
-        :class="[
-          isScrolled
-            ? 'bg-secondary/60 backdrop-blur-2xl border-white/10 shadow-lg shadow-black/10 p-1.5 sm:p-2'
-            : 'bg-transparent border-transparent p-0',
-        ]"
+        class="site-nav__shell flex items-center justify-between rounded-full pointer-events-auto border"
       >
         <!-- Logo Area -->
         <Motion
@@ -36,26 +28,14 @@
               class="w-full h-full object-contain scale-110 group-hover:scale-100 transition-transform duration-700 text-primary"
             />
           </div>
-          <div
-            class="flex flex-col justify-center transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
-            :class="{
-              'lg:opacity-100 lg:w-auto': !isScrolled,
-              'lg:opacity-70 lg:w-auto': isScrolled,
-            }"
-          >
+          <div class="site-nav__brand flex flex-col justify-center min-w-0">
             <span
-              class="text-xs sm:text-sm md:text-base font-black tracking-tight text-foreground group-hover:text-primary transition-all duration-500 leading-none uppercase"
-              :class="{
-                'lg:text-sm lg:tracking-tight': isScrolled,
-              }"
+              class="text-xs sm:text-sm md:text-base font-black tracking-tight text-foreground group-hover:text-primary leading-none uppercase whitespace-nowrap transition-colors duration-300 site-nav__brand-title"
             >
               {{ $t('hero.name') }}
             </span>
             <span
-              class="text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] text-muted transition-all duration-500"
-              :class="{
-                'lg:text-[6px] lg:opacity-0': isScrolled,
-              }"
+              class="text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] text-muted whitespace-nowrap site-nav__brand-subtitle"
             >
               {{ $t('hero.tags.frontArch') }}
             </span>
@@ -64,12 +44,7 @@
 
         <!-- Desktop Navigation -->
         <div
-          class="hidden xl:flex items-center gap-1 bg-foreground/3 backdrop-blur-md rounded-full px-2 py-1.5 border transition-all duration-500"
-          :class="[
-            isScrolled
-              ? 'opacity-100 scale-100 border-foreground/5 shadow-inner shadow-white/5'
-              : 'opacity-100 bg-transparent border-transparent shadow-none backdrop-blur-none',
-          ]"
+          class="site-nav__links hidden xl:flex items-center gap-1 rounded-full px-2 py-1.5 border"
         >
           <template v-for="(link, i) in navLinks" :key="link.id">
             <Motion
@@ -292,13 +267,14 @@
 
 <script setup>
 import { Motion } from 'motion-v';
-import { ref, onMounted, onUnmounted } from 'vue';
-import { useTheme } from '~/composables/useTheme';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 import AppLanguageSwitcher from '~/components/AppLanguageSwitcher.vue';
+import { useTheme } from '~/composables/useTheme';
 
 const { motionInitial, motionAnimate } = useMotionConfig();
+const { y: smoothedScrollY, progress } = useSmoothedScroll(0.14);
+const navProgress = progress(120);
 
-const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);
 const { currentThemeId, THEME_PRESETS, setThemePreset } = useTheme();
 
@@ -316,13 +292,16 @@ const activeSection = ref('hero');
 
 const isActiveSection = (id) => activeSection.value === id;
 
+const sections = computed(() => navLinks.map((l) => l.id));
+
 const scrollToSection = (e, href) => {
   e.preventDefault();
   const targetId = href.replace('#', '');
   const element = document.getElementById(targetId);
   if (element) {
+    const top = element.getBoundingClientRect().top + window.scrollY - 96;
     window.scrollTo({
-      top: element.offsetTop - 100,
+      top,
       behavior: 'smooth',
     });
     activeSection.value = targetId;
@@ -331,13 +310,9 @@ const scrollToSection = (e, href) => {
 };
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50;
+  const scrollPos = smoothedScrollY.value + 200;
 
-  // Simple active section detection
-  const sections = navLinks.map((l) => l.id);
-  const scrollPos = window.scrollY + 200;
-
-  for (const id of sections) {
+  for (const id of sections.value) {
     const el = document.getElementById(id);
     if (el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
       activeSection.value = id;
@@ -347,7 +322,7 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 });
 
@@ -357,6 +332,50 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.site-nav {
+  --np: var(--nav-progress, 0);
+  padding-block: calc(1rem + (1 - var(--np)) * 0.5rem);
+}
+
+@media (min-width: 640px) {
+  .site-nav {
+    padding-block: calc(0.75rem + (1 - var(--np)) * 0.75rem);
+  }
+}
+
+.site-nav__shell {
+  padding: calc(var(--np) * 0.5rem);
+  border-color: color-mix(in srgb, #ffffff calc(var(--np) * 10%), transparent);
+  background-color: color-mix(in srgb, var(--secondary) calc(var(--np) * 60%), transparent);
+  backdrop-filter: blur(calc(var(--np) * 24px));
+  box-shadow: 0 calc(var(--np) * 16px) calc(var(--np) * 40px)
+    color-mix(in srgb, #000000 calc(var(--np) * 12%), transparent);
+}
+
+.site-nav__brand {
+  opacity: calc(1 - var(--np) * 0.1);
+}
+
+@media (min-width: 1024px) {
+  .site-nav__brand-title {
+    font-size: calc(0.875rem + (1 - var(--np)) * 0.125rem);
+    letter-spacing: calc(-0.025em + var(--np) * 0.005em);
+  }
+
+  .site-nav__brand-subtitle {
+    font-size: 0.5625rem;
+    letter-spacing: 0.2em;
+    color: color-mix(in srgb, var(--muted) calc(100% - var(--np) * 10%), var(--muted));
+  }
+}
+
+.site-nav__links {
+  border-color: color-mix(in srgb, var(--foreground) calc(var(--np) * 5%), transparent);
+  background-color: color-mix(in srgb, var(--foreground) calc(var(--np) * 3%), transparent);
+  backdrop-filter: blur(calc(var(--np) * 12px));
+  box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff calc(var(--np) * 5%), transparent);
+}
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
 }

@@ -15,7 +15,7 @@
       <!-- Section Header -->
       <Motion
         :initial="motionInitial({ opacity: 0, y: 20 })"
-        :in-view="motionInView({ opacity: 1, y: 0 })"
+        :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }"
         :viewport="{ once: true }"
         class="max-w-4xl mx-auto text-center space-y-8 md:space-y-10 mb-24 md:mb-32"
@@ -42,37 +42,40 @@
       </Motion>
 
       <!-- Certifications Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 items-stretch">
         <Motion
           v-for="(cert, i) in certifications"
           :key="i"
           :initial="motionInitial({ opacity: 0, y: 20 })"
-          :in-view="motionInView({ opacity: 1, y: 0 })"
+          :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="{
             duration: 0.5,
             delay: i * 0.05,
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="group relative glass p-6 md:p-8 rounded-4xl border-foreground/5 hover:border-primary/40 transition-all duration-500 flex flex-col justify-between"
+          class="surface-card group relative glass p-6 md:p-8 rounded-4xl border-foreground/5 flex flex-col justify-between h-full"
         >
-          <div class="space-y-6">
+          <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
+
+          <div class="space-y-6 relative z-10">
             <!-- Icon and Date -->
             <div class="flex justify-between items-start">
               <div
-                class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-500 shadow-xl"
+                class="surface-card__icon w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary shadow-xl"
               >
                 <Icon name="solar:medal-ribbon-bold" class="w-10 h-10" />
               </div>
-              <span class="text-[10px] font-black uppercase tracking-widest text-muted">{{
-                cert.date
-              }}</span>
+              <span
+                class="surface-card__meta text-[10px] font-black uppercase tracking-widest text-muted"
+                >{{ cert.date }}</span
+              >
             </div>
 
             <!-- Title and Issuer -->
             <div class="space-y-2">
               <h4
-                class="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors line-clamp-2 min-h-14"
+                class="surface-card__title text-xl font-bold tracking-tight text-foreground line-clamp-2 min-h-14"
               >
                 {{ cert.title }}
               </h4>
@@ -87,7 +90,7 @@
               <span
                 v-for="skill in cert.skills"
                 :key="skill"
-                class="text-[9px] font-black uppercase tracking-wider text-muted/80 bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5 group-hover:border-primary/20 transition-colors"
+                class="surface-card__tag text-[9px] font-black uppercase tracking-wider text-muted/80 bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5"
               >
                 {{ skill }}
               </span>
@@ -95,7 +98,7 @@
           </div>
 
           <!-- CTA Button -->
-          <div class="mt-8 pt-6 border-t border-foreground/5">
+          <div class="surface-card__footer mt-8 pt-6 border-t border-foreground/5 relative z-10">
             <NuxtLink
               :to="cert.url"
               target="_blank"
@@ -108,6 +111,10 @@
               />
             </NuxtLink>
           </div>
+
+          <div
+            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
+          />
         </Motion>
       </div>
     </div>
