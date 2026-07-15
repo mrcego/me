@@ -460,17 +460,25 @@
 }
 
 /* Availability announcement — high-impact modal */
-.p-dialog-mask:has(.announcement-dialog) {
-  z-index: 1000001 !important;
-  background: color-mix(in srgb, #030612 92%, transparent) !important;
+.announcement-dialog-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 1000001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background: color-mix(in srgb, #030612 92%, transparent);
   backdrop-filter: blur(14px);
 }
 
-.p-dialog-mask.announcement-dialog--leave:has(.announcement-dialog) {
+.announcement-dialog-mask.announcement-dialog--leave {
   animation: announcement-mask-exit 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
 }
 
-.p-dialog.announcement-dialog {
+.announcement-dialog {
+  width: min(44rem, calc(100vw - 1rem));
   border: 2px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
   border-radius: 1.5rem;
   background: #080d18;
@@ -482,26 +490,19 @@
   overflow: hidden;
 }
 
-.p-dialog.announcement-dialog:not(.announcement-dialog--leave) {
+.announcement-dialog:not(.announcement-dialog--leave) {
   animation: announcement-enter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.p-dialog.announcement-dialog.announcement-dialog--leave {
+.announcement-dialog.announcement-dialog--leave {
   animation: announcement-exit 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   pointer-events: none;
 }
 
 @media (min-width: 768px) {
-  .p-dialog.announcement-dialog {
+  .announcement-dialog {
     border-radius: 2rem;
   }
-}
-
-.p-dialog.announcement-dialog .p-dialog-content {
-  background: #080d18;
-  border: none;
-  padding: 0;
-  overflow: hidden;
 }
 
 @keyframes announcement-enter {
@@ -536,12 +537,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .p-dialog.announcement-dialog:not(.announcement-dialog--leave) {
+  .announcement-dialog:not(.announcement-dialog--leave) {
     animation: none;
   }
 
-  .p-dialog.announcement-dialog.announcement-dialog--leave,
-  .p-dialog-mask.announcement-dialog--leave:has(.announcement-dialog) {
+  .announcement-dialog.announcement-dialog--leave,
+  .announcement-dialog-mask.announcement-dialog--leave {
     animation: none;
   }
 
