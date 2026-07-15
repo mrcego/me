@@ -9,6 +9,7 @@
     "contact": "Contact",
     "testimonials": "Testimonials",
     "getInTouch": "Get in Touch",
+    "switchLanguage": "Switch language",
     "themePresets": "Theme Presets",
     "modes": "Modes"
   },
@@ -166,7 +167,7 @@
       "es": "Spanish",
       "en": "English",
       "native": "Native",
-      "pro": "Professional"
+      "pro": "Intermediate"
     }
   },
   "certifications": {
@@ -420,6 +421,63 @@
         "name": "María de los Ángeles Rodríguez",
         "role": "Management & Administrative Control",
         "quote": "It is a pleasure to recommend people with great commitment and growth. If we are talking about an integral talent, Cesar meets the requirements. He is passionate about what he does, responsible, organized, intelligent, leader and excellent human service."
+      }
+    ]
+  },
+  "seo": {
+    "title": "Cesar Gomez — Senior Fullstack Developer | Vue.js & Nuxt Expert",
+    "description": "Cesar Gomez is a Senior Fullstack Developer with 13+ years of experience, specialized in Vue.js, Nuxt.js, TypeScript, and frontend architecture. Colombia-based, remote-friendly, available for contract work from August 2026.",
+    "keywords": "Cesar Gomez, César Gómez, mrcego, Senior Fullstack Developer, Vue.js Developer, Nuxt.js Developer, TypeScript Developer, Frontend Architect, Colombia developer, remote developer, hire Vue developer, hire Nuxt developer, frontend engineer, web developer portfolio",
+    "ogTitle": "Cesar Gomez — Senior Fullstack Developer | Vue.js & Nuxt Expert",
+    "ogDescription": "13+ years building high-performance products with Vue.js, Nuxt.js, and TypeScript. Frontend architecture, fullstack delivery, available Aug 2026.",
+    "jobTitle": "Senior Fullstack Developer",
+    "siteName": "Cesar Gomez Portfolio",
+    "serviceName": "Cesar Gomez — Frontend & Fullstack Development",
+    "serviceDescription": "Senior fullstack and frontend architecture services with Vue.js, Nuxt.js, TypeScript, design systems, and performance-focused product engineering.",
+    "availability": "Senior frontend and fullstack contract roles from August 2026"
+  },
+  "faq": {
+    "section": "FAQ",
+    "title": "Frequently Asked Questions",
+    "description": "Quick answers for recruiters, hiring managers, and teams evaluating Cesar Gomez for senior frontend or fullstack roles.",
+    "contact": {
+      "question": "How can I contact Cesar Gomez?",
+      "answer": "Use the {form}, connect on {linkedin}, or review his open-source work on {github}.",
+      "linkForm": "contact form"
+    },
+    "items": [
+      {
+        "question": "Who is Cesar Gomez?",
+        "answer": "Cesar Gomez is a Senior Fullstack Developer with 13+ years of experience, focused on frontend excellence with Vue.js, Nuxt.js, and TypeScript. He has built products for ed-tech platforms including Colegium (100k+ students) and LingoQuesto."
+      },
+      {
+        "question": "What technologies does Cesar Gomez specialize in?",
+        "answer": "Vue.js, Nuxt.js, TypeScript, JavaScript, Node.js, PrimeVue, Tailwind CSS, design systems, micro-frontends, SSR/SSG, and web performance optimization."
+      },
+      {
+        "question": "Is Cesar Gomez available for hire?",
+        "answer": "Yes. Cesar is open to senior frontend, fullstack, and architecture roles on a contract basis. Target availability is August 2026 and he works remotely with international teams."
+      },
+      {
+        "question": "What is Cesar Gomez's experience with Vue.js and Nuxt.js?",
+        "answer": "He has led frontend architecture with Vue 3 and Nuxt in production, including micro-frontend ecosystems, shared libraries, Web Components, and performance-critical educational platforms."
+      },
+      {
+        "question": "Where is Cesar Gomez based?",
+        "answer": "Cesar is based in Colombia and works remotely with teams across Latin America and globally."
+      },
+      {
+        "key": "contact",
+        "question": "How can I contact Cesar Gomez?",
+        "answer": "Use the contact form at cesargomez.dev, connect on LinkedIn, or review his open-source work on GitHub."
+      },
+      {
+        "question": "What companies has Cesar Gomez worked with?",
+        "answer": "Recent experience includes LingoQuesto (founding engineer), Colegium (senior frontend), and prior roles across TISSINI, Zabud, Cuarto Pixel, and other product teams."
+      },
+      {
+        "question": "Does Cesar Gomez work in English and Spanish?",
+        "answer": "Yes. Cesar is a native Spanish speaker with intermediate English and has collaborated with distributed international teams."
       }
     ]
   },

@@ -1,0 +1,50 @@
+# César Gómez — Senior Fullstack Developer
+
+> Portfolio and professional profile for César Gómez (mrcego), a senior fullstack developer with 13+ years of experience, specialized in Vue.js, Nuxt.js, TypeScript, and frontend architecture. Based in Colombia. Available for remote contract work from August 2026.
+
+## Canonical URLs
+
+- English: https://cesargomez.dev/
+- Spanish: https://cesargomez.dev/es
+- Sitemap: https://cesargomez.dev/sitemap.xml
+
+## Professional summary
+
+César Gómez is a Senior Fullstack Developer with a frontend-first specialization. He builds high-performance web products with Vue 3, Nuxt 4, TypeScript, PrimeVue, and Tailwind CSS. He has led frontend architecture for ed-tech platforms serving 100,000+ students and contributed as a founding engineer on speech-based language learning products.
+
+## Core expertise
+
+- Vue.js and Nuxt.js (frontend architecture, SSR/SSG, performance)
+- TypeScript and modern JavaScript
+- Design systems, micro-frontends, and component libraries
+- Fullstack delivery with Node.js ecosystems
+- UI engineering, accessibility, and Web Vitals optimization
+
+## Recent roles
+
+- Founding Member | Senior Fullstack at LingoQuesto (2025–Aug 2026) — ed-tech, speech-based language practice
+- Senior Frontend Developer at Colegium (2021–2025) — 100k+ students, micro-frontends, design system
+- Additional experience across TISSINI, Zabud, Cuarto Pixel, and enterprise web products
+
+## Availability
+
+Open to senior frontend, fullstack, and architecture roles — contract and remote-friendly. Target availability: August 2026.
+
+## Contact
+
+- Website: https://cesargomez.dev/#contact
+- LinkedIn: https://www.linkedin.com/in/mrcego
+- GitHub: https://github.com/mrcego
+- Email: via contact form on https://cesargomez.dev/#contact
+
+## Languages
+
+- Spanish (native)
+- English (intermediate)
+
+## Optional pages
+
+- About / Technical Identity: https://cesargomez.dev/#about
+- Tech stack: https://cesargomez.dev/#tech-stack
+- Certifications: https://cesargomez.dev/#certifications
+- Testimonials: https://cesargomez.dev/#testimonials

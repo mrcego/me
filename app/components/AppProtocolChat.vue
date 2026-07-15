@@ -17,8 +17,9 @@
         class="w-16 h-16 md:w-20 md:h-20 glass rounded-4xl flex items-center justify-center text-primary border-primary/20 shadow-4xl hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group overflow-hidden"
         @click="scrollToTop"
       >
-        <div
+        <span
           class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity"
+          aria-hidden="true"
         />
         <Icon name="lucide:chevron-up" class="w-11 h-11 md:w-12 md:h-12 relative z-10" />
       </button>
@@ -29,11 +30,13 @@
       class="w-16 h-16 md:w-20 md:h-20 glass rounded-4xl flex items-center justify-center text-primary border-primary/20 shadow-4xl hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group overflow-hidden"
       @click="isOpen = !isOpen"
     >
-      <div
+      <span
         class="absolute inset-x-0 h-px bg-primary-contrast/40 animate-sweep z-20 pointer-events-none"
+        aria-hidden="true"
       />
-      <div
+      <span
         class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity"
+        aria-hidden="true"
       />
       <Icon
         v-if="!isOpen"

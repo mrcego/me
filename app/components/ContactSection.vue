@@ -232,11 +232,13 @@
               :aria-busy="isSubmitting"
               class="w-full rounded-xl! sm:rounded-[1.8rem]! md:rounded-[2.5rem]! p-5! sm:p-6! md:p-8! bg-primary! text-primary-contrast shadow-3xl shadow-primary/30 group/btn transition-all duration-500 overflow-hidden relative active:scale-95 active:shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
-              <div
+              <span
                 class="absolute inset-x-0 top-0 h-px bg-primary-contrast/40 animate-sweep pointer-events-none"
+                aria-hidden="true"
               />
-              <div
+              <span
                 class="absolute inset-0 bg-linear-to-tr from-transparent via-primary-contrast/10 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-700"
+                aria-hidden="true"
               />
               <span
                 class="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 text-[9px] sm:text-[10px] md:text-sm font-black uppercase tracking-[0.25em] sm:tracking-[0.3em] md:tracking-[0.4em] relative z-10 transition-transform group-hover/btn:scale-105"

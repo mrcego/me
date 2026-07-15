@@ -110,11 +110,11 @@
                     <div
                       class="flex items-center justify-between border-b border-foreground/5 pb-2 sm:pb-3"
                     >
-                      <h4
+                      <h3
                         class="text-[9px] sm:text-xs font-black uppercase tracking-widest text-foreground"
                       >
                         {{ $t('nav.themePresets') }}
-                      </h4>
+                      </h3>
                       <span
                         class="text-[7px] sm:text-[9px] bg-primary/10 text-primary px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-bold border border-primary/20"
                         >{{ THEME_PRESETS.length }} {{ $t('nav.modes') }}</span

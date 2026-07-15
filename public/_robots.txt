@@ -1,17 +1,32 @@
+# https://cesargomez.dev robots.txt
+
 User-agent: *
 Allow: /
-Disallow: /admin
 
-Disallow: /.well-known/
+# AI search and citation bots (allowed for discoverability)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block non-essential paths
 Disallow: /sw.js
 Disallow: /manifest.json
 
-# Allow search engines to crawl important pages
-Allow: /#about
-Allow: /#tech-stack
-Allow: /#portfolio
-Allow: /#capabilities
-Allow: /#contact
-
-# Sitemap location
 Sitemap: https://cesargomez.dev/sitemap.xml

@@ -20,11 +20,11 @@
               <Icon name="solar:code-square-bold-duotone" class="w-14 h-14" />
             </div>
             <div class="flex flex-col">
-              <h4
+              <h3
                 class="text-2xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors duration-300 uppercase"
               >
                 {{ $t('hero.name') }}
-              </h4>
+              </h3>
               <span
                 class="text-[10px] tracking-[0.2em] text-muted uppercase font-bold group-hover:text-foreground transition-colors delay-75"
               >
@@ -42,12 +42,12 @@
         <!-- Navigation Columns -->
         <div class="flex flex-wrap gap-12 md:gap-24">
           <div v-for="col in footerLinks" :key="col.title" class="space-y-6">
-            <h5
+            <h3
               class="text-[10px] font-black uppercase tracking-[0.4em] text-primary flex items-center gap-2"
             >
               <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               {{ $t(col.title) }}
-            </h5>
+            </h3>
             <ul class="space-y-3">
               <li v-for="link in col.links" :key="link.name">
                 <a

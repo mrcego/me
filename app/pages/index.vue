@@ -8,6 +8,7 @@
     <!-- <ProjectsSection /> -->
     <TestimonialsSection />
     <ContactSection />
+    <SeoFaqSection />
     <AppFooter />
   </main>
 </template>

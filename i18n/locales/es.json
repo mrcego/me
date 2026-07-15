@@ -9,6 +9,7 @@
     "contact": "Contacto",
     "testimonials": "Testimonios",
     "getInTouch": "Contáctame",
+    "switchLanguage": "Cambiar idioma",
     "themePresets": "Temas IDE",
     "modes": "Modos"
   },
@@ -166,7 +167,7 @@
       "es": "Español",
       "en": "Inglés",
       "native": "Nativo",
-      "pro": "Profesional"
+      "pro": "Intermedio"
     }
   },
   "certifications": {
@@ -420,6 +421,63 @@
         "name": "María de los Ángeles Rodríguez",
         "role": "Gestión y Control Administrativo",
         "quote": "Es grato recomendar a personas con gran compromiso y crecimiento. Si de un talento integral se habla. Cesar cumple los requisitos. Es apasionado en lo que hace, responsable, organizado, inteligente, líder y excelente servicio humano."
+      }
+    ]
+  },
+  "seo": {
+    "title": "César Gómez — Desarrollador Fullstack Senior | Experto Vue.js y Nuxt",
+    "description": "César Gómez es Desarrollador Fullstack Senior con 13+ años de experiencia, especializado en Vue.js, Nuxt.js, TypeScript y arquitectura frontend. Basado en Colombia, remoto, disponible para contrato desde agosto de 2026.",
+    "keywords": "César Gómez, Cesar Gomez, mrcego, Desarrollador Fullstack Senior, Desarrollador Vue.js, Desarrollador Nuxt.js, Desarrollador TypeScript, Arquitecto Frontend, desarrollador Colombia, desarrollador remoto, contratar desarrollador Vue, contratar desarrollador Nuxt, ingeniero frontend, portafolio desarrollador web",
+    "ogTitle": "César Gómez — Desarrollador Fullstack Senior | Experto Vue.js y Nuxt",
+    "ogDescription": "13+ años construyendo productos de alto rendimiento con Vue.js, Nuxt.js y TypeScript. Arquitectura frontend, entrega fullstack, disponible ago 2026.",
+    "jobTitle": "Desarrollador Fullstack Senior",
+    "siteName": "Portafolio de César Gómez",
+    "serviceName": "César Gómez — Desarrollo Frontend y Fullstack",
+    "serviceDescription": "Servicios senior de desarrollo fullstack y arquitectura frontend con Vue.js, Nuxt.js, TypeScript, design systems e ingeniería de producto orientada al rendimiento.",
+    "availability": "Roles senior frontend y fullstack por contrato desde agosto de 2026"
+  },
+  "faq": {
+    "section": "Preguntas frecuentes",
+    "title": "Preguntas frecuentes",
+    "description": "Respuestas rápidas para reclutadores, líderes técnicos y equipos que evalúan a César Gómez para roles senior frontend o fullstack.",
+    "contact": {
+      "question": "¿Cómo puedo contactar a César Gómez?",
+      "answer": "Usa el {form}, conéctate en {linkedin} o revisa su trabajo open source en {github}.",
+      "linkForm": "formulario de contacto"
+    },
+    "items": [
+      {
+        "question": "¿Quién es César Gómez?",
+        "answer": "César Gómez es Desarrollador Fullstack Senior con 13+ años de experiencia, enfocado en excelencia frontend con Vue.js, Nuxt.js y TypeScript. Ha construido productos para plataformas ed-tech como Colegium (100k+ estudiantes) y LingoQuesto."
+      },
+      {
+        "question": "¿En qué tecnologías se especializa César Gómez?",
+        "answer": "Vue.js, Nuxt.js, TypeScript, JavaScript, Node.js, PrimeVue, Tailwind CSS, design systems, micro-frontends, SSR/SSG y optimización de rendimiento web."
+      },
+      {
+        "question": "¿Está disponible César Gómez para contratación?",
+        "answer": "Sí. César está abierto a roles senior frontend, fullstack y arquitectura por contrato. Disponibilidad objetivo: agosto de 2026, con trabajo remoto para equipos internacionales."
+      },
+      {
+        "question": "¿Qué experiencia tiene con Vue.js y Nuxt.js?",
+        "answer": "Ha liderado arquitectura frontend con Vue 3 y Nuxt en producción, incluyendo ecosistemas micro-frontend, librerías compartidas, Web Components y plataformas educativas críticas en rendimiento."
+      },
+      {
+        "question": "¿Dónde está ubicado César Gómez?",
+        "answer": "Está basado en Colombia y trabaja de forma remota con equipos en Latinoamérica y a nivel global."
+      },
+      {
+        "key": "contact",
+        "question": "¿Cómo puedo contactar a César Gómez?",
+        "answer": "Usa el formulario en cesargomez.dev, conéctate en LinkedIn o revisa su trabajo open source en GitHub."
+      },
+      {
+        "question": "¿Con qué empresas ha trabajado César Gómez?",
+        "answer": "Experiencia reciente en LingoQuesto (ingeniero fundador), Colegium (frontend senior) y roles previos en TISSINI, Zabud, Cuarto Pixel y otros equipos de producto."
+      },
+      {
+        "question": "¿Trabaja en inglés y español?",
+        "answer": "Sí. César es hispanohablante nativo con inglés intermedio y ha colaborado con equipos internacionales distribuidos."
       }
     ]
   },

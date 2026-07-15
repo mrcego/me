@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/'],
+      routes: ['/', '/es'],
     },
     compressPublicAssets: true,
   },
@@ -27,48 +27,9 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/',
     head: {
-      title: 'César Gómez - Senior Fullstack Developer',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        {
-          name: 'description',
-          content:
-            'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.',
-        },
-        {
-          name: 'keywords',
-          content:
-            'César Gómez, Fullstack Developer, Vue.js, Nuxt.js, TypeScript, Frontend, Web Development, JavaScript, Node.js',
-        },
-        { name: 'author', content: 'César Gómez' },
-        { name: 'robots', content: 'index, follow' },
-
-        // Open Graph
-        { property: 'og:type', content: 'website' },
-        { property: 'og:title', content: 'César Gómez - Senior Fullstack Developer' },
-        {
-          property: 'og:description',
-          content:
-            'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence.',
-        },
-        { property: 'og:image', content: 'https://cesargomez.dev/img/og-image.svg' },
-        { property: 'og:url', content: 'https://cesargomez.dev' },
-        { property: 'og:site_name', content: 'César Gómez Portfolio' },
-
-        // Twitter Cards
-        { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'César Gómez - Senior Fullstack Developer' },
-        {
-          name: 'twitter:description',
-          content:
-            'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence.',
-        },
-        { name: 'twitter:image', content: 'https://cesargomez.dev/img/og-image.svg' },
-        { name: 'twitter:site', content: '@mrcego' },
-        { name: 'twitter:creator', content: '@mrcego' },
-
-        // Performance and PWA
         { name: 'theme-color', content: '#ff4b5c' },
         { name: 'msapplication-TileColor', content: '#ff4b5c' },
         { name: 'msapplication-TileImage', content: '/apple-touch-icon.png' },
@@ -76,95 +37,28 @@ export default defineNuxtConfig({
         { 'http-equiv': 'X-XSS-Protection', content: '1; mode=block' },
       ],
       link: [
-        // DNS prefetch for external domains
         { rel: 'dns-prefetch', href: '//www.linkedin.com' },
         { rel: 'dns-prefetch', href: '//github.com' },
         { rel: 'dns-prefetch', href: '//fonts.googleapis.com' },
-
-        // Preconnect for critical external resources
         { rel: 'preconnect', href: 'https://fonts.googleapis.com', crossorigin: '' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        {
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap',
+        },
         { rel: 'preconnect', href: 'https://www.linkedin.com', crossorigin: '' },
-
-        // Canonical URL
-        { rel: 'canonical', href: 'https://cesargomez.dev' },
-
-        // PWA + favicons (paths are baseURL-aware in Nuxt; do not prefix manually)
         { rel: 'manifest', href: '/manifest.json' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      ],
-      script: [
-        // Structured Data for Person
-        {
-          type: 'application/ld+json',
-          innerHTML: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Person',
-            name: 'César Gómez',
-            jobTitle: 'Senior Fullstack Developer',
-            description:
-              'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.',
-            url: 'https://cesargomez.dev',
-            image: 'https://cesargomez.dev/img/me.jpg',
-            sameAs: ['https://linkedin.com/in/mrcego', 'https://github.com/mrcego'],
-            knowsAbout: [
-              'Vue.js',
-              'Nuxt.js',
-              'TypeScript',
-              'JavaScript',
-              'Node.js',
-              'Frontend Development',
-              'Fullstack Development',
-              'Web Architecture',
-              'UI/UX Design',
-              'Performance Optimization',
-            ],
-            offers: {
-              '@type': 'Offer',
-              jobTitle: 'Senior Fullstack Developer',
-              description:
-                'Available for freelance and contract work specializing in Vue.js/Nuxt.js applications',
-              skills:
-                'Vue.js, Nuxt.js, TypeScript, JavaScript, Node.js, Frontend Development, Fullstack Development',
-              employmentType: 'Contract',
-              availableFrom: '2025-01-01',
-            },
-          }),
-        },
-        // Structured Data for Website
-        {
-          type: 'application/ld+json',
-          innerHTML: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            name: 'César Gómez Portfolio',
-            description:
-              'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.',
-            url: 'https://cesargomez.dev',
-            image: 'https://cesargomez.dev/img/og-image.svg',
-            author: {
-              '@type': 'Person',
-              name: 'César Gómez',
-              url: 'https://cesargomez.dev',
-            },
-            publisher: {
-              '@type': 'Organization',
-              name: 'César Gómez',
-              logo: {
-                '@type': 'ImageObject',
-                url: 'https://cesargomez.dev/img/logo-final.svg',
-              },
-            },
-          }),
-        },
+        { rel: 'alternate', type: 'text/plain', href: '/llms.txt', title: 'LLM context' },
       ],
     },
   },
 
-  css: ['~/assets/css/main.css'],
+  css: ['~/assets/css/main.css', 'primeicons/primeicons.css'],
 
   vite: {
     plugins: [tailwindcss()],
@@ -172,7 +66,6 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxt/eslint',
-    '@nuxt/fonts',
     '@nuxt/hints',
     '@nuxt/icon',
     '@nuxt/image',
@@ -191,6 +84,7 @@ export default defineNuxtConfig({
   sitemap: {
     strictNuxtContentPaths: true,
     xsl: false,
+    urls: ['/', '/es'],
   },
 
   image: {
@@ -225,8 +119,7 @@ export default defineNuxtConfig({
     ],
     defaultLocale: 'en',
     langDir: '../i18n/locales',
-    strategy: 'no_prefix',
-    // Disabled for SSG: cookie/locale applied only after hydration (see locale-persistence plugin).
+    strategy: 'prefix_except_default',
     detectBrowserLanguage: false,
   },
 
