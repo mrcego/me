@@ -84,6 +84,22 @@
           </Motion>
 
           <Motion
+            :initial="motionInitial({ opacity: 0, y: 12 })"
+            :animate="motionAnimate({ opacity: 1, y: 0 })"
+            :transition="{
+              duration: 0.9,
+              delay: 0.35,
+              ease: [0.16, 1, 0.3, 1],
+            }"
+          >
+            <p
+              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-foreground text-balance max-w-3xl"
+            >
+              {{ $t('hero.title') }}
+            </p>
+          </Motion>
+
+          <Motion
             :initial="motionInitial({ opacity: 0, y: 15 })"
             :animate="motionAnimate({ opacity: 1, y: 0 })"
             :transition="{

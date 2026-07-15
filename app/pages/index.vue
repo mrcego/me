@@ -14,6 +14,5 @@
 </template>
 
 <script setup>
-// Nuxt auto-imports components from ~/components
-// No manual imports needed
+usePortfolioSeo();
 </script>

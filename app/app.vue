@@ -33,9 +33,6 @@
 import { ref, onMounted } from 'vue';
 import { usePortfolio } from '~/composables/usePortfolio';
 import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
-import { usePortfolioSeo } from '~/composables/usePortfolioSeo';
-
-usePortfolioSeo();
 
 const { activeSection } = usePortfolio();
 const { pageProgress } = useSmoothedScroll(0.14);

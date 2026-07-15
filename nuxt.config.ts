@@ -19,7 +19,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/es'],
+      routes: ['/', '/es', '/vue-frontend-developer', '/es/desarrollador-vue'],
     },
     compressPublicAssets: true,
   },
@@ -84,7 +84,7 @@ export default defineNuxtConfig({
   sitemap: {
     strictNuxtContentPaths: true,
     xsl: false,
-    urls: ['/', '/es'],
+    urls: ['/', '/es', '/vue-frontend-developer', '/es/desarrollador-vue'],
   },
 
   image: {

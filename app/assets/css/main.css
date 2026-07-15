@@ -466,6 +466,10 @@
   backdrop-filter: blur(14px);
 }
 
+.p-dialog-mask.announcement-dialog--leave:has(.announcement-dialog) {
+  animation: announcement-mask-exit 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
 .p-dialog.announcement-dialog {
   border: 2px solid color-mix(in srgb, var(--color-primary) 55%, transparent);
   border-radius: 1.5rem;
@@ -476,7 +480,15 @@
     0 28px 72px color-mix(in srgb, black 55%, transparent);
   max-height: calc(100dvh - 1rem);
   overflow: hidden;
-  animation: announcement-enter 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.p-dialog.announcement-dialog:not(.announcement-dialog--leave) {
+  animation: announcement-enter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.p-dialog.announcement-dialog.announcement-dialog--leave {
+  animation: announcement-exit 0.28s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
 }
 
 @media (min-width: 768px) {
@@ -503,8 +515,33 @@
   }
 }
 
+@keyframes announcement-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.97);
+  }
+}
+
+@keyframes announcement-mask-exit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .p-dialog.announcement-dialog {
+  .p-dialog.announcement-dialog:not(.announcement-dialog--leave) {
+    animation: none;
+  }
+
+  .p-dialog.announcement-dialog.announcement-dialog--leave,
+  .p-dialog-mask.announcement-dialog--leave:has(.announcement-dialog) {
     animation: none;
   }
 

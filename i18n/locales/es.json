@@ -19,8 +19,8 @@
       "immediate": "Disponibilidad inmediata"
     },
     "name": "CÉSAR GÓMEZ",
-    "title": "Desarrollador Fullstack Senior con foco Frontend",
-    "description": "Fullstack de formación, con el corazón en el frontend. 13+ años con Vue.js, Nuxt.js, TypeScript y arquitecturas web modernas.",
+    "title": "Desarrollador Frontend Senior Vue.js y Nuxt",
+    "description": "Desarrollador frontend Vue senior con 13+ años construyendo apps en producción con Vue.js, Nuxt.js y TypeScript — profundidad fullstack con mentalidad frontend-first.",
     "cta": "Contáctame",
     "stats": {
       "experience": "Años de Experiencia",
@@ -444,12 +444,12 @@
     ]
   },
   "seo": {
-    "title": "César Gómez — Desarrollador Fullstack Senior con foco Frontend | Experto Vue.js y Nuxt",
-    "description": "César Gómez es desarrollador fullstack senior con foco en frontend y 13+ años de experiencia en Vue.js, Nuxt.js, TypeScript y arquitectura frontend. Basado en Colombia, remoto, disponible para contrato desde agosto de 2026.",
-    "keywords": "César Gómez, Cesar Gomez, mrcego, Desarrollador Fullstack Senior, Desarrollador Vue.js, Desarrollador Nuxt.js, Desarrollador TypeScript, Arquitecto Frontend, desarrollador Colombia, desarrollador remoto, contratar desarrollador Vue, contratar desarrollador Nuxt, ingeniero frontend, portafolio desarrollador web",
-    "ogTitle": "César Gómez — Desarrollador Fullstack Senior con foco Frontend | Experto Vue.js y Nuxt",
-    "ogDescription": "Desarrollador fullstack con foco en frontend. 13+ años con Vue.js, Nuxt.js y TypeScript. Disponible ago 2026.",
-    "jobTitle": "Desarrollador Fullstack Senior con foco Frontend",
+    "title": "Desarrollador Vue.js Senior | Nuxt y TypeScript — César Gómez",
+    "description": "Contrata a César Gómez, desarrollador frontend Vue senior con 13+ años en Vue.js, Nuxt.js y TypeScript. Basado en Colombia, remoto, disponible por contrato desde agosto de 2026.",
+    "keywords": "desarrollador Vue, desarrollador Vue.js, desarrollador frontend Vue, desarrollador Nuxt, desarrollador Vue senior, contratar desarrollador Vue, TypeScript frontend, César Gómez, Cesar Gomez, mrcego, desarrollador remoto Colombia, ingeniero frontend Vue",
+    "ogTitle": "Desarrollador Vue.js Senior | Nuxt y TypeScript — César Gómez",
+    "ogDescription": "Desarrollador frontend Vue senior. 13+ años con Vue.js, Nuxt.js y TypeScript. Contrato remoto desde ago 2026.",
+    "jobTitle": "Desarrollador Frontend Senior Vue.js y Nuxt",
     "siteName": "Portafolio de César Gómez",
     "serviceName": "César Gómez — Desarrollo Frontend y Fullstack",
     "serviceDescription": "Servicios senior de desarrollo fullstack y arquitectura frontend con Vue.js, Nuxt.js, TypeScript, design systems e ingeniería de producto orientada al rendimiento.",
@@ -482,6 +482,14 @@
         "answer": "Ha liderado arquitectura frontend con Vue 3 y Nuxt en producción, incluyendo ecosistemas micro-frontend, librerías compartidas, Web Components y plataformas educativas críticas en rendimiento."
       },
       {
+        "question": "¿Cómo contratar un desarrollador Vue.js senior?",
+        "answer": "Puedes contratar a César Gómez para trabajo senior en Vue.js y Nuxt por contrato. Revisa su portafolio en cesargomez.dev, el perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue, y contáctalo por el formulario, LinkedIn o GitHub."
+      },
+      {
+        "question": "¿Es buen candidato como desarrollador frontend Vue para equipos remotos?",
+        "answer": "Sí. Es desarrollador frontend Vue senior en Colombia con 13+ años de experiencia, trabajo en producción en Colegium y LingoQuesto, y colaboración remota con equipos distribuidos en inglés y español."
+      },
+      {
         "question": "¿Dónde está ubicado César Gómez?",
         "answer": "Está basado en Colombia y trabaja de forma remota con equipos en Latinoamérica y a nivel global."
       },
@@ -497,6 +505,50 @@
       {
         "question": "¿Trabaja en inglés y español?",
         "answer": "Sí. César es hispanohablante nativo con inglés intermedio y ha colaborado con equipos internacionales distribuidos."
+      }
+    ]
+  },
+  "landingVue": {
+    "meta": {
+      "title": "Desarrollador Frontend Vue.js Senior | Nuxt y TypeScript — César Gómez",
+      "description": "Contrata un desarrollador frontend Vue senior con 13+ años en Vue.js, Nuxt.js y TypeScript. Experiencia en producción en Colegium y LingoQuesto. Remoto desde Colombia.",
+      "keywords": "desarrollador Vue, desarrollador Vue.js, desarrollador frontend Vue, desarrollador Nuxt, contratar desarrollador Vue, TypeScript frontend, desarrollador Vue remoto Colombia"
+    },
+    "eyebrow": "Especialista Vue.js",
+    "title": "Desarrollador Frontend",
+    "titleHighlight": "Vue.js Senior",
+    "lead": "Soy César Gómez — desarrollador frontend Vue senior con 13+ años entregando interfaces en producción con Vue 3, Nuxt, TypeScript y arquitectura orientada al rendimiento.",
+    "expertiseTitle": "Qué aporto como desarrollador Vue",
+    "expertise": [
+      "Arquitectura Vue 3 + Nuxt 4 para SSR, SSG y apps híbridas",
+      "Design systems, librerías de componentes y micro-frontends",
+      "TypeScript de extremo a extremo con patrones escalables",
+      "Web Vitals, accesibilidad y optimización de rendimiento frontend"
+    ],
+    "experienceTitle": "Experiencia Vue en producción",
+    "experienceBody": "Lideré frontend en Colegium (100k+ estudiantes) y LingoQuesto (ingeniero fundador), construyendo productos Vue/Nuxt usados a escala real — no demos, sistemas en producción.",
+    "proofTitle": "Por qué equipos me contratan para roles Vue",
+    "proof": [
+      "13+ años en ingeniería frontend con especialización profunda en Vue.js",
+      "Remoto desde Colombia con colaboración en inglés y español",
+      "Profundidad fullstack cuando necesitas integración API y ownership de entrega",
+      "Disponible para roles senior por contrato desde agosto de 2026"
+    ],
+    "portfolioCta": "Ver portafolio completo",
+    "contactCta": "Contáctame",
+    "faqTitle": "FAQ contratación desarrollador Vue",
+    "faq": [
+      {
+        "question": "¿Qué hace un desarrollador frontend Vue senior en tu equipo?",
+        "answer": "Me encargo de arquitectura Vue/Nuxt, sistemas de componentes, rendimiento y entrega — desde scaffolding y patrones de estado hasta releases en producción y estándares frontend transversales."
+      },
+      {
+        "question": "¿Trabajas como desarrollador Vue.js remoto?",
+        "answer": "Sí. Estoy en Colombia y trabajo remoto con equipos internacionales en distintos husos horarios, en inglés y español."
+      },
+      {
+        "question": "¿Cuándo estás disponible para un contrato como desarrollador frontend Vue?",
+        "answer": "La disponibilidad objetivo es agosto de 2026. Ya estoy abierto a conversaciones, entrevistas y ofertas anticipadas antes de esa fecha."
       }
     ]
   },

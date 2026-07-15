@@ -5,16 +5,12 @@
     :dismissable-mask="false"
     :close-on-escape="false"
     append-to="body"
-    block-scroll
+    :block-scroll="false"
     :draggable="false"
     :show-header="false"
     class="announcement-dialog"
     :style="{ width: 'min(44rem, calc(100vw - 1rem))' }"
-    :pt="{
-      mask: { class: 'announcement-dialog-mask' },
-      root: { class: 'announcement-dialog' },
-      content: { class: 'announcement-dialog-content' },
-    }"
+    :pt="dialogPt"
     @hide="onHide"
   >
     <div
@@ -37,7 +33,7 @@
           type="button"
           class="announcement-modal__close"
           :aria-label="$t('availability.announcement.close')"
-          @click="close"
+          @click="close()"
         >
           <Icon name="lucide:x" class="w-7 h-7" />
         </button>
@@ -116,6 +112,8 @@
 </template>
 
 <script setup lang="ts">
+import { usePreferredReducedMotion, useScrollLock } from '@vueuse/core';
+
 const props = defineProps<{
   ready?: boolean;
 }>();
@@ -130,8 +128,29 @@ const {
 
 const dontShowAgain = ref(false);
 const persistDismiss = ref(false);
+const isClosing = ref(false);
 const titleId = 'availability-announcement-title';
 const bodyId = 'availability-announcement-body';
+
+const EXIT_MS = 280;
+const prefersReducedMotion = usePreferredReducedMotion();
+const bodyScrollLock = useScrollLock(import.meta.client ? document.body : null);
+
+const dialogPt = computed(() => ({
+  mask: {
+    class: ['announcement-dialog-mask', { 'announcement-dialog--leave': isClosing.value }],
+  },
+  root: {
+    class: ['announcement-dialog', { 'announcement-dialog--leave': isClosing.value }],
+  },
+  content: {
+    class: 'announcement-dialog-content',
+  },
+}));
+
+watch([announcementVisible, isClosing], ([visible, closing]) => {
+  bodyScrollLock.value = visible || closing;
+});
 
 function openIfNeeded() {
   if (!import.meta.client) return;
@@ -148,10 +167,25 @@ watch(
   },
 );
 
-function close() {
+function close(options: { scrollAfter?: boolean } = {}) {
+  if (isClosing.value || !announcementVisible.value) return;
+
   persistDismiss.value = dontShowAgain.value;
-  announcementVisible.value = false;
-  markAnnouncementClosed();
+  isClosing.value = true;
+
+  const delay = prefersReducedMotion.value === 'reduce' ? 0 : EXIT_MS;
+
+  window.setTimeout(() => {
+    announcementVisible.value = false;
+    markAnnouncementClosed();
+    isClosing.value = false;
+
+    if (options.scrollAfter) {
+      nextTick(() => {
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+  }, delay);
 }
 
 function onHide() {
@@ -162,7 +196,6 @@ function onHide() {
 }
 
 function goToContact() {
-  const contact = document.getElementById('contact');
-  contact?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  close({ scrollAfter: true });
 }
 </script>
