@@ -1,7 +1,7 @@
 <template>
   <div class="main-container bg-background overflow-x-clip min-w-0">
     <!-- Entrance Loader -->
-    <AppLoader :loading="loading" />
+    <AppLoader :loading="loading" @after-leave="onLoaderAfterLeave" />
 
     <SkipToContent />
 
@@ -24,6 +24,8 @@
     <NuxtPage />
 
     <AppProtocolChat />
+
+    <AvailabilityAnnouncement :ready="announcementReady" />
   </div>
 </template>
 
@@ -38,6 +40,11 @@ usePortfolioSeo();
 const { activeSection } = usePortfolio();
 const { pageProgress } = useSmoothedScroll(0.14);
 const loading = ref(true);
+const announcementReady = ref(false);
+
+function onLoaderAfterLeave() {
+  announcementReady.value = true;
+}
 
 onMounted(() => {
   setTimeout(() => {

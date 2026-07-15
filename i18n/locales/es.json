@@ -14,7 +14,10 @@
     "modes": "Modos"
   },
   "hero": {
-    "tagline": "Disponible desde Ago 2026",
+    "tagline": {
+      "fromDate": "Disponible desde 10 Ago 2026",
+      "immediate": "Disponibilidad inmediata"
+    },
     "name": "CÉSAR GÓMEZ",
     "title": "Desarrollador Fullstack Senior con foco Frontend",
     "description": "Fullstack de formación, con el corazón en el frontend. 13+ años con Vue.js, Nuxt.js, TypeScript y arquitecturas web modernas.",
@@ -34,6 +37,22 @@
     "hud": {
       "status": "Estado",
       "operational": "Operativo"
+    }
+  },
+  "availability": {
+    "reopen": "Ver anuncio",
+    "reopenAria": "Abrir anuncio de disponibilidad",
+    "announcement": {
+      "label": "Anuncio importante",
+      "badge": "Búsqueda activa",
+      "title": "Abierto a nuevas oportunidades",
+      "lead": "Ya estoy buscando activamente mi próximo rol.",
+      "dateLabel": "Disponibilidad oficial",
+      "dateValue": "10 de agosto de 2026",
+      "body": "Ya estoy abierto a conversaciones, entrevistas y ofertas anticipadas — no tienes que esperar a esa fecha.",
+      "cta": "Contáctame",
+      "close": "Cerrar anuncio",
+      "dontShowAgain": "No volver a mostrar"
     }
   },
   "about": {

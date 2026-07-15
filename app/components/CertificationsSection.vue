@@ -18,7 +18,7 @@
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }"
         :viewport="{ once: true }"
-        class="max-w-4xl mx-auto text-center space-y-8 md:space-y-10 mb-24 md:mb-32"
+        class="max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto text-center space-y-6 md:space-y-10 mb-12 md:mb-24 px-2 sm:px-0"
       >
         <div class="flex items-center justify-center gap-4 md:gap-6">
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
@@ -28,11 +28,12 @@
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
         </div>
         <h3
-          class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-[0.9] text-foreground"
+          class="certifications-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.95] md:leading-[0.9] text-foreground"
         >
-          {{ $t('certifications.title') }}
-          <br />
-          <span class="text-gradient">{{ $t('certifications.titleHighlight') }}</span>
+          <span class="block">{{ $t('certifications.title') }}</span>
+          <span class="text-gradient certifications-heading__highlight block">
+            {{ $t('certifications.titleHighlight') }}
+          </span>
         </h3>
         <p
           class="text-muted text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto"
@@ -54,7 +55,7 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-6 md:p-8 rounded-4xl border-foreground/5 flex flex-col justify-between h-full overflow-hidden"
+          class="surface-card group relative glass p-6 md:p-8 rounded-4xl border-foreground/5 flex flex-col justify-between h-full overflow-hidden min-w-0"
         >
           <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
 
@@ -70,9 +71,9 @@
             </div>
 
             <!-- Title and Issuer -->
-            <div class="space-y-2">
+            <div class="space-y-2 min-w-0">
               <h4
-                class="surface-card__title text-xl font-bold tracking-tight text-foreground line-clamp-2 min-h-14"
+                class="surface-card__title text-lg sm:text-xl font-bold tracking-tight text-foreground text-balance break-words line-clamp-3"
               >
                 {{ cert.title }}
               </h4>
@@ -141,11 +142,26 @@ const certifications = computed(() => {
 </script>
 
 <style scoped>
-.line-clamp-2 {
-  line-clamp: 2;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.certifications-heading {
+  text-wrap: balance;
+}
+
+.certifications-heading__highlight {
+  display: inline-block;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding-bottom: 0.04em;
+}
+
+@media (min-width: 768px) {
+  .certifications-heading__highlight {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 389px) {
+  .certifications-heading {
+    font-size: 1.75rem;
+  }
 }
 </style>

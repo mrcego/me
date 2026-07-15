@@ -14,7 +14,10 @@
     "modes": "Modes"
   },
   "hero": {
-    "tagline": "Available Aug 2026",
+    "tagline": {
+      "fromDate": "Available from Aug 10, 2026",
+      "immediate": "Immediate availability"
+    },
     "name": "CESAR GOMEZ",
     "title": "Frontend-Focused Senior Fullstack Developer",
     "description": "Fullstack by trade, frontend at heart. 13+ years building with Vue.js, Nuxt.js, TypeScript, and modern web architectures.",
@@ -34,6 +37,22 @@
     "hud": {
       "status": "Status",
       "operational": "Operational"
+    }
+  },
+  "availability": {
+    "reopen": "View announcement",
+    "reopenAria": "Open availability announcement",
+    "announcement": {
+      "label": "Important announcement",
+      "badge": "Actively searching",
+      "title": "Open to new opportunities",
+      "lead": "I'm already actively looking for my next role.",
+      "dateLabel": "Official availability",
+      "dateValue": "August 10, 2026",
+      "body": "I'm open to conversations, interviews, and early offers right now — you don't have to wait until that date.",
+      "cta": "Get in Touch",
+      "close": "Close announcement",
+      "dontShowAgain": "Don't show again"
     }
   },
   "about": {

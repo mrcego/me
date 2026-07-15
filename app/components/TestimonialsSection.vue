@@ -3,7 +3,7 @@
     id="testimonials"
     class="py-24 md:py-48 px-6 md:px-12 bg-secondary/5 relative overflow-hidden"
   >
-    <div class="container mx-auto space-y-24">
+    <div class="container mx-auto space-y-10 md:space-y-16">
       <Motion
         :initial="motionInitial({ opacity: 0, y: 5 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
@@ -19,10 +19,10 @@
           <div class="h-px w-10 bg-primary/40" />
         </div>
         <h3
-          class="text-5xl md:text-8xl font-black tracking-tighter text-foreground pb-24 text-balance"
+          class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground text-balance"
         >
-          {{ $t('testimonials.title') }}<br />
-          <span class="text-gradient">{{ $t('testimonials.titleHighlight') }}</span>
+          <span class="block">{{ $t('testimonials.title') }}</span>
+          <span class="text-gradient inline-block">{{ $t('testimonials.titleHighlight') }}</span>
         </h3>
       </Motion>
 
@@ -38,7 +38,7 @@
             ease: [0.22, 1, 0.36, 1],
           }"
           :viewport="{ once: true, amount: 0.1 }"
-          class="surface-card group relative glass p-10 md:p-14 rounded-[3.5rem] border-foreground/5 overflow-hidden h-full"
+          class="surface-card group relative glass p-6 sm:p-8 md:p-14 rounded-3xl sm:rounded-[3.5rem] border-foreground/5 overflow-hidden h-full min-w-0"
         >
           <div
             class="surface-card__glow absolute inset-0 bg-primary/2 pointer-events-none testimonial-dots"
@@ -54,7 +54,7 @@
             </div>
 
             <blockquote
-              class="surface-card__text text-lg md:text-xl text-muted font-medium leading-relaxed italic max-h-[9.2rem] md:max-h-[10.2rem] overflow-y-auto pr-4 custom-scrollbar"
+              class="surface-card__text text-base sm:text-lg md:text-xl text-muted font-medium leading-relaxed italic max-h-[9.2rem] md:max-h-[10.2rem] overflow-y-auto overflow-x-hidden pr-3 sm:pr-4 custom-scrollbar break-words text-pretty"
             >
               <p>"{{ t.quote }}"</p>
             </blockquote>

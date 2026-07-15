@@ -1,5 +1,5 @@
-﻿<template>
-  <Transition name="loader-fade">
+<template>
+  <Transition name="loader-fade" @after-leave="onAfterLeave">
     <div
       v-if="loading"
       class="fixed inset-0 z-1000000 bg-background text-foreground flex flex-col items-center justify-center overflow-hidden"
@@ -57,7 +57,7 @@
   </Transition>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Motion } from 'motion-v';
 
 const { motionInitial, motionAnimate } = useMotionConfig();
@@ -65,6 +65,14 @@ const { motionInitial, motionAnimate } = useMotionConfig();
 defineProps({
   loading: Boolean,
 });
+
+const emit = defineEmits<{
+  afterLeave: [];
+}>();
+
+function onAfterLeave() {
+  emit('afterLeave');
+}
 </script>
 
 <style scoped>

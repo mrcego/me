@@ -1,4 +1,4 @@
-﻿<template>
+<template>
   <section
     id="hero"
     class="relative min-h-screen flex items-center justify-center overflow-hidden px-6 md:px-12 py-24 md:py-32"
@@ -37,24 +37,28 @@
         class="space-y-10 md:space-y-16 flex flex-col items-center lg:items-start text-center lg:text-left"
       >
         <div class="space-y-6 md:space-y-10 group">
-          <Motion
-            :initial="motionInitial({ opacity: 0, scale: 0.9, y: -10 })"
-            :animate="motionAnimate({ opacity: 1, scale: 1, y: 0 })"
-            :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
-            class="surface-card surface-card--soft inline-flex items-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-5 py-2 rounded-2xl glass border-primary/20 cursor-alias"
-          >
-            <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
-              <span
-                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
-              />
-              <span
-                class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-primary"
-              />
-            </span>
-            <span class="type-overline text-primary tracking-[0.3em] sm:tracking-[0.4em]">{{
-              $t('hero.tagline')
-            }}</span>
-          </Motion>
+          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
+            <Motion
+              :initial="motionInitial({ opacity: 0, scale: 0.9, y: -10 })"
+              :animate="motionAnimate({ opacity: 1, scale: 1, y: 0 })"
+              :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
+              class="surface-card surface-card--soft inline-flex items-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-5 py-2 rounded-2xl glass border-primary/20 cursor-alias"
+            >
+              <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
+                <span
+                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
+                />
+                <span
+                  class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-primary"
+                />
+              </span>
+              <span class="type-overline text-primary tracking-[0.3em] sm:tracking-[0.4em]">{{
+                $t(heroTaglineKey)
+              }}</span>
+            </Motion>
+
+            <AvailabilityReopenChip />
+          </div>
 
           <Motion
             :initial="motionInitial({ opacity: 0, y: 20, scale: 0.95 })"
@@ -260,6 +264,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
+const { heroTaglineKey } = useAvailability();
 
 const { motionInitial, motionAnimate } = useMotionConfig();
 const isMounted = ref(false);

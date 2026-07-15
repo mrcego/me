@@ -41,7 +41,7 @@
       </Motion>
 
       <div
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-12 px-2 md:px-0 items-stretch"
+        class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-2 md:px-0 items-stretch"
       >
         <Motion
           v-for="(t, i) in detailedStack"
@@ -54,7 +54,7 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-6 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-[3rem] border-foreground/5 overflow-hidden min-h-72 sm:min-h-80 md:min-h-96 lg:min-h-100 flex flex-col justify-between cursor-crosshair h-full"
+          class="surface-card group relative glass p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border-foreground/5 overflow-hidden min-h-0 flex flex-col justify-between cursor-crosshair h-full min-w-0"
         >
           <div
             class="surface-card__blob absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-0"
@@ -65,9 +65,9 @@
           >
             <div class="flex justify-between items-start">
               <div
-                class="surface-card__icon surface-card__icon--tilt w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-20 glass rounded-xl sm:rounded-2xl md:rounded-3xl flex items-center justify-center text-primary shadow-2xl shrink-0"
+                class="surface-card__icon surface-card__icon--tilt w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 glass rounded-xl sm:rounded-2xl flex items-center justify-center text-primary shadow-2xl shrink-0"
               >
-                <Icon :name="t.icon" class="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20" />
+                <Icon :name="t.icon" class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
               </div>
               <div class="flex flex-col items-end gap-0.5 sm:gap-1">
                 <span
@@ -118,9 +118,9 @@
 
           <div class="flex items-center gap-3 sm:gap-4 md:gap-6 relative z-10">
             <div
-              class="surface-card__icon w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 glass rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center text-primary"
+              class="surface-card__icon w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 glass rounded-lg sm:rounded-xl flex items-center justify-center text-primary shrink-0"
             >
-              <Icon name="solar:crown-star-bold" class="w-12 h-12 sm:w-14 sm:h-14" />
+              <Icon name="solar:crown-star-bold" class="w-5 h-5 sm:w-6 sm:h-6" />
             </div>
             <h4 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-foreground">
               {{ $t('techStack.principles') }}
@@ -156,9 +156,9 @@
           <div class="space-y-8 md:space-y-10 relative z-10">
             <div class="flex items-center gap-4 md:gap-6 relative z-10">
               <div
-                class="surface-card__icon surface-card__icon--tilt w-10 h-10 md:w-12 md:h-12 glass rounded-xl md:rounded-2xl flex items-center justify-center text-primary"
+                class="surface-card__icon surface-card__icon--tilt w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 glass rounded-xl flex items-center justify-center text-primary shrink-0"
               >
-                <Icon name="solar:global-linear" class="w-14 h-14" />
+                <Icon name="solar:global-linear" class="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <h4 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
                 {{ $t('techStack.flow') }}
