@@ -256,10 +256,12 @@
               :class="{
                 'experience-modal__company-logo--on-light': 'onLight' in selectedCompanyLogo,
               }"
-              width="56"
-              height="56"
+              :width="selectedCompanyLogo.width"
+              :height="selectedCompanyLogo.height"
               fit="inside"
-              loading="lazy"
+              sizes="104px"
+              densities="x1 x2"
+              loading="eager"
               :format="selectedCompanyLogo.src.endsWith('.svg') ? undefined : 'webp'"
               quality="85"
             />
