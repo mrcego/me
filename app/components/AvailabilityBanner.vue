@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { showAnnouncement } = useAvailability();
-const { activeIndex, messages } = useBannerMessageRotator(() => showAnnouncement.value);
+const { activeIndex, messages, showDateChip } = useBannerMessageRotator(
+  () => showAnnouncement.value,
+);
 </script>
 
 <template>
@@ -41,7 +43,7 @@ const { activeIndex, messages } = useBannerMessageRotator(() => showAnnouncement
             >
               <p
                 v-for="(message, index) in messages"
-                :key="index"
+                :key="`${messages.length}-${index}`"
                 class="availability-banner__rotator-line"
               >
                 {{ message }}
@@ -49,7 +51,7 @@ const { activeIndex, messages } = useBannerMessageRotator(() => showAnnouncement
             </div>
           </div>
 
-          <span class="availability-banner__date-chip">
+          <span v-if="showDateChip" class="availability-banner__date-chip">
             <span class="availability-banner__date-label">{{
               $t('availability.banner.availableLabel')
             }}</span>

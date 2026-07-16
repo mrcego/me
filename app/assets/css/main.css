@@ -1343,7 +1343,7 @@
 }
 
 .availability-banner__date-chip {
-  display: none;
+  display: inline-flex;
   flex-shrink: 0;
   align-items: center;
   gap: 0.35rem;
@@ -1364,13 +1364,7 @@
   }
 }
 
-@media (min-width: 768px) {
-  .availability-banner__date-chip {
-    display: inline-flex;
-  }
-}
-
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .availability-banner__date-chip {
     font-size: 1.125rem;
   }
