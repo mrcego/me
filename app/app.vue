@@ -25,7 +25,7 @@
 
     <LazyAppProtocolChat :hydrate-on-idle="2000" />
 
-    <LazyAvailabilityAnnouncement :ready="announcementReady" hydrate-on-idle />
+    <LazyAvailabilityAnnouncement :ready="announcementReady" :hydrate-on-idle="800" />
 
     <LazyPerformanceOptimizations hydrate-on-idle />
   </div>

@@ -161,6 +161,7 @@ watch(
     if (!ready) return;
     setTimeout(openIfNeeded, 350);
   },
+  { immediate: true },
 );
 
 function finalizeClose() {
