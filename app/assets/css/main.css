@@ -1176,7 +1176,8 @@
   width: 100% !important;
   max-width: none;
   margin-inline: 0;
-  padding-inline: 0.85rem 8.25rem;
+  /* Leave room for the absolute CTA (widened after icon scale-up). */
+  padding-inline: 0.85rem 11.5rem;
   min-height: 100%;
   flex: 1 1 auto;
 }
@@ -1184,13 +1185,13 @@
 @media (min-width: 640px) {
   .availability-banner__content {
     gap: 0.85rem;
-    padding-inline: 1.25rem 10.5rem;
+    padding-inline: 1.25rem 14rem;
   }
 }
 
 @media (min-width: 1024px) {
   .availability-banner__content {
-    padding-inline: 2rem 11.5rem;
+    padding-inline: 2rem 15.5rem;
   }
 }
 
