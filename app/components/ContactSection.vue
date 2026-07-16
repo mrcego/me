@@ -118,7 +118,7 @@
                   class="type-label text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                   >{{ $t('contact.form.name') }}</label
                 >
-                <inputText
+                <InputText
                   id="contact-name"
                   v-model="formData.name"
                   :placeholder="$t('contact.form.namePlaceholder')"
@@ -145,7 +145,7 @@
                   class="type-label text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                   >{{ $t('contact.form.email') }}</label
                 >
-                <inputText
+                <InputText
                   id="contact-email"
                   v-model="formData.email"
                   type="email"
@@ -175,7 +175,7 @@
                 class="type-label text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors"
                 >{{ $t('contact.form.subject') }}</label
               >
-              <inputText
+              <InputText
                 id="contact-subject"
                 v-model="formData.subject"
                 :placeholder="$t('contact.form.subjectPlaceholder')"

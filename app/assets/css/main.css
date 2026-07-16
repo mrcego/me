@@ -177,7 +177,7 @@
   }
 
   .btn-premium {
-    @apply relative flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black uppercase tracking-widest transition-all duration-500 overflow-hidden active:scale-95 border border-foreground/5;
+    @apply relative flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black uppercase tracking-widest transition-transform duration-500 overflow-hidden active:scale-95 border border-foreground/5;
   }
 
   /* Interactive Particle Utilities */
@@ -1181,10 +1181,7 @@
 .surface-card {
   --surface-ease: cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
-  transition:
-    transform 0.55s var(--surface-ease),
-    border-color 0.55s var(--surface-ease),
-    box-shadow 0.55s var(--surface-ease);
+  transition: transform 0.55s var(--surface-ease);
 }
 
 .surface-card:hover,
@@ -1221,11 +1218,49 @@
 .surface-card__blob {
   transition:
     opacity 0.55s var(--surface-ease),
-    color 0.55s var(--surface-ease),
-    background-color 0.55s var(--surface-ease),
-    border-color 0.55s var(--surface-ease),
     transform 0.55s var(--surface-ease),
     filter 0.55s var(--surface-ease);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .surface-card {
+    transition:
+      transform 0.55s var(--surface-ease),
+      border-color 0.55s var(--surface-ease),
+      box-shadow 0.55s var(--surface-ease);
+  }
+
+  .surface-card__glow,
+  .surface-card__icon,
+  .surface-card__glyph,
+  .surface-card__chip,
+  .surface-card__title,
+  .surface-card__text,
+  .surface-card__desc,
+  .surface-card__meta,
+  .surface-card__cta,
+  .surface-card__line,
+  .surface-card__footer,
+  .surface-card__avatar,
+  .surface-card__tag,
+  .surface-card__quote-icon,
+  .surface-card__image,
+  .surface-card__blob {
+    transition:
+      opacity 0.55s var(--surface-ease),
+      color 0.55s var(--surface-ease),
+      background-color 0.55s var(--surface-ease),
+      border-color 0.55s var(--surface-ease),
+      transform 0.55s var(--surface-ease),
+      filter 0.55s var(--surface-ease);
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .transition-all,
+  .transition-colors {
+    transition-property: opacity, transform !important;
+  }
 }
 
 .surface-card__chip {

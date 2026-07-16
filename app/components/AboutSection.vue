@@ -179,6 +179,8 @@
                         :width="COMPANY_LOGOS[role.key].width"
                         :height="COMPANY_LOGOS[role.key].height"
                         fit="inside"
+                        sizes="104px"
+                        densities="x1 x2"
                         loading="lazy"
                         :format="COMPANY_LOGOS[role.key].src.endsWith('.svg') ? undefined : 'webp'"
                         quality="85"

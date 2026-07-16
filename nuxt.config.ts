@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import Aura from '@primeuix/themes/aura';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineNuxtConfig({
@@ -112,13 +111,19 @@ export default defineNuxtConfig({
   },
 
   primevue: {
-    options: {
-      theme: {
-        preset: Aura,
-        options: {
-          darkModeSelector: '.app-dark',
-        },
-      },
+    autoImport: false,
+    components: {
+      include: ['Button', 'Dialog', 'InputText', 'Textarea'],
+    },
+    directives: {
+      include: [],
+    },
+    composables: {
+      include: [],
+    },
+    importTheme: {
+      as: 'PrimeVueTheme',
+      from: '~/themes/primevue',
     },
   },
 

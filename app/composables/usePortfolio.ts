@@ -1,40 +1,47 @@
 import { ref, onMounted, onUnmounted } from 'vue';
 
+const SECTION_IDS = [
+  'hero',
+  'about',
+  'tech-stack',
+  'certifications',
+  'capabilities',
+  'testimonials',
+  'contact',
+] as const;
+
 export const usePortfolio = () => {
   const activeSection = ref('hero');
-
-  const handleScroll = () => {
-    const sections = [
-      'hero',
-      'about',
-      'tech-stack',
-      'certifications',
-      'capabilities',
-      'testimonials',
-      'contact',
-    ];
-
-    for (const section of sections) {
-      const el = document.getElementById(section);
-      if (el) {
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 150 && rect.bottom >= 150) {
-          if (activeSection.value !== section) {
-            activeSection.value = section;
-          }
-          break;
-        }
-      }
-    }
-  };
+  let sectionObserver: IntersectionObserver | null = null;
 
   onMounted(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort(
+            (a, b) =>
+              Math.abs(a.boundingClientRect.top - 96) - Math.abs(b.boundingClientRect.top - 96),
+          )[0];
+
+        if (visibleSection?.target.id) {
+          activeSection.value = visibleSection.target.id;
+        }
+      },
+      {
+        rootMargin: '-96px 0px -70% 0px',
+        threshold: [0, 0.1],
+      },
+    );
+
+    for (const sectionId of SECTION_IDS) {
+      const section = document.getElementById(sectionId);
+      if (section) sectionObserver.observe(section);
+    }
   });
 
   onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
+    sectionObserver?.disconnect();
   });
 
   return {

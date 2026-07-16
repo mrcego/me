@@ -272,12 +272,19 @@
 
 <script setup>
 import { Motion } from 'motion-v';
-import { computed, ref, onMounted, onUnmounted } from 'vue';
+import { ref } from 'vue';
 import AppLanguageSwitcher from '~/components/AppLanguageSwitcher.vue';
 import { useTheme } from '~/composables/useTheme';
 
+const props = defineProps({
+  activeSection: {
+    type: String,
+    default: 'hero',
+  },
+});
+
 const { motionInitial, motionAnimate } = useMotionConfig();
-const { y: smoothedScrollY, progress } = useSmoothedScroll(0.14);
+const { progress } = useSmoothedScroll(0.14);
 const navProgress = progress(120);
 
 const isMobileMenuOpen = ref(false);
@@ -293,11 +300,7 @@ const navLinks = [
   { name: 'nav.testimonials', href: '#testimonials', id: 'testimonials' },
 ];
 
-const activeSection = ref('hero');
-
-const isActiveSection = (id) => activeSection.value === id;
-
-const sections = computed(() => navLinks.map((l) => l.id));
+const isActiveSection = (id) => props.activeSection === id;
 
 const scrollToSection = (e, href) => {
   e.preventDefault();
@@ -309,31 +312,9 @@ const scrollToSection = (e, href) => {
       top,
       behavior: 'smooth',
     });
-    activeSection.value = targetId;
   }
   isMobileMenuOpen.value = false;
 };
-
-const handleScroll = () => {
-  const scrollPos = smoothedScrollY.value + 200;
-
-  for (const id of sections.value) {
-    const el = document.getElementById(id);
-    if (el && el.offsetTop <= scrollPos && el.offsetTop + el.offsetHeight > scrollPos) {
-      activeSection.value = id;
-      break;
-    }
-  }
-};
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
-});
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
-});
 </script>
 
 <style scoped>
