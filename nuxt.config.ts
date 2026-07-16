@@ -113,7 +113,7 @@ export default defineNuxtConfig({
   primevue: {
     autoImport: false,
     components: {
-      include: ['Button', 'Dialog', 'InputText', 'Textarea'],
+      include: ['Button', 'Dialog', 'InputText', 'Message', 'Textarea'],
     },
     directives: {
       include: [],

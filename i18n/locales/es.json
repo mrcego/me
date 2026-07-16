@@ -19,9 +19,10 @@
       "fromDate": "Disponible desde 10 Ago 2026",
       "immediate": "Disponibilidad inmediata"
     },
+    "expertiseBadge": "Vibe Coding Cleanup Specialist",
     "name": "CÉSAR GÓMEZ",
-    "title": "Desarrollador Frontend Senior Vue.js y Nuxt",
-    "description": "Desarrollador frontend Vue senior con 13+ años construyendo apps en producción con Vue.js, Nuxt.js y TypeScript — profundidad fullstack con mentalidad frontend-first.",
+    "title": "Senior Vue/Nuxt · Experto en IA y NLP",
+    "description": "Experto en ingeniería con IA/NLP (local y cloud) y en convertir código asistido por agentes en sistemas listos para producción. 13+ años en Vue.js, Nuxt y TypeScript con profundidad fullstack.",
     "cta": "Contáctame",
     "stats": {
       "experience": "Años de Experiencia",
@@ -29,31 +30,51 @@
       "technologies": "Tecnologías Dominadas"
     },
     "tags": {
+      "ai": "AI Engineering",
+      "nlp": "NLP",
+      "vibeCoding": "Vibe Coding Cleanup",
       "frontArch": "Ingeniero Frontend Senior",
       "nuxt": "Nuxt.js",
       "ts": "Typescript",
       "engineer": "Ingeniero"
     },
-    "marquee": "EXPERTO FRONTEND",
+    "marquee": "EXPERTO IA · FRONTEND",
     "hud": {
       "status": "Estado",
       "operational": "Operativo"
     }
   },
+  "vibeCoding": {
+    "modal": {
+      "close": "Cerrar",
+      "badge": "Ingeniería de IA",
+      "title": "Vibe Coding Cleanup Specialist",
+      "lead": "La IA acelera la entrega. El oficio la hace shippable. Trabajo en esa intersección.",
+      "whyTitle": "Por qué la IA importa en el desarrollo",
+      "whyBody": "Bien usada, la IA multiplica lo que un ingeniero sólido puede entregar: los agentes comprimen el scaffolding y la exploración, el NLP habilita experiencias de producto que antes pedían equipos enteros de investigación, y los modelos locales o en la nube permiten prototipar con intención. La ganancia son ciclos de feedback más cortos — sin sustituir criterio, arquitectura ni ownership.",
+      "riskTitle": "Qué pasa si se usa mal, sin conocimiento",
+      "riskBody": "Cuando el vibe coding corre sin comprensión profunda de arquitectura, seguridad y mantenibilidad, aparecen sistemas frágiles: lógica duplicada, APIs alucinadas, regresiones silenciosas y código que nadie puede sostener. Velocidad sin oficio se convierte en deuda técnica que se multiplica en cuanto llegan usuarios reales y presión de producción.",
+      "roleTitle": "Mi trabajo como Vibe Coding Cleanup Specialist",
+      "roleBody": "Tomo bases de código asistidas por agentes y las convierto en sistemas listos para producción: aclaro arquitectura, endurezco puertas de calidad y preservo la velocidad que da la IA sin sacrificar el oficio.",
+      "points": [
+        "Audito código generado por agentes en busca de encaje arquitectónico, huecos de seguridad y riesgos de mantenibilidad.",
+        "Refactorizo superficies vibe-coded hacia módulos tipados y testeables que un equipo pueda sostener a largo plazo.",
+        "Acompaño flujos asistidos por IA que amplifican el criterio senior en lugar de sustituirlo."
+      ],
+      "footer": "IA con oficio · Calidad de producción"
+    }
+  },
   "availability": {
-    "reopen": "Ver anuncio",
-    "reopenAria": "Abrir anuncio de disponibilidad",
-    "announcement": {
-      "label": "Anuncio importante",
+    "banner": {
+      "aria": "Anuncio de disponibilidad",
       "badge": "Búsqueda activa",
       "title": "Abierto a nuevas oportunidades",
-      "lead": "Ya estoy buscando activamente mi próximo rol.",
-      "dateLabel": "Disponibilidad oficial",
-      "dateValue": "10 de agosto de 2026",
-      "body": "Ya estoy abierto a conversaciones, entrevistas y ofertas anticipadas — no tienes que esperar a esa fecha.",
-      "cta": "Contáctame",
-      "close": "Cerrar anuncio",
-      "dontShowAgain": "No volver a mostrar"
+      "messages": ["Abierto a nuevas oportunidades", "¡Entrevistas desde ya!"],
+      "availableLabel": "Disponible",
+      "cta": "Contáctame"
+    },
+    "announcement": {
+      "dateValue": "10 de agosto de 2026"
     }
   },
   "chat": {
@@ -72,6 +93,9 @@
     "expertise": "Experiencia Frontend",
     "logic": "Lógica Fullstack",
     "userCentric": "Centrado en el Usuario",
+    "vibeCoding": "IA y Vibe Coding",
+    "vibeCodingDesc": "Vibe Coding Cleanup Specialist — calidad de producción a partir de código asistido por agentes.",
+    "vibeCodingOpen": "Abrir detalles de Vibe Coding",
     "roles": {
       "viewDetails": "Ver detalles del rol",
       "highlightsTitle": "Contribuciones clave",
@@ -81,12 +105,14 @@
         "company": "LingoQuesto",
         "years": "2025 - Ago 2026",
         "location": "Colombia · Remoto",
-        "desc": "Definiendo la visión de producto y la hoja de ruta fullstack como ingeniero fundador. Finalizando rol en agosto de 2026 para nuevas oportunidades.",
+        "desc": "Ingeniero fundador fullstack en ed-tech conversacional con IA/NLP. Cierro el rol en agosto de 2026.",
         "highlights": [
-          "Ingeniero fundador definiendo la visión de producto y la hoja de ruta técnica fullstack en una plataforma ed-tech de práctica oral.",
-          "Construcción de experiencias conversacionales interactivas y personalizadas que simulan aprendizaje inmersivo para educadores y estudiantes.",
-          "Liderazgo de arquitectura frontend con Vue.js, Nuxt.js y TypeScript, con contribución transversal en el stack del producto.",
-          "Impulso de estándares de ingeniería, velocidad de entrega y decisiones de producto como parte del equipo fundador."
+          "Ingeniero fundador apoyando la visión de producto y la hoja de ruta técnica fullstack en una plataforma ed-tech de práctica oral impulsada por modelos de IA y NLP.",
+          "Construcción de experiencias conversacionales interactivas y personalizadas (LQ-V2 y LQ-V3) para educadores y estudiantes, más gestión administrativa para roles superiores.",
+          "Liderazgo de arquitectura frontend con Nuxt 4, Vue 3, Vuetify, Tailwind CSS, PrimeVue y TypeScript, con aportes transversales en el stack del producto.",
+          "Lógica de negocio en backend con Django (Python), GraphQL (LQ-V2) y API REST (LQ-V3) para transformar contenido en experiencias usables.",
+          "Integración y operación de modelos de IA/NLP en local y cloud, y uso de agentes de código (Cursor, Windsurf, Copilot, Claude Code, OpenCode) más runtimes locales (Ollama, llama.cpp) para acelerar entrega sin sacrificar calidad.",
+          "Impulso de estándares de ingeniería de mercado, velocidad de entrega y decisiones de producto como parte del equipo fundador."
         ]
       },
       "colegium": {
@@ -157,7 +183,8 @@
       "architect": "Ingeniero Frontend Senior",
       "senior": "Desarrollador Senior",
       "principal": "Principal",
-      "founding": "Ingeniero Fundador"
+      "founding": "Ingeniero Fundador",
+      "ai": "AI Engineering"
     },
     "creds": "Credenciales Oficiales",
     "flow": "Lingüística y Flow",
@@ -165,7 +192,8 @@
       "vue": "Ingeniero frontend líder en ecosistemas SPA/SSR complejos, sistemas de UI modulares y optimización de rendimiento.",
       "ts": "Seguridad de tipos de extremo a extremo, desde APIs en Node.js hasta estados reactivos frontend sofisticados.",
       "js": "Profundo conocimiento en patrones de ingeniería de software, modularidad y escalabilidad empresarial.",
-      "git": "Mentoría de equipos, definición de hojas de ruta técnicas y optimización de la velocidad de CI/CD."
+      "git": "Mentoría de equipos, definición de hojas de ruta técnicas y optimización de la velocidad de CI/CD.",
+      "ai": "Integraciones LLM/NLP (local + cloud) y flujos agentic de desarrollo con control de calidad humano."
     },
     "certList": [
       "AI Programming for JavaScript Developers (LinkedIn)",
@@ -359,6 +387,10 @@
       "devops": {
         "title": "Flujo DevOps",
         "desc": "Orquestación experta de CI/CD y pipelines automatizados que reducen la fricción y aumentan la velocidad."
+      },
+      "vibeCoding": {
+        "title": "Vibe Coding Cleanup Specialist",
+        "desc": "Experto en convertir código asistido por IA en sistemas listos para producción. Integro modelos de IA/NLP en local y cloud, y orquesto flujos con Cursor, Windsurf, Copilot, Claude Code, OpenCode, Ollama y llama.cpp."
       }
     }
   },

@@ -1,14 +1,22 @@
 <template>
-  <div class="main-container bg-background overflow-x-clip min-w-0">
+  <div
+    class="main-container bg-background overflow-x-clip min-w-0"
+    :class="{ 'has-availability-banner': showAnnouncement }"
+  >
     <!-- Dev-only entrance loader — SSR so it covers first paint (no content→loader flash) -->
-    <LazyAppLoader v-if="showLoader" :loading="loading" @after-leave="onLoaderAfterLeave" />
+    <LazyAppLoader v-if="showLoader" :loading="loading" />
 
     <SkipToContent />
 
+    <AvailabilityBanner />
+
     <!-- Global Scroll Progress -->
     <div
-      class="fixed top-0 left-0 right-0 h-1 z-100 origin-left bg-linear-to-r from-primary via-primary/80 to-primary/40 will-change-transform"
-      :style="{ transform: `scaleX(${pageProgress / 100})` }"
+      class="fixed left-0 right-0 h-1 z-110 origin-left bg-linear-to-r from-primary via-primary/80 to-primary/40 will-change-transform"
+      :style="{
+        top: 'var(--availability-banner-h, 0px)',
+        transform: `scaleX(${pageProgress / 100})`,
+      }"
       role="progressbar"
       :aria-valuenow="pageProgress"
       aria-valuemin="0"
@@ -25,7 +33,7 @@
 
     <LazyAppProtocolChat :hydrate-on-idle="2000" />
 
-    <LazyAvailabilityAnnouncement :ready="announcementReady" :hydrate-on-idle="800" />
+    <LazyVibeCodingModal :hydrate-on-idle="1200" />
 
     <LazyPerformanceOptimizations hydrate-on-idle />
   </div>
@@ -38,15 +46,11 @@ import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
 
 // Apply the persisted palette immediately; the navbar itself can hydrate on demand.
 useTheme();
+const { showAnnouncement } = useAvailability();
 const { activeSection } = usePortfolio();
 const { pageProgress } = useSmoothedScroll(0.14);
 const showLoader = import.meta.dev;
 const loading = ref(showLoader);
-const announcementReady = ref(!showLoader);
-
-function onLoaderAfterLeave() {
-  announcementReady.value = true;
-}
 
 onMounted(() => {
   if (!showLoader) return;

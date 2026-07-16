@@ -41,7 +41,7 @@
       </Motion>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8 px-2 md:px-0 items-stretch"
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-4 sm:gap-6 md:gap-8 px-2 md:px-0 items-stretch"
       >
         <Motion
           v-for="(t, i) in detailedStack"
@@ -234,10 +234,18 @@ const detailedStack = [
     icon: 'logos:git-icon',
     descKey: 'techStack.detailed.git',
   },
+  {
+    name: 'AI Engineering',
+    years: 'Expert',
+    level: 'techStack.levels.ai',
+    icon: 'solar:cpu-bolt-bold-duotone',
+    descKey: 'techStack.detailed.ai',
+  },
 ];
 
 const skills = [
   'Artificial Intelligence',
+  'NLP',
   'TypeScript',
   'Tailwind CSS',
   'Monorepo Architecture',

@@ -1,5 +1,8 @@
 ﻿<template>
-  <nav class="site-nav fixed top-0 left-0 right-0 z-100" :style="{ '--nav-progress': navProgress }">
+  <nav
+    class="site-nav fixed left-0 right-0 z-100"
+    :style="{ top: 'var(--availability-banner-h, 0px)', '--nav-progress': navProgress }"
+  >
     <div
       class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 pointer-events-none"
     >

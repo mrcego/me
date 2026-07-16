@@ -1,19 +1,12 @@
 <template>
   <section
     id="hero"
-    class="relative min-h-screen flex items-center justify-center overflow-hidden px-6 md:px-12 py-24 md:py-32"
+    class="relative min-h-svh flex items-center justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+5rem)] pb-10 md:pb-12 lg:pt-[calc(var(--availability-banner-h,0px)+5.5rem)] lg:pb-14"
   >
-    <!-- background glowing particles enhanced -->
-    <div class="absolute inset-0 z-0 pointer-events-none">
-      <template v-if="isMounted">
-        <div
-          v-for="n in 12"
-          :key="n"
-          class="absolute w-1 h-1 bg-primary/30 rounded-full animate-float-random"
-          :style="particleStyles[n - 1]"
-        />
-      </template>
-    </div>
+    <!-- Interactive background particles -->
+    <ClientOnly>
+      <HeroParticles />
+    </ClientOnly>
 
     <!-- Decorative watermark — deferred + opacity 0 until idle so it cannot steal LCP -->
     <div
@@ -34,237 +27,259 @@
     </div>
 
     <div
-      class="container mx-auto grid lg:grid-cols-[1.2fr_1fr] items-center gap-16 md:gap-24 z-10 relative"
+      class="container mx-auto grid lg:grid-cols-[1.15fr_0.85fr] items-center gap-6 sm:gap-8 lg:gap-12 xl:gap-16 z-10 relative w-full"
     >
-      <div
-        class="space-y-10 md:space-y-16 flex flex-col items-center lg:items-start text-center lg:text-left"
-      >
-        <div class="space-y-6 md:space-y-10 group">
-          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
-            <Motion
-              :initial="
-                motionInitial({ opacity: 0, scale: 0.9, y: -10 }, { opacity: 1, scale: 1, y: 0 })
-              "
-              :animate="motionAnimate({ opacity: 1, scale: 1, y: 0 })"
-              :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
-              class="surface-card surface-card--soft inline-flex items-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-5 py-2 rounded-2xl glass border-primary/20 cursor-alias"
+      <!--
+        Mobile/tablet (<lg): badges → photo → name/copy via CSS order + display:contents
+        Desktop (lg+): text column left, photo right
+      -->
+      <div class="contents lg:flex lg:flex-col lg:order-1 lg:space-y-7 xl:space-y-8 lg:items-start">
+        <div
+          class="order-1 lg:order-none flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3"
+        >
+          <Motion
+            :initial="
+              motionInitial({ opacity: 0, scale: 0.9, y: -10 }, { opacity: 1, scale: 1, y: 0 })
+            "
+            :animate="motionAnimate({ opacity: 1, scale: 1, y: 0 })"
+            :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
+            class="inline-flex"
+          >
+            <button
+              type="button"
+              class="inline-flex items-center gap-2 sm:gap-2.5 px-4 sm:px-5 py-2 rounded-2xl bg-primary text-primary-contrast shadow-lg shadow-primary/20 cursor-pointer transition-transform hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              :aria-label="$t('about.vibeCodingOpen')"
+              @click="openVibeCodingModal"
             >
-              <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
-                <span
-                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"
-                />
-                <span
-                  class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-primary"
-                />
-              </span>
-              <span class="type-overline text-primary tracking-[0.3em] sm:tracking-[0.4em]">{{
-                $t(heroTaglineKey)
+              <Icon
+                name="solar:magic-stick-3-bold-duotone"
+                class="w-4 h-4 sm:w-5 sm:h-5 shrink-0"
+              />
+              <span class="type-overline tracking-[0.18em] sm:tracking-[0.22em]">{{
+                $t('hero.expertiseBadge')
               }}</span>
+            </button>
+          </Motion>
+        </div>
+
+        <div
+          class="order-3 lg:order-none space-y-6 md:space-y-7 xl:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left"
+        >
+          <div class="space-y-3 sm:space-y-4 md:space-y-5 group w-full">
+            <h1
+              class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-black leading-[0.9] sm:leading-[0.88] tracking-tighter"
+            >
+              <span
+                class="text-gradient block hover:text-foreground transition-colors duration-700"
+                >{{ firstName }}</span
+              >
+              <span
+                class="text-foreground block hover:text-primary transition-colors duration-700"
+                >{{ lastName }}</span
+              >
+            </h1>
+
+            <Motion
+              :initial="motionInitial({ opacity: 0, y: 12 }, { opacity: 1, y: 0 })"
+              :animate="motionAnimate({ opacity: 1, y: 0 })"
+              :transition="{
+                duration: 0.9,
+                delay: 0.35,
+                ease: [0.16, 1, 0.3, 1],
+              }"
+              class="w-full max-w-2xl mx-auto lg:mx-0"
+            >
+              <p
+                class="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-black tracking-tight text-foreground text-balance text-center lg:text-left"
+              >
+                {{ $t('hero.title') }}
+              </p>
             </Motion>
 
-            <AvailabilityReopenChip />
+            <Motion
+              :initial="motionInitial({ opacity: 0, y: 15 }, { opacity: 1, y: 0 })"
+              :animate="motionAnimate({ opacity: 1, y: 0 })"
+              :transition="{
+                duration: 1,
+                delay: 0.6,
+                ease: [0.16, 1, 0.3, 1],
+              }"
+              class="space-y-3 sm:space-y-4 w-full max-w-2xl mx-auto lg:mx-0 text-center lg:text-left"
+            >
+              <p
+                class="text-muted text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl leading-relaxed font-medium tracking-tight text-pretty"
+              >
+                {{ $t('hero.description') }}
+              </p>
+              <div
+                class="flex flex-wrap justify-center lg:justify-start gap-x-4 sm:gap-x-6 gap-y-2"
+              >
+                <div
+                  v-for="tag in heroTags"
+                  :key="tag"
+                  class="flex items-center gap-1.5 sm:gap-2 md:gap-3 type-label text-muted hover:text-primary transition-all cursor-default"
+                >
+                  <div class="w-1 h-1 rounded-full bg-primary/40" />
+                  {{ $t(tag) }}
+                </div>
+              </div>
+            </Motion>
           </div>
-
-          <h1
-            class="text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem] font-black leading-[0.85] sm:leading-[0.8] md:leading-[0.75] tracking-tighter"
-          >
-            <span
-              class="text-gradient block hover:text-foreground transition-colors duration-700"
-              >{{ firstName }}</span
-            >
-            <span class="text-foreground block hover:text-primary transition-colors duration-700">{{
-              lastName
-            }}</span>
-          </h1>
-
-          <Motion
-            :initial="motionInitial({ opacity: 0, y: 12 }, { opacity: 1, y: 0 })"
-            :animate="motionAnimate({ opacity: 1, y: 0 })"
-            :transition="{
-              duration: 0.9,
-              delay: 0.35,
-              ease: [0.16, 1, 0.3, 1],
-            }"
-          >
-            <p
-              class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-foreground text-balance max-w-3xl"
-            >
-              {{ $t('hero.title') }}
-            </p>
-          </Motion>
 
           <Motion
             :initial="motionInitial({ opacity: 0, y: 15 }, { opacity: 1, y: 0 })"
             :animate="motionAnimate({ opacity: 1, y: 0 })"
-            :transition="{
-              duration: 1,
-              delay: 0.6,
-              ease: [0.16, 1, 0.3, 1],
-            }"
-            class="space-y-4 sm:space-y-6 md:space-y-8 max-w-2xl"
-          >
-            <p
-              class="text-muted text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed md:leading-[1.2] lg:leading-[1.15] font-medium tracking-tight"
-            >
-              {{ $t('hero.description') }}
-            </p>
-            <div
-              class="flex flex-wrap justify-center lg:justify-start gap-x-4 sm:gap-x-6 md:gap-x-10 gap-y-2 sm:gap-y-3 md:gap-y-4"
-            >
-              <div
-                v-for="tag in heroTags"
-                :key="tag"
-                class="flex items-center gap-1.5 sm:gap-2 md:gap-3 type-label text-muted hover:text-primary transition-all cursor-default"
-              >
-                <div class="w-1 h-1 rounded-full bg-primary/40" />
-                {{ $t(tag) }}
-              </div>
-            </div>
-          </Motion>
-        </div>
-
-        <Motion
-          :initial="motionInitial({ opacity: 0, y: 15 }, { opacity: 1, y: 0 })"
-          :animate="motionAnimate({ opacity: 1, y: 0 })"
-          :transition="{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }"
-          class="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 items-center justify-center lg:justify-start w-full lg:w-auto"
-        >
-          <a
-            class="btn-premium bg-primary text-primary-contrast rounded-3xl px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-sm sm:text-base border-none"
-            href="#contact"
-          >
-            <Icon name="solar:rocket-2-bold-duotone" class="w-6 h-6 sm:w-7 sm:h-7" />
-            <span>{{ $t('hero.cta') }}</span>
-          </a>
-          <div
-            class="hidden sm:block w-px self-stretch bg-foreground/10 shrink-0"
-            aria-hidden="true"
-          />
-          <div
-            class="flex gap-3 sm:gap-4 md:gap-6 items-center border-t border-foreground/10 pt-4 sm:border-t-0 sm:pt-0 w-full sm:w-auto justify-center lg:justify-start"
+            :transition="{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }"
+            class="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center lg:justify-start w-full lg:w-auto"
           >
             <a
-              v-for="social in socials"
-              :key="social.icon"
-              :href="social.link"
-              target="_blank"
-              rel="noopener noreferrer"
-              :aria-label="`Visit ${social.label} profile`"
-              class="surface-card group inline-flex items-center justify-center size-[4.5rem] sm:size-20 glass rounded-xl sm:rounded-2xl text-muted active:scale-90 shrink-0"
+              class="btn-premium bg-primary text-primary-contrast rounded-2xl sm:rounded-3xl px-7 sm:px-9 py-3.5 sm:py-4 shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-sm sm:text-base border-none"
+              href="#contact"
             >
-              <Icon :name="social.icon" class="surface-card__glyph size-9 sm:size-10 shrink-0" />
+              <Icon name="solar:rocket-2-bold-duotone" class="w-5 h-5 sm:w-6 sm:h-6" />
+              <span>{{ $t('hero.cta') }}</span>
             </a>
-          </div>
-        </Motion>
-
-        <div
-          class="grid grid-cols-3 gap-4 sm:gap-8 md:gap-16 pt-8 sm:pt-10 md:pt-12 border-t border-foreground/5 w-full max-w-lg lg:max-w-none mx-auto lg:mx-0"
-        >
-          <Motion
-            v-for="(stat, i) in heroStats"
-            :key="stat.label"
-            :initial="
-              motionInitial({ opacity: 0, y: 10, scale: 0.9 }, { opacity: 1, y: 0, scale: 1 })
-            "
-            :animate="motionAnimate({ opacity: 1, y: 0, scale: 1 })"
-            :transition="{
-              duration: 0.8,
-              delay: 1 + i * 0.15,
-              ease: [0.16, 1, 0.3, 1],
-            }"
-            class="space-y-1 md:space-y-2 group/stat cursor-help"
-          >
             <div
-              class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
-            >
-              {{ stat.value }}
-            </div>
+              class="hidden sm:block w-px self-stretch bg-foreground/10 shrink-0"
+              aria-hidden="true"
+            />
             <div
-              class="type-stat-label text-muted group-hover/stat:text-foreground transition-colors"
+              class="flex gap-2.5 sm:gap-3 items-center border-t border-foreground/10 pt-3 sm:border-t-0 sm:pt-0 w-full sm:w-auto justify-center lg:justify-start"
             >
-              {{ $t(stat.label) }}
+              <a
+                v-for="social in socials"
+                :key="social.icon"
+                :href="social.link"
+                target="_blank"
+                rel="noopener noreferrer"
+                :aria-label="`Visit ${social.label} profile`"
+                class="surface-card group inline-flex items-center justify-center size-14 sm:size-16 glass rounded-xl text-muted active:scale-90 shrink-0"
+              >
+                <Icon :name="social.icon" class="surface-card__glyph size-7 sm:size-8 shrink-0" />
+              </a>
             </div>
           </Motion>
+
+          <div
+            class="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10 pt-5 sm:pt-6 border-t border-foreground/5 w-full max-w-lg lg:max-w-none mx-auto lg:mx-0"
+          >
+            <Motion
+              v-for="(stat, i) in heroStats"
+              :key="stat.label"
+              :initial="
+                motionInitial({ opacity: 0, y: 10, scale: 0.9 }, { opacity: 1, y: 0, scale: 1 })
+              "
+              :animate="motionAnimate({ opacity: 1, y: 0, scale: 1 })"
+              :transition="{
+                duration: 0.8,
+                delay: 1 + i * 0.15,
+                ease: [0.16, 1, 0.3, 1],
+              }"
+              class="space-y-0.5 md:space-y-1 group/stat cursor-help"
+            >
+              <div
+                class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
+              >
+                {{ stat.value }}
+              </div>
+              <div
+                class="type-stat-label text-muted group-hover/stat:text-foreground transition-colors"
+              >
+                {{ $t(stat.label) }}
+              </div>
+            </Motion>
+          </div>
         </div>
       </div>
 
-      <!-- No opacity animation: hero photo must stay LCP-eligible from first paint -->
+      <!-- Photo: between badges and name below lg; right column from lg -->
       <Motion
         :initial="motionInitial({ scale: 0.98, x: 16 }, { scale: 1, x: 0 })"
         :animate="motionAnimate({ scale: 1, x: 0 })"
         :transition="{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.15 }"
-        class="relative mt-12 lg:mt-0 px-4 sm:px-6 md:px-0"
+        class="relative order-2 lg:order-2 px-2 sm:px-4 md:px-0 w-full max-w-md lg:max-w-none mx-auto"
       >
-        <!-- Photo with Master Frame -->
+        <!-- Photo with Master Frame — float on outer so tilt transform can own the card -->
         <div
-          class="surface-card group relative z-20 rounded-[3rem] md:rounded-[4rem] overflow-hidden border border-white/10 glass p-3 md:p-5 animate-float max-w-sm lg:max-w-none mx-auto"
+          class="group relative animate-float mt-2.5 max-w-[14rem] sm:max-w-[16rem] lg:max-w-[min(100%,24.5rem)] xl:max-w-[min(100%,28.5rem)] mx-auto perspective-[1000px]"
         >
           <div
-            class="relative aspect-4/5 rounded-[2.5rem] md:rounded-[3rem] overflow-hidden bg-secondary"
+            ref="photoCardRef"
+            class="surface-card surface-card--soft relative z-20 rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden border border-white/10 glass p-2.5 md:p-3.5 touch-manipulation"
+            :style="photoTiltStyle"
+            @pointermove="onPhotoPointerMove"
+            @pointerleave="onPhotoPointerLeave"
+            @pointerdown="onPhotoPointerDown"
+            @pointerup="onPhotoPointerUp"
+            @pointercancel="onPhotoPointerCancel"
           >
-            <!-- Card HUD Internal Overlay -->
-            <div class="absolute inset-x-0 top-0 h-px bg-primary/20 z-20 pointer-events-none" />
-            <div class="absolute inset-y-0 left-0 w-px bg-primary/20 z-20 pointer-events-none" />
             <div
-              class="absolute inset-0 bg-linear-to-t from-background via-background/10 to-transparent z-10"
-            />
-
-            <NuxtImg
-              src="/img/me.jpg"
-              alt="César Gómez - Frontend-focused senior fullstack developer specializing in Vue.js and Nuxt.js"
-              width="800"
-              height="1000"
-              format="webp"
-              quality="85"
-              loading="eager"
-              preload
-              fetchpriority="high"
-              sizes="sm:400px md:500px lg:600px xl:800px"
-              class="surface-card__image surface-card__image--zoom w-full h-full object-cover grayscale brightness-90 scale-105"
-            />
-
-            <!-- Scanning effect specific to image -->
-            <div
-              class="surface-card__glow absolute inset-0 z-20 bg-primary/5 pointer-events-none hero-scanline"
-            />
-
-            <!-- Floating HUD Elements -->
-            <div
-              class="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-20 glass px-4 py-2.5 rounded-full flex items-center gap-3 border border-primary/20 bg-background/60 backdrop-blur-md shadow-lg animate-pulse-slow"
+              class="relative aspect-4/5 max-h-[min(22rem,42svh)] lg:max-h-[min(30.5rem,62svh)] xl:max-h-[min(34.5rem,66svh)] mx-auto rounded-[1.6rem] md:rounded-[2rem] lg:rounded-[2.4rem] overflow-hidden bg-secondary"
             >
-              <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
-                <span
-                  class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"
-                />
-                <span
-                  class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-emerald-500"
-                />
-              </span>
-              <div class="flex flex-col gap-0.5">
-                <span class="type-meta text-primary leading-none">
-                  {{ $t('hero.hud.status') }}
+              <!-- Card HUD Internal Overlay -->
+              <div class="absolute inset-x-0 top-0 h-px bg-primary/20 z-20 pointer-events-none" />
+              <div class="absolute inset-y-0 left-0 w-px bg-primary/20 z-20 pointer-events-none" />
+              <div
+                class="absolute inset-0 bg-linear-to-t from-background via-background/10 to-transparent z-10"
+              />
+
+              <NuxtImg
+                src="/img/me.jpg"
+                alt="César Gómez - Frontend-focused senior fullstack developer specializing in Vue.js and Nuxt.js"
+                width="800"
+                height="1000"
+                format="webp"
+                quality="85"
+                loading="eager"
+                preload
+                fetchpriority="high"
+                sizes="sm:400px md:500px lg:600px xl:800px"
+                class="surface-card__image surface-card__image--zoom w-full h-full object-cover grayscale brightness-90 scale-105"
+              />
+
+              <!-- Scanning effect specific to image -->
+              <div
+                class="surface-card__glow absolute inset-0 z-20 bg-primary/5 pointer-events-none hero-scanline"
+              />
+
+              <!-- Floating HUD Elements -->
+              <div
+                class="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 glass px-3 py-2 rounded-full flex items-center gap-2.5 border border-primary/20 bg-background/60 backdrop-blur-md shadow-lg animate-pulse-slow"
+              >
+                <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
+                  <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"
+                  />
+                  <span
+                    class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-emerald-500"
+                  />
                 </span>
-                <span
-                  class="text-xs md:text-sm font-mono font-bold text-foreground uppercase leading-none"
-                >
-                  {{ $t('hero.hud.operational') }}
-                </span>
+                <div class="flex flex-col gap-0.5">
+                  <span class="type-meta text-primary leading-none">
+                    {{ $t('hero.hud.status') }}
+                  </span>
+                  <span
+                    class="text-xs md:text-sm font-mono font-bold text-foreground uppercase leading-none"
+                  >
+                    {{ $t('hero.hud.operational') }}
+                  </span>
+                </div>
               </div>
             </div>
+
+            <div
+              class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-30"
+            />
           </div>
 
+          <!-- Decorative Glows -->
           <div
-            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-30"
+            class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-radial from-primary/10 to-transparent blur-[80px] md:blur-[100px] opacity-0 group-hover:opacity-60 transition-opacity duration-1000"
+          />
+          <div
+            class="absolute -z-10 -bottom-10 -right-10 w-48 h-48 md:w-64 md:h-64 bg-accent/5 rounded-full blur-[60px] animate-pulse-slow"
           />
         </div>
-
-        <!-- Decorative Glows -->
-        <div
-          class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-radial from-primary/10 to-transparent blur-[80px] md:blur-[100px] opacity-0 group-hover:opacity-60 transition-opacity duration-1000"
-        />
-        <div
-          class="absolute -z-10 -bottom-10 -right-10 w-48 h-48 md:w-64 md:h-64 bg-accent/5 rounded-full blur-[60px] animate-pulse-slow"
-        />
       </Motion>
     </div>
   </section>
@@ -273,17 +288,24 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v';
 import { ref, onMounted, computed } from 'vue';
-import type { CSSProperties } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
-const { heroTaglineKey } = useAvailability();
+const { openVibeCodingModal } = useVibeCodingModal();
 
 const { motionInitial, motionAnimate } = useMotionConfig();
-const isMounted = ref(false);
+const {
+  cardRef: photoCardRef,
+  style: photoTiltStyle,
+  onPointerMove: onPhotoPointerMove,
+  onPointerLeave: onPhotoPointerLeave,
+  onPointerDown: onPhotoPointerDown,
+  onPointerUp: onPhotoPointerUp,
+  onPointerCancel: onPhotoPointerCancel,
+} = useCardTilt({ maxDeg: 14 });
+
 const showMarquee = ref(false);
 const marqueeReady = ref(false);
-const particleStyles = ref<CSSProperties[]>([]);
 
 const firstName = computed(() => t('hero.name').split(' ')[0]);
 const lastName = computed(() => t('hero.name').split(' ').slice(1).join(' '));
@@ -306,7 +328,7 @@ const socials = [
   },
 ];
 
-const heroTags = ['hero.tags.frontArch', 'hero.tags.nuxt', 'hero.tags.ts', 'hero.tags.engineer'];
+const heroTags = ['hero.tags.ai', 'hero.tags.nlp', 'hero.tags.vibeCoding', 'hero.tags.frontArch'];
 
 const heroStats = [
   { value: '13+', label: 'hero.stats.experience' },
@@ -315,15 +337,6 @@ const heroStats = [
 ];
 
 onMounted(() => {
-  isMounted.value = true;
-  // Generate random particle styles on client side to avoid hydration mismatch
-  particleStyles.value = Array.from({ length: 12 }, (_, i) => ({
-    top: Math.random() * 100 + '%',
-    left: Math.random() * 100 + '%',
-    animationDelay: i * 1.5 + 's',
-    animationDuration: 15 + Math.random() * 20 + 's',
-  }));
-
   // Watermark must not paint at opacity > 0 until after user interaction —
   // otherwise it can replace the hero photo as LCP (seen at ~12s with 25vw text).
   const scheduleMarquee = () => {
@@ -365,22 +378,6 @@ onMounted(() => {
 }
 .animate-marquee-slow {
   animation: marquee 60s linear infinite;
-}
-
-@keyframes float-random {
-  0%,
-  100% {
-    transform: translate(0, 0);
-  }
-  33% {
-    transform: translate(30px, -50px);
-  }
-  66% {
-    transform: translate(-20px, 20px);
-  }
-}
-.animate-float-random {
-  animation: float-random linear infinite;
 }
 
 .hero-scanline {

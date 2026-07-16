@@ -23,7 +23,7 @@
           >
             <!-- Gamified Energy Border -->
             <div
-              class="surface-card__glow absolute inset-0 border border-primary/20 rounded-[2.5rem] md:rounded-[3.5rem] pointer-events-none"
+              class="surface-card__glow absolute inset-0 border border-primary/20 rounded-2xl sm:rounded-3xl xl:rounded-[2.5rem] pointer-events-none"
             />
 
             <div
@@ -67,28 +67,8 @@
               "{{ $t('about.philosophyQuote') }}"
             </p>
 
-            <div class="space-y-4 sm:space-y-5">
-              <div
-                v-for="point in aboutPoints"
-                :key="point.label"
-                class="flex gap-3 sm:gap-4 group/p cursor-default"
-              >
-                <div
-                  class="surface-card__icon w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 glass rounded-lg sm:rounded-xl flex items-center justify-center text-primary shrink-0 shadow-lg overflow-hidden"
-                >
-                  <Icon :name="point.icon" class="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
-                </div>
-                <div
-                  class="transition-transform duration-300 group-hover/p:translate-x-1 flex flex-col justify-center"
-                >
-                  <h3 class="type-overline text-foreground">
-                    {{ $t(point.label) }}
-                  </h3>
-                  <p class="type-meta text-muted pt-0.5">
-                    {{ $t(point.descKey) }}
-                  </p>
-                </div>
-              </div>
+            <div class="philosophy-points space-y-6 sm:space-y-7 md:space-y-8">
+              <PhilosophyPointItem v-for="point in aboutPoints" :key="point.label" :point="point" />
             </div>
 
             <div
@@ -351,6 +331,7 @@
 import { computed, ref } from 'vue';
 import { Motion } from 'motion-v';
 import { useI18n } from 'vue-i18n';
+import type { PhilosophyPoint } from './PhilosophyPointItem.vue';
 
 const { t, tm } = useI18n();
 const { motionInitial, motionInView } = useMotionConfig();
@@ -413,11 +394,11 @@ function openRoleModal(key: string) {
   roleModalVisible.value = true;
 }
 
-const aboutPoints = [
+const aboutPoints: PhilosophyPoint[] = [
   {
     label: 'about.expertise',
     descKey: 'techStack.levels.architect',
-    icon: 'logos:vue',
+    icons: ['logos:vue', 'logos:nuxt-icon'],
   },
   {
     label: 'about.logic',
@@ -428,6 +409,11 @@ const aboutPoints = [
     label: 'about.userCentric',
     descKey: 'techStack.levels.founding',
     icon: 'logos:figma',
+  },
+  {
+    label: 'about.vibeCoding',
+    descKey: 'about.vibeCodingDesc',
+    icon: 'solar:magic-stick-3-bold-duotone',
   },
 ];
 </script>

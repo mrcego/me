@@ -28,7 +28,7 @@
       </Motion>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 sm:gap-8 md:gap-12 items-stretch"
+        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8 md:gap-12 items-stretch"
       >
         <Motion
           v-for="(cap, i) in capabilities"
@@ -96,6 +96,10 @@ const capabilities = [
   {
     key: 'devops',
     icon: 'solar:shield-check-bold-duotone',
+  },
+  {
+    key: 'vibeCoding',
+    icon: 'solar:magic-stick-3-bold-duotone',
   },
 ];
 </script>

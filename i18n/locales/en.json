@@ -19,9 +19,10 @@
       "fromDate": "Available from Aug 10, 2026",
       "immediate": "Immediate availability"
     },
+    "expertiseBadge": "Vibe Coding Cleanup Specialist",
     "name": "CESAR GOMEZ",
-    "title": "Senior Vue.js & Nuxt Frontend Developer",
-    "description": "Senior Vue frontend developer with 13+ years building production apps in Vue.js, Nuxt.js, and TypeScript — fullstack depth with a frontend-first mindset.",
+    "title": "Senior Vue/Nuxt · AI & NLP Expert",
+    "description": "Expert in AI/NLP engineering (local and cloud) and turning agent-assisted code into production-ready systems. 13+ years in Vue.js, Nuxt, and TypeScript with fullstack depth.",
     "cta": "Get in Touch",
     "stats": {
       "experience": "Years Experience",
@@ -29,31 +30,51 @@
       "technologies": "Technologies Mastered"
     },
     "tags": {
+      "ai": "AI Engineering",
+      "nlp": "NLP",
+      "vibeCoding": "Vibe Coding Cleanup",
       "frontArch": "Senior Frontend Engineer",
       "nuxt": "Nuxt.js",
       "ts": "Typescript",
       "engineer": "Engineer"
     },
-    "marquee": "FRONTEND EXPERT",
+    "marquee": "AI · FRONTEND EXPERT",
     "hud": {
       "status": "Status",
       "operational": "Operational"
     }
   },
+  "vibeCoding": {
+    "modal": {
+      "close": "Close",
+      "badge": "AI Engineering",
+      "title": "Vibe Coding Cleanup Specialist",
+      "lead": "AI accelerates delivery. Craft keeps it shippable. I work at that intersection.",
+      "whyTitle": "Why AI matters in development",
+      "whyBody": "Used well, AI multiplies what strong engineers can ship: agents compress scaffolding and exploration, NLP unlocks product experiences that once needed whole research teams, and local or cloud models let you prototype with intent. The win is faster feedback loops — without replacing judgment, architecture, or ownership.",
+      "riskTitle": "What happens without the knowledge",
+      "riskBody": "When vibe coding runs without deep understanding of architecture, security, and maintainability, you get fragile systems: duplicated logic, hallucinated APIs, silent regressions, and code nobody can own. Speed without craft becomes technical debt that compounds the moment real users and production pressure arrive.",
+      "roleTitle": "My work as Vibe Coding Cleanup Specialist",
+      "roleBody": "I take agent-assisted codebases and turn them into production-ready systems — clarifying architecture, hardening quality gates, and preserving the velocity AI enables without sacrificing craft.",
+      "points": [
+        "Audit agent-generated code for architecture fitness, security gaps, and maintainability risks.",
+        "Refactor vibe-coded surfaces into typed, testable modules a team can own long-term.",
+        "Coach AI-assisted workflows that amplify senior judgment instead of replacing it."
+      ],
+      "footer": "AI with craft · Production quality"
+    }
+  },
   "availability": {
-    "reopen": "View announcement",
-    "reopenAria": "Open availability announcement",
-    "announcement": {
-      "label": "Important announcement",
+    "banner": {
+      "aria": "Availability announcement",
       "badge": "Actively searching",
       "title": "Open to new opportunities",
-      "lead": "I'm already actively looking for my next role.",
-      "dateLabel": "Official availability",
-      "dateValue": "August 10, 2026",
-      "body": "I'm open to conversations, interviews, and early offers right now — you don't have to wait until that date.",
-      "cta": "Get in Touch",
-      "close": "Close announcement",
-      "dontShowAgain": "Don't show again"
+      "messages": ["Open to new opportunities", "Interviews welcome now!"],
+      "availableLabel": "Available",
+      "cta": "Get in Touch"
+    },
+    "announcement": {
+      "dateValue": "August 10, 2026"
     }
   },
   "chat": {
@@ -72,6 +93,9 @@
     "expertise": "Frontend Expertise",
     "logic": "Fullstack Logic",
     "userCentric": "User Centric",
+    "vibeCoding": "AI & Vibe Coding",
+    "vibeCodingDesc": "Vibe Coding Cleanup Specialist — production quality from agent-assisted code.",
+    "vibeCodingOpen": "Open Vibe Coding details",
     "roles": {
       "viewDetails": "View role details",
       "highlightsTitle": "Key contributions",
@@ -81,12 +105,14 @@
         "company": "LingoQuesto",
         "years": "2025 - Aug 2026",
         "location": "Colombia · Remote",
-        "desc": "Defining product vision and fullstack roadmap as founding engineer. Wrapping up role in August 2026 to pursue new opportunities.",
+        "desc": "Founding fullstack engineer on an AI/NLP conversational ed-tech product. Wrapping up in August 2026.",
         "highlights": [
-          "Founding engineer shaping product vision and fullstack technical roadmap for an ed-tech platform focused on speech-based language practice.",
-          "Building interactive, personalized conversation experiences that simulate immersive learning for language educators and students.",
-          "Leading frontend architecture with Vue.js, Nuxt.js, and TypeScript while contributing across the full product stack.",
-          "Driving engineering standards, delivery velocity, and product decisions as part of the founding team."
+          "Founding engineer shaping product vision and fullstack technical roadmap for an AI/NLP-powered ed-tech platform focused on oral language practice.",
+          "Built interactive, personalized conversational experiences across LQ-V2 and LQ-V3 for educators and students, plus admin workflows for elevated roles.",
+          "Led frontend architecture with Nuxt 4, Vue 3, Vuetify, Tailwind CSS, PrimeVue, and TypeScript, with cross-stack contributions when needed.",
+          "Contributed backend business logic with Django (Python), GraphQL (LQ-V2), and REST APIs (LQ-V3) to turn content into usable product experiences.",
+          "Integrated and operated AI/NLP models locally and in the cloud, and used coding agents (Cursor, Windsurf, Copilot, Claude Code, OpenCode) plus local runtimes (Ollama, llama.cpp) to ship faster without lowering the quality bar.",
+          "Raised engineering standards, delivery velocity, and product decisions as part of the founding team."
         ]
       },
       "colegium": {
@@ -157,7 +183,8 @@
       "architect": "Senior Frontend Engineer",
       "senior": "Senior Developer",
       "principal": "Principal",
-      "founding": "Founding Engineer"
+      "founding": "Founding Engineer",
+      "ai": "AI Engineering"
     },
     "creds": "Official Credentials",
     "flow": "Linguistic & Flow",
@@ -165,7 +192,8 @@
       "vue": "Lead frontend engineer for complex SPA/SSR ecosystems, modular UI systems, and performance tuning.",
       "ts": "End-to-end type safety from Node.js APIs to sophisticated frontend reactive states.",
       "js": "Deep knowledge in software engineering patterns, modularity, and enterprise scalability.",
-      "git": "Mentoring teams, defining technical roadmaps, and optimizing CI/CD velocity."
+      "git": "Mentoring teams, defining technical roadmaps, and optimizing CI/CD velocity.",
+      "ai": "LLM/NLP integrations (local + cloud) and agentic development workflows with human quality control."
     },
     "certList": [
       "AI Programming for JavaScript Developers (LinkedIn)",
@@ -359,6 +387,10 @@
       "devops": {
         "title": "DevOps Flow",
         "desc": "Expert CI/CD orchestration and automated pipelines that reduce friction and boost velocity."
+      },
+      "vibeCoding": {
+        "title": "Vibe Coding Cleanup Specialist",
+        "desc": "Expert at turning AI-assisted code into production-ready systems. I integrate AI/NLP models locally and in the cloud, and run delivery workflows with Cursor, Windsurf, Copilot, Claude Code, OpenCode, Ollama, and llama.cpp."
       }
     }
   },
