@@ -58,13 +58,13 @@ const { activeIndex, messages } = useBannerMessageRotator(() => showAnnouncement
             }}</strong>
           </span>
         </div>
+
+        <a href="#contact" class="availability-banner__cta">
+          <Icon name="solar:letter-bold-duotone" class="availability-banner__cta-icon" />
+          <span>{{ $t('availability.banner.cta') }}</span>
+          <Icon name="lucide:arrow-up-right" class="availability-banner__cta-arrow" />
+        </a>
       </div>
     </Message>
-
-    <a href="#contact" class="availability-banner__cta">
-      <Icon name="solar:letter-bold-duotone" class="availability-banner__cta-icon" />
-      <span>{{ $t('availability.banner.cta') }}</span>
-      <Icon name="lucide:arrow-up-right" class="availability-banner__cta-arrow" />
-    </a>
   </div>
 </template>
