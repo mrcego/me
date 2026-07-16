@@ -1,4 +1,5 @@
 const CACHE_NAME = 'cesar-gomez-portfolio-v2';
+const IS_LOCALHOST = ['localhost', '127.0.0.1', '[::1]'].includes(self.location.hostname);
 const urlsToCache = [
   '/img/logo-final.svg',
   '/img/me.jpg',
@@ -12,6 +13,11 @@ const isNavigationRequest = (request) =>
 
 // Install event - cache static assets only (not HTML — hashes change each deploy)
 self.addEventListener('install', (event) => {
+  if (IS_LOCALHOST) {
+    self.skipWaiting();
+    return;
+  }
+
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache))
   );
@@ -20,6 +26,8 @@ self.addEventListener('install', (event) => {
 
 // Fetch event - network-first for pages; cache-first for static assets
 self.addEventListener('fetch', (event) => {
+  if (IS_LOCALHOST) return;
+
   if (isNavigationRequest(event.request)) {
     event.respondWith(fetch(event.request));
     return;
@@ -54,6 +62,18 @@ self.addEventListener('fetch', (event) => {
 
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
+  if (IS_LOCALHOST) {
+    event.waitUntil(
+      Promise.all([
+        self.registration.unregister(),
+        caches.keys().then((cacheNames) =>
+          Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)))
+        ),
+      ])
+    );
+    return;
+  }
+
   event.waitUntil(
     caches.keys().then((cacheNames) =>
       Promise.all(

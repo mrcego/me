@@ -11,7 +11,7 @@
     <div class="container mx-auto z-10 relative">
       <div class="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
         <Motion
-          :initial="motionInitial({ opacity: 0, x: -50 })"
+          :initial="motionInitial({ opacity: 0, x: -50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
@@ -46,7 +46,6 @@
               :href="c.link"
               target="_blank"
               rel="noopener noreferrer"
-              :aria-label="`Contact via ${c.label}`"
               class="flex items-center gap-4 sm:gap-6 md:gap-10 group cursor-pointer transition-all duration-500 hover:translate-x-3 active:scale-95"
             >
               <div
@@ -73,7 +72,7 @@
 
         <!-- PrimeVue Form with Motion -->
         <Motion
-          :initial="motionInitial({ opacity: 0, x: 50 })"
+          :initial="motionInitial({ opacity: 0, x: 50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
@@ -231,7 +230,7 @@
               type="submit"
               :disabled="isSubmitting"
               :aria-busy="isSubmitting"
-              class="w-full rounded-xl! sm:rounded-[1.8rem]! md:rounded-[2.5rem]! p-5! sm:p-6! md:p-8! bg-primary! text-primary-contrast shadow-3xl shadow-primary/30 group/btn transition-all duration-500 overflow-hidden relative active:scale-95 active:shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              class="w-full rounded-xl! sm:rounded-[1.8rem]! md:rounded-[2.5rem]! p-5! sm:p-6! md:p-8! bg-primary! text-primary-contrast! shadow-3xl shadow-primary/30 group/btn transition-all duration-500 overflow-hidden relative active:scale-95 active:shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               <span
                 class="absolute inset-x-0 top-0 h-px bg-primary-contrast/40 animate-sweep pointer-events-none"

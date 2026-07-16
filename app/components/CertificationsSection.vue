@@ -14,7 +14,7 @@
     <div class="container mx-auto">
       <!-- Section Header -->
       <Motion
-        :initial="motionInitial({ opacity: 0, y: 20 })"
+        :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }"
         :viewport="{ once: true }"
@@ -47,7 +47,7 @@
         <Motion
           v-for="(cert, i) in certifications"
           :key="i"
-          :initial="motionInitial({ opacity: 0, y: 20 })"
+          :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="{
             duration: 0.5,
@@ -88,7 +88,7 @@
               <span
                 v-for="skill in cert.skills"
                 :key="skill"
-                class="surface-card__tag type-label text-muted/80 bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5"
+                class="surface-card__tag type-label text-muted bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5"
               >
                 {{ skill }}
               </span>

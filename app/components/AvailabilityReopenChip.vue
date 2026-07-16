@@ -1,7 +1,8 @@
 <template>
+  <!-- Mount-gated: avoid ClientOnly placeholder (span/comment) vs Motion div mismatch -->
   <Motion
-    v-if="showReopenHint"
-    :initial="motionInitial({ opacity: 0, scale: 0.92, x: -8 })"
+    v-if="ready && showReopenHint"
+    :initial="motionInitial({ opacity: 0, scale: 0.92, x: -8 }, { opacity: 1, scale: 1, x: 0 })"
     :animate="motionAnimate({ opacity: 1, scale: 1, x: 0 })"
     :transition="{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }"
   >
@@ -33,4 +34,9 @@ import { Motion } from 'motion-v';
 
 const { motionInitial, motionAnimate } = useMotionConfig();
 const { showReopenHint, openAnnouncement } = useAvailability();
+
+const ready = ref(false);
+onMounted(() => {
+  ready.value = true;
+});
 </script>

@@ -75,7 +75,12 @@ export default defineNuxtConfig({
       subsets: ['latin'],
     },
     families: [
-      { name: 'Outfit', provider: 'google', weights: [400, 500, 600, 700, 800, 900] },
+      {
+        name: 'Outfit',
+        provider: 'google',
+        weights: [400, 500, 600, 700, 800, 900],
+        preload: true,
+      },
       { name: 'Fira Code', provider: 'google', weights: [400, 500, 600, 700] },
     ],
   },
@@ -136,7 +141,7 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    payloadExtraction: false,
+    payloadExtraction: true,
     renderJsonPayloads: true,
   },
 });

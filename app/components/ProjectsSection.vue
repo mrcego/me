@@ -13,7 +13,7 @@
         class="flex flex-col lg:flex-row justify-between lg:items-end gap-12 lg:gap-24 items-center text-center lg:text-left"
       >
         <Motion
-          :initial="motionInitial({ opacity: 0, x: -50 })"
+          :initial="motionInitial({ opacity: 0, x: -50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
@@ -35,7 +35,7 @@
 
         <!-- Filter Tabs with Motion -->
         <Motion
-          :initial="motionInitial({ opacity: 0, scale: 0.9 })"
+          :initial="motionInitial({ opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1 })"
           :while-in-view="motionInView({ opacity: 1, scale: 1 })"
           :transition="{ duration: 0.8, delay: 0.2 }"
           :viewport="{ once: true }"
@@ -63,7 +63,7 @@
         <Motion
           v-for="(project, i) in filteredProjects"
           :key="project.title"
-          :initial="motionInitial({ opacity: 0, y: 30 })"
+          :initial="motionInitial({ opacity: 0, y: 30 }, { opacity: 1, y: 0 })"
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="{
             duration: 0.8,
@@ -146,7 +146,7 @@
       </div>
 
       <Motion
-        :initial="motionInitial({ opacity: 0, y: 5 })"
+        :initial="motionInitial({ opacity: 0, y: 5 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }"
         :viewport="{ once: true }"

@@ -59,6 +59,7 @@
     --muted: #94a3b8;
     --primary: #ff4b5c;
     --primary-hover: #ff1e3c;
+    --primary-contrast: #000000;
     --secondary: #080c14;
     --font-main: "Outfit", "Inter", sans-serif;
 
@@ -73,6 +74,14 @@
     margin: 0;
     font-family: var(--font-main);
     line-height: 1.5;
+  }
+
+  /* Keep below-the-fold SSR content indexable without paying its layout cost
+     during the initial mobile render. The remembered intrinsic size prevents
+     jumps after a section is first revealed. */
+  .portfolio-content > :not(#hero) {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 64rem;
   }
 
   /* Theme Support Classes */
@@ -1237,11 +1246,11 @@
 }
 
 .surface-card__cta {
-  color: color-mix(in srgb, var(--color-primary) 70%, transparent);
+  color: var(--color-primary);
 }
 
 .surface-card__tag {
-  color: color-mix(in srgb, var(--color-muted) 80%, transparent);
+  color: var(--color-muted);
 }
 
 .surface-card__quote-icon {

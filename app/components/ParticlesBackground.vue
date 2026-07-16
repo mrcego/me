@@ -101,7 +101,7 @@ function animate() {
   if (!canvas.value || !ctx) return;
 
   if (!shouldAnimate()) {
-    animationFrameId = requestAnimationFrame(animate);
+    animationFrameId = null;
     return;
   }
 
@@ -138,6 +138,8 @@ function handleResize() {
 
 function handleVisibilityChange() {
   isPageVisible = document.visibilityState === 'visible';
+  if (isPageVisible && enabled.value) startAnimation();
+  else stopAnimation();
 }
 
 function setupCanvas() {
@@ -161,11 +163,9 @@ watch(prefersReducedMotion, (value) => {
 
 onMounted(() => {
   enabled.value = prefersReducedMotion.value !== 'reduce';
-  if (!enabled.value) return;
-
-  setupCanvas();
   window.addEventListener('resize', handleResize);
   document.addEventListener('visibilitychange', handleVisibilityChange);
+  if (enabled.value) setupCanvas();
 });
 
 onUnmounted(() => {

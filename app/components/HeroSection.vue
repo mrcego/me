@@ -15,15 +15,18 @@
       </template>
     </div>
 
-    <!-- Kinetic Marquee Watermark (Subtler) -->
+    <!-- Decorative watermark — deferred + opacity 0 until idle so it cannot steal LCP -->
     <div
-      class="absolute inset-x-0 top-1/2 -translate-y-1/2 overflow-hidden whitespace-nowrap z-0 pointer-events-none opacity-[0.03]"
+      v-if="showMarquee"
+      class="absolute inset-x-0 top-1/2 -translate-y-1/2 overflow-hidden whitespace-nowrap z-0 pointer-events-none transition-opacity duration-1000"
+      :class="marqueeReady ? 'opacity-[0.03]' : 'opacity-0'"
+      aria-hidden="true"
     >
       <div class="flex animate-marquee-slow">
         <span
-          v-for="n in 6"
+          v-for="n in 4"
           :key="n"
-          class="text-[25vw] font-black text-foreground tracking-tighter leading-none mr-32 select-none uppercase"
+          class="text-[18vw] md:text-[14vw] font-black text-foreground tracking-tighter leading-none mr-24 select-none uppercase"
         >
           {{ $t('hero.marquee') }}
         </span>
@@ -39,7 +42,9 @@
         <div class="space-y-6 md:space-y-10 group">
           <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4">
             <Motion
-              :initial="motionInitial({ opacity: 0, scale: 0.9, y: -10 })"
+              :initial="
+                motionInitial({ opacity: 0, scale: 0.9, y: -10 }, { opacity: 1, scale: 1, y: 0 })
+              "
               :animate="motionAnimate({ opacity: 1, scale: 1, y: 0 })"
               :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
               class="surface-card surface-card--soft inline-flex items-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-5 py-2 rounded-2xl glass border-primary/20 cursor-alias"
@@ -60,31 +65,20 @@
             <AvailabilityReopenChip />
           </div>
 
-          <Motion
-            :initial="motionInitial({ opacity: 0, y: 20, scale: 0.95 })"
-            :animate="motionAnimate({ opacity: 1, y: 0, scale: 1 })"
-            :transition="{
-              duration: 1.2,
-              ease: [0.16, 1, 0.3, 1],
-              delay: 0.2,
-            }"
+          <h1
+            class="text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem] font-black leading-[0.85] sm:leading-[0.8] md:leading-[0.75] tracking-tighter"
           >
-            <h1
-              class="text-5xl sm:text-6xl md:text-8xl lg:text-[9rem] xl:text-[11rem] 2xl:text-[13rem] font-black leading-[0.85] sm:leading-[0.8] md:leading-[0.75] tracking-tighter"
+            <span
+              class="text-gradient block hover:text-foreground transition-colors duration-700"
+              >{{ firstName }}</span
             >
-              <span
-                class="text-gradient block hover:text-foreground transition-colors duration-700"
-                >{{ firstName }}</span
-              >
-              <span
-                class="text-foreground block hover:text-primary transition-colors duration-700"
-                >{{ lastName }}</span
-              >
-            </h1>
-          </Motion>
+            <span class="text-foreground block hover:text-primary transition-colors duration-700">{{
+              lastName
+            }}</span>
+          </h1>
 
           <Motion
-            :initial="motionInitial({ opacity: 0, y: 12 })"
+            :initial="motionInitial({ opacity: 0, y: 12 }, { opacity: 1, y: 0 })"
             :animate="motionAnimate({ opacity: 1, y: 0 })"
             :transition="{
               duration: 0.9,
@@ -100,7 +94,7 @@
           </Motion>
 
           <Motion
-            :initial="motionInitial({ opacity: 0, y: 15 })"
+            :initial="motionInitial({ opacity: 0, y: 15 }, { opacity: 1, y: 0 })"
             :animate="motionAnimate({ opacity: 1, y: 0 })"
             :transition="{
               duration: 1,
@@ -130,13 +124,13 @@
         </div>
 
         <Motion
-          :initial="motionInitial({ opacity: 0, y: 15 })"
+          :initial="motionInitial({ opacity: 0, y: 15 }, { opacity: 1, y: 0 })"
           :animate="motionAnimate({ opacity: 1, y: 0 })"
           :transition="{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }"
           class="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 items-center justify-center lg:justify-start w-full lg:w-auto"
         >
           <Button
-            class="btn-premium bg-primary text-primary-contrast rounded-3xl! px-8! sm:px-10! md:px-12! py-4! sm:py-5! md:py-6! shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 transition-all w-full sm:w-auto text-sm sm:text-base border-none!"
+            class="btn-premium bg-primary! text-primary-contrast! rounded-3xl! px-8! sm:px-10! md:px-12! py-4! sm:py-5! md:py-6! shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 transition-all w-full sm:w-auto text-sm sm:text-base border-none!"
             as="a"
             href="#contact"
           >
@@ -170,7 +164,9 @@
           <Motion
             v-for="(stat, i) in heroStats"
             :key="stat.label"
-            :initial="motionInitial({ opacity: 0, y: 10, scale: 0.9 })"
+            :initial="
+              motionInitial({ opacity: 0, y: 10, scale: 0.9 }, { opacity: 1, y: 0, scale: 1 })
+            "
             :animate="motionAnimate({ opacity: 1, y: 0, scale: 1 })"
             :transition="{
               duration: 0.8,
@@ -193,10 +189,11 @@
         </div>
       </div>
 
+      <!-- No opacity animation: hero photo must stay LCP-eligible from first paint -->
       <Motion
-        :initial="motionInitial({ opacity: 0, scale: 0.95, x: 20 })"
-        :animate="motionAnimate({ opacity: 1, scale: 1, x: 0 })"
-        :transition="{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.3 }"
+        :initial="motionInitial({ scale: 0.98, x: 16 }, { scale: 1, x: 0 })"
+        :animate="motionAnimate({ scale: 1, x: 0 })"
+        :transition="{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.15 }"
         class="relative mt-12 lg:mt-0 px-4 sm:px-6 md:px-0"
       >
         <!-- Photo with Master Frame -->
@@ -274,9 +271,10 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Motion } from 'motion-v';
 import { ref, onMounted, computed } from 'vue';
+import type { CSSProperties } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -284,7 +282,9 @@ const { heroTaglineKey } = useAvailability();
 
 const { motionInitial, motionAnimate } = useMotionConfig();
 const isMounted = ref(false);
-const particleStyles = ref([]);
+const showMarquee = ref(false);
+const marqueeReady = ref(false);
+const particleStyles = ref<CSSProperties[]>([]);
 
 const firstName = computed(() => t('hero.name').split(' ')[0]);
 const lastName = computed(() => t('hero.name').split(' ').slice(1).join(' '));
@@ -324,6 +324,34 @@ onMounted(() => {
     animationDelay: i * 1.5 + 's',
     animationDuration: 15 + Math.random() * 20 + 's',
   }));
+
+  // Watermark must not paint at opacity > 0 until after user interaction —
+  // otherwise it can replace the hero photo as LCP (seen at ~12s with 25vw text).
+  const scheduleMarquee = () => {
+    showMarquee.value = true;
+  };
+
+  const revealMarquee = () => {
+    if (marqueeReady.value) return;
+    marqueeReady.value = true;
+  };
+
+  const start = () => {
+    const requestIdle = Reflect.get(window, 'requestIdleCallback') as
+      Window['requestIdleCallback'] | undefined;
+    if (requestIdle) {
+      requestIdle.call(window, scheduleMarquee, { timeout: 4000 });
+    } else {
+      window.setTimeout(scheduleMarquee, 2000);
+    }
+  };
+
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, { once: true });
+
+  window.addEventListener('scroll', revealMarquee, { once: true, passive: true });
+  window.addEventListener('pointerdown', revealMarquee, { once: true, passive: true });
+  window.addEventListener('keydown', revealMarquee, { once: true });
 });
 </script>
 

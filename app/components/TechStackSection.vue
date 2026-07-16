@@ -13,7 +13,7 @@
 
     <div class="container mx-auto space-y-24 md:space-y-32">
       <Motion
-        :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 })"
+        :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 }, { opacity: 1, scale: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
         :transition="{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }"
         :viewport="{ once: true, amount: 0.1 }"
@@ -46,7 +46,7 @@
         <Motion
           v-for="(t, i) in detailedStack"
           :key="t.name"
-          :initial="motionInitial({ opacity: 0, y: 20 })"
+          :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="{
             duration: 0.8,
@@ -74,7 +74,7 @@
                   class="surface-card__meta text-xs sm:text-sm md:text-base font-black uppercase tracking-widest text-muted"
                   >{{ t.years }}</span
                 >
-                <span class="type-label text-primary/70">Expertise</span>
+                <span class="type-label text-primary">Expertise</span>
               </div>
             </div>
 
@@ -106,7 +106,7 @@
       <!-- Stats & Bio HUD -->
       <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative px-2 md:px-0">
         <Motion
-          :initial="motionInitial({ opacity: 0, x: -30 })"
+          :initial="motionInitial({ opacity: 0, x: -30 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"
@@ -143,7 +143,7 @@
         </Motion>
 
         <Motion
-          :initial="motionInitial({ opacity: 0, x: 30 })"
+          :initial="motionInitial({ opacity: 0, x: 30 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           :viewport="{ once: true }"

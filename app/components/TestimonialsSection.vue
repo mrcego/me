@@ -5,7 +5,7 @@
   >
     <div class="container mx-auto space-y-10 md:space-y-16">
       <Motion
-        :initial="motionInitial({ opacity: 0, y: 5 })"
+        :initial="motionInitial({ opacity: 0, y: 5 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }"
         :viewport="{ once: true, amount: 0.1 }"
@@ -30,7 +30,9 @@
         <Motion
           v-for="(t, i) in testimonials"
           :key="t.name"
-          :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 })"
+          :initial="
+            motionInitial({ opacity: 0, scale: 0.98, y: 5 }, { opacity: 1, scale: 1, y: 0 })
+          "
           :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
           :transition="{
             duration: 0.5,

@@ -6,7 +6,12 @@
     >
       <div class="relative z-10 flex flex-col items-center gap-8 md:gap-12">
         <Motion
-          :initial="motionInitial({ opacity: 0, scale: 0.8, filter: 'blur(20px)' })"
+          :initial="
+            motionInitial(
+              { opacity: 0, scale: 0.8, filter: 'blur(20px)' },
+              { opacity: 1, scale: 1, filter: 'blur(0px)' },
+            )
+          "
           :animate="motionAnimate({ opacity: 1, scale: 1, filter: 'blur(0px)' })"
           :transition="{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }"
           class="relative group"
@@ -28,7 +33,7 @@
         <div class="w-48 md:w-64 space-y-4">
           <div class="h-0.5 w-full bg-foreground/5 rounded-full overflow-hidden relative">
             <Motion
-              :initial="motionInitial({ x: '-100%' })"
+              :initial="motionInitial({ x: '-100%' }, { x: '0%' })"
               :animate="motionAnimate({ x: '0%' })"
               :transition="{ duration: 2.5, ease: 'easeInOut' }"
               class="absolute inset-0 bg-primary h-full shadow-[0_0_10px_rgba(255,75,92,0.8)]"
@@ -37,14 +42,14 @@
 
           <div class="flex justify-between items-center type-label text-muted tracking-[0.3em]">
             <Motion
-              :initial="motionInitial({ opacity: 0, y: 5 })"
+              :initial="motionInitial({ opacity: 0, y: 5 }, { opacity: 1, y: 0 })"
               :animate="motionAnimate({ opacity: 1, y: 0 })"
               :transition="{ delay: 0.5, duration: 0.8 }"
             >
               System Ready
             </Motion>
             <Motion
-              :initial="motionInitial({ opacity: 0, y: 5 })"
+              :initial="motionInitial({ opacity: 0, y: 5 }, { opacity: 1, y: 0 })"
               :animate="motionAnimate({ opacity: 1, y: 0 })"
               :transition="{ delay: 0.7, duration: 0.8 }"
             >

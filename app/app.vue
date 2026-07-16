@@ -1,7 +1,7 @@
 <template>
   <div class="main-container bg-background overflow-x-clip min-w-0">
-    <!-- Entrance Loader -->
-    <AppLoader :loading="loading" @after-leave="onLoaderAfterLeave" />
+    <!-- Dev-only entrance loader — SSR so it covers first paint (no content→loader flash) -->
+    <LazyAppLoader v-if="showLoader" :loading="loading" @after-leave="onLoaderAfterLeave" />
 
     <SkipToContent />
 
@@ -16,20 +16,18 @@
       aria-label="Page scroll progress"
     />
 
-    <!-- Particles Background -->
-    <ClientOnly>
-      <ParticlesBackground />
-    </ClientOnly>
+    <!-- Non-critical canvas work starts when the browser is idle. -->
+    <LazyParticlesBackground :hydrate-on-idle="2000" />
 
     <AppNavbar :active-section="activeSection" />
 
     <NuxtPage />
 
-    <LazyAppProtocolChat />
+    <LazyAppProtocolChat :hydrate-on-idle="2000" />
 
-    <AvailabilityAnnouncement :ready="announcementReady" />
+    <LazyAvailabilityAnnouncement :ready="announcementReady" hydrate-on-idle />
 
-    <PerformanceOptimizations />
+    <LazyPerformanceOptimizations hydrate-on-idle />
   </div>
 </template>
 
@@ -38,16 +36,21 @@ import { ref, onMounted } from 'vue';
 import { usePortfolio } from '~/composables/usePortfolio';
 import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
 
+// Apply the persisted palette immediately; the navbar itself can hydrate on demand.
+useTheme();
 const { activeSection } = usePortfolio();
 const { pageProgress } = useSmoothedScroll(0.14);
-const loading = ref(true);
-const announcementReady = ref(false);
+const showLoader = import.meta.dev;
+const loading = ref(showLoader);
+const announcementReady = ref(!showLoader);
 
 function onLoaderAfterLeave() {
   announcementReady.value = true;
 }
 
 onMounted(() => {
+  if (!showLoader) return;
+
   const hideLoader = () => {
     loading.value = false;
   };

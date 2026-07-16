@@ -1,28 +1,51 @@
 /**
  * Composable para configuraciones de Motion reutilizables
  * Configuración óptima para evitar el efecto "latido" durante scroll
+ *
+ * Hydration: prerendered markup must never be opacity-0 after paint. Entrance
+ * motion uses transform/scale offsets instead of hiding already-visible content.
  */
 
-import { onMounted, ref } from 'vue';
+import { computed } from 'vue';
 import { usePreferredReducedMotion } from '@vueuse/core';
+
+const withoutFade = <T>(state: T): T => {
+  if (!state || typeof state !== 'object' || Array.isArray(state)) {
+    return state;
+  }
+
+  const next = { ...state } as Record<string, unknown>;
+  if (next.opacity === 0) {
+    next.opacity = 1;
+  }
+  return next as T;
+};
 
 export const useMotionConfig = () => {
   const prefersReducedMotion = usePreferredReducedMotion();
-  // Defer reduced-motion reads until after hydration to match prerendered HTML.
-  const motionReady = ref(false);
-  onMounted(() => {
-    motionReady.value = true;
-  });
+  const nuxtApp = tryUseNuxtApp();
 
-  const motionEnabled = computed(
-    () => motionReady.value && prefersReducedMotion.value !== 'reduce',
-  );
+  const motionEnabled = computed(() => prefersReducedMotion.value !== 'reduce');
 
-  const motionInitial = <T>(value: T): T | false => (motionEnabled.value ? value : false);
+  /**
+   * Pre-scroll state. SSR and hydration keep the painted rest state; after that,
+   * animate from transform offsets only — never opacity 0 on visible markup.
+   */
+  const motionInitial = <T>(hidden: T, visible: T): T => {
+    if (prefersReducedMotion.value === 'reduce') {
+      return visible;
+    }
+    if (import.meta.server || nuxtApp?.isHydrating) {
+      return visible;
+    }
+    return withoutFade(hidden);
+  };
 
-  const motionInView = <T>(value: T): T | undefined => (motionEnabled.value ? value : undefined);
+  /** Target while-in-view state — always defined so SSR and client markup match. */
+  const motionInView = <T>(visible: T): T => visible;
 
   const motionAnimate = <T>(value: T): T => value;
+
   /**
    * Configuración base para animaciones sin latido
    * - amount: 0.1 = solo requiere 10% de visibilidad

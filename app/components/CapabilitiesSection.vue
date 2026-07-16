@@ -8,7 +8,7 @@
 
     <div class="container mx-auto space-y-24">
       <Motion
-        :initial="motionInitial({ opacity: 0, y: 5 })"
+        :initial="motionInitial({ opacity: 0, y: 5 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }"
         :viewport="{ once: true, amount: 0.1 }"
@@ -33,7 +33,7 @@
         <Motion
           v-for="(cap, i) in capabilities"
           :key="cap.key"
-          :initial="motionInitial({ opacity: 0, y: 20 })"
+          :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="{
             duration: 0.8,

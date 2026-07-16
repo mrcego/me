@@ -12,7 +12,7 @@
       >
         <!-- Sidebar Card with Motion (Spans 5 cols) -->
         <Motion
-          :initial="motionInitial({ opacity: 0, x: -50 })"
+          :initial="motionInitial({ opacity: 0, x: -50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :viewport="{ once: true }"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
@@ -100,7 +100,7 @@
         <!-- Main Content Area (Spans 7 cols) -->
         <div class="xl:col-span-7 space-y-10 sm:space-y-14 xl:space-y-16 min-w-0">
           <Motion
-            :initial="motionInitial({ opacity: 0, y: 30 })"
+            :initial="motionInitial({ opacity: 0, y: 30 }, { opacity: 1, y: 0 })"
             :while-in-view="motionInView({ opacity: 1, y: 0 })"
             :viewport="{ once: true }"
             :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
@@ -141,7 +141,7 @@
             <Motion
               v-for="(role, i) in roles"
               :key="role.key"
-              :initial="motionInitial({ opacity: 0, y: 20 })"
+              :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
               :while-in-view="motionInView({ opacity: 1, y: 0 })"
               :viewport="{ once: true }"
               :transition="{
@@ -151,13 +151,10 @@
               }"
               class="h-full min-w-0"
             >
-              <div
-                role="button"
-                tabindex="0"
+              <button
+                type="button"
                 class="surface-card role-experience-card glass p-4 sm:p-5 xl:p-6 rounded-2xl sm:rounded-3xl border-foreground/5 group flex h-full min-h-48 sm:min-h-52 xl:min-h-56 flex-col relative w-full min-w-0 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation"
-                :aria-label="`${$t('about.roles.viewDetails')}: ${$t(`about.roles.${role.key}.title`)}`"
                 @click="openRoleModal(role.key)"
-                @keydown="onRoleCardKeydown($event, role.key)"
               >
                 <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
                 <div class="relative z-10 flex min-h-0 flex-1 flex-col gap-3 sm:gap-4 md:gap-6">
@@ -169,7 +166,7 @@
                     </div>
                     <div
                       v-if="COMPANY_LOGOS[role.key]"
-                      class="role-card__logo-wrap"
+                      class="role-card__logo-wrap shrink-0"
                       aria-hidden="true"
                     >
                       <NuxtImg
@@ -214,7 +211,7 @@
                 <div
                   class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
                 />
-              </div>
+              </button>
             </Motion>
           </div>
         </div>
@@ -259,6 +256,7 @@
               }"
               width="56"
               height="56"
+              fit="inside"
               loading="lazy"
               :format="selectedCompanyLogo.src.endsWith('.svg') ? undefined : 'webp'"
               quality="85"
@@ -363,7 +361,7 @@ const COMPANY_LOGOS = {
     width: 565,
     height: 322,
   },
-  colegium: { src: '/img/companies/colegium.svg', alt: 'Colegium', width: 200, height: 200 },
+  colegium: { src: '/img/companies/colegium.svg', alt: 'Colegium', width: 209, height: 96 },
   tissini: { src: '/img/companies/tissini.png', alt: 'TISSINI', width: 834, height: 283 },
   cuartopixel: {
     src: '/img/companies/cuartopixel.jpg',
@@ -411,12 +409,6 @@ function openRoleModal(key: string) {
   roleModalVisible.value = true;
 }
 
-function onRoleCardKeydown(event: KeyboardEvent, key: string) {
-  if (event.key !== 'Enter' && event.key !== ' ') return;
-  event.preventDefault();
-  openRoleModal(key);
-}
-
 const aboutPoints = [
   {
     label: 'about.expertise',
@@ -449,33 +441,28 @@ const aboutPoints = [
   animation: scanline-subtle 3s linear infinite;
 }
 
-.role-experience-card.surface-card {
-  overflow: visible;
-}
-
 .role-card__logo-wrap {
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex: 0 0 auto;
-  width: 7rem;
-  height: 4.5rem;
+  width: 6.5rem;
+  height: 3rem;
   padding: 0.2rem;
   overflow: visible;
 }
 
 @media (min-width: 640px) {
   .role-card__logo-wrap {
-    width: 7.5rem;
-    height: 5rem;
-    padding: 0.25rem;
+    width: 7rem;
+    height: 3.25rem;
   }
 }
 
 .role-card__company-logo {
   display: block;
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;

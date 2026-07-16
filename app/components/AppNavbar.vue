@@ -8,7 +8,12 @@
       >
         <!-- Logo Area -->
         <Motion
-          :initial="motionInitial({ opacity: 0, x: -20, filter: 'blur(10px)' })"
+          :initial="
+            motionInitial(
+              { opacity: 0, x: -20, filter: 'blur(10px)' },
+              { opacity: 1, x: 0, filter: 'blur(0px)' },
+            )
+          "
           :animate="motionAnimate({ opacity: 1, x: 0, filter: 'blur(0px)' })"
           :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
           class="flex items-center gap-1.5 sm:gap-2 group cursor-pointer min-w-0 shrink"
@@ -48,7 +53,7 @@
         >
           <template v-for="(link, i) in navLinks" :key="link.id">
             <Motion
-              :initial="motionInitial({ opacity: 0, y: -10 })"
+              :initial="motionInitial({ opacity: 0, y: -10 }, { opacity: 1, y: 0 })"
               :animate="motionAnimate({ opacity: 1, y: 0 })"
               :transition="{
                 duration: 0.6,
@@ -94,12 +99,14 @@
                 aria-label="Customize Theme"
                 @click="showThemeSelector = !showThemeSelector"
               >
-                <Icon name="solar:palette-bold-duotone" class="w-5 h-5 sm:w-6 sm:h-6" />
+                <Icon name="solar:crown-star-bold" class="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
               <!-- Theme Preset Selector Popover -->
               <Motion
                 v-if="showThemeSelector"
-                :initial="motionInitial({ opacity: 0, scale: 0.9, y: 10 })"
+                :initial="
+                  motionInitial({ opacity: 0, scale: 0.9, y: 10 }, { opacity: 1, scale: 1, y: 0 })
+                "
                 :animate="motionAnimate({ opacity: 1, scale: 1, y: 0 })"
                 :transition="{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }"
               >
