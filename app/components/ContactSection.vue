@@ -49,11 +49,11 @@
               class="flex items-center gap-4 sm:gap-6 md:gap-10 group cursor-pointer transition-all duration-500 hover:translate-x-3 active:scale-95"
             >
               <div
-                class="w-[4.5rem] h-[4.5rem] sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-xl shrink-0 group-hover:rotate-6"
+                class="w-[82px] h-[82px] sm:w-[106px] sm:h-[106px] md:w-[122px] md:h-[122px] lg:w-[138px] lg:h-[138px] glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-contrast transition-all duration-700 shadow-xl shrink-0 group-hover:rotate-6"
               >
                 <Icon
                   :name="c.icon"
-                  class="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24"
+                  class="w-[66px] h-[66px] sm:w-[74px] sm:h-[74px] md:w-[90px] md:h-[90px] lg:w-[106px] lg:h-[106px]"
                 />
               </div>
               <div class="space-y-1 sm:space-y-1.5 md:space-y-2 text-left">
@@ -246,12 +246,12 @@
                 <Icon
                   v-if="!isSubmitting"
                   name="solar:plain-linear"
-                  class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+                  class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] md:w-[34px] md:h-[34px]"
                 />
                 <Icon
                   v-else
                   name="solar:sort-vertical-linear"
-                  class="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 animate-spin"
+                  class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] md:w-[34px] md:h-[34px] animate-spin"
                 />
                 {{ isSubmitting ? $t('contact.form.sending') : $t('contact.form.submit') }}
               </span>

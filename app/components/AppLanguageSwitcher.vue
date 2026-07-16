@@ -2,11 +2,15 @@
   <div class="relative">
     <button
       type="button"
-      class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
-      :aria-label="$t('nav.switchLanguageLabel', { locale: locale.toUpperCase() })"
+      class="w-[46px] h-[46px] md:w-[50px] md:h-[50px] flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
+      :aria-label="$t('nav.switchLanguageLabel', { locale: nextLocaleLabel })"
       @click="toggleLanguage"
     >
-      <span class="font-black text-xs uppercase tracking-widest">{{ locale }}</span>
+      <Icon
+        :name="currentFlag"
+        class="w-[30px] h-[30px] md:w-[34px] md:h-[34px] rounded-full"
+        aria-hidden="true"
+      />
     </button>
   </div>
 </template>
@@ -17,6 +21,10 @@ import { storeLocaleSwitchScroll } from '~/utils/locale-switch-scroll';
 const { locale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const router = useRouter();
+
+const currentFlag = computed(() => (locale.value === 'es' ? 'circle-flags:es' : 'circle-flags:us'));
+
+const nextLocaleLabel = computed(() => (locale.value === 'en' ? 'ES' : 'EN'));
 
 const toggleLanguage = async () => {
   const nextLocale = locale.value === 'en' ? 'es' : 'en';

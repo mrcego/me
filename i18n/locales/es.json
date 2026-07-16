@@ -24,6 +24,8 @@
     "title": "Senior Vue/Nuxt · Experto en IA y NLP",
     "description": "Experto en ingeniería con IA/NLP (local y cloud) y en convertir código asistido por agentes en sistemas listos para producción. 13+ años en Vue.js, Nuxt y TypeScript con profundidad fullstack.",
     "cta": "Contáctame",
+    "downloadCv": "Descargar CV",
+    "downloadCvAria": "Descargar CV en PDF ({file})",
     "stats": {
       "experience": "Años de Experiencia",
       "projects": "Proyectos Entregados",

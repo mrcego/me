@@ -65,9 +65,12 @@
           >
             <div class="flex justify-between items-start">
               <div
-                class="surface-card__icon surface-card__icon--tilt w-11 h-11 sm:w-12 sm:h-12 md:w-14 md:h-14 glass rounded-xl sm:rounded-2xl flex items-center justify-center text-primary shadow-2xl shrink-0"
+                class="surface-card__icon surface-card__icon--tilt w-[54px] h-[54px] sm:w-[58px] sm:h-[58px] md:w-[66px] md:h-[66px] glass rounded-xl sm:rounded-2xl flex items-center justify-center text-primary shadow-2xl shrink-0"
               >
-                <Icon :name="t.icon" class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
+                <Icon
+                  :name="t.icon"
+                  class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] md:w-[42px] md:h-[42px]"
+                />
               </div>
               <div class="flex flex-col items-end gap-0.5 sm:gap-1">
                 <span
@@ -118,9 +121,12 @@
 
           <div class="flex items-center gap-3 sm:gap-4 md:gap-6 relative z-10">
             <div
-              class="surface-card__icon w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 glass rounded-lg sm:rounded-xl flex items-center justify-center text-primary shrink-0"
+              class="surface-card__icon w-[46px] h-[46px] sm:w-[50px] sm:h-[50px] md:w-[54px] md:h-[54px] glass rounded-lg sm:rounded-xl flex items-center justify-center text-primary shrink-0"
             >
-              <Icon name="solar:crown-star-bold" class="w-5 h-5 sm:w-6 sm:h-6" />
+              <Icon
+                name="solar:crown-star-bold"
+                class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
+              />
             </div>
             <h4 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-foreground">
               {{ $t('techStack.principles') }}
@@ -156,9 +162,12 @@
           <div class="space-y-8 md:space-y-10 relative z-10">
             <div class="flex items-center gap-4 md:gap-6 relative z-10">
               <div
-                class="surface-card__icon surface-card__icon--tilt w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 glass rounded-xl flex items-center justify-center text-primary shrink-0"
+                class="surface-card__icon surface-card__icon--tilt w-[46px] h-[46px] sm:w-[50px] sm:h-[50px] md:w-[54px] md:h-[54px] glass rounded-xl flex items-center justify-center text-primary shrink-0"
               >
-                <Icon name="solar:global-linear" class="w-5 h-5 sm:w-6 sm:h-6" />
+                <Icon
+                  name="solar:global-linear"
+                  class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
+                />
               </div>
               <h4 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
                 {{ $t('techStack.flow') }}

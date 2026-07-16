@@ -60,8 +60,8 @@ const iconNames = computed(() =>
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.875rem; /* 46px — was 36px +10 */
+  height: 2.875rem;
   border-radius: 0.5rem;
   color: var(--color-primary);
   box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
@@ -72,16 +72,16 @@ const iconNames = computed(() =>
 
 @media (min-width: 640px) {
   .philosophy-point__icon {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3.125rem; /* 50px */
+    height: 3.125rem;
     border-radius: 0.75rem;
   }
 }
 
 @media (min-width: 768px) {
   .philosophy-point__icon {
-    width: 3rem;
-    height: 3rem;
+    width: 3.625rem; /* 58px */
+    height: 3.625rem;
   }
 }
 
@@ -91,40 +91,40 @@ const iconNames = computed(() =>
 }
 
 .philosophy-point__glyph {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.875rem; /* 30px */
+  height: 1.875rem;
 }
 
 @media (min-width: 640px) {
   .philosophy-point__glyph {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2.125rem; /* 34px */
+    height: 2.125rem;
   }
 }
 
 @media (min-width: 768px) {
   .philosophy-point__glyph {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 2.375rem; /* 38px */
+    height: 2.375rem;
   }
 }
 
 .philosophy-point__glyph--multi {
-  width: 1rem;
-  height: 1rem;
+  width: 1.625rem; /* 26px */
+  height: 1.625rem;
 }
 
 @media (min-width: 640px) {
   .philosophy-point__glyph--multi {
-    width: 1.15rem;
-    height: 1.15rem;
+    width: 1.775rem; /* ~28px */
+    height: 1.775rem;
   }
 }
 
 @media (min-width: 768px) {
   .philosophy-point__glyph--multi {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.875rem; /* 30px */
+    height: 1.875rem;
   }
 }
 

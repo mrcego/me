@@ -128,7 +128,10 @@
                 href="#"
                 class="surface-card__icon w-12 h-12 md:w-16 md:h-16 glass rounded-full flex items-center justify-center text-muted active:scale-90 shrink-0 shadow-lg"
               >
-                <Icon name="solar:arrow-right-up-linear" class="w-12 h-12 md:w-14 md:h-14" />
+                <Icon
+                  name="solar:arrow-right-up-linear"
+                  class="w-[58px] h-[58px] md:w-[66px] md:h-[66px]"
+                />
               </a>
             </div>
 
@@ -156,7 +159,10 @@
           class="btn-premium px-12 md:px-16 py-6 md:py-8 border-foreground/10 text-foreground hover:text-white rounded-[3rem] hover:border-primary hover:shadow-primary/20 hover:scale-105 active:scale-95 transition-all w-full sm:w-auto mx-auto flex items-center justify-center border!"
         >
           <span class="flex items-center gap-4 md:gap-6">
-            <Icon name="solar:case-round-minimalistic-bold-duotone" class="w-6 h-6 md:w-7 md:h-7" />
+            <Icon
+              name="solar:case-round-minimalistic-bold-duotone"
+              class="w-[34px] h-[34px] md:w-[38px] md:h-[38px]"
+            />
             <span class="type-eyebrow tracking-[0.4em] text-foreground">
               {{ $t('portfolio.nexus') }}
             </span>

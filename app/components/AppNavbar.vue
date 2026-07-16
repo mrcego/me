@@ -93,16 +93,33 @@
           <!-- Language Switcher -->
           <AppLanguageSwitcher />
 
+          <!-- CV download (desktop) -->
+          <a
+            :href="cvHref"
+            :download="cvFileName"
+            class="hidden sm:flex w-[42px] h-[42px] sm:w-[46px] sm:h-[46px] md:w-[50px] md:h-[50px] items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
+            :aria-label="$t('hero.downloadCvAria', { file: cvFileName })"
+            :title="$t('hero.downloadCv')"
+          >
+            <Icon
+              name="solar:download-minimalistic-bold-duotone"
+              class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
+            />
+          </a>
+
           <!-- Color Picker -->
           <ClientOnly>
             <div class="relative">
               <button
                 type="button"
-                class="w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
+                class="w-[42px] h-[42px] sm:w-[46px] sm:h-[46px] flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
                 aria-label="Customize Theme"
                 @click="showThemeSelector = !showThemeSelector"
               >
-                <Icon name="solar:crown-star-bold" class="w-5 h-5 sm:w-6 sm:h-6" />
+                <Icon
+                  name="solar:crown-star-bold"
+                  class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
+                />
               </button>
               <!-- Theme Preset Selector Popover -->
               <Motion
@@ -182,7 +199,7 @@
                         <Icon
                           v-if="currentThemeId === preset.id"
                           name="solar:check-circle-bold"
-                          class="w-8 h-8 sm:w-10 sm:h-10 text-primary shrink-0"
+                          class="w-[42px] h-[42px] sm:w-[50px] sm:h-[50px] text-primary shrink-0"
                         />
                       </button>
                     </div>
@@ -203,21 +220,21 @@
             <span>{{ $t('nav.getInTouch') }}</span>
             <Icon
               name="solar:arrow-right-up-linear"
-              class="w-4 h-4 xl:w-5 xl:h-5 group-hover/btn:rotate-45 transition-transform duration-300"
+              class="w-[30px] h-[30px] xl:w-[34px] xl:h-[34px] group-hover/btn:rotate-45 transition-transform duration-300"
             />
           </a>
 
           <!-- Mobile Toggle -->
           <button
             type="button"
-            class="lg:hidden w-8 h-8 sm:w-9 sm:h-9 flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors focus-visible:ring-2 focus-visible:ring-primary shrink-0"
+            class="lg:hidden w-[42px] h-[42px] sm:w-[46px] sm:h-[46px] flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors focus-visible:ring-2 focus-visible:ring-primary shrink-0"
             :aria-label="isMobileMenuOpen ? 'Close menu' : 'Open menu'"
             :aria-expanded="isMobileMenuOpen"
             @click="isMobileMenuOpen = !isMobileMenuOpen"
           >
             <Icon
               :name="isMobileMenuOpen ? 'solar:close-square-linear' : 'solar:hamburger-menu-linear'"
-              class="w-5 h-5 sm:w-6 sm:h-6"
+              class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
             />
           </button>
         </div>
@@ -243,7 +260,7 @@
         >
           <Icon
             name="solar:close-circle-linear"
-            class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
+            class="w-[58px] h-[58px] sm:w-[66px] sm:h-[66px] md:w-[74px] md:h-[74px]"
           />
         </button>
 
@@ -258,14 +275,30 @@
             {{ $t(link.name) }}
           </a>
         </nav>
-        <div class="mt-6 sm:mt-8 md:mt-12">
+        <div class="mt-6 sm:mt-8 md:mt-12 flex flex-col items-center gap-3 sm:gap-4">
           <a
             href="#contact"
             class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-foreground text-background rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform text-xs sm:text-sm md:text-base"
             @click="scrollToSection($event, '#contact')"
           >
             {{ $t('nav.getInTouch') }}
-            <Icon name="solar:arrow-right-up-bold" class="w-7 h-7 sm:w-9 sm:h-9 md:w-11 md:h-11" />
+            <Icon
+              name="solar:arrow-right-up-bold"
+              class="w-[38px] h-[38px] sm:w-[46px] sm:h-[46px] md:w-[54px] md:h-[54px]"
+            />
+          </a>
+          <a
+            :href="cvHref"
+            :download="cvFileName"
+            class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 border border-foreground/20 text-foreground rounded-full font-black uppercase tracking-widest hover:scale-105 hover:border-primary/40 hover:text-primary transition-all text-xs sm:text-sm md:text-base"
+            :aria-label="$t('hero.downloadCvAria', { file: cvFileName })"
+            @click="isMobileMenuOpen = false"
+          >
+            <Icon
+              name="solar:download-minimalistic-bold-duotone"
+              class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
+            />
+            {{ $t('hero.downloadCv') }}
           </a>
         </div>
       </div>
@@ -289,6 +322,7 @@ const props = defineProps({
 const { motionInitial, motionAnimate } = useMotionConfig();
 const { progress } = useSmoothedScroll(0.14);
 const navProgress = progress(120);
+const { href: cvHref, fileName: cvFileName } = useCvDownload();
 
 const isMobileMenuOpen = ref(false);
 const { currentThemeId, THEME_PRESETS, setThemePreset } = useTheme();

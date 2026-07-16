@@ -63,9 +63,9 @@
             <!-- Icon and Date -->
             <div class="flex justify-between items-start">
               <div
-                class="surface-card__icon w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary shadow-xl"
+                class="surface-card__icon w-[58px] h-[58px] glass rounded-2xl flex items-center justify-center text-primary shadow-xl"
               >
-                <Icon name="solar:medal-ribbon-bold" class="w-10 h-10" />
+                <Icon name="solar:medal-ribbon-bold" class="w-[50px] h-[50px]" />
               </div>
               <span class="surface-card__meta type-meta text-muted">{{ cert.date }}</span>
             </div>
@@ -78,7 +78,7 @@
                 {{ cert.title }}
               </h4>
               <div class="flex items-center gap-2 text-sm font-medium text-muted">
-                <Icon name="simple-icons:linkedin" class="w-7 h-7" />
+                <Icon name="simple-icons:linkedin" class="w-[38px] h-[38px]" />
                 <span>{{ cert.issuer }}</span>
               </div>
             </div>
@@ -105,7 +105,7 @@
               {{ $t('certifications.viewCredential') }}
               <Icon
                 name="solar:arrow-right-up-linear"
-                class="w-5 h-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                class="w-[30px] h-[30px] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
               />
             </NuxtLink>
           </div>

@@ -27,14 +27,14 @@
           <div class="experience-modal__icon-wrap shrink-0" aria-hidden="true">
             <Icon
               name="solar:magic-stick-3-bold-duotone"
-              class="w-7 h-7 md:w-8 md:h-8 text-primary"
+              class="w-[38px] h-[38px] md:w-[42px] md:h-[42px] text-primary"
             />
           </div>
 
           <div class="space-y-3 min-w-0">
             <div class="flex flex-wrap items-center gap-2">
               <span class="experience-modal__chip">
-                <Icon name="solar:cpu-bolt-bold-duotone" class="w-3.5 h-3.5" />
+                <Icon name="solar:cpu-bolt-bold-duotone" class="w-6 h-6" />
                 {{ $t('vibeCoding.modal.badge') }}
               </span>
             </div>
@@ -59,7 +59,7 @@
           :aria-label="$t('vibeCoding.modal.close')"
           @click="closeVibeCodingModal"
         >
-          <Icon name="lucide:x" class="w-5 h-5" />
+          <Icon name="lucide:x" class="w-[30px] h-[30px]" />
         </button>
       </header>
 
@@ -106,7 +106,7 @@
           {{ $t('vibeCoding.modal.footer') }}
         </span>
         <a href="#contact" class="experience-modal__linkedin" @click="closeVibeCodingModal">
-          <Icon name="solar:letter-bold-duotone" class="w-6 h-6" />
+          <Icon name="solar:letter-bold-duotone" class="w-[34px] h-[34px]" />
           {{ $t('hero.cta') }}
         </a>
       </footer>

@@ -15,9 +15,9 @@
         <div class="space-y-6 group cursor-pointer">
           <div class="flex items-center gap-4">
             <div
-              class="w-12 h-12 glass rounded-2xl flex items-center justify-center text-primary group-hover:-rotate-12 transition-transform duration-500 shadow-lg shadow-primary/20 border-foreground/10"
+              class="w-[58px] h-[58px] glass rounded-2xl flex items-center justify-center text-primary group-hover:-rotate-12 transition-transform duration-500 shadow-lg shadow-primary/20 border-foreground/10"
             >
-              <Icon name="solar:code-square-bold-duotone" class="w-14 h-14" />
+              <Icon name="solar:code-square-bold-duotone" class="w-[42px] h-[42px]" />
             </div>
             <div class="flex flex-col">
               <h3
@@ -55,7 +55,7 @@
                   <span
                     class="w-0 overflow-hidden group-hover/link:w-3 transition-all duration-300 opacity-0 group-hover/link:opacity-100 text-primary"
                   >
-                    <Icon name="solar:arrow-right-linear" class="w-6 h-6" />
+                    <Icon name="solar:arrow-right-linear" class="w-[34px] h-[34px]" />
                   </span>
                   {{ $t(link.name) }}
                 </a>
@@ -88,7 +88,7 @@
           >
             <Icon
               :name="s.icon"
-              class="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] transition-colors duration-300 text-muted group-hover/social:text-primary-contrast"
+              class="w-[74px] h-[74px] sm:w-[82px] sm:h-[82px] transition-colors duration-300 text-muted group-hover/social:text-primary-contrast"
             />
           </a>
         </div>

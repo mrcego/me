@@ -50,7 +50,7 @@
             <div class="surface-card__quote-icon text-muted">
               <Icon
                 name="solar:chat-square-code-bold-duotone"
-                class="w-12 h-12 md:w-14 md:h-14 opacity-50"
+                class="w-[58px] h-[58px] md:w-[66px] md:h-[66px] opacity-50"
                 aria-hidden="true"
               />
             </div>

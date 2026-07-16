@@ -309,8 +309,8 @@
 }
 
 .experience-modal__icon-wrap {
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4.125rem; /* 66px — was 56px +10 */
+  height: 4.125rem;
   padding: 0.45rem;
   border-radius: 1rem;
   display: flex;
@@ -338,8 +338,8 @@
 
 @media (min-width: 768px) {
   .experience-modal__icon-wrap {
-    width: 4rem;
-    height: 4rem;
+    width: 4.625rem; /* 74px — was 64px +10 */
+    height: 4.625rem;
     padding: 0.55rem;
     border-radius: 1.25rem;
   }
@@ -372,8 +372,8 @@
 }
 
 .experience-modal__close {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 3.125rem; /* 50px — was 40px +10 */
+  height: 3.125rem;
   border-radius: 0.75rem;
   display: inline-flex;
   align-items: center;
@@ -1340,12 +1340,21 @@
 .availability-banner__date-chip {
   display: none;
   flex-shrink: 0;
-  align-items: baseline;
+  align-items: center;
   gap: 0.35rem;
-  font-size: 0.88rem;
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   line-height: 1.2;
-  color: rgba(255, 255, 255, 0.88);
+  color: #fff;
   white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .availability-banner__date-chip {
+    font-size: 1.05rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1354,14 +1363,19 @@
   }
 }
 
-.availability-banner__date-label {
-  font-weight: 600;
-  opacity: 0.85;
+@media (min-width: 1024px) {
+  .availability-banner__date-chip {
+    font-size: 1.125rem;
+  }
 }
 
+.availability-banner__date-label,
 .availability-banner__date {
-  font-weight: 800;
-  color: #fff;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  opacity: 1;
 }
 
 .availability-banner__cta {
@@ -1424,8 +1438,8 @@
 
 .availability-banner__cta-icon,
 .availability-banner__cta-arrow {
-  width: 0.95rem;
-  height: 0.95rem;
+  width: 1.575rem; /* ~25px — was 0.95rem +10px */
+  height: 1.575rem;
   flex-shrink: 0;
 }
 

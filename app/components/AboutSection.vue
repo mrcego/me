@@ -250,11 +250,11 @@
           <div class="space-y-3 min-w-0">
             <div class="flex flex-wrap items-center gap-2">
               <span class="experience-modal__chip">
-                <Icon name="lucide:calendar-range" class="w-3.5 h-3.5" />
+                <Icon name="lucide:calendar-range" class="w-6 h-6" />
                 {{ $t(`about.roles.${selectedRoleKey}.years`) }}
               </span>
               <span class="experience-modal__chip experience-modal__chip--muted">
-                <Icon name="lucide:map-pin" class="w-3.5 h-3.5" />
+                <Icon name="lucide:map-pin" class="w-6 h-6" />
                 {{ $t(`about.roles.${selectedRoleKey}.location`) }}
               </span>
             </div>
@@ -278,7 +278,7 @@
           :aria-label="$t('about.roles.close')"
           @click="roleModalVisible = false"
         >
-          <Icon name="lucide:x" class="w-5 h-5" />
+          <Icon name="lucide:x" class="w-[30px] h-[30px]" />
         </button>
       </header>
 
@@ -319,7 +319,7 @@
           rel="noopener noreferrer"
           class="experience-modal__linkedin"
         >
-          <Icon name="simple-icons:linkedin" class="w-6 h-6" />
+          <Icon name="simple-icons:linkedin" class="w-[34px] h-[34px]" />
           LinkedIn
         </a>
       </footer>

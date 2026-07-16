@@ -52,9 +52,12 @@
             class="relative z-10 space-y-4 sm:space-y-6 md:space-y-8 h-full flex flex-col justify-center items-center text-center"
           >
             <div
-              class="surface-card__icon surface-card__icon--tilt w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 glass rounded-xl sm:rounded-2xl flex items-center justify-center text-primary shadow-xl"
+              class="surface-card__icon surface-card__icon--tilt w-[58px] h-[58px] sm:w-[66px] sm:h-[66px] md:w-[74px] md:h-[74px] glass rounded-xl sm:rounded-2xl flex items-center justify-center text-primary shadow-xl"
             >
-              <Icon :name="cap.icon" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" />
+              <Icon
+                :name="cap.icon"
+                class="w-[42px] h-[42px] sm:w-[50px] sm:h-[50px] md:w-[58px] md:h-[58px]"
+              />
             </div>
             <div class="space-y-3 sm:space-y-4 max-w-xs mx-auto">
               <h4

@@ -53,7 +53,7 @@
             >
               <Icon
                 name="solar:magic-stick-3-bold-duotone"
-                class="w-4 h-4 sm:w-5 sm:h-5 shrink-0"
+                class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] shrink-0"
               />
               <span class="type-overline tracking-[0.18em] sm:tracking-[0.22em]">{{
                 $t('hero.expertiseBadge')
@@ -136,9 +136,13 @@
               class="btn-premium bg-primary text-primary-contrast rounded-2xl sm:rounded-3xl px-7 sm:px-9 py-3.5 sm:py-4 shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-sm sm:text-base border-none"
               href="#contact"
             >
-              <Icon name="solar:rocket-2-bold-duotone" class="w-5 h-5 sm:w-6 sm:h-6" />
+              <Icon
+                name="solar:rocket-2-bold-duotone"
+                class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
+              />
               <span>{{ $t('hero.cta') }}</span>
             </a>
+            <CvDownloadButton />
             <div
               class="hidden sm:block w-px self-stretch bg-foreground/10 shrink-0"
               aria-hidden="true"
@@ -153,9 +157,12 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 :aria-label="`Visit ${social.label} profile`"
-                class="surface-card group inline-flex items-center justify-center size-14 sm:size-16 glass rounded-xl text-muted active:scale-90 shrink-0"
+                class="surface-card group inline-flex items-center justify-center size-[66px] sm:size-[74px] glass rounded-xl text-muted active:scale-90 shrink-0"
               >
-                <Icon :name="social.icon" class="surface-card__glyph size-7 sm:size-8 shrink-0" />
+                <Icon
+                  :name="social.icon"
+                  class="surface-card__glyph size-[38px] sm:size-[42px] shrink-0"
+                />
               </a>
             </div>
           </Motion>
