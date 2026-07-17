@@ -40,8 +40,8 @@ export const usePortfolioSeo = () => {
     twitterDescription: () => t('seo.ogDescription'),
     twitterImage: ogImage,
     twitterImageAlt: () => `${personName.value} — ${t('hero.title')}`,
-    twitterSite: '@mrcego',
-    twitterCreator: '@mrcego',
+    twitterSite: '@codingwithcego',
+    twitterCreator: '@codingwithcego',
   });
 
   useHead(() => ({

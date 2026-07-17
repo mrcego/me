@@ -44,8 +44,8 @@ export const useVueDeveloperLandingSeo = () => {
     twitterDescription: () => t('landingVue.meta.description'),
     twitterImage: ogImage,
     twitterImageAlt: () => `${personName.value} — ${t('landingVue.meta.title')}`,
-    twitterSite: '@mrcego',
-    twitterCreator: '@mrcego',
+    twitterSite: '@codingwithcego',
+    twitterCreator: '@codingwithcego',
   });
 
   useHead(() => ({
