@@ -4,6 +4,8 @@ import { updatePrimaryPalette, updateSurfacePalette, palette } from '@primeuix/t
 import {
   DEFAULT_THEME_ID,
   FONT_STACKS,
+  MUTED_DARK,
+  MUTED_LIGHT,
   THEME_PRESETS,
   THEME_STORAGE_KEY,
   getThemePreset,
@@ -52,7 +54,7 @@ export const useTheme = () => {
 
     root.style.setProperty('--background', theme.background);
     root.style.setProperty('--foreground', dark ? '#ffffff' : '#0f172a');
-    root.style.setProperty('--muted', dark ? '#94a3b8' : '#64748b');
+    root.style.setProperty('--muted', dark ? MUTED_DARK : MUTED_LIGHT);
     root.style.setProperty('--surface', theme.surface);
     root.style.setProperty('--secondary', (dark ? sPalette[800] : sPalette[100]) || '#080c14');
     root.style.setProperty('--border', dark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)');

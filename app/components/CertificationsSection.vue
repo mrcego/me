@@ -134,92 +134,47 @@
         </div>
 
         <ul class="divide-y divide-foreground/5" role="list">
-          <li v-for="cert in visibleRestCertifications" :key="cert.id" class="relative">
-            <!-- Full-row disclosure toggle (covers the row for a large tap target) -->
-            <button
-              type="button"
-              class="absolute inset-0 w-full h-full cursor-pointer touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50 hover:bg-foreground/3 transition-colors"
-              :aria-expanded="expandedId === cert.id"
-              :aria-controls="`cert-panel-${cert.id}`"
-              :aria-label="cert.title"
-              @click="toggleExpanded(cert.id)"
-            />
-
-            <div
-              class="pointer-events-none relative flex items-start sm:items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 min-h-11"
-            >
-              <div class="min-w-0 flex-1 space-y-1 sm:space-y-0 sm:flex sm:items-center sm:gap-4">
-                <span
-                  class="block text-sm sm:text-base font-bold text-foreground tracking-tight line-clamp-2 sm:line-clamp-1 text-pretty"
-                >
-                  {{ cert.title }}
-                </span>
-                <span
-                  class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm text-muted shrink-0"
-                >
-                  <span class="type-meta">{{ cert.date }}</span>
-                  <span class="text-foreground/20" aria-hidden="true">·</span>
-                  <span class="inline-flex items-center gap-1.5">
-                    <Icon name="simple-icons:linkedin" class="size-3.5 shrink-0" />
-                    {{ cert.issuer }}
-                  </span>
-                </span>
-              </div>
-
-              <!-- View Credential: icon-only pill on mobile, labelled on sm+ -->
-              <NuxtLink
-                :to="cert.url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="pointer-events-auto relative z-10 inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-xl px-3 glass text-xs font-black uppercase tracking-[0.15em] text-foreground hover:bg-primary hover:text-primary-contrast transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 group/btn"
-                :aria-label="`${$t('certifications.viewCredential')}: ${cert.title}`"
-              >
-                <span class="hidden sm:inline">{{ $t('certifications.viewCredential') }}</span>
-                <Icon
-                  name="solar:arrow-right-up-linear"
-                  class="size-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
-                />
-              </NuxtLink>
-
-              <Icon
-                name="lucide:chevron-down"
-                class="cert-row-chevron size-5 text-muted shrink-0 mt-2.5 sm:mt-0"
-                :class="{ 'cert-row-chevron--open': expandedId === cert.id }"
-                aria-hidden="true"
-              />
-            </div>
-
-            <div
-              :id="`cert-panel-${cert.id}`"
-              class="cert-expand-panel"
-              :class="{ 'cert-expand-panel--open': expandedId === cert.id }"
-              :aria-hidden="expandedId !== cert.id"
-              :inert="expandedId !== cert.id"
-            >
-              <div class="cert-expand-panel__inner">
-                <div class="px-4 sm:px-6 pb-4 pt-0">
-                  <div class="flex flex-wrap gap-2">
-                    <span
-                      v-for="skill in cert.skills"
-                      :key="skill"
-                      class="type-label text-muted bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5"
-                    >
-                      {{ skill }}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
+          <CertCompactRow
+            v-for="cert in previewRestCertifications"
+            :key="cert.id"
+            :cert="cert"
+            :expanded="expandedId === cert.id"
+            :panel-id="`cert-panel-${cert.id}`"
+            @toggle="toggleExpanded(cert.id)"
+          />
         </ul>
 
         <div
-          v-if="restCertifications.length > REST_PREVIEW_COUNT"
+          v-if="extraRestCertifications.length"
+          id="cert-show-all-panel"
+          class="cert-show-all-panel"
+          :class="{ 'cert-show-all-panel--open': showAllRest }"
+          :aria-hidden="!showAllRest"
+          :inert="!showAllRest"
+        >
+          <div class="cert-show-all-panel__inner">
+            <ul class="divide-y divide-foreground/5 border-t border-foreground/5" role="list">
+              <CertCompactRow
+                v-for="cert in extraRestCertifications"
+                :key="cert.id"
+                :cert="cert"
+                :expanded="expandedId === cert.id"
+                :panel-id="`cert-panel-${cert.id}`"
+                @toggle="toggleExpanded(cert.id)"
+              />
+            </ul>
+          </div>
+        </div>
+
+        <div
+          v-if="extraRestCertifications.length"
           class="px-4 sm:px-6 py-4 border-t border-foreground/5"
         >
           <button
             type="button"
             class="w-full min-h-11 flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground cursor-pointer hover:bg-primary hover:text-primary-contrast transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            :aria-expanded="showAllRest"
+            aria-controls="cert-show-all-panel"
             @click="showAllRest = !showAllRest"
           >
             {{
@@ -227,6 +182,12 @@
                 ? $t('certifications.showLess')
                 : $t('certifications.showAll', { count: restCertifications.length })
             }}
+            <Icon
+              name="lucide:chevron-down"
+              class="cert-show-all-chevron size-5 shrink-0"
+              :class="{ 'cert-show-all-chevron--open': showAllRest }"
+              aria-hidden="true"
+            />
           </button>
         </div>
       </Motion>
@@ -292,10 +253,11 @@ const featuredCertifications = computed(() =>
 
 const restCertifications = computed(() => certifications.value.filter((cert) => !cert.featured));
 
-const visibleRestCertifications = computed(() => {
-  if (showAllRest.value) return restCertifications.value;
-  return restCertifications.value.slice(0, REST_PREVIEW_COUNT);
-});
+const previewRestCertifications = computed(() =>
+  restCertifications.value.slice(0, REST_PREVIEW_COUNT),
+);
+
+const extraRestCertifications = computed(() => restCertifications.value.slice(REST_PREVIEW_COUNT));
 
 function toggleExpanded(id: string) {
   expandedId.value = expandedId.value === id ? null : id;
@@ -303,7 +265,7 @@ function toggleExpanded(id: string) {
 
 watch(showAllRest, () => {
   if (!showAllRest.value && expandedId.value) {
-    const stillVisible = visibleRestCertifications.value.some((c) => c.id === expandedId.value);
+    const stillVisible = previewRestCertifications.value.some((c) => c.id === expandedId.value);
     if (!stillVisible) expandedId.value = null;
   }
 });
@@ -333,41 +295,33 @@ watch(showAllRest, () => {
   }
 }
 
-.cert-row-chevron {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.cert-show-all-chevron {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cert-row-chevron--open {
+.cert-show-all-chevron--open {
   transform: rotate(180deg);
 }
 
-.cert-expand-panel {
+.cert-show-all-panel {
   display: grid;
   grid-template-rows: 0fr;
-  opacity: 0;
-  transition:
-    grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-    opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.cert-expand-panel__inner {
+.cert-show-all-panel__inner {
   overflow: hidden;
   min-height: 0;
 }
 
-.cert-expand-panel--open {
+.cert-show-all-panel--open {
   grid-template-rows: 1fr;
-  opacity: 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cert-row-chevron,
-  .cert-expand-panel {
+  .cert-show-all-chevron,
+  .cert-show-all-panel {
     transition: none;
-  }
-
-  .cert-expand-panel:not(.cert-expand-panel--open) {
-    opacity: 1;
   }
 }
 </style>

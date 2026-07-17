@@ -7,7 +7,7 @@
       @click="toggleLanguage"
     >
       <Icon
-        :name="currentFlag"
+        :name="nextFlag"
         class="w-[30px] h-[30px] md:w-[34px] md:h-[34px] rounded-full"
         aria-hidden="true"
       />
@@ -22,9 +22,9 @@ const { locale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const router = useRouter();
 
-const currentFlag = computed(() => (locale.value === 'es' ? 'circle-flags:es' : 'circle-flags:us'));
-
+/** Target locale — flag matches aria-label ("switch to …"). */
 const nextLocaleLabel = computed(() => (locale.value === 'en' ? 'ES' : 'EN'));
+const nextFlag = computed(() => (locale.value === 'en' ? 'circle-flags:es' : 'circle-flags:us'));
 
 const toggleLanguage = async () => {
   const nextLocale = locale.value === 'en' ? 'es' : 'en';

@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Prepare redirect artifact
         run: |
@@ -29,7 +29,7 @@ jobs:
           cp redirect/gh-pages/404.html .gh-pages/404.html
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: .gh-pages
 
@@ -56,4 +56,4 @@ jobs:
       - name: Deploy redirect to GitHub Pages
         id: deployment
         if: steps.pages.outputs.enabled == 'true'
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

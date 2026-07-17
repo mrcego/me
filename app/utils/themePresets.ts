@@ -16,6 +16,10 @@ export const THEME_STORAGE_KEY = 'theme-preset-id';
 /** Must match useStorage default and CSS :root tokens. */
 export const DEFAULT_THEME_ID = 'github-dark';
 
+/** Secondary text — tuned for WCAG AA on dark/light surfaces. */
+export const MUTED_DARK = '#b0bbc9';
+export const MUTED_LIGHT = '#64748b';
+
 export const FONT_STACKS: Record<ThemeFont, string> = {
   Sans: '"Outfit", ui-sans-serif, system-ui, sans-serif',
   // Outfit stays in the stack so missing Fira Code weights (800/900) soft-fallback cleanly

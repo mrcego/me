@@ -6,7 +6,7 @@
   publish = ".output/public"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "24"
   NUXT_PUBLIC_CONTACT_PROVIDER = "netlify"
 
 [build.processing]
