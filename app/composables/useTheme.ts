@@ -2,13 +2,16 @@ import { computed } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { updatePrimaryPalette, updateSurfacePalette, palette } from '@primeuix/themes';
 
+/** Display font stacks. Fira Code max Google weight is 700 — see CSS clamp in main.css. */
+export type ThemeFont = 'Sans' | 'Fira Code';
+
 export interface ThemePreset {
   id: string;
   name: string;
   background: string;
   surface: string;
   primary: string;
-  font: 'Sans' | 'Fira Code';
+  font: ThemeFont;
   isDark: boolean;
 }
 
@@ -121,7 +124,104 @@ export const THEME_PRESETS: ThemePreset[] = [
     font: 'Sans',
     isDark: false,
   },
+  // --- +10 ---
+  {
+    id: 'solarized-dark',
+    name: 'Solarized Dark',
+    background: '#002b36',
+    surface: '#073642',
+    primary: '#268bd2',
+    font: 'Fira Code',
+    isDark: true,
+  },
+  {
+    id: 'solarized-light',
+    name: 'Solarized Light',
+    background: '#fdf6e3',
+    surface: '#eee8d5',
+    primary: '#268bd2',
+    font: 'Sans',
+    isDark: false,
+  },
+  {
+    id: 'gruvbox-dark',
+    name: 'Gruvbox Dark',
+    background: '#282828',
+    surface: '#3c3836',
+    primary: '#fe8019',
+    font: 'Fira Code',
+    isDark: true,
+  },
+  {
+    id: 'ayu-mirage',
+    name: 'Ayu Mirage',
+    background: '#1f2430',
+    surface: '#242936',
+    primary: '#ffcc66',
+    font: 'Fira Code',
+    isDark: true,
+  },
+  {
+    id: 'night-owl',
+    name: 'Night Owl',
+    background: '#011627',
+    surface: '#0b2942',
+    primary: '#82aaff',
+    font: 'Fira Code',
+    isDark: true,
+  },
+  {
+    id: 'synthwave',
+    name: 'Synthwave',
+    background: '#2b213a',
+    surface: '#241b2f',
+    primary: '#ff7edb',
+    font: 'Sans',
+    isDark: true,
+  },
+  {
+    id: 'material-ocean',
+    name: 'Material Ocean',
+    background: '#0f111a',
+    surface: '#1a1c25',
+    primary: '#84ffff',
+    font: 'Fira Code',
+    isDark: true,
+  },
+  {
+    id: 'andromeda',
+    name: 'Andromeda',
+    background: '#23262e',
+    surface: '#2b2f3a',
+    primary: '#00e8c6',
+    font: 'Fira Code',
+    isDark: true,
+  },
+  {
+    id: 'vercel-dark',
+    name: 'Vercel Dark',
+    background: '#000000',
+    surface: '#111111',
+    primary: '#0070f3',
+    font: 'Sans',
+    isDark: true,
+  },
+  {
+    id: 'github-light',
+    name: 'GitHub Light',
+    background: '#ffffff',
+    surface: '#f6f8fa',
+    primary: '#0969da',
+    font: 'Sans',
+    isDark: false,
+  },
 ];
+
+const FONT_STACKS: Record<ThemeFont, string> = {
+  Sans: '"Outfit", ui-sans-serif, system-ui, sans-serif',
+  // Outfit stays in the stack so missing Fira Code weights (800/900) soft-fallback cleanly
+  'Fira Code': '"Fira Code", "Outfit", ui-sans-serif, system-ui, sans-serif',
+};
 
 // Shared state with VueUse localStorage persistence
 const currentThemeId = useStorage('theme-preset-id', 'github-dark');
@@ -142,11 +242,9 @@ export const useTheme = () => {
 
   type ColorPalette = Record<string, string>;
 
-  const syncCSSVariables = () => {
+  const syncCSSVariables = (theme: ThemePreset) => {
     if (!import.meta.client) return;
     const root = document.documentElement;
-    const theme = currentTheme.value;
-    if (!theme) return;
     const dark = theme.isDark;
 
     // Primary Palette
@@ -172,32 +270,25 @@ export const useTheme = () => {
       dark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)',
     );
 
-    // Font Family
-    const fontStack =
-      theme.font === 'Fira Code'
-        ? '"Fira Code", "Outfit", "Inter", sans-serif'
-        : '"Outfit", "Inter", sans-serif';
-    root.style.setProperty('--font-main', fontStack);
+    // Font Family — data attribute drives weight clamp for mono fonts
+    root.style.setProperty('--font-main', FONT_STACKS[theme.font]);
+    root.dataset.themeFont = theme.font === 'Fira Code' ? 'fira-code' : 'sans';
   };
 
   const applyTheme = (theme: ThemePreset) => {
-    if (import.meta.client) {
-      if (!theme) return;
-      const root = document.documentElement;
-      if (theme.isDark) {
-        root.classList.add('app-dark', 'dark');
-        root.classList.remove('light');
-      } else {
-        root.classList.remove('app-dark', 'dark');
-        root.classList.add('light');
-      }
-
-      // Update PrimeVue Palettes
-      updatePrimaryPalette(palette(theme.primary) as ColorPalette);
-      updateSurfacePalette(palette(theme.surface) as ColorPalette);
-
-      syncCSSVariables();
+    if (!import.meta.client || !theme) return;
+    const root = document.documentElement;
+    if (theme.isDark) {
+      root.classList.add('app-dark', 'dark');
+      root.classList.remove('light');
+    } else {
+      root.classList.remove('app-dark', 'dark');
+      root.classList.add('light');
     }
+
+    updatePrimaryPalette(palette(theme.primary) as ColorPalette);
+    updateSurfacePalette(palette(theme.surface) as ColorPalette);
+    syncCSSVariables(theme);
   };
 
   // Inicializar
@@ -206,6 +297,7 @@ export const useTheme = () => {
     if (theme) applyTheme(theme);
   }
 
+  /** Persist + apply (click / Enter). */
   const setThemePreset = (id: string) => {
     const theme = THEME_PRESETS.find((p) => p.id === id);
     if (theme) {
@@ -214,9 +306,18 @@ export const useTheme = () => {
     }
   };
 
-  // Keep toggleTheme for quick switch between current and light/dark equivalents?
-  // No, user said "without allowed user to change dark/light manually" or "standardize better".
-  // Let's just allow picking from the list.
+  /** Live preview without persisting (keyboard arrow navigation). */
+  const previewTheme = (id: string) => {
+    const theme = THEME_PRESETS.find((p) => p.id === id);
+    if (theme) applyTheme(theme);
+  };
+
+  /** Restore the persisted selection (Escape / cancel preview). */
+  const cancelThemePreview = () => {
+    const theme = currentTheme.value;
+    if (theme) applyTheme(theme);
+  };
+
   const toggleTheme = () => {
     const theme = currentTheme.value;
     if (!theme) return;
@@ -230,6 +331,8 @@ export const useTheme = () => {
     currentTheme,
     THEME_PRESETS,
     setThemePreset,
+    previewTheme,
+    cancelThemePreview,
     toggleTheme,
   };
 };

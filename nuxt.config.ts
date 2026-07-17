@@ -80,7 +80,13 @@ export default defineNuxtConfig({
         weights: [400, 500, 600, 700, 800, 900],
         preload: true,
       },
-      { name: 'Fira Code', provider: 'google', weights: [400, 500, 600, 700] },
+      {
+        // Google Fira Code tops out at 700 — themes using it clamp font-black via CSS
+        name: 'Fira Code',
+        provider: 'google',
+        weights: [300, 400, 500, 600, 700],
+        preload: true,
+      },
     ],
   },
 

@@ -18,6 +18,7 @@ const { activeIndex, messages, showDateChip } = useBannerMessageRotator(
       class="availability-banner__message"
       :pt="{
         root: { class: 'availability-banner__root' },
+        contentwrapper: { class: 'availability-banner__content-wrapper' },
         content: { class: 'availability-banner__content' },
         text: { class: 'availability-banner__text-wrap' },
         icon: { class: 'availability-banner__icon-slot' },
@@ -61,9 +62,16 @@ const { activeIndex, messages, showDateChip } = useBannerMessageRotator(
           </span>
         </div>
 
-        <a href="#contact" class="availability-banner__cta">
-          <Icon name="solar:letter-bold-duotone" class="availability-banner__cta-icon" />
-          <span>{{ $t('availability.banner.cta') }}</span>
+        <a
+          href="#contact"
+          class="availability-banner__cta"
+          :aria-label="$t('availability.banner.cta')"
+        >
+          <Icon
+            name="solar:letter-bold-duotone"
+            class="availability-banner__cta-icon availability-banner__cta-icon--mail"
+          />
+          <span class="availability-banner__cta-label">{{ $t('availability.banner.cta') }}</span>
           <Icon name="lucide:arrow-up-right" class="availability-banner__cta-arrow" />
         </a>
       </div>

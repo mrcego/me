@@ -11,6 +11,8 @@ export function useBannerMessageRotator(enabled: Ref<boolean> | (() => boolean))
   const { t } = useI18n();
   const activeIndex = ref(0);
   const isXlUp = useMediaQuery(XL_UP);
+  const isMounted = ref(false);
+  const showDateChip = computed(() => isMounted.value && isXlUp.value);
   let timer: ReturnType<typeof setInterval> | null = null;
 
   const dateMessage = computed(
@@ -21,7 +23,7 @@ export function useBannerMessageRotator(enabled: Ref<boolean> | (() => boolean))
     const rotating = [t('availability.banner.messages.0'), t('availability.banner.messages.1')];
 
     // Below xl the side date chip is hidden / clipped — rotate the date as a 3rd line.
-    if (!isXlUp.value) {
+    if (!showDateChip.value) {
       rotating.push(dateMessage.value);
     }
 
@@ -51,7 +53,12 @@ export function useBannerMessageRotator(enabled: Ref<boolean> | (() => boolean))
     timer = setInterval(advance, ROTATE_MS);
   }
 
-  onMounted(startTimer);
+  onMounted(() => {
+    // Keep the first client render identical to SSR. The real media query is
+    // applied only after hydration, preventing 3→2 child-node mismatches.
+    isMounted.value = true;
+    startTimer();
+  });
 
   watch(isEnabled, (value) => {
     if (value) startTimer();
@@ -68,6 +75,6 @@ export function useBannerMessageRotator(enabled: Ref<boolean> | (() => boolean))
   return {
     activeIndex,
     messages,
-    showDateChip: isXlUp,
+    showDateChip,
   };
 }

@@ -56,7 +56,7 @@
             </div>
 
             <blockquote
-              class="surface-card__text text-base sm:text-lg md:text-xl text-muted font-medium leading-relaxed italic max-h-[9.2rem] md:max-h-[10.2rem] overflow-y-auto overflow-x-hidden pr-3 sm:pr-4 custom-scrollbar break-words text-pretty"
+              class="surface-card__text text-base sm:text-lg md:text-xl text-muted font-medium leading-relaxed italic max-h-[9.2rem] md:max-h-[10.2rem] overflow-y-auto overflow-x-hidden pr-3 sm:pr-4 custom-scrollbar wrap-break-word text-pretty"
             >
               <p>"{{ t.quote }}"</p>
             </blockquote>

@@ -27,7 +27,7 @@
             />
 
             <div
-              class="relative aspect-square max-h-56 sm:max-h-64 md:max-h-72 xl:max-h-[26rem] w-full max-w-xs sm:max-w-sm xl:max-w-none mx-auto rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
+              class="relative aspect-square max-h-56 sm:max-h-64 md:max-h-72 xl:max-h-104 w-full max-w-xs sm:max-w-sm xl:max-w-none mx-auto rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
             >
               <NuxtImg
                 src="/img/technical-identity.jpg"
@@ -131,13 +131,20 @@
               }"
               class="h-full min-w-0"
             >
-              <button
-                type="button"
-                class="surface-card role-experience-card glass p-4 sm:p-5 xl:p-6 rounded-2xl sm:rounded-3xl border-foreground/5 group flex h-full min-h-48 sm:min-h-52 xl:min-h-56 flex-col relative w-full min-w-0 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation"
-                @click="openRoleModal(role.key)"
+              <article
+                class="surface-card role-experience-card glass p-4 sm:p-5 xl:p-6 rounded-2xl sm:rounded-3xl border-foreground/5 group flex h-full min-h-48 sm:min-h-52 xl:min-h-56 flex-col relative w-full min-w-0 text-left cursor-pointer touch-manipulation"
               >
+                <button
+                  type="button"
+                  class="absolute inset-0 z-20 rounded-[inherit] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
+                  :aria-label="`${$t('about.roles.viewDetails')}: ${$t(`about.roles.${role.key}.title`)} · ${$t(`about.roles.${role.key}.company`)}`"
+                  aria-haspopup="dialog"
+                  @click="openRoleModal(role.key)"
+                />
                 <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
-                <div class="relative z-10 flex min-h-0 flex-1 flex-col gap-3 sm:gap-4 md:gap-6">
+                <div
+                  class="relative z-10 pointer-events-none flex min-h-0 flex-1 flex-col gap-3 sm:gap-4 md:gap-6"
+                >
                   <div class="flex items-start justify-between gap-2 sm:gap-3 min-w-0">
                     <div
                       class="surface-card__chip type-chip glass rounded-lg sm:rounded-xl shadow-sm min-w-0 shrink max-w-[52%] sm:max-w-none px-3 py-1 sm:px-4 sm:py-1.5"
@@ -180,20 +187,30 @@
                   </div>
 
                   <p
-                    class="surface-card__desc flex-1 text-sm sm:text-base leading-relaxed border-t border-foreground/5 pt-2 sm:pt-3 line-clamp-4 sm:line-clamp-5 text-pretty"
+                    class="surface-card__desc flex-1 text-sm sm:text-base leading-relaxed line-clamp-4 sm:line-clamp-5 text-pretty"
                   >
                     {{ $t(`about.roles.${role.key}.desc`) }}
                   </p>
 
-                  <span class="surface-card__cta type-label mt-auto pt-3">
-                    {{ $t('about.roles.viewDetails') }} →
-                  </span>
+                  <div
+                    class="surface-card__footer mt-auto pt-4 sm:pt-6 border-t border-foreground/5"
+                  >
+                    <span
+                      class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground group-hover:bg-primary group-hover:text-primary-contrast group-focus-within:bg-primary group-focus-within:text-primary-contrast transition-all duration-500"
+                    >
+                      {{ $t('about.roles.viewDetails') }}
+                      <Icon
+                        name="lucide:arrow-right"
+                        class="w-5 h-5 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5"
+                      />
+                    </span>
+                  </div>
                 </div>
 
                 <div
                   class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
                 />
-              </button>
+              </article>
             </Motion>
           </div>
         </div>
@@ -226,7 +243,7 @@
   >
     <div v-if="selectedRoleKey" class="experience-modal">
       <header class="experience-modal__header">
-        <div class="flex items-start gap-4 md:gap-5 min-w-0">
+        <div class="flex items-start gap-3 md:gap-4 min-w-0 flex-1">
           <div class="experience-modal__icon-wrap shrink-0" aria-hidden="true">
             <NuxtImg
               v-if="selectedCompanyLogo"
@@ -247,18 +264,7 @@
             />
           </div>
 
-          <div class="space-y-3 min-w-0">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="experience-modal__chip">
-                <Icon name="lucide:calendar-range" class="w-6 h-6" />
-                {{ $t(`about.roles.${selectedRoleKey}.years`) }}
-              </span>
-              <span class="experience-modal__chip experience-modal__chip--muted">
-                <Icon name="lucide:map-pin" class="w-6 h-6" />
-                {{ $t(`about.roles.${selectedRoleKey}.location`) }}
-              </span>
-            </div>
-
+          <div class="space-y-2.5 md:space-y-3 min-w-0 flex-1">
             <div class="space-y-1.5">
               <p class="type-meta text-primary tracking-[0.35em]">
                 {{ $t(`about.roles.${selectedRoleKey}.company`) }}
@@ -269,6 +275,17 @@
                 {{ $t(`about.roles.${selectedRoleKey}.title`) }}
               </h3>
             </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="experience-modal__chip">
+                <Icon name="lucide:calendar-range" class="w-3.5 h-3.5" />
+                {{ $t(`about.roles.${selectedRoleKey}.years`) }}
+              </span>
+              <span class="experience-modal__chip experience-modal__chip--muted">
+                <Icon name="lucide:map-pin" class="w-3.5 h-3.5" />
+                {{ $t(`about.roles.${selectedRoleKey}.location`) }}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -278,7 +295,7 @@
           :aria-label="$t('about.roles.close')"
           @click="roleModalVisible = false"
         >
-          <Icon name="lucide:x" class="w-[30px] h-[30px]" />
+          <Icon name="lucide:x" class="w-4 h-4 md:w-5 md:h-5" />
         </button>
       </header>
 
@@ -319,7 +336,7 @@
           rel="noopener noreferrer"
           class="experience-modal__linkedin"
         >
-          <Icon name="simple-icons:linkedin" class="w-[34px] h-[34px]" />
+          <Icon name="simple-icons:linkedin" class="w-5 h-5" />
           LinkedIn
         </a>
       </footer>
@@ -355,6 +372,12 @@ const COMPANY_LOGOS = {
     height: 186,
     onLight: true,
   },
+  quehaypahacer: {
+    src: '/img/companies/quehaypahacer.png',
+    alt: "¿Qué Hay Pa' Hacer?",
+    width: 447,
+    height: 447,
+  },
   zabud: { src: '/img/companies/zabud.png', alt: 'ZABUD Technologies', width: 490, height: 104 },
 } as const;
 
@@ -365,6 +388,7 @@ const roles: { key: CompanyLogoId }[] = [
   { key: 'colegium' },
   { key: 'tissini' },
   { key: 'cuartopixel' },
+  { key: 'quehaypahacer' },
   { key: 'zabud' },
 ];
 

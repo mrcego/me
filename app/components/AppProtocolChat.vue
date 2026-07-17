@@ -14,23 +14,20 @@
       <button
         v-if="showScrollTop"
         aria-label="Scroll to top"
-        class="w-[74px] h-[74px] md:w-[90px] md:h-[90px] glass rounded-4xl flex items-center justify-center text-primary border-primary/20 shadow-4xl hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group overflow-hidden"
+        class="size-12 md:size-14 glass rounded-2xl md:rounded-3xl flex items-center justify-center text-primary border-primary/20 shadow-4xl hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group overflow-hidden"
         @click="scrollToTop"
       >
         <span
           class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity"
           aria-hidden="true"
         />
-        <Icon
-          name="lucide:chevron-up"
-          class="w-[54px] h-[54px] md:w-[58px] md:h-[58px] relative z-10"
-        />
+        <Icon name="lucide:chevron-up" class="size-5 md:size-6 relative z-10" />
       </button>
     </Transition>
 
     <!-- Chat Trigger Toggle -->
     <button
-      class="w-[74px] h-[74px] md:w-[90px] md:h-[90px] glass rounded-4xl flex items-center justify-center text-primary border-primary/20 shadow-4xl hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group overflow-hidden"
+      class="size-12 md:size-14 glass rounded-2xl md:rounded-3xl flex items-center justify-center text-primary border-primary/20 shadow-4xl hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group overflow-hidden"
       :aria-label="isOpen ? $t('chat.close') : $t('chat.open')"
       :aria-expanded="isOpen"
       @click="isOpen = !isOpen"
@@ -43,16 +40,8 @@
         class="absolute inset-0 bg-primary opacity-0 group-hover:opacity-10 transition-opacity"
         aria-hidden="true"
       />
-      <Icon
-        v-if="!isOpen"
-        name="lucide:message-square"
-        class="w-[62px] h-[62px] md:w-[66px] md:h-[66px] relative z-10"
-      />
-      <Icon
-        v-else
-        name="lucide:x"
-        class="w-[62px] h-[62px] md:w-[66px] md:h-[66px] relative z-10"
-      />
+      <Icon v-if="!isOpen" name="lucide:message-square" class="size-5 md:size-6 relative z-10" />
+      <Icon v-else name="lucide:x" class="size-5 md:size-6 relative z-10" />
     </button>
   </div>
 
@@ -162,6 +151,7 @@ import { ref, watch, nextTick, onMounted, onUnmounted } from 'vue';
 const { motionInitial, motionAnimate } = useMotionConfig();
 
 const isOpen = ref(false);
+useBodyScrollLock(isOpen);
 const userInput = ref('');
 const isTyping = ref(false);
 const showScrollTop = ref(false);

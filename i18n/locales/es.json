@@ -159,6 +159,17 @@
           "Aplicación de prácticas frontend modernas para lanzar experiencias web pulidas en ciclos ágiles."
         ]
       },
+      "quehaypahacer": {
+        "title": "Desarrollador Frontend · Coordinador de proyectos de TI",
+        "company": "¿Qué Hay Pa' Hacer?",
+        "years": "Feb 2017 - Sep 2017",
+        "location": "Cartagena de Indias, Colombia",
+        "desc": "Planeación, desarrollo y administración de tecnologías para mercadeo digital — líder frontend de la app Que Hay Pa' Hacer Cartagena.",
+        "highlights": [
+          "Encargado de la planeación, gestión, desarrollo y administración de las tecnologías utilizadas para la creación y soporte de productos orientados al mercadeo digital y publicidad.",
+          "Desarrollador frontend y líder del proyecto Que Hay Pa' Hacer Cartagena App (plataformas móviles y web), además de una aplicación web para clientes propietarios."
+        ]
+      },
       "zabud": {
         "title": "Desarrollador Frontend Junior",
         "company": "ZABUD Technologies",
@@ -232,11 +243,18 @@
     "description": "Validación técnica y aprendizaje continuo en ecosistemas de alto rendimiento.",
     "viewCredential": "Ver Credencial",
     "skills": "Aptitudes",
+    "allCredentials": "Todas las credenciales",
+    "moreCredentials": "{count} credenciales más",
+    "showAll": "Ver todas ({count})",
+    "showLess": "Ver menos",
+    "expandCredential": "Mostrar detalles de la credencial",
+    "collapseCredential": "Ocultar detalles de la credencial",
     "data": [
       {
         "title": "AI Programming for JavaScript Developers",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
+        "featured": true,
         "skills": ["Inteligencia artificial", "JavaScript"],
         "url": "https://www.linkedin.com/learning/certificates/96c7cf924aa3fb572c58f76297d9b67575083a0b87d3627a087b8e0f4fb2864b"
       },
@@ -299,6 +317,7 @@
         "title": "Scaling TypeScript for Enterprise Developers",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
+        "featured": true,
         "skills": ["TypeScript", "Desarrollo web", "Desarrollo front end"],
         "url": "https://www.linkedin.com/learning/certificates/d5e991f977af403a5925b7afb7b7ef0b833157e33bbf6a04518b31d923406cad"
       },
@@ -313,6 +332,7 @@
         "title": "Tailwind CSS 4 Essential Training",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
+        "featured": true,
         "skills": ["Tailwind CSS", "Desarrollo web", "Tailwind", "Desarrollo front end", "CSS"],
         "url": "https://www.linkedin.com/learning/certificates/fa28dbebc05524bb23c4af8db2d9d1a4dae8145cdcf564e8fd59469bccdfcdc9"
       },
@@ -320,6 +340,7 @@
         "title": "TypeScript avanzado",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
+        "featured": true,
         "skills": ["TypeScript", "Desarrollo web", "Desarrollo front end"],
         "url": "https://www.linkedin.com/learning/certificates/b7bae12986a57c4f356f2056a677761b7ba52a71533200169949a2e62580507e"
       },
@@ -615,6 +636,16 @@
     "github-dark": "GitHub Dark",
     "monokai": "Monokai",
     "cobalt2": "Cobalt2",
-    "light-modern": "Claro Moderno"
+    "light-modern": "Claro Moderno",
+    "solarized-dark": "Solarized Oscuro",
+    "solarized-light": "Solarized Claro",
+    "gruvbox-dark": "Gruvbox Oscuro",
+    "ayu-mirage": "Ayu Mirage",
+    "night-owl": "Night Owl",
+    "synthwave": "Synthwave",
+    "material-ocean": "Material Ocean",
+    "andromeda": "Andromeda",
+    "vercel-dark": "Vercel Oscuro",
+    "github-light": "GitHub Claro"
   }
 }

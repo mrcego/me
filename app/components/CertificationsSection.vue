@@ -42,11 +42,11 @@
         </p>
       </Motion>
 
-      <!-- Certifications Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 items-stretch">
+      <!-- Featured credentials -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch mb-10 md:mb-14">
         <Motion
-          v-for="(cert, i) in certifications"
-          :key="i"
+          v-for="(cert, i) in featuredCertifications"
+          :key="cert.id"
           :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="{
@@ -55,35 +55,32 @@
             ease: [0.16, 1, 0.3, 1],
           }"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-6 md:p-8 rounded-4xl border-foreground/5 flex flex-col justify-between h-full overflow-hidden min-w-0"
+          class="surface-card group relative glass p-5 sm:p-6 md:p-8 rounded-4xl border-foreground/5 flex flex-col justify-between h-full overflow-hidden min-w-0"
         >
           <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
 
-          <div class="space-y-6 relative z-10">
-            <!-- Icon and Date -->
-            <div class="flex justify-between items-start">
+          <div class="space-y-5 sm:space-y-6 relative z-10">
+            <div class="flex justify-between items-start gap-3">
               <div
-                class="surface-card__icon w-[58px] h-[58px] glass rounded-2xl flex items-center justify-center text-primary shadow-xl"
+                class="surface-card__icon w-[58px] h-[58px] glass rounded-2xl flex items-center justify-center text-primary shadow-xl shrink-0"
               >
-                <Icon name="solar:medal-ribbon-bold" class="w-[50px] h-[50px]" />
+                <Icon name="solar:medal-ribbon-bold" class="w-8 h-8 sm:w-9 sm:h-9" />
               </div>
               <span class="surface-card__meta type-meta text-muted">{{ cert.date }}</span>
             </div>
 
-            <!-- Title and Issuer -->
             <div class="space-y-2 min-w-0">
               <h4
-                class="surface-card__title text-lg sm:text-xl font-bold tracking-tight text-foreground text-balance break-words line-clamp-3"
+                class="surface-card__title text-lg sm:text-xl font-bold tracking-tight text-foreground text-balance wrap-break-word line-clamp-2 sm:line-clamp-3"
               >
                 {{ cert.title }}
               </h4>
               <div class="flex items-center gap-2 text-sm font-medium text-muted">
-                <Icon name="simple-icons:linkedin" class="w-[38px] h-[38px]" />
+                <Icon name="simple-icons:linkedin" class="size-5 shrink-0" />
                 <span>{{ cert.issuer }}</span>
               </div>
             </div>
 
-            <!-- Skills -->
             <div class="flex flex-wrap gap-2">
               <span
                 v-for="skill in cert.skills"
@@ -95,17 +92,17 @@
             </div>
           </div>
 
-          <!-- CTA Button -->
           <div class="surface-card__footer mt-8 pt-6 border-t border-foreground/5 relative z-10">
             <NuxtLink
               :to="cert.url"
               target="_blank"
+              rel="noopener noreferrer"
               class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground hover:bg-primary hover:text-primary-contrast transition-all duration-500 group/btn"
             >
               {{ $t('certifications.viewCredential') }}
               <Icon
                 name="solar:arrow-right-up-linear"
-                class="w-[30px] h-[30px] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                class="size-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
               />
             </NuxtLink>
           </div>
@@ -115,29 +112,200 @@
           />
         </Motion>
       </div>
+
+      <!-- Compact rest list -->
+      <Motion
+        v-if="restCertifications.length"
+        :initial="motionInitial({ opacity: 0, y: 16 }, { opacity: 1, y: 0 })"
+        :while-in-view="motionInView({ opacity: 1, y: 0 })"
+        :transition="{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }"
+        :viewport="{ once: true }"
+        class="glass rounded-3xl md:rounded-4xl border border-foreground/5 overflow-hidden"
+      >
+        <div
+          class="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-4 border-b border-foreground/5"
+        >
+          <h4 class="type-eyebrow tracking-[0.3em] text-muted">
+            {{ $t('certifications.allCredentials') }}
+          </h4>
+          <p class="text-sm font-medium text-muted" aria-live="polite">
+            {{ $t('certifications.moreCredentials', { count: restCertifications.length }) }}
+          </p>
+        </div>
+
+        <ul class="divide-y divide-foreground/5" role="list">
+          <li v-for="cert in visibleRestCertifications" :key="cert.id" class="relative">
+            <!-- Full-row disclosure toggle (covers the row for a large tap target) -->
+            <button
+              type="button"
+              class="absolute inset-0 w-full h-full cursor-pointer touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50 hover:bg-foreground/3 transition-colors"
+              :aria-expanded="expandedId === cert.id"
+              :aria-controls="`cert-panel-${cert.id}`"
+              :aria-label="cert.title"
+              @click="toggleExpanded(cert.id)"
+            />
+
+            <div
+              class="pointer-events-none relative flex items-start sm:items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 min-h-11"
+            >
+              <div class="min-w-0 flex-1 space-y-1 sm:space-y-0 sm:flex sm:items-center sm:gap-4">
+                <span
+                  class="block text-sm sm:text-base font-bold text-foreground tracking-tight line-clamp-2 sm:line-clamp-1 text-pretty"
+                >
+                  {{ cert.title }}
+                </span>
+                <span
+                  class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm text-muted shrink-0"
+                >
+                  <span class="type-meta">{{ cert.date }}</span>
+                  <span class="text-foreground/20" aria-hidden="true">·</span>
+                  <span class="inline-flex items-center gap-1.5">
+                    <Icon name="simple-icons:linkedin" class="size-3.5 shrink-0" />
+                    {{ cert.issuer }}
+                  </span>
+                </span>
+              </div>
+
+              <!-- View Credential: icon-only pill on mobile, labelled on sm+ -->
+              <NuxtLink
+                :to="cert.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="pointer-events-auto relative z-10 inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-xl px-3 glass text-xs font-black uppercase tracking-[0.15em] text-foreground hover:bg-primary hover:text-primary-contrast transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 group/btn"
+                :aria-label="`${$t('certifications.viewCredential')}: ${cert.title}`"
+              >
+                <span class="hidden sm:inline">{{ $t('certifications.viewCredential') }}</span>
+                <Icon
+                  name="solar:arrow-right-up-linear"
+                  class="size-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                />
+              </NuxtLink>
+
+              <Icon
+                name="lucide:chevron-down"
+                class="cert-row-chevron size-5 text-muted shrink-0 mt-2.5 sm:mt-0"
+                :class="{ 'cert-row-chevron--open': expandedId === cert.id }"
+                aria-hidden="true"
+              />
+            </div>
+
+            <div
+              :id="`cert-panel-${cert.id}`"
+              class="cert-expand-panel"
+              :class="{ 'cert-expand-panel--open': expandedId === cert.id }"
+              :aria-hidden="expandedId !== cert.id"
+              :inert="expandedId !== cert.id"
+            >
+              <div class="cert-expand-panel__inner">
+                <div class="px-4 sm:px-6 pb-4 pt-0">
+                  <div class="flex flex-wrap gap-2">
+                    <span
+                      v-for="skill in cert.skills"
+                      :key="skill"
+                      class="type-label text-muted bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5"
+                    >
+                      {{ skill }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <div
+          v-if="restCertifications.length > REST_PREVIEW_COUNT"
+          class="px-4 sm:px-6 py-4 border-t border-foreground/5"
+        >
+          <button
+            type="button"
+            class="w-full min-h-11 flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground cursor-pointer hover:bg-primary hover:text-primary-contrast transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            @click="showAllRest = !showAllRest"
+          >
+            {{
+              showAllRest
+                ? $t('certifications.showLess')
+                : $t('certifications.showAll', { count: restCertifications.length })
+            }}
+          </button>
+        </div>
+      </Motion>
     </div>
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Motion } from 'motion-v';
 import { useI18n } from 'vue-i18n';
 
+interface CertificationItem {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  skills: string[];
+  url: string;
+  featured: boolean;
+}
+
+const REST_PREVIEW_COUNT = 8;
+
 const { tm, rt } = useI18n();
-
 const { motionInitial, motionInView } = useMotionConfig();
-// Acceder directamente a los datos de certificaciones desde i18n
-const certifications = computed(() => {
-  const data = tm('certifications.data');
-  if (!data || !Array.isArray(data)) return [];
 
-  return data.map((item) => ({
-    title: rt(item.title),
-    issuer: rt(item.issuer),
-    date: rt(item.date),
-    skills: Array.isArray(item.skills) ? item.skills.map((s) => rt(s)) : [],
-    url: rt(item.url),
-  }));
+const expandedId = ref<string | null>(null);
+const showAllRest = ref(false);
+
+function isFeaturedFlag(value: unknown): boolean {
+  return value === true || value === 'true';
+}
+
+const certifications = computed<CertificationItem[]>(() => {
+  const data = tm('certifications.data') as unknown;
+  if (!Array.isArray(data)) return [];
+
+  return data.map((item: unknown, index: number) => {
+    const record = item as {
+      title: string;
+      issuer: string;
+      date: string;
+      skills?: string[];
+      url: string;
+      featured?: boolean | string;
+    };
+
+    return {
+      id: `cert-${index}`,
+      title: rt(record.title),
+      issuer: rt(record.issuer),
+      date: rt(record.date),
+      skills: Array.isArray(record.skills) ? record.skills.map((s) => rt(s)) : [],
+      url: rt(record.url),
+      featured: isFeaturedFlag(record.featured),
+    };
+  });
+});
+
+const featuredCertifications = computed(() =>
+  certifications.value.filter((cert) => cert.featured).slice(0, 4),
+);
+
+const restCertifications = computed(() => certifications.value.filter((cert) => !cert.featured));
+
+const visibleRestCertifications = computed(() => {
+  if (showAllRest.value) return restCertifications.value;
+  return restCertifications.value.slice(0, REST_PREVIEW_COUNT);
+});
+
+function toggleExpanded(id: string) {
+  expandedId.value = expandedId.value === id ? null : id;
+}
+
+watch(showAllRest, () => {
+  if (!showAllRest.value && expandedId.value) {
+    const stillVisible = visibleRestCertifications.value.some((c) => c.id === expandedId.value);
+    if (!stillVisible) expandedId.value = null;
+  }
 });
 </script>
 
@@ -162,6 +330,44 @@ const certifications = computed(() => {
 @media (max-width: 389px) {
   .certifications-heading {
     font-size: 1.75rem;
+  }
+}
+
+.cert-row-chevron {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-row-chevron--open {
+  transform: rotate(180deg);
+}
+
+.cert-expand-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-expand-panel__inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.cert-expand-panel--open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-row-chevron,
+  .cert-expand-panel {
+    transition: none;
+  }
+
+  .cert-expand-panel:not(.cert-expand-panel--open) {
+    opacity: 1;
   }
 }
 </style>

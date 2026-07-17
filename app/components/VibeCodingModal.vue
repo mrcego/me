@@ -23,22 +23,15 @@
   >
     <div class="experience-modal">
       <header class="experience-modal__header">
-        <div class="flex items-start gap-4 md:gap-5 min-w-0">
+        <div class="flex items-start gap-3 md:gap-4 min-w-0 flex-1">
           <div class="experience-modal__icon-wrap shrink-0" aria-hidden="true">
             <Icon
               name="solar:magic-stick-3-bold-duotone"
-              class="w-[38px] h-[38px] md:w-[42px] md:h-[42px] text-primary"
+              class="w-5 h-5 md:w-6 md:h-6 text-primary"
             />
           </div>
 
-          <div class="space-y-3 min-w-0">
-            <div class="flex flex-wrap items-center gap-2">
-              <span class="experience-modal__chip">
-                <Icon name="solar:cpu-bolt-bold-duotone" class="w-6 h-6" />
-                {{ $t('vibeCoding.modal.badge') }}
-              </span>
-            </div>
-
+          <div class="space-y-2.5 md:space-y-3 min-w-0 flex-1">
             <div class="space-y-1.5">
               <h3
                 id="vibe-coding-modal-title"
@@ -50,6 +43,13 @@
                 {{ $t('vibeCoding.modal.lead') }}
               </p>
             </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="experience-modal__chip">
+                <Icon name="solar:cpu-bolt-bold-duotone" class="w-3.5 h-3.5" />
+                {{ $t('vibeCoding.modal.badge') }}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -59,7 +59,7 @@
           :aria-label="$t('vibeCoding.modal.close')"
           @click="closeVibeCodingModal"
         >
-          <Icon name="lucide:x" class="w-[30px] h-[30px]" />
+          <Icon name="lucide:x" class="w-4 h-4 md:w-5 md:h-5" />
         </button>
       </header>
 
@@ -106,7 +106,7 @@
           {{ $t('vibeCoding.modal.footer') }}
         </span>
         <a href="#contact" class="experience-modal__linkedin" @click="closeVibeCodingModal">
-          <Icon name="solar:letter-bold-duotone" class="w-[34px] h-[34px]" />
+          <Icon name="solar:letter-bold-duotone" class="w-5 h-5" />
           {{ $t('hero.cta') }}
         </a>
       </footer>

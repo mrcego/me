@@ -219,14 +219,15 @@
                 <NuxtImg
                   src="/img/me.jpg"
                   alt="César Gómez - Frontend-focused senior fullstack developer specializing in Vue.js and Nuxt.js"
-                  width="800"
-                  height="1000"
+                  width="448"
+                  height="560"
+                  fit="cover"
                   format="webp"
                   quality="85"
                   loading="eager"
-                  preload
                   fetchpriority="high"
-                  sizes="sm:400px md:500px lg:600px xl:800px"
+                  densities="x1"
+                  sizes="224px sm:256px lg:392px xl:448px"
                   class="surface-card__image surface-card__image--zoom w-full h-full object-cover grayscale brightness-90 scale-105"
                 />
 

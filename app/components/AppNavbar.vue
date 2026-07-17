@@ -1,6 +1,6 @@
 ﻿<template>
   <nav
-    class="site-nav fixed left-0 right-0 z-100"
+    class="site-nav fixed left-0 right-0 z-130"
     :style="{ top: 'var(--availability-banner-h, 0px)', '--nav-progress': navProgress }"
   >
     <div
@@ -109,12 +109,17 @@
 
           <!-- Color Picker -->
           <ClientOnly>
-            <div class="relative">
+            <div ref="themeSelectorRef" class="relative">
               <button
+                ref="themeTriggerRef"
                 type="button"
-                class="w-[42px] h-[42px] sm:w-[46px] sm:h-[46px] flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
-                aria-label="Customize Theme"
-                @click="showThemeSelector = !showThemeSelector"
+                class="w-[42px] h-[42px] sm:w-[46px] sm:h-[46px] flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                :aria-label="$t('nav.themePresets')"
+                :aria-expanded="showThemeSelector"
+                aria-haspopup="listbox"
+                aria-controls="theme-preset-listbox"
+                @click="toggleThemeSelector"
+                @keydown="onThemeTriggerKeydown"
               >
                 <Icon
                   name="solar:crown-star-bold"
@@ -122,22 +127,25 @@
                 />
               </button>
               <!-- Theme Preset Selector Popover -->
-              <Motion
-                v-if="showThemeSelector"
-                :initial="
-                  motionInitial({ opacity: 0, scale: 0.9, y: 10 }, { opacity: 1, scale: 1, y: 0 })
-                "
-                :animate="motionAnimate({ opacity: 1, scale: 1, y: 0 })"
-                :transition="{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }"
+              <Transition
+                enter-active-class="transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                enter-from-class="opacity-0 scale-95 translate-y-2"
+                enter-to-class="opacity-100 scale-100 translate-y-0"
+                leave-active-class="transition duration-200 ease-in"
+                leave-from-class="opacity-100 scale-100 translate-y-0"
+                leave-to-class="opacity-0 scale-95 translate-y-2"
+                @after-leave="onThemeMenuAfterLeave"
               >
                 <div
-                  class="absolute top-full right-0 mt-2 sm:mt-3 w-64 sm:w-72 lg:w-80 rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-4xl z-100 border border-foreground/10 bg-background"
+                  v-if="showThemeSelector"
+                  class="absolute top-full right-0 mt-2 sm:mt-3 w-64 sm:w-72 lg:w-80 rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-4xl z-100 border border-foreground/10 bg-background origin-top-right"
                 >
                   <div class="space-y-3 sm:space-y-4">
                     <div
                       class="flex items-center justify-between border-b border-foreground/5 pb-2 sm:pb-3"
                     >
                       <h3
+                        id="theme-preset-heading"
                         class="text-xs sm:text-sm font-black uppercase tracking-widest text-foreground"
                       >
                         {{ $t('nav.themePresets') }}
@@ -149,19 +157,33 @@
                     </div>
 
                     <div
-                      class="grid grid-cols-1 gap-1 sm:gap-1.5 max-h-56 sm:max-h-64 overflow-y-auto pr-1 custom-scrollbar"
+                      id="theme-preset-listbox"
+                      ref="themeListboxRef"
+                      role="listbox"
+                      tabindex="-1"
+                      aria-labelledby="theme-preset-heading"
+                      class="grid grid-cols-1 gap-1 sm:gap-1.5 max-h-56 sm:max-h-64 overflow-y-auto pr-1 custom-scrollbar focus:outline-none"
+                      @keydown="onThemeListKeydown"
                     >
                       <button
-                        v-for="preset in THEME_PRESETS"
+                        v-for="(preset, index) in THEME_PRESETS"
+                        :id="`theme-option-${preset.id}`"
                         :key="preset.id"
                         type="button"
-                        class="flex w-full items-center justify-between p-2 sm:p-2.5 rounded-xl sm:rounded-2xl transition-all duration-300 group/item border"
+                        role="option"
+                        :aria-selected="currentThemeId === preset.id"
+                        :tabindex="focusedThemeIndex === index ? 0 : -1"
+                        class="flex w-full items-center justify-between p-2 sm:p-2.5 rounded-xl sm:rounded-2xl transition-all duration-300 group/item border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
                         :class="[
                           currentThemeId === preset.id
                             ? 'bg-primary/10 border-primary/20 scale-[1.02]'
                             : 'bg-foreground/3 border-transparent hover:bg-foreground/5',
+                          focusedThemeIndex === index && currentThemeId !== preset.id
+                            ? 'bg-foreground/5'
+                            : '',
                         ]"
-                        @click="setThemePreset(preset.id)"
+                        @click="selectTheme(preset.id)"
+                        @focus="focusedThemeIndex = index"
                       >
                         <span class="flex items-center gap-2 sm:gap-3 min-w-0 text-left">
                           <span
@@ -205,7 +227,7 @@
                     </div>
                   </div>
                 </div>
-              </Motion>
+              </Transition>
             </div>
           </ClientOnly>
 
@@ -252,54 +274,59 @@
     >
       <div
         v-if="isMobileMenuOpen"
-        class="fixed inset-2 sm:inset-4 md:inset-6 z-90 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] flex flex-col items-center justify-center overflow-hidden border border-foreground/10 shadow-4xl lg:hidden"
+        class="fixed inset-2 sm:inset-4 md:inset-6 z-140 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] overflow-y-auto border border-foreground/10 shadow-4xl lg:hidden overscroll-contain"
+        role="dialog"
+        aria-modal="true"
       >
         <button
-          class="absolute top-3 sm:top-4 md:top-6 right-3 sm:right-4 md:right-6 p-2 sm:p-3 text-muted hover:text-foreground"
+          type="button"
+          class="sticky top-3 sm:top-4 ml-auto mr-3 sm:mr-4 mt-3 sm:mt-4 z-10 flex size-11 sm:size-12 items-center justify-center rounded-full border border-foreground/10 bg-background/80 text-muted shadow-2xl backdrop-blur-xl transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+          aria-label="Close menu"
           @click="isMobileMenuOpen = false"
         >
-          <Icon
-            name="solar:close-circle-linear"
-            class="w-[58px] h-[58px] sm:w-[66px] sm:h-[66px] md:w-[74px] md:h-[74px]"
-          />
+          <Icon name="lucide:x" class="size-5 sm:size-6" />
         </button>
 
-        <nav class="space-y-3 sm:space-y-4 md:space-y-6 text-center px-4">
-          <a
-            v-for="link in navLinks"
-            :key="link.id"
-            :href="link.href"
-            class="block text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tighter text-foreground hover:text-primary transition-colors cursor-pointer"
-            @click="scrollToSection($event, link.href)"
-          >
-            {{ $t(link.name) }}
-          </a>
-        </nav>
-        <div class="mt-6 sm:mt-8 md:mt-12 flex flex-col items-center gap-3 sm:gap-4">
-          <a
-            href="#contact"
-            class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-foreground text-background rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform text-xs sm:text-sm md:text-base"
-            @click="scrollToSection($event, '#contact')"
-          >
-            {{ $t('nav.getInTouch') }}
-            <Icon
-              name="solar:arrow-right-up-bold"
-              class="w-[38px] h-[38px] sm:w-[46px] sm:h-[46px] md:w-[54px] md:h-[54px]"
-            />
-          </a>
-          <a
-            :href="cvHref"
-            :download="cvFileName"
-            class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 border border-foreground/20 text-foreground rounded-full font-black uppercase tracking-widest hover:scale-105 hover:border-primary/40 hover:text-primary transition-all text-xs sm:text-sm md:text-base"
-            :aria-label="$t('hero.downloadCvAria', { file: cvFileName })"
-            @click="isMobileMenuOpen = false"
-          >
-            <Icon
-              name="solar:download-minimalistic-bold-duotone"
-              class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
-            />
-            {{ $t('hero.downloadCv') }}
-          </a>
+        <div
+          class="flex min-h-[calc(100%-4.75rem)] flex-col items-center justify-center px-4 py-8 sm:py-10"
+        >
+          <nav class="space-y-3 sm:space-y-4 md:space-y-6 text-center">
+            <a
+              v-for="link in navLinks"
+              :key="link.id"
+              :href="link.href"
+              class="block text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tighter text-foreground hover:text-primary transition-colors cursor-pointer"
+              @click="scrollToSection($event, link.href)"
+            >
+              {{ $t(link.name) }}
+            </a>
+          </nav>
+          <div class="mt-6 sm:mt-8 md:mt-12 flex flex-col items-center gap-3 sm:gap-4">
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 bg-foreground text-background rounded-full font-black uppercase tracking-widest hover:scale-105 transition-transform text-xs sm:text-sm md:text-base"
+              @click="scrollToSection($event, '#contact')"
+            >
+              {{ $t('nav.getInTouch') }}
+              <Icon
+                name="solar:arrow-right-up-bold"
+                class="w-[38px] h-[38px] sm:w-[46px] sm:h-[46px] md:w-[54px] md:h-[54px]"
+              />
+            </a>
+            <a
+              :href="cvHref"
+              :download="cvFileName"
+              class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 border border-foreground/20 text-foreground rounded-full font-black uppercase tracking-widest hover:scale-105 hover:border-primary/40 hover:text-primary transition-all text-xs sm:text-sm md:text-base"
+              :aria-label="$t('hero.downloadCvAria', { file: cvFileName })"
+              @click="isMobileMenuOpen = false"
+            >
+              <Icon
+                name="solar:download-minimalistic-bold-duotone"
+                class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
+              />
+              {{ $t('hero.downloadCv') }}
+            </a>
+          </div>
         </div>
       </div>
     </Transition>
@@ -308,7 +335,8 @@
 
 <script setup>
 import { Motion } from 'motion-v';
-import { ref } from 'vue';
+import { nextTick, ref, watch } from 'vue';
+import { onClickOutside, useEventListener } from '@vueuse/core';
 import AppLanguageSwitcher from '~/components/AppLanguageSwitcher.vue';
 import { useTheme } from '~/composables/useTheme';
 
@@ -325,9 +353,190 @@ const navProgress = progress(120);
 const { href: cvHref, fileName: cvFileName } = useCvDownload();
 
 const isMobileMenuOpen = ref(false);
-const { currentThemeId, THEME_PRESETS, setThemePreset } = useTheme();
+useBodyScrollLock(isMobileMenuOpen);
+const { currentThemeId, THEME_PRESETS, setThemePreset, previewTheme, cancelThemePreview } =
+  useTheme();
 
 const showThemeSelector = ref(false);
+const themeSelectorRef = ref(null);
+const themeTriggerRef = ref(null);
+const themeListboxRef = ref(null);
+const focusedThemeIndex = ref(0);
+const restoreThemeTriggerFocus = ref(false);
+/** True when keyboard focus has previewed a theme that isn't the persisted selection. */
+const isThemePreviewActive = ref(false);
+
+function currentThemeIndex() {
+  const idx = THEME_PRESETS.findIndex((p) => p.id === currentThemeId.value);
+  return idx >= 0 ? idx : 0;
+}
+
+function closeThemeSelector({ restoreFocus = true, revertPreview = true } = {}) {
+  if (!showThemeSelector.value) return;
+  if (revertPreview && isThemePreviewActive.value) {
+    cancelThemePreview();
+    isThemePreviewActive.value = false;
+  }
+  restoreThemeTriggerFocus.value = restoreFocus;
+  showThemeSelector.value = false;
+}
+
+function onThemeMenuAfterLeave() {
+  if (restoreThemeTriggerFocus.value) {
+    themeTriggerRef.value?.focus();
+    restoreThemeTriggerFocus.value = false;
+  }
+}
+
+function openThemeSelector() {
+  isThemePreviewActive.value = false;
+  focusedThemeIndex.value = currentThemeIndex();
+  showThemeSelector.value = true;
+  scrollFocusedThemeIntoView({ focus: true });
+}
+
+function toggleThemeSelector() {
+  if (showThemeSelector.value) {
+    closeThemeSelector();
+  } else {
+    openThemeSelector();
+  }
+}
+
+/** Commit selection (click / Enter / Space). */
+function selectTheme(id) {
+  setThemePreset(id);
+  isThemePreviewActive.value = false;
+  focusedThemeIndex.value = THEME_PRESETS.findIndex((p) => p.id === id);
+  scrollFocusedThemeIntoView({ focus: false });
+}
+
+/** Live preview while moving focus with the keyboard — does not persist. */
+function previewFocusedTheme() {
+  const preset = THEME_PRESETS[focusedThemeIndex.value];
+  if (!preset) return;
+  previewTheme(preset.id);
+  isThemePreviewActive.value = preset.id !== currentThemeId.value;
+}
+
+/** Scroll the listbox so the focused/selected option is visible (not stuck at top). */
+function scrollFocusedThemeIntoView({ focus = false } = {}) {
+  const run = () => {
+    const listbox = themeListboxRef.value;
+    if (!listbox) return false;
+
+    const index = focusedThemeIndex.value;
+    const options = listbox.querySelectorAll('[role="option"]');
+    const option = options[index];
+    if (!option) return false;
+
+    const listRect = listbox.getBoundingClientRect();
+    const optionRect = option.getBoundingClientRect();
+    const offsetWithinList = optionRect.top - listRect.top + listbox.scrollTop;
+    listbox.scrollTop = Math.max(
+      0,
+      offsetWithinList - listbox.clientHeight / 2 + optionRect.height / 2,
+    );
+
+    if (focus) {
+      option.focus({ preventScroll: true });
+    }
+    return true;
+  };
+
+  nextTick(() => {
+    if (run()) return;
+    requestAnimationFrame(() => {
+      if (run()) return;
+      requestAnimationFrame(run);
+    });
+  });
+}
+
+function focusThemeOption(index, { preview = true } = {}) {
+  focusedThemeIndex.value = index;
+  scrollFocusedThemeIntoView({ focus: true });
+  if (preview) previewFocusedTheme();
+}
+
+function moveThemeFocus(delta) {
+  const count = THEME_PRESETS.length;
+  if (!count) return;
+  focusedThemeIndex.value = (focusedThemeIndex.value + delta + count) % count;
+  focusThemeOption(focusedThemeIndex.value, { preview: true });
+}
+
+function onThemeTriggerKeydown(event) {
+  if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+    if (!showThemeSelector.value) {
+      event.preventDefault();
+      openThemeSelector();
+    }
+  } else if (event.key === 'Escape' && showThemeSelector.value) {
+    event.preventDefault();
+    closeThemeSelector();
+  }
+}
+
+function onThemeListKeydown(event) {
+  switch (event.key) {
+    case 'ArrowDown':
+      event.preventDefault();
+      moveThemeFocus(1);
+      break;
+    case 'ArrowUp':
+      event.preventDefault();
+      moveThemeFocus(-1);
+      break;
+    case 'Home':
+      event.preventDefault();
+      focusThemeOption(0, { preview: true });
+      break;
+    case 'End':
+      event.preventDefault();
+      focusThemeOption(THEME_PRESETS.length - 1, { preview: true });
+      break;
+    case 'Enter':
+    case ' ': {
+      event.preventDefault();
+      const preset = THEME_PRESETS[focusedThemeIndex.value];
+      if (preset) selectTheme(preset.id);
+      break;
+    }
+    case 'Escape':
+      event.preventDefault();
+      closeThemeSelector();
+      break;
+    case 'Tab':
+      // Cancel preview and leave.
+      closeThemeSelector({ restoreFocus: false });
+      break;
+    default:
+      break;
+  }
+}
+
+onClickOutside(themeSelectorRef, () => {
+  closeThemeSelector({ restoreFocus: false });
+});
+
+useEventListener(
+  'keydown',
+  (event) => {
+    if (event.key === 'Escape' && showThemeSelector.value) {
+      closeThemeSelector();
+    }
+  },
+  { passive: true },
+);
+
+watch(showThemeSelector, (open) => {
+  if (open) {
+    isThemePreviewActive.value = false;
+    focusedThemeIndex.value = currentThemeIndex();
+    scrollFocusedThemeIntoView({ focus: true });
+  }
+});
 
 const navLinks = [
   { name: 'nav.home', href: '#hero', id: 'hero' },
@@ -342,15 +551,28 @@ const isActiveSection = (id) => props.activeSection === id;
 const scrollToSection = (e, href) => {
   e.preventDefault();
   const targetId = href.replace('#', '');
-  const element = document.getElementById(targetId);
-  if (element) {
-    const top = element.getBoundingClientRect().top + window.scrollY - 96;
-    window.scrollTo({
-      top,
-      behavior: 'smooth',
-    });
-  }
+
+  // Unlock body first — measuring while position:fixed yields wrong targets
+  // and unlock's restore would cancel an in-flight scrollTo.
   isMobileMenuOpen.value = false;
+
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      const element = document.getElementById(targetId);
+      if (!element) return;
+
+      // content-visibility: auto under-reports offscreen section heights, so
+      // scroll destinations land short until real layout is forced.
+      document.querySelectorAll('.portfolio-content > [id]').forEach((section) => {
+        if (section instanceof HTMLElement) {
+          section.style.contentVisibility = 'visible';
+        }
+      });
+
+      // Uses html scroll-padding-top for the fixed nav + availability banner.
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 };
 </script>
 
