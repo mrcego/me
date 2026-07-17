@@ -525,6 +525,13 @@
       "answer": "Use the {form}, connect on {linkedin}, or review his open-source work on {github}.",
       "linkForm": "contact form"
     },
+    "hire": {
+      "question": "How do I hire a senior Vue.js frontend developer?",
+      "answer": "You can hire Cesar Gomez for senior Vue.js and Nuxt contract work. Review his {portfolio}, the {vueProfile}, and contact him via the {form}, {linkedin}, or {github}.",
+      "linkPortfolio": "portfolio",
+      "linkVueProfile": "Vue developer profile",
+      "linkForm": "contact form"
+    },
     "items": [
       {
         "question": "Who is Cesar Gomez?",
@@ -543,6 +550,7 @@
         "answer": "He has led frontend architecture with Vue 3 and Nuxt in production, including micro-frontend ecosystems, shared libraries, Web Components, and performance-critical educational platforms."
       },
       {
+        "key": "hire",
         "question": "How do I hire a senior Vue.js frontend developer?",
         "answer": "You can hire Cesar Gomez for senior Vue.js and Nuxt contract work. Review his portfolio at cesargomez.dev, the Vue developer profile at cesargomez.dev/vue-frontend-developer, and contact him via the form, LinkedIn, or GitHub."
       },

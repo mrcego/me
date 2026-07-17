@@ -35,7 +35,7 @@
           </dt>
           <dd class="mt-3 text-base md:text-lg text-muted leading-relaxed text-pretty">
             <I18nT
-              v-if="isContactItem(item)"
+              v-if="item.key === 'contact'"
               keypath="faq.contact.answer"
               tag="span"
               scope="global"
@@ -43,6 +43,46 @@
               <template #form>
                 <NuxtLink :to="contactFormTo" :class="faqLinkClass">{{
                   $t('faq.contact.linkForm')
+                }}</NuxtLink>
+              </template>
+              <template #linkedin>
+                <a
+                  href="https://www.linkedin.com/in/mrcego"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :class="faqLinkClass"
+                  >LinkedIn</a
+                >
+              </template>
+              <template #github>
+                <a
+                  href="https://github.com/mrcego"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :class="faqLinkClass"
+                  >GitHub</a
+                >
+              </template>
+            </I18nT>
+            <I18nT
+              v-else-if="item.key === 'hire'"
+              keypath="faq.hire.answer"
+              tag="span"
+              scope="global"
+            >
+              <template #portfolio>
+                <NuxtLink :to="homeTo" :class="faqLinkClass">{{
+                  $t('faq.hire.linkPortfolio')
+                }}</NuxtLink>
+              </template>
+              <template #vueProfile>
+                <NuxtLink :to="vueProfileTo" :class="faqLinkClass">{{
+                  $t('faq.hire.linkVueProfile')
+                }}</NuxtLink>
+              </template>
+              <template #form>
+                <NuxtLink :to="contactFormTo" :class="faqLinkClass">{{
+                  $t('faq.hire.linkForm')
                 }}</NuxtLink>
               </template>
               <template #linkedin>
@@ -78,12 +118,9 @@ import { I18nT } from 'vue-i18n';
 
 const faqItems = useFaqItems();
 const localePath = useLocalePath();
-const { t } = useI18n();
 
-const contactQuestion = computed(() => t('faq.contact.question'));
-
-const isContactItem = (item: { question: string }) => item.question === contactQuestion.value;
-
+const homeTo = computed(() => localePath('/'));
+const vueProfileTo = computed(() => localePath('/vue-frontend-developer'));
 const contactFormTo = computed(() => ({
   path: localePath('/'),
   hash: '#contact',

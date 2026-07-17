@@ -66,7 +66,7 @@
     /* Align with DEFAULT_THEME_ID (github-dark) so SSR matches first client paint */
     --background: #0d1117;
     --foreground: #ffffff;
-    --muted: #b0bbc9;
+    --muted: #cbd5e1;
     --primary: #58a6ff;
     --primary-hover: #79b8ff;
     --primary-contrast: #000000;

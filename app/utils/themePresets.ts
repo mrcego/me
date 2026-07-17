@@ -17,7 +17,7 @@ export const THEME_STORAGE_KEY = 'theme-preset-id';
 export const DEFAULT_THEME_ID = 'github-dark';
 
 /** Secondary text — tuned for WCAG AA on dark/light surfaces. */
-export const MUTED_DARK = '#b0bbc9';
+export const MUTED_DARK = '#cbd5e1';
 export const MUTED_LIGHT = '#64748b';
 
 export const FONT_STACKS: Record<ThemeFont, string> = {

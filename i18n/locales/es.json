@@ -525,6 +525,13 @@
       "answer": "Usa el {form}, conéctate en {linkedin} o revisa su trabajo open source en {github}.",
       "linkForm": "formulario de contacto"
     },
+    "hire": {
+      "question": "¿Cómo contratar un desarrollador Vue.js senior?",
+      "answer": "Puedes contratar a César Gómez para trabajo senior en Vue.js y Nuxt por contrato. Revisa su {portfolio}, el {vueProfile}, y contáctalo por el {form}, {linkedin} o {github}.",
+      "linkPortfolio": "portafolio",
+      "linkVueProfile": "perfil de desarrollador Vue",
+      "linkForm": "formulario de contacto"
+    },
     "items": [
       {
         "question": "¿Quién es César Gómez?",
@@ -543,6 +550,7 @@
         "answer": "Ha liderado arquitectura frontend con Vue 3 y Nuxt en producción, incluyendo ecosistemas micro-frontend, librerías compartidas, Web Components y plataformas educativas críticas en rendimiento."
       },
       {
+        "key": "hire",
         "question": "¿Cómo contratar un desarrollador Vue.js senior?",
         "answer": "Puedes contratar a César Gómez para trabajo senior en Vue.js y Nuxt por contrato. Revisa su portafolio en cesargomez.dev, el perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue, y contáctalo por el formulario, LinkedIn o GitHub."
       },
