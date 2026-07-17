@@ -7,6 +7,7 @@
     <LazyCapabilitiesSection :hydrate-on-visible="{ rootMargin: '200px' }" />
     <!-- <ProjectsSection /> -->
     <LazyTestimonialsSection :hydrate-on-visible="{ rootMargin: '200px' }" />
+    <LazyHireProfilesSection :hydrate-on-visible="{ rootMargin: '200px' }" />
     <LazyContactSection :hydrate-on-visible="{ rootMargin: '200px' }" />
     <LazySeoFaqSection :hydrate-on-visible="{ rootMargin: '200px' }" />
     <LazyAppFooter :hydrate-on-visible="{ rootMargin: '200px' }" />

@@ -233,6 +233,68 @@
 
           <div class="w-px h-3 sm:h-4 bg-foreground/10 mx-0.5 hidden lg:block" />
 
+          <div ref="hireMenuRef" class="relative hidden lg:block shrink-0">
+            <button
+              type="button"
+              class="hire-menu-trigger inline-flex items-center gap-1.5 px-3.5 xl:px-4 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-black uppercase tracking-widest text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              :class="{ 'hire-menu-trigger--open': showHireMenu }"
+              :aria-label="$t('nav.hireMenu')"
+              :aria-expanded="showHireMenu"
+              aria-haspopup="menu"
+              aria-controls="hire-profile-menu"
+              @click="toggleHireMenu"
+            >
+              <span class="relative z-10">{{ $t('nav.hire') }}</span>
+              <Icon
+                name="lucide:chevron-down"
+                class="relative z-10 size-3.5 transition-transform duration-300"
+                :class="{ 'rotate-180': showHireMenu }"
+              />
+            </button>
+            <Transition
+              enter-active-class="transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+              enter-from-class="opacity-0 scale-95 translate-y-2"
+              enter-to-class="opacity-100 scale-100 translate-y-0"
+              leave-active-class="transition duration-200 ease-in"
+              leave-from-class="opacity-100 scale-100 translate-y-0"
+              leave-to-class="opacity-0 scale-95 translate-y-2"
+            >
+              <div
+                v-if="showHireMenu"
+                id="hire-profile-menu"
+                role="menu"
+                class="absolute top-full right-0 mt-2 sm:mt-3 w-64 rounded-2xl p-2 shadow-4xl z-100 border border-foreground/10 bg-background origin-top-right"
+              >
+                <p
+                  class="px-3 pt-2 pb-1 text-[10px] font-black uppercase tracking-[0.2em] text-muted"
+                >
+                  {{ $t('nav.hireMenu') }}
+                </p>
+                <NuxtLink
+                  v-for="profile in hireProfileLinks"
+                  :key="profile.to"
+                  :to="localePath(profile.to)"
+                  role="menuitem"
+                  class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-foreground hover:bg-foreground/5 hover:text-primary transition-colors"
+                  @click="showHireMenu = false"
+                >
+                  <Icon :name="profile.icon" class="size-5 shrink-0 text-primary" />
+                  <span>{{ $t(profile.name) }}</span>
+                </NuxtLink>
+                <div class="my-1 border-t border-foreground/5" />
+                <a
+                  href="#hire-profiles"
+                  role="menuitem"
+                  class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-black uppercase tracking-widest text-muted hover:text-foreground hover:bg-foreground/5 transition-colors"
+                  @click="goToHireSection($event)"
+                >
+                  <Icon name="solar:widget-2-bold-duotone" class="size-5 shrink-0" />
+                  <span>{{ $t('nav.hireSection') }}</span>
+                </a>
+              </div>
+            </Transition>
+          </div>
+
           <!-- CTA Button -->
           <a
             href="#contact"
@@ -301,6 +363,31 @@
               {{ $t(link.name) }}
             </a>
           </nav>
+          <div class="mt-6 sm:mt-8 space-y-3 sm:space-y-4 text-center">
+            <p class="text-xs font-black uppercase tracking-[0.3em] text-muted">
+              {{ $t('nav.hireMenu') }}
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <NuxtLink
+                v-for="profile in hireProfileLinks"
+                :key="profile.to"
+                :to="localePath(profile.to)"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-foreground/15 text-xs sm:text-sm font-black uppercase tracking-widest text-muted hover:text-primary hover:border-primary/40 transition-colors"
+                @click="isMobileMenuOpen = false"
+              >
+                <Icon :name="profile.icon" class="size-4" />
+                {{ $t(profile.name) }}
+              </NuxtLink>
+            </div>
+            <a
+              href="#hire-profiles"
+              class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors"
+              @click="goToHireSection($event)"
+            >
+              {{ $t('nav.hireSection') }}
+              <Icon name="solar:arrow-right-linear" class="size-4" />
+            </a>
+          </div>
           <div class="mt-6 sm:mt-8 md:mt-12 flex flex-col items-center gap-3 sm:gap-4">
             <a
               href="#contact"
@@ -351,11 +438,33 @@ const { motionInitial, motionAnimate } = useMotionConfig();
 const { progress } = useSmoothedScroll(0.14);
 const navProgress = progress(120);
 const { href: cvHref, fileName: cvFileName } = useCvDownload();
+const localePath = useLocalePath();
+
+const hireProfileLinks = [
+  {
+    name: 'hireProfiles.hireForVue',
+    to: '/vue-frontend-developer',
+    icon: 'logos:vue',
+  },
+  {
+    name: 'hireProfiles.hireForNode',
+    to: '/nodejs-backend-developer',
+    icon: 'logos:nodejs-icon',
+  },
+  {
+    name: 'hireProfiles.hireForAi',
+    to: '/ai-engineer',
+    icon: 'solar:cpu-bolt-bold-duotone',
+  },
+];
 
 const isMobileMenuOpen = ref(false);
 useBodyScrollLock(isMobileMenuOpen);
 const { currentThemeId, THEME_PRESETS, setThemePreset, previewTheme, cancelThemePreview } =
   useTheme();
+
+const showHireMenu = ref(false);
+const hireMenuRef = ref(null);
 
 const showThemeSelector = ref(false);
 const themeSelectorRef = ref(null);
@@ -389,6 +498,7 @@ function onThemeMenuAfterLeave() {
 }
 
 function openThemeSelector() {
+  showHireMenu.value = false;
   isThemePreviewActive.value = false;
   focusedThemeIndex.value = currentThemeIndex();
   showThemeSelector.value = true;
@@ -401,6 +511,32 @@ function toggleThemeSelector() {
   } else {
     openThemeSelector();
   }
+}
+
+function toggleHireMenu() {
+  if (showHireMenu.value) {
+    showHireMenu.value = false;
+    return;
+  }
+  closeThemeSelector({ restoreFocus: false });
+  showHireMenu.value = true;
+}
+
+const route = useRoute();
+const router = useRouter();
+
+async function goToHireSection(event) {
+  event.preventDefault();
+  showHireMenu.value = false;
+  isMobileMenuOpen.value = false;
+
+  const homePath = localePath('/');
+  if (route.path === homePath) {
+    scrollToSection(event, '#hire-profiles');
+    return;
+  }
+
+  await router.push({ path: homePath, hash: '#hire-profiles' });
 }
 
 /** Commit selection (click / Enter / Space). */
@@ -520,11 +656,19 @@ onClickOutside(themeSelectorRef, () => {
   closeThemeSelector({ restoreFocus: false });
 });
 
+onClickOutside(hireMenuRef, () => {
+  showHireMenu.value = false;
+});
+
 useEventListener(
   'keydown',
   (event) => {
-    if (event.key === 'Escape' && showThemeSelector.value) {
+    if (event.key !== 'Escape') return;
+    if (showThemeSelector.value) {
       closeThemeSelector();
+    }
+    if (showHireMenu.value) {
+      showHireMenu.value = false;
     }
   },
   { passive: true },
@@ -633,5 +777,108 @@ const scrollToSection = (e, href) => {
 }
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(var(--primary-rgb, 255, 75, 92), 0.4);
+}
+
+@property --hire-border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.hire-menu-trigger {
+  --hire-border-angle: 0deg;
+  position: relative;
+  isolation: isolate;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(
+        color-mix(in srgb, var(--secondary) 88%, var(--background)),
+        color-mix(in srgb, var(--secondary) 88%, var(--background))
+      )
+      padding-box,
+    conic-gradient(
+        from var(--hire-border-angle),
+        transparent 0%,
+        transparent 28%,
+        color-mix(in srgb, var(--primary) 55%, transparent) 38%,
+        var(--primary) 50%,
+        color-mix(in srgb, var(--primary) 55%, transparent) 62%,
+        transparent 72%,
+        transparent 100%
+      )
+      border-box;
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--primary) 12%, transparent),
+    0 0 18px color-mix(in srgb, var(--primary) 22%, transparent);
+  animation: hire-border-spin 2.2s linear infinite;
+  transition:
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.hire-menu-trigger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  transition: background-color 0.25s ease;
+}
+
+.hire-menu-trigger:hover,
+.hire-menu-trigger--open {
+  color: var(--primary);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--primary) 28%, transparent),
+    0 0 26px color-mix(in srgb, var(--primary) 38%, transparent);
+  background:
+    linear-gradient(
+        color-mix(in srgb, var(--secondary) 88%, var(--background)),
+        color-mix(in srgb, var(--secondary) 88%, var(--background))
+      )
+      padding-box,
+    conic-gradient(
+        from var(--hire-border-angle),
+        transparent 0%,
+        transparent 18%,
+        color-mix(in srgb, var(--primary) 75%, transparent) 32%,
+        var(--primary) 50%,
+        color-mix(in srgb, var(--primary) 75%, transparent) 68%,
+        transparent 82%,
+        transparent 100%
+      )
+      border-box;
+}
+
+.hire-menu-trigger:hover::before,
+.hire-menu-trigger--open::before {
+  background: color-mix(in srgb, var(--primary) 16%, transparent);
+}
+
+.hire-menu-trigger:active {
+  transform: scale(0.97);
+}
+
+@keyframes hire-border-spin {
+  to {
+    --hire-border-angle: 360deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hire-menu-trigger {
+    animation: none;
+    border-color: color-mix(in srgb, var(--primary) 55%, transparent);
+    background: color-mix(in srgb, var(--primary) 10%, transparent);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--primary) 20%, transparent);
+  }
+
+  .hire-menu-trigger:hover,
+  .hire-menu-trigger--open {
+    border-color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 16%, transparent);
+  }
 }
 </style>

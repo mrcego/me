@@ -80,6 +80,16 @@
                   $t('faq.hire.linkVueProfile')
                 }}</NuxtLink>
               </template>
+              <template #aiProfile>
+                <NuxtLink :to="aiProfileTo" :class="faqLinkClass">{{
+                  $t('faq.hire.linkAiProfile')
+                }}</NuxtLink>
+              </template>
+              <template #nodeProfile>
+                <NuxtLink :to="nodeProfileTo" :class="faqLinkClass">{{
+                  $t('faq.hire.linkNodeProfile')
+                }}</NuxtLink>
+              </template>
               <template #form>
                 <NuxtLink :to="contactFormTo" :class="faqLinkClass">{{
                   $t('faq.hire.linkForm')
@@ -121,6 +131,8 @@ const localePath = useLocalePath();
 
 const homeTo = computed(() => localePath('/'));
 const vueProfileTo = computed(() => localePath('/vue-frontend-developer'));
+const aiProfileTo = computed(() => localePath('/ai-engineer'));
+const nodeProfileTo = computed(() => localePath('/nodejs-backend-developer'));
 const contactFormTo = computed(() => ({
   path: localePath('/'),
   hash: '#contact',

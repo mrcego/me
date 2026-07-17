@@ -19,7 +19,16 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/es', '/vue-frontend-developer', '/es/desarrollador-vue'],
+      routes: [
+        '/',
+        '/es',
+        '/vue-frontend-developer',
+        '/es/desarrollador-vue',
+        '/ai-engineer',
+        '/es/ingeniero-ia',
+        '/nodejs-backend-developer',
+        '/es/desarrollador-backend-nodejs',
+      ],
     },
     compressPublicAssets: true,
   },
@@ -114,7 +123,16 @@ export default defineNuxtConfig({
   sitemap: {
     strictNuxtContentPaths: true,
     xsl: false,
-    urls: ['/', '/es', '/vue-frontend-developer', '/es/desarrollador-vue'],
+    urls: [
+      '/',
+      '/es',
+      '/vue-frontend-developer',
+      '/es/desarrollador-vue',
+      '/ai-engineer',
+      '/es/ingeniero-ia',
+      '/nodejs-backend-developer',
+      '/es/desarrollador-backend-nodejs',
+    ],
   },
 
   image: {

@@ -1,7 +1,3 @@
-<template>
-  <VueDeveloperLandingPage />
-</template>
-
 <script setup lang="ts">
 defineI18nRoute({
   paths: {
@@ -12,3 +8,7 @@ defineI18nRoute({
 
 useVueDeveloperLandingSeo();
 </script>
+
+<template>
+  <ExpertiseLandingPage translation-key="landingVue" />
+</template>

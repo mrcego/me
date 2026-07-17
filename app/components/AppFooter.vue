@@ -41,14 +41,27 @@
 
         <!-- Navigation Columns -->
         <div class="flex flex-wrap gap-12 md:gap-24">
-          <div v-for="col in footerLinks" :key="col.title" class="space-y-6">
+          <div v-for="col in footerColumns" :key="col.title" class="space-y-6">
             <h3 class="type-eyebrow tracking-[0.4em] flex items-center gap-2">
               <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               {{ $t(col.title) }}
             </h3>
             <ul class="space-y-3">
               <li v-for="link in col.links" :key="link.name">
+                <NuxtLink
+                  v-if="link.to"
+                  :to="localePath(link.to)"
+                  class="text-xs md:text-sm font-medium text-muted hover:text-foreground transition-all hover:translate-x-2 inline-flex items-center gap-2 group/link"
+                >
+                  <span
+                    class="w-0 overflow-hidden group-hover/link:w-3 transition-all duration-300 opacity-0 group-hover/link:opacity-100 text-primary"
+                  >
+                    <Icon name="solar:arrow-right-linear" class="w-[34px] h-[34px]" />
+                  </span>
+                  {{ $t(link.name) }}
+                </NuxtLink>
                 <a
+                  v-else
                   :href="link.href"
                   class="text-xs md:text-sm font-medium text-muted hover:text-foreground transition-all hover:translate-x-2 inline-flex items-center gap-2 group/link"
                 >
@@ -97,8 +110,18 @@
   </footer>
 </template>
 
-<script setup>
-const footerLinks = [
+<script setup lang="ts">
+const localePath = useLocalePath();
+
+type FooterLink =
+  { name: string; href: string; to?: never } | { name: string; to: string; href?: never };
+
+type FooterColumn = {
+  title: string;
+  links: FooterLink[];
+};
+
+const footerColumns: FooterColumn[] = [
   {
     title: 'col.nav',
     links: [
@@ -106,6 +129,14 @@ const footerLinks = [
       { name: 'about.philosophy', href: '#about' },
       { name: 'nav.certifications', href: '#certifications' },
       { name: 'capabilities.section', href: '#capabilities' },
+    ],
+  },
+  {
+    title: 'col.hire',
+    links: [
+      { name: 'hireProfiles.hireForVue', to: '/vue-frontend-developer' },
+      { name: 'hireProfiles.hireForAi', to: '/ai-engineer' },
+      { name: 'hireProfiles.hireForNode', to: '/nodejs-backend-developer' },
     ],
   },
   {

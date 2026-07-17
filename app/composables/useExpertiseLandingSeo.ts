@@ -1,0 +1,143 @@
+const SITE_URL = 'https://cesargomez.dev';
+
+interface ExpertiseLandingSeoOptions {
+  translationKey: 'landingVue' | 'landingAi' | 'landingNode';
+  paths: {
+    en: string;
+    es: string;
+  };
+  knowsAbout: string[];
+}
+
+export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
+  const { t, tm, rt, locale } = useI18n();
+  const route = useRoute();
+  const { public: publicConfig } = useRuntimeConfig();
+
+  const copyKey = (key: string) => `${options.translationKey}.${key}`;
+  const canonicalUrl = computed(() => `${SITE_URL}${route.path}`);
+  const ogImage = `${SITE_URL}/img/og-image.png`;
+  const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
+
+  const faqItems = computed(() => {
+    const data = tm(copyKey('faq')) as Array<{ question: unknown; answer: unknown }> | unknown;
+    if (!Array.isArray(data)) return [];
+    return data.map((item) => ({
+      question: rt(item.question),
+      answer: rt(item.answer),
+    }));
+  });
+
+  useSeoMeta({
+    title: () => t(copyKey('meta.title')),
+    description: () => t(copyKey('meta.description')),
+    keywords: () => t(copyKey('meta.keywords')),
+    author: 'César Gómez',
+    robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    fbAppId: () => String(publicConfig.facebookAppId || ''),
+    ogType: 'website',
+    ogTitle: () => t(copyKey('meta.title')),
+    ogDescription: () => t(copyKey('meta.description')),
+    ogImage,
+    ogImageType: 'image/png',
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
+    ogImageAlt: () => `${personName.value} — ${t(copyKey('meta.title'))}`,
+    ogUrl: () => canonicalUrl.value,
+    ogSiteName: 'César Gómez Portfolio',
+    ogLocale: () => (locale.value === 'es' ? 'es_ES' : 'en_US'),
+    twitterCard: 'summary_large_image',
+    twitterTitle: () => t(copyKey('meta.title')),
+    twitterDescription: () => t(copyKey('meta.description')),
+    twitterImage: ogImage,
+    twitterImageAlt: () => `${personName.value} — ${t(copyKey('meta.title'))}`,
+    twitterSite: '@codingwithcego',
+    twitterCreator: '@codingwithcego',
+  });
+
+  useHead(() => ({
+    htmlAttrs: {
+      lang: locale.value === 'es' ? 'es-ES' : 'en-US',
+    },
+    link: [
+      { rel: 'canonical', href: canonicalUrl.value },
+      { rel: 'alternate', hreflang: 'en', href: `${SITE_URL}${options.paths.en}` },
+      { rel: 'alternate', hreflang: 'es', href: `${SITE_URL}/es${options.paths.es}` },
+      { rel: 'alternate', hreflang: 'x-default', href: `${SITE_URL}${options.paths.en}` },
+    ],
+    script: [
+      {
+        type: 'application/ld+json',
+        key: `${options.translationKey}-webpage`,
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          '@id': `${canonicalUrl.value}#webpage`,
+          url: canonicalUrl.value,
+          name: t(copyKey('meta.title')),
+          description: t(copyKey('meta.description')),
+          inLanguage: locale.value === 'es' ? 'es-ES' : 'en-US',
+          isPartOf: { '@id': `${SITE_URL}/#website` },
+          about: { '@id': `${SITE_URL}/#person` },
+          primaryImageOfPage: ogImage,
+        }),
+      },
+      {
+        type: 'application/ld+json',
+        key: `${options.translationKey}-breadcrumb`,
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: t('seo.siteName'),
+              item: locale.value === 'es' ? `${SITE_URL}/es` : `${SITE_URL}/`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: t(copyKey('meta.title')),
+              item: canonicalUrl.value,
+            },
+          ],
+        }),
+      },
+      {
+        type: 'application/ld+json',
+        key: `${options.translationKey}-faq`,
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqItems.value.map((item) => ({
+            '@type': 'Question',
+            name: item.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: item.answer,
+            },
+          })),
+        }),
+      },
+      {
+        type: 'application/ld+json',
+        key: `${options.translationKey}-person`,
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          '@id': `${SITE_URL}/#person`,
+          name: personName.value,
+          jobTitle: t('seo.jobTitle'),
+          url: canonicalUrl.value,
+          sameAs: [
+            'https://www.linkedin.com/in/mrcego',
+            'https://github.com/mrcego',
+            `${SITE_URL}/`,
+          ],
+          knowsAbout: options.knowsAbout,
+        }),
+      },
+    ],
+  }));
+};

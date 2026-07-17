@@ -423,11 +423,15 @@ const aboutPoints: PhilosophyPoint[] = [
     label: 'about.expertise',
     descKey: 'techStack.levels.architect',
     icons: ['logos:vue', 'logos:nuxt-icon'],
+    to: '/vue-frontend-developer',
+    linkLabelKey: 'hireProfiles.hireForVue',
   },
   {
     label: 'about.logic',
     descKey: 'techStack.levels.senior',
     icon: 'logos:nodejs-icon',
+    to: '/nodejs-backend-developer',
+    linkLabelKey: 'hireProfiles.hireForNode',
   },
   {
     label: 'about.userCentric',
@@ -438,6 +442,8 @@ const aboutPoints: PhilosophyPoint[] = [
     label: 'about.vibeCoding',
     descKey: 'about.vibeCodingDesc',
     icon: 'solar:magic-stick-3-bold-duotone',
+    to: '/ai-engineer',
+    linkLabelKey: 'hireProfiles.hireForAi',
   },
 ];
 </script>

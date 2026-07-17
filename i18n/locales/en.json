@@ -9,6 +9,9 @@
     "contact": "Contact",
     "testimonials": "Testimonials",
     "getInTouch": "Get in Touch",
+    "hire": "Hire",
+    "hireMenu": "Hiring profiles",
+    "hireSection": "All profiles",
     "switchLanguage": "Switch language",
     "switchLanguageLabel": "Switch language: {locale}",
     "themePresets": "Theme Presets",
@@ -527,9 +530,11 @@
     },
     "hire": {
       "question": "How do I hire a senior Vue.js frontend developer?",
-      "answer": "You can hire Cesar Gomez for senior Vue.js and Nuxt contract work. Review his {portfolio}, the {vueProfile}, and contact him via the {form}, {linkedin}, or {github}.",
+      "answer": "You can hire Cesar Gomez for senior Vue/Nuxt, AI, and Node.js contract work. Review his {portfolio}, {vueProfile}, {aiProfile}, and {nodeProfile}, then contact him via the {form}, {linkedin}, or {github}.",
       "linkPortfolio": "portfolio",
       "linkVueProfile": "Vue developer profile",
+      "linkAiProfile": "AI engineer profile",
+      "linkNodeProfile": "Node.js backend profile",
       "linkForm": "contact form"
     },
     "items": [
@@ -551,8 +556,8 @@
       },
       {
         "key": "hire",
-        "question": "How do I hire a senior Vue.js frontend developer?",
-        "answer": "You can hire Cesar Gomez for senior Vue.js and Nuxt contract work. Review his portfolio at cesargomez.dev, the Vue developer profile at cesargomez.dev/vue-frontend-developer, and contact him via the form, LinkedIn, or GitHub."
+        "question": "How do I hire Cesar Gomez for senior engineering work?",
+        "answer": "You can hire Cesar Gomez for senior Vue/Nuxt, AI, and Node.js contract work. Review his portfolio at cesargomez.dev, the Vue developer profile at cesargomez.dev/vue-frontend-developer, the AI engineer profile at cesargomez.dev/ai-engineer, the Node.js backend profile at cesargomez.dev/nodejs-backend-developer, and contact him via the form, LinkedIn, or GitHub."
       },
       {
         "question": "Is Cesar Gomez a good fit as a Vue frontend developer for remote teams?",
@@ -621,6 +626,102 @@
       }
     ]
   },
+  "landingAi": {
+    "meta": {
+      "title": "AI Engineer | NLP, LLM & Vue/Nuxt — Cesar Gomez",
+      "description": "Hire an AI engineer who integrates local and cloud AI/NLP models, builds conversational products, and turns agent-assisted Vue/Nuxt code into production systems.",
+      "keywords": "AI engineer, NLP engineer, LLM engineer, AI frontend engineer, AI-assisted development, conversational AI, local LLM, Vue AI developer, Nuxt AI engineer"
+    },
+    "eyebrow": "AI/NLP · Production Engineering",
+    "title": "AI Engineering ·",
+    "titleHighlight": "Vue/Nuxt",
+    "lead": "I'm Cesar Gomez — a senior fullstack engineer integrating AI/NLP models locally and in the cloud, building conversational products, and turning agent-assisted code into production-ready systems.",
+    "expertiseTitle": "What I deliver in AI engineering",
+    "expertise": [
+      "Local and cloud AI/NLP integrations for conversational product experiences",
+      "Agent-assisted delivery with human review, architecture ownership, and quality gates",
+      "Audits that harden AI-generated code for security, maintainability, and production",
+      "Vue/Nuxt interfaces with fullstack integration across models, APIs, and product workflows"
+    ],
+    "experienceTitle": "AI experience in real products",
+    "experienceBody": "As founding fullstack engineer at LingoQuesto, I shape an AI/NLP ed-tech product for oral language practice and integrate models locally and in the cloud. At Colegium's 2024 hackathon, my team placed 4th with an AI-powered helpdesk chatbot.",
+    "proofTitle": "Why teams bring me into AI projects",
+    "proof": [
+      "Production ownership across product vision, frontend architecture, APIs, and AI/NLP integration",
+      "Hands-on workflows with Cursor, Windsurf, Copilot, Claude Code, OpenCode, Ollama, and llama.cpp",
+      "Senior engineering judgment built over 13+ years shipping maintainable software",
+      "Available for senior contract roles from August 2026"
+    ],
+    "portfolioCta": "View full portfolio",
+    "contactCta": "Discuss an AI project",
+    "faqTitle": "AI engineer hiring FAQ",
+    "faq": [
+      {
+        "question": "What can you deliver as an AI engineer?",
+        "answer": "I connect AI/NLP capabilities to production products: model and API integration, conversational interfaces, Vue/Nuxt architecture, quality gates, and end-to-end delivery ownership."
+      },
+      {
+        "question": "Do you work with local and cloud AI models?",
+        "answer": "Yes. I integrate and operate cloud models as well as local runtimes such as Ollama and llama.cpp, choosing the approach around product needs, privacy, latency, and operating constraints."
+      },
+      {
+        "question": "Can you improve an AI-assisted or vibe-coded codebase?",
+        "answer": "Yes. I audit architecture, duplicated logic, security gaps, hallucinated APIs, regressions, and maintainability risks, then add the structure and quality gates needed for production."
+      },
+      {
+        "question": "When are you available for an AI engineering contract?",
+        "answer": "Target availability is August 2026. I'm already open to conversations, interviews, and early offers before that date."
+      }
+    ]
+  },
+  "landingNode": {
+    "meta": {
+      "title": "Node.js Backend Developer | Express & TypeScript — Cesar Gomez",
+      "description": "Hire a Node.js backend developer with 8+ years of Express in production. Typed APIs, fullstack delivery ownership, and Vue/Nuxt integration. Remote from Colombia.",
+      "keywords": "Node.js backend developer, Express.js developer, Node API developer, hire Node developer, TypeScript backend, REST API engineer, remote Node developer Colombia"
+    },
+    "eyebrow": "Node.js · Express APIs",
+    "title": "Backend Engineering",
+    "titleHighlight": "· Node/Express",
+    "lead": "I'm Cesar Gomez — a senior engineer building production Node.js APIs with Express and TypeScript, and connecting them to real product interfaces as a strong fullstack profile.",
+    "expertiseTitle": "What I deliver in Node backend work",
+    "expertise": [
+      "Node.js REST APIs with Express in production for eight years",
+      "TypeScript end-to-end from API contracts to frontend consumption",
+      "Backend foundations that stay maintainable under product pressure",
+      "Fullstack ownership when APIs, auth, and Vue/Nuxt delivery must move together"
+    ],
+    "experienceTitle": "Node & Express in production",
+    "experienceBody": "Eight years shipping Node.js APIs with Express in production environments — designing endpoints, hardening business logic, and owning the path from backend contracts to the interfaces teams ship.",
+    "proofTitle": "Why teams hire me for Node roles",
+    "proof": [
+      "A second strong profile alongside Vue/Nuxt — not a side skill, production backend ownership",
+      "Express + TypeScript APIs with clear contracts and fullstack integration",
+      "Senior judgment from 13+ years shipping maintainable software",
+      "Available for senior contract roles from August 2026"
+    ],
+    "portfolioCta": "View full portfolio",
+    "contactCta": "Discuss a Node project",
+    "faqTitle": "Node.js backend hiring FAQ",
+    "faq": [
+      {
+        "question": "What can you deliver as a Node.js backend developer?",
+        "answer": "I design and ship Express APIs, typed contracts, and production backend logic — and I stay effective when the work crosses into Vue/Nuxt integration and end-to-end delivery."
+      },
+      {
+        "question": "How much Express experience do you have?",
+        "answer": "Eight years of Express in production, building and maintaining Node.js APIs used by real products and teams."
+      },
+      {
+        "question": "Are you a pure backend specialist or fullstack?",
+        "answer": "Node/Express is a second strong profile. I can own backend work deeply while keeping fullstack strength for API-to-UI delivery when the role needs it."
+      },
+      {
+        "question": "When are you available for a Node.js backend contract?",
+        "answer": "Target availability is August 2026. I'm already open to conversations, interviews, and early offers before that date."
+      }
+    ]
+  },
   "footer": {
     "tagline": "Building high-fidelity products with frontend excellence",
     "rights": "All rights reserved.",
@@ -630,7 +731,24 @@
   },
   "col": {
     "nav": "Navigation",
-    "connect": "Connect"
+    "connect": "Connect",
+    "hire": "Hire"
+  },
+  "hireProfiles": {
+    "hireForVue": "Hire for Vue",
+    "hireForAi": "Hire for AI",
+    "hireForNode": "Hire for Node",
+    "section": "Engagement",
+    "title": "Hire me for",
+    "titleHighlight": "what you need.",
+    "lead": "Focused profiles for recruiters and product teams — Vue/Nuxt, AI/NLP engineering, or Node.js backend with Express.",
+    "vueBlurb": "Senior Vue.js and Nuxt architecture, design systems, and performance-focused frontend delivery.",
+    "aiBlurb": "AI/NLP integrations, conversational products, and turning agent-assisted code into production systems.",
+    "nodeBlurb": "Node.js APIs with Express in production, typed contracts, and fullstack delivery when the product needs end-to-end ownership.",
+    "viewProfile": "View profile",
+    "alsoAvailable": "Also available",
+    "crossLinkFromVue": "Also available: Hire for AI",
+    "crossLinkFromAi": "Also available: Hire for Vue"
   },
   "themes": {
     "dark-modern": "Dark Modern",

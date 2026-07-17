@@ -70,6 +70,15 @@
               >
                 {{ $t(`capabilities.items.${cap.key}.desc`) }}
               </p>
+              <NuxtLink
+                v-if="cap.to"
+                :to="localePath(cap.to)"
+                class="inline-flex items-center justify-center gap-2 pt-2 text-xs sm:text-sm font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors"
+                @click.stop
+              >
+                {{ $t(cap.linkLabelKey) }}
+                <Icon name="solar:arrow-right-linear" class="size-4" />
+              </NuxtLink>
             </div>
           </div>
 
@@ -85,16 +94,21 @@
 <script setup>
 import { Motion } from 'motion-v';
 
+const localePath = useLocalePath();
 const { motionInitial, motionInView } = useMotionConfig();
 
 const capabilities = [
   {
     key: 'frontend',
     icon: 'solar:rocket-bold-duotone',
+    to: '/vue-frontend-developer',
+    linkLabelKey: 'hireProfiles.hireForVue',
   },
   {
     key: 'fullstack',
     icon: 'solar:database-bold-duotone',
+    to: '/nodejs-backend-developer',
+    linkLabelKey: 'hireProfiles.hireForNode',
   },
   {
     key: 'devops',
@@ -103,6 +117,8 @@ const capabilities = [
   {
     key: 'vibeCoding',
     icon: 'solar:magic-stick-3-bold-duotone',
+    to: '/ai-engineer',
+    linkLabelKey: 'hireProfiles.hireForAi',
   },
 ];
 </script>

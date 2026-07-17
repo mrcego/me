@@ -9,6 +9,9 @@
     "contact": "Contacto",
     "testimonials": "Testimonios",
     "getInTouch": "Contáctame",
+    "hire": "Hire",
+    "hireMenu": "Perfiles de contratación",
+    "hireSection": "Todos los perfiles",
     "switchLanguage": "Cambiar idioma",
     "switchLanguageLabel": "Cambiar idioma: {locale}",
     "themePresets": "Temas IDE",
@@ -527,9 +530,11 @@
     },
     "hire": {
       "question": "¿Cómo contratar un desarrollador Vue.js senior?",
-      "answer": "Puedes contratar a César Gómez para trabajo senior en Vue.js y Nuxt por contrato. Revisa su {portfolio}, el {vueProfile}, y contáctalo por el {form}, {linkedin} o {github}.",
+      "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, IA y Node.js. Revisa su {portfolio}, {vueProfile}, {aiProfile} y {nodeProfile}; luego contáctalo por el {form}, {linkedin} o {github}.",
       "linkPortfolio": "portafolio",
       "linkVueProfile": "perfil de desarrollador Vue",
+      "linkAiProfile": "perfil de ingeniero de IA",
+      "linkNodeProfile": "perfil backend Node.js",
       "linkForm": "formulario de contacto"
     },
     "items": [
@@ -551,8 +556,8 @@
       },
       {
         "key": "hire",
-        "question": "¿Cómo contratar un desarrollador Vue.js senior?",
-        "answer": "Puedes contratar a César Gómez para trabajo senior en Vue.js y Nuxt por contrato. Revisa su portafolio en cesargomez.dev, el perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue, y contáctalo por el formulario, LinkedIn o GitHub."
+        "question": "¿Cómo contratar a César Gómez para trabajo de ingeniería senior?",
+        "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, IA y Node.js. Revisa su portafolio en cesargomez.dev, el perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue, el perfil de ingeniero de IA en cesargomez.dev/es/ingeniero-ia, el perfil backend Node.js en cesargomez.dev/es/desarrollador-backend-nodejs y contáctalo por el formulario, LinkedIn o GitHub."
       },
       {
         "question": "¿Es buen candidato como desarrollador frontend Vue para equipos remotos?",
@@ -621,6 +626,102 @@
       }
     ]
   },
+  "landingAi": {
+    "meta": {
+      "title": "Ingeniero de IA | NLP, LLM y Vue/Nuxt — César Gómez",
+      "description": "Contrata un ingeniero de IA que integra modelos AI/NLP locales y cloud, construye productos conversacionales y lleva código Vue/Nuxt asistido por agentes a producción.",
+      "keywords": "ingeniero de IA, ingeniero NLP, ingeniero LLM, desarrollador IA frontend, desarrollo asistido por IA, IA conversacional, LLM local, desarrollador Vue IA, ingeniero Nuxt IA"
+    },
+    "eyebrow": "AI/NLP · Ingeniería de producción",
+    "title": "Ingeniería de IA ·",
+    "titleHighlight": "Vue/Nuxt",
+    "lead": "Soy César Gómez — ingeniero fullstack senior que integra modelos AI/NLP de forma local y en la nube, construye productos conversacionales y convierte código asistido por agentes en sistemas listos para producción.",
+    "expertiseTitle": "Qué aporto en ingeniería de IA",
+    "expertise": [
+      "Integraciones AI/NLP locales y cloud para experiencias de producto conversacionales",
+      "Entrega asistida por agentes con revisión humana, ownership de arquitectura y controles de calidad",
+      "Auditorías que fortalecen código generado por IA en seguridad, mantenibilidad y producción",
+      "Interfaces Vue/Nuxt con integración fullstack entre modelos, APIs y flujos de producto"
+    ],
+    "experienceTitle": "Experiencia de IA en productos reales",
+    "experienceBody": "Como ingeniero fullstack fundador en LingoQuesto, defino un producto ed-tech AI/NLP para práctica oral e integro modelos localmente y en la nube. En el hackathon 2024 de Colegium, mi equipo obtuvo el 4.º lugar con un chatbot de soporte impulsado por IA.",
+    "proofTitle": "Por qué los equipos me incorporan a proyectos de IA",
+    "proof": [
+      "Ownership de producción entre visión de producto, arquitectura frontend, APIs e integración AI/NLP",
+      "Flujos prácticos con Cursor, Windsurf, Copilot, Claude Code, OpenCode, Ollama y llama.cpp",
+      "Criterio de ingeniería senior construido durante 13+ años entregando software mantenible",
+      "Disponible para roles senior por contrato desde agosto de 2026"
+    ],
+    "portfolioCta": "Ver portafolio completo",
+    "contactCta": "Hablemos de tu proyecto de IA",
+    "faqTitle": "FAQ contratación ingeniero de IA",
+    "faq": [
+      {
+        "question": "¿Qué puedes entregar como ingeniero de IA?",
+        "answer": "Conecto capacidades AI/NLP con productos en producción: integración de modelos y APIs, interfaces conversacionales, arquitectura Vue/Nuxt, controles de calidad y ownership de entrega de extremo a extremo."
+      },
+      {
+        "question": "¿Trabajas con modelos de IA locales y cloud?",
+        "answer": "Sí. Integro y opero modelos cloud y runtimes locales como Ollama y llama.cpp, eligiendo el enfoque según las necesidades de producto, privacidad, latencia y restricciones operativas."
+      },
+      {
+        "question": "¿Puedes mejorar una base de código asistida por IA o creada con vibe coding?",
+        "answer": "Sí. Audito arquitectura, lógica duplicada, brechas de seguridad, APIs alucinadas, regresiones y riesgos de mantenibilidad; luego añado la estructura y los controles necesarios para producción."
+      },
+      {
+        "question": "¿Cuándo estás disponible para un contrato de ingeniería de IA?",
+        "answer": "La disponibilidad objetivo es agosto de 2026. Ya estoy abierto a conversaciones, entrevistas y ofertas anticipadas antes de esa fecha."
+      }
+    ]
+  },
+  "landingNode": {
+    "meta": {
+      "title": "Desarrollador Backend Node.js | Express y TypeScript — César Gómez",
+      "description": "Contrata un desarrollador backend Node.js con 8+ años de Express en producción. APIs tipadas, ownership fullstack e integración Vue/Nuxt. Remoto desde Colombia.",
+      "keywords": "desarrollador backend Node.js, desarrollador Express.js, desarrollador API Node, contratar desarrollador Node, backend TypeScript, ingeniero API REST, desarrollador Node remoto Colombia"
+    },
+    "eyebrow": "Node.js · APIs Express",
+    "title": "Backend Engineering",
+    "titleHighlight": "· Node/Express",
+    "lead": "Soy César Gómez — ingeniero senior que construye APIs Node.js en producción con Express y TypeScript, y las conecta a interfaces de producto reales como un perfil fullstack sólido.",
+    "expertiseTitle": "Qué aporto en backend con Node",
+    "expertise": [
+      "APIs REST en Node.js con Express en producción durante ocho años",
+      "TypeScript de extremo a extremo, desde contratos de API hasta el consumo frontend",
+      "Fundamentos backend mantenibles bajo presión de producto",
+      "Ownership fullstack cuando APIs, auth y entrega Vue/Nuxt deben avanzar juntos"
+    ],
+    "experienceTitle": "Node y Express en producción",
+    "experienceBody": "Ocho años entregando APIs Node.js con Express en entornos de producción: diseño de endpoints, lógica de negocio endurecida y ownership del camino desde contratos backend hasta las interfaces que los equipos publican.",
+    "proofTitle": "Por qué los equipos me contratan para roles Node",
+    "proof": [
+      "Un segundo perfil fuerte junto a Vue/Nuxt — no un skill auxiliar, ownership backend de producción",
+      "APIs Express + TypeScript con contratos claros e integración fullstack",
+      "Criterio senior construido durante 13+ años entregando software mantenible",
+      "Disponible para roles senior por contrato desde agosto de 2026"
+    ],
+    "portfolioCta": "Ver portafolio completo",
+    "contactCta": "Hablemos de tu proyecto Node",
+    "faqTitle": "FAQ contratación backend Node.js",
+    "faq": [
+      {
+        "question": "¿Qué puedes entregar como desarrollador backend Node.js?",
+        "answer": "Diseño y entrego APIs Express, contratos tipados y lógica backend de producción — y me mantengo efectivo cuando el trabajo cruza a integración Vue/Nuxt y entrega de extremo a extremo."
+      },
+      {
+        "question": "¿Cuánta experiencia tienes con Express?",
+        "answer": "Ocho años de Express en producción, construyendo y manteniendo APIs Node.js usadas por productos y equipos reales."
+      },
+      {
+        "question": "¿Eres especialista puro de backend o fullstack?",
+        "answer": "Node/Express es un segundo perfil fuerte. Puedo ownership profundo de backend y conservar fuerza fullstack para entrega API-a-UI cuando el rol lo necesita."
+      },
+      {
+        "question": "¿Cuándo estás disponible para un contrato backend Node.js?",
+        "answer": "La disponibilidad objetivo es agosto de 2026. Ya estoy abierto a conversaciones, entrevistas y ofertas anticipadas antes de esa fecha."
+      }
+    ]
+  },
   "footer": {
     "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",
     "rights": "Todos los derechos reservados.",
@@ -630,7 +731,24 @@
   },
   "col": {
     "nav": "Navegación",
-    "connect": "Conectar"
+    "connect": "Conectar",
+    "hire": "Contratar"
+  },
+  "hireProfiles": {
+    "hireForVue": "Hire for Vue",
+    "hireForAi": "Hire for AI",
+    "hireForNode": "Hire for Node",
+    "section": "Engagement",
+    "title": "Contrátame para",
+    "titleHighlight": "lo que necesitas.",
+    "lead": "Perfiles enfocados para recruiters y equipos de producto — Vue/Nuxt, ingeniería AI/NLP o backend Node.js con Express.",
+    "vueBlurb": "Arquitectura senior Vue.js y Nuxt, design systems y entrega frontend orientada al rendimiento.",
+    "aiBlurb": "Integraciones AI/NLP, productos conversacionales y convertir código asistido por agentes en sistemas de producción.",
+    "nodeBlurb": "APIs Node.js con Express en producción, contratos tipados y entrega fullstack cuando el producto necesita ownership de extremo a extremo.",
+    "viewProfile": "Ver perfil",
+    "alsoAvailable": "También disponible",
+    "crossLinkFromVue": "También disponible: Hire for AI",
+    "crossLinkFromAi": "También disponible: Hire for Vue"
   },
   "themes": {
     "dark-modern": "Oscuro Moderno",
