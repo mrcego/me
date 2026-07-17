@@ -10,7 +10,7 @@ export const useVueDeveloperLandingSeo = () => {
   const route = useRoute();
 
   const canonicalUrl = computed(() => `${SITE_URL}${route.path}`);
-  const ogImage = `${SITE_URL}/img/og-image.svg`;
+  const ogImage = `${SITE_URL}/img/og-image.png`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
 
   const faqItems = computed(() => {
@@ -32,6 +32,10 @@ export const useVueDeveloperLandingSeo = () => {
     ogTitle: () => t('landingVue.meta.title'),
     ogDescription: () => t('landingVue.meta.description'),
     ogImage,
+    ogImageType: 'image/png',
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
+    ogImageAlt: () => `${personName.value} — ${t('landingVue.meta.title')}`,
     ogUrl: () => canonicalUrl.value,
     ogSiteName: 'César Gómez Portfolio',
     ogLocale: () => (locale.value === 'es' ? 'es_ES' : 'en_US'),
@@ -39,6 +43,7 @@ export const useVueDeveloperLandingSeo = () => {
     twitterTitle: () => t('landingVue.meta.title'),
     twitterDescription: () => t('landingVue.meta.description'),
     twitterImage: ogImage,
+    twitterImageAlt: () => `${personName.value} — ${t('landingVue.meta.title')}`,
     twitterSite: '@mrcego',
     twitterCreator: '@mrcego',
   });

@@ -11,29 +11,35 @@ export const usePortfolioSeo = () => {
     return path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`;
   });
 
-  const ogImage = `${SITE_URL}/img/og-image.svg`;
+  const ogImage = `${SITE_URL}/img/og-image.png`;
   const profileImage = `${SITE_URL}/img/technical-identity.jpg`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
 
   useSeoMeta({
-    title: () => t('seo.title'),
+    // Keep tab/share titles in sync with the hero subtitle after the name.
+    title: () => t('hero.title'),
     description: () => t('seo.description'),
     keywords: () => t('seo.keywords'),
     author: 'César Gómez',
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
 
     ogType: 'profile',
-    ogTitle: () => t('seo.ogTitle'),
+    ogTitle: () => t('hero.title'),
     ogDescription: () => t('seo.ogDescription'),
     ogImage,
+    ogImageType: 'image/png',
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
+    ogImageAlt: () => `${personName.value} — ${t('hero.title')}`,
     ogUrl: () => canonicalUrl.value,
     ogSiteName: 'César Gómez Portfolio',
     ogLocale: () => (locale.value === 'es' ? 'es_ES' : 'en_US'),
 
     twitterCard: 'summary_large_image',
-    twitterTitle: () => t('seo.ogTitle'),
+    twitterTitle: () => t('hero.title'),
     twitterDescription: () => t('seo.ogDescription'),
     twitterImage: ogImage,
+    twitterImageAlt: () => `${personName.value} — ${t('hero.title')}`,
     twitterSite: '@mrcego',
     twitterCreator: '@mrcego',
   });
@@ -67,7 +73,7 @@ export const usePortfolioSeo = () => {
           givenName: locale.value === 'es' ? 'César' : 'Cesar',
           familyName: locale.value === 'es' ? 'Gómez' : 'Gomez',
           alternateName: ['César Gómez', 'Cesar Gomez', 'mrcego'],
-          jobTitle: t('seo.jobTitle'),
+          jobTitle: t('hero.title'),
           description: t('seo.description'),
           url: canonicalUrl.value,
           image: profileImage,
@@ -142,7 +148,7 @@ export const usePortfolioSeo = () => {
           '@type': 'ProfilePage',
           '@id': `${canonicalUrl.value}#profile`,
           url: canonicalUrl.value,
-          name: t('seo.title'),
+          name: t('hero.title'),
           description: t('seo.description'),
           inLanguage: locale.value === 'es' ? 'es-ES' : 'en-US',
           dateModified: '2026-07-14',

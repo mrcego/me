@@ -1,9 +1,9 @@
-const CACHE_NAME = 'cesar-gomez-portfolio-v2';
+const CACHE_NAME = 'cesar-gomez-portfolio-v3';
 const IS_LOCALHOST = ['localhost', '127.0.0.1', '[::1]'].includes(self.location.hostname);
 const urlsToCache = [
   '/img/logo-final.svg',
   '/img/me.jpg',
-  '/img/og-image.svg',
+  '/img/og-image.png',
   '/favicon.ico',
 ];
 

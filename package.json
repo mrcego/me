@@ -22,7 +22,8 @@
     "typecheck": "nuxt typecheck",
     "prepush:validate": "pnpm lint && pnpm format:check && pnpm typecheck",
     "avatars:fetch": "node scripts/fetch-avatars.mjs",
-    "avatars:scrape": "node scripts/scrape-linkedin-avatars.mjs"
+    "avatars:scrape": "node scripts/scrape-linkedin-avatars.mjs",
+    "og:generate": "node scripts/generate-og.mjs"
   },
   "dependencies": {
     "@nuxtjs/i18n": "^10.4.1",
