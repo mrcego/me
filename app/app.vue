@@ -3,8 +3,8 @@
     class="main-container bg-background overflow-x-clip min-w-0"
     :class="{ 'has-availability-banner': showAnnouncement }"
   >
-    <!-- Dev-only entrance loader — SSR so it covers first paint (no content→loader flash) -->
-    <LazyAppLoader v-if="showLoader" :loading="loading" />
+    <!-- Entrance loader — SSR so it covers first paint (no content→loader flash) -->
+    <AppLoader v-if="showLoader" :loading="loading" />
 
     <SkipToContent />
 
@@ -49,17 +49,15 @@ useTheme();
 const { showAnnouncement } = useAvailability();
 const { activeSection } = usePortfolio();
 const { pageProgress } = useSmoothedScroll(0.14);
-const showLoader = import.meta.dev;
-const loading = ref(showLoader);
+const showLoader = true;
+const loading = ref(true);
 
 onMounted(() => {
-  if (!showLoader) return;
-
   const hideLoader = () => {
     loading.value = false;
   };
 
-  const maxWaitMs = 450;
+  const maxWaitMs = 650;
   const maxTimer = window.setTimeout(hideLoader, maxWaitMs);
 
   void document.fonts?.ready.then(() => {

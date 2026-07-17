@@ -36,7 +36,7 @@
               :initial="motionInitial({ x: '-100%' }, { x: '0%' })"
               :animate="motionAnimate({ x: '0%' })"
               :transition="{ duration: 2.5, ease: 'easeInOut' }"
-              class="absolute inset-0 bg-primary h-full shadow-[0_0_10px_rgba(255,75,92,0.8)]"
+              class="absolute inset-0 bg-primary h-full shadow-[0_0_10px_color-mix(in_srgb,var(--primary)_80%,transparent)]"
             />
           </div>
 

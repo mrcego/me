@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 import tailwindcss from '@tailwindcss/vite';
+import { buildThemeInitScript } from './app/utils/themeInitScript';
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -26,14 +27,28 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/',
     head: {
+      htmlAttrs: {
+        // Matches DEFAULT_THEME_ID (github-dark); theme-init script may flip for light presets
+        class: 'app-dark',
+        'data-theme-font': 'fira-code',
+      },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'theme-color', content: '#ff4b5c' },
-        { name: 'msapplication-TileColor', content: '#ff4b5c' },
+        // Matches DEFAULT_THEME_ID (github-dark); runtime script overrides per visitor
+        { name: 'theme-color', content: '#58a6ff' },
+        { name: 'msapplication-TileColor', content: '#58a6ff' },
         { name: 'msapplication-TileImage', content: '/apple-touch-icon.png' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
         { 'http-equiv': 'X-XSS-Protection', content: '1; mode=block' },
+      ],
+      // Blocking: apply persisted palette before first paint (avoids red→theme FOUC)
+      script: [
+        {
+          key: 'theme-init',
+          innerHTML: buildThemeInitScript(),
+          tagPosition: 'head',
+        },
       ],
       link: [
         { rel: 'dns-prefetch', href: '//www.linkedin.com' },
