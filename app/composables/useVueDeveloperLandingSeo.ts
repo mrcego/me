@@ -22,12 +22,15 @@ export const useVueDeveloperLandingSeo = () => {
     }));
   });
 
+  const { public: publicConfig } = useRuntimeConfig();
+
   useSeoMeta({
     title: () => t('landingVue.meta.title'),
     description: () => t('landingVue.meta.description'),
     keywords: () => t('landingVue.meta.keywords'),
     author: 'César Gómez',
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    fbAppId: () => String(publicConfig.facebookAppId || ''),
     ogType: 'website',
     ogTitle: () => t('landingVue.meta.title'),
     ogDescription: () => t('landingVue.meta.description'),

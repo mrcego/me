@@ -14,6 +14,7 @@ export const usePortfolioSeo = () => {
   const ogImage = `${SITE_URL}/img/og-image.png`;
   const profileImage = `${SITE_URL}/img/technical-identity.jpg`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
+  const { public: publicConfig } = useRuntimeConfig();
 
   useSeoMeta({
     // Keep tab/share titles in sync with the hero subtitle after the name.
@@ -22,6 +23,7 @@ export const usePortfolioSeo = () => {
     keywords: () => t('seo.keywords'),
     author: 'César Gómez',
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    fbAppId: () => String(publicConfig.facebookAppId || ''),
 
     ogType: 'profile',
     ogTitle: () => t('hero.title'),

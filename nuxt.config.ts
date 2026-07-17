@@ -163,6 +163,9 @@ export default defineNuxtConfig({
     public: {
       // Netlify production default; GitHub Pages redirect artifact does not use the form
       contactProvider: 'netlify',
+      // Facebook Sharing Debugger asks for fb:app_id. Override with your own App ID via
+      // NUXT_PUBLIC_FACEBOOK_APP_ID. Default is Meta's public fallback ID (silences the warning).
+      facebookAppId: '966242223397117',
     },
   },
 

@@ -10,6 +10,7 @@ export default {
     locale: 'en',
     ogImage: '/img/og-image.png',
     ogImageAlt: 'César Gómez — Senior Vue/Nuxt · AI & NLP Expert',
+    facebookAppId: '966242223397117',
     twitterCard: 'summary_large_image',
     twitterCreator: '@codingwithcego',
   },
