@@ -2,7 +2,12 @@ import { ref, reactive } from 'vue';
 
 const NETLIFY_FORM_NAME = 'portfolio-contact';
 
+const FIELD_ORDER = ['name', 'email', 'subject', 'message'] as const;
+
+type FieldKey = (typeof FIELD_ORDER)[number];
+
 export const useContactForm = () => {
+  const { t } = useI18n();
   const runtimeConfig = useRuntimeConfig();
   const isSubmitting = ref(false);
   const submitSuccess = ref(false);
@@ -15,7 +20,7 @@ export const useContactForm = () => {
     message: '',
   });
 
-  const errors = reactive({
+  const errors = reactive<Record<FieldKey, string>>({
     name: '',
     email: '',
     subject: '',
@@ -27,48 +32,54 @@ export const useContactForm = () => {
     return re.test(email);
   };
 
+  const clearErrors = () => {
+    for (const key of FIELD_ORDER) {
+      errors[key] = '';
+    }
+  };
+
+  const focusFirstError = () => {
+    if (!import.meta.client) return;
+
+    const firstInvalid = FIELD_ORDER.find((key) => errors[key]);
+    if (!firstInvalid) return;
+
+    document.getElementById(`contact-${firstInvalid}`)?.focus();
+  };
+
   const validateForm = (): boolean => {
+    clearErrors();
     let isValid = true;
 
-    // Reset errors
-    errors.name = '';
-    errors.email = '';
-    errors.subject = '';
-    errors.message = '';
-
-    // Validate name
     if (!formData.name.trim()) {
-      errors.name = 'Name is required';
+      errors.name = t('contact.form.errors.nameRequired');
       isValid = false;
     } else if (formData.name.trim().length < 2) {
-      errors.name = 'Name must be at least 2 characters';
+      errors.name = t('contact.form.errors.nameMin');
       isValid = false;
     }
 
-    // Validate email
     if (!formData.email.trim()) {
-      errors.email = 'Email is required';
+      errors.email = t('contact.form.errors.emailRequired');
       isValid = false;
     } else if (!validateEmail(formData.email)) {
-      errors.email = 'Please enter a valid email';
+      errors.email = t('contact.form.errors.emailInvalid');
       isValid = false;
     }
 
-    // Validate subject
     if (!formData.subject.trim()) {
-      errors.subject = 'Subject is required';
+      errors.subject = t('contact.form.errors.subjectRequired');
       isValid = false;
     } else if (formData.subject.trim().length < 3) {
-      errors.subject = 'Subject must be at least 3 characters';
+      errors.subject = t('contact.form.errors.subjectMin');
       isValid = false;
     }
 
-    // Validate message
     if (!formData.message.trim()) {
-      errors.message = 'Message is required';
+      errors.message = t('contact.form.errors.messageRequired');
       isValid = false;
     } else if (formData.message.trim().length < 10) {
-      errors.message = 'Message must be at least 10 characters';
+      errors.message = t('contact.form.errors.messageMin');
       isValid = false;
     }
 
@@ -80,10 +91,7 @@ export const useContactForm = () => {
     formData.email = '';
     formData.subject = '';
     formData.message = '';
-    errors.name = '';
-    errors.email = '';
-    errors.subject = '';
-    errors.message = '';
+    clearErrors();
   };
 
   const submitViaMailto = (): void => {
@@ -117,6 +125,7 @@ export const useContactForm = () => {
 
   const submitForm = async (): Promise<boolean> => {
     if (!validateForm()) {
+      focusFirstError();
       return false;
     }
 
@@ -130,8 +139,7 @@ export const useContactForm = () => {
       if (useNetlify) {
         const sent = await submitViaNetlify();
         if (!sent) {
-          submitError.value =
-            'Failed to send message. Please try again or contact directly via email.';
+          submitError.value = t('contact.form.error');
           return false;
         }
       } else {
@@ -145,7 +153,7 @@ export const useContactForm = () => {
       return true;
     } catch (error) {
       console.error('Form submission error:', error);
-      submitError.value = 'Failed to send message. Please try again or contact directly via email.';
+      submitError.value = t('contact.form.error');
       return false;
     } finally {
       isSubmitting.value = false;

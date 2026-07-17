@@ -90,11 +90,11 @@
   "about": {
     "section": "Technical Identity",
     "title": "Fullstack Depth.",
-    "titleHighlight": "Frontend Pulse.",
-    "description1": "As a Senior Fullstack Developer with a specialized focus on Frontend Architecture, I've spent 13+ years bridging the gap between pixel-perfect design and scalable systems.",
-    "description2": "My trajectory through Colegium and LingoQuesto has been defined by a single obsession: creating high-performance user experiences powered by robust, resilient backend foundations.",
+    "titleHighlight": "Frontend & AI.",
+    "description1": "As a Senior Fullstack Developer specialized in Frontend Architecture and AI/NLP engineering, I've spent 13+ years bridging pixel-perfect design, scalable systems, and intelligent product experiences.",
+    "description2": "From Colegium's cloud platforms to LingoQuesto's AI/NLP conversational product, my obsession is the same: high-performance interfaces powered by resilient backends — and production-ready craft when AI accelerates the work.",
     "philosophy": "Philosophy",
-    "philosophyQuote": "As a Frontend Focused Fullstack, I believe the interface is where engineering meets impact.",
+    "philosophyQuote": "As a Frontend-focused fullstack with AI craft, I believe the interface — and the intelligence behind it — is where engineering meets impact.",
     "expertise": "Frontend Expertise",
     "logic": "Fullstack Logic",
     "userCentric": "User Centric",
@@ -447,26 +447,37 @@
     "title": "Let's build",
     "titleHighlight": "high-fidelity",
     "titleEnd": "products.",
-    "description": "Bridging the gap between ambitious product roadmaps and solid technical execution.",
+    "description": "Ambitious roadmaps need solid execution — Vue/Nuxt, Node, and AI/NLP production craft included.",
     "methods": {
       "email": "Direct Signal",
       "linkedin": "Professional Mesh",
       "github": "Open Protocol",
       "whatsapp": "Secure Line"
     },
+    "methodAria": "Contact via {method}: {value}",
     "form": {
       "name": "Commander Identity",
-      "namePlaceholder": "Your Name",
+      "namePlaceholder": "Your name…",
       "email": "Signal Frequency",
-      "emailPlaceholder": "email{'@'}domain.com",
+      "emailPlaceholder": "you{'@'}company.com",
       "subject": "Mission Objective",
-      "subjectPlaceholder": "e.g. Scaling Nuxt Ecosystem",
+      "subjectPlaceholder": "e.g. Scaling a Nuxt ecosystem…",
       "message": "Intelligence Data",
-      "messagePlaceholder": "Detail the technical challenge...",
+      "messagePlaceholder": "Describe the technical challenge…",
       "submit": "Initiate Secure Link",
-      "sending": "Sending...",
-      "success": "✓ Message sent successfully! I'll get back to you soon.",
-      "error": "Failed to send message. Please try again or contact directly via email."
+      "sending": "Sending…",
+      "success": "Message sent successfully. I'll get back to you soon.",
+      "error": "Couldn't send the message. Try again, or email me directly.",
+      "errors": {
+        "nameRequired": "Enter your name.",
+        "nameMin": "Use at least 2 characters.",
+        "emailRequired": "Enter your email.",
+        "emailInvalid": "Enter a valid email (name{'@'}domain.com).",
+        "subjectRequired": "Add a subject.",
+        "subjectMin": "Use at least 3 characters.",
+        "messageRequired": "Write a short message.",
+        "messageMin": "Use at least 10 characters so I have enough context."
+      }
     }
   },
   "testimonials": {
@@ -726,7 +737,7 @@
     "tagline": "Building high-fidelity products with frontend excellence",
     "rights": "All rights reserved.",
     "copyrightYear": "2026",
-    "protocol": "Ancelabs.",
+    "protocol": "Ancelab.",
     "status": "All Systems Operational"
   },
   "col": {

@@ -90,11 +90,11 @@
   "about": {
     "section": "Identidad Técnica",
     "title": "Profundidad Fullstack.",
-    "titleHighlight": "Pulso Frontend.",
-    "description1": "Como Desarrollador Fullstack Senior con enfoque especializado en Arquitectura Frontend, he pasado 13+ años conectando el diseño pixel-perfect con sistemas escalables.",
-    "description2": "Mi trayectoria en Colegium y LingoQuesto ha sido definida por una sola obsesión: crear experiencias de usuario de alto rendimiento impulsadas por fundamentos backend robustos y resilientes.",
+    "titleHighlight": "Frontend e IA.",
+    "description1": "Como Desarrollador Fullstack Senior especializado en Arquitectura Frontend e ingeniería con IA/NLP, he pasado 13+ años conectando diseño pixel-perfect, sistemas escalables y experiencias de producto inteligentes.",
+    "description2": "De las plataformas cloud de Colegium al producto conversacional con IA/NLP de LingoQuesto, mi obsesión es la misma: interfaces de alto rendimiento impulsadas por backends resilientes — y oficio listo para producción cuando la IA acelera el trabajo.",
     "philosophy": "Filosofía",
-    "philosophyQuote": "Como Fullstack Enfocado en Frontend, creo que la interfaz es donde la ingeniería se encuentra con el impacto.",
+    "philosophyQuote": "Como Fullstack enfocado en Frontend con oficio en IA, creo que la interfaz — y la inteligencia detrás — es donde la ingeniería se encuentra con el impacto.",
     "expertise": "Experiencia Frontend",
     "logic": "Lógica Fullstack",
     "userCentric": "Centrado en el Usuario",
@@ -447,26 +447,37 @@
     "title": "Construyamos",
     "titleHighlight": "productos de",
     "titleEnd": "alta fidelidad.",
-    "description": "Conectando la brecha entre hojas de ruta de producto ambiciosas y ejecución técnica sólida.",
+    "description": "Las hojas de ruta ambiciosas necesitan ejecución sólida — Vue/Nuxt, Node e IA/NLP con oficio de producción incluidos.",
     "methods": {
       "email": "Señal Directa",
       "linkedin": "Red Profesional",
       "github": "Protocolo Abierto",
       "whatsapp": "Línea Segura"
     },
+    "methodAria": "Contactar por {method}: {value}",
     "form": {
       "name": "Identidad del Comandante",
-      "namePlaceholder": "Tu Nombre",
+      "namePlaceholder": "Tu nombre…",
       "email": "Frecuencia de Señal",
-      "emailPlaceholder": "email{'@'}dominio.com",
+      "emailPlaceholder": "tu{'@'}empresa.com",
       "subject": "Objetivo de Misión",
-      "subjectPlaceholder": "ej. Escalando Ecosistema Nuxt",
+      "subjectPlaceholder": "ej. Escalar un ecosistema Nuxt…",
       "message": "Datos de Inteligencia",
-      "messagePlaceholder": "Detalla el desafío técnico...",
+      "messagePlaceholder": "Describe el desafío técnico…",
       "submit": "Iniciar Enlace Seguro",
-      "sending": "Enviando...",
-      "success": "✓ ¡Mensaje enviado exitosamente! Te responderé pronto.",
-      "error": "Error al enviar mensaje. Por favor intenta de nuevo o contacta directamente vía email."
+      "sending": "Enviando…",
+      "success": "Mensaje enviado con éxito. Te responderé pronto.",
+      "error": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por email.",
+      "errors": {
+        "nameRequired": "Escribe tu nombre.",
+        "nameMin": "Usa al menos 2 caracteres.",
+        "emailRequired": "Escribe tu email.",
+        "emailInvalid": "Usa un email válido (nombre{'@'}dominio.com).",
+        "subjectRequired": "Añade un asunto.",
+        "subjectMin": "Usa al menos 3 caracteres.",
+        "messageRequired": "Escribe un mensaje breve.",
+        "messageMin": "Usa al menos 10 caracteres para darme contexto suficiente."
+      }
     }
   },
   "testimonials": {
@@ -726,7 +737,7 @@
     "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",
     "rights": "Todos los derechos reservados.",
     "copyrightYear": "2026",
-    "protocol": "Protocolo Signal.",
+    "protocol": "Ancelab.",
     "status": "Todos los Sistemas Operativos"
   },
   "col": {
