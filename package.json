@@ -10,8 +10,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --port 3000",
-    "generate": "jiti scripts/write-theme-init.ts && nuxt generate",
-    "generate:netlify": "jiti scripts/write-theme-init.ts && nuxt prepare && node --input-type=module -e \"import fs from 'node:fs'; for (const dir of ['.output', 'dist', 'node_modules/.cache/nuxt']) fs.rmSync(dir, { recursive: true, force: true });\" && nuxt generate",
+    "generate": "jiti scripts/write-theme-init.ts && nuxt generate && node scripts/write-csp-headers.mjs",
+    "generate:netlify": "jiti scripts/write-theme-init.ts && nuxt prepare && node --input-type=module -e \"import fs from 'node:fs'; for (const dir of ['.output', 'dist', 'node_modules/.cache/nuxt']) fs.rmSync(dir, { recursive: true, force: true });\" && nuxt generate && node scripts/write-csp-headers.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky",
