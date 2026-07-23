@@ -3,8 +3,8 @@
     class="main-container bg-background overflow-x-clip min-w-0"
     :class="{ 'has-availability-banner': showAnnouncement }"
   >
-    <!-- Entrance loader — SSR so it covers first paint (no content→loader flash) -->
-    <AppLoader v-if="showLoader" :loading="loading" @after-leave="onLoaderGone" />
+    <!-- CSS auto-hide splash — does not wait for Vue entry hydration -->
+    <AppLoader v-if="showLoader" @done="showLoader = false" />
 
     <SkipToContent />
 
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import { usePortfolio } from '~/composables/usePortfolio';
 import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
 
@@ -51,29 +51,19 @@ const { activeSection } = usePortfolio();
 const { pageProgress } = useSmoothedScroll(0.14);
 const { vibeCodingModalMounted } = useVibeCodingModal();
 const showLoader = ref(true);
-const loading = ref(true);
-
-function onLoaderGone() {
-  showLoader.value = false;
-}
-
-onMounted(() => {
-  // Fonts are already preloaded — hide ASAP so the hero owns LCP.
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      loading.value = false;
-    });
-  });
-});
 
 useHead({
   link: [
     {
+      // Match mobile DPR (~1.75–2x) so preload === LCP request (392w for 224 CSS px).
       rel: 'preload',
       as: 'image',
       type: 'image/webp',
-      href: '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg',
+      href: '/_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg',
       fetchpriority: 'high',
+      imagesizes: '224px',
+      imagesrcset:
+        '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg 224w, /_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg 392w, /_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg 448w',
     },
   ],
 });

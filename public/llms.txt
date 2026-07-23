@@ -12,7 +12,7 @@
 - [Ingeniero de IA (ES)](https://cesargomez.dev/es/ingeniero-ia)
 - [Node.js backend (EN)](https://cesargomez.dev/nodejs-backend-developer)
 - [Backend Node.js (ES)](https://cesargomez.dev/es/desarrollador-backend-nodejs)
-- [Sitemap](https://cesargomez.dev/sitemap.xml)
+- [Sitemap](https://cesargomez.dev/sitemap_index.xml)
 
 ## Professional summary
 

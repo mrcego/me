@@ -39,4 +39,4 @@ Allow: /
 Disallow: /sw.js
 Disallow: /manifest.json
 
-Sitemap: https://cesargomez.dev/sitemap.xml
+Sitemap: https://cesargomez.dev/sitemap_index.xml

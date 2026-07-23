@@ -10,16 +10,9 @@
         class="site-nav__shell flex items-center justify-between gap-2 sm:gap-3 rounded-full pointer-events-auto border min-w-0"
       >
         <!-- Logo Area -->
-        <Motion
-          :initial="
-            motionInitial(
-              { opacity: 0, x: -20, filter: 'blur(10px)' },
-              { opacity: 1, x: 0, filter: 'blur(0px)' },
-            )
-          "
-          :animate="motionAnimate({ opacity: 1, x: 0, filter: 'blur(0px)' })"
-          :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
-          class="flex items-center gap-1.5 sm:gap-2 group cursor-pointer min-w-0 shrink"
+        <button
+          type="button"
+          class="nav-reveal flex items-center gap-1.5 sm:gap-2 group cursor-pointer min-w-0 shrink appearance-none bg-transparent border-0 p-0 text-left"
           @click="scrollToSection($event, '#hero')"
         >
           <div
@@ -49,43 +42,34 @@
               {{ $t('hero.tags.frontArch') }}
             </span>
           </div>
-        </Motion>
+        </button>
 
         <!-- Desktop Navigation -->
         <div
           class="site-nav__links hidden lg:flex items-center gap-0.5 xl:gap-1 rounded-full px-1.5 xl:px-2 py-1 border shrink-0"
         >
           <template v-for="(link, i) in navLinks" :key="link.id">
-            <Motion
-              :initial="motionInitial({ opacity: 0, y: -10 }, { opacity: 1, y: 0 })"
-              :animate="motionAnimate({ opacity: 1, y: 0 })"
-              :transition="{
-                duration: 0.6,
-                delay: 0.2 + i * 0.05,
-                ease: [0.16, 1, 0.3, 1],
-              }"
+            <a
+              :href="link.href"
+              class="nav-reveal relative px-2 lg:px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-bold uppercase tracking-widest transition-all duration-300 isolate group/link overflow-hidden cursor-pointer"
+              :class="[
+                isActiveSection(link.id) ? 'text-foreground' : 'text-muted hover:text-foreground',
+              ]"
+              :style="{ animationDelay: `${0.2 + i * 0.05}s` }"
+              @click="scrollToSection($event, link.href)"
             >
-              <a
-                :href="link.href"
-                class="relative px-2 lg:px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-bold uppercase tracking-widest transition-all duration-300 isolate group/link overflow-hidden cursor-pointer"
-                :class="[
-                  isActiveSection(link.id) ? 'text-foreground' : 'text-muted hover:text-foreground',
-                ]"
-                @click="scrollToSection($event, link.href)"
-              >
-                <span class="relative z-10">{{ $t(link.name) }}</span>
-                <!-- Active Background Pill -->
-                <span
-                  v-if="isActiveSection(link.id)"
-                  class="absolute inset-0 bg-foreground/10 rounded-full z-0"
-                />
-                <!-- Hover Glow -->
-                <span
-                  v-else
-                  class="absolute inset-0 bg-foreground/5 rounded-full opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 z-0"
-                />
-              </a>
-            </Motion>
+              <span class="relative z-10">{{ $t(link.name) }}</span>
+              <!-- Active Background Pill -->
+              <span
+                v-if="isActiveSection(link.id)"
+                class="absolute inset-0 bg-foreground/10 rounded-full z-0"
+              />
+              <!-- Hover Glow -->
+              <span
+                v-else
+                class="absolute inset-0 bg-foreground/5 rounded-full opacity-0 group-hover/link:opacity-100 transition-opacity duration-300 z-0"
+              />
+            </a>
           </template>
         </div>
 
@@ -239,7 +223,7 @@
               type="button"
               class="hire-menu-trigger inline-flex items-center gap-1.5 px-3.5 xl:px-4 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-black uppercase tracking-widest text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               :class="{ 'hire-menu-trigger--open': showHireMenu }"
-              :aria-label="$t('nav.hireMenu')"
+              :aria-label="`${$t('nav.hire')} — ${$t('nav.hireMenu')}`"
               :aria-expanded="showHireMenu"
               aria-haspopup="menu"
               aria-controls="hire-profile-menu"
@@ -422,7 +406,6 @@
 </template>
 
 <script setup>
-import { Motion } from 'motion-v';
 import { nextTick, ref, watch } from 'vue';
 import { onClickOutside, useEventListener } from '@vueuse/core';
 import AppLanguageSwitcher from '~/components/AppLanguageSwitcher.vue';
@@ -435,7 +418,6 @@ const props = defineProps({
   },
 });
 
-const { motionInitial, motionAnimate } = useMotionConfig();
 const { progress } = useSmoothedScroll(0.14);
 const navProgress = progress(120);
 const { href: cvHref, fileName: cvFileName } = useCvDownload();
@@ -880,6 +862,27 @@ const scrollToSection = (e, href) => {
   .hire-menu-trigger--open {
     border-color: var(--primary);
     background: color-mix(in srgb, var(--primary) 16%, transparent);
+  }
+}
+
+.nav-reveal {
+  animation: nav-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes nav-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-reveal {
+    animation: none;
   }
 }
 </style>

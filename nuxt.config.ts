@@ -62,7 +62,6 @@ export default defineNuxtConfig({
       link: [
         { rel: 'dns-prefetch', href: '//www.linkedin.com' },
         { rel: 'dns-prefetch', href: '//github.com' },
-        { rel: 'preconnect', href: 'https://www.linkedin.com', crossorigin: '' },
         { rel: 'manifest', href: '/manifest.json' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png?v=cg1' },
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=cg1' },
@@ -80,6 +79,20 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
     optimizeDeps: {
       include: ['@unhead/schema-org/vue', '@vueuse/core', 'motion-v'],
+    },
+    build: {
+      modulePreload: false,
+    },
+  },
+
+  hooks: {
+    // Stop Netlify/LH from downloading Lazy section chunks before LCP.
+    'build:manifest'(manifest) {
+      for (const item of Object.values(manifest)) {
+        item.dynamicImports = [];
+        if (item.preload) item.preload = false;
+        if (item.prefetch) item.prefetch = false;
+      }
     },
   },
 
@@ -104,18 +117,17 @@ export default defineNuxtConfig({
       {
         name: 'Outfit',
         provider: 'google',
-        // 800/900 keep font-black / display weights used across the portfolio
+        // Used by alternate themes + OG templates — do not preload on default Fira path
         weights: [400, 500, 600, 700, 800, 900],
-        preload: true,
-        // Required so nuxt-og-image can embed the face when rendering templates
+        preload: false,
         global: true,
       },
       {
-        // Google Fira Code tops out at 700 — themes using it clamp font-black via CSS
+        // Default theme font (`data-theme-font="fira-code"`) — preload for LCP/FCP
         name: 'Fira Code',
         provider: 'google',
         weights: [400, 500, 600, 700],
-        preload: false,
+        preload: true,
       },
     ],
   },

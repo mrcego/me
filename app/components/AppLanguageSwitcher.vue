@@ -2,15 +2,11 @@
   <div class="relative">
     <button
       type="button"
-      class="w-[46px] h-[46px] md:w-[50px] md:h-[50px] flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95"
+      class="w-[46px] h-[46px] md:w-[50px] md:h-[50px] flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95 type-label tracking-[0.14em] font-black"
       :aria-label="$t('nav.switchLanguageLabel', { locale: nextLocaleLabel })"
       @click="toggleLanguage"
     >
-      <Icon
-        :name="nextFlag"
-        class="w-[30px] h-[30px] md:w-[34px] md:h-[34px] rounded-full"
-        aria-hidden="true"
-      />
+      <span aria-hidden="true">{{ nextLocaleLabel }}</span>
     </button>
   </div>
 </template>
@@ -22,9 +18,8 @@ const { locale } = useI18n();
 const switchLocalePath = useSwitchLocalePath();
 const router = useRouter();
 
-/** Target locale — flag matches aria-label ("switch to …"). */
+/** Target locale — label matches aria-label ("switch to …"). */
 const nextLocaleLabel = computed(() => (locale.value === 'en' ? 'ES' : 'EN'));
-const nextFlag = computed(() => (locale.value === 'en' ? 'circle-flags:es' : 'circle-flags:us'));
 
 const toggleLanguage = async () => {
   const nextLocale = locale.value === 'en' ? 'es' : 'en';

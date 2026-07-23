@@ -47,15 +47,8 @@
             }}</span>
           </h1>
 
-          <Motion
-            :initial="motionInitial({ opacity: 0, y: 12 }, { opacity: 1, y: 0 })"
-            :animate="motionAnimate({ opacity: 1, y: 0 })"
-            :transition="{
-              duration: 0.9,
-              delay: 0.35,
-              ease: [0.16, 1, 0.3, 1],
-            }"
-            class="w-full max-w-2xl mx-auto lg:mx-0 space-y-2 sm:space-y-2.5"
+          <div
+            class="hero-reveal hero-reveal--d35 w-full max-w-2xl mx-auto lg:mx-0 space-y-2 sm:space-y-2.5"
           >
             <p
               class="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-black tracking-tight text-foreground text-balance text-center lg:text-left"
@@ -83,17 +76,10 @@
                 {{ $t('hero.workPreference') }}
               </span>
             </p>
-          </Motion>
+          </div>
 
-          <Motion
-            :initial="motionInitial({ opacity: 0, y: 15 }, { opacity: 1, y: 0 })"
-            :animate="motionAnimate({ opacity: 1, y: 0 })"
-            :transition="{
-              duration: 1,
-              delay: 0.6,
-              ease: [0.16, 1, 0.3, 1],
-            }"
-            class="space-y-3 sm:space-y-4 w-full max-w-2xl mx-auto lg:mx-0 text-center lg:text-left"
+          <div
+            class="hero-reveal hero-reveal--d60 space-y-3 sm:space-y-4 w-full max-w-2xl mx-auto lg:mx-0 text-center lg:text-left"
           >
             <p
               class="text-muted text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl leading-relaxed font-medium tracking-tight text-pretty"
@@ -110,14 +96,11 @@
                 {{ $t(tag) }}
               </div>
             </div>
-          </Motion>
+          </div>
         </div>
 
-        <Motion
-          :initial="motionInitial({ opacity: 0, y: 15 }, { opacity: 1, y: 0 })"
-          :animate="motionAnimate({ opacity: 1, y: 0 })"
-          :transition="{ duration: 1, delay: 0.8, ease: [0.16, 1, 0.3, 1] }"
-          class="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center lg:justify-start w-full lg:w-auto"
+        <div
+          class="hero-reveal hero-reveal--d80 flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center lg:justify-start w-full lg:w-auto"
         >
           <a
             class="btn-premium bg-primary text-primary-contrast rounded-2xl sm:rounded-3xl px-7 sm:px-9 py-3.5 sm:py-4 shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-sm sm:text-base border-none"
@@ -152,24 +135,16 @@
               />
             </a>
           </div>
-        </Motion>
+        </div>
 
         <div
           class="grid grid-cols-3 gap-3 sm:gap-6 md:gap-10 pt-5 sm:pt-6 border-t border-foreground/5 w-full max-w-lg lg:max-w-none mx-auto lg:mx-0"
         >
-          <Motion
+          <div
             v-for="(stat, i) in heroStats"
             :key="stat.label"
-            :initial="
-              motionInitial({ opacity: 0, y: 10, scale: 0.9 }, { opacity: 1, y: 0, scale: 1 })
-            "
-            :animate="motionAnimate({ opacity: 1, y: 0, scale: 1 })"
-            :transition="{
-              duration: 0.8,
-              delay: 1 + i * 0.15,
-              ease: [0.16, 1, 0.3, 1],
-            }"
-            class="space-y-0.5 md:space-y-1 group/stat cursor-help"
+            class="hero-reveal space-y-0.5 md:space-y-1 group/stat cursor-help"
+            :style="{ animationDelay: `${1 + i * 0.15}s` }"
           >
             <div
               class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
@@ -181,16 +156,13 @@
             >
               {{ $t(stat.label) }}
             </div>
-          </Motion>
+          </div>
         </div>
       </div>
 
       <!-- Photo + vibe banner: share float + tilt as one composition -->
-      <Motion
-        :initial="motionInitial({ scale: 0.98, x: 16 }, { scale: 1, x: 0 })"
-        :animate="motionAnimate({ scale: 1, x: 0 })"
-        :transition="{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.15 }"
-        class="relative order-2 lg:order-2 px-2 sm:px-4 md:px-0 w-full max-w-md lg:max-w-none mx-auto"
+      <div
+        class="hero-reveal hero-reveal--photo relative order-2 lg:order-2 px-2 sm:px-4 md:px-0 w-full max-w-md lg:max-w-none mx-auto"
       >
         <div
           ref="photoHitRef"
@@ -298,20 +270,18 @@
             class="absolute -z-10 -bottom-10 -right-10 w-48 h-48 md:w-64 md:h-64 bg-accent/5 rounded-full blur-[60px] animate-pulse-slow"
           />
         </div>
-      </Motion>
+      </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { Motion } from 'motion-v';
 import { ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
 const { openVibeCodingModal, vibeCodingModalMounted } = useVibeCodingModal();
 
-const { motionInitial, motionAnimate } = useMotionConfig();
 const {
   hitRef: photoHitRef,
   style: photoTiltStyle,
@@ -453,6 +423,57 @@ onMounted(() => {
       transform: none;
       filter: grayscale(0.22) brightness(1.02);
     }
+  }
+}
+
+.hero-reveal {
+  animation: hero-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-reveal--d35 {
+  animation-delay: 0.35s;
+}
+
+.hero-reveal--d60 {
+  animation-delay: 0.6s;
+}
+
+.hero-reveal--d80 {
+  animation-delay: 0.8s;
+}
+
+.hero-reveal--photo {
+  animation-name: hero-reveal-photo;
+  animation-duration: 1.1s;
+  animation-delay: 0.15s;
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-reveal-photo {
+  from {
+    opacity: 0;
+    transform: translateX(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-reveal,
+  .hero-reveal--photo {
+    animation: none;
   }
 }
 </style>
