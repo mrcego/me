@@ -427,25 +427,25 @@ onMounted(() => {
 }
 
 .hero-reveal {
-  animation: hero-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: hero-reveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .hero-reveal--d35 {
-  animation-delay: 0.35s;
+  animation-delay: 0.05s;
 }
 
 .hero-reveal--d60 {
-  animation-delay: 0.6s;
+  animation-delay: 0.1s;
 }
 
 .hero-reveal--d80 {
-  animation-delay: 0.8s;
+  animation-delay: 0.15s;
 }
 
 .hero-reveal--photo {
   animation-name: hero-reveal-photo;
-  animation-duration: 1.1s;
-  animation-delay: 0.15s;
+  animation-duration: 0.5s;
+  animation-delay: 0.05s;
 }
 
 @keyframes hero-reveal {

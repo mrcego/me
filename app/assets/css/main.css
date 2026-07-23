@@ -122,8 +122,8 @@
     color-scheme: light;
   }
 
-  /* Master HUD Overlay */
-  body::before {
+  /* Master HUD Overlay — enabled after idle (html.fx-on) so LCP/FCP stay clean */
+  html.fx-on body::before {
     content: '';
     position: fixed;
     inset: 0;
@@ -138,8 +138,8 @@
     opacity: 0.15;
   }
 
-  /* Scanline Animation */
-  body::after {
+  /* Scanline Animation — transform-only, deferred with fx-on */
+  html.fx-on body::after {
     content: '';
     position: fixed;
     top: 0;
@@ -1182,37 +1182,35 @@ html[data-theme-font='fira-code'] .p-button {
   content: '';
   position: absolute;
   inset: 0;
+  overflow: hidden;
+  pointer-events: none;
   background:
     radial-gradient(ellipse 60% 140% at 12% 50%, rgba(255, 255, 255, 0.22), transparent 55%),
-    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12), transparent);
-  background-size:
-    100% 100%,
-    220% 100%;
-  animation: availability-banner-sheen 7s ease-in-out infinite;
-  pointer-events: none;
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent) bottom / 100% 1px
+      no-repeat;
 }
 
+/* Compositor-friendly sheen (transform only — not background-position) */
 .availability-banner__root::after {
   content: '';
   position: absolute;
-  inset-inline: 0;
+  top: 0;
   bottom: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  left: 0;
+  width: 42%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent);
+  transform: translateX(-120%);
+  animation: availability-banner-sheen 7s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes availability-banner-sheen {
   0%,
   100% {
-    background-position:
-      0 0,
-      0% 0;
+    transform: translateX(-120%);
   }
   50% {
-    background-position:
-      0 0,
-      100% 0;
+    transform: translateX(280%);
   }
 }
 

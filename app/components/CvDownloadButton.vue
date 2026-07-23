@@ -18,35 +18,16 @@ const { href, fileName } = useCvDownload();
 </script>
 
 <style scoped>
-@property --cv-border-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
 .cv-download-btn {
-  --cv-border-angle: 0deg;
   position: relative;
   isolation: isolate;
-  border: 1px solid transparent;
-  background:
-    linear-gradient(
-        color-mix(in srgb, var(--secondary) 92%, var(--background)),
-        color-mix(in srgb, var(--secondary) 92%, var(--background))
-      )
-      padding-box,
-    conic-gradient(
-        from var(--cv-border-angle),
-        transparent 0%,
-        transparent 35%,
-        color-mix(in srgb, var(--primary) 35%, transparent) 42%,
-        var(--primary) 50%,
-        color-mix(in srgb, var(--primary) 35%, transparent) 58%,
-        transparent 65%,
-        transparent 100%
-      )
-      border-box;
-  animation: cv-border-spin 2.8s linear infinite;
+  border: 1px solid color-mix(in srgb, var(--primary) 40%, transparent);
+  background: color-mix(in srgb, var(--secondary) 92%, var(--background));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--primary) 12%, transparent);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
 }
 
 .cv-download-btn::before {
@@ -59,41 +40,20 @@ const { href, fileName } = useCvDownload();
   transition: background-color 0.3s ease;
 }
 
+.cv-download-btn:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--primary) 28%, transparent);
+}
+
 .cv-download-btn:hover::before {
   background: color-mix(in srgb, var(--primary) 10%, transparent);
 }
 
-.cv-download-btn:hover {
-  background:
-    linear-gradient(
-        color-mix(in srgb, var(--secondary) 92%, var(--background)),
-        color-mix(in srgb, var(--secondary) 92%, var(--background))
-      )
-      padding-box,
-    conic-gradient(
-        from var(--cv-border-angle),
-        transparent 0%,
-        transparent 28%,
-        color-mix(in srgb, var(--primary) 55%, transparent) 38%,
-        var(--primary) 50%,
-        color-mix(in srgb, var(--primary) 55%, transparent) 62%,
-        transparent 72%,
-        transparent 100%
-      )
-      border-box;
-}
-
-@keyframes cv-border-spin {
-  to {
-    --cv-border-angle: 360deg;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .cv-download-btn {
-    animation: none;
     border-color: color-mix(in srgb, var(--foreground) 15%, transparent);
     background: color-mix(in srgb, var(--foreground) 5%, transparent);
+    box-shadow: none;
   }
 
   .cv-download-btn:hover {

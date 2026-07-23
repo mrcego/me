@@ -10,8 +10,8 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --port 3000",
-    "generate": "nuxt generate",
-    "generate:netlify": "nuxt prepare && node --input-type=module -e \"import fs from 'node:fs'; for (const dir of ['.output', 'dist', 'node_modules/.cache/nuxt']) fs.rmSync(dir, { recursive: true, force: true });\" && nuxt generate",
+    "generate": "jiti scripts/write-theme-init.ts && nuxt generate",
+    "generate:netlify": "jiti scripts/write-theme-init.ts && nuxt prepare && node --input-type=module -e \"import fs from 'node:fs'; for (const dir of ['.output', 'dist', 'node_modules/.cache/nuxt']) fs.rmSync(dir, { recursive: true, force: true });\" && nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky",
@@ -57,6 +57,7 @@
     "eslint": "^10.7.0",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
+    "jiti": "2.7.0",
     "lint-staged": "^17.0.8",
     "playwright": "^1.61.1",
     "prettier": "^3.9.5",

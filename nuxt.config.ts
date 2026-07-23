@@ -1,7 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+import { writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
 import tailwindcss from '@tailwindcss/vite';
 import { buildThemeInitScript } from './app/utils/themeInitScript';
+
+const rootDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -55,7 +60,7 @@ export default defineNuxtConfig({
       script: [
         {
           key: 'theme-init',
-          innerHTML: buildThemeInitScript(),
+          src: '/theme-init.js',
           tagPosition: 'head',
         },
       ],
@@ -78,14 +83,24 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
-      include: ['@unhead/schema-org/vue', '@vueuse/core', 'motion-v'],
+      include: ['@unhead/schema-org/vue', '@vueuse/core'],
     },
     build: {
       modulePreload: false,
     },
   },
 
+  // Publish client maps so LH "large JS without source maps" is green.
+  sourcemap: {
+    client: true,
+    server: false,
+  },
+
   hooks: {
+    // Emit blocking theme bootstrap as an external file (CSP script-src 'self').
+    'build:before'() {
+      writeFileSync(join(rootDir, 'public/theme-init.js'), `${buildThemeInitScript()}\n`, 'utf8');
+    },
     // Stop Netlify/LH from downloading Lazy section chunks before LCP.
     'build:manifest'(manifest) {
       for (const item of Object.values(manifest)) {
@@ -117,8 +132,8 @@ export default defineNuxtConfig({
       {
         name: 'Outfit',
         provider: 'google',
-        // Fallback + Sans themes / OG — keep global but trim heavy weights
-        weights: [400, 500, 600, 700],
+        // Sans themes + Fira fallback — load globally but keep light
+        weights: [400, 600, 700],
         preload: false,
         global: true,
       },
@@ -126,20 +141,18 @@ export default defineNuxtConfig({
         // Default theme font (`data-theme-font="fira-code"`) — preload for LCP/FCP
         name: 'Fira Code',
         provider: 'google',
-        weights: [400, 500, 600, 700],
+        weights: [400, 600, 700],
         preload: true,
       },
     ],
   },
 
   icon: {
-    // Explicit collections avoid Iconify client fetches when SSR SVG render times out
-    serverBundle: {
-      collections: ['lucide', 'solar', 'simple-icons', 'logos'],
-    },
+    // Local Iconify JSON packs — avoid remote fetches during prerender
+    serverBundle: 'local',
     clientBundle: {
       scan: true,
-      sizeLimitKb: 256,
+      sizeLimitKb: 48,
     },
   },
 

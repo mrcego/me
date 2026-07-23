@@ -762,42 +762,19 @@ const scrollToSection = (e, href) => {
   background: rgba(var(--primary-rgb, 255, 75, 92), 0.4);
 }
 
-@property --hire-border-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
 .hire-menu-trigger {
-  --hire-border-angle: 0deg;
   position: relative;
   isolation: isolate;
-  border: 1.5px solid transparent;
-  background:
-    linear-gradient(
-        color-mix(in srgb, var(--secondary) 88%, var(--background)),
-        color-mix(in srgb, var(--secondary) 88%, var(--background))
-      )
-      padding-box,
-    conic-gradient(
-        from var(--hire-border-angle),
-        transparent 0%,
-        transparent 28%,
-        color-mix(in srgb, var(--primary) 55%, transparent) 38%,
-        var(--primary) 50%,
-        color-mix(in srgb, var(--primary) 55%, transparent) 62%,
-        transparent 72%,
-        transparent 100%
-      )
-      border-box;
+  border: 1.5px solid color-mix(in srgb, var(--primary) 45%, transparent);
+  background: color-mix(in srgb, var(--secondary) 88%, var(--background));
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--primary) 12%, transparent),
     0 0 18px color-mix(in srgb, var(--primary) 22%, transparent);
-  animation: hire-border-spin 2.2s linear infinite;
   transition:
     color 0.25s ease,
     box-shadow 0.25s ease,
-    transform 0.25s ease;
+    transform 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .hire-menu-trigger::before {
@@ -813,26 +790,10 @@ const scrollToSection = (e, href) => {
 .hire-menu-trigger:hover,
 .hire-menu-trigger--open {
   color: var(--primary);
+  border-color: var(--primary);
   box-shadow:
     0 0 0 1px color-mix(in srgb, var(--primary) 28%, transparent),
     0 0 26px color-mix(in srgb, var(--primary) 38%, transparent);
-  background:
-    linear-gradient(
-        color-mix(in srgb, var(--secondary) 88%, var(--background)),
-        color-mix(in srgb, var(--secondary) 88%, var(--background))
-      )
-      padding-box,
-    conic-gradient(
-        from var(--hire-border-angle),
-        transparent 0%,
-        transparent 18%,
-        color-mix(in srgb, var(--primary) 75%, transparent) 32%,
-        var(--primary) 50%,
-        color-mix(in srgb, var(--primary) 75%, transparent) 68%,
-        transparent 82%,
-        transparent 100%
-      )
-      border-box;
 }
 
 .hire-menu-trigger:hover::before,
@@ -844,15 +805,8 @@ const scrollToSection = (e, href) => {
   transform: scale(0.97);
 }
 
-@keyframes hire-border-spin {
-  to {
-    --hire-border-angle: 360deg;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .hire-menu-trigger {
-    animation: none;
     border-color: color-mix(in srgb, var(--primary) 55%, transparent);
     background: color-mix(in srgb, var(--primary) 10%, transparent);
     box-shadow: 0 0 14px color-mix(in srgb, var(--primary) 20%, transparent);

@@ -4,7 +4,7 @@
     :class="{ 'has-availability-banner': showAnnouncement }"
   >
     <!-- CSS auto-hide splash — does not wait for Vue entry hydration -->
-    <AppLoader v-if="showLoader" @done="showLoader = false" />
+    <!-- Splash removed: it delayed FCP/LCP/SI in mobile lab without user value. -->
 
     <SkipToContent />
 
@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted } from 'vue';
 import { usePortfolio } from '~/composables/usePortfolio';
 import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
 
@@ -50,7 +50,16 @@ const { showAnnouncement } = useAvailability();
 const { activeSection } = usePortfolio();
 const { pageProgress } = useSmoothedScroll(0.14);
 const { vibeCodingModalMounted } = useVibeCodingModal();
-const showLoader = ref(true);
+
+onMounted(() => {
+  // Defer CRT/scanline paint chrome until after first paint metrics settle.
+  const enableFx = () => document.documentElement.classList.add('fx-on');
+  if (typeof requestIdleCallback === 'function') {
+    requestIdleCallback(enableFx, { timeout: 2500 });
+  } else {
+    setTimeout(enableFx, 1200);
+  }
+});
 
 useHead({
   link: [
