@@ -111,7 +111,7 @@ const background = Buffer.from(`
 
   <!-- Footer -->
   <text x="90" y="560" font-family="${FONT}" font-size="26" font-weight="700" fill="${PRIMARY}">cesargomez.dev</text>
-  <text x="300" y="560" font-family="${FONT}" font-size="22" font-weight="500" fill="${MUTED}" fill-opacity="0.8">Remote · 13+ years experience</text>
+  <text x="300" y="560" font-family="${FONT}" font-size="22" font-weight="500" fill="${MUTED}" fill-opacity="0.8">Cartagena · Remote · 13+ years</text>
 
   <!-- Portrait ring -->
   <circle cx="${CX}" cy="${CY}" r="${R + 10}" fill="none" stroke="${PRIMARY}" stroke-opacity="0.25" stroke-width="2"/>

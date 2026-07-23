@@ -57,12 +57,33 @@
               delay: 0.35,
               ease: [0.16, 1, 0.3, 1],
             }"
-            class="w-full max-w-2xl mx-auto lg:mx-0"
+            class="w-full max-w-2xl mx-auto lg:mx-0 space-y-2 sm:space-y-2.5"
           >
             <p
               class="text-lg sm:text-xl md:text-2xl lg:text-2xl xl:text-3xl font-black tracking-tight text-foreground text-balance text-center lg:text-left"
             >
               {{ $t('hero.title') }}
+            </p>
+            <p
+              class="flex flex-wrap items-center justify-center lg:justify-start gap-x-2 gap-y-1 type-meta text-muted"
+            >
+              <span class="inline-flex items-center gap-1.5">
+                <Icon
+                  name="lucide:map-pin"
+                  class="size-3.5 shrink-0 text-primary/70"
+                  aria-hidden="true"
+                />
+                {{ $t('hero.location') }}
+              </span>
+              <span class="text-foreground/20" aria-hidden="true">·</span>
+              <span class="inline-flex items-center gap-1.5">
+                <Icon
+                  name="lucide:globe"
+                  class="size-3.5 shrink-0 text-primary/70"
+                  aria-hidden="true"
+                />
+                {{ $t('hero.workPreference') }}
+              </span>
             </p>
           </Motion>
 

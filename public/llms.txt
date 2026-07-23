@@ -1,6 +1,6 @@
 # César Gómez — Frontend-Focused Senior Fullstack Developer
 
-> Portfolio and professional profile for César Gómez (mrcego), a senior fullstack developer with a frontend focus and 13+ years of experience in Vue.js, Nuxt.js, TypeScript, and frontend architecture. Based in Colombia. Available for remote contract work from August 2026.
+> Portfolio and professional profile for César Gómez (mrcego), a senior fullstack developer with a frontend focus and 13+ years of experience in Vue.js, Nuxt.js, TypeScript, and frontend architecture. Based in Cartagena de Indias, Colombia. Remote work preferred. Available for contract work from August 2026.
 
 ## Canonical URLs
 
@@ -36,7 +36,7 @@ César Gómez is a senior fullstack developer with a frontend focus. He builds h
 
 ## Availability
 
-Open to senior frontend, fullstack, and architecture roles — contract and remote-friendly. Target availability: August 2026.
+Open to senior frontend, fullstack, and architecture roles — contract. Work preference: remote. Based in Cartagena de Indias, Colombia. Target availability: August 2026.
 
 ## Contact
 

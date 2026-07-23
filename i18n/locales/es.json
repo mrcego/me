@@ -25,6 +25,9 @@
     "expertiseBadge": "Vibe Coding Cleanup Specialist",
     "name": "CÉSAR GÓMEZ",
     "title": "Senior Vue/Nuxt · Experto en IA y NLP",
+    "location": "Cartagena de Indias, Colombia",
+    "workPreference": "Remoto",
+    "locationLine": "Cartagena de Indias, Colombia · Preferencia remoto",
     "description": "Experto en ingeniería con IA/NLP (local y cloud) y en convertir código asistido por agentes en sistemas listos para producción. 13+ años en Vue.js, Nuxt y TypeScript con profundidad fullstack.",
     "cta": "Contáctame",
     "downloadCv": "Descargar CV",
@@ -520,15 +523,15 @@
   },
   "seo": {
     "title": "Senior Vue/Nuxt · Experto en IA y NLP",
-    "description": "Contrata a César Gómez, desarrollador frontend Vue senior con 13+ años en Vue.js, Nuxt.js y TypeScript. Basado en Colombia, remoto, disponible por contrato desde agosto de 2026.",
-    "keywords": "desarrollador Vue, desarrollador Vue.js, desarrollador frontend Vue, desarrollador Nuxt, desarrollador Vue senior, contratar desarrollador Vue, TypeScript frontend, César Gómez, Cesar Gomez, mrcego, desarrollador remoto Colombia, ingeniero frontend Vue",
+    "description": "Contrata a César Gómez, desarrollador frontend Vue senior con 13+ años en Vue.js, Nuxt.js y TypeScript. Basado en Cartagena de Indias, Colombia. Preferencia de trabajo remoto. Disponible por contrato desde agosto de 2026.",
+    "keywords": "desarrollador Vue, desarrollador Vue.js, desarrollador frontend Vue, desarrollador Nuxt, desarrollador Vue senior, contratar desarrollador Vue, TypeScript frontend, César Gómez, Cesar Gomez, mrcego, desarrollador remoto Cartagena Colombia, ingeniero frontend Vue",
     "ogTitle": "Senior Vue/Nuxt · Experto en IA y NLP",
-    "ogDescription": "Desarrollador frontend Vue senior. 13+ años con Vue.js, Nuxt.js y TypeScript. Contrato remoto desde ago 2026.",
+    "ogDescription": "Desarrollador frontend Vue senior en Cartagena de Indias, Colombia. 13+ años con Vue.js, Nuxt.js y TypeScript. Preferencia remoto. Contrato desde ago 2026.",
     "jobTitle": "Senior Vue/Nuxt · Experto en IA y NLP",
     "siteName": "Portafolio de César Gómez",
     "serviceName": "César Gómez — Desarrollo Frontend y Fullstack",
     "serviceDescription": "Servicios senior de desarrollo fullstack y arquitectura frontend con Vue.js, Nuxt.js, TypeScript, design systems e ingeniería de producto orientada al rendimiento.",
-    "availability": "Roles senior frontend y fullstack por contrato desde agosto de 2026"
+    "availability": "Roles senior frontend y fullstack por contrato desde agosto de 2026 · Preferencia remoto · Cartagena de Indias, Colombia"
   },
   "faq": {
     "section": "Preguntas frecuentes",
@@ -559,7 +562,7 @@
       },
       {
         "question": "¿Está disponible César Gómez para contratación?",
-        "answer": "Sí. César está abierto a roles senior frontend, fullstack y arquitectura por contrato. Disponibilidad objetivo: agosto de 2026, con trabajo remoto para equipos internacionales."
+        "answer": "Sí. César está abierto a roles senior frontend, fullstack y arquitectura por contrato. Disponibilidad objetivo: agosto de 2026. Está basado en Cartagena de Indias, Colombia, y prefiere trabajo remoto con equipos internacionales."
       },
       {
         "question": "¿Qué experiencia tiene con Vue.js y Nuxt.js?",
@@ -572,11 +575,11 @@
       },
       {
         "question": "¿Es buen candidato como desarrollador frontend Vue para equipos remotos?",
-        "answer": "Sí. Es desarrollador frontend Vue senior en Colombia con 13+ años de experiencia, trabajo en producción en Colegium y LingoQuesto, y colaboración remota con equipos distribuidos en inglés y español."
+        "answer": "Sí. Es desarrollador frontend Vue senior basado en Cartagena de Indias, Colombia, con 13+ años de experiencia, trabajo en producción en Colegium y LingoQuesto, y preferencia clara por trabajo remoto con equipos distribuidos en inglés y español."
       },
       {
         "question": "¿Dónde está ubicado César Gómez?",
-        "answer": "Está basado en Colombia y trabaja de forma remota con equipos en Latinoamérica y a nivel global."
+        "answer": "Está basado en Cartagena de Indias, Colombia. Su preferencia de trabajo es remoto, colaborando con equipos en Latinoamérica y a nivel global."
       },
       {
         "key": "contact",

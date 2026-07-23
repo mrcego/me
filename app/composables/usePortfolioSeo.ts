@@ -1,5 +1,9 @@
 const SITE_URL = 'https://cesargomez.dev';
 
+/** ProfilePage dates must be full ISO-8601 DateTime (GSC rejects YYYY-MM-DD). */
+const PROFILE_DATE_CREATED = '2024-06-01T12:00:00-05:00';
+const PROFILE_DATE_MODIFIED = '2026-07-22T22:00:00-05:00';
+
 export const usePortfolioSeo = () => {
   const { t, locale } = useI18n();
   const localePath = useLocalePath();
@@ -57,8 +61,8 @@ export const usePortfolioSeo = () => {
       { rel: 'alternate', hreflang: 'x-default', href: `${SITE_URL}/` },
     ],
     meta: [
-      { name: 'geo.region', content: 'CO' },
-      { name: 'geo.placename', content: 'Colombia' },
+      { name: 'geo.region', content: 'CO-BOL' },
+      { name: 'geo.placename', content: 'Cartagena de Indias, Colombia' },
       { property: 'profile:first_name', content: 'César' },
       { property: 'profile:last_name', content: 'Gómez' },
       { property: 'profile:username', content: 'mrcego' },
@@ -84,12 +88,19 @@ export const usePortfolioSeo = () => {
             name: 'Colombia',
           },
           homeLocation: {
-            '@type': 'Country',
-            name: 'Colombia',
+            '@type': 'Place',
+            name: 'Cartagena de Indias',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Cartagena de Indias',
+              addressRegion: 'Bolívar',
+              addressCountry: 'CO',
+            },
           },
           workLocation: {
-            '@type': 'Country',
-            name: 'Colombia',
+            '@type': 'Place',
+            name: t('hero.workPreference'),
+            description: t('hero.locationLine'),
           },
           sameAs: [
             'https://www.linkedin.com/in/mrcego',
@@ -153,9 +164,22 @@ export const usePortfolioSeo = () => {
           name: t('hero.title'),
           description: t('seo.description'),
           inLanguage: locale.value === 'es' ? 'es-ES' : 'en-US',
-          dateModified: '2026-07-14',
+          dateCreated: PROFILE_DATE_CREATED,
+          dateModified: PROFILE_DATE_MODIFIED,
           mainEntity: {
+            '@type': 'Person',
             '@id': `${SITE_URL}/#person`,
+            name: personName.value,
+            alternateName: 'mrcego',
+            url: canonicalUrl.value,
+            image: profileImage,
+            jobTitle: t('hero.title'),
+            description: t('seo.description'),
+            sameAs: [
+              'https://www.linkedin.com/in/mrcego',
+              'https://github.com/mrcego',
+              'https://cesargomez.dev',
+            ],
           },
         }),
       },
