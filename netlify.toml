@@ -51,8 +51,6 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Cross-Origin-Opener-Policy = "same-origin"
-    # CSP is emitted post-generate into .output/public/_headers with sha256
-    # hashes for Nuxt's inline window.__NUXT__.config bootstrap script.
 
 [[headers]]
   for = "/_nuxt/*"
@@ -108,11 +106,6 @@
   for = "/manifest.json"
   [headers.values]
     Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
-
-[[headers]]
-  for = "/theme-init.js"
-  [headers.values]
-    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
 
 # pretty_urls would otherwise turn /sitemap.xml into an HTML refresh page
 [[redirects]]

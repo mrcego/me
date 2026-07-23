@@ -1,12 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import { writeFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
 import tailwindcss from '@tailwindcss/vite';
 import { buildThemeInitScript } from './app/utils/themeInitScript';
-
-const rootDir = dirname(fileURLToPath(import.meta.url));
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -60,7 +55,7 @@ export default defineNuxtConfig({
       script: [
         {
           key: 'theme-init',
-          src: '/theme-init.js',
+          innerHTML: buildThemeInitScript(),
           tagPosition: 'head',
         },
       ],
@@ -97,10 +92,6 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    // Emit blocking theme bootstrap as an external file (CSP script-src 'self').
-    'build:before'() {
-      writeFileSync(join(rootDir, 'public/theme-init.js'), `${buildThemeInitScript()}\n`, 'utf8');
-    },
     // Stop Netlify/LH from downloading Lazy section chunks before LCP.
     'build:manifest'(manifest) {
       for (const item of Object.values(manifest)) {
