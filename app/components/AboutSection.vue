@@ -167,7 +167,7 @@
                         :height="COMPANY_LOGOS[role.key].height"
                         fit="inside"
                         sizes="104px"
-                        densities="x1 x2"
+                        densities="x1"
                         loading="lazy"
                         :format="COMPANY_LOGOS[role.key].src.endsWith('.svg') ? undefined : 'webp'"
                         quality="85"
@@ -257,7 +257,7 @@
               :height="selectedCompanyLogo.height"
               fit="inside"
               sizes="104px"
-              densities="x1 x2"
+              densities="x1"
               loading="eager"
               :format="selectedCompanyLogo.src.endsWith('.svg') ? undefined : 'webp'"
               quality="85"
@@ -348,6 +348,7 @@
 import { computed, ref } from 'vue';
 import { Motion } from 'motion-v';
 import { useI18n } from 'vue-i18n';
+import Dialog from 'primevue/dialog';
 import type { PhilosophyPoint } from './PhilosophyPointItem.vue';
 
 const { t, tm } = useI18n();

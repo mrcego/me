@@ -4,7 +4,7 @@
     :class="{ 'has-availability-banner': showAnnouncement }"
   >
     <!-- Entrance loader — SSR so it covers first paint (no content→loader flash) -->
-    <AppLoader v-if="showLoader" :loading="loading" />
+    <AppLoader v-if="showLoader" :loading="loading" @after-leave="onLoaderGone" />
 
     <SkipToContent />
 
@@ -33,7 +33,7 @@
 
     <LazyAppProtocolChat :hydrate-on-idle="2000" />
 
-    <VibeCodingModal />
+    <LazyVibeCodingModal v-if="vibeCodingModalMounted" />
 
     <LazyPerformanceOptimizations hydrate-on-idle />
   </div>
@@ -49,20 +49,32 @@ useTheme();
 const { showAnnouncement } = useAvailability();
 const { activeSection } = usePortfolio();
 const { pageProgress } = useSmoothedScroll(0.14);
-const showLoader = true;
+const { vibeCodingModalMounted } = useVibeCodingModal();
+const showLoader = ref(true);
 const loading = ref(true);
 
+function onLoaderGone() {
+  showLoader.value = false;
+}
+
 onMounted(() => {
-  const hideLoader = () => {
-    loading.value = false;
-  };
-
-  const maxWaitMs = 650;
-  const maxTimer = window.setTimeout(hideLoader, maxWaitMs);
-
-  void document.fonts?.ready.then(() => {
-    window.clearTimeout(maxTimer);
-    hideLoader();
+  // Fonts are already preloaded — hide ASAP so the hero owns LCP.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      loading.value = false;
+    });
   });
+});
+
+useHead({
+  link: [
+    {
+      rel: 'preload',
+      as: 'image',
+      type: 'image/webp',
+      href: '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg',
+      fetchpriority: 'high',
+    },
+  ],
 });
 </script>

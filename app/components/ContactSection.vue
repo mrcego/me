@@ -56,12 +56,6 @@
               class="contact-method glass flex items-center gap-4 md:gap-5 group touch-manipulation rounded-2xl border border-foreground/10 bg-foreground/3 px-3 py-3.5 md:px-4 md:py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               :target="c.external ? '_blank' : undefined"
               :rel="c.external ? 'noopener noreferrer' : undefined"
-              :aria-label="
-                $t('contact.methodAria', {
-                  method: $t(`contact.methods.${c.key}`),
-                  value: c.value,
-                })
-              "
             >
               <div
                 class="contact-method__icon flex size-16 md:size-18 lg:size-20 shrink-0 items-center justify-center rounded-2xl border border-foreground/15 bg-background/45 text-primary shadow-xl"
@@ -285,6 +279,9 @@
 
 <script setup lang="ts">
 import { Motion } from 'motion-v';
+import Button from 'primevue/button';
+import InputText from 'primevue/inputtext';
+import Textarea from 'primevue/textarea';
 import { useContactForm } from '~/composables/useContactForm';
 
 const { motionInitial, motionInView } = useMotionConfig();

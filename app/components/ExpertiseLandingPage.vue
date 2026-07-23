@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Button from 'primevue/button';
+
 interface Props {
   translationKey: 'landingVue' | 'landingAi' | 'landingNode';
 }

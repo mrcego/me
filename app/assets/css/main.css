@@ -1154,7 +1154,6 @@ html[data-theme-font='fira-code'] .p-button {
 }
 
 /* PrimeVue Message wraps content; without this the banner only shrinks to text+CTA width */
-.availability-banner .p-message-content-wrapper,
 .availability-banner__content-wrapper {
   display: flex !important;
   align-items: center;

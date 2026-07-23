@@ -15,8 +15,8 @@ type UseCardTiltOptions = {
  * and tilts toward the tap point on touch.
  *
  * Bind pointer handlers + `hitRef` to a stable outer shell (no transform).
- * Bind `style` to an inner element that rotates — otherwise measuring the
- * transformed node causes hover corner jitter (rect ↔ tilt feedback loop).
+ * Bind `style` to an inner visual layer — preferably with pointer-events: none —
+ * so click targets don't move under the cursor (which cancels click).
  */
 export function useCardTilt(options: UseCardTiltOptions = {}) {
   const maxDeg = options.maxDeg ?? 12;
@@ -32,6 +32,8 @@ export function useCardTilt(options: UseCardTiltOptions = {}) {
   let touchResetTimer: ReturnType<typeof setTimeout> | undefined;
   /** Cached shell rect while active — ignores child visual movement. */
   let activeRect: DOMRect | null = null;
+  /** Freeze tilt updates while pressed so browsers still emit click. */
+  let isPointerDown = false;
 
   const disabled = computed(() => prefersReducedMotion.value === 'reduce');
 
@@ -51,7 +53,7 @@ export function useCardTilt(options: UseCardTiltOptions = {}) {
   }
 
   function updateFromPoint(clientX: number, clientY: number) {
-    if (disabled.value) return;
+    if (disabled.value || isPointerDown) return;
 
     if (!activeRect) {
       activeRect = captureRect();
@@ -61,7 +63,6 @@ export function useCardTilt(options: UseCardTiltOptions = {}) {
 
     const px = (clientX - rect.left) / rect.width;
     const py = (clientY - rect.top) / rect.height;
-    // Clamp so edge/corner hover cannot overshoot after subpixel drift
     const nx = Math.min(1, Math.max(0, px));
     const ny = Math.min(1, Math.max(0, py));
 
@@ -75,10 +76,11 @@ export function useCardTilt(options: UseCardTiltOptions = {}) {
     rotateY.value = 0;
     isActive.value = false;
     activeRect = null;
+    isPointerDown = false;
   }
 
   function onPointerMove(event: PointerEvent) {
-    if (disabled.value || event.pointerType === 'touch') return;
+    if (disabled.value || event.pointerType === 'touch' || isPointerDown) return;
     updateFromPoint(event.clientX, event.clientY);
   }
 
@@ -89,16 +91,23 @@ export function useCardTilt(options: UseCardTiltOptions = {}) {
   }
 
   function onPointerDown(event: PointerEvent) {
-    if (disabled.value || event.pointerType !== 'touch') return;
+    if (disabled.value) return;
+    isPointerDown = true;
     clearTouchReset();
-    activeRect = captureRect();
-    updateFromPoint(event.clientX, event.clientY);
+    if (event.pointerType === 'touch') {
+      activeRect = captureRect();
+      // Allow a single tilt sample on touch start, then freeze for the tap.
+      isPointerDown = false;
+      updateFromPoint(event.clientX, event.clientY);
+      isPointerDown = true;
+    }
   }
 
   function onPointerUp(event: PointerEvent) {
-    if (disabled.value || event.pointerType !== 'touch') return;
+    if (disabled.value) return;
+    isPointerDown = false;
+    if (event.pointerType !== 'touch') return;
     clearTouchReset();
-    // Brief hold so a quick tap still reads as a bend.
     touchResetTimer = setTimeout(
       () => {
         reset();

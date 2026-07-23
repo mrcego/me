@@ -4,9 +4,7 @@
     class="relative min-h-svh flex items-center justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+5rem)] pb-10 md:pb-12 lg:pt-[calc(var(--availability-banner-h,0px)+5.5rem)] lg:pb-14"
   >
     <!-- Interactive background particles -->
-    <ClientOnly>
-      <HeroParticles />
-    </ClientOnly>
+    <LazyHeroParticles :hydrate-on-idle="1800" />
 
     <!-- Decorative watermark — deferred + opacity 0 until idle so it cannot steal LCP -->
     <div
@@ -195,32 +193,35 @@
         class="relative order-2 lg:order-2 px-2 sm:px-4 md:px-0 w-full max-w-md lg:max-w-none mx-auto"
       >
         <div
-          class="group relative animate-float mt-2.5 max-w-[14rem] sm:max-w-[16rem] lg:max-w-[min(100%,24.5rem)] xl:max-w-[min(100%,28.5rem)] mx-auto perspective-[1000px]"
+          ref="photoHitRef"
+          class="group hero-photo-trigger relative mt-2.5 max-w-[14rem] sm:max-w-[16rem] lg:max-w-[min(100%,24.5rem)] xl:max-w-[min(100%,28.5rem)] mx-auto perspective-[1000px]"
         >
-          <!-- Stable hit shell (no transform) — prevents corner hover jitter -->
-          <div
-            ref="photoHitRef"
-            class="relative z-20 touch-manipulation [transform-style:preserve-3d] perspective-[1000px]"
+          <!--
+            Stable hit shell + overlay button (no transform) so click survives.
+            Float (translate) and tilt (rotate) must stay on separate layers —
+            both use `transform`, so sharing one node kills the float animation.
+          -->
+          <button
+            type="button"
+            class="absolute inset-0 z-30 rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] cursor-pointer touch-manipulation appearance-none bg-transparent border-0 p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
+            :aria-label="$t('about.vibeCodingOpen')"
+            aria-haspopup="dialog"
+            @click.stop="openVibeCodingModal"
             @pointermove="onPhotoPointerMove"
             @pointerleave="onPhotoPointerLeave"
-            @pointerdown="onPhotoPointerDown"
+            @pointerdown="onHeroPointerDown"
             @pointerup="onPhotoPointerUp"
             @pointercancel="onPhotoPointerCancel"
-          >
-            <button
-              type="button"
-              class="hero-photo-trigger relative flex w-full flex-col gap-2.5 sm:gap-3 text-left appearance-none bg-transparent border-0 p-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem]"
-              :style="photoTiltStyle"
-              :aria-label="$t('about.vibeCodingOpen')"
-              @click.stop="openVibeCodingModal"
-            >
+          />
+
+          <div class="relative z-10 pointer-events-none animate-float" aria-hidden="true">
+            <div class="flex w-full flex-col gap-2.5 sm:gap-3" :style="photoTiltStyle">
               <span
                 class="inline-flex w-full items-center justify-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-primary text-primary-contrast shadow-lg shadow-primary/20 transition-[filter,box-shadow] duration-300 group-hover:brightness-110"
               >
                 <Icon
                   name="solar:magic-stick-3-bold-duotone"
                   class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] shrink-0"
-                  aria-hidden="true"
                 />
                 <span class="type-overline tracking-[0.14em] sm:tracking-[0.18em] text-center">{{
                   $t('hero.expertiseBadge')
@@ -233,15 +234,10 @@
                 <div
                   class="relative aspect-4/5 max-h-[min(22rem,42svh)] lg:max-h-[min(30.5rem,62svh)] xl:max-h-[min(34.5rem,66svh)] mx-auto rounded-[1.6rem] md:rounded-[2rem] lg:rounded-[2.4rem] overflow-hidden bg-secondary"
                 >
-                  <!-- Card HUD Internal Overlay -->
+                  <div class="absolute inset-x-0 top-0 h-px bg-primary/20 z-20" />
+                  <div class="absolute inset-y-0 left-0 w-px bg-primary/20 z-20" />
                   <div
-                    class="absolute inset-x-0 top-0 h-px bg-primary/20 z-20 pointer-events-none"
-                  />
-                  <div
-                    class="absolute inset-y-0 left-0 w-px bg-primary/20 z-20 pointer-events-none"
-                  />
-                  <div
-                    class="absolute inset-0 bg-linear-to-t from-background via-background/10 to-transparent z-10 pointer-events-none"
+                    class="absolute inset-0 bg-linear-to-t from-background via-background/10 to-transparent z-10"
                   />
 
                   <NuxtImg
@@ -256,18 +252,15 @@
                     fetchpriority="high"
                     densities="x1"
                     sizes="224px sm:256px lg:392px xl:448px"
-                    class="surface-card__image hero-photo-image w-full h-full object-cover grayscale brightness-90 scale-105 pointer-events-none"
+                    class="surface-card__image hero-photo-image w-full h-full object-cover grayscale brightness-90 scale-105"
                   />
 
-                  <!-- Scanning effect specific to image -->
                   <div
-                    class="surface-card__glow absolute inset-0 z-20 bg-primary/5 pointer-events-none hero-scanline"
+                    class="surface-card__glow absolute inset-0 z-20 bg-primary/5 hero-scanline"
                   />
 
-                  <!-- Floating HUD Elements -->
                   <div
-                    class="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 glass px-3 py-2 rounded-full flex items-center gap-2.5 border border-primary/20 bg-background/60 backdrop-blur-md shadow-lg animate-pulse-slow pointer-events-none"
-                    aria-hidden="true"
+                    class="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 glass px-3 py-2 rounded-full flex items-center gap-2.5 border border-primary/20 bg-background/60 backdrop-blur-md shadow-lg animate-pulse-slow"
                   >
                     <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
                       <span
@@ -291,10 +284,10 @@
                 </div>
 
                 <div
-                  class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-30"
+                  class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left z-30"
                 />
               </div>
-            </button>
+            </div>
           </div>
 
           <!-- Decorative Glows -->
@@ -316,7 +309,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
-const { openVibeCodingModal } = useVibeCodingModal();
+const { openVibeCodingModal, vibeCodingModalMounted } = useVibeCodingModal();
 
 const { motionInitial, motionAnimate } = useMotionConfig();
 const {
@@ -328,6 +321,15 @@ const {
   onPointerUp: onPhotoPointerUp,
   onPointerCancel: onPhotoPointerCancel,
 } = useCardTilt({ maxDeg: 6, followMs: 340, settleMs: 780 });
+
+function prefetchVibeModal() {
+  vibeCodingModalMounted.value = true;
+}
+
+function onHeroPointerDown(event: PointerEvent) {
+  prefetchVibeModal();
+  onPhotoPointerDown(event);
+}
 
 const showMarquee = ref(false);
 const marqueeReady = ref(false);
@@ -424,15 +426,13 @@ onMounted(() => {
     filter 1.05s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hero-photo-trigger:focus-visible .hero-photo-image,
-.surface-card:focus-within .hero-photo-image {
+.hero-photo-trigger:focus-within .hero-photo-image {
   filter: grayscale(0.22) brightness(1.02);
   transform: scale(1.07);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .hero-photo-trigger:hover .hero-photo-image,
-  .surface-card:hover .hero-photo-image {
+  .hero-photo-trigger:hover .hero-photo-image {
     filter: grayscale(0.22) brightness(1.02);
     transform: scale(1.07);
   }
@@ -443,15 +443,13 @@ onMounted(() => {
     transition-duration: 0.01ms;
   }
 
-  .hero-photo-trigger:focus-visible .hero-photo-image,
-  .surface-card:focus-within .hero-photo-image {
+  .hero-photo-trigger:focus-within .hero-photo-image {
     transform: none;
     filter: grayscale(0.22) brightness(1.02);
   }
 
   @media (hover: hover) and (pointer: fine) {
-    .hero-photo-trigger:hover .hero-photo-image,
-    .surface-card:hover .hero-photo-image {
+    .hero-photo-trigger:hover .hero-photo-image {
       transform: none;
       filter: grayscale(0.22) brightness(1.02);
     }

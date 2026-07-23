@@ -104,6 +104,7 @@ export default defineNuxtConfig({
       {
         name: 'Outfit',
         provider: 'google',
+        // 800/900 keep font-black / display weights used across the portfolio
         weights: [400, 500, 600, 700, 800, 900],
         preload: true,
         // Required so nuxt-og-image can embed the face when rendering templates
@@ -113,8 +114,8 @@ export default defineNuxtConfig({
         // Google Fira Code tops out at 700 — themes using it clamp font-black via CSS
         name: 'Fira Code',
         provider: 'google',
-        weights: [300, 400, 500, 600, 700],
-        preload: true,
+        weights: [400, 500, 600, 700],
+        preload: false,
       },
     ],
   },
@@ -167,7 +168,8 @@ export default defineNuxtConfig({
   primevue: {
     autoImport: false,
     components: {
-      include: ['Button', 'Dialog', 'InputText', 'Message', 'Textarea'],
+      // Manual imports in SFCs so Dialog/form widgets stay out of the entry chunk.
+      include: [],
     },
     directives: {
       include: [],
