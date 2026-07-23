@@ -33,7 +33,7 @@
 
     <LazyAppProtocolChat :hydrate-on-idle="2000" />
 
-    <LazyVibeCodingModal :hydrate-on-idle="1200" />
+    <VibeCodingModal />
 
     <LazyPerformanceOptimizations hydrate-on-idle />
   </div>

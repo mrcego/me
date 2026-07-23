@@ -78,6 +78,9 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['@unhead/schema-org/vue', '@vueuse/core', 'motion-v'],
+    },
   },
 
   modules: [
@@ -103,6 +106,8 @@ export default defineNuxtConfig({
         provider: 'google',
         weights: [400, 500, 600, 700, 800, 900],
         preload: true,
+        // Required so nuxt-og-image can embed the face when rendering templates
+        global: true,
       },
       {
         // Google Fira Code tops out at 700 — themes using it clamp font-black via CSS
@@ -115,6 +120,16 @@ export default defineNuxtConfig({
   },
 
   // SEO module configuration
+  // Build-time OG PNGs (static Netlify generate) — no runtime signing secret needed
+  ogImage: {
+    zeroRuntime: true,
+    defaults: {
+      width: 1200,
+      height: 630,
+      alt: 'César Gómez Portfolio',
+    },
+  },
+
   robots: {
     disallow: [],
     robotsTxt: false,

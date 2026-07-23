@@ -4,6 +4,7 @@
  * SVG OG images are not rendered by most platforms (WhatsApp, iMessage, Slack,
  * LinkedIn, X, Facebook), so we composite a real 1200x630 PNG with sharp:
  * github-dark background + glow + circular portrait + name/subtitle/pills.
+ * Brand mark uses the site favicon (public/img/logo-mark.png), not a plain "C".
  *
  * Run: pnpm og:generate
  */
@@ -28,6 +29,10 @@ const MUTED = '#cbd5e1';
 const CX = 930;
 const CY = 300;
 const R = 205;
+
+const LOGO_SIZE = 46;
+const LOGO_X = 90;
+const LOGO_Y = 74;
 
 const FONT = "'Segoe UI', 'Outfit', 'Helvetica Neue', Arial, sans-serif";
 
@@ -91,13 +96,10 @@ const background = Buffer.from(`
   <circle cx="${CX}" cy="${CY - 40}" r="360" fill="url(#glowA)"/>
   <circle cx="120" cy="600" r="320" fill="url(#glowB)"/>
 
-  <!-- Brand mark -->
-  <g transform="translate(90 74)">
-    <rect x="0" y="0" width="46" height="46" rx="12"
-      fill="${PRIMARY}" fill-opacity="0.12" stroke="${PRIMARY}" stroke-opacity="0.5" stroke-width="1.5"/>
-    <text x="23" y="33" text-anchor="middle" font-family="${FONT}" font-size="26" font-weight="800" fill="${PRIMARY}">C</text>
-    <text x="70" y="24" font-family="${FONT}" font-size="17" font-weight="700" letter-spacing="3" fill="${MUTED}">CÉSAR GÓMEZ</text>
-    <text x="70" y="46" font-family="${FONT}" font-size="14" font-weight="600" letter-spacing="2" fill="${PRIMARY}" fill-opacity="0.85">PORTFOLIO</text>
+  <!-- Brand text (logo mark composited via sharp) -->
+  <g transform="translate(${LOGO_X + LOGO_SIZE + 24} ${LOGO_Y})">
+    <text x="0" y="24" font-family="${FONT}" font-size="17" font-weight="700" letter-spacing="3" fill="${MUTED}">CÉSAR GÓMEZ</text>
+    <text x="0" y="46" font-family="${FONT}" font-size="14" font-weight="600" letter-spacing="2" fill="${PRIMARY}" fill-opacity="0.85">PORTFOLIO</text>
   </g>
 
   <!-- Headline -->
@@ -123,6 +125,14 @@ const portraitMask = Buffer.from(
 );
 
 async function build() {
+  // Ensure favicon mark PNG exists (Satori + this script)
+  await import('./rasterize-logo-mark.mjs');
+
+  const logo = await sharp(resolve(root, 'public/img/logo-mark.png'))
+    .resize(LOGO_SIZE, LOGO_SIZE, { fit: 'cover' })
+    .png()
+    .toBuffer();
+
   const portrait = await sharp(resolve(root, 'public/img/technical-identity.jpg'))
     .resize(R * 2, R * 2, { fit: 'cover', position: 'top' })
     .composite([{ input: portraitMask, blend: 'dest-in' }])
@@ -131,7 +141,10 @@ async function build() {
 
   await sharp(background, { density: 144 })
     .resize(W, H)
-    .composite([{ input: portrait, left: CX - R, top: CY - R }])
+    .composite([
+      { input: logo, left: LOGO_X, top: LOGO_Y },
+      { input: portrait, left: CX - R, top: CY - R },
+    ])
     .png({ quality: 90 })
     .toFile(resolve(root, 'public/img/og-image.png'));
 

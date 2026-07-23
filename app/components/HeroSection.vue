@@ -197,10 +197,10 @@
         <div
           class="group relative animate-float mt-2.5 max-w-[14rem] sm:max-w-[16rem] lg:max-w-[min(100%,24.5rem)] xl:max-w-[min(100%,28.5rem)] mx-auto perspective-[1000px]"
         >
+          <!-- Stable hit shell (no transform) — prevents corner hover jitter -->
           <div
-            ref="photoCardRef"
-            class="relative z-20 flex flex-col gap-2.5 sm:gap-3 touch-manipulation"
-            :style="photoTiltStyle"
+            ref="photoHitRef"
+            class="relative z-20 touch-manipulation [transform-style:preserve-3d] perspective-[1000px]"
             @pointermove="onPhotoPointerMove"
             @pointerleave="onPhotoPointerLeave"
             @pointerdown="onPhotoPointerDown"
@@ -209,83 +209,92 @@
           >
             <button
               type="button"
-              class="inline-flex w-full items-center justify-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-primary text-primary-contrast shadow-lg shadow-primary/20 cursor-pointer transition-transform hover:scale-[1.02] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              class="hero-photo-trigger relative flex w-full flex-col gap-2.5 sm:gap-3 text-left appearance-none bg-transparent border-0 p-0 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem]"
+              :style="photoTiltStyle"
               :aria-label="$t('about.vibeCodingOpen')"
-              @click="openVibeCodingModal"
+              @click.stop="openVibeCodingModal"
             >
-              <Icon
-                name="solar:magic-stick-3-bold-duotone"
-                class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] shrink-0"
-              />
-              <span class="type-overline tracking-[0.14em] sm:tracking-[0.18em] text-center">{{
-                $t('hero.expertiseBadge')
-              }}</span>
-            </button>
-
-            <div
-              class="surface-card surface-card--soft relative rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden border border-white/10 glass p-2.5 md:p-3.5"
-            >
-              <div
-                class="relative aspect-4/5 max-h-[min(22rem,42svh)] lg:max-h-[min(30.5rem,62svh)] xl:max-h-[min(34.5rem,66svh)] mx-auto rounded-[1.6rem] md:rounded-[2rem] lg:rounded-[2.4rem] overflow-hidden bg-secondary"
+              <span
+                class="inline-flex w-full items-center justify-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-primary text-primary-contrast shadow-lg shadow-primary/20 transition-[filter,box-shadow] duration-300 group-hover:brightness-110"
               >
-                <!-- Card HUD Internal Overlay -->
-                <div class="absolute inset-x-0 top-0 h-px bg-primary/20 z-20 pointer-events-none" />
-                <div
-                  class="absolute inset-y-0 left-0 w-px bg-primary/20 z-20 pointer-events-none"
+                <Icon
+                  name="solar:magic-stick-3-bold-duotone"
+                  class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] shrink-0"
+                  aria-hidden="true"
                 />
-                <div
-                  class="absolute inset-0 bg-linear-to-t from-background via-background/10 to-transparent z-10"
-                />
+                <span class="type-overline tracking-[0.14em] sm:tracking-[0.18em] text-center">{{
+                  $t('hero.expertiseBadge')
+                }}</span>
+              </span>
 
-                <NuxtImg
-                  src="/img/me.jpg"
-                  alt="César Gómez - Frontend-focused senior fullstack developer specializing in Vue.js and Nuxt.js"
-                  width="448"
-                  height="560"
-                  fit="cover"
-                  format="webp"
-                  quality="85"
-                  loading="eager"
-                  fetchpriority="high"
-                  densities="x1"
-                  sizes="224px sm:256px lg:392px xl:448px"
-                  class="surface-card__image surface-card__image--zoom w-full h-full object-cover grayscale brightness-90 scale-105"
-                />
-
-                <!-- Scanning effect specific to image -->
+              <div
+                class="surface-card surface-card--soft relative rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden border border-white/10 glass p-2.5 md:p-3.5"
+              >
                 <div
-                  class="surface-card__glow absolute inset-0 z-20 bg-primary/5 pointer-events-none hero-scanline"
-                />
-
-                <!-- Floating HUD Elements -->
-                <div
-                  class="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 glass px-3 py-2 rounded-full flex items-center gap-2.5 border border-primary/20 bg-background/60 backdrop-blur-md shadow-lg animate-pulse-slow"
+                  class="relative aspect-4/5 max-h-[min(22rem,42svh)] lg:max-h-[min(30.5rem,62svh)] xl:max-h-[min(34.5rem,66svh)] mx-auto rounded-[1.6rem] md:rounded-[2rem] lg:rounded-[2.4rem] overflow-hidden bg-secondary"
                 >
-                  <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
-                    <span
-                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"
-                    />
-                    <span
-                      class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-emerald-500"
-                    />
-                  </span>
-                  <div class="flex flex-col gap-0.5">
-                    <span class="type-meta text-primary leading-none">
-                      {{ $t('hero.hud.status') }}
+                  <!-- Card HUD Internal Overlay -->
+                  <div
+                    class="absolute inset-x-0 top-0 h-px bg-primary/20 z-20 pointer-events-none"
+                  />
+                  <div
+                    class="absolute inset-y-0 left-0 w-px bg-primary/20 z-20 pointer-events-none"
+                  />
+                  <div
+                    class="absolute inset-0 bg-linear-to-t from-background via-background/10 to-transparent z-10 pointer-events-none"
+                  />
+
+                  <NuxtImg
+                    src="/img/me.jpg"
+                    alt=""
+                    width="448"
+                    height="560"
+                    fit="cover"
+                    format="webp"
+                    quality="85"
+                    loading="eager"
+                    fetchpriority="high"
+                    densities="x1"
+                    sizes="224px sm:256px lg:392px xl:448px"
+                    class="surface-card__image hero-photo-image w-full h-full object-cover grayscale brightness-90 scale-105 pointer-events-none"
+                  />
+
+                  <!-- Scanning effect specific to image -->
+                  <div
+                    class="surface-card__glow absolute inset-0 z-20 bg-primary/5 pointer-events-none hero-scanline"
+                  />
+
+                  <!-- Floating HUD Elements -->
+                  <div
+                    class="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 glass px-3 py-2 rounded-full flex items-center gap-2.5 border border-primary/20 bg-background/60 backdrop-blur-md shadow-lg animate-pulse-slow pointer-events-none"
+                    aria-hidden="true"
+                  >
+                    <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
+                      <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"
+                      />
+                      <span
+                        class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-emerald-500"
+                      />
                     </span>
-                    <span
-                      class="text-xs md:text-sm font-mono font-bold text-foreground uppercase leading-none"
-                    >
-                      {{ $t('hero.hud.operational') }}
-                    </span>
+                    <div class="flex flex-col gap-0.5">
+                      <span class="type-meta text-primary leading-none">
+                        {{ $t('hero.hud.status') }}
+                      </span>
+                      <span
+                        class="text-xs md:text-sm font-mono font-bold text-foreground uppercase leading-none"
+                      >
+                        {{ $t('hero.hud.operational') }}
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div
-                class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-30"
-              />
-            </div>
+                <div
+                  class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-30"
+                />
+              </div>
+            </button>
           </div>
 
           <!-- Decorative Glows -->
@@ -311,14 +320,14 @@ const { openVibeCodingModal } = useVibeCodingModal();
 
 const { motionInitial, motionAnimate } = useMotionConfig();
 const {
-  cardRef: photoCardRef,
+  hitRef: photoHitRef,
   style: photoTiltStyle,
   onPointerMove: onPhotoPointerMove,
   onPointerLeave: onPhotoPointerLeave,
   onPointerDown: onPhotoPointerDown,
   onPointerUp: onPhotoPointerUp,
   onPointerCancel: onPhotoPointerCancel,
-} = useCardTilt({ maxDeg: 14 });
+} = useCardTilt({ maxDeg: 6, followMs: 340, settleMs: 780 });
 
 const showMarquee = ref(false);
 const marqueeReady = ref(false);
@@ -403,5 +412,49 @@ onMounted(() => {
     transparent 1px,
     rgba(255, 75, 92, 0.1) 2px
   );
+}
+
+.hero-photo-trigger {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero-photo-image {
+  transition:
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.05s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-photo-trigger:focus-visible .hero-photo-image,
+.surface-card:focus-within .hero-photo-image {
+  filter: grayscale(0.22) brightness(1.02);
+  transform: scale(1.07);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-photo-trigger:hover .hero-photo-image,
+  .surface-card:hover .hero-photo-image {
+    filter: grayscale(0.22) brightness(1.02);
+    transform: scale(1.07);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo-image {
+    transition-duration: 0.01ms;
+  }
+
+  .hero-photo-trigger:focus-visible .hero-photo-image,
+  .surface-card:focus-within .hero-photo-image {
+    transform: none;
+    filter: grayscale(0.22) brightness(1.02);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .hero-photo-trigger:hover .hero-photo-image,
+    .surface-card:hover .hero-photo-image {
+      transform: none;
+      filter: grayscale(0.22) brightness(1.02);
+    }
+  }
 }
 </style>

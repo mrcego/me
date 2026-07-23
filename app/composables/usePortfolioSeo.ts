@@ -20,6 +20,22 @@ export const usePortfolioSeo = () => {
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
   const { public: publicConfig } = useRuntimeConfig();
 
+  defineOgImage(
+    'Portfolio',
+    {
+      title: personName.value,
+      description: t('hero.title'),
+      brandName: locale.value === 'es' ? 'CÉSAR GÓMEZ' : 'CESAR GOMEZ',
+      brandTag: 'PORTFOLIO',
+      siteUrl: 'cesargomez.dev',
+      footer: t('hero.locationLine'),
+      pills: ['Vue.js', 'Nuxt', 'TypeScript', 'AI · NLP'],
+    },
+    {
+      alt: `${personName.value} — ${t('hero.title')}`,
+    },
+  );
+
   useSeoMeta({
     // Keep tab/share titles in sync with the hero subtitle after the name.
     title: () => t('hero.title'),
@@ -32,11 +48,7 @@ export const usePortfolioSeo = () => {
     ogType: 'profile',
     ogTitle: () => t('hero.title'),
     ogDescription: () => t('seo.ogDescription'),
-    ogImage,
-    ogImageType: 'image/png',
-    ogImageWidth: 1200,
-    ogImageHeight: 630,
-    ogImageAlt: () => `${personName.value} — ${t('hero.title')}`,
+    // og:image / twitter:image injected by defineOgImage('Portfolio')
     ogUrl: () => canonicalUrl.value,
     ogSiteName: 'César Gómez Portfolio',
     ogLocale: () => (locale.value === 'es' ? 'es_ES' : 'en_US'),
@@ -44,8 +56,6 @@ export const usePortfolioSeo = () => {
     twitterCard: 'summary_large_image',
     twitterTitle: () => t('hero.title'),
     twitterDescription: () => t('seo.ogDescription'),
-    twitterImage: ogImage,
-    twitterImageAlt: () => `${personName.value} — ${t('hero.title')}`,
     twitterSite: '@codingwithcego',
     twitterCreator: '@codingwithcego',
   });

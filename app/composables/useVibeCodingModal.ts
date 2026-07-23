@@ -1,6 +1,6 @@
-const vibeCodingModalVisible = ref(false);
-
 export function useVibeCodingModal() {
+  const vibeCodingModalVisible = useState('vibe-coding-modal-visible', () => false);
+
   function openVibeCodingModal() {
     vibeCodingModalVisible.value = true;
   }

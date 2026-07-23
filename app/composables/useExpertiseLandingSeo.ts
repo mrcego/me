@@ -28,6 +28,22 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
     }));
   });
 
+  defineOgImage(
+    'Portfolio',
+    {
+      title: personName.value,
+      description: t(copyKey('meta.title')),
+      brandName: locale.value === 'es' ? 'CÉSAR GÓMEZ' : 'CESAR GOMEZ',
+      brandTag: 'PORTFOLIO',
+      siteUrl: 'cesargomez.dev',
+      footer: t('hero.locationLine'),
+      pills: ['Vue.js', 'Nuxt', 'TypeScript', 'AI · NLP'],
+    },
+    {
+      alt: `${personName.value} — ${t(copyKey('meta.title'))}`,
+    },
+  );
+
   useSeoMeta({
     title: () => t(copyKey('meta.title')),
     description: () => t(copyKey('meta.description')),
@@ -38,19 +54,13 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
     ogType: 'website',
     ogTitle: () => t(copyKey('meta.title')),
     ogDescription: () => t(copyKey('meta.description')),
-    ogImage,
-    ogImageType: 'image/png',
-    ogImageWidth: 1200,
-    ogImageHeight: 630,
-    ogImageAlt: () => `${personName.value} — ${t(copyKey('meta.title'))}`,
+    // og:image / twitter:image injected by defineOgImage('Portfolio')
     ogUrl: () => canonicalUrl.value,
     ogSiteName: 'César Gómez Portfolio',
     ogLocale: () => (locale.value === 'es' ? 'es_ES' : 'en_US'),
     twitterCard: 'summary_large_image',
     twitterTitle: () => t(copyKey('meta.title')),
     twitterDescription: () => t(copyKey('meta.description')),
-    twitterImage: ogImage,
-    twitterImageAlt: () => `${personName.value} — ${t(copyKey('meta.title'))}`,
     twitterSite: '@codingwithcego',
     twitterCreator: '@codingwithcego',
   });

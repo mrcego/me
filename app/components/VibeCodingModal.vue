@@ -1,6 +1,6 @@
 <template>
   <Dialog
-    v-model:visible="vibeCodingModalVisible"
+    :visible="vibeCodingModalVisible"
     modal
     dismissable-mask
     append-to="body"
@@ -20,6 +20,7 @@
         class: 'experience-dialog-content',
       },
     }"
+    @update:visible="onVisibleUpdate"
   >
     <div class="experience-modal">
       <header class="experience-modal__header">
@@ -120,6 +121,10 @@ import { useI18n } from 'vue-i18n';
 
 const { t, tm } = useI18n();
 const { vibeCodingModalVisible, closeVibeCodingModal } = useVibeCodingModal();
+
+function onVisibleUpdate(visible: boolean) {
+  vibeCodingModalVisible.value = visible;
+}
 
 const rolePoints = computed(() => {
   const items = tm('vibeCoding.modal.points') as unknown;
