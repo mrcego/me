@@ -186,7 +186,7 @@
             @pointercancel="onPhotoPointerCancel"
           />
 
-          <div class="relative z-10 pointer-events-none animate-float" aria-hidden="true">
+          <div class="relative z-10 pointer-events-none" aria-hidden="true">
             <div class="flex w-full flex-col gap-2.5 sm:gap-3" :style="photoTiltStyle">
               <span
                 class="inline-flex w-full items-center justify-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl bg-primary text-primary-contrast shadow-lg shadow-primary/20 transition-[filter,box-shadow] duration-300 group-hover:brightness-110"
