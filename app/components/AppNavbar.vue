@@ -28,12 +28,13 @@
             <div
               class="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500"
             />
-            <NuxtImg
-              src="/img/logo-final.svg"
+            <img
+              src="/img/logo-final.svg?v=cg1"
               alt="César Gómez"
               width="48"
               height="48"
-              class="w-full h-full object-contain scale-110 group-hover:scale-100 transition-transform duration-700 text-primary"
+              decoding="async"
+              class="w-full h-full object-contain scale-110 group-hover:scale-100 transition-transform duration-700"
             />
           </div>
           <div class="site-nav__brand flex flex-col justify-center min-w-0">

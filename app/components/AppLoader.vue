@@ -21,9 +21,12 @@
             <!-- Breathing Glow Behind -->
             <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse-slow" />
 
-            <NuxtImg
-              src="/img/logo-final.svg"
+            <img
+              src="/img/logo-final.svg?v=cg1"
               alt="César Gómez"
+              width="128"
+              height="128"
+              decoding="async"
               class="w-full h-full object-contain relative z-10 drop-shadow-2xl"
             />
           </div>
