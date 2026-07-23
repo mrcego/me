@@ -1,5 +1,7 @@
 ﻿<template>
-  <a href="#main-content" class="skip-to-content" @click="skipToContent"> Skip to main content </a>
+  <a href="#main-content" class="skip-to-content" @click="skipToContent">
+    {{ $t('a11y.skipToContent') }}
+  </a>
 </template>
 
 <script setup>

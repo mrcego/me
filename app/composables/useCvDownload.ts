@@ -1,6 +1,6 @@
 const CV_FILES = {
-  es: '/cv/CV Cesar Gomez ES.pdf',
-  en: '/cv/CV Cesar Gomez EN.pdf',
+  es: '/cv/cv-cesar-gomez-es.pdf',
+  en: '/cv/cv-cesar-gomez-en.pdf',
 } as const;
 
 export function useCvDownload() {
@@ -8,10 +8,10 @@ export function useCvDownload() {
 
   const localeKey = computed(() => (locale.value === 'es' ? 'es' : 'en'));
 
-  const href = computed(() => encodeURI(CV_FILES[localeKey.value]));
+  const href = computed(() => CV_FILES[localeKey.value]);
 
   const fileName = computed(() =>
-    localeKey.value === 'es' ? 'CV Cesar Gomez ES.pdf' : 'CV Cesar Gomez EN.pdf',
+    localeKey.value === 'es' ? 'cv-cesar-gomez-es.pdf' : 'cv-cesar-gomez-en.pdf',
   );
 
   return {

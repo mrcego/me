@@ -88,7 +88,14 @@
   "chat": {
     "open": "Open chat assistant",
     "close": "Close chat assistant",
-    "closeWindow": "Close chat window"
+    "closeWindow": "Close chat window",
+    "scrollToTop": "Scroll to top"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "systemReady": "System Ready"
   },
   "about": {
     "section": "Technical Identity",

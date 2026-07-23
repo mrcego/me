@@ -13,7 +13,7 @@
     >
       <button
         v-if="showScrollTop"
-        aria-label="Scroll to top"
+        :aria-label="$t('chat.scrollToTop')"
         class="size-12 md:size-14 glass rounded-2xl md:rounded-3xl flex items-center justify-center text-primary border-primary/20 shadow-4xl hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group overflow-hidden"
         @click="scrollToTop"
       >
@@ -45,110 +45,110 @@
     </button>
   </div>
 
-  <!-- Chat Window with Motion -->
-  <Motion
-    v-if="isOpen"
-    :initial="
-      motionInitial(
-        { opacity: 0, scale: 0.9, y: 20, filter: 'blur(10px)' },
-        { opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' },
-      )
-    "
-    :animate="motionAnimate({ opacity: 1, scale: 1, y: 0, filter: 'blur(0px)' })"
-    :exit="{ opacity: 0, scale: 0.9, y: 20, filter: 'blur(10px)' }"
-    class="w-87.5 md:w-112.5 h-125 md:h-150 glass rounded-[2.5rem] border-primary/20 shadow-4xl overflow-hidden flex flex-col pointer-events-auto fixed bottom-24 right-4 md:bottom-28 md:right-8 z-40"
+  <!-- Chat Window -->
+  <Transition
+    enter-active-class="transition duration-300 ease-out"
+    enter-from-class="opacity-0 scale-95 translate-y-3"
+    enter-to-class="opacity-100 scale-100 translate-y-0"
+    leave-active-class="transition duration-200 ease-in"
+    leave-from-class="opacity-100 scale-100 translate-y-0"
+    leave-to-class="opacity-0 scale-95 translate-y-3"
   >
-    <!-- HUD Scanlines Background -->
-    <div class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none protocol-chat-scanlines" />
-
-    <!-- Terminal Header -->
     <div
-      class="p-6 bg-foreground/2 border-b border-foreground/5 flex items-center justify-between relative z-10"
+      v-if="isOpen"
+      class="w-87.5 md:w-112.5 h-125 md:h-150 glass rounded-[2.5rem] border-primary/20 shadow-4xl overflow-hidden flex flex-col pointer-events-auto fixed bottom-24 right-4 md:bottom-28 md:right-8 z-40"
     >
-      <div class="flex items-center gap-3">
-        <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
-        <h4 class="type-overline text-foreground tracking-[0.3em]">Signal Protocol v4.0</h4>
-      </div>
-      <button
-        class="p-2 text-muted hover:text-foreground transition-colors"
-        :aria-label="$t('chat.closeWindow')"
-        @click="isOpen = false"
-      >
-        <Icon name="lucide:x" class="w-[38px] h-[38px]" />
-      </button>
-    </div>
-
-    <!-- Chat Log -->
-    <div
-      ref="chatLog"
-      class="flex-1 overflow-y-auto p-6 space-y-6 font-mono relative z-10 scrollbar-hide"
-    >
+      <!-- HUD Scanlines Background -->
       <div
-        v-for="(msg, i) in messages"
-        :key="i"
-        :class="msg.role === 'bot' ? 'text-left' : 'text-right'"
+        class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none protocol-chat-scanlines"
+      />
+
+      <!-- Terminal Header -->
+      <div
+        class="p-6 bg-foreground/2 border-b border-foreground/5 flex items-center justify-between relative z-10"
+      >
+        <div class="flex items-center gap-3">
+          <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <h4 class="type-overline text-foreground tracking-[0.3em]">Signal Protocol v4.0</h4>
+        </div>
+        <button
+          class="p-2 text-muted hover:text-foreground transition-colors"
+          :aria-label="$t('chat.closeWindow')"
+          @click="isOpen = false"
+        >
+          <Icon name="lucide:x" class="w-[38px] h-[38px]" />
+        </button>
+      </div>
+
+      <!-- Chat Log -->
+      <div
+        ref="chatLog"
+        class="flex-1 overflow-y-auto p-6 space-y-6 font-mono relative z-10 scrollbar-hide"
       >
         <div
-          :class="[
-            'inline-block px-4 py-2 rounded-2xl text-[11px] leading-relaxed',
-            msg.role === 'bot'
-              ? 'bg-primary/10 text-primary border border-primary/20'
-              : 'bg-foreground/5 text-foreground border border-foreground/10',
-          ]"
+          v-for="(msg, i) in messages"
+          :key="i"
+          :class="msg.role === 'bot' ? 'text-left' : 'text-right'"
         >
-          <span class="block type-label opacity-40 mb-1">
-            {{ msg.role === 'bot' ? 'SIGNAL RECEIVED' : 'OPERATOR TRANSMISSION' }}
-          </span>
-          {{ msg.content }}
+          <div
+            :class="[
+              'inline-block px-4 py-2 rounded-2xl text-[11px] leading-relaxed',
+              msg.role === 'bot'
+                ? 'bg-primary/10 text-primary border border-primary/20'
+                : 'bg-foreground/5 text-foreground border border-foreground/10',
+            ]"
+          >
+            <span class="block type-label opacity-40 mb-1">
+              {{ msg.role === 'bot' ? 'SIGNAL RECEIVED' : 'OPERATOR TRANSMISSION' }}
+            </span>
+            {{ msg.content }}
+          </div>
+        </div>
+        <div v-if="isTyping" class="text-left">
+          <div
+            class="inline-block px-4 py-2 rounded-2xl bg-primary/5 text-primary/60 text-[11px] animate-pulse"
+          >
+            ANALYZING DATA...
+          </div>
         </div>
       </div>
-      <div v-if="isTyping" class="text-left">
-        <div
-          class="inline-block px-4 py-2 rounded-2xl bg-primary/5 text-primary/60 text-[11px] animate-pulse"
-        >
-          ANALYZING DATA...
-        </div>
-      </div>
-    </div>
 
-    <!-- Quick Suggestions -->
-    <div class="p-4 bg-foreground/1 border-t border-foreground/5 relative z-10">
-      <div class="flex flex-wrap gap-2">
+      <!-- Quick Suggestions -->
+      <div class="p-4 bg-foreground/1 border-t border-foreground/5 relative z-10">
+        <div class="flex flex-wrap gap-2">
+          <button
+            v-for="s in suggestions"
+            :key="s"
+            class="px-3 py-1.5 glass rounded-xl type-label text-muted hover:text-primary hover:border-primary/30 transition-all"
+            @click="sendMessage(s)"
+          >
+            {{ s }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="p-4 bg-foreground/5 border-t border-foreground/10 relative z-10 flex gap-3">
+        <input
+          v-model="userInput"
+          type="text"
+          placeholder="SEND COMMAND..."
+          class="flex-1 bg-transparent border-none outline-none text-foreground font-mono text-xs placeholder:text-muted/50"
+          @keyup.enter="sendMessage()"
+        />
         <button
-          v-for="s in suggestions"
-          :key="s"
-          class="px-3 py-1.5 glass rounded-xl type-label text-muted hover:text-primary hover:border-primary/30 transition-all"
-          @click="sendMessage(s)"
+          class="p-2 text-primary hover:scale-110 active:scale-95 transition-all"
+          @click="sendMessage()"
         >
-          {{ s }}
+          <Icon name="lucide:send" class="w-[38px] h-[38px]" />
         </button>
       </div>
     </div>
-
-    <!-- Input Area -->
-    <div class="p-4 bg-foreground/5 border-t border-foreground/10 relative z-10 flex gap-3">
-      <input
-        v-model="userInput"
-        type="text"
-        placeholder="SEND COMMAND..."
-        class="flex-1 bg-transparent border-none outline-none text-foreground font-mono text-xs placeholder:text-muted/50"
-        @keyup.enter="sendMessage()"
-      />
-      <button
-        class="p-2 text-primary hover:scale-110 active:scale-95 transition-all"
-        @click="sendMessage()"
-      >
-        <Icon name="lucide:send" class="w-[38px] h-[38px]" />
-      </button>
-    </div>
-  </Motion>
+  </Transition>
 </template>
 
 <script setup>
-import { Motion } from 'motion-v';
 import { ref, watch, nextTick, onMounted, onUnmounted } from 'vue';
-
-const { motionInitial, motionAnimate } = useMotionConfig();
 
 const isOpen = ref(false);
 useBodyScrollLock(isOpen);

@@ -117,8 +117,8 @@ export default defineNuxtConfig({
       {
         name: 'Outfit',
         provider: 'google',
-        // Used by alternate themes + OG templates — do not preload on default Fira path
-        weights: [400, 500, 600, 700, 800, 900],
+        // Fallback + Sans themes / OG — keep global but trim heavy weights
+        weights: [400, 500, 600, 700],
         preload: false,
         global: true,
       },
@@ -130,6 +130,17 @@ export default defineNuxtConfig({
         preload: true,
       },
     ],
+  },
+
+  icon: {
+    // Explicit collections avoid Iconify client fetches when SSR SVG render times out
+    serverBundle: {
+      collections: ['lucide', 'solar', 'simple-icons', 'logos'],
+    },
+    clientBundle: {
+      scan: true,
+      sizeLimitKb: 256,
+    },
   },
 
   // SEO module configuration
@@ -150,6 +161,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     strictNuxtContentPaths: true,
+    zeroRuntime: true,
     xsl: false,
     urls: [
       '/',

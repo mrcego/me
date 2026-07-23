@@ -81,3 +81,14 @@
   to = "/sitemap_index.xml"
   status = 200
   force = true
+
+# Legacy CV filenames (spaces) → kebab-case
+[[redirects]]
+  from = "/cv/CV Cesar Gomez EN.pdf"
+  to = "/cv/cv-cesar-gomez-en.pdf"
+  status = 301
+
+[[redirects]]
+  from = "/cv/CV Cesar Gomez ES.pdf"
+  to = "/cv/cv-cesar-gomez-es.pdf"
+  status = 301

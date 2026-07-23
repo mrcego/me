@@ -34,7 +34,7 @@
         <div
           class="flex justify-between items-center type-label text-muted tracking-[0.3em] loader-meta"
         >
-          <span>System Ready</span>
+          <span>{{ $t('a11y.systemReady') }}</span>
           <span>100%</span>
         </div>
       </div>

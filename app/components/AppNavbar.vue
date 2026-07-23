@@ -297,7 +297,7 @@
           <button
             type="button"
             class="lg:hidden w-[42px] h-[42px] sm:w-[46px] sm:h-[46px] flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors focus-visible:ring-2 focus-visible:ring-primary shrink-0"
-            :aria-label="isMobileMenuOpen ? 'Close menu' : 'Open menu'"
+            :aria-label="isMobileMenuOpen ? $t('a11y.closeMenu') : $t('a11y.openMenu')"
             :aria-expanded="isMobileMenuOpen"
             @click="isMobileMenuOpen = !isMobileMenuOpen"
           >
@@ -328,7 +328,7 @@
         <button
           type="button"
           class="sticky top-3 sm:top-4 ml-auto mr-3 sm:mr-4 mt-3 sm:mt-4 z-10 flex size-11 sm:size-12 items-center justify-center rounded-full border border-foreground/10 bg-background/80 text-muted shadow-2xl backdrop-blur-xl transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-          aria-label="Close menu"
+          :aria-label="$t('a11y.closeMenu')"
           @click="isMobileMenuOpen = false"
         >
           <Icon name="lucide:x" class="size-5 sm:size-6" />

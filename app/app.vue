@@ -31,7 +31,7 @@
 
     <NuxtPage />
 
-    <LazyAppProtocolChat :hydrate-on-idle="2000" />
+    <LazyAppProtocolChat hydrate-on-interaction />
 
     <LazyVibeCodingModal v-if="vibeCodingModalMounted" />
 
