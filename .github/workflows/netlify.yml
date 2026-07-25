@@ -38,9 +38,9 @@ jobs:
           NUXT_PUBLIC_CONTACT_PROVIDER: netlify
 
       - name: Deploy to Netlify
-        # Upload the prebuilt .output/public only. Never pass --build here: a second
-        # generate changes Nuxt buildId and used to desync hashed CSP vs HTML.
-        run: npx netlify-cli@latest deploy --prod --dir=.output/public --message "Deploy ${{ github.sha }}"
+        # Upload the prebuilt .output/public only. CLI 27 builds by default unless
+        # --no-build; a second generate changes Nuxt buildId and used to desync CSP.
+        run: npx netlify-cli@latest deploy --prod --no-build --dir=.output/public --message "Deploy ${{ github.sha }}"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
