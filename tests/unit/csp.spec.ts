@@ -3,7 +3,9 @@ import {
   buildCspDirectives,
   buildCspHeaderValue,
   buildNetlifyHeadersFile,
+  buildSecurityHeaders,
   parseCspFromHeadersFile,
+  parseHeaderFromHeadersFile,
 } from '../../scripts/lib/csp.mjs';
 
 describe('CSP builders', () => {
@@ -24,6 +26,20 @@ describe('CSP builders', () => {
     expect(parseCspFromHeadersFile(file)).toBe(csp);
     expect(file).toContain('/*');
     expect(file).toContain('Content-Security-Policy:');
+  });
+
+  it('ships HSTS preload + COOP in _headers (artifact deploy ignores netlify.toml headers)', () => {
+    const security = buildSecurityHeaders();
+    expect(security['Strict-Transport-Security']).toContain('includeSubDomains');
+    expect(security['Strict-Transport-Security']).toContain('preload');
+    expect(security['Cross-Origin-Opener-Policy']).toBe('same-origin');
+
+    const file = buildNetlifyHeadersFile();
+    expect(parseHeaderFromHeadersFile(file, 'Strict-Transport-Security')).toBe(
+      security['Strict-Transport-Security'],
+    );
+    expect(parseHeaderFromHeadersFile(file, 'Cross-Origin-Opener-Policy')).toBe('same-origin');
+    expect(parseHeaderFromHeadersFile(file, 'X-Frame-Options')).toBe('DENY');
   });
 
   it('returns null when _headers has no CSP line (bad path)', () => {

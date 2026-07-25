@@ -30,7 +30,7 @@ const footerColumns: FooterColumn[] = [
   {
     title: 'col.connect',
     links: [
-      { name: 'nav.getInTouch', href: 'mailto:cesargomezh90@gmail.com' },
+      { name: 'footer.email', href: 'mailto:cesargomezh90@gmail.com' },
       {
         name: 'contact.methods.linkedin',
         href: 'https://linkedin.com/in/mrcego',

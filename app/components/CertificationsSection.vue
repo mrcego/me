@@ -233,7 +233,12 @@ watch(showAllRest, () => {
           :inert="!showAllRest"
         >
           <div class="cert-show-all-panel__inner">
-            <ul class="divide-y divide-foreground/5 border-t border-foreground/5" role="list">
+            <!-- Mount extras only when expanded — collapsed 0fr still kept 32× icon trees in the DOM. -->
+            <ul
+              v-if="showAllRest"
+              class="divide-y divide-foreground/5 border-t border-foreground/5"
+              role="list"
+            >
               <CertCompactRow
                 v-for="cert in extraRestCertifications"
                 :key="cert.id"

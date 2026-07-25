@@ -37,6 +37,7 @@ function createSmoothedScroll(lerp = 0.12): SmoothedScrollApi {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   let frame: number | null = null;
+  let rangeFrame: number | null = null;
   let resizeObserver: ResizeObserver | null = null;
   let lastPublishedY = Number.NaN;
 
@@ -48,6 +49,22 @@ function createSmoothedScroll(lerp = 0.12): SmoothedScrollApi {
     const root = document.documentElement;
     root.style.setProperty('--page-progress', pagePct.toFixed(4));
     root.style.setProperty('--nav-progress', navP.toFixed(4));
+  };
+
+  /** Read geometry first, then write CSS vars — never write→read in the same turn. */
+  const measureRangeAndPublish = () => {
+    if (!import.meta.client) return;
+    const root = document.documentElement;
+    scrollRange.value = Math.max(0, root.scrollHeight - root.clientHeight);
+    publishChrome(y.value);
+  };
+
+  const scheduleRangeUpdate = () => {
+    if (!import.meta.client || rangeFrame !== null) return;
+    rangeFrame = requestAnimationFrame(() => {
+      rangeFrame = null;
+      measureRangeAndPublish();
+    });
   };
 
   const step = () => {
@@ -83,14 +100,6 @@ function createSmoothedScroll(lerp = 0.12): SmoothedScrollApi {
     frame = requestAnimationFrame(step);
   };
 
-  const updateScrollRange = () => {
-    scrollRange.value = Math.max(
-      0,
-      document.documentElement.scrollHeight - document.documentElement.clientHeight,
-    );
-    publishChrome(y.value);
-  };
-
   const onScroll = () => {
     rawY.value = window.scrollY || document.documentElement.scrollTop || 0;
   };
@@ -101,21 +110,22 @@ function createSmoothedScroll(lerp = 0.12): SmoothedScrollApi {
     onScroll();
     y.value = rawY.value;
     lastPublishedY = Math.round(rawY.value);
-    updateScrollRange();
-    publishChrome(y.value);
+    // Defer first layout read to the next frame so hydration DOM writes settle first.
+    scheduleRangeUpdate();
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    resizeObserver = new ResizeObserver(updateScrollRange);
+    resizeObserver = new ResizeObserver(scheduleRangeUpdate);
     resizeObserver.observe(document.documentElement);
     if (document.body) resizeObserver.observe(document.body);
-    window.addEventListener('resize', updateScrollRange, { passive: true });
+    window.addEventListener('resize', scheduleRangeUpdate, { passive: true });
   });
 
   onUnmounted(() => {
     if (frame !== null) cancelAnimationFrame(frame);
+    if (rangeFrame !== null) cancelAnimationFrame(rangeFrame);
     resizeObserver?.disconnect();
     window.removeEventListener('scroll', onScroll);
-    window.removeEventListener('resize', updateScrollRange);
+    window.removeEventListener('resize', scheduleRangeUpdate);
   });
 
   const progress = (distance = 120) => computed(() => Math.min(1, Math.max(0, y.value / distance)));
