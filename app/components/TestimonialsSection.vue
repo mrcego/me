@@ -7,7 +7,7 @@
       <Motion
         :initial="motionInitial({ opacity: 0, y: 5 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
-        :transition="{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }"
+        :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true, amount: 0.1 }"
         class="max-w-4xl mx-auto text-center space-y-8"
       >
@@ -34,11 +34,7 @@
             motionInitial({ opacity: 0, scale: 0.98, y: 5 }, { opacity: 1, scale: 1, y: 0 })
           "
           :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
-          :transition="{
-            duration: 0.5,
-            delay: i * 0.1,
-            ease: [0.22, 1, 0.36, 1],
-          }"
+          :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true, amount: 0.1 }"
           class="surface-card group relative glass p-6 sm:p-8 md:p-14 rounded-3xl sm:rounded-[3.5rem] border-foreground/5 overflow-hidden h-full min-w-0"
         >
@@ -112,7 +108,7 @@ import { Motion } from 'motion-v';
 
 const { tm, rt } = useI18n();
 const { getLocalAvatar, getInitials } = useTestimonialAvatar();
-const { motionInitial, motionInView } = useMotionConfig();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
 const failedAvatars = ref(new Set<string>());
 

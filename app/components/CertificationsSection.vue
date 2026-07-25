@@ -16,7 +16,7 @@
       <Motion
         :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
-        :transition="{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }"
+        :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true }"
         class="max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto text-center space-y-6 md:space-y-10 mb-12 md:mb-24 px-2 sm:px-0"
       >
@@ -49,11 +49,7 @@
           :key="cert.id"
           :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
-          :transition="{
-            duration: 0.5,
-            delay: i * 0.05,
-            ease: [0.16, 1, 0.3, 1],
-          }"
+          :transition="motionTransition({ duration: 0.4, delay: i * 0.04 })"
           :viewport="{ once: true }"
           class="surface-card group relative glass p-5 sm:p-6 md:p-8 rounded-4xl border-foreground/5 flex flex-col justify-between h-full overflow-hidden min-w-0"
         >
@@ -76,7 +72,7 @@
                 {{ cert.title }}
               </h4>
               <div class="flex items-center gap-2 text-sm font-medium text-muted">
-                <Icon name="simple-icons:linkedin" class="size-5 shrink-0" />
+                <Icon :name="certIssuerIcon(cert.issuer)" class="size-5 shrink-0" />
                 <span>{{ cert.issuer }}</span>
               </div>
             </div>
@@ -118,7 +114,7 @@
         v-if="restCertifications.length"
         :initial="motionInitial({ opacity: 0, y: 16 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
-        :transition="{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }"
+        :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true }"
         class="glass rounded-3xl md:rounded-4xl border border-foreground/5 overflow-hidden"
       >
@@ -212,13 +208,21 @@ interface CertificationItem {
 const REST_PREVIEW_COUNT = 8;
 
 const { tm, rt } = useI18n();
-const { motionInitial, motionInView } = useMotionConfig();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
 const expandedId = ref<string | null>(null);
 const showAllRest = ref(false);
 
 function isFeaturedFlag(value: unknown): boolean {
   return value === true || value === 'true';
+}
+
+function certIssuerIcon(issuer: string): string {
+  const key = issuer.toLowerCase();
+  if (key.includes('platzi')) return 'simple-icons:platzi';
+  if (key.includes('udemy')) return 'simple-icons:udemy';
+  if (key.includes('new relic')) return 'simple-icons:newrelic';
+  return 'simple-icons:linkedin';
 }
 
 const certifications = computed<CertificationItem[]>(() => {

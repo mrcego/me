@@ -264,18 +264,69 @@
     "collapseCredential": "Ocultar detalles de la credencial",
     "data": [
       {
+        "title": "TypeScript for JavaScript Developers",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "Desarrollo front end", "Desarrollo web"],
+        "url": "https://www.linkedin.com/learning/certificates/f09e41bfbdac073f3af63ea9e6f13c80ee5349969aadf700ef2c6da08a455f3a"
+      },
+      {
         "title": "AI Programming for JavaScript Developers",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
-        "featured": true,
         "skills": ["Inteligencia artificial", "JavaScript"],
-        "url": "https://www.linkedin.com/learning/certificates/96c7cf924aa3fb572c58f76297d9b67575083a0b87d3627a087b8e0f4fb2864b"
+        "url": "https://www.linkedin.com/learning/certificates/96c7cf924aa3fb572c58f76297d9b67575083a0b87d3627a087b8e0f4fb2864b",
+        "featured": true
+      },
+      {
+        "title": "Data Structures in JavaScript: BSTs, Queues, and Stacks",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["JavaScript", "Estructuras de datos"],
+        "url": "https://www.linkedin.com/learning/certificates/d475520bba8320b476a8672294f03f21bdd2709726e6367120b235b13f642975"
+      },
+      {
+        "title": "Scaling TypeScript for Enterprise Developers",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "Desarrollo web", "Desarrollo front end"],
+        "url": "https://www.linkedin.com/learning/certificates/d5e991f977af403a5925b7afb7b7ef0b833157e33bbf6a04518b31d923406cad",
+        "featured": true
+      },
+      {
+        "title": "Diseña tu propio GPT: ChatGPT como tu empresa lo necesita",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Inteligencia artificial"],
+        "url": "https://www.linkedin.com/learning/certificates/63e19cc1005b97f486b16a26ccd841d8c88e0b5f6cfe93d8870c548c80da973b"
+      },
+      {
+        "title": "Tailwind CSS 4 Essential Training",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Tailwind CSS", "Desarrollo web", "CSS"],
+        "url": "https://www.linkedin.com/learning/certificates/fa28dbebc05524bb23c4af8db2d9d1a4dae8145cdcf564e8fd59469bccdfcdc9",
+        "featured": true
+      },
+      {
+        "title": "Tailwind CSS 3 Essential Training",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["Tailwind CSS", "Desarrollo web", "CSS"],
+        "url": "https://www.linkedin.com/learning/certificates/448ce71621db607743e44166e1a2c61aa6c09d1ec5e8d142e60d5a710e9f939a"
+      },
+      {
+        "title": "TypeScript: Object-Oriented Programming",
+        "issuer": "LinkedIn",
+        "date": "Mar. 2025",
+        "skills": ["TypeScript", "POO"],
+        "url": "https://www.linkedin.com/learning/certificates/a748889d0aebdd7e61871bd7a6069701c626b7d6d2c6a385dcc8502fc23a6873"
       },
       {
         "title": "Building TypeScript Applications with JSDoc",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
-        "skills": ["Jsdoc", "TypeScript", "TsDoc", "Desarrollo web", "JavaScript"],
+        "skills": ["Jsdoc", "TypeScript", "JavaScript"],
         "url": "https://www.linkedin.com/learning/certificates/2bcd1f72904fbeac332c55811d0247e24229c7ac81c7f8991f943acace2b1560"
       },
       {
@@ -286,124 +337,243 @@
         "url": "https://www.linkedin.com/learning/certificates/914d984cd3d771cea3925268817910cfbec50d4ae1df7bd40133e318271cf820"
       },
       {
-        "title": "Data Structures in JavaScript: BSTs, Queues, and Stacks",
+        "title": "TypeScript avanzado",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
-        "skills": ["JavaScript", "Estructuras de datos"],
-        "url": "https://www.linkedin.com/learning/certificates/d475520bba8320b476a8672294f03f21bdd2709726e6367120b235b13f642975"
+        "skills": ["TypeScript", "Desarrollo web"],
+        "url": "https://www.linkedin.com/learning/certificates/b7bae12986a57c4f356f2056a677761b7ba52a71533200169949a2e62580507e"
       },
       {
         "title": "Desafío de programación: Programación funcional en JavaScript",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
-        "skills": ["Desarrollo front end", "Programación funcional", "JavaScript"],
+        "skills": ["Programación funcional", "JavaScript"],
         "url": "https://www.linkedin.com/learning/certificates/358c7ab887c9b9336c4d198f716c75f97ff11f83d5840b4b461726a765895139"
-      },
-      {
-        "title": "Diseña tu propio GPT: ChatGPT como tu empresa lo necesita",
-        "issuer": "LinkedIn",
-        "date": "Mar. 2025",
-        "skills": ["Inteligencia artificial"],
-        "url": "https://www.linkedin.com/learning/certificates/63e19cc1005b97f486b16a26ccd841d8c88e0b5f6cfe93d8870c548c80da973b"
-      },
-      {
-        "title": "Fundamentos esenciales de la programación",
-        "issuer": "LinkedIn",
-        "date": "Mar. 2025",
-        "skills": [
-          "Programación",
-          "Desarrollo web",
-          "Desarrollo front end",
-          "Desarrollo de programas",
-          "Coding Standards"
-        ],
-        "url": "https://www.linkedin.com/learning/certificates/21837bee635ea2e0a3d812fea5848a0c448807c545fd826427cfe7d767f2d863"
       },
       {
         "title": "JavaScript Avanzado 1",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
-        "skills": ["Desarrollo web", "Desarrollo front end", "JavaScript"],
+        "skills": ["JavaScript", "Desarrollo web"],
         "url": "https://www.linkedin.com/learning/certificates/6c7b29eaa587df2c60292bfb8ba7abc87a3c8b41d04a34b969da433fc20237cb"
       },
       {
-        "title": "Scaling TypeScript for Enterprise Developers",
+        "title": "Fundamentos esenciales de la programación",
         "issuer": "LinkedIn",
         "date": "Mar. 2025",
-        "featured": true,
-        "skills": ["TypeScript", "Desarrollo web", "Desarrollo front end"],
-        "url": "https://www.linkedin.com/learning/certificates/d5e991f977af403a5925b7afb7b7ef0b833157e33bbf6a04518b31d923406cad"
-      },
-      {
-        "title": "Tailwind CSS 3 Essential Training",
-        "issuer": "LinkedIn",
-        "date": "Mar. 2025",
-        "skills": ["Tailwind CSS", "Desarrollo web", "Tailwind", "Desarrollo front end", "CSS"],
-        "url": "https://www.linkedin.com/learning/certificates/448ce71621db607743e44166e1a2c61aa6c09d1ec5e8d142e60d5a710e9f939a"
-      },
-      {
-        "title": "Tailwind CSS 4 Essential Training",
-        "issuer": "LinkedIn",
-        "date": "Mar. 2025",
-        "featured": true,
-        "skills": ["Tailwind CSS", "Desarrollo web", "Tailwind", "Desarrollo front end", "CSS"],
-        "url": "https://www.linkedin.com/learning/certificates/fa28dbebc05524bb23c4af8db2d9d1a4dae8145cdcf564e8fd59469bccdfcdc9"
-      },
-      {
-        "title": "TypeScript avanzado",
-        "issuer": "LinkedIn",
-        "date": "Mar. 2025",
-        "featured": true,
-        "skills": ["TypeScript", "Desarrollo web", "Desarrollo front end"],
-        "url": "https://www.linkedin.com/learning/certificates/b7bae12986a57c4f356f2056a677761b7ba52a71533200169949a2e62580507e"
-      },
-      {
-        "title": "TypeScript for JavaScript Developers",
-        "issuer": "LinkedIn",
-        "date": "Mar. 2025",
-        "skills": ["TypeScript", "Desarrollo front end", "Desarrollo web"],
-        "url": "https://www.linkedin.com/learning/certificates/f09e41bfbdac073f3af63ea9e6f13c80ee5349969aadf700ef2c6da08a455f3a"
-      },
-      {
-        "title": "TypeScript: Object-Oriented Programming",
-        "issuer": "LinkedIn",
-        "date": "Mar. 2025",
-        "skills": ["TypeScript", "Desarrollo web", "Desarrollo front end", "POO"],
-        "url": "https://www.linkedin.com/learning/certificates/a748889d0aebdd7e61871bd7a6069701c626b7d6d2c6a385dcc8502fc23a6873"
+        "skills": ["Programación", "Desarrollo web"],
+        "url": "https://www.linkedin.com/learning/certificates/21837bee635ea2e0a3d812fea5848a0c448807c545fd826427cfe7d767f2d863"
       },
       {
         "title": "Conviértete en especialista en desarrollo JavaScript",
         "issuer": "LinkedIn",
         "date": "Feb. 2025",
-        "skills": [
-          "Capacidad de análisis",
-          "Prueba unitaria",
-          "Depuración",
-          "JavaScript",
-          "Desarrollo web"
-        ],
+        "skills": ["JavaScript", "Prueba unitaria", "Depuración"],
         "url": "https://www.linkedin.com/learning/certificates/e34c91be066bde261fc011a8dd9ce48db9a0cde76e85cdc99cdb929878c09333"
+      },
+      {
+        "title": "JavaScript: TDD y pruebas unitarias avanzado",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["JavaScript", "TDD", "Prueba unitaria"],
+        "url": "https://www.linkedin.com/learning/certificates/39925f5c4291f15c949c032fbe0143b2c404661a6145ba52004eaeae45240381"
+      },
+      {
+        "title": "JavaScript: TDD y pruebas unitarias esencial",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["JavaScript", "TDD", "Prueba unitaria"],
+        "url": "https://www.linkedin.com/learning/certificates/757b00cca3dad7ae55d397acd2c9072f6556c59f47db6094bb6d3a9148da235b"
       },
       {
         "title": "Depura el código: JavaScript",
         "issuer": "LinkedIn",
         "date": "Feb. 2025",
-        "skills": ["Depuración", "Desarrollo web", "Desarrollo front end", "Pruebas", "JavaScript"],
+        "skills": ["Depuración", "JavaScript"],
         "url": "https://www.linkedin.com/learning/certificates/b37010953715cdd72d83d920083218e663122e5d07203014e503bcfb63b87a6e"
       },
       {
         "title": "Desafío de programación: JavaScript avanzado",
         "issuer": "LinkedIn",
         "date": "Feb. 2025",
-        "skills": ["Desarrollo web", "Desarrollo front end", "JavaScript"],
+        "skills": ["JavaScript", "Desarrollo web"],
         "url": "https://www.linkedin.com/learning/certificates/c2ee8574e7ebdbd3199d696ff9fe5086f6caf3beeea391e48a909ddbdc717195"
       },
       {
         "title": "Desafío de programación: JavaScript básico",
         "issuer": "LinkedIn",
         "date": "Feb. 2025",
-        "skills": ["Desarrollo web", "Desarrollo front end", "JavaScript"],
+        "skills": ["JavaScript", "Desarrollo web"],
         "url": "https://www.linkedin.com/learning/certificates/b45a2b1fd3d3e80d040dee6bd6ef58d27ae8c93baabb65152a53aad9f5dc5f40"
+      },
+      {
+        "title": "JavaScript: Trucos",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["JavaScript", "Desarrollo web"],
+        "url": "https://www.linkedin.com/learning/certificates/fd2a99cc9e66a0b47b07eb98583845c9c074bd03baa43cf0184d1b51bb4ac094"
+      },
+      {
+        "title": "TypeScript esencial",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["TypeScript", "Desarrollo web"],
+        "url": "https://www.linkedin.com/learning/certificates/8604c81d630066943453e8f0c6e1ea87af813091735c0bd7aafaba82e1c88856"
+      },
+      {
+        "title": "JavaScript avanzado: Expresiones regulares",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["JavaScript", "Expresiones regulares"],
+        "url": "https://www.linkedin.com/learning/certificates/f3acd2efb9ef94dbb6a414cd9fe0ec4f3a0dee693c9f28d7f8b040d6524ebfd7"
+      },
+      {
+        "title": "JavaScript: Errores comunes y cómo solucionarlos",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["JavaScript", "Depuración"],
+        "url": "https://www.linkedin.com/learning/certificates/87f711b2f689f57b0ffceb718f0db9fc9586c917627c965e0d9b4b0ec098c473"
+      },
+      {
+        "title": "JavaScript esencial",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["JavaScript", "Desarrollo web"],
+        "url": "https://www.linkedin.com/learning/certificates/4231bf08995bd5c0f7b374a499a8aff01e6bd7e23d95abcc1c154f9a8bd6c5d2"
+      },
+      {
+        "title": "Vue: Errores más comunes y cómo solucionarlos",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Vue.js", "Depuración", "SPA"],
+        "url": "https://www.linkedin.com/learning/certificates/e2e91f368173862c3b5871e776dd8471a290dbe69d6f2e58902c55972359190e"
+      },
+      {
+        "title": "Desafío de programación: Vue",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Vue.js", "TypeScript", "SPA"],
+        "url": "https://www.linkedin.com/learning/certificates/b06eb9e3ced2c5bccb4fee241a58f1e729042eaa161bf386b9052945c6f4800c"
+      },
+      {
+        "title": "Vue.js: Testing and Debugging",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Vue.js", "Testing", "Depuración"],
+        "url": "https://www.linkedin.com/learning/certificates/08f8b5e54c8beae6ebbf5f412bbe45401e6e9930c974ba143a0de3231103f2f8"
+      },
+      {
+        "title": "Vue avanzado 1",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Vue.js", "TypeScript", "vue-router"],
+        "url": "https://www.linkedin.com/learning/certificates/5a8a034b7c0a2f5de88c2f572cca2a0789e79cfd3e4a5f66f2697a749d732d73"
+      },
+      {
+        "title": "Vue avanzado 2",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Vue.js", "TypeScript", "vue-router"],
+        "url": "https://www.linkedin.com/learning/certificates/1fb3c4f92cabf9eca1f25c4b5fffc1a567b3d947f6d825a949b3c334ba02bd30"
+      },
+      {
+        "title": "Vue.js esencial",
+        "issuer": "LinkedIn",
+        "date": "Feb. 2025",
+        "skills": ["Vue.js", "vue-router", "SPA"],
+        "url": "https://www.linkedin.com/learning/certificates/1acc2d1334fb46603b4cbdb509bb66a2997970ca9af660e73db5e3951771bba9"
+      },
+      {
+        "title": "New Relic Observability Practitioner Badge",
+        "issuer": "New Relic",
+        "date": "Jul. 2024",
+        "skills": ["Observabilidad", "Monitoreo"],
+        "url": "https://credentials.newrelic.com/77cf1600-8c48-4235-b752-e009a8c1a5b9"
+      },
+      {
+        "title": "New Relic Observability Foundations Badge",
+        "issuer": "New Relic",
+        "date": "Jul. 2024",
+        "skills": ["Observabilidad", "Monitoreo"],
+        "url": "https://credentials.newrelic.com/9ac61cfa-d45e-48a6-a3f1-286b4fd92a8d"
+      },
+      {
+        "title": "Curso de NPM: Gestión de Paquetes y Dependencias en JavaScript",
+        "issuer": "Platzi",
+        "date": "Oct. 2022",
+        "skills": ["npm", "JavaScript"],
+        "url": "https://platzi.com/p/cgomez16/curso/3578-course/diploma/detalle/"
+      },
+      {
+        "title": "Curso de Vite.js",
+        "issuer": "Platzi",
+        "date": "Oct. 2022",
+        "skills": ["Vite", "TypeScript", "JavaScript"],
+        "url": "https://platzi.com/p/cgomez16/curso/3216-course/diploma/detalle/"
+      },
+      {
+        "title": "Curso de Manipulación de Arrays en JavaScript",
+        "issuer": "Platzi",
+        "date": "Ene. 2022",
+        "skills": ["JavaScript", "Arrays"],
+        "url": "https://platzi.com/p/cgomez16/curso/2461-arrays/diploma/detalle/"
+      },
+      {
+        "title": "Curso de Fundamentos de TypeScript",
+        "issuer": "Platzi",
+        "date": "May. 2022",
+        "skills": ["TypeScript", "JavaScript"],
+        "url": "https://platzi.com/p/cgomez16/curso/2878-typescript/diploma/detalle/"
+      },
+      {
+        "title": "Curso de TypeScript: Tipos Avanzados y Funciones",
+        "issuer": "Platzi",
+        "date": "May. 2022",
+        "skills": ["TypeScript", "JavaScript"],
+        "url": "https://platzi.com/p/cgomez16/curso/2879-typescript-tipos-avanzados/diploma/detalle/"
+      },
+      {
+        "title": "Curso de TypeScript: Programación Orientada a Objetos y Asincronismo",
+        "issuer": "Platzi",
+        "date": "May. 2022",
+        "skills": ["TypeScript", "POO"],
+        "url": "https://platzi.com/p/cgomez16/curso/2880-typescript-poo/diploma/detalle/"
+      },
+      {
+        "title": "Curso de Vue.js: Componentes y Composition API",
+        "issuer": "Platzi",
+        "date": "May. 2022",
+        "skills": ["Vue.js", "Composition API"],
+        "url": "https://platzi.com/p/cgomez16/curso/2820-vuejs-componentes-composition/diploma/detalle/"
+      },
+      {
+        "title": "Curso Práctico de JavaScript",
+        "issuer": "Platzi",
+        "date": "Ene. 2022",
+        "skills": ["JavaScript", "DOM"],
+        "url": "https://platzi.com/p/cgomez16/curso/2327-course/diploma/detalle/"
+      },
+      {
+        "title": "Curso Profesional de Vue.js",
+        "issuer": "Platzi",
+        "date": "Ene. 2022",
+        "skills": ["Vue.js", "TypeScript"],
+        "url": "https://platzi.com/p/cgomez16/curso/1145-course/diploma/detalle/",
+        "featured": true
+      },
+      {
+        "title": "Curso de Reactividad con Vue.js 3",
+        "issuer": "Platzi",
+        "date": "Feb. 2022",
+        "skills": ["Vue.js", "Reactividad"],
+        "url": "https://platzi.com/p/cgomez16/curso/2167-course/diploma/detalle/"
+      },
+      {
+        "title": "Typescript: tu completa guía de mano",
+        "issuer": "Udemy",
+        "date": "Mar. 2021",
+        "skills": ["TypeScript", "JavaScript"],
+        "url": "https://www.udemy.com/certificate/UC-9f28394d-d043-4c47-b41b-3b4668717fa7/"
       }
     ]
   },

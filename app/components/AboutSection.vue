@@ -15,11 +15,11 @@
           :initial="motionInitial({ opacity: 0, x: -50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :viewport="{ once: true }"
-          :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
+          :transition="motionTransition({ duration: 0.42 })"
           class="xl:col-span-5 xl:sticky xl:top-28 2xl:top-32 w-full max-w-lg mx-auto xl:max-w-none xl:mx-0 min-w-0"
         >
           <div
-            class="surface-card group glass border-white/5 rounded-2xl sm:rounded-3xl xl:rounded-[2.5rem] overflow-hidden p-5 sm:p-7 md:p-8 xl:p-10 shadow-2xl relative bg-background/20 backdrop-blur-3xl min-w-0"
+            class="surface-card group glass border-white/5 rounded-2xl sm:rounded-3xl xl:rounded-[2.5rem] overflow-hidden p-5 sm:p-7 md:p-8 xl:p-10 shadow-2xl relative bg-background/20 backdrop-blur-md md:backdrop-blur-3xl min-w-0"
           >
             <!-- Gamified Energy Border -->
             <div
@@ -83,7 +83,7 @@
             :initial="motionInitial({ opacity: 0, y: 30 }, { opacity: 1, y: 0 })"
             :while-in-view="motionInView({ opacity: 1, y: 0 })"
             :viewport="{ once: true }"
-            :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
+            :transition="motionTransition({ duration: 0.4 })"
             class="space-y-6 md:space-y-10"
           >
             <div class="flex items-center gap-3 sm:gap-4 justify-center xl:justify-start">
@@ -124,11 +124,7 @@
               :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
               :while-in-view="motionInView({ opacity: 1, y: 0 })"
               :viewport="{ once: true }"
-              :transition="{
-                duration: 0.8,
-                delay: i * 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }"
+              :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
               class="h-full min-w-0"
             >
               <article
@@ -352,7 +348,7 @@ import Dialog from 'primevue/dialog';
 import type { PhilosophyPoint } from './PhilosophyPointItem.vue';
 
 const { t, tm } = useI18n();
-const { motionInitial, motionInView } = useMotionConfig();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
 const roleModalVisible = ref(false);
 const selectedRoleKey = ref<string | null>(null);

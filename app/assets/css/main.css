@@ -103,6 +103,11 @@
     line-height: 1.5;
   }
 
+  /* Scroll progress bar — transform driven without Vue per-frame patches */
+  .page-scroll-progress {
+    transform: scaleX(var(--page-progress, 0));
+  }
+
   /* Keep below-the-fold SSR content indexable without paying its layout cost
      during the initial mobile render. The remembered intrinsic size prevents
      jumps after a section is first revealed. */
@@ -174,6 +179,14 @@
   .glass {
     @apply backdrop-blur-2xl border border-foreground/10 shadow-2xl;
     background: var(--glass-bg);
+  }
+
+  /* Mobile scroll budget: keep glass tint/border, cut live backdrop-filter cost. */
+  @media (max-width: 1023px) {
+    .glass {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
   }
 
   .text-gradient {

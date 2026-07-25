@@ -24,7 +24,7 @@
           <span class="type-meta">{{ cert.date }}</span>
           <span class="text-foreground/20" aria-hidden="true">·</span>
           <span class="inline-flex items-center gap-1.5">
-            <Icon name="simple-icons:linkedin" class="size-3.5 shrink-0" />
+            <Icon :name="issuerIcon" class="size-3.5 shrink-0" />
             {{ cert.issuer }}
           </span>
         </span>
@@ -86,7 +86,7 @@ export interface CertCompactItem {
   url: string;
 }
 
-defineProps<{
+const props = defineProps<{
   cert: CertCompactItem;
   expanded: boolean;
   panelId: string;
@@ -95,6 +95,14 @@ defineProps<{
 defineEmits<{
   toggle: [];
 }>();
+
+const issuerIcon = computed(() => {
+  const key = props.cert.issuer.toLowerCase();
+  if (key.includes('platzi')) return 'simple-icons:platzi';
+  if (key.includes('udemy')) return 'simple-icons:udemy';
+  if (key.includes('new relic')) return 'simple-icons:newrelic';
+  return 'simple-icons:linkedin';
+});
 </script>
 
 <style scoped>
