@@ -300,7 +300,7 @@ const scrollToSection = (e, href) => {
       class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 pointer-events-none"
     >
       <div
-        class="site-nav__shell flex items-center justify-between gap-2 sm:gap-3 rounded-full pointer-events-auto border min-w-0"
+        class="site-nav__shell flex items-center justify-between gap-1.5 sm:gap-2 lg:gap-2 xl:gap-3 rounded-full pointer-events-auto border min-w-0"
       >
         <!-- Logo Area -->
         <button
@@ -339,12 +339,12 @@ const scrollToSection = (e, href) => {
 
         <!-- Desktop Navigation -->
         <div
-          class="site-nav__links hidden lg:flex items-center gap-0.5 xl:gap-1 rounded-full px-1.5 xl:px-2 py-1 border shrink-0"
+          class="site-nav__links hidden lg:flex items-center gap-0.5 xl:gap-1 rounded-full px-1 xl:px-2 py-1 border min-w-0 shrink"
         >
           <template v-for="(link, i) in navLinks" :key="link.id">
             <a
               :href="link.href"
-              class="nav-reveal relative px-2 lg:px-3 xl:px-4 py-1.5 xl:py-2 rounded-full text-xs xl:text-sm font-bold uppercase tracking-widest transition-all duration-300 isolate group/link overflow-hidden cursor-pointer"
+              class="nav-reveal relative px-1.5 lg:px-2.5 xl:px-4 py-1.5 xl:py-2 rounded-full text-[0.65rem] xl:text-sm font-bold uppercase tracking-wider xl:tracking-widest transition-all duration-300 isolate group/link overflow-hidden cursor-pointer whitespace-nowrap"
               :class="[
                 isActiveSection(link.id) ? 'text-foreground' : 'text-muted hover:text-foreground',
               ]"
@@ -367,7 +367,7 @@ const scrollToSection = (e, href) => {
         </div>
 
         <!-- Right Utilities -->
-        <div class="flex items-center gap-1 sm:gap-1.5 md:gap-2 shrink-0">
+        <div class="flex items-center gap-0.5 sm:gap-1 md:gap-1.5 xl:gap-2 shrink-0">
           <!-- Language Switcher -->
           <AppLanguageSwitcher />
 
@@ -576,13 +576,13 @@ const scrollToSection = (e, href) => {
           <!-- CTA Button -->
           <a
             href="#contact"
-            class="hidden lg:flex items-center gap-1.5 xl:gap-2 bg-primary hover:bg-primary-hover text-primary-contrast px-3 xl:px-4 py-1.5 xl:py-2 rounded-full font-bold text-xs xl:text-sm uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn shrink-0"
+            class="site-nav__cta hidden lg:inline-flex items-center gap-1.5 bg-primary hover:bg-primary-hover text-primary-contrast px-3 xl:px-4 py-1.5 xl:py-2 rounded-full font-bold text-xs xl:text-sm uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(255,75,92,0.4)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn shrink-0"
             @click="scrollToSection($event, '#contact')"
           >
             <span>{{ $t('nav.getInTouch') }}</span>
             <Icon
               name="solar:arrow-right-up-linear"
-              class="w-[30px] h-[30px] xl:w-[34px] xl:h-[34px] group-hover/btn:rotate-45 transition-transform duration-300"
+              class="size-3.5 xl:size-4 shrink-0 group-hover/btn:rotate-45 transition-transform duration-300"
             />
           </a>
 
@@ -712,7 +712,9 @@ const scrollToSection = (e, href) => {
 }
 
 .site-nav__shell {
-  padding: calc(var(--np) * 0.5rem);
+  /* Keep a real inset so the CTA never sits on the pill’s curved end-cap. */
+  padding-block: max(0.35rem, calc(var(--np) * 0.5rem));
+  padding-inline: max(0.4rem, calc(var(--np) * 0.55rem));
   border-color: color-mix(in srgb, #ffffff calc(var(--np) * 12%), transparent);
   /* Frosted glass: opaque enough that page copy never reads through the bar. */
   background-color: color-mix(in srgb, var(--background) calc(var(--np) * 82%), transparent);
