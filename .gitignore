@@ -21,6 +21,13 @@ logs
 .fleet
 .idea
 
+# Test artifacts
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+coverage/
+
 # Cursor — keep rules and agents in git
 .cursor/*
 !.cursor/README.md

@@ -1,4 +1,4 @@
-﻿<script setup>
+<script setup>
 import { nextTick, ref, watch } from 'vue';
 import { onClickOutside, useEventListener } from '@vueuse/core';
 import AppLanguageSwitcher from '~/components/AppLanguageSwitcher.vue';
