@@ -12,10 +12,14 @@ test.describe('generate artifacts', () => {
     expect(existsSync(headersPath), '_headers missing — run generate').toBe(true);
     expect(existsSync(indexPath), 'index.html missing — run generate').toBe(true);
 
-    const csp = parseCspFromHeadersFile(readFileSync(headersPath, 'utf8'));
+    const headersText = readFileSync(headersPath, 'utf8');
+    const csp = parseCspFromHeadersFile(headersText);
     expect(csp).toBeTruthy();
     expect(csp).toContain("script-src 'self' 'unsafe-inline'");
     expect(csp).toContain("connect-src 'self'");
+    // Artifact-only deploy: these must live in _headers, not only netlify.toml.
+    expect(headersText).toMatch(/Strict-Transport-Security:.*includeSubDomains.*preload/);
+    expect(headersText).toMatch(/Cross-Origin-Opener-Policy:\s*same-origin/);
 
     const html = readFileSync(indexPath, 'utf8');
     expect(html).toMatch(/rel="preload"[^>]*as="style"/);

@@ -19,6 +19,14 @@ describe('deploy / layout invariants (regression guards)', () => {
     expect(toml).toMatch(/publish\s*=\s*"\.output\/public"/);
   });
 
+  it('documents that deploy security headers are generated into _headers', () => {
+    // GH Actions only uploads .output/public — netlify.toml [[headers]] never reach the CDN.
+    const cspLib = read('scripts/lib/csp.mjs');
+    expect(cspLib).toMatch(/buildSecurityHeaders/);
+    expect(cspLib).toMatch(/includeSubDomains/);
+    expect(cspLib).toMatch(/Cross-Origin-Opener-Policy/);
+  });
+
   it('keeps cssCodeSplit false so CSS preload can target one stylesheet', () => {
     expect(read('nuxt.config.ts')).toMatch(/cssCodeSplit:\s*false/);
   });

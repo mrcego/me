@@ -252,9 +252,9 @@ onMounted(() => {
         </div>
       </div>
 
-      <!-- Photo + vibe banner: share float + tilt as one composition -->
+      <!-- Photo: no opacity reveal — opacity:0 on this column gated LCP (~1s render delay). -->
       <div
-        class="hero-reveal hero-reveal--photo relative order-2 lg:order-2 px-2 sm:px-4 md:px-0 w-full max-w-md lg:max-w-none mx-auto"
+        class="relative order-2 lg:order-2 px-2 sm:px-4 md:px-0 w-full max-w-md lg:max-w-none mx-auto"
       >
         <div
           ref="photoHitRef"
@@ -316,7 +316,7 @@ onMounted(() => {
                     fetchpriority="high"
                     densities="x1"
                     sizes="224px sm:256px lg:392px xl:448px"
-                    class="surface-card__image hero-photo-image w-full h-full object-cover grayscale brightness-90 scale-105"
+                    class="surface-card__image hero-photo-image w-full h-full object-cover"
                   />
 
                   <div
@@ -394,20 +394,21 @@ onMounted(() => {
 }
 
 .hero-photo-image {
+  /* Resting state: no filter/scale — both tax LCP paint on mobile. */
   transition:
     transform 0.95s cubic-bezier(0.22, 1, 0.36, 1),
     filter 1.05s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hero-photo-trigger:focus-within .hero-photo-image {
-  filter: grayscale(0.22) brightness(1.02);
-  transform: scale(1.07);
+  filter: brightness(1.04);
+  transform: scale(1.04);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .hero-photo-trigger:hover .hero-photo-image {
-    filter: grayscale(0.22) brightness(1.02);
-    transform: scale(1.07);
+    filter: brightness(1.04);
+    transform: scale(1.04);
   }
 }
 
@@ -418,13 +419,13 @@ onMounted(() => {
 
   .hero-photo-trigger:focus-within .hero-photo-image {
     transform: none;
-    filter: grayscale(0.22) brightness(1.02);
+    filter: brightness(1.02);
   }
 
   @media (hover: hover) and (pointer: fine) {
     .hero-photo-trigger:hover .hero-photo-image {
       transform: none;
-      filter: grayscale(0.22) brightness(1.02);
+      filter: brightness(1.02);
     }
   }
 }
@@ -445,12 +446,6 @@ onMounted(() => {
   animation-delay: 0.15s;
 }
 
-.hero-reveal--photo {
-  animation-name: hero-reveal-photo;
-  animation-duration: 0.5s;
-  animation-delay: 0.05s;
-}
-
 @keyframes hero-reveal {
   from {
     opacity: 0;
@@ -462,20 +457,8 @@ onMounted(() => {
   }
 }
 
-@keyframes hero-reveal-photo {
-  from {
-    opacity: 0;
-    transform: translateX(16px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .hero-reveal,
-  .hero-reveal--photo {
+  .hero-reveal {
     animation: none;
   }
 }

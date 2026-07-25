@@ -30,3 +30,4 @@ const outFile = join(publicDir, '_headers');
 writeFileSync(outFile, buildNetlifyHeadersFile(csp), 'utf8');
 console.log(`[csp] Wrote ${outFile}`);
 console.log(`[csp] script-src 'self' 'unsafe-inline' (hash/TT enforcement disabled for Nuxt SSG)`);
+console.log(`[csp] Also ships HSTS (includeSubDomains; preload), COOP, CORP, and frame guards`);

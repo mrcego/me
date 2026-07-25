@@ -53,11 +53,13 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    # NOTE: GitHub Actions deploys only `.output/public` (--no-build). These
+    # toml headers apply to Netlify UI / `netlify deploy --build` only.
+    # Production security headers (HSTS/COOP/CSP/…) are written into
+    # `.output/public/_headers` by `scripts/write-csp-headers.mjs`.
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Cross-Origin-Opener-Policy = "same-origin"
     Cross-Origin-Resource-Policy = "same-origin"
-    # Content-Security-Policy is written to `.output/public/_headers` by
-    # `scripts/write-csp-headers.mjs` after generate.
 
 [[headers]]
   for = "/_nuxt/*"
