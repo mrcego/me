@@ -36,7 +36,18 @@ const REPEL_RADIUS = 140;
 const REPEL_STRENGTH = 42;
 const RETURN_EASE = 0.06;
 
+function isMobileBudget() {
+  return (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(max-width: 1023px), (pointer: coarse)').matches
+  );
+}
+
 function particleCountForArea(w: number, h: number) {
+  if (isMobileBudget()) {
+    return Math.min(28, Math.max(16, Math.floor((w * h) / 28000)));
+  }
   return Math.min(90, Math.max(36, Math.floor((w * h) / 12000)));
 }
 
@@ -183,7 +194,8 @@ const { pause, resume } = useRafFn(
       drawParticle(particle);
     }
 
-    if (!reduceMotion) connectNearby();
+    // Skip O(n²) connects on mobile — dots alone keep the look without the stroke tax.
+    if (!reduceMotion && !isMobileBudget()) connectNearby();
   },
   { immediate: false },
 );
@@ -192,22 +204,39 @@ function onPointerMove(event: PointerEvent) {
   setPointerFromClient(event.clientX, event.clientY);
 }
 
+let heroVisible = true;
+let intersectionObserver: IntersectionObserver | null = null;
+
+function syncRaf() {
+  if (document.visibilityState === 'visible' && heroVisible) resume();
+  else pause();
+}
+
 onMounted(() => {
   resize();
-  resume();
+  if (containerRef.value && typeof IntersectionObserver !== 'undefined') {
+    intersectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        heroVisible = !!entry?.isIntersecting;
+        syncRaf();
+      },
+      { root: null, rootMargin: '0px', threshold: 0 },
+    );
+    intersectionObserver.observe(containerRef.value);
+  }
+  syncRaf();
 });
 
 onUnmounted(() => {
   pause();
+  intersectionObserver?.disconnect();
+  intersectionObserver = null;
 });
 
 useEventListener(window, 'resize', resize, { passive: true });
 useEventListener(window, 'pointermove', onPointerMove, { passive: true });
 useEventListener(window, 'pointerleave', clearPointer, { passive: true });
-useEventListener(document, 'visibilitychange', () => {
-  if (document.visibilityState === 'visible') resume();
-  else pause();
-});
+useEventListener(document, 'visibilitychange', syncRaf);
 
 watch(prefersReducedMotion, () => {
   initParticles();

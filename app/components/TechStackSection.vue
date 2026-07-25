@@ -15,7 +15,7 @@
       <Motion
         :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 }, { opacity: 1, scale: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
-        :transition="{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }"
+        :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true, amount: 0.1 }"
         class="max-w-4xl mx-auto text-center space-y-8 md:space-y-10 group"
       >
@@ -48,11 +48,7 @@
           :key="t.name"
           :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
-          :transition="{
-            duration: 0.8,
-            delay: i * 0.1,
-            ease: [0.16, 1, 0.3, 1],
-          }"
+          :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true }"
           class="surface-card group relative glass p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border-foreground/5 overflow-hidden min-h-0 flex flex-col justify-between cursor-crosshair h-full min-w-0"
         >
@@ -111,7 +107,7 @@
         <Motion
           :initial="motionInitial({ opacity: 0, x: -30 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
-          :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
+          :transition="motionTransition({ duration: 0.42 })"
           :viewport="{ once: true }"
           class="surface-card surface-card--soft group/hud glass p-6 sm:p-8 md:p-10 lg:p-16 rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 relative overflow-hidden"
         >
@@ -151,7 +147,7 @@
         <Motion
           :initial="motionInitial({ opacity: 0, x: 30 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
-          :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
+          :transition="motionTransition({ duration: 0.42, delay: 0.06 })"
           :viewport="{ once: true }"
           class="surface-card surface-card--soft group/hud glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-foreground/5 flex flex-col justify-between space-y-16 relative overflow-hidden"
         >
@@ -212,7 +208,7 @@ import { useI18n } from 'vue-i18n';
 
 useI18n();
 
-const { motionInitial, motionInView } = useMotionConfig();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
 const detailedStack = [
   {

@@ -16,6 +16,17 @@ let ctx: CanvasRenderingContext2D | null = null;
 let particles: Particle[] = [];
 let animationFrameId: number | null = null;
 let isPageVisible = true;
+let isMobileBudget = false;
+let isScrolling = false;
+let scrollIdleTimer: ReturnType<typeof setTimeout> | null = null;
+
+function refreshMobileBudget() {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+    isMobileBudget = false;
+    return;
+  }
+  isMobileBudget = window.matchMedia('(max-width: 1023px), (pointer: coarse)').matches;
+}
 
 class Particle {
   x: number;
@@ -54,15 +65,29 @@ class Particle {
 }
 
 function shouldAnimate() {
+  // On mobile, pause the full-viewport canvas while the user is scrolling so
+  // GPU/CPU budget goes to scroll compositing (particles resume after idle).
+  if (isMobileBudget && isScrolling) return false;
   return enabled.value && isPageVisible && prefersReducedMotion.value !== 'reduce';
+}
+
+function cssSize() {
+  return {
+    w: window.innerWidth || 1,
+    h: window.innerHeight || 1,
+  };
 }
 
 function initParticles() {
   if (!canvas.value) return;
 
-  const canvasWidth = canvas.value.width;
-  const canvasHeight = canvas.value.height;
-  const particleCount = Math.min(40, Math.floor((canvasWidth * canvasHeight) / 18000));
+  const { w: canvasWidth, h: canvasHeight } = cssSize();
+  const densityDivisor = isMobileBudget ? 42000 : 18000;
+  const maxParticles = isMobileBudget ? 16 : 40;
+  const particleCount = Math.min(
+    maxParticles,
+    Math.floor((canvasWidth * canvasHeight) / densityDivisor),
+  );
 
   particles = [];
   for (let i = 0; i < particleCount; i++) {
@@ -105,14 +130,16 @@ function animate() {
     return;
   }
 
-  ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
+  const { w, h } = cssSize();
+  ctx.clearRect(0, 0, w, h);
 
   particles.forEach((particle) => {
-    particle.update(canvas.value!.width, canvas.value!.height);
+    particle.update(w, h);
     particle.draw(ctx!);
   });
 
-  connectParticles();
+  // O(n²) strokes are the expensive part — skip on the mobile budget.
+  if (!isMobileBudget) connectParticles();
 
   animationFrameId = requestAnimationFrame(animate);
 }
@@ -130,10 +157,7 @@ function stopAnimation() {
 
 function handleResize() {
   if (!canvas.value) return;
-
-  canvas.value.width = window.innerWidth;
-  canvas.value.height = window.innerHeight;
-  initParticles();
+  setupCanvas();
 }
 
 function handleVisibilityChange() {
@@ -142,14 +166,33 @@ function handleVisibilityChange() {
   else stopAnimation();
 }
 
+function handleScrollBudget() {
+  if (!isMobileBudget) return;
+  const wasScrolling = isScrolling;
+  isScrolling = true;
+  if (!wasScrolling) stopAnimation();
+  if (scrollIdleTimer) clearTimeout(scrollIdleTimer);
+  scrollIdleTimer = setTimeout(() => {
+    isScrolling = false;
+    if (shouldAnimate()) startAnimation();
+  }, 180);
+}
+
 function setupCanvas() {
   if (!canvas.value) return;
 
+  refreshMobileBudget();
+  const { w, h } = cssSize();
+  // Cap DPR on mobile — full retina canvas + particle fills is wasteful.
+  const dpr = isMobileBudget ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+  canvas.value.width = Math.floor(w * dpr);
+  canvas.value.height = Math.floor(h * dpr);
+  canvas.value.style.width = `${w}px`;
+  canvas.value.style.height = `${h}px`;
   ctx = canvas.value.getContext('2d');
-  canvas.value.width = window.innerWidth;
-  canvas.value.height = window.innerHeight;
+  if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   initParticles();
-  startAnimation();
+  if (shouldAnimate()) startAnimation();
 }
 
 watch(prefersReducedMotion, (value) => {
@@ -163,15 +206,19 @@ watch(prefersReducedMotion, (value) => {
 
 onMounted(() => {
   enabled.value = prefersReducedMotion.value !== 'reduce';
+  refreshMobileBudget();
   window.addEventListener('resize', handleResize);
   document.addEventListener('visibilitychange', handleVisibilityChange);
+  window.addEventListener('scroll', handleScrollBudget, { passive: true });
   if (enabled.value) setupCanvas();
 });
 
 onUnmounted(() => {
   stopAnimation();
+  if (scrollIdleTimer) clearTimeout(scrollIdleTimer);
   window.removeEventListener('resize', handleResize);
   document.removeEventListener('visibilitychange', handleVisibilityChange);
+  window.removeEventListener('scroll', handleScrollBudget);
 });
 </script>
 

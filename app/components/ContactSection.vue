@@ -21,7 +21,7 @@
         <Motion
           :initial="motionInitial({ opacity: 0, x: -50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
-          :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
+          :transition="motionTransition({ duration: 0.42 })"
           :viewport="{ once: true }"
           class="space-y-8 sm:space-y-10 md:space-y-14"
         >
@@ -87,7 +87,7 @@
         <Motion
           :initial="motionInitial({ opacity: 0, x: 50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
-          :transition="{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }"
+          :transition="motionTransition({ duration: 0.42, delay: 0.08 })"
           :viewport="{ once: true }"
           class="surface-card group glass p-6 sm:p-8 md:p-10 lg:p-12 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 relative overflow-hidden shadow-4xl mt-12 lg:mt-0"
         >
@@ -284,7 +284,7 @@ import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
 import { useContactForm } from '~/composables/useContactForm';
 
-const { motionInitial, motionInView } = useMotionConfig();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
 const { formData, errors, isSubmitting, submitSuccess, submitError, submitForm } = useContactForm();
 

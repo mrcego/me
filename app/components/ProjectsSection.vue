@@ -15,7 +15,7 @@
         <Motion
           :initial="motionInitial({ opacity: 0, x: -50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
-          :transition="{ duration: 1, ease: [0.16, 1, 0.3, 1] }"
+          :transition="motionTransition({ duration: 0.42 })"
           :viewport="{ once: true }"
           class="space-y-8 md:space-y-10 group"
         >
@@ -37,7 +37,7 @@
         <Motion
           :initial="motionInitial({ opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1 })"
           :while-in-view="motionInView({ opacity: 1, scale: 1 })"
-          :transition="{ duration: 0.8, delay: 0.2 }"
+          :transition="motionTransition({ duration: 0.4, delay: 0.06 })"
           :viewport="{ once: true }"
           class="flex flex-wrap gap-2 md:gap-4 p-2 md:p-3 glass rounded-[2.5rem] border-foreground/5 w-fit shadow-xl justify-center lg:justify-start"
         >
@@ -65,11 +65,7 @@
           :key="project.title"
           :initial="motionInitial({ opacity: 0, y: 30 }, { opacity: 1, y: 0 })"
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
-          :transition="{
-            duration: 0.8,
-            delay: i * 0.15,
-            ease: [0.16, 1, 0.3, 1],
-          }"
+          :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true }"
           class="surface-card group relative glass p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] border-foreground/5 flex flex-col cursor-pointer overflow-hidden h-full"
         >
@@ -151,7 +147,7 @@
       <Motion
         :initial="motionInitial({ opacity: 0, y: 5 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
-        :transition="{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }"
+        :transition="motionTransition({ duration: 0.4, delay: 0.08 })"
         :viewport="{ once: true }"
         class="text-center pt-8 md:pt-16"
       >
@@ -177,7 +173,7 @@
 import { Motion } from 'motion-v';
 import { ref, computed } from 'vue';
 
-const { motionInitial, motionInView } = useMotionConfig();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
 const activeCategory = ref('all');
 const categories = ['all', 'systems', 'fullstack', 'frontend'];

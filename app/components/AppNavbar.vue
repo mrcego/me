@@ -1,7 +1,7 @@
 ﻿<template>
   <nav
     class="site-nav fixed left-0 right-0 z-130"
-    :style="{ top: 'var(--availability-banner-h, 0px)', '--nav-progress': navProgress }"
+    :style="{ top: 'var(--availability-banner-h, 0px)' }"
   >
     <div
       class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 pointer-events-none"
@@ -418,8 +418,8 @@ const props = defineProps({
   },
 });
 
-const { progress } = useSmoothedScroll(0.14);
-const navProgress = progress(120);
+// Keeps the shared scroll RAF alive for --nav-progress / --page-progress on :root.
+useSmoothedScroll(0.14);
 const { href: cvHref, fileName: cvFileName } = useCvDownload();
 const localePath = useLocalePath();
 
@@ -705,6 +705,7 @@ const scrollToSection = (e, href) => {
 
 <style scoped>
 .site-nav {
+  /* --nav-progress published on :root by useSmoothedScroll (direct DOM). */
   --np: var(--nav-progress, 0);
   padding-block: calc(1rem + (1 - var(--np)) * 0.5rem);
 }
@@ -722,6 +723,26 @@ const scrollToSection = (e, href) => {
   backdrop-filter: blur(calc(var(--np) * 24px));
   box-shadow: 0 calc(var(--np) * 16px) calc(var(--np) * 40px)
     color-mix(in srgb, #000000 calc(var(--np) * 12%), transparent);
+}
+
+/* Mobile: static blur + solid-enough fill — avoid animating blur radius / padding every RAF. */
+@media (max-width: 1023px) {
+  .site-nav {
+    padding-block: 0.75rem;
+  }
+
+  .site-nav__shell {
+    padding: 0.35rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: color-mix(in srgb, var(--secondary) 78%, transparent);
+    box-shadow: 0 8px 24px color-mix(in srgb, #000000 10%, transparent);
+  }
+
+  .site-nav__links {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
 }
 
 .site-nav__brand {

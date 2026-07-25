@@ -2,7 +2,7 @@
 import { Motion } from 'motion-v';
 
 const localePath = useLocalePath();
-const { motionInitial, motionInView } = useMotionConfig();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
 const profiles = [
   {
@@ -39,7 +39,7 @@ const profiles = [
       <Motion
         :initial="motionInitial({ opacity: 0, y: 16 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
-        :transition="{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }"
+        :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true }"
         class="max-w-3xl mx-auto text-center space-y-5"
       >
@@ -66,11 +66,7 @@ const profiles = [
           :key="profile.key"
           :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
-          :transition="{
-            duration: 0.55,
-            delay: index * 0.08,
-            ease: [0.16, 1, 0.3, 1],
-          }"
+          :transition="motionTransition({ duration: 0.4, delay: index * 0.05 })"
           :viewport="{ once: true }"
         >
           <NuxtLink
