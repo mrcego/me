@@ -110,9 +110,9 @@ export default defineNuxtConfig({
 
   hooks: {
     // Strip dynamicImports so Lazy islands are not preloaded before LCP.
-    // CSS discovery: scripts/inject-entry-css-link.mjs adds an early <link> for
-    // the cssCodeSplit:false bundle after generate (Nuxt inlineStyles alone still
-    // left CSS only reachable via the JS module graph).
+    // CSS discovery: scripts/inject-entry-css-link.mjs adds rel=preload as=style
+    // for the cssCodeSplit:false bundle (not a blocking stylesheet — paint stays
+    // on inlineStyles; avoids HTML→JS→CSS-only discovery).
     // https://developer.chrome.com/docs/performance/insights/network-dependency-tree
     'build:manifest'(manifest) {
       for (const item of Object.values(manifest)) {

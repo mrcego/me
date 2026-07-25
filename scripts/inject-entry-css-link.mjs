@@ -1,10 +1,10 @@
 /**
- * After `nuxt generate`, inject an early <link> for the bundled stylesheet so
+ * After `nuxt generate`, inject an early preload for the bundled stylesheet so
  * CSS is discoverable from HTML (not only after entry JS runs).
  *
- * Why: with features.inlineStyles + clearing manifest css[], Lighthouse
- * "Network Dependency Tree" chains HTML → JS → CSS (~4s). A single
- * cssCodeSplit:false file linked from <head> collapses that chain.
+ * Uses rel=preload (not stylesheet) so we do not reintroduce render-blocking
+ * CSS — first paint still comes from features.inlineStyles. Vite/JS applies
+ * the same file from cache when the module graph runs.
  *
  * https://developer.chrome.com/docs/performance/insights/network-dependency-tree
  *
@@ -47,7 +47,7 @@ function walkHtml(dir) {
   return files;
 }
 
-const linkTag = `<link rel="stylesheet" href="${href}" crossorigin>`;
+const linkTag = `<link rel="preload" as="style" href="${href}" crossorigin>`;
 let updated = 0;
 
 for (const file of walkHtml(publicDir)) {
@@ -65,4 +65,4 @@ for (const file of walkHtml(publicDir)) {
   updated += 1;
 }
 
-console.log(`[css-link] Linked ${href} into ${updated} HTML file(s)`);
+console.log(`[css-link] Preloaded ${href} in ${updated} HTML file(s)`);
