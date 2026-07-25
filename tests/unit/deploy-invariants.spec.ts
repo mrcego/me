@@ -13,6 +13,13 @@ describe('deploy / layout invariants (regression guards)', () => {
     expect(workflow).toMatch(/needs:\s*validate/);
   });
 
+  it('publishes a Netlify Deploy Preview from the CI artifact on pull requests', () => {
+    const ci = read('.github/workflows/ci.yml');
+    expect(ci).toMatch(/alias="pr-\$\{\{\s*github\.event\.number\s*\}\}"/);
+    expect(ci).toMatch(/--no-build/);
+    expect(ci).toMatch(/github\.event_name == 'pull_request'/);
+  });
+
   it('keeps Netlify HTML post-processing disabled', () => {
     const toml = read('netlify.toml');
     expect(toml).toMatch(/skip_processing\s*=\s*true/);
