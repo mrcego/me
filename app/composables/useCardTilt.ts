@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'vue';
-import { usePreferredReducedMotion } from '@vueuse/core';
+import { usePrefersReducedMotion } from '~/composables/useMatchMedia';
 
 type UseCardTiltOptions = {
   /** Max rotation in degrees from center toward an edge. */
@@ -27,7 +27,7 @@ export function useCardTilt(options: UseCardTiltOptions = {}) {
   const rotateX = ref(0);
   const rotateY = ref(0);
   const isActive = ref(false);
-  const prefersReducedMotion = usePreferredReducedMotion();
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   let touchResetTimer: ReturnType<typeof setTimeout> | undefined;
   /** Cached shell rect while active — ignores child visual movement. */
@@ -35,7 +35,7 @@ export function useCardTilt(options: UseCardTiltOptions = {}) {
   /** Freeze tilt updates while pressed so browsers still emit click. */
   let isPointerDown = false;
 
-  const disabled = computed(() => prefersReducedMotion.value === 'reduce');
+  const disabled = computed(() => prefersReducedMotion.value);
 
   function clearTouchReset() {
     if (touchResetTimer !== undefined) {

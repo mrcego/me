@@ -2,7 +2,7 @@ const SITE_URL = 'https://cesargomez.dev';
 
 /** ProfilePage dates must be full ISO-8601 DateTime (GSC rejects YYYY-MM-DD). */
 const PROFILE_DATE_CREATED = '2024-06-01T12:00:00-05:00';
-const PROFILE_DATE_MODIFIED = '2026-07-22T22:00:00-05:00';
+const PROFILE_DATE_MODIFIED = '2026-07-25T12:00:00-05:00';
 
 export const usePortfolioSeo = () => {
   const { t, locale } = useI18n();
@@ -119,18 +119,35 @@ export const usePortfolioSeo = () => {
           ],
           knowsAbout: [
             'Vue.js',
+            'Vue 3',
             'Nuxt.js',
+            'Nuxt 4',
             'TypeScript',
             'JavaScript',
             'Node.js',
+            'Express.js',
+            'REST APIs',
             'Frontend Architecture',
+            'Senior Frontend Development',
+            'Web Development',
+            'Website Development',
             'Fullstack Development',
             'Web Performance',
             'UI Engineering',
             'Design Systems',
             'Micro-frontends',
             'PrimeVue',
+            'Vuetify',
             'Tailwind CSS',
+            'SSR/SSG',
+            'CI/CD',
+            'Accessibility',
+            'AI Engineering',
+            'Natural Language Processing',
+            'Conversational AI',
+            'Large Language Models',
+            'Ed-tech',
+            'Cartagena Colombia Web Development',
           ],
           knowsLanguage: ['en', 'es'],
           alumniOf: [
@@ -219,18 +236,51 @@ export const usePortfolioSeo = () => {
           description: t('seo.serviceDescription'),
           url: canonicalUrl.value,
           image: ogImage,
-          areaServed: 'Worldwide',
+          areaServed: [
+            {
+              '@type': 'City',
+              name: 'Cartagena de Indias',
+              containedInPlace: {
+                '@type': 'Country',
+                name: 'Colombia',
+              },
+            },
+            {
+              '@type': 'Country',
+              name: 'Colombia',
+            },
+            'Worldwide',
+          ],
           provider: {
             '@id': `${SITE_URL}/#person`,
           },
           serviceType: [
             'Frontend Development',
+            'Senior Frontend Development',
+            'Website Development',
+            'Web Development',
             'Fullstack Development',
             'Vue.js Consulting',
             'Nuxt.js Development',
             'TypeScript Engineering',
+            'Node.js Backend Development',
+            'Express.js API Development',
+            'AI Engineering',
+            'AI/NLP Product Integration',
+            'Ed-tech Frontend Engineering',
+            'Remote Frontend Contracting',
+            'Vibe Coding Cleanup',
           ],
-          knowsAbout: ['Vue.js', 'Nuxt.js', 'TypeScript', 'Web Architecture'],
+          knowsAbout: [
+            'Vue.js',
+            'Nuxt.js',
+            'TypeScript',
+            'Web Architecture',
+            'Website Development',
+            'Express.js',
+            'Ed-tech',
+            'Cartagena Web Development',
+          ],
         }),
       },
     ],

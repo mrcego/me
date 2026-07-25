@@ -7,7 +7,7 @@
  */
 
 import { computed } from 'vue';
-import { useMediaQuery, usePreferredReducedMotion } from '@vueuse/core';
+import { useMatchMedia, usePrefersReducedMotion } from '~/composables/useMatchMedia';
 
 type MotionState = Record<string, unknown>;
 
@@ -48,14 +48,12 @@ const softenDesktop = <T>(state: T): T => {
 };
 
 export const useMotionConfig = () => {
-  const prefersReducedMotion = usePreferredReducedMotion();
-  const isMobileBudget = useMediaQuery('(max-width: 1023px), (pointer: coarse)');
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const isMobileBudget = useMatchMedia('(max-width: 1023px), (pointer: coarse)');
   const nuxtApp = tryUseNuxtApp();
 
   /** Entrance motion only on desktop + when motion is allowed. */
-  const motionEnabled = computed(
-    () => prefersReducedMotion.value !== 'reduce' && !isMobileBudget.value,
-  );
+  const motionEnabled = computed(() => !prefersReducedMotion.value && !isMobileBudget.value);
 
   /**
    * Pre-scroll state. SSR/hydration stay at rest; mobile never animates;

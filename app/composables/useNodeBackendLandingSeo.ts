@@ -14,5 +14,8 @@ export const useNodeBackendLandingSeo = () =>
       'TypeScript',
       'Backend Engineering',
       'Fullstack Development',
+      'Vue.js',
+      'Nuxt.js',
+      'API Design',
     ],
   });

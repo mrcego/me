@@ -1,5 +1,13 @@
-import { computed, onMounted, onUnmounted, shallowRef, watch } from 'vue';
-import { createSharedComposable, usePreferredReducedMotion, useWindowScroll } from '@vueuse/core';
+import {
+  computed,
+  onMounted,
+  onUnmounted,
+  shallowRef,
+  watch,
+  type ComputedRef,
+  type Ref,
+} from 'vue';
+import { usePrefersReducedMotion } from '~/composables/useMatchMedia';
 
 function isMobileScrollBudget() {
   return (
@@ -9,16 +17,24 @@ function isMobileScrollBudget() {
   );
 }
 
+type SmoothedScrollApi = {
+  y: Ref<number>;
+  rawY: Ref<number>;
+  progress: (distance?: number) => ComputedRef<number>;
+  pageProgress: ComputedRef<number>;
+};
+
+let shared: SmoothedScrollApi | null = null;
+
 /**
  * Shared lerped scroll — one RAF loop for navbar, progress bar, etc.
- * On mobile, snap instantly and drive CSS vars via direct DOM to avoid
- * Vue template patches every animation frame (major scroll-jank source).
+ * Intentionally VueUse-free so the Nuxt entry chunk stays lean.
  */
-export const useSmoothedScroll = createSharedComposable((lerp = 0.12) => {
-  const { y: rawY } = useWindowScroll();
+function createSmoothedScroll(lerp = 0.12): SmoothedScrollApi {
+  const rawY = shallowRef(0);
   const y = shallowRef(0);
   const scrollRange = shallowRef(0);
-  const prefersReducedMotion = usePreferredReducedMotion();
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   let frame: number | null = null;
   let resizeObserver: ResizeObserver | null = null;
@@ -37,7 +53,7 @@ export const useSmoothedScroll = createSharedComposable((lerp = 0.12) => {
   const step = () => {
     const target = rawY.value;
     const mobile = isMobileScrollBudget();
-    const alpha = prefersReducedMotion.value === 'reduce' || mobile ? 1 : lerp;
+    const alpha = prefersReducedMotion.value || mobile ? 1 : lerp;
     const delta = target - y.value;
 
     let next: number;
@@ -51,7 +67,6 @@ export const useSmoothedScroll = createSharedComposable((lerp = 0.12) => {
 
     publishChrome(next);
 
-    // On mobile, only poke Vue when the pixel position actually changes.
     if (mobile) {
       const rounded = Math.round(next);
       if (rounded !== lastPublishedY || frame === null) {
@@ -76,14 +91,20 @@ export const useSmoothedScroll = createSharedComposable((lerp = 0.12) => {
     publishChrome(y.value);
   };
 
+  const onScroll = () => {
+    rawY.value = window.scrollY || document.documentElement.scrollTop || 0;
+  };
+
   watch(rawY, scheduleFrame, { flush: 'sync' });
 
   onMounted(() => {
+    onScroll();
     y.value = rawY.value;
     lastPublishedY = Math.round(rawY.value);
     updateScrollRange();
     publishChrome(y.value);
 
+    window.addEventListener('scroll', onScroll, { passive: true });
     resizeObserver = new ResizeObserver(updateScrollRange);
     resizeObserver.observe(document.documentElement);
     if (document.body) resizeObserver.observe(document.body);
@@ -93,6 +114,7 @@ export const useSmoothedScroll = createSharedComposable((lerp = 0.12) => {
   onUnmounted(() => {
     if (frame !== null) cancelAnimationFrame(frame);
     resizeObserver?.disconnect();
+    window.removeEventListener('scroll', onScroll);
     window.removeEventListener('resize', updateScrollRange);
   });
 
@@ -109,4 +131,9 @@ export const useSmoothedScroll = createSharedComposable((lerp = 0.12) => {
     progress,
     pageProgress,
   };
-});
+}
+
+export const useSmoothedScroll = (lerp = 0.12) => {
+  if (!shared) shared = createSmoothedScroll(lerp);
+  return shared;
+};

@@ -21,10 +21,11 @@
       aria-label="Page scroll progress"
     />
 
-    <!-- Full-viewport particles are desktop-only; mobile uses HeroParticles (paused offscreen). -->
-    <LazyParticlesBackground v-if="enableGlobalParticles" :hydrate-on-idle="2000" />
+    <!-- Full-viewport particles are desktop-only; stagger past Lighthouse TBT window. -->
+    <LazyParticlesBackground v-if="enableGlobalParticles" :hydrate-on-idle="4200" />
 
-    <AppNavbar :active-section="activeSection" />
+    <!-- Lazy navbar JS: SSR markup still ships; hydrate after paint to shrink entry. -->
+    <LazyAppNavbar :active-section="activeSection" :hydrate-on-idle="100" />
 
     <NuxtPage />
 
@@ -32,7 +33,7 @@
 
     <LazyVibeCodingModal v-if="vibeCodingModalMounted" />
 
-    <LazyPerformanceOptimizations hydrate-on-idle />
+    <LazyPerformanceOptimizations :hydrate-on-idle="5000" />
   </div>
 </template>
 
@@ -62,11 +63,12 @@ onMounted(() => {
   if (coarseOrNarrow) {
     document.documentElement.classList.remove('fx-on');
   } else {
+    // Stagger CRT/scanline chrome after particle canvases so idle work doesn't stack.
     const enableFx = () => document.documentElement.classList.add('fx-on');
     if (typeof requestIdleCallback === 'function') {
-      requestIdleCallback(enableFx, { timeout: 2500 });
+      requestIdleCallback(enableFx, { timeout: 5500 });
     } else {
-      setTimeout(enableFx, 1200);
+      setTimeout(enableFx, 4000);
     }
   }
 });

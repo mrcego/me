@@ -5,7 +5,8 @@
 </template>
 
 <script setup lang="ts">
-import { usePreferredReducedMotion, useRafFn, useEventListener } from '@vueuse/core';
+import { useRafFn, useEventListener } from '@vueuse/core';
+import { usePrefersReducedMotion } from '~/composables/useMatchMedia';
 
 type Particle = {
   x: number;
@@ -21,7 +22,7 @@ type Particle = {
 
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 const containerRef = ref<HTMLElement | null>(null);
-const prefersReducedMotion = usePreferredReducedMotion();
+const prefersReducedMotion = usePrefersReducedMotion();
 
 let ctx: CanvasRenderingContext2D | null = null;
 let particles: Particle[] = [];
@@ -48,7 +49,8 @@ function particleCountForArea(w: number, h: number) {
   if (isMobileBudget()) {
     return Math.min(28, Math.max(16, Math.floor((w * h) / 28000)));
   }
-  return Math.min(90, Math.max(36, Math.floor((w * h) / 12000)));
+  // Desktop: fewer particles = shorter connectNearby frames (TBT / long tasks).
+  return Math.min(48, Math.max(28, Math.floor((w * h) / 20000)));
 }
 
 function createParticle(w: number, h: number): Particle {
@@ -68,10 +70,9 @@ function createParticle(w: number, h: number): Particle {
 }
 
 function initParticles() {
-  const count =
-    prefersReducedMotion.value === 'reduce'
-      ? Math.min(24, particleCountForArea(width, height))
-      : particleCountForArea(width, height);
+  const count = prefersReducedMotion.value
+    ? Math.min(24, particleCountForArea(width, height))
+    : particleCountForArea(width, height);
 
   particles = Array.from({ length: count }, () => createParticle(width, height));
 }
@@ -181,11 +182,13 @@ function connectNearby() {
   }
 }
 
+let connectFrame = 0;
+
 const { pause, resume } = useRafFn(
   () => {
     if (!ctx || width === 0 || height === 0) return;
 
-    const reduceMotion = prefersReducedMotion.value === 'reduce';
+    const reduceMotion = prefersReducedMotion.value;
 
     ctx.clearRect(0, 0, width, height);
 
@@ -194,8 +197,11 @@ const { pause, resume } = useRafFn(
       drawParticle(particle);
     }
 
-    // Skip O(n²) connects on mobile — dots alone keep the look without the stroke tax.
-    if (!reduceMotion && !isMobileBudget()) connectNearby();
+    // Skip O(n²) on mobile; on desktop run every other frame to cut long tasks.
+    connectFrame += 1;
+    if (!reduceMotion && !isMobileBudget() && connectFrame % 2 === 0) {
+      connectNearby();
+    }
   },
   { immediate: false },
 );

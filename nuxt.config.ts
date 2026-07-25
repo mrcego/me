@@ -17,6 +17,10 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    // Allow alternate output when `.output` is locked by a local preview process.
+    output: {
+      dir: process.env.NUXT_OUTPUT_DIR || '.output',
+    },
     prerender: {
       crawlLinks: true,
       routes: [
@@ -78,7 +82,8 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
     optimizeDeps: {
-      include: ['@unhead/schema-org/vue', '@vueuse/core'],
+      // Avoid prebundling the full @vueuse/core barrel into the graph.
+      include: ['@unhead/schema-org/vue'],
     },
     build: {
       modulePreload: false,
@@ -91,11 +96,23 @@ export default defineNuxtConfig({
     server: false,
   },
 
+  // Inline global + component CSS into SSR HTML so first paint does not wait on
+  // render-blocking <link rel="stylesheet"> (Chrome "Render-blocking requests").
+  // https://nuxt.com/docs/4.x/guide/going-further/features#inlinestyles
+  features: {
+    inlineStyles: true,
+  },
+
   hooks: {
-    // Stop Netlify/LH from downloading Lazy section chunks before LCP.
+    // 1) Stop Lazy section chunks from being preloaded before LCP.
+    // 2) Clear css[] on EVERY manifest entry (JS + CSS). Nuxt reads JS entries'
+    //    css arrays when injecting stylesheets — clearing only style entries leaves
+    //    redundant render-blocking <link> tags. Styles stay inlined via SSR.
+    //    https://developer.chrome.com/docs/performance/insights/render-blocking
     'build:manifest'(manifest) {
       for (const item of Object.values(manifest)) {
         item.dynamicImports = [];
+        item.css = [];
         if (item.preload) item.preload = false;
         if (item.prefetch) item.prefetch = false;
       }
@@ -108,6 +125,7 @@ export default defineNuxtConfig({
     ...(process.env.NODE_ENV === 'development' ? (['@nuxt/hints'] as const) : []),
     '@nuxt/icon',
     '@nuxt/image',
+    '@vueuse/nuxt',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
     '@primevue/nuxt-module',
@@ -139,11 +157,12 @@ export default defineNuxtConfig({
   },
 
   icon: {
-    // Local Iconify JSON packs — avoid remote fetches during prerender
+    // CSS classes for icons (no @iconify/vue runtime / client SVG bundle in entry).
+    mode: 'css',
     serverBundle: 'local',
     clientBundle: {
-      scan: true,
-      sizeLimitKb: 48,
+      // Keep scan off — CSS mode ships icons via stylesheets, not the JS client bundle.
+      scan: false,
     },
   },
 
@@ -220,6 +239,13 @@ export default defineNuxtConfig({
     langDir: '../i18n/locales',
     strategy: 'prefix_except_default',
     detectBrowserLanguage: false,
+    bundle: {
+      compositionOnly: true,
+    },
+    experimental: {
+      // Serve hashed messages.json as static assets (shorter critical chain vs Nitro route).
+      prerenderMessages: true,
+    },
   },
 
   runtimeConfig: {
@@ -233,7 +259,12 @@ export default defineNuxtConfig({
   },
 
   experimental: {
-    payloadExtraction: true,
+    // Inline payload in HTML for the first visit; extract only for client navigations.
+    // Shortens the "Network dependency tree" chain (no critical meta JSON before paint).
+    // https://developer.chrome.com/docs/performance/insights/network-dependency-tree
+    payloadExtraction: 'client',
     renderJsonPayloads: true,
+    // Static portfolio — no client route-rules manifest fetch on the critical path.
+    appManifest: false,
   },
 });

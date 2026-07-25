@@ -6,11 +6,11 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from 'vue';
-import { usePreferredReducedMotion } from '@vueuse/core';
+import { usePrefersReducedMotion } from '~/composables/useMatchMedia';
 
 const canvas = ref<HTMLCanvasElement | null>(null);
 const enabled = ref(false);
-const prefersReducedMotion = usePreferredReducedMotion();
+const prefersReducedMotion = usePrefersReducedMotion();
 
 let ctx: CanvasRenderingContext2D | null = null;
 let particles: Particle[] = [];
@@ -65,10 +65,9 @@ class Particle {
 }
 
 function shouldAnimate() {
-  // On mobile, pause the full-viewport canvas while the user is scrolling so
-  // GPU/CPU budget goes to scroll compositing (particles resume after idle).
-  if (isMobileBudget && isScrolling) return false;
-  return enabled.value && isPageVisible && prefersReducedMotion.value !== 'reduce';
+  // Pause while scrolling so GPU/CPU budget goes to compositing (resume after idle).
+  if (isScrolling) return false;
+  return enabled.value && isPageVisible && !prefersReducedMotion.value;
 }
 
 function cssSize() {
@@ -82,8 +81,9 @@ function initParticles() {
   if (!canvas.value) return;
 
   const { w: canvasWidth, h: canvasHeight } = cssSize();
-  const densityDivisor = isMobileBudget ? 42000 : 18000;
-  const maxParticles = isMobileBudget ? 16 : 40;
+  // Desktop: keep ambient dots cheap — line connects live only in HeroParticles.
+  const densityDivisor = isMobileBudget ? 42000 : 28000;
+  const maxParticles = isMobileBudget ? 16 : 28;
   const particleCount = Math.min(
     maxParticles,
     Math.floor((canvasWidth * canvasHeight) / densityDivisor),
@@ -92,33 +92,6 @@ function initParticles() {
   particles = [];
   for (let i = 0; i < particleCount; i++) {
     particles.push(new Particle(canvasWidth, canvasHeight));
-  }
-}
-
-function connectParticles() {
-  if (!ctx) return;
-
-  const maxDistance = 120;
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const a = particles[i];
-      const b = particles[j];
-      if (!a || !b) continue;
-
-      const dx = a.x - b.x;
-      const dy = a.y - b.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < maxDistance) {
-        const opacity = (1 - distance / maxDistance) * 0.1;
-        ctx.strokeStyle = `rgba(255, 75, 92, ${opacity})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.stroke();
-      }
-    }
   }
 }
 
@@ -138,9 +111,8 @@ function animate() {
     particle.draw(ctx!);
   });
 
-  // O(n²) strokes are the expensive part — skip on the mobile budget.
-  if (!isMobileBudget) connectParticles();
-
+  // Never run O(n²) connects on the full-viewport canvas — HeroParticles owns
+  // the line aesthetic in-hero. Dots alone keep ambient motion without long tasks.
   animationFrameId = requestAnimationFrame(animate);
 }
 
@@ -167,15 +139,18 @@ function handleVisibilityChange() {
 }
 
 function handleScrollBudget() {
-  if (!isMobileBudget) return;
+  // Pause both budgets while scrolling so main-thread/GPU go to compositing.
   const wasScrolling = isScrolling;
   isScrolling = true;
   if (!wasScrolling) stopAnimation();
   if (scrollIdleTimer) clearTimeout(scrollIdleTimer);
-  scrollIdleTimer = setTimeout(() => {
-    isScrolling = false;
-    if (shouldAnimate()) startAnimation();
-  }, 180);
+  scrollIdleTimer = setTimeout(
+    () => {
+      isScrolling = false;
+      if (shouldAnimate()) startAnimation();
+    },
+    isMobileBudget ? 180 : 120,
+  );
 }
 
 function setupCanvas() {
@@ -196,7 +171,7 @@ function setupCanvas() {
 }
 
 watch(prefersReducedMotion, (value) => {
-  enabled.value = value !== 'reduce';
+  enabled.value = !value;
   if (!enabled.value) {
     stopAnimation();
   } else if (canvas.value && !animationFrameId) {
@@ -205,7 +180,7 @@ watch(prefersReducedMotion, (value) => {
 });
 
 onMounted(() => {
-  enabled.value = prefersReducedMotion.value !== 'reduce';
+  enabled.value = !prefersReducedMotion.value;
   refreshMobileBudget();
   window.addEventListener('resize', handleResize);
   document.addEventListener('visibilitychange', handleVisibilityChange);

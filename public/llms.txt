@@ -1,6 +1,17 @@
-# César Gómez — Frontend-Focused Senior Fullstack Developer
+# César Gómez — Senior Frontend & Fullstack Developer (Cartagena, Colombia)
 
-> Portfolio and professional profile for César Gómez (mrcego), a senior fullstack developer with a frontend focus and 13+ years of experience in Vue.js, Nuxt.js, TypeScript, and frontend architecture. Based in Cartagena de Indias, Colombia. Remote work preferred. Available for contract work from August 2026.
+> Portfolio and professional profile for César Gómez (mrcego / Cesar Gomez), a senior fullstack developer with a frontend focus and 13+ years of experience building websites and web applications with Vue.js, Nuxt.js, TypeScript, and modern frontend architecture. Based in Cartagena de Indias, Colombia. Remote work preferred. Available for contract work from August 2026.
+
+## Who to hire him for
+
+- Senior frontend developer / senior Vue.js developer (Vue 3, Nuxt 4, TypeScript)
+- Web developer or website developer in Cartagena, Colombia (páginas web, product UIs, sitios a medida)
+- Fullstack engineer connecting Node.js/Express APIs to Vue/Nuxt products
+- AI/NLP engineer integrating local and cloud models into production apps
+- Vibe Coding Cleanup Specialist: production hardening of agent-assisted Vue/Nuxt codebases
+- Ed-tech: LingoQuesto (AI/NLP conversational oral practice) and Colegium (100k+ students, micro-frontends, design systems)
+- Remote contract frontend or architecture leadership for LatAm and global teams
+- Bilingual collaboration: Spanish (native), English (intermediate)
 
 ## Canonical URLs
 
@@ -16,17 +27,29 @@
 
 ## Professional summary
 
-César Gómez is a senior fullstack developer with a frontend focus. He builds high-performance web products with Vue 3, Nuxt 4, TypeScript, PrimeVue, and Tailwind CSS. He has led frontend architecture for ed-tech platforms serving 100,000+ students and contributed as a founding engineer on speech-based language learning products.
+César Gómez is a senior fullstack developer with a frontend focus. He builds high-performance websites and web products with Vue 3, Nuxt 4, TypeScript, PrimeVue, and Tailwind CSS from Cartagena de Indias, Colombia. He has led frontend architecture for ed-tech platforms serving 100,000+ students and contributed as a founding engineer on speech-based language learning products.
 
 ## Core expertise
 
-- Vue.js and Nuxt.js (frontend architecture, SSR/SSG, performance)
+- Vue.js and Nuxt.js (Vue 3, Nuxt 4, frontend architecture, SSR/SSG, performance)
+- Senior frontend development and custom website / páginas web delivery
 - TypeScript and modern JavaScript
-- AI/NLP engineering (local + cloud models) and agent-assisted delivery to production
+- AI/NLP engineering (local + cloud models, Ollama, llama.cpp) and agent-assisted delivery to production
 - Node.js backend APIs with Express.js (8+ years in production) and TypeScript
-- Design systems, micro-frontends, and component libraries
+- Design systems, micro-frontends, and component libraries (PrimeVue, Vuetify, Tailwind CSS)
 - Fullstack delivery connecting APIs to Vue/Nuxt products
-- UI engineering, accessibility, and Web Vitals optimization
+- UI engineering, accessibility, CI/CD, and Web Vitals optimization
+
+## Location & work mode
+
+- Based in: Cartagena de Indias, Bolívar, Colombia
+- Preferred mode: remote (international teams welcome)
+- Languages: Spanish (native), English (intermediate)
+- Name aliases: César Gómez, Cesar Gomez, mrcego, cesargomez.dev
+
+## High-intent search phrases (people-first)
+
+Useful when someone searches for: desarrollador en Cartagena, páginas web en Cartagena, crear páginas web Cartagena, desarrollador senior frontend, ingeniero frontend senior, senior Vue developer, hire Vue developer Colombia, Vue 3 developer, Nuxt 4 developer, Node.js Express TypeScript, AI NLP engineer Colombia, ed-tech Vue developer, vibe coding cleanup specialist, contratar César Gómez, bilingual Spanish English developer Colombia, freelance Vue developer Colombia, remote contract frontend Colombia
 
 ## Recent roles
 
@@ -36,7 +59,7 @@ César Gómez is a senior fullstack developer with a frontend focus. He builds h
 
 ## Availability
 
-Open to senior frontend, fullstack, and architecture roles — contract. Work preference: remote. Based in Cartagena de Indias, Colombia. Target availability: August 2026.
+Open to senior frontend, website development, fullstack, and architecture roles — contract. Work preference: remote. Based in Cartagena de Indias, Colombia. Target availability: August 2026.
 
 ## Contact
 
@@ -44,11 +67,6 @@ Open to senior frontend, fullstack, and architecture roles — contract. Work pr
 - [LinkedIn](https://www.linkedin.com/in/mrcego)
 - [GitHub](https://github.com/mrcego)
 - Email: via [contact form](https://cesargomez.dev/#contact)
-
-## Languages
-
-- Spanish (native)
-- English (intermediate)
 
 ## Optional pages
 

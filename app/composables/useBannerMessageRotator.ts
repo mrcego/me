@@ -1,7 +1,7 @@
 import type { Ref } from 'vue';
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useMediaQuery } from '@vueuse/core';
+import { useMatchMedia } from '~/composables/useMatchMedia';
 
 const ROTATE_MS = 3000;
 /** Tailwind `xl` — date chip sits beside the rotator from this width up. */
@@ -10,7 +10,7 @@ const XL_UP = '(min-width: 1280px)';
 export function useBannerMessageRotator(enabled: Ref<boolean> | (() => boolean)) {
   const { t } = useI18n();
   const activeIndex = ref(0);
-  const isXlUp = useMediaQuery(XL_UP);
+  const isXlUp = useMatchMedia(XL_UP);
   const isMounted = ref(false);
   const showDateChip = computed(() => isMounted.value && isXlUp.value);
   let timer: ReturnType<typeof setInterval> | null = null;

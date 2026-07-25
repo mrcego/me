@@ -7,5 +7,17 @@ export const useVueDeveloperLandingSeo = () =>
       en: '/vue-frontend-developer',
       es: '/desarrollador-vue',
     },
-    knowsAbout: ['Vue.js', 'Nuxt.js', 'TypeScript', 'Frontend Development'],
+    knowsAbout: [
+      'Vue.js',
+      'Vue 3',
+      'Nuxt.js',
+      'Nuxt 4',
+      'TypeScript',
+      'Frontend Development',
+      'Senior Frontend Development',
+      'Website Development',
+      'Design Systems',
+      'Web Performance',
+      'Ed-tech',
+    ],
   });

@@ -1,5 +1,4 @@
-import { computed } from 'vue';
-import { useStorage } from '@vueuse/core';
+import { computed, ref, watch } from 'vue';
 import {
   DEFAULT_THEME_ID,
   FONT_STACKS,
@@ -11,8 +10,25 @@ import {
   type ThemePreset,
 } from '~/utils/themePresets';
 
-// Shared state with VueUse localStorage persistence
-const currentThemeId = useStorage(THEME_STORAGE_KEY, DEFAULT_THEME_ID);
+/** Persist theme id without `@vueuse/core` (keeps entry free of the VueUse barrel). */
+const currentThemeId = ref(DEFAULT_THEME_ID);
+if (import.meta.client) {
+  try {
+    const stored = localStorage.getItem(THEME_STORAGE_KEY);
+    if (stored && THEME_PRESETS.some((p) => p.id === stored)) {
+      currentThemeId.value = stored;
+    }
+  } catch {
+    // private mode / blocked storage
+  }
+  watch(currentThemeId, (id) => {
+    try {
+      localStorage.setItem(THEME_STORAGE_KEY, id);
+    } catch {
+      // ignore
+    }
+  });
+}
 
 type ColorPalette = Record<string, string>;
 

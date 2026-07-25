@@ -4,7 +4,7 @@
     class="relative min-h-svh flex items-center justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+5rem)] pb-10 md:pb-12 lg:pt-[calc(var(--availability-banner-h,0px)+5.5rem)] lg:pb-14"
   >
     <!-- Interactive background particles -->
-    <LazyHeroParticles :hydrate-on-idle="1800" />
+    <LazyHeroParticles :hydrate-on-idle="3200" />
 
     <!-- Decorative watermark — deferred + opacity 0 until idle so it cannot steal LCP -->
     <div
