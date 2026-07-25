@@ -50,8 +50,25 @@ describe('deploy / layout invariants (regression guards)', () => {
     expect(cfg).toMatch(/name:\s*'Fira Code'[\s\S]*?preload:\s*false/);
     expect(cfg).toMatch(/name:\s*'Outfit'[\s\S]*?preload:\s*false/);
     expect(cfg).not.toMatch(/preload:\s*true/);
-    // Fira stack must not chain a second webfont (Outfit) after optional timeout.
-    expect(read('app/utils/themePresets.ts')).toMatch(/'Fira Code':\s*'"Fira Code", ui-sans-serif/);
+    // Fira ships globally so @font-face exists even when first paint omits the family name.
+    expect(cfg).toMatch(/name:\s*'Fira Code'[\s\S]*?global:\s*true/);
+  });
+
+  it('defers webfont family names until after load (keeps /_fonts off LCP chain)', () => {
+    const presets = read('app/utils/themePresets.ts');
+    const init = read('app/utils/themeInitScript.ts');
+    const css = read('app/assets/css/main.css');
+    expect(presets).toContain('FONT_STACKS_LOCAL');
+    expect(presets).toContain('Fira Code Fallback: Segoe UI');
+    expect(presets).toContain('"Fira Code", ${FONT_STACKS_LOCAL[\'Fira Code\']}');
+    // Blocking theme-init applies local stack first, then load+idle activates webfonts.
+    expect(init).toContain('FONT_STACKS_LOCAL');
+    expect(init).toContain('requestIdleCallback');
+    expect(init).toContain('dataset.webfonts');
+    expect(init).toContain("addEventListener('load'");
+    // CSS :root must not put "Fira Code" in the used --font-main (unused webfont vars OK).
+    expect(css).toMatch(/--font-main:\s*'Fira Code Fallback:/);
+    expect(css).not.toMatch(/--font-main:\s*'Fira Code'/);
   });
 
   it('keeps cssCodeSplit false so CSS preload can target one stylesheet', () => {

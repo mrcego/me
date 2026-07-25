@@ -2,6 +2,7 @@ import { computed, ref, watch } from 'vue';
 import {
   DEFAULT_THEME_ID,
   FONT_STACKS,
+  FONT_STACKS_LOCAL,
   MUTED_DARK,
   MUTED_LIGHT,
   THEME_PRESETS,
@@ -12,7 +13,30 @@ import {
 
 /** Persist theme id without `@vueuse/core` (keeps entry free of the VueUse barrel). */
 const currentThemeId = ref(DEFAULT_THEME_ID);
+
+/** True once webfonts may name "Fira Code" / "Outfit" (after LCP or user theme pick). */
+let webfontsActivated = false;
+let webfontsScheduleStarted = false;
+
+const scheduleWebfontsActivation = (apply: () => void) => {
+  if (webfontsScheduleStarted || webfontsActivated) return;
+  webfontsScheduleStarted = true;
+  const run = () => {
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(apply, { timeout: 2500 });
+    } else {
+      setTimeout(apply, 1);
+    }
+  };
+  if (document.readyState === 'complete') {
+    run();
+  } else {
+    window.addEventListener('load', run, { once: true });
+  }
+};
+
 if (import.meta.client) {
+  webfontsActivated = document.documentElement.dataset.webfonts === '1';
   try {
     const stored = localStorage.getItem(THEME_STORAGE_KEY);
     if (stored && THEME_PRESETS.some((p) => p.id === stored)) {
@@ -78,7 +102,10 @@ export const useTheme = () => {
     return yiq >= 128 ? '#000000' : '#ffffff';
   };
 
-  const syncCSSVariables = (theme: ThemePreset) => {
+  const syncCSSVariables = (
+    theme: ThemePreset,
+    { activateWebfonts = webfontsActivated }: { activateWebfonts?: boolean } = {},
+  ) => {
     if (!import.meta.client) return;
     const root = document.documentElement;
     const dark = theme.isDark;
@@ -110,7 +137,13 @@ export const useTheme = () => {
       dark ? 'rgba(255, 255, 255, 0.03)' : 'rgba(0, 0, 0, 0.03)',
     );
 
-    root.style.setProperty('--font-main', FONT_STACKS[theme.font]);
+    if (activateWebfonts) {
+      webfontsActivated = true;
+      root.dataset.webfonts = '1';
+      root.style.setProperty('--font-main', FONT_STACKS[theme.font]);
+    } else {
+      root.style.setProperty('--font-main', FONT_STACKS_LOCAL[theme.font]);
+    }
     root.dataset.themeFont = theme.font === 'Fira Code' ? 'fira-code' : 'sans';
   };
 
@@ -121,7 +154,13 @@ export const useTheme = () => {
     apis.updateSurfacePalette(apis.palette(theme.surface));
   };
 
-  const applyTheme = (theme: ThemePreset, { syncPrime = false }: { syncPrime?: boolean } = {}) => {
+  const applyTheme = (
+    theme: ThemePreset,
+    {
+      syncPrime = false,
+      activateWebfonts = webfontsActivated,
+    }: { syncPrime?: boolean; activateWebfonts?: boolean } = {},
+  ) => {
     if (!import.meta.client || !theme) return;
     const root = document.documentElement;
     if (theme.isDark) {
@@ -132,7 +171,7 @@ export const useTheme = () => {
       root.classList.add('light');
     }
 
-    syncCSSVariables(theme);
+    syncCSSVariables(theme, { activateWebfonts });
 
     if (syncPrime) {
       void syncPrimePalettes(theme);
@@ -147,10 +186,18 @@ export const useTheme = () => {
     }
   };
 
-  // Inicializar
+  // Inicializar — keep webfonts deferred until load+idle (or until the user picks a theme).
   if (import.meta.client) {
     const theme = currentTheme.value;
-    if (theme) applyTheme(theme);
+    if (theme) {
+      applyTheme(theme, { activateWebfonts: webfontsActivated });
+      if (!webfontsActivated) {
+        scheduleWebfontsActivation(() => {
+          const latest = currentTheme.value;
+          if (latest) applyTheme(latest, { activateWebfonts: true });
+        });
+      }
+    }
   }
 
   /** Persist + apply (click / Enter). */
@@ -158,20 +205,20 @@ export const useTheme = () => {
     const theme = THEME_PRESETS.find((p) => p.id === id);
     if (theme) {
       currentThemeId.value = id;
-      applyTheme(theme, { syncPrime: true });
+      applyTheme(theme, { syncPrime: true, activateWebfonts: true });
     }
   };
 
   /** Live preview without persisting (keyboard arrow navigation). */
   const previewTheme = (id: string) => {
     const theme = THEME_PRESETS.find((p) => p.id === id);
-    if (theme) applyTheme(theme, { syncPrime: true });
+    if (theme) applyTheme(theme, { syncPrime: true, activateWebfonts: true });
   };
 
   /** Restore the persisted selection (Escape / cancel preview). */
   const cancelThemePreview = () => {
     const theme = currentTheme.value;
-    if (theme) applyTheme(theme, { syncPrime: true });
+    if (theme) applyTheme(theme, { syncPrime: true, activateWebfonts: true });
   };
 
   const toggleTheme = () => {

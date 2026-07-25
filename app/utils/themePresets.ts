@@ -20,12 +20,30 @@ export const DEFAULT_THEME_ID = 'github-dark';
 export const MUTED_DARK = '#cbd5e1';
 export const MUTED_LIGHT = '#64748b';
 
+/**
+ * Metric-adjusted local faces from @nuxt/fonts (src:local only).
+ * Used for first paint so the browser never requests /_fonts/*.woff2 on the LCP path.
+ * Names must stay in sync with @nuxt/fonts / fontaine fallback naming.
+ */
+const OUTFIT_LOCAL_FACES =
+  '"Outfit Fallback: BlinkMacSystemFont", "Outfit Fallback: Segoe UI", "Outfit Fallback: Helvetica Neue", "Outfit Fallback: Arial", "Outfit Fallback: Noto Sans"';
+const FIRA_LOCAL_FACES =
+  '"Fira Code Fallback: BlinkMacSystemFont", "Fira Code Fallback: Segoe UI", "Fira Code Fallback: Helvetica Neue", "Fira Code Fallback: Arial", "Fira Code Fallback: Noto Sans"';
+
+/** First-paint stacks — no webfont family name (no network font request). */
+export const FONT_STACKS_LOCAL: Record<ThemeFont, string> = {
+  Sans: `${OUTFIT_LOCAL_FACES}, ui-sans-serif, system-ui, sans-serif`,
+  'Fira Code': `${FIRA_LOCAL_FACES}, ui-sans-serif, system-ui, sans-serif`,
+};
+
+/**
+ * Post-LCP stacks — webfont first, then metric-adjusted locals.
+ * Outfit must not appear in the Fira stack (optional timeout used to race a second webfont).
+ * Missing Fira weights (800/900) are clamped to 700 in main.css for fira-code themes.
+ */
 export const FONT_STACKS: Record<ThemeFont, string> = {
-  Sans: '"Outfit", ui-sans-serif, system-ui, sans-serif',
-  // Local system fallbacks only — Outfit as a webfont fallback raced Fira on slow 4G
-  // (font-display:optional → skip late Fira → fetch Outfit on the LCP critical path).
-  // Missing Fira weights (800/900) are clamped to 700 in main.css for fira-code themes.
-  'Fira Code': '"Fira Code", ui-sans-serif, system-ui, sans-serif',
+  Sans: `"Outfit", ${FONT_STACKS_LOCAL.Sans}`,
+  'Fira Code': `"Fira Code", ${FONT_STACKS_LOCAL['Fira Code']}`,
 };
 
 export const THEME_PRESETS: ThemePreset[] = [

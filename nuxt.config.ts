@@ -169,10 +169,13 @@ export default defineNuxtConfig({
         // Default theme font (`data-theme-font="fira-code"`).
         // Do NOT preload: LCP is the hero photo; font preload steals slow-4G bandwidth and
         // still lands on PSI's critical path even with font-display:optional.
+        // global: ship @font-face even though first paint uses local fallbacks only
+        // (theme-init / useTheme name "Fira Code" only after load+idle).
         name: 'Fira Code',
         provider: 'google',
         weights: [400, 600, 700],
         preload: false,
+        global: true,
       },
     ],
   },
