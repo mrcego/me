@@ -4,16 +4,41 @@ import {
   buildCspHeaderValue,
   buildNetlifyHeadersFile,
   buildSecurityHeaders,
+  extractExecutableInlineScripts,
+  hashInlineScript,
   parseCspFromHeadersFile,
   parseHeaderFromHeadersFile,
 } from '../../scripts/lib/csp.mjs';
 
 describe('CSP builders', () => {
-  it('allows Nuxt inline scripts without Trusted Types enforcement', () => {
+  it('falls back to unsafe-inline when no script hashes are provided', () => {
     const directives = buildCspDirectives();
     expect(directives).toContain("script-src 'self' 'unsafe-inline'");
     expect(directives.some((d) => d.includes('require-trusted-types-for'))).toBe(false);
-    expect(directives.some((d) => /script-src.*'sha256-/.test(d))).toBe(false);
+  });
+
+  it('uses sha256 hashes and Trusted Types when enabled for generate output', () => {
+    const hash = hashInlineScript('window.__NUXT__={}');
+    const directives = buildCspDirectives({
+      scriptHashes: [hash],
+      enableTrustedTypes: true,
+    });
+    const scriptSrc = directives.find((d) => d.startsWith('script-src'));
+    expect(scriptSrc).toContain(hash);
+    expect(scriptSrc).not.toContain("'unsafe-inline'");
+    expect(directives).toContain("require-trusted-types-for 'script'");
+    expect(directives).toContain('trusted-types vue default');
+  });
+
+  it('hashes only executable inline scripts (skips JSON / src scripts)', () => {
+    const html = `
+      <script src="/a.js"></script>
+      <script type="application/json">{"x":1}</script>
+      <script>window.__NUXT__={}</script>
+    `;
+    const bodies = extractExecutableInlineScripts(html);
+    expect(bodies).toEqual(['window.__NUXT__={}']);
+    expect(hashInlineScript(bodies[0]!)).toMatch(/^'sha256-[A-Za-z0-9+/=]+'$/);
   });
 
   it('locks connect-src to self so Iconify CDN cannot be fetched', () => {
@@ -21,7 +46,10 @@ describe('CSP builders', () => {
   });
 
   it('writes a Netlify _headers file that parses back to the same CSP', () => {
-    const csp = buildCspHeaderValue();
+    const csp = buildCspHeaderValue({
+      scriptHashes: [hashInlineScript('console.log(1)')],
+      enableTrustedTypes: true,
+    });
     const file = buildNetlifyHeadersFile(csp);
     expect(parseCspFromHeadersFile(file)).toBe(csp);
     expect(file).toContain('/*');

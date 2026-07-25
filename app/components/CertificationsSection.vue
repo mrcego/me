@@ -178,11 +178,13 @@ watch(showAllRest, () => {
               target="_blank"
               rel="noopener noreferrer"
               class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground hover:bg-primary hover:text-primary-contrast transition-all duration-500 group/btn"
+              :aria-label="$t('certifications.viewCredentialNamed', { title: cert.title })"
             >
-              {{ $t('certifications.viewCredential') }}
+              <span aria-hidden="true">{{ $t('certifications.viewCredential') }}</span>
               <Icon
                 name="solar:arrow-right-up-linear"
                 class="size-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                aria-hidden="true"
               />
             </NuxtLink>
           </div>

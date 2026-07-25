@@ -35,6 +35,13 @@ describe('deploy / layout invariants (regression guards)', () => {
     expect(cspLib).toMatch(/buildSecurityHeaders/);
     expect(cspLib).toMatch(/includeSubDomains/);
     expect(cspLib).toMatch(/Cross-Origin-Opener-Policy/);
+    expect(cspLib).toMatch(/collectInlineScriptHashes/);
+  });
+
+  it('softens webfont swap after generate to cut hero CLS', () => {
+    const pkg = read('package.json');
+    expect(pkg).toMatch(/font-display-optional\.mjs/);
+    expect(read('scripts/font-display-optional.mjs')).toMatch(/font-display:optional/);
   });
 
   it('keeps cssCodeSplit false so CSS preload can target one stylesheet', () => {

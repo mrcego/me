@@ -64,9 +64,11 @@ const issuerIcon = computed(() => {
         target="_blank"
         rel="noopener noreferrer"
         class="pointer-events-auto relative z-10 inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-xl px-3 glass text-xs font-black uppercase tracking-[0.15em] text-foreground hover:bg-primary hover:text-primary-contrast transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 group/btn"
-        :aria-label="`${$t('certifications.viewCredential')}: ${cert.title}`"
+        :aria-label="$t('certifications.viewCredentialNamed', { title: cert.title })"
       >
-        <span class="hidden sm:inline">{{ $t('certifications.viewCredential') }}</span>
+        <span class="hidden sm:inline" aria-hidden="true">{{
+          $t('certifications.viewCredential')
+        }}</span>
         <Icon
           name="solar:arrow-right-up-linear"
           class="size-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"

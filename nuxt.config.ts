@@ -152,6 +152,8 @@ export default defineNuxtConfig({
       styles: ['normal'],
       subsets: ['latin'],
     },
+    // --font-main is set via CSS variables; metric-adjusted fallbacks cut CLS on hero name.
+    processCSSVariables: true,
     families: [
       {
         name: 'Outfit',

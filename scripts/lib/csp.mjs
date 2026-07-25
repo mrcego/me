@@ -4,12 +4,101 @@
  * `.output/public` (`netlify deploy --no-build --dir=...`) — `netlify.toml`
  * [[headers]] are not present in that publish tree.
  *
- * Keep script-src permissive enough for Nuxt SSG inline payloads — see write-csp-headers.mjs.
+ * After generate, write-csp-headers.mjs hashes executable inline `<script>` bodies
+ * so we can drop script-src 'unsafe-inline' while keeping Nuxt SSG payloads.
  */
 
-/** @returns {string[]} */
-export function buildCspDirectives() {
-  return [
+import { createHash } from 'node:crypto';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+
+/**
+ * @param {string} dir
+ * @returns {Generator<string>}
+ */
+function* walkHtmlFiles(dir) {
+  if (!existsSync(dir)) return;
+  for (const name of readdirSync(dir)) {
+    const full = join(dir, name);
+    let st;
+    try {
+      st = statSync(full);
+    } catch {
+      continue;
+    }
+    if (st.isDirectory()) {
+      yield* walkHtmlFiles(full);
+    } else if (name.endsWith('.html')) {
+      yield full;
+    }
+  }
+}
+
+/**
+ * Executable inline scripts only (skip JSON / importmap payloads).
+ * @param {string} html
+ * @returns {string[]}
+ */
+export function extractExecutableInlineScripts(html) {
+  const bodies = [];
+  const re = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
+  let match;
+  while ((match = re.exec(html)) !== null) {
+    const attrs = match[1] || '';
+    const body = match[2] ?? '';
+    if (/\bsrc\s*=/i.test(attrs)) continue;
+    if (!body.trim()) continue;
+    const typeMatch = attrs.match(/\btype\s*=\s*["']([^"']+)["']/i);
+    const type = typeMatch?.[1]?.trim().toLowerCase() ?? 'text/javascript';
+    if (
+      type === 'application/json' ||
+      type === 'importmap' ||
+      type === 'application/ld+json' ||
+      type.endsWith('+json')
+    ) {
+      continue;
+    }
+    bodies.push(body);
+  }
+  return bodies;
+}
+
+/** @param {string} content */
+export function hashInlineScript(content) {
+  const digest = createHash('sha256').update(content, 'utf8').digest('base64');
+  return `'sha256-${digest}'`;
+}
+
+/**
+ * @param {string} publicDir
+ * @returns {string[]} sorted unique CSP hash tokens
+ */
+export function collectInlineScriptHashes(publicDir) {
+  const hashes = new Set();
+  for (const file of walkHtmlFiles(publicDir)) {
+    const html = readFileSync(file, 'utf8');
+    for (const body of extractExecutableInlineScripts(html)) {
+      hashes.add(hashInlineScript(body));
+    }
+  }
+  return [...hashes].sort();
+}
+
+/**
+ * @param {{ scriptHashes?: string[], enableTrustedTypes?: boolean }} [options]
+ * @returns {string[]}
+ */
+export function buildCspDirectives(options = {}) {
+  const scriptHashes = options.scriptHashes ?? [];
+  const enableTrustedTypes = options.enableTrustedTypes ?? false;
+
+  const scriptSrc =
+    scriptHashes.length > 0
+      ? ['script-src', "'self'", ...scriptHashes].join(' ')
+      : "script-src 'self' 'unsafe-inline'";
+
+  /** @type {string[]} */
+  const directives = [
     "default-src 'self'",
     "base-uri 'self'",
     "object-src 'none'",
@@ -18,17 +107,27 @@ export function buildCspDirectives() {
     "img-src 'self' data:",
     "font-src 'self'",
     "style-src 'self' 'unsafe-inline'",
-    // Nuxt SSG inlines window.__NUXT__ per HTML; hashes/TT break Vue boot on this stack.
-    "script-src 'self' 'unsafe-inline'",
+    scriptSrc,
     "connect-src 'self'",
     "manifest-src 'self'",
     'upgrade-insecure-requests',
   ];
+
+  if (enableTrustedTypes) {
+    // Vue 3 registers a Trusted Types policy named `vue`.
+    directives.push("require-trusted-types-for 'script'");
+    directives.push('trusted-types vue default');
+  }
+
+  return directives;
 }
 
-/** @returns {string} */
-export function buildCspHeaderValue() {
-  return buildCspDirectives().join('; ');
+/**
+ * @param {{ scriptHashes?: string[], enableTrustedTypes?: boolean }} [options]
+ * @returns {string}
+ */
+export function buildCspHeaderValue(options = {}) {
+  return buildCspDirectives(options).join('; ');
 }
 
 /**

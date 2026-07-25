@@ -10,8 +10,9 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --port 3000",
-    "generate": "nuxt generate && node scripts/inject-entry-css-link.mjs && node scripts/write-csp-headers.mjs",
-    "generate:netlify": "nuxt prepare && node --input-type=module -e \"import fs from 'node:fs'; for (const dir of ['.output', 'dist', 'node_modules/.cache/nuxt']) fs.rmSync(dir, { recursive: true, force: true });\" && nuxt generate && node scripts/inject-entry-css-link.mjs && node scripts/write-csp-headers.mjs",
+    "generate": "nuxt generate && node scripts/inject-entry-css-link.mjs && node scripts/font-display-optional.mjs && node scripts/write-csp-headers.mjs",
+    "generate:netlify": "nuxt prepare && node --input-type=module -e \"import fs from 'node:fs'; for (const dir of ['.output', 'dist', 'node_modules/.cache/nuxt']) fs.rmSync(dir, { recursive: true, force: true });\" && nuxt generate && node scripts/inject-entry-css-link.mjs && node scripts/font-display-optional.mjs && node scripts/write-csp-headers.mjs",
+    "fonts:optional": "node scripts/font-display-optional.mjs",
     "csp:headers": "node scripts/write-csp-headers.mjs",
     "css:link": "node scripts/inject-entry-css-link.mjs",
     "preview": "nuxt preview",
