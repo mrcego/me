@@ -159,10 +159,13 @@ export default defineNuxtConfig({
   icon: {
     // CSS classes for icons (no @iconify/vue runtime / client SVG bundle in entry).
     mode: 'css',
+    // Static Netlify has no /api/_nuxt_icon; never hit api.iconify.design (CSP connect-src).
+    provider: 'none',
+    fallbackToApi: false,
     serverBundle: 'local',
     clientBundle: {
-      // Keep scan off — CSS mode ships icons via stylesheets, not the JS client bundle.
-      scan: false,
+      // Scan templates (incl. Lazy modals) so icons like lucide:x ship in the build.
+      scan: true,
     },
   },
 
