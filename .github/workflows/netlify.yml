@@ -14,32 +14,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  validate:
+    uses: ./.github/workflows/ci.yml
+
   deploy:
+    needs: validate
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v6
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v5
+      - name: Download validated site
+        uses: actions/download-artifact@v4
         with:
-          node-version: 24
-          cache: pnpm
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Generate static site
-        run: pnpm run generate:netlify
-        env:
-          NUXT_PUBLIC_CONTACT_PROVIDER: netlify
+          name: site-${{ github.sha }}
+          path: .output/public
 
       - name: Deploy to Netlify
         # Upload the prebuilt .output/public only. CLI 27 builds by default unless
         # --no-build; a second generate changes Nuxt buildId and used to desync CSP.
+        # Deploy is blocked unless the validate job (lint/unit/e2e) succeeded.
         run: npx netlify-cli@latest deploy --prod --no-build --dir=.output/public --message "Deploy ${{ github.sha }}"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
