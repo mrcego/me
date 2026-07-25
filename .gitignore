@@ -1,6 +1,7 @@
 # Nuxt dev/build outputs
 .output
 .output-verify
+.output-perf
 .data
 .nuxt
 .nitro
