@@ -112,15 +112,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           DEPLOY_URL: ${{ steps.deploy.outputs.deploy_url }}
           PR_NUMBER: ${{ github.event.number }}
+          REPO: ${{ github.repository }}
         run: |
           set -euo pipefail
+          # No git checkout in this job — use the Issues API (not `gh pr comment`).
           marker='<!-- netlify-deploy-preview -->'
           body="$(printf '%s\n\n### Netlify Deploy Preview\n\n%s\n\nPrebuilt SSG artifact from CI (`--no-build`). Alias: `pr-%s` — updates on each push to this PR.\n' \
             "$marker" "$DEPLOY_URL" "$PR_NUMBER")"
-          existing=$(gh api "repos/${{ github.repository }}/issues/${PR_NUMBER}/comments" \
+          existing=$(gh api "repos/${REPO}/issues/${PR_NUMBER}/comments" --paginate \
             --jq ".[] | select(.body | contains(\"${marker}\")) | .id" | head -n1 || true)
+          payload=$(jq -n --arg body "$body" '{body: $body}')
           if [ -n "${existing}" ]; then
-            gh api -X PATCH "repos/${{ github.repository }}/issues/comments/${existing}" -f body="${body}"
+            echo "$payload" | gh api -X PATCH "repos/${REPO}/issues/comments/${existing}" --input -
           else
-            gh pr comment "${PR_NUMBER}" --body "${body}"
+            echo "$payload" | gh api -X POST "repos/${REPO}/issues/${PR_NUMBER}/comments" --input -
           fi
