@@ -148,7 +148,8 @@ export default defineNuxtConfig({
 
   fonts: {
     defaults: {
-      weights: [400, 500, 600, 700],
+      // Skip 500 — rarely used; fewer @font-face rules on the critical CSS path.
+      weights: [400, 600, 700],
       styles: ['normal'],
       subsets: ['latin'],
     },
@@ -158,17 +159,20 @@ export default defineNuxtConfig({
       {
         name: 'Outfit',
         provider: 'google',
-        // Sans themes + Fira fallback — load globally but keep light
+        // Sans themes only — do not put Outfit in the default Fira stack (see themePresets).
+        // Faces stay global so theme switches work; browser downloads only when used.
         weights: [400, 600, 700],
         preload: false,
         global: true,
       },
       {
-        // Default theme font (`data-theme-font="fira-code"`) — preload for LCP/FCP
+        // Default theme font (`data-theme-font="fira-code"`).
+        // Do NOT preload: LCP is the hero photo; font preload steals slow-4G bandwidth and
+        // still lands on PSI's critical path even with font-display:optional.
         name: 'Fira Code',
         provider: 'google',
         weights: [400, 600, 700],
-        preload: true,
+        preload: false,
       },
     ],
   },
