@@ -735,15 +735,15 @@
       },
       {
         "question": "¿En qué tecnologías se especializa César Gómez?",
-        "answer": "Vue.js, Nuxt.js, TypeScript, JavaScript, Node.js, PrimeVue, Tailwind CSS, design systems, micro-frontends, SSR/SSG y optimización de rendimiento web."
+        "answer": "Vue.js, Nuxt.js, TypeScript, JavaScript, Node.js, Express.js, PrimeVue, Tailwind CSS, design systems, micro-frontends, SSR/SSG, integración AI/NLP y optimización de rendimiento web."
       },
       {
         "question": "¿Está disponible César Gómez para contratación?",
-        "answer": "Sí. César está abierto a roles senior frontend, fullstack y arquitectura por contrato. Disponibilidad objetivo: agosto de 2026. Está basado en Cartagena de Indias, Colombia, y prefiere trabajo remoto con equipos internacionales."
+        "answer": "Sí. Acepta trabajo senior frontend, fullstack y arquitectura por contrato (también en modalidad freelance). Disponibilidad objetivo: agosto de 2026. Basado en Cartagena de Indias, Colombia, con preferencia clara por trabajo remoto con equipos internacionales."
       },
       {
         "question": "¿Qué experiencia tiene con Vue.js y Nuxt.js?",
-        "answer": "Ha liderado arquitectura frontend con Vue 3 y Nuxt en producción, incluyendo ecosistemas micro-frontend, librerías compartidas, Web Components y plataformas educativas críticas en rendimiento."
+        "answer": "Ha liderado arquitectura frontend con Vue 3 y Nuxt 4 en producción, incluyendo ecosistemas micro-frontend, librerías compartidas, Web Components, UIs con TypeScript y plataformas educativas críticas en rendimiento."
       },
       {
         "key": "hire",
@@ -767,24 +767,12 @@
         "answer": "Sí. Diseña y entrega sitios web, landing pages y UIs de producto en producción — orientados a rendimiento, accesibilidad y mantenimiento a largo plazo, no solo plantillas."
       },
       {
-        "question": "¿Es César Gómez un desarrollador senior frontend para contrato o freelance?",
-        "answer": "Sí. Trabaja como ingeniero senior frontend / fullstack por contrato. Disponibilidad objetivo: agosto de 2026. Ideal para equipos que necesitan liderazgo Vue/Nuxt, arquitectura de UI o un hire senior frontend remoto desde Colombia."
-      },
-      {
         "question": "¿Qué experiencia tiene César Gómez en ed-tech?",
         "answer": "Fue ingeniero fullstack fundador en LingoQuesto, un producto ed-tech conversacional con IA/NLP para práctica oral, y frontend senior en Colegium construyendo herramientas cloud usadas por más de 100.000 estudiantes."
       },
       {
-        "question": "¿Puede trabajar con equipos en español e inglés?",
-        "answer": "Sí. Es hispanohablante nativo con inglés intermedio y colabora con equipos internacionales distribuidos en ambos idiomas."
-      },
-      {
         "question": "¿Qué experiencia tiene con Node.js y Express?",
         "answer": "Tiene ocho años de APIs Node.js con Express en producción, con contratos TypeScript y entrega fullstack hacia interfaces Vue/Nuxt. Ver cesargomez.dev/es/desarrollador-backend-nodejs."
-      },
-      {
-        "question": "¿Cómo contratar a César Gómez para Vue 3, Nuxt 4 o TypeScript frontend?",
-        "answer": "Revisa su perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue y contáctalo por el formulario, LinkedIn o GitHub. Se especializa en Vue 3, Nuxt 4, TypeScript, design systems e interfaces de producto orientadas al rendimiento."
       },
       {
         "key": "contact",
@@ -797,7 +785,7 @@
       },
       {
         "question": "¿Trabaja en inglés y español?",
-        "answer": "Sí. César es hispanohablante nativo con inglés intermedio y ha colaborado con equipos internacionales distribuidos."
+        "answer": "Sí. César es hispanohablante nativo con inglés intermedio y colabora con equipos internacionales distribuidos en ambos idiomas."
       }
     ]
   },
@@ -946,7 +934,8 @@
     "rights": "Todos los derechos reservados.",
     "copyrightYear": "2026",
     "protocol": "Ancelab.",
-    "status": "Todos los Sistemas Operativos"
+    "status": "Todos los Sistemas Operativos",
+    "navLabel": "Enlaces del pie de página"
   },
   "col": {
     "nav": "Navegación",

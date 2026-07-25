@@ -1,10 +1,81 @@
+<script setup lang="ts">
+import { ref, onMounted, computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+const { openVibeCodingModal, vibeCodingModalMounted } = useVibeCodingModal();
+
+const {
+  hitRef: photoHitRef,
+  style: photoTiltStyle,
+  onPointerMove: onPhotoPointerMove,
+  onPointerLeave: onPhotoPointerLeave,
+  onPointerDown: onPhotoPointerDown,
+  onPointerUp: onPhotoPointerUp,
+  onPointerCancel: onPhotoPointerCancel,
+} = useCardTilt({ maxDeg: 6, followMs: 340, settleMs: 780 });
+
+function prefetchVibeModal() {
+  vibeCodingModalMounted.value = true;
+}
+
+function onHeroPointerDown(event: PointerEvent) {
+  prefetchVibeModal();
+  onPhotoPointerDown(event);
+}
+
+const showMarquee = ref(false);
+const marqueeReady = ref(false);
+
+const firstName = computed(() => t('hero.name').split(' ')[0]);
+const lastName = computed(() => t('hero.name').split(' ').slice(1).join(' '));
+
+const heroTags = ['hero.tags.ai', 'hero.tags.nlp', 'hero.tags.vibeCoding', 'hero.tags.frontArch'];
+
+const heroStats = [
+  { value: '13+', label: 'hero.stats.experience' },
+  { value: '500+', label: 'hero.stats.projects' },
+  { value: '60%', label: 'hero.stats.technologies' },
+];
+
+onMounted(() => {
+  // Watermark must not paint at opacity > 0 until after user interaction —
+  // otherwise it can replace the hero photo as LCP (seen at ~12s with 25vw text).
+  const scheduleMarquee = () => {
+    showMarquee.value = true;
+  };
+
+  const revealMarquee = () => {
+    if (marqueeReady.value) return;
+    marqueeReady.value = true;
+  };
+
+  const start = () => {
+    const requestIdle = Reflect.get(window, 'requestIdleCallback') as
+      Window['requestIdleCallback'] | undefined;
+    if (requestIdle) {
+      requestIdle.call(window, scheduleMarquee, { timeout: 4000 });
+    } else {
+      window.setTimeout(scheduleMarquee, 2000);
+    }
+  };
+
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, { once: true });
+
+  window.addEventListener('scroll', revealMarquee, { once: true, passive: true });
+  window.addEventListener('pointerdown', revealMarquee, { once: true, passive: true });
+  window.addEventListener('keydown', revealMarquee, { once: true });
+});
+</script>
+
 <template>
   <section
     id="hero"
     class="relative min-h-svh flex items-center justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+5rem)] pb-10 md:pb-12 lg:pt-[calc(var(--availability-banner-h,0px)+5.5rem)] lg:pb-14"
   >
     <!-- Interactive background particles -->
-    <LazyHeroParticles :hydrate-on-idle="3200" />
+    <LazyHeroParticles :hydrate-after="3200" />
 
     <!-- Decorative watermark — deferred + opacity 0 until idle so it cannot steal LCP -->
     <div
@@ -120,17 +191,38 @@
           <div
             class="flex gap-2.5 sm:gap-3 items-center border-t border-foreground/10 pt-3 sm:border-t-0 sm:pt-0 w-full sm:w-auto justify-center lg:justify-start"
           >
+            <!-- Static Icon names (not :name) so @nuxt/icon CSS mode skips @iconify/vue. -->
             <a
-              v-for="social in socials"
-              :key="social.icon"
-              :href="social.link"
+              href="https://linkedin.com/in/mrcego"
               target="_blank"
               rel="noopener noreferrer"
-              :aria-label="`Visit ${social.label} profile`"
+              aria-label="Visit LinkedIn profile"
               class="surface-card group inline-flex items-center justify-center size-[66px] sm:size-[74px] glass rounded-xl text-muted active:scale-90 shrink-0"
             >
               <Icon
-                :name="social.icon"
+                name="simple-icons:linkedin"
+                class="surface-card__glyph size-[38px] sm:size-[42px] shrink-0"
+              />
+            </a>
+            <a
+              href="https://github.com/mrcego"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit GitHub profile"
+              class="surface-card group inline-flex items-center justify-center size-[66px] sm:size-[74px] glass rounded-xl text-muted active:scale-90 shrink-0"
+            >
+              <Icon
+                name="simple-icons:github"
+                class="surface-card__glyph size-[38px] sm:size-[42px] shrink-0"
+              />
+            </a>
+            <a
+              href="mailto:cesargomezh90@gmail.com"
+              aria-label="Visit Email profile"
+              class="surface-card group inline-flex items-center justify-center size-[66px] sm:size-[74px] glass rounded-xl text-muted active:scale-90 shrink-0"
+            >
+              <Icon
+                name="solar:letter-linear"
                 class="surface-card__glyph size-[38px] sm:size-[42px] shrink-0"
               />
             </a>
@@ -274,95 +366,6 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-
-const { t } = useI18n();
-const { openVibeCodingModal, vibeCodingModalMounted } = useVibeCodingModal();
-
-const {
-  hitRef: photoHitRef,
-  style: photoTiltStyle,
-  onPointerMove: onPhotoPointerMove,
-  onPointerLeave: onPhotoPointerLeave,
-  onPointerDown: onPhotoPointerDown,
-  onPointerUp: onPhotoPointerUp,
-  onPointerCancel: onPhotoPointerCancel,
-} = useCardTilt({ maxDeg: 6, followMs: 340, settleMs: 780 });
-
-function prefetchVibeModal() {
-  vibeCodingModalMounted.value = true;
-}
-
-function onHeroPointerDown(event: PointerEvent) {
-  prefetchVibeModal();
-  onPhotoPointerDown(event);
-}
-
-const showMarquee = ref(false);
-const marqueeReady = ref(false);
-
-const firstName = computed(() => t('hero.name').split(' ')[0]);
-const lastName = computed(() => t('hero.name').split(' ').slice(1).join(' '));
-
-const socials = [
-  {
-    icon: 'simple-icons:linkedin',
-    link: 'https://linkedin.com/in/mrcego',
-    label: 'LinkedIn',
-  },
-  {
-    icon: 'simple-icons:github',
-    link: 'https://github.com/mrcego',
-    label: 'GitHub',
-  },
-  {
-    icon: 'solar:letter-linear',
-    link: 'mailto:cesargomezh90@gmail.com',
-    label: 'Email',
-  },
-];
-
-const heroTags = ['hero.tags.ai', 'hero.tags.nlp', 'hero.tags.vibeCoding', 'hero.tags.frontArch'];
-
-const heroStats = [
-  { value: '13+', label: 'hero.stats.experience' },
-  { value: '500+', label: 'hero.stats.projects' },
-  { value: '60%', label: 'hero.stats.technologies' },
-];
-
-onMounted(() => {
-  // Watermark must not paint at opacity > 0 until after user interaction —
-  // otherwise it can replace the hero photo as LCP (seen at ~12s with 25vw text).
-  const scheduleMarquee = () => {
-    showMarquee.value = true;
-  };
-
-  const revealMarquee = () => {
-    if (marqueeReady.value) return;
-    marqueeReady.value = true;
-  };
-
-  const start = () => {
-    const requestIdle = Reflect.get(window, 'requestIdleCallback') as
-      Window['requestIdleCallback'] | undefined;
-    if (requestIdle) {
-      requestIdle.call(window, scheduleMarquee, { timeout: 4000 });
-    } else {
-      window.setTimeout(scheduleMarquee, 2000);
-    }
-  };
-
-  if (document.readyState === 'complete') start();
-  else window.addEventListener('load', start, { once: true });
-
-  window.addEventListener('scroll', revealMarquee, { once: true, passive: true });
-  window.addEventListener('pointerdown', revealMarquee, { once: true, passive: true });
-  window.addEventListener('keydown', revealMarquee, { once: true });
-});
-</script>
 
 <style scoped>
 @keyframes marquee {

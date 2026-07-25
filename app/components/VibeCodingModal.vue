@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import Dialog from 'primevue/dialog';
+
+const { t, tm } = useI18n();
+const { vibeCodingModalVisible, closeVibeCodingModal } = useVibeCodingModal();
+
+function onVisibleUpdate(visible: boolean) {
+  vibeCodingModalVisible.value = visible;
+}
+
+const rolePoints = computed(() => {
+  const items = tm('vibeCoding.modal.points') as unknown;
+  if (!Array.isArray(items)) return [];
+
+  return items.map((_: unknown, index: number) => t(`vibeCoding.modal.points.${index}`));
+});
+</script>
+
 <template>
   <Dialog
     :visible="vibeCodingModalVisible"
@@ -114,23 +134,3 @@
     </div>
   </Dialog>
 </template>
-
-<script setup lang="ts">
-import { computed } from 'vue';
-import { useI18n } from 'vue-i18n';
-import Dialog from 'primevue/dialog';
-
-const { t, tm } = useI18n();
-const { vibeCodingModalVisible, closeVibeCodingModal } = useVibeCodingModal();
-
-function onVisibleUpdate(visible: boolean) {
-  vibeCodingModalVisible.value = visible;
-}
-
-const rolePoints = computed(() => {
-  const items = tm('vibeCoding.modal.points') as unknown;
-  if (!Array.isArray(items)) return [];
-
-  return items.map((_: unknown, index: number) => t(`vibeCoding.modal.points.${index}`));
-});
-</script>

@@ -1,9 +1,3 @@
-<template>
-  <div ref="containerRef" class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
-    <canvas ref="canvasRef" class="block size-full" />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { useRafFn, useEventListener } from '@vueuse/core';
 import { usePrefersReducedMotion } from '~/composables/useMatchMedia';
@@ -248,3 +242,9 @@ watch(prefersReducedMotion, () => {
   initParticles();
 });
 </script>
+
+<template>
+  <div ref="containerRef" class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
+    <canvas ref="canvasRef" class="block size-full" />
+  </div>
+</template>

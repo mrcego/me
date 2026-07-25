@@ -1,3 +1,7 @@
+<script setup lang="ts">
+const { href, fileName } = useCvDownload();
+</script>
+
 <template>
   <a
     :href="href"
@@ -12,10 +16,6 @@
     <span class="relative z-10 whitespace-nowrap">{{ $t('hero.downloadCv') }}</span>
   </a>
 </template>
-
-<script setup lang="ts">
-const { href, fileName } = useCvDownload();
-</script>
 
 <style scoped>
 .cv-download-btn {

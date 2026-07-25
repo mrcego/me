@@ -1,3 +1,58 @@
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
+
+// Apply the persisted palette immediately; the navbar itself can hydrate on demand.
+useTheme();
+const { showAnnouncement } = useAvailability();
+// Keep intersection observers alive even while LazyAppNavbar is deferred.
+usePortfolio();
+const { pageProgress } = useSmoothedScroll(0.14);
+const { vibeCodingModalMounted } = useVibeCodingModal();
+
+/** Fixed full-viewport particle canvas is too expensive on mobile scroll. */
+const enableGlobalParticles = ref(false);
+
+useHead({
+  link: [
+    {
+      // Match mobile DPR (~1.75–2x) so preload === LCP request (392w for 224 CSS px).
+      rel: 'preload',
+      as: 'image',
+      type: 'image/webp',
+      href: '/_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg',
+      fetchpriority: 'high',
+      imagesizes: '224px',
+      imagesrcset:
+        '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg 224w, /_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg 392w, /_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg 448w',
+    },
+  ],
+});
+
+onMounted(() => {
+  const coarseOrNarrow =
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(max-width: 1023px), (pointer: coarse)').matches;
+
+  // Defer CRT/scanline paint chrome until after first paint metrics settle.
+  // On mobile, never enable full-viewport HUD overlays (also clear a sticky class).
+  if (coarseOrNarrow) {
+    document.documentElement.classList.remove('fx-on');
+  } else {
+    window.setTimeout(() => {
+      enableGlobalParticles.value = true;
+    }, 4200);
+    // Stagger CRT/scanline chrome after particle canvases so idle work doesn't stack.
+    const enableFx = () => document.documentElement.classList.add('fx-on');
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(enableFx, { timeout: 5500 });
+    } else {
+      setTimeout(enableFx, 4000);
+    }
+  }
+});
+</script>
+
 <template>
   <div
     class="main-container bg-background overflow-x-clip min-w-0"
@@ -21,71 +76,25 @@
       aria-label="Page scroll progress"
     />
 
-    <!-- Full-viewport particles are desktop-only; stagger past Lighthouse TBT window. -->
-    <LazyParticlesBackground v-if="enableGlobalParticles" :hydrate-on-idle="4200" />
+    <!--
+      Mount-delay (not only hydrate-after): Lazy islands still fetch their chunk when
+      inserted into the tree; keep particles out of the first-second network window.
+    -->
+    <LazyParticlesBackground v-if="enableGlobalParticles" />
 
-    <!-- Lazy navbar JS: SSR markup still ships; hydrate after paint to shrink entry. -->
-    <LazyAppNavbar :active-section="activeSection" :hydrate-on-idle="100" />
+    <!-- No reactive props: prop changes force immediate hydration on Lazy islands. -->
+    <LazyAppNavbar :hydrate-after="2800" />
 
     <NuxtPage />
 
-    <LazyAppProtocolChat hydrate-on-interaction />
+    <!--
+      hydrate-after (not interaction): scroll-to-top + chat FAB need mounted listeners.
+      Interaction-only left them inert / invisible until a click that never came.
+    -->
+    <LazyAppProtocolChat :hydrate-after="1200" />
 
     <LazyVibeCodingModal v-if="vibeCodingModalMounted" />
 
-    <LazyPerformanceOptimizations :hydrate-on-idle="5000" />
+    <LazyPerformanceOptimizations :hydrate-after="5000" />
   </div>
 </template>
-
-<script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import { usePortfolio } from '~/composables/usePortfolio';
-import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
-
-// Apply the persisted palette immediately; the navbar itself can hydrate on demand.
-useTheme();
-const { showAnnouncement } = useAvailability();
-const { activeSection } = usePortfolio();
-const { pageProgress } = useSmoothedScroll(0.14);
-const { vibeCodingModalMounted } = useVibeCodingModal();
-
-/** Fixed full-viewport particle canvas is too expensive on mobile scroll. */
-const enableGlobalParticles = ref(false);
-
-onMounted(() => {
-  const coarseOrNarrow =
-    typeof window.matchMedia === 'function' &&
-    window.matchMedia('(max-width: 1023px), (pointer: coarse)').matches;
-  enableGlobalParticles.value = !coarseOrNarrow;
-
-  // Defer CRT/scanline paint chrome until after first paint metrics settle.
-  // On mobile, never enable full-viewport HUD overlays (also clear a sticky class).
-  if (coarseOrNarrow) {
-    document.documentElement.classList.remove('fx-on');
-  } else {
-    // Stagger CRT/scanline chrome after particle canvases so idle work doesn't stack.
-    const enableFx = () => document.documentElement.classList.add('fx-on');
-    if (typeof requestIdleCallback === 'function') {
-      requestIdleCallback(enableFx, { timeout: 5500 });
-    } else {
-      setTimeout(enableFx, 4000);
-    }
-  }
-});
-
-useHead({
-  link: [
-    {
-      // Match mobile DPR (~1.75–2x) so preload === LCP request (392w for 224 CSS px).
-      rel: 'preload',
-      as: 'image',
-      type: 'image/webp',
-      href: '/_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg',
-      fetchpriority: 'high',
-      imagesizes: '224px',
-      imagesrcset:
-        '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg 224w, /_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg 392w, /_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg 448w',
-    },
-  ],
-});
-</script>

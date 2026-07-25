@@ -59,14 +59,33 @@ const { activeIndex, messages, showDateChip } = useBannerMessageRotator(
                 class="availability-banner__cta"
                 :aria-label="$t('availability.banner.cta')"
               >
-                <Icon
-                  name="solar:letter-bold-duotone"
+                <!-- Inline SVGs keep @iconify/vue out of the eager entry chunk. -->
+                <svg
                   class="availability-banner__cta-icon availability-banner__cta-icon--mail"
-                />
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 17.5v-11Zm2.1-.5 7.2 5.1a1.2 1.2 0 0 0 1.4 0L19.9 6H4.1Zm15.4 2.3-5.9 4.2a3.2 3.2 0 0 1-3.2 0L4.5 8.3V17.5c0 .55.45 1 1 1h13c.55 0 1-.45 1-1V8.3Z"
+                  />
+                </svg>
                 <span class="availability-banner__cta-label">{{
                   $t('availability.banner.cta')
                 }}</span>
-                <Icon name="lucide:arrow-up-right" class="availability-banner__cta-arrow" />
+                <svg
+                  class="availability-banner__cta-arrow"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17 17 7" />
+                  <path d="M8 7h9v9" />
+                </svg>
               </a>
             </div>
           </div>

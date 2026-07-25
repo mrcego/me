@@ -1,3 +1,39 @@
+<script setup lang="ts">
+import { Motion } from 'motion-v';
+
+const { tm, rt } = useI18n();
+const { getLocalAvatar, getInitials } = useTestimonialAvatar();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+
+const failedAvatars = ref(new Set<string>());
+
+interface TestimonialEntry {
+  name: string;
+  role: string;
+  quote: string;
+}
+
+const testimonials = computed(() => {
+  const data = tm('testimonials.data') as TestimonialEntry[] | unknown;
+  if (!Array.isArray(data)) return [];
+  return data.map((t) => ({
+    name: rt(t.name),
+    role: rt(t.role),
+    quote: rt(t.quote),
+  }));
+});
+
+const avatarSrc = (name: string) => getLocalAvatar(name);
+
+const markAvatarFailed = (name: string) => {
+  failedAvatars.value = new Set([...failedAvatars.value, name]);
+};
+
+watch(testimonials, () => {
+  failedAvatars.value = new Set();
+});
+</script>
+
 <template>
   <section
     id="testimonials"
@@ -102,42 +138,6 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { Motion } from 'motion-v';
-
-const { tm, rt } = useI18n();
-const { getLocalAvatar, getInitials } = useTestimonialAvatar();
-const { motionInitial, motionInView, motionTransition } = useMotionConfig();
-
-const failedAvatars = ref(new Set<string>());
-
-interface TestimonialEntry {
-  name: string;
-  role: string;
-  quote: string;
-}
-
-const testimonials = computed(() => {
-  const data = tm('testimonials.data') as TestimonialEntry[] | unknown;
-  if (!Array.isArray(data)) return [];
-  return data.map((t) => ({
-    name: rt(t.name),
-    role: rt(t.role),
-    quote: rt(t.quote),
-  }));
-});
-
-const avatarSrc = (name: string) => getLocalAvatar(name);
-
-const markAvatarFailed = (name: string) => {
-  failedAvatars.value = new Set([...failedAvatars.value, name]);
-};
-
-watch(testimonials, () => {
-  failedAvatars.value = new Set();
-});
-</script>
 
 <style scoped>
 .testimonial-dots {

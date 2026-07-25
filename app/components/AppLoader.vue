@@ -1,3 +1,23 @@
+<script setup lang="ts">
+/**
+ * CSS-driven splash: hides without waiting for Vue hydration / onMounted.
+ * That lets the hero claim LCP as soon as the CSS animation finishes.
+ */
+const visible = ref(true);
+const emit = defineEmits<{
+  done: [];
+}>();
+
+function onSplashAnimationEnd(event: AnimationEvent) {
+  // Ignore bubbled child animations (mark / bar / meta).
+  if (event.target !== event.currentTarget) return;
+  if (event.animationName !== 'app-loader-exit') return;
+  if (!visible.value) return;
+  visible.value = false;
+  emit('done');
+}
+</script>
+
 <template>
   <div
     v-if="visible"
@@ -41,26 +61,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-/**
- * CSS-driven splash: hides without waiting for Vue hydration / onMounted.
- * That lets the hero claim LCP as soon as the CSS animation finishes.
- */
-const visible = ref(true);
-const emit = defineEmits<{
-  done: [];
-}>();
-
-function onSplashAnimationEnd(event: AnimationEvent) {
-  // Ignore bubbled child animations (mark / bar / meta).
-  if (event.target !== event.currentTarget) return;
-  if (event.animationName !== 'app-loader-exit') return;
-  if (!visible.value) return;
-  visible.value = false;
-  emit('done');
-}
-</script>
 
 <style scoped>
 .app-loader-splash {

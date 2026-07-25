@@ -735,15 +735,15 @@
       },
       {
         "question": "What technologies does Cesar Gomez specialize in?",
-        "answer": "Vue.js, Nuxt.js, TypeScript, JavaScript, Node.js, PrimeVue, Tailwind CSS, design systems, micro-frontends, SSR/SSG, and web performance optimization."
+        "answer": "Vue.js, Nuxt.js, TypeScript, JavaScript, Node.js, Express.js, PrimeVue, Tailwind CSS, design systems, micro-frontends, SSR/SSG, AI/NLP integration, and web performance optimization."
       },
       {
         "question": "Is Cesar Gomez available for hire?",
-        "answer": "Yes. Cesar is open to senior frontend, fullstack, and architecture roles on a contract basis. Target availability is August 2026. He is based in Cartagena de Indias, Colombia, and prefers remote work with international teams."
+        "answer": "Yes. He takes senior frontend, fullstack, and architecture work on a contract basis (including freelance-style engagements). Target availability is August 2026. Based in Cartagena de Indias, Colombia, with a clear preference for remote work with international teams."
       },
       {
         "question": "What is Cesar Gomez's experience with Vue.js and Nuxt.js?",
-        "answer": "He has led frontend architecture with Vue 3 and Nuxt in production, including micro-frontend ecosystems, shared libraries, Web Components, and performance-critical educational platforms."
+        "answer": "He has led frontend architecture with Vue 3 and Nuxt 4 in production, including micro-frontend ecosystems, shared libraries, Web Components, TypeScript-heavy UIs, and performance-critical educational platforms."
       },
       {
         "key": "hire",
@@ -767,24 +767,12 @@
         "answer": "Yes. He designs and ships production websites, marketing sites, and complex product interfaces — performance-focused, accessible, and maintainable — not just templates."
       },
       {
-        "question": "Is Cesar Gomez a senior frontend developer for contract or freelance roles?",
-        "answer": "Yes. He works as a senior frontend / fullstack engineer on contract. Target availability is August 2026. Ideal for teams that need Vue/Nuxt leadership, UI architecture, or a senior frontend hire remotely from Colombia."
-      },
-      {
         "question": "Does Cesar Gomez have ed-tech experience?",
         "answer": "Yes. He was founding fullstack engineer on LingoQuesto, an AI/NLP conversational ed-tech product for oral language practice, and senior frontend at Colegium building cloud tools used by more than 100,000 students."
       },
       {
-        "question": "Can Cesar Gomez work with Spanish- and English-speaking teams?",
-        "answer": "Yes. He is a native Spanish speaker with intermediate English and collaborates with distributed international teams in both languages."
-      },
-      {
         "question": "What is Cesar Gomez's Node.js and Express experience?",
         "answer": "He has eight years of Node.js APIs with Express in production, with TypeScript contracts and fullstack delivery into Vue/Nuxt interfaces. See cesargomez.dev/nodejs-backend-developer."
-      },
-      {
-        "question": "How do I hire Cesar Gomez for Vue 3, Nuxt 4, or TypeScript frontend work?",
-        "answer": "Review his Vue developer profile at cesargomez.dev/vue-frontend-developer, then contact him via the form, LinkedIn, or GitHub. He specializes in Vue 3, Nuxt 4, TypeScript, design systems, and performance-focused product UIs."
       },
       {
         "key": "contact",
@@ -797,7 +785,7 @@
       },
       {
         "question": "Does Cesar Gomez work in English and Spanish?",
-        "answer": "Yes. Cesar is a native Spanish speaker with intermediate English and has collaborated with distributed international teams."
+        "answer": "Yes. Cesar is a native Spanish speaker with intermediate English and collaborates with distributed international teams in both languages."
       }
     ]
   },
@@ -946,7 +934,8 @@
     "rights": "All rights reserved.",
     "copyrightYear": "2026",
     "protocol": "Ancelab.",
-    "status": "All Systems Operational"
+    "status": "All Systems Operational",
+    "navLabel": "Footer links"
   },
   "col": {
     "nav": "Navigation",

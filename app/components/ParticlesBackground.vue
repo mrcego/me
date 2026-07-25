@@ -1,9 +1,3 @@
-﻿<template>
-  <div v-if="enabled" class="particles-container" aria-hidden="true">
-    <canvas ref="canvas" class="particles-canvas" />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from 'vue';
 import { usePrefersReducedMotion } from '~/composables/useMatchMedia';
@@ -196,6 +190,12 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScrollBudget);
 });
 </script>
+
+<template>
+  <div v-if="enabled" class="particles-container" aria-hidden="true">
+    <canvas ref="canvas" class="particles-canvas" />
+  </div>
+</template>
 
 <style scoped>
 .particles-container {

@@ -1,3 +1,87 @@
+<script setup lang="ts">
+import { Motion } from 'motion-v';
+import { useI18n } from 'vue-i18n';
+
+interface CertificationItem {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  skills: string[];
+  url: string;
+  featured: boolean;
+}
+
+const REST_PREVIEW_COUNT = 8;
+
+const { tm, rt } = useI18n();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+
+const expandedId = ref<string | null>(null);
+const showAllRest = ref(false);
+
+function isFeaturedFlag(value: unknown): boolean {
+  return value === true || value === 'true';
+}
+
+function certIssuerIcon(issuer: string): string {
+  const key = issuer.toLowerCase();
+  if (key.includes('platzi')) return 'simple-icons:platzi';
+  if (key.includes('udemy')) return 'simple-icons:udemy';
+  if (key.includes('new relic')) return 'simple-icons:newrelic';
+  return 'simple-icons:linkedin';
+}
+
+const certifications = computed<CertificationItem[]>(() => {
+  const data = tm('certifications.data') as unknown;
+  if (!Array.isArray(data)) return [];
+
+  return data.map((item: unknown, index: number) => {
+    const record = item as {
+      title: string;
+      issuer: string;
+      date: string;
+      skills?: string[];
+      url: string;
+      featured?: boolean | string;
+    };
+
+    return {
+      id: `cert-${index}`,
+      title: rt(record.title),
+      issuer: rt(record.issuer),
+      date: rt(record.date),
+      skills: Array.isArray(record.skills) ? record.skills.map((s) => rt(s)) : [],
+      url: rt(record.url),
+      featured: isFeaturedFlag(record.featured),
+    };
+  });
+});
+
+const featuredCertifications = computed(() =>
+  certifications.value.filter((cert) => cert.featured).slice(0, 4),
+);
+
+const restCertifications = computed(() => certifications.value.filter((cert) => !cert.featured));
+
+const previewRestCertifications = computed(() =>
+  restCertifications.value.slice(0, REST_PREVIEW_COUNT),
+);
+
+const extraRestCertifications = computed(() => restCertifications.value.slice(REST_PREVIEW_COUNT));
+
+function toggleExpanded(id: string) {
+  expandedId.value = expandedId.value === id ? null : id;
+}
+
+watch(showAllRest, () => {
+  if (!showAllRest.value && expandedId.value) {
+    const stillVisible = previewRestCertifications.value.some((c) => c.id === expandedId.value);
+    if (!stillVisible) expandedId.value = null;
+  }
+});
+</script>
+
 <template>
   <section
     id="certifications"
@@ -190,90 +274,6 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { Motion } from 'motion-v';
-import { useI18n } from 'vue-i18n';
-
-interface CertificationItem {
-  id: string;
-  title: string;
-  issuer: string;
-  date: string;
-  skills: string[];
-  url: string;
-  featured: boolean;
-}
-
-const REST_PREVIEW_COUNT = 8;
-
-const { tm, rt } = useI18n();
-const { motionInitial, motionInView, motionTransition } = useMotionConfig();
-
-const expandedId = ref<string | null>(null);
-const showAllRest = ref(false);
-
-function isFeaturedFlag(value: unknown): boolean {
-  return value === true || value === 'true';
-}
-
-function certIssuerIcon(issuer: string): string {
-  const key = issuer.toLowerCase();
-  if (key.includes('platzi')) return 'simple-icons:platzi';
-  if (key.includes('udemy')) return 'simple-icons:udemy';
-  if (key.includes('new relic')) return 'simple-icons:newrelic';
-  return 'simple-icons:linkedin';
-}
-
-const certifications = computed<CertificationItem[]>(() => {
-  const data = tm('certifications.data') as unknown;
-  if (!Array.isArray(data)) return [];
-
-  return data.map((item: unknown, index: number) => {
-    const record = item as {
-      title: string;
-      issuer: string;
-      date: string;
-      skills?: string[];
-      url: string;
-      featured?: boolean | string;
-    };
-
-    return {
-      id: `cert-${index}`,
-      title: rt(record.title),
-      issuer: rt(record.issuer),
-      date: rt(record.date),
-      skills: Array.isArray(record.skills) ? record.skills.map((s) => rt(s)) : [],
-      url: rt(record.url),
-      featured: isFeaturedFlag(record.featured),
-    };
-  });
-});
-
-const featuredCertifications = computed(() =>
-  certifications.value.filter((cert) => cert.featured).slice(0, 4),
-);
-
-const restCertifications = computed(() => certifications.value.filter((cert) => !cert.featured));
-
-const previewRestCertifications = computed(() =>
-  restCertifications.value.slice(0, REST_PREVIEW_COUNT),
-);
-
-const extraRestCertifications = computed(() => restCertifications.value.slice(REST_PREVIEW_COUNT));
-
-function toggleExpanded(id: string) {
-  expandedId.value = expandedId.value === id ? null : id;
-}
-
-watch(showAllRest, () => {
-  if (!showAllRest.value && expandedId.value) {
-    const stillVisible = previewRestCertifications.value.some((c) => c.id === expandedId.value);
-    if (!stillVisible) expandedId.value = null;
-  }
-});
-</script>
 
 <style scoped>
 .certifications-heading {

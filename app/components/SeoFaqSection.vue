@@ -1,3 +1,23 @@
+<script setup lang="ts">
+import { computed } from 'vue';
+import { I18nT } from 'vue-i18n';
+
+const faqItems = useFaqItems();
+const localePath = useLocalePath();
+
+const homeTo = computed(() => localePath('/'));
+const vueProfileTo = computed(() => localePath('/vue-frontend-developer'));
+const aiProfileTo = computed(() => localePath('/ai-engineer'));
+const nodeProfileTo = computed(() => localePath('/nodejs-backend-developer'));
+const contactFormTo = computed(() => ({
+  path: localePath('/'),
+  hash: '#contact',
+}));
+
+const faqLinkClass =
+  'text-primary underline underline-offset-2 decoration-primary/40 hover:text-foreground hover:decoration-foreground/50 transition-colors font-medium';
+</script>
+
 <template>
   <section
     id="faq"
@@ -121,23 +141,3 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { computed } from 'vue';
-import { I18nT } from 'vue-i18n';
-
-const faqItems = useFaqItems();
-const localePath = useLocalePath();
-
-const homeTo = computed(() => localePath('/'));
-const vueProfileTo = computed(() => localePath('/vue-frontend-developer'));
-const aiProfileTo = computed(() => localePath('/ai-engineer'));
-const nodeProfileTo = computed(() => localePath('/nodejs-backend-developer'));
-const contactFormTo = computed(() => ({
-  path: localePath('/'),
-  hash: '#contact',
-}));
-
-const faqLinkClass =
-  'text-primary underline underline-offset-2 decoration-primary/40 hover:text-foreground hover:decoration-foreground/50 transition-colors font-medium';
-</script>

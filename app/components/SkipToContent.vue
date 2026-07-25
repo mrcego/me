@@ -1,9 +1,3 @@
-﻿<template>
-  <a href="#main-content" class="skip-to-content" @click="skipToContent">
-    {{ $t('a11y.skipToContent') }}
-  </a>
-</template>
-
 <script setup>
 const skipToContent = (e) => {
   e.preventDefault();
@@ -14,6 +8,12 @@ const skipToContent = (e) => {
   }
 };
 </script>
+
+<template>
+  <a href="#main-content" class="skip-to-content" @click="skipToContent">
+    {{ $t('a11y.skipToContent') }}
+  </a>
+</template>
 
 <style scoped>
 .skip-to-content {

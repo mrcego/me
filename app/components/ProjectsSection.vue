@@ -1,3 +1,37 @@
+<script setup>
+import { Motion } from 'motion-v';
+import { ref, computed } from 'vue';
+
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+
+const activeCategory = ref('all');
+const categories = ['all', 'systems', 'fullstack', 'frontend'];
+
+const projects = [
+  {
+    title: 'Colegium Cloud Architecture',
+    category: 'Fullstack',
+    tags: ['Vue 3', 'Node.js'],
+    image:
+      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800',
+    desc: 'Leading the technical evolution of a massive educational platform. Refactored legacy systems into modern Vue 3 architectures with 100k+ users.',
+  },
+  {
+    title: 'LingoQuesto Interface',
+    category: 'Frontend',
+    tags: ['Nuxt 4', 'Motion'],
+    image:
+      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
+    desc: 'Boutique frontend engineering focused on high-performance learning interfaces and seamless motion orchestration.',
+  },
+];
+
+const filteredProjects = computed(() => {
+  if (activeCategory.value === 'All') return projects;
+  return projects.filter((p) => p.category === activeCategory.value);
+});
+</script>
+
 <template>
   <section
     id="portfolio"
@@ -168,40 +202,6 @@
     </div>
   </section>
 </template>
-
-<script setup>
-import { Motion } from 'motion-v';
-import { ref, computed } from 'vue';
-
-const { motionInitial, motionInView, motionTransition } = useMotionConfig();
-
-const activeCategory = ref('all');
-const categories = ['all', 'systems', 'fullstack', 'frontend'];
-
-const projects = [
-  {
-    title: 'Colegium Cloud Architecture',
-    category: 'Fullstack',
-    tags: ['Vue 3', 'Node.js'],
-    image:
-      'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800',
-    desc: 'Leading the technical evolution of a massive educational platform. Refactored legacy systems into modern Vue 3 architectures with 100k+ users.',
-  },
-  {
-    title: 'LingoQuesto Interface',
-    category: 'Frontend',
-    tags: ['Nuxt 4', 'Motion'],
-    image:
-      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
-    desc: 'Boutique frontend engineering focused on high-performance learning interfaces and seamless motion orchestration.',
-  },
-];
-
-const filteredProjects = computed(() => {
-  if (activeCategory.value === 'All') return projects;
-  return projects.filter((p) => p.category === activeCategory.value);
-});
-</script>
 
 <style scoped>
 .project-scanline {

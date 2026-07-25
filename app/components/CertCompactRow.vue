@@ -1,3 +1,32 @@
+<script setup lang="ts">
+export interface CertCompactItem {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  skills: string[];
+  url: string;
+}
+
+const props = defineProps<{
+  cert: CertCompactItem;
+  expanded: boolean;
+  panelId: string;
+}>();
+
+defineEmits<{
+  toggle: [];
+}>();
+
+const issuerIcon = computed(() => {
+  const key = props.cert.issuer.toLowerCase();
+  if (key.includes('platzi')) return 'simple-icons:platzi';
+  if (key.includes('udemy')) return 'simple-icons:udemy';
+  if (key.includes('new relic')) return 'simple-icons:newrelic';
+  return 'simple-icons:linkedin';
+});
+</script>
+
 <template>
   <li class="relative">
     <button
@@ -75,35 +104,6 @@
     </div>
   </li>
 </template>
-
-<script setup lang="ts">
-export interface CertCompactItem {
-  id: string;
-  title: string;
-  issuer: string;
-  date: string;
-  skills: string[];
-  url: string;
-}
-
-const props = defineProps<{
-  cert: CertCompactItem;
-  expanded: boolean;
-  panelId: string;
-}>();
-
-defineEmits<{
-  toggle: [];
-}>();
-
-const issuerIcon = computed(() => {
-  const key = props.cert.issuer.toLowerCase();
-  if (key.includes('platzi')) return 'simple-icons:platzi';
-  if (key.includes('udemy')) return 'simple-icons:udemy';
-  if (key.includes('new relic')) return 'simple-icons:newrelic';
-  return 'simple-icons:linkedin';
-});
-</script>
 
 <style scoped>
 .cert-row-chevron {

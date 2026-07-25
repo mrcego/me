@@ -1,4 +1,297 @@
-﻿<template>
+﻿<script setup>
+import { nextTick, ref, watch } from 'vue';
+import { onClickOutside, useEventListener } from '@vueuse/core';
+import AppLanguageSwitcher from '~/components/AppLanguageSwitcher.vue';
+import { useTheme } from '~/composables/useTheme';
+
+const { activeSection } = usePortfolio();
+
+// Keeps the shared scroll RAF alive for --nav-progress / --page-progress on :root.
+useSmoothedScroll(0.14);
+const { href: cvHref, fileName: cvFileName } = useCvDownload();
+const localePath = useLocalePath();
+
+const hireProfileLinks = [
+  {
+    name: 'hireProfiles.hireForVue',
+    to: '/vue-frontend-developer',
+    icon: 'logos:vue',
+  },
+  {
+    name: 'hireProfiles.hireForNode',
+    to: '/nodejs-backend-developer',
+    icon: 'logos:nodejs-icon',
+  },
+  {
+    name: 'hireProfiles.hireForAi',
+    to: '/ai-engineer',
+    icon: 'solar:cpu-bolt-bold-duotone',
+  },
+];
+
+const isMobileMenuOpen = ref(false);
+useBodyScrollLock(isMobileMenuOpen);
+const { currentThemeId, THEME_PRESETS, setThemePreset, previewTheme, cancelThemePreview } =
+  useTheme();
+
+const showHireMenu = ref(false);
+const hireMenuRef = ref(null);
+
+const showThemeSelector = ref(false);
+const themeSelectorRef = ref(null);
+const themeTriggerRef = ref(null);
+const themeListboxRef = ref(null);
+const focusedThemeIndex = ref(0);
+const restoreThemeTriggerFocus = ref(false);
+/** True when keyboard focus has previewed a theme that isn't the persisted selection. */
+const isThemePreviewActive = ref(false);
+
+function currentThemeIndex() {
+  const idx = THEME_PRESETS.findIndex((p) => p.id === currentThemeId.value);
+  return idx >= 0 ? idx : 0;
+}
+
+function closeThemeSelector({ restoreFocus = true, revertPreview = true } = {}) {
+  if (!showThemeSelector.value) return;
+  if (revertPreview && isThemePreviewActive.value) {
+    cancelThemePreview();
+    isThemePreviewActive.value = false;
+  }
+  restoreThemeTriggerFocus.value = restoreFocus;
+  showThemeSelector.value = false;
+}
+
+function onThemeMenuAfterLeave() {
+  if (restoreThemeTriggerFocus.value) {
+    themeTriggerRef.value?.focus();
+    restoreThemeTriggerFocus.value = false;
+  }
+}
+
+function openThemeSelector() {
+  showHireMenu.value = false;
+  isThemePreviewActive.value = false;
+  focusedThemeIndex.value = currentThemeIndex();
+  showThemeSelector.value = true;
+  scrollFocusedThemeIntoView({ focus: true });
+}
+
+function toggleThemeSelector() {
+  if (showThemeSelector.value) {
+    closeThemeSelector();
+  } else {
+    openThemeSelector();
+  }
+}
+
+function toggleHireMenu() {
+  if (showHireMenu.value) {
+    showHireMenu.value = false;
+    return;
+  }
+  closeThemeSelector({ restoreFocus: false });
+  showHireMenu.value = true;
+}
+
+const route = useRoute();
+const router = useRouter();
+
+async function goToHireSection(event) {
+  event.preventDefault();
+  showHireMenu.value = false;
+  isMobileMenuOpen.value = false;
+
+  const homePath = localePath('/');
+  if (route.path === homePath) {
+    scrollToSection(event, '#hire-profiles');
+    return;
+  }
+
+  await router.push({ path: homePath, hash: '#hire-profiles' });
+}
+
+/** Commit selection (click / Enter / Space). */
+function selectTheme(id) {
+  setThemePreset(id);
+  isThemePreviewActive.value = false;
+  focusedThemeIndex.value = THEME_PRESETS.findIndex((p) => p.id === id);
+  scrollFocusedThemeIntoView({ focus: false });
+}
+
+/** Live preview while moving focus with the keyboard — does not persist. */
+function previewFocusedTheme() {
+  const preset = THEME_PRESETS[focusedThemeIndex.value];
+  if (!preset) return;
+  previewTheme(preset.id);
+  isThemePreviewActive.value = preset.id !== currentThemeId.value;
+}
+
+/** Scroll the listbox so the focused/selected option is visible (not stuck at top). */
+function scrollFocusedThemeIntoView({ focus = false } = {}) {
+  const run = () => {
+    const listbox = themeListboxRef.value;
+    if (!listbox) return false;
+
+    const index = focusedThemeIndex.value;
+    const options = listbox.querySelectorAll('[role="option"]');
+    const option = options[index];
+    if (!option) return false;
+
+    const listRect = listbox.getBoundingClientRect();
+    const optionRect = option.getBoundingClientRect();
+    const offsetWithinList = optionRect.top - listRect.top + listbox.scrollTop;
+    listbox.scrollTop = Math.max(
+      0,
+      offsetWithinList - listbox.clientHeight / 2 + optionRect.height / 2,
+    );
+
+    if (focus) {
+      option.focus({ preventScroll: true });
+    }
+    return true;
+  };
+
+  nextTick(() => {
+    if (run()) return;
+    requestAnimationFrame(() => {
+      if (run()) return;
+      requestAnimationFrame(run);
+    });
+  });
+}
+
+function focusThemeOption(index, { preview = true } = {}) {
+  focusedThemeIndex.value = index;
+  scrollFocusedThemeIntoView({ focus: true });
+  if (preview) previewFocusedTheme();
+}
+
+function moveThemeFocus(delta) {
+  const count = THEME_PRESETS.length;
+  if (!count) return;
+  focusedThemeIndex.value = (focusedThemeIndex.value + delta + count) % count;
+  focusThemeOption(focusedThemeIndex.value, { preview: true });
+}
+
+function onThemeTriggerKeydown(event) {
+  if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
+    if (!showThemeSelector.value) {
+      event.preventDefault();
+      openThemeSelector();
+    }
+  } else if (event.key === 'Escape' && showThemeSelector.value) {
+    event.preventDefault();
+    closeThemeSelector();
+  }
+}
+
+function onThemeListKeydown(event) {
+  switch (event.key) {
+    case 'ArrowDown':
+      event.preventDefault();
+      moveThemeFocus(1);
+      break;
+    case 'ArrowUp':
+      event.preventDefault();
+      moveThemeFocus(-1);
+      break;
+    case 'Home':
+      event.preventDefault();
+      focusThemeOption(0, { preview: true });
+      break;
+    case 'End':
+      event.preventDefault();
+      focusThemeOption(THEME_PRESETS.length - 1, { preview: true });
+      break;
+    case 'Enter':
+    case ' ': {
+      event.preventDefault();
+      const preset = THEME_PRESETS[focusedThemeIndex.value];
+      if (preset) selectTheme(preset.id);
+      break;
+    }
+    case 'Escape':
+      event.preventDefault();
+      closeThemeSelector();
+      break;
+    case 'Tab':
+      // Cancel preview and leave.
+      closeThemeSelector({ restoreFocus: false });
+      break;
+    default:
+      break;
+  }
+}
+
+onClickOutside(themeSelectorRef, () => {
+  closeThemeSelector({ restoreFocus: false });
+});
+
+onClickOutside(hireMenuRef, () => {
+  showHireMenu.value = false;
+});
+
+useEventListener(
+  'keydown',
+  (event) => {
+    if (event.key !== 'Escape') return;
+    if (showThemeSelector.value) {
+      closeThemeSelector();
+    }
+    if (showHireMenu.value) {
+      showHireMenu.value = false;
+    }
+  },
+  { passive: true },
+);
+
+watch(showThemeSelector, (open) => {
+  if (open) {
+    isThemePreviewActive.value = false;
+    focusedThemeIndex.value = currentThemeIndex();
+    scrollFocusedThemeIntoView({ focus: true });
+  }
+});
+
+const navLinks = [
+  { name: 'nav.home', href: '#hero', id: 'hero' },
+  { name: 'nav.about', href: '#about', id: 'about' },
+  { name: 'nav.techStack', href: '#tech-stack', id: 'tech-stack' },
+  { name: 'nav.certifications', href: '#certifications', id: 'certifications' },
+  { name: 'nav.testimonials', href: '#testimonials', id: 'testimonials' },
+];
+
+const isActiveSection = (id) => activeSection.value === id;
+
+const scrollToSection = (e, href) => {
+  e.preventDefault();
+  const targetId = href.replace('#', '');
+
+  // Unlock body first — measuring while position:fixed yields wrong targets
+  // and unlock's restore would cancel an in-flight scrollTo.
+  isMobileMenuOpen.value = false;
+
+  nextTick(() => {
+    requestAnimationFrame(() => {
+      const element = document.getElementById(targetId);
+      if (!element) return;
+
+      // content-visibility: auto under-reports offscreen section heights, so
+      // scroll destinations land short until real layout is forced.
+      document.querySelectorAll('.portfolio-content > [id]').forEach((section) => {
+        if (section instanceof HTMLElement) {
+          section.style.contentVisibility = 'visible';
+        }
+      });
+
+      // Uses html scroll-padding-top for the fixed nav + availability banner.
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+};
+</script>
+
+<template>
   <nav
     class="site-nav fixed left-0 right-0 z-130"
     :style="{ top: 'var(--availability-banner-h, 0px)' }"
@@ -404,304 +697,6 @@
     </Transition>
   </nav>
 </template>
-
-<script setup>
-import { nextTick, ref, watch } from 'vue';
-import { onClickOutside, useEventListener } from '@vueuse/core';
-import AppLanguageSwitcher from '~/components/AppLanguageSwitcher.vue';
-import { useTheme } from '~/composables/useTheme';
-
-const props = defineProps({
-  activeSection: {
-    type: String,
-    default: 'hero',
-  },
-});
-
-// Keeps the shared scroll RAF alive for --nav-progress / --page-progress on :root.
-useSmoothedScroll(0.14);
-const { href: cvHref, fileName: cvFileName } = useCvDownload();
-const localePath = useLocalePath();
-
-const hireProfileLinks = [
-  {
-    name: 'hireProfiles.hireForVue',
-    to: '/vue-frontend-developer',
-    icon: 'logos:vue',
-  },
-  {
-    name: 'hireProfiles.hireForNode',
-    to: '/nodejs-backend-developer',
-    icon: 'logos:nodejs-icon',
-  },
-  {
-    name: 'hireProfiles.hireForAi',
-    to: '/ai-engineer',
-    icon: 'solar:cpu-bolt-bold-duotone',
-  },
-];
-
-const isMobileMenuOpen = ref(false);
-useBodyScrollLock(isMobileMenuOpen);
-const { currentThemeId, THEME_PRESETS, setThemePreset, previewTheme, cancelThemePreview } =
-  useTheme();
-
-const showHireMenu = ref(false);
-const hireMenuRef = ref(null);
-
-const showThemeSelector = ref(false);
-const themeSelectorRef = ref(null);
-const themeTriggerRef = ref(null);
-const themeListboxRef = ref(null);
-const focusedThemeIndex = ref(0);
-const restoreThemeTriggerFocus = ref(false);
-/** True when keyboard focus has previewed a theme that isn't the persisted selection. */
-const isThemePreviewActive = ref(false);
-
-function currentThemeIndex() {
-  const idx = THEME_PRESETS.findIndex((p) => p.id === currentThemeId.value);
-  return idx >= 0 ? idx : 0;
-}
-
-function closeThemeSelector({ restoreFocus = true, revertPreview = true } = {}) {
-  if (!showThemeSelector.value) return;
-  if (revertPreview && isThemePreviewActive.value) {
-    cancelThemePreview();
-    isThemePreviewActive.value = false;
-  }
-  restoreThemeTriggerFocus.value = restoreFocus;
-  showThemeSelector.value = false;
-}
-
-function onThemeMenuAfterLeave() {
-  if (restoreThemeTriggerFocus.value) {
-    themeTriggerRef.value?.focus();
-    restoreThemeTriggerFocus.value = false;
-  }
-}
-
-function openThemeSelector() {
-  showHireMenu.value = false;
-  isThemePreviewActive.value = false;
-  focusedThemeIndex.value = currentThemeIndex();
-  showThemeSelector.value = true;
-  scrollFocusedThemeIntoView({ focus: true });
-}
-
-function toggleThemeSelector() {
-  if (showThemeSelector.value) {
-    closeThemeSelector();
-  } else {
-    openThemeSelector();
-  }
-}
-
-function toggleHireMenu() {
-  if (showHireMenu.value) {
-    showHireMenu.value = false;
-    return;
-  }
-  closeThemeSelector({ restoreFocus: false });
-  showHireMenu.value = true;
-}
-
-const route = useRoute();
-const router = useRouter();
-
-async function goToHireSection(event) {
-  event.preventDefault();
-  showHireMenu.value = false;
-  isMobileMenuOpen.value = false;
-
-  const homePath = localePath('/');
-  if (route.path === homePath) {
-    scrollToSection(event, '#hire-profiles');
-    return;
-  }
-
-  await router.push({ path: homePath, hash: '#hire-profiles' });
-}
-
-/** Commit selection (click / Enter / Space). */
-function selectTheme(id) {
-  setThemePreset(id);
-  isThemePreviewActive.value = false;
-  focusedThemeIndex.value = THEME_PRESETS.findIndex((p) => p.id === id);
-  scrollFocusedThemeIntoView({ focus: false });
-}
-
-/** Live preview while moving focus with the keyboard — does not persist. */
-function previewFocusedTheme() {
-  const preset = THEME_PRESETS[focusedThemeIndex.value];
-  if (!preset) return;
-  previewTheme(preset.id);
-  isThemePreviewActive.value = preset.id !== currentThemeId.value;
-}
-
-/** Scroll the listbox so the focused/selected option is visible (not stuck at top). */
-function scrollFocusedThemeIntoView({ focus = false } = {}) {
-  const run = () => {
-    const listbox = themeListboxRef.value;
-    if (!listbox) return false;
-
-    const index = focusedThemeIndex.value;
-    const options = listbox.querySelectorAll('[role="option"]');
-    const option = options[index];
-    if (!option) return false;
-
-    const listRect = listbox.getBoundingClientRect();
-    const optionRect = option.getBoundingClientRect();
-    const offsetWithinList = optionRect.top - listRect.top + listbox.scrollTop;
-    listbox.scrollTop = Math.max(
-      0,
-      offsetWithinList - listbox.clientHeight / 2 + optionRect.height / 2,
-    );
-
-    if (focus) {
-      option.focus({ preventScroll: true });
-    }
-    return true;
-  };
-
-  nextTick(() => {
-    if (run()) return;
-    requestAnimationFrame(() => {
-      if (run()) return;
-      requestAnimationFrame(run);
-    });
-  });
-}
-
-function focusThemeOption(index, { preview = true } = {}) {
-  focusedThemeIndex.value = index;
-  scrollFocusedThemeIntoView({ focus: true });
-  if (preview) previewFocusedTheme();
-}
-
-function moveThemeFocus(delta) {
-  const count = THEME_PRESETS.length;
-  if (!count) return;
-  focusedThemeIndex.value = (focusedThemeIndex.value + delta + count) % count;
-  focusThemeOption(focusedThemeIndex.value, { preview: true });
-}
-
-function onThemeTriggerKeydown(event) {
-  if (event.key === 'ArrowDown' || event.key === 'Enter' || event.key === ' ') {
-    if (!showThemeSelector.value) {
-      event.preventDefault();
-      openThemeSelector();
-    }
-  } else if (event.key === 'Escape' && showThemeSelector.value) {
-    event.preventDefault();
-    closeThemeSelector();
-  }
-}
-
-function onThemeListKeydown(event) {
-  switch (event.key) {
-    case 'ArrowDown':
-      event.preventDefault();
-      moveThemeFocus(1);
-      break;
-    case 'ArrowUp':
-      event.preventDefault();
-      moveThemeFocus(-1);
-      break;
-    case 'Home':
-      event.preventDefault();
-      focusThemeOption(0, { preview: true });
-      break;
-    case 'End':
-      event.preventDefault();
-      focusThemeOption(THEME_PRESETS.length - 1, { preview: true });
-      break;
-    case 'Enter':
-    case ' ': {
-      event.preventDefault();
-      const preset = THEME_PRESETS[focusedThemeIndex.value];
-      if (preset) selectTheme(preset.id);
-      break;
-    }
-    case 'Escape':
-      event.preventDefault();
-      closeThemeSelector();
-      break;
-    case 'Tab':
-      // Cancel preview and leave.
-      closeThemeSelector({ restoreFocus: false });
-      break;
-    default:
-      break;
-  }
-}
-
-onClickOutside(themeSelectorRef, () => {
-  closeThemeSelector({ restoreFocus: false });
-});
-
-onClickOutside(hireMenuRef, () => {
-  showHireMenu.value = false;
-});
-
-useEventListener(
-  'keydown',
-  (event) => {
-    if (event.key !== 'Escape') return;
-    if (showThemeSelector.value) {
-      closeThemeSelector();
-    }
-    if (showHireMenu.value) {
-      showHireMenu.value = false;
-    }
-  },
-  { passive: true },
-);
-
-watch(showThemeSelector, (open) => {
-  if (open) {
-    isThemePreviewActive.value = false;
-    focusedThemeIndex.value = currentThemeIndex();
-    scrollFocusedThemeIntoView({ focus: true });
-  }
-});
-
-const navLinks = [
-  { name: 'nav.home', href: '#hero', id: 'hero' },
-  { name: 'nav.about', href: '#about', id: 'about' },
-  { name: 'nav.techStack', href: '#tech-stack', id: 'tech-stack' },
-  { name: 'nav.certifications', href: '#certifications', id: 'certifications' },
-  { name: 'nav.testimonials', href: '#testimonials', id: 'testimonials' },
-];
-
-const isActiveSection = (id) => props.activeSection === id;
-
-const scrollToSection = (e, href) => {
-  e.preventDefault();
-  const targetId = href.replace('#', '');
-
-  // Unlock body first — measuring while position:fixed yields wrong targets
-  // and unlock's restore would cancel an in-flight scrollTo.
-  isMobileMenuOpen.value = false;
-
-  nextTick(() => {
-    requestAnimationFrame(() => {
-      const element = document.getElementById(targetId);
-      if (!element) return;
-
-      // content-visibility: auto under-reports offscreen section heights, so
-      // scroll destinations land short until real layout is forced.
-      document.querySelectorAll('.portfolio-content > [id]').forEach((section) => {
-        if (section instanceof HTMLElement) {
-          section.style.contentVisibility = 'visible';
-        }
-      });
-
-      // Uses html scroll-padding-top for the fixed nav + availability banner.
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-};
-</script>
 
 <style scoped>
 .site-nav {

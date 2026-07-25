@@ -1,3 +1,108 @@
+<script setup lang="ts">
+import { computed, ref } from 'vue';
+import { Motion } from 'motion-v';
+import { useI18n } from 'vue-i18n';
+import Dialog from 'primevue/dialog';
+import type { PhilosophyPoint } from './PhilosophyPointItem.vue';
+
+const { t, tm } = useI18n();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+
+const roleModalVisible = ref(false);
+const selectedRoleKey = ref<string | null>(null);
+
+const COMPANY_LOGOS = {
+  lingoquesto: {
+    src: '/img/companies/lingoquesto.png',
+    alt: 'LingoQuesto',
+    width: 565,
+    height: 322,
+  },
+  colegium: { src: '/img/companies/colegium.svg', alt: 'Colegium', width: 209, height: 96 },
+  tissini: { src: '/img/companies/tissini.png', alt: 'TISSINI', width: 834, height: 283 },
+  cuartopixel: {
+    src: '/img/companies/cuartopixel.jpg',
+    alt: '4to Pixel',
+    width: 193,
+    height: 186,
+    onLight: true,
+  },
+  quehaypahacer: {
+    src: '/img/companies/quehaypahacer.png',
+    alt: "¿Qué Hay Pa' Hacer?",
+    width: 447,
+    height: 447,
+  },
+  zabud: { src: '/img/companies/zabud.png', alt: 'ZABUD Technologies', width: 490, height: 104 },
+} as const;
+
+type CompanyLogoId = keyof typeof COMPANY_LOGOS;
+
+const roles: { key: CompanyLogoId }[] = [
+  { key: 'lingoquesto' },
+  { key: 'colegium' },
+  { key: 'tissini' },
+  { key: 'cuartopixel' },
+  { key: 'quehaypahacer' },
+  { key: 'zabud' },
+];
+
+function getCompanyLogo(key: string) {
+  if (!(key in COMPANY_LOGOS)) return null;
+  return COMPANY_LOGOS[key as CompanyLogoId];
+}
+
+const roleHighlights = computed(() => {
+  if (!selectedRoleKey.value) return [];
+
+  const items = tm(`about.roles.${selectedRoleKey.value}.highlights`) as unknown;
+  if (!Array.isArray(items)) return [];
+
+  return items.map((_: unknown, index: number) =>
+    t(`about.roles.${selectedRoleKey.value}.highlights.${index}`),
+  );
+});
+
+const selectedCompanyLogo = computed(() => {
+  if (!selectedRoleKey.value) return null;
+  return getCompanyLogo(selectedRoleKey.value);
+});
+
+function openRoleModal(key: string) {
+  selectedRoleKey.value = key;
+  roleModalVisible.value = true;
+}
+
+const aboutPoints: PhilosophyPoint[] = [
+  {
+    label: 'about.expertise',
+    descKey: 'techStack.levels.architect',
+    icons: ['logos:vue', 'logos:nuxt-icon'],
+    to: '/vue-frontend-developer',
+    linkLabelKey: 'hireProfiles.hireForVue',
+  },
+  {
+    label: 'about.logic',
+    descKey: 'techStack.levels.senior',
+    icon: 'logos:nodejs-icon',
+    to: '/nodejs-backend-developer',
+    linkLabelKey: 'hireProfiles.hireForNode',
+  },
+  {
+    label: 'about.userCentric',
+    descKey: 'techStack.levels.founding',
+    icon: 'logos:figma',
+  },
+  {
+    label: 'about.vibeCoding',
+    descKey: 'about.vibeCodingDesc',
+    icon: 'solar:magic-stick-3-bold-duotone',
+    to: '/ai-engineer',
+    linkLabelKey: 'hireProfiles.hireForAi',
+  },
+];
+</script>
+
 <template>
   <section
     id="about"
@@ -339,111 +444,6 @@
     </div>
   </Dialog>
 </template>
-
-<script setup lang="ts">
-import { computed, ref } from 'vue';
-import { Motion } from 'motion-v';
-import { useI18n } from 'vue-i18n';
-import Dialog from 'primevue/dialog';
-import type { PhilosophyPoint } from './PhilosophyPointItem.vue';
-
-const { t, tm } = useI18n();
-const { motionInitial, motionInView, motionTransition } = useMotionConfig();
-
-const roleModalVisible = ref(false);
-const selectedRoleKey = ref<string | null>(null);
-
-const COMPANY_LOGOS = {
-  lingoquesto: {
-    src: '/img/companies/lingoquesto.png',
-    alt: 'LingoQuesto',
-    width: 565,
-    height: 322,
-  },
-  colegium: { src: '/img/companies/colegium.svg', alt: 'Colegium', width: 209, height: 96 },
-  tissini: { src: '/img/companies/tissini.png', alt: 'TISSINI', width: 834, height: 283 },
-  cuartopixel: {
-    src: '/img/companies/cuartopixel.jpg',
-    alt: '4to Pixel',
-    width: 193,
-    height: 186,
-    onLight: true,
-  },
-  quehaypahacer: {
-    src: '/img/companies/quehaypahacer.png',
-    alt: "¿Qué Hay Pa' Hacer?",
-    width: 447,
-    height: 447,
-  },
-  zabud: { src: '/img/companies/zabud.png', alt: 'ZABUD Technologies', width: 490, height: 104 },
-} as const;
-
-type CompanyLogoId = keyof typeof COMPANY_LOGOS;
-
-const roles: { key: CompanyLogoId }[] = [
-  { key: 'lingoquesto' },
-  { key: 'colegium' },
-  { key: 'tissini' },
-  { key: 'cuartopixel' },
-  { key: 'quehaypahacer' },
-  { key: 'zabud' },
-];
-
-function getCompanyLogo(key: string) {
-  if (!(key in COMPANY_LOGOS)) return null;
-  return COMPANY_LOGOS[key as CompanyLogoId];
-}
-
-const roleHighlights = computed(() => {
-  if (!selectedRoleKey.value) return [];
-
-  const items = tm(`about.roles.${selectedRoleKey.value}.highlights`) as unknown;
-  if (!Array.isArray(items)) return [];
-
-  return items.map((_: unknown, index: number) =>
-    t(`about.roles.${selectedRoleKey.value}.highlights.${index}`),
-  );
-});
-
-const selectedCompanyLogo = computed(() => {
-  if (!selectedRoleKey.value) return null;
-  return getCompanyLogo(selectedRoleKey.value);
-});
-
-function openRoleModal(key: string) {
-  selectedRoleKey.value = key;
-  roleModalVisible.value = true;
-}
-
-const aboutPoints: PhilosophyPoint[] = [
-  {
-    label: 'about.expertise',
-    descKey: 'techStack.levels.architect',
-    icons: ['logos:vue', 'logos:nuxt-icon'],
-    to: '/vue-frontend-developer',
-    linkLabelKey: 'hireProfiles.hireForVue',
-  },
-  {
-    label: 'about.logic',
-    descKey: 'techStack.levels.senior',
-    icon: 'logos:nodejs-icon',
-    to: '/nodejs-backend-developer',
-    linkLabelKey: 'hireProfiles.hireForNode',
-  },
-  {
-    label: 'about.userCentric',
-    descKey: 'techStack.levels.founding',
-    icon: 'logos:figma',
-  },
-  {
-    label: 'about.vibeCoding',
-    descKey: 'about.vibeCodingDesc',
-    icon: 'solar:magic-stick-3-bold-duotone',
-    to: '/ai-engineer',
-    linkLabelKey: 'hireProfiles.hireForAi',
-  },
-];
-</script>
 
 <style scoped>
 @keyframes scanline-subtle {

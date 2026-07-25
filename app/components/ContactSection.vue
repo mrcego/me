@@ -1,3 +1,52 @@
+<script setup lang="ts">
+import { Motion } from 'motion-v';
+import Button from 'primevue/button';
+import InputText from 'primevue/inputtext';
+import Textarea from 'primevue/textarea';
+import { useContactForm } from '~/composables/useContactForm';
+
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+
+const { formData, errors, isSubmitting, submitSuccess, submitError, submitForm } = useContactForm();
+
+const fieldClass =
+  'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-5! bg-foreground/7! border-foreground/15! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color] duration-300 text-sm md:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70!';
+
+const textareaClass =
+  'rounded-xl sm:rounded-2xl md:rounded-3xl !p-4 sm:!p-5 md:!p-6 !bg-foreground/7 !border-foreground/15 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color,border-radius] duration-300 focus:rounded-2xl text-sm md:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70! min-h-32';
+
+const contactMethods = [
+  {
+    key: 'email',
+    value: 'cesargomezh90@gmail.com',
+    icon: 'logos:google-gmail',
+    link: 'mailto:cesargomezh90@gmail.com',
+    external: false,
+  },
+  {
+    key: 'linkedin',
+    value: 'linkedin.com/in/mrcego',
+    icon: 'logos:linkedin-icon',
+    link: 'https://linkedin.com/in/mrcego',
+    external: true,
+  },
+  {
+    key: 'github',
+    value: 'github.com/mrcego',
+    icon: 'simple-icons:github',
+    link: 'https://github.com/mrcego',
+    external: true,
+  },
+  {
+    key: 'whatsapp',
+    value: '+57 333 263 6550',
+    icon: 'logos:whatsapp-icon',
+    link: 'https://wa.me/573332636550',
+    external: true,
+  },
+] as const;
+</script>
+
 <template>
   <section
     id="contact"
@@ -276,55 +325,6 @@
     </div>
   </section>
 </template>
-
-<script setup lang="ts">
-import { Motion } from 'motion-v';
-import Button from 'primevue/button';
-import InputText from 'primevue/inputtext';
-import Textarea from 'primevue/textarea';
-import { useContactForm } from '~/composables/useContactForm';
-
-const { motionInitial, motionInView, motionTransition } = useMotionConfig();
-
-const { formData, errors, isSubmitting, submitSuccess, submitError, submitForm } = useContactForm();
-
-const fieldClass =
-  'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-5! bg-foreground/7! border-foreground/15! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color] duration-300 text-sm md:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70!';
-
-const textareaClass =
-  'rounded-xl sm:rounded-2xl md:rounded-3xl !p-4 sm:!p-5 md:!p-6 !bg-foreground/7 !border-foreground/15 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color,border-radius] duration-300 focus:rounded-2xl text-sm md:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70! min-h-32';
-
-const contactMethods = [
-  {
-    key: 'email',
-    value: 'cesargomezh90@gmail.com',
-    icon: 'logos:google-gmail',
-    link: 'mailto:cesargomezh90@gmail.com',
-    external: false,
-  },
-  {
-    key: 'linkedin',
-    value: 'linkedin.com/in/mrcego',
-    icon: 'logos:linkedin-icon',
-    link: 'https://linkedin.com/in/mrcego',
-    external: true,
-  },
-  {
-    key: 'github',
-    value: 'github.com/mrcego',
-    icon: 'simple-icons:github',
-    link: 'https://github.com/mrcego',
-    external: true,
-  },
-  {
-    key: 'whatsapp',
-    value: '+57 333 263 6550',
-    icon: 'logos:whatsapp-icon',
-    link: 'https://wa.me/573332636550',
-    external: true,
-  },
-] as const;
-</script>
 
 <style scoped>
 .contact-section {

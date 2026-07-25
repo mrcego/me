@@ -1,3 +1,69 @@
+<script setup>
+import { Motion } from 'motion-v';
+import { useI18n } from 'vue-i18n';
+
+useI18n();
+
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+
+const detailedStack = [
+  {
+    name: 'Vue & Nuxt',
+    years: '8Y+',
+    level: 'techStack.levels.architect',
+    icon: 'logos:vue',
+    descKey: 'techStack.detailed.vue',
+  },
+  {
+    name: 'Fullstack TS',
+    years: '10Y',
+    level: 'techStack.levels.senior',
+    icon: 'logos:typescript-icon',
+    descKey: 'techStack.detailed.ts',
+  },
+  {
+    name: 'Systems Engineering',
+    years: 'Principal',
+    level: 'techStack.levels.principal',
+    icon: 'logos:javascript',
+    descKey: 'techStack.detailed.js',
+  },
+  {
+    name: 'Senior Leadership',
+    years: '13Y+',
+    level: 'techStack.levels.founding',
+    icon: 'logos:git-icon',
+    descKey: 'techStack.detailed.git',
+  },
+  {
+    name: 'AI Engineering',
+    years: 'Expert',
+    level: 'techStack.levels.ai',
+    icon: 'solar:cpu-bolt-bold-duotone',
+    descKey: 'techStack.detailed.ai',
+  },
+];
+
+const skills = [
+  'Artificial Intelligence',
+  'NLP',
+  'TypeScript',
+  'Tailwind CSS',
+  'Monorepo Architecture',
+  'Functional Programming',
+  'Frontend Architecture',
+  'System Design',
+  'Testing Strategy',
+  'Web Performance',
+  'Clean Code',
+  'CI/CD Pipelines',
+  'State Management',
+  'Design Systems',
+  'Accessibility',
+  'SEO Optimization',
+];
+</script>
+
 <template>
   <section
     id="tech-stack"
@@ -201,72 +267,6 @@
     </div>
   </section>
 </template>
-
-<script setup>
-import { Motion } from 'motion-v';
-import { useI18n } from 'vue-i18n';
-
-useI18n();
-
-const { motionInitial, motionInView, motionTransition } = useMotionConfig();
-
-const detailedStack = [
-  {
-    name: 'Vue & Nuxt',
-    years: '8Y+',
-    level: 'techStack.levels.architect',
-    icon: 'logos:vue',
-    descKey: 'techStack.detailed.vue',
-  },
-  {
-    name: 'Fullstack TS',
-    years: '10Y',
-    level: 'techStack.levels.senior',
-    icon: 'logos:typescript-icon',
-    descKey: 'techStack.detailed.ts',
-  },
-  {
-    name: 'Systems Engineering',
-    years: 'Principal',
-    level: 'techStack.levels.principal',
-    icon: 'logos:javascript',
-    descKey: 'techStack.detailed.js',
-  },
-  {
-    name: 'Senior Leadership',
-    years: '13Y+',
-    level: 'techStack.levels.founding',
-    icon: 'logos:git-icon',
-    descKey: 'techStack.detailed.git',
-  },
-  {
-    name: 'AI Engineering',
-    years: 'Expert',
-    level: 'techStack.levels.ai',
-    icon: 'solar:cpu-bolt-bold-duotone',
-    descKey: 'techStack.detailed.ai',
-  },
-];
-
-const skills = [
-  'Artificial Intelligence',
-  'NLP',
-  'TypeScript',
-  'Tailwind CSS',
-  'Monorepo Architecture',
-  'Functional Programming',
-  'Frontend Architecture',
-  'System Design',
-  'Testing Strategy',
-  'Web Performance',
-  'Clean Code',
-  'CI/CD Pipelines',
-  'State Management',
-  'Design Systems',
-  'Accessibility',
-  'SEO Optimization',
-];
-</script>
 
 <style scoped>
 .tech-hud-horizontal {

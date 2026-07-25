@@ -1,3 +1,35 @@
+<script setup>
+import { Motion } from 'motion-v';
+
+const localePath = useLocalePath();
+const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+
+const capabilities = [
+  {
+    key: 'frontend',
+    icon: 'solar:rocket-bold-duotone',
+    to: '/vue-frontend-developer',
+    linkLabelKey: 'hireProfiles.hireForVue',
+  },
+  {
+    key: 'fullstack',
+    icon: 'solar:database-bold-duotone',
+    to: '/nodejs-backend-developer',
+    linkLabelKey: 'hireProfiles.hireForNode',
+  },
+  {
+    key: 'devops',
+    icon: 'solar:shield-check-bold-duotone',
+  },
+  {
+    key: 'vibeCoding',
+    icon: 'solar:magic-stick-3-bold-duotone',
+    to: '/ai-engineer',
+    linkLabelKey: 'hireProfiles.hireForAi',
+  },
+];
+</script>
+
 <template>
   <section
     id="capabilities"
@@ -86,38 +118,6 @@
     </div>
   </section>
 </template>
-
-<script setup>
-import { Motion } from 'motion-v';
-
-const localePath = useLocalePath();
-const { motionInitial, motionInView, motionTransition } = useMotionConfig();
-
-const capabilities = [
-  {
-    key: 'frontend',
-    icon: 'solar:rocket-bold-duotone',
-    to: '/vue-frontend-developer',
-    linkLabelKey: 'hireProfiles.hireForVue',
-  },
-  {
-    key: 'fullstack',
-    icon: 'solar:database-bold-duotone',
-    to: '/nodejs-backend-developer',
-    linkLabelKey: 'hireProfiles.hireForNode',
-  },
-  {
-    key: 'devops',
-    icon: 'solar:shield-check-bold-duotone',
-  },
-  {
-    key: 'vibeCoding',
-    icon: 'solar:magic-stick-3-bold-duotone',
-    to: '/ai-engineer',
-    linkLabelKey: 'hireProfiles.hireForAi',
-  },
-];
-</script>
 
 <style scoped>
 .capability-scanline {

@@ -1,7 +1,3 @@
-<template>
-  <span class="sr-only" aria-hidden="true" />
-</template>
-
 <script setup lang="ts">
 onMounted(() => {
   if (!('serviceWorker' in navigator)) return;
@@ -32,3 +28,7 @@ onMounted(() => {
   }
 });
 </script>
+
+<template>
+  <span class="sr-only" aria-hidden="true" />
+</template>
