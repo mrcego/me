@@ -95,7 +95,7 @@ onMounted(() => {
       hydrate-after (not interaction): scroll-to-top + chat FAB need mounted listeners.
       Interaction-only left them inert / invisible until a click that never came.
     -->
-    <LazyAppProtocolChat :hydrate-after="1200" />
+    <LazyAppProtocolChat :hydrate-after="4000" />
 
     <LazyVibeCodingModal v-if="vibeCodingModalMounted" />
 

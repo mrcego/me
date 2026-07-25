@@ -87,6 +87,11 @@ export default defineNuxtConfig({
     },
     build: {
       modulePreload: false,
+      // One stylesheet discoverable from HTML — avoids JS→CSS→JS critical chains
+      // (Lighthouse Network Dependency Tree). Tiny per-section CSS files were
+      // only found after entry JS executed.
+      // https://developer.chrome.com/docs/performance/insights/network-dependency-tree
+      cssCodeSplit: false,
     },
   },
 
@@ -104,17 +109,27 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    // 1) Stop Lazy section chunks from being preloaded before LCP.
-    // 2) Clear css[] on EVERY manifest entry (JS + CSS). Nuxt reads JS entries'
-    //    css arrays when injecting stylesheets — clearing only style entries leaves
-    //    redundant render-blocking <link> tags. Styles stay inlined via SSR.
-    //    https://developer.chrome.com/docs/performance/insights/render-blocking
+    // Strip dynamicImports so Lazy islands are not preloaded before LCP.
+    // CSS discovery: scripts/inject-entry-css-link.mjs adds an early <link> for
+    // the cssCodeSplit:false bundle after generate (Nuxt inlineStyles alone still
+    // left CSS only reachable via the JS module graph).
+    // https://developer.chrome.com/docs/performance/insights/network-dependency-tree
     'build:manifest'(manifest) {
       for (const item of Object.values(manifest)) {
         item.dynamicImports = [];
+        if (item.prefetch) item.prefetch = false;
+
+        const keepCss =
+          item.isEntry === true ||
+          (Array.isArray(item.css) &&
+            item.css.some((file) => /(?:^|\/)(?:style|entry)\./.test(String(file))));
+
+        if (keepCss) {
+          continue;
+        }
+
         item.css = [];
         if (item.preload) item.preload = false;
-        if (item.prefetch) item.prefetch = false;
       }
     },
   },

@@ -6,13 +6,12 @@ usePortfolioSeo();
   <main id="main-content" class="portfolio-content relative" tabindex="-1">
     <HeroSection />
     <!--
-      Near-fold: hydrate-after (not visible). Desktop IO still treated About as visible
-      and chained About CSS/JS into the critical path (~1.8s). SSR HTML paints first.
-      Far sections: visible + rootMargin — outside the initial viewport, so they stay
-      off the critical chain until scroll.
+      Near-fold: long hydrate-after (not visible). Keeps section JS off the LCP
+      critical request chain; SSR HTML + inlined styles paint first.
+      Far sections: hydrate-on-visible — only fetch when approaching viewport.
     -->
-    <LazyAboutSection :hydrate-after="2400" />
-    <LazyTechStackSection :hydrate-after="2800" />
+    <LazyAboutSection :hydrate-after="4500" />
+    <LazyTechStackSection :hydrate-after="5000" />
     <LazyCertificationsSection :hydrate-on-visible="{ rootMargin: '120px' }" />
     <LazyCapabilitiesSection :hydrate-on-visible="{ rootMargin: '120px' }" />
     <!-- <ProjectsSection /> -->
