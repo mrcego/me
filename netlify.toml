@@ -9,11 +9,12 @@
   NODE_VERSION = "24"
   NUXT_PUBLIC_CONTACT_PROVIDER = "netlify"
 
+# Must stay true: Netlify HTML/CSS/JS post-processing rewrites published HTML and
+# invalidates the sha256 script-src hashes written by scripts/write-csp-headers.mjs
+# (symptoms: window.__NUXT__ blocked → Vue never boots → dead Show all / nav blur).
+# Nuxt generate already emits pretty directory URLs (no Netlify pretty_urls needed).
 [build.processing]
-  skip_processing = false
-
-[build.processing.html]
-  pretty_urls = true
+  skip_processing = true
 
 [dev]
   command = "pnpm dev"

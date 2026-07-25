@@ -54,13 +54,15 @@ onMounted(() => {
 </script>
 
 <template>
+  <!--
+    Keep fixed chrome (nav / banner / progress) outside overflow-x-clip.
+    Ancestors with overflow clip/hidden disable backdrop-filter on fixed children,
+    which made the scrolled navbar look fully transparent.
+  -->
   <div
-    class="main-container bg-background overflow-x-clip min-w-0"
+    class="main-container bg-background min-w-0"
     :class="{ 'has-availability-banner': showAnnouncement }"
   >
-    <!-- CSS auto-hide splash — does not wait for Vue entry hydration -->
-    <!-- Splash removed: it delayed FCP/LCP/SI in mobile lab without user value. -->
-
     <SkipToContent />
 
     <AvailabilityBanner />
@@ -76,16 +78,18 @@ onMounted(() => {
       aria-label="Page scroll progress"
     />
 
-    <!--
-      Mount-delay (not only hydrate-after): Lazy islands still fetch their chunk when
-      inserted into the tree; keep particles out of the first-second network window.
-    -->
-    <LazyParticlesBackground v-if="enableGlobalParticles" />
-
     <!-- No reactive props: prop changes force immediate hydration on Lazy islands. -->
     <LazyAppNavbar :hydrate-after="2800" />
 
-    <NuxtPage />
+    <div class="relative min-w-0 overflow-x-clip">
+      <!--
+        Mount-delay: Lazy islands still fetch their chunk when inserted into the tree;
+        keep particles out of the first-second network window.
+      -->
+      <LazyParticlesBackground v-if="enableGlobalParticles" />
+
+      <NuxtPage />
+    </div>
 
     <!--
       hydrate-after (not interaction): scroll-to-top + chat FAB need mounted listeners.

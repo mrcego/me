@@ -112,5 +112,33 @@ const headers = `\
 
 const outFile = join(publicDir, '_headers');
 writeFileSync(outFile, headers, 'utf8');
+
+// Self-check: every executable inline script in the publish tree must be allowlisted.
+const missing = [];
+for (const file of walkHtml(publicDir)) {
+  const html = readFileSync(file, 'utf8');
+  const re = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
+  let match;
+  while ((match = re.exec(html)) !== null) {
+    const attrs = match[1] || '';
+    const body = match[2] ?? '';
+    if (!isExecutableInlineScript(attrs, body)) continue;
+    const hash = sha256Hash(body);
+    if (!hashes.has(hash) || !csp.includes(hash)) {
+      missing.push(`${relative(publicDir, file)} ${hash}`);
+    }
+  }
+}
+
+if (missing.length) {
+  console.error('[csp] Self-check failed — hashes missing from CSP:');
+  for (const row of missing) console.error(`  ${row}`);
+  process.exit(1);
+}
+
 console.log(`[csp] Wrote ${outFile}`);
 console.log(`[csp] script-src hashes: ${hashes.size} (no 'unsafe-inline')`);
+console.log('[csp] Self-check OK — all inline scripts allowlisted');
+console.log(
+  '[csp] Reminder: Netlify [build.processing] skip_processing must be true or HTML rewrites break these hashes.',
+);

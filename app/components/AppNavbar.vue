@@ -713,11 +713,13 @@ const scrollToSection = (e, href) => {
 
 .site-nav__shell {
   padding: calc(var(--np) * 0.5rem);
-  border-color: color-mix(in srgb, #ffffff calc(var(--np) * 10%), transparent);
-  background-color: color-mix(in srgb, var(--secondary) calc(var(--np) * 60%), transparent);
-  backdrop-filter: blur(calc(var(--np) * 24px));
+  border-color: color-mix(in srgb, #ffffff calc(var(--np) * 12%), transparent);
+  /* Frosted glass: opaque enough that page copy never reads through the bar. */
+  background-color: color-mix(in srgb, var(--background) calc(var(--np) * 82%), transparent);
+  backdrop-filter: blur(calc(var(--np) * 20px)) saturate(calc(1 + var(--np) * 0.35));
+  -webkit-backdrop-filter: blur(calc(var(--np) * 20px)) saturate(calc(1 + var(--np) * 0.35));
   box-shadow: 0 calc(var(--np) * 16px) calc(var(--np) * 40px)
-    color-mix(in srgb, #000000 calc(var(--np) * 12%), transparent);
+    color-mix(in srgb, #000000 calc(var(--np) * 18%), transparent);
 }
 
 /* Mobile: static blur + solid-enough fill — avoid animating blur radius / padding every RAF. */
@@ -728,15 +730,15 @@ const scrollToSection = (e, href) => {
 
   .site-nav__shell {
     padding: 0.35rem;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    background-color: color-mix(in srgb, var(--secondary) 78%, transparent);
-    box-shadow: 0 8px 24px color-mix(in srgb, #000000 10%, transparent);
+    backdrop-filter: blur(14px) saturate(1.25);
+    -webkit-backdrop-filter: blur(14px) saturate(1.25);
+    background-color: color-mix(in srgb, var(--background) 82%, transparent);
+    box-shadow: 0 8px 24px color-mix(in srgb, #000000 14%, transparent);
   }
 
   .site-nav__links {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 }
 
@@ -759,8 +761,9 @@ const scrollToSection = (e, href) => {
 
 .site-nav__links {
   border-color: color-mix(in srgb, var(--foreground) calc(var(--np) * 5%), transparent);
-  background-color: color-mix(in srgb, var(--foreground) calc(var(--np) * 3%), transparent);
+  background-color: color-mix(in srgb, var(--foreground) calc(var(--np) * 6%), transparent);
   backdrop-filter: blur(calc(var(--np) * 12px));
+  -webkit-backdrop-filter: blur(calc(var(--np) * 12px));
   box-shadow: inset 0 1px 0 color-mix(in srgb, #ffffff calc(var(--np) * 5%), transparent);
 }
 
