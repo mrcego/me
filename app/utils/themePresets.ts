@@ -22,8 +22,10 @@ export const MUTED_LIGHT = '#64748b';
 
 export const FONT_STACKS: Record<ThemeFont, string> = {
   Sans: '"Outfit", ui-sans-serif, system-ui, sans-serif',
-  // Outfit stays in the stack so missing Fira Code weights (800/900) soft-fallback cleanly
-  'Fira Code': '"Fira Code", "Outfit", ui-sans-serif, system-ui, sans-serif',
+  // Local system fallbacks only — Outfit as a webfont fallback raced Fira on slow 4G
+  // (font-display:optional → skip late Fira → fetch Outfit on the LCP critical path).
+  // Missing Fira weights (800/900) are clamped to 700 in main.css for fira-code themes.
+  'Fira Code': '"Fira Code", ui-sans-serif, system-ui, sans-serif',
 };
 
 export const THEME_PRESETS: ThemePreset[] = [

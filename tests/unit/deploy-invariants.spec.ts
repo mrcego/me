@@ -44,6 +44,16 @@ describe('deploy / layout invariants (regression guards)', () => {
     expect(read('scripts/font-display-optional.mjs')).toMatch(/font-display:optional/);
   });
 
+  it('does not preload webfonts (LCP is the hero image, not text)', () => {
+    const cfg = read('nuxt.config.ts');
+    // Both families must stay preload:false so slow-4G bandwidth goes to /_ipx me.jpg.
+    expect(cfg).toMatch(/name:\s*'Fira Code'[\s\S]*?preload:\s*false/);
+    expect(cfg).toMatch(/name:\s*'Outfit'[\s\S]*?preload:\s*false/);
+    expect(cfg).not.toMatch(/preload:\s*true/);
+    // Fira stack must not chain a second webfont (Outfit) after optional timeout.
+    expect(read('app/utils/themePresets.ts')).toMatch(/'Fira Code':\s*'"Fira Code", ui-sans-serif/);
+  });
+
   it('keeps cssCodeSplit false so CSS preload can target one stylesheet', () => {
     expect(read('nuxt.config.ts')).toMatch(/cssCodeSplit:\s*false/);
   });

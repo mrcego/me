@@ -22,7 +22,8 @@
   --color-border: var(--border);
 
   --font-sans: var(--font-main), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-main), 'Outfit', 'Inter', sans-serif;
+  /* No Outfit/Inter webfont fallbacks here — they compete with LCP on mobile. */
+  --font-display: var(--font-main);
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -71,7 +72,7 @@
     --primary-hover: #79b8ff;
     --primary-contrast: #000000;
     --secondary: #161b22;
-    --font-main: 'Fira Code', 'Outfit', 'Inter', sans-serif;
+    --font-main: 'Fira Code', ui-sans-serif, system-ui, sans-serif;
 
     background-color: var(--background);
     color: var(--foreground);
