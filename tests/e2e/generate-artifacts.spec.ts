@@ -15,7 +15,10 @@ test.describe('generate artifacts', () => {
     const headersText = readFileSync(headersPath, 'utf8');
     const csp = parseCspFromHeadersFile(headersText);
     expect(csp).toBeTruthy();
-    expect(csp).toContain("script-src 'self' 'unsafe-inline'");
+    expect(csp).toMatch(/script-src 'self' 'sha256-/);
+    expect(csp).not.toMatch(/script-src[^;]*'unsafe-inline'/);
+    // TT enforcement breaks non-Vue innerHTML sinks on this stack — keep off in prod CSP.
+    expect(csp).not.toContain('require-trusted-types-for');
     expect(csp).toContain("connect-src 'self'");
     // Artifact-only deploy: these must live in _headers, not only netlify.toml.
     expect(headersText).toMatch(/Strict-Transport-Security:.*includeSubDomains.*preload/);

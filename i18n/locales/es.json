@@ -255,6 +255,7 @@
     "titleHighlight": "Certificaciones.",
     "description": "Validación técnica y aprendizaje continuo en ecosistemas de alto rendimiento.",
     "viewCredential": "Ver Credencial",
+    "viewCredentialNamed": "Ver credencial: {title}",
     "skills": "Aptitudes",
     "allCredentials": "Todas las credenciales",
     "moreCredentials": "{count} credenciales más",

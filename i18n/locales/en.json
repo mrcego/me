@@ -255,6 +255,7 @@
     "titleHighlight": "Certifications.",
     "description": "Technical validation and continuous learning in high-performance ecosystems.",
     "viewCredential": "View Credential",
+    "viewCredentialNamed": "View credential: {title}",
     "skills": "Skills",
     "allCredentials": "All credentials",
     "moreCredentials": "{count} more credentials",
