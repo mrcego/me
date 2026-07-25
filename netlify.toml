@@ -1,17 +1,20 @@
 # Nuxt 4 portfolio — primary host: https://cesargomez.dev
 
 [build]
+  # Primary deploy path is GitHub Actions (prebuild + netlify deploy --dir).
+  # Keep this command for Netlify UI / `netlify deploy --build` only.
   command = "pnpm run generate:netlify"
   # nuxt generate writes the full static site here (dist/_nuxt can be stale — do not publish dist)
   publish = ".output/public"
+  # Skip Netlify git auto-builds — GH Actions owns production deploys. Avoids racing
+  # a second generate (new buildId) against the Action upload.
+  ignore = "exit 0"
 
 [build.environment]
   NODE_VERSION = "24"
   NUXT_PUBLIC_CONTACT_PROVIDER = "netlify"
 
-# Must stay true: Netlify HTML/CSS/JS post-processing rewrites published HTML and
-# invalidates the sha256 script-src hashes written by scripts/write-csp-headers.mjs
-# (symptoms: window.__NUXT__ blocked → Vue never boots → dead Show all / nav blur).
+# Must stay true: HTML/CSS/JS post-processing can rewrite published files.
 # Nuxt generate already emits pretty directory URLs (no Netlify pretty_urls needed).
 [build.processing]
   skip_processing = true
@@ -54,8 +57,7 @@
     Cross-Origin-Opener-Policy = "same-origin"
     Cross-Origin-Resource-Policy = "same-origin"
     # Content-Security-Policy is written to `.output/public/_headers` by
-    # `scripts/write-csp-headers.mjs` after generate (sha256 hashes for inline
-    # scripts — no script-src 'unsafe-inline'; Trusted Types enabled).
+    # `scripts/write-csp-headers.mjs` after generate.
 
 [[headers]]
   for = "/_nuxt/*"
