@@ -26,5 +26,14 @@ test.describe('generate artifacts', () => {
 
     const html = readFileSync(indexPath, 'utf8');
     expect(html).toMatch(/rel="preload"[^>]*as="style"/);
+    // Webfonts must stay off the discovery/preload critical path (LCP is the hero image).
+    expect(html).not.toMatch(/rel="preload"[^>]*as="font"/);
+    expect(html).toMatch(/font-display:optional/);
+    expect(html).not.toContain('font-display:swap');
+    // First-paint --font-main uses metric-adjusted locals only (no "Fira Code",… webfont head).
+    expect(html).toMatch(/--font-main:"Fira Code Fallback:/);
+    expect(html).not.toMatch(/--font-main:"Fira Code",/);
+    expect(html).toContain('requestIdleCallback');
+    expect(html).toContain('dataset.webfonts');
   });
 });
