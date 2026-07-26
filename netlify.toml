@@ -116,9 +116,16 @@
   [headers.values]
     Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"
 
-# pretty_urls would otherwise turn /sitemap.xml into an HTML refresh page
+# Mirror of public/_redirects — needed for `netlify deploy --build` / UI builds.
+# Production GH Actions uses --dir/--no-build, so the publish-dir _redirects file is authoritative.
 [[redirects]]
   from = "/sitemap.xml"
+  to = "/sitemap_index.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/sitemap.xml/"
   to = "/sitemap_index.xml"
   status = 200
   force = true

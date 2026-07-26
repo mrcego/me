@@ -1,0 +1,4 @@
+# Applied on GH Actions `netlify deploy --dir` (netlify.toml redirects are not
+# uploaded with --no-build). Force (!) overrides the Nuxt HTML refresh at /sitemap.xml/.
+/sitemap.xml   /sitemap_index.xml  200!
+/sitemap.xml/  /sitemap_index.xml  200!

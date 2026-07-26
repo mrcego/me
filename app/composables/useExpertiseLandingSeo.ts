@@ -7,6 +7,8 @@ interface ExpertiseLandingSeoOptions {
     es: string;
   };
   knowsAbout: string[];
+  /** Role phrases search engines should associate with this page (EN + ES variants OK). */
+  jobTitles: string[];
 }
 
 export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
@@ -86,10 +88,18 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
           url: canonicalUrl.value,
           name: t(copyKey('meta.title')),
           description: t(copyKey('meta.description')),
+          keywords: t(copyKey('meta.keywords'))
+            .split(',')
+            .map((k) => k.trim())
+            .filter(Boolean),
           inLanguage: locale.value === 'es' ? 'es-ES' : 'en-US',
           isPartOf: { '@id': `${SITE_URL}/#website` },
           about: { '@id': `${SITE_URL}/#person` },
           primaryImageOfPage: ogImage,
+          mentions: options.knowsAbout.map((topic) => ({
+            '@type': 'Thing',
+            name: topic,
+          })),
         }),
       },
       {
@@ -138,7 +148,21 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
           '@type': 'Person',
           '@id': `${SITE_URL}/#person`,
           name: personName.value,
-          jobTitle: t('seo.jobTitle'),
+          alternateName: ['César Gómez', 'Cesar Gomez', 'mrcego', ...options.jobTitles],
+          jobTitle: options.jobTitles[0] ?? t('seo.jobTitle'),
+          hasOccupation: options.jobTitles.map((title) => ({
+            '@type': 'Occupation',
+            name: title,
+            occupationLocation: {
+              '@type': 'City',
+              name: 'Cartagena de Indias',
+              containedInPlace: {
+                '@type': 'Country',
+                name: 'Colombia',
+              },
+            },
+            skills: options.knowsAbout.join(', '),
+          })),
           url: canonicalUrl.value,
           sameAs: [
             'https://www.linkedin.com/in/mrcego',
@@ -146,6 +170,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
             `${SITE_URL}/`,
           ],
           knowsAbout: options.knowsAbout,
+          knowsLanguage: ['en', 'es'],
         }),
       },
     ],
