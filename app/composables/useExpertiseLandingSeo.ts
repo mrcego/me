@@ -1,4 +1,4 @@
-const SITE_URL = 'https://cesargomez.dev';
+import { SITE_ORIGIN, absoluteSiteUrl } from '~/utils/siteUrl';
 
 interface ExpertiseLandingSeoOptions {
   translationKey: 'landingVue' | 'landingAi' | 'landingNode';
@@ -17,8 +17,10 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
   const { public: publicConfig } = useRuntimeConfig();
 
   const copyKey = (key: string) => `${options.translationKey}.${key}`;
-  const canonicalUrl = computed(() => `${SITE_URL}${route.path}`);
-  const ogImage = `${SITE_URL}/img/og-image.png`;
+  const canonicalUrl = computed(() => absoluteSiteUrl(route.path));
+  const enUrl = absoluteSiteUrl(options.paths.en);
+  const esUrl = absoluteSiteUrl(`/es${options.paths.es}`);
+  const ogImage = `${SITE_ORIGIN}/img/og-image.png`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
 
   const faqItems = computed(() => {
@@ -73,9 +75,9 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
     },
     link: [
       { rel: 'canonical', href: canonicalUrl.value },
-      { rel: 'alternate', hreflang: 'en', href: `${SITE_URL}${options.paths.en}` },
-      { rel: 'alternate', hreflang: 'es', href: `${SITE_URL}/es${options.paths.es}` },
-      { rel: 'alternate', hreflang: 'x-default', href: `${SITE_URL}${options.paths.en}` },
+      { rel: 'alternate', hreflang: 'en', href: enUrl },
+      { rel: 'alternate', hreflang: 'es', href: esUrl },
+      { rel: 'alternate', hreflang: 'x-default', href: enUrl },
     ],
     script: [
       {
@@ -93,8 +95,8 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
             .map((k) => k.trim())
             .filter(Boolean),
           inLanguage: locale.value === 'es' ? 'es-ES' : 'en-US',
-          isPartOf: { '@id': `${SITE_URL}/#website` },
-          about: { '@id': `${SITE_URL}/#person` },
+          isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
+          about: { '@id': `${SITE_ORIGIN}/#person` },
           primaryImageOfPage: ogImage,
           mentions: options.knowsAbout.map((topic) => ({
             '@type': 'Thing',
@@ -113,7 +115,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
               '@type': 'ListItem',
               position: 1,
               name: t('seo.siteName'),
-              item: locale.value === 'es' ? `${SITE_URL}/es` : `${SITE_URL}/`,
+              item: locale.value === 'es' ? absoluteSiteUrl('/es/') : absoluteSiteUrl('/'),
             },
             {
               '@type': 'ListItem',
@@ -146,7 +148,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
         innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Person',
-          '@id': `${SITE_URL}/#person`,
+          '@id': `${SITE_ORIGIN}/#person`,
           name: personName.value,
           alternateName: ['César Gómez', 'Cesar Gomez', 'mrcego', ...options.jobTitles],
           jobTitle: options.jobTitles[0] ?? t('seo.jobTitle'),
@@ -167,7 +169,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
           sameAs: [
             'https://www.linkedin.com/in/mrcego',
             'https://github.com/mrcego',
-            `${SITE_URL}/`,
+            absoluteSiteUrl('/'),
           ],
           knowsAbout: options.knowsAbout,
           knowsLanguage: ['en', 'es'],

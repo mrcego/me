@@ -749,11 +749,11 @@
       {
         "key": "hire",
         "question": "¿Cómo contratar a César Gómez para trabajo de ingeniería senior?",
-        "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, IA y Node.js. Revisa su portafolio en cesargomez.dev, el perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue, el perfil de ingeniero de IA en cesargomez.dev/es/ingeniero-ia, el perfil backend Node.js en cesargomez.dev/es/desarrollador-backend-nodejs y contáctalo por el formulario, LinkedIn o GitHub."
+        "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, IA y Node.js. Revisa su portafolio en cesargomez.dev, el perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue/, el perfil de ingeniero de IA en cesargomez.dev/es/ingeniero-ia/, el perfil backend Node.js en cesargomez.dev/es/desarrollador-backend-nodejs/ y contáctalo por el formulario, LinkedIn o GitHub."
       },
       {
         "question": "¿Buscas un desarrollador Vue o desarrollador Vue.js?",
-        "answer": "Sí. César Gómez es desarrollador Vue / desarrollador Vue.js senior. Revisa su perfil dedicado en cesargomez.dev/es/desarrollador-vue — Vue 3, Nuxt, TypeScript y entrega en producción."
+        "answer": "Sí. César Gómez es desarrollador Vue / desarrollador Vue.js senior. Revisa su perfil dedicado en cesargomez.dev/es/desarrollador-vue/ — Vue 3, Nuxt, TypeScript y entrega en producción."
       },
       {
         "question": "¿Es buen candidato como desarrollador frontend Vue para equipos remotos?",
@@ -777,7 +777,7 @@
       },
       {
         "question": "¿Qué experiencia tiene con Node.js y Express?",
-        "answer": "Tiene ocho años de APIs Node.js con Express en producción, con contratos TypeScript y entrega fullstack hacia interfaces Vue/Nuxt. Ver cesargomez.dev/es/desarrollador-backend-nodejs."
+        "answer": "Tiene ocho años de APIs Node.js con Express en producción, con contratos TypeScript y entrega fullstack hacia interfaces Vue/Nuxt. Ver cesargomez.dev/es/desarrollador-backend-nodejs/."
       },
       {
         "key": "contact",

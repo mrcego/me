@@ -10,10 +10,14 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  // Match Netlify directory URLs (…/page/ → 200) so sitemap/canonicals avoid 301s.
+  trailingSlash: true,
+
   // Site configuration for SEO modules
   site: {
     url: 'https://cesargomez.dev',
     name: 'César Gómez Portfolio',
+    trailingSlash: true,
   },
 
   nitro: {
@@ -25,13 +29,13 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: [
         '/',
-        '/es',
-        '/vue-frontend-developer',
-        '/es/desarrollador-vue',
-        '/ai-engineer',
-        '/es/ingeniero-ia',
-        '/nodejs-backend-developer',
-        '/es/desarrollador-backend-nodejs',
+        '/es/',
+        '/vue-frontend-developer/',
+        '/es/desarrollador-vue/',
+        '/ai-engineer/',
+        '/es/ingeniero-ia/',
+        '/nodejs-backend-developer/',
+        '/es/desarrollador-backend-nodejs/',
       ],
     },
     compressPublicAssets: true,
@@ -216,15 +220,16 @@ export default defineNuxtConfig({
     strictNuxtContentPaths: true,
     zeroRuntime: true,
     xsl: false,
+    // Trailing slashes match static directory output (avoids GSC "Redirect error").
     urls: [
       '/',
-      '/es',
-      '/vue-frontend-developer',
-      '/es/desarrollador-vue',
-      '/ai-engineer',
-      '/es/ingeniero-ia',
-      '/nodejs-backend-developer',
-      '/es/desarrollador-backend-nodejs',
+      '/es/',
+      '/vue-frontend-developer/',
+      '/es/desarrollador-vue/',
+      '/ai-engineer/',
+      '/es/ingeniero-ia/',
+      '/nodejs-backend-developer/',
+      '/es/desarrollador-backend-nodejs/',
     ],
   },
 
