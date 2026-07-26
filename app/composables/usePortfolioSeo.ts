@@ -2,7 +2,7 @@ const SITE_URL = 'https://cesargomez.dev';
 
 /** ProfilePage dates must be full ISO-8601 DateTime (GSC rejects YYYY-MM-DD). */
 const PROFILE_DATE_CREATED = '2024-06-01T12:00:00-05:00';
-const PROFILE_DATE_MODIFIED = '2026-07-25T12:00:00-05:00';
+const PROFILE_DATE_MODIFIED = '2026-07-25T20:00:00-05:00';
 
 export const usePortfolioSeo = () => {
   const { t, locale } = useI18n();
@@ -133,21 +133,34 @@ export const usePortfolioSeo = () => {
             'Website Development',
             'Fullstack Development',
             'Web Performance',
+            'Core Web Vitals',
             'UI Engineering',
             'Design Systems',
             'Micro-frontends',
             'PrimeVue',
             'Vuetify',
             'Tailwind CSS',
+            'Pinia',
+            'Vue Router',
+            'Vite',
+            'Composition API',
             'SSR/SSG',
             'CI/CD',
+            'GitHub Actions',
             'Accessibility',
             'AI Engineering',
             'Natural Language Processing',
             'Conversational AI',
+            'Speech AI',
             'Large Language Models',
+            'Local LLMs',
+            'Ollama',
+            'Agent-assisted Development',
+            'Vibe Coding Cleanup',
             'Ed-tech',
             'Cartagena Colombia Web Development',
+            'Remote Contract Engineering',
+            'Latin America Remote Development',
           ],
           knowsLanguage: ['en', 'es'],
           alumniOf: [
@@ -174,8 +187,15 @@ export const usePortfolioSeo = () => {
           name: t('seo.siteName'),
           description: t('seo.description'),
           url: SITE_URL,
+          keywords: t('seo.keywords')
+            .split(',')
+            .map((k) => k.trim())
+            .filter(Boolean),
           inLanguage: ['en-US', 'es-ES'],
           publisher: {
+            '@id': `${SITE_URL}/#person`,
+          },
+          about: {
             '@id': `${SITE_URL}/#person`,
           },
         }),
@@ -263,23 +283,36 @@ export const usePortfolioSeo = () => {
             'Vue.js Consulting',
             'Nuxt.js Development',
             'TypeScript Engineering',
+            'Design System Engineering',
+            'Micro-frontend Architecture',
+            'Core Web Vitals Optimization',
             'Node.js Backend Development',
             'Express.js API Development',
             'AI Engineering',
             'AI/NLP Product Integration',
+            'Conversational AI Engineering',
             'Ed-tech Frontend Engineering',
             'Remote Frontend Contracting',
+            'LatAm Remote Contracting',
             'Vibe Coding Cleanup',
           ],
           knowsAbout: [
             'Vue.js',
             'Nuxt.js',
             'TypeScript',
+            'Pinia',
+            'PrimeVue',
+            'Tailwind CSS',
             'Web Architecture',
             'Website Development',
+            'Design Systems',
+            'Micro-frontends',
+            'Core Web Vitals',
             'Express.js',
+            'AI Engineering',
             'Ed-tech',
             'Cartagena Web Development',
+            'Remote LatAm Development',
           ],
         }),
       },

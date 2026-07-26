@@ -45,6 +45,20 @@ const proofItems = computed(() => {
   return Array.isArray(data) ? data.map((item) => rt(item)) : [];
 });
 
+const intentParagraphs = computed(() => {
+  const data = tm(copyKey('intent.paragraphs')) as unknown;
+  return Array.isArray(data) ? data.map((item) => rt(item)) : [];
+});
+
+const serviceItems = computed(() => {
+  const data = tm(copyKey('services.items')) as Array<{ title: unknown; body: unknown }> | unknown;
+  if (!Array.isArray(data)) return [];
+  return data.map((item) => ({
+    title: rt(item.title),
+    body: rt(item.body),
+  }));
+});
+
 const faqItems = computed(() => {
   const data = tm(copyKey('faq')) as Array<{ question: unknown; answer: unknown }> | unknown;
   if (!Array.isArray(data)) return [];
@@ -125,6 +139,40 @@ const toggleFaq = (index: number) => {
             </NuxtLink>
           </div>
         </div>
+
+        <section
+          v-if="intentParagraphs.length"
+          class="space-y-5 md:space-y-6 max-w-3xl mx-auto md:mx-0"
+        >
+          <h2 class="text-3xl md:text-4xl font-black tracking-tight text-center md:text-left">
+            {{ t(copyKey('intent.title')) }}
+          </h2>
+          <p
+            v-for="paragraph in intentParagraphs"
+            :key="paragraph"
+            class="text-base md:text-lg text-muted leading-relaxed text-pretty"
+          >
+            {{ paragraph }}
+          </p>
+        </section>
+
+        <section v-if="serviceItems.length" class="space-y-6 md:space-y-8">
+          <h2 class="text-3xl md:text-4xl font-black tracking-tight text-center md:text-left">
+            {{ t(copyKey('services.title')) }}
+          </h2>
+          <div class="grid md:grid-cols-2 gap-5 md:gap-6">
+            <article
+              v-for="service in serviceItems"
+              :key="service.title"
+              class="surface-card glass rounded-3xl border-foreground/5 p-6 md:p-7 space-y-3"
+            >
+              <h3 class="text-xl md:text-2xl font-black tracking-tight text-foreground text-pretty">
+                {{ service.title }}
+              </h3>
+              <p class="text-muted leading-relaxed text-pretty">{{ service.body }}</p>
+            </article>
+          </div>
+        </section>
 
         <div class="grid md:grid-cols-2 gap-6 md:gap-8">
           <article class="surface-card glass rounded-3xl border-foreground/5 p-6 md:p-8 space-y-5">

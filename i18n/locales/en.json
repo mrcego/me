@@ -701,14 +701,14 @@
   },
   "seo": {
     "title": "Senior Vue/Nuxt · AI & NLP Expert",
-    "description": "Hire Cesar Gomez — senior frontend engineer in Cartagena, Colombia. 13+ years building websites and web apps with Vue 3, Nuxt 4, and TypeScript. Ed-tech, AI/NLP, Node/Express, and remote contract work from August 2026. Spanish native, English intermediate.",
-    "keywords": "desarrollador en Cartagena, web developer Cartagena, website developer Cartagena Colombia, páginas web Cartagena, frontend developer Cartagena Colombia, hire web developer Cartagena, senior frontend developer, senior frontend engineer, hire senior frontend developer, hire Cesar Gomez, Vue.js developer, Vue 3 developer, Vue frontend developer, senior Vue developer, hire Vue developer, Nuxt.js developer, Nuxt 4 developer, hire Nuxt developer, TypeScript frontend developer, TypeScript Nuxt developer, Node.js backend developer, Express.js developer, REST API TypeScript, AI engineer NLP, LLM engineer, conversational AI engineer, vibe coding cleanup specialist, ed-tech frontend developer, bilingual Spanish English developer, Cesar Gomez, César Gómez, mrcego, Cesar Gomez developer, Cartagena Colombia remote developer, remote contract developer Colombia, freelance Vue developer Colombia, contract frontend engineer, remote Vue developer LatAm, frontend engineer Vue, Nuxt architect, software engineer Cartagena Colombia",
+    "description": "Hire Cesar Gomez — senior frontend engineer in Cartagena, Colombia. 13+ years building websites and web apps with Vue 3, Nuxt 4, TypeScript, PrimeVue, and Tailwind. Ed-tech, AI/NLP, Node/Express APIs, design systems, micro-frontends, Core Web Vitals, and remote contract work from August 2026. Spanish native, English intermediate.",
+    "keywords": "desarrollador en Cartagena, web developer Cartagena, website developer Cartagena Colombia, páginas web Cartagena, frontend developer Cartagena Colombia, hire web developer Cartagena, senior frontend developer, senior frontend engineer, hire senior frontend developer, hire Cesar Gomez, Vue.js developer, Vue 3 developer, Vue frontend developer, senior Vue developer, hire Vue developer, Nuxt.js developer, Nuxt 4 developer, hire Nuxt developer, TypeScript frontend developer, TypeScript Nuxt developer, Node.js backend developer, Express.js developer, REST API TypeScript, AI engineer NLP, LLM engineer, conversational AI engineer, vibe coding cleanup specialist, ed-tech frontend developer, bilingual Spanish English developer, Cesar Gomez, César Gómez, mrcego, Cesar Gomez developer, Cartagena Colombia remote developer, remote contract developer Colombia, freelance Vue developer Colombia, contract frontend engineer, remote Vue developer LatAm, frontend engineer Vue, Nuxt architect, software engineer Cartagena Colombia, Pinia developer, Vite Vue developer, Composition API expert, Vue Router, SSR Nuxt developer, SSG static site Nuxt, Core Web Vitals optimization, Lighthouse performance engineer, accessibility a11y frontend, design system engineer, micro-frontend architect, PrimeVue developer, Vuetify developer, Tailwind CSS developer, SPA Vue developer, CI/CD frontend GitHub Actions, remote LatAm developer, hire frontend engineer Colombia, Bolívar Colombia developer, Caribbean Colombia web developer, speech AI ed-tech, agentic coding production, Cursor AI developer, Windsurf developer, Claude Code engineer, Copilot Vue engineer, monorepo TypeScript, Web Components Vue, contract software engineer Colombia, freelance Nuxt developer, hire fullstack developer Cartagena, UI engineer Colombia, product frontend engineer, hire remote developer Latin America, Colombia Vue consultant, TypeScript SPA architect",
     "ogTitle": "Senior Vue/Nuxt · AI & NLP Expert",
-    "ogDescription": "Senior frontend developer in Cartagena de Indias, Colombia. Websites and products with Vue.js, Nuxt.js, and TypeScript. Remote preferred. Contract from August 2026.",
+    "ogDescription": "Senior frontend developer in Cartagena de Indias, Colombia. Websites, design systems, and AI-ready products with Vue.js, Nuxt.js, TypeScript, Node/Express. Remote preferred. Contract from August 2026.",
     "jobTitle": "Senior Vue/Nuxt · AI & NLP Expert",
     "siteName": "Cesar Gomez Portfolio",
     "serviceName": "Cesar Gomez — Frontend, Websites & Fullstack Development",
-    "serviceDescription": "Senior frontend and fullstack services from Cartagena, Colombia: custom websites, Vue.js/Nuxt apps, TypeScript engineering, design systems, and performance-focused product delivery for remote and international teams.",
+    "serviceDescription": "Senior frontend and fullstack services from Cartagena, Colombia: custom websites, Vue.js/Nuxt apps, TypeScript engineering, PrimeVue/Tailwind design systems, micro-frontends, Node/Express APIs, AI/NLP product integration, and Core Web Vitals–focused delivery for remote and international teams.",
     "availability": "Senior frontend, website, and fullstack contract roles from August 2026 · Remote preferred · Cartagena de Indias, Colombia"
   },
   "faq": {
@@ -752,6 +752,10 @@
         "answer": "You can hire Cesar Gomez for senior Vue/Nuxt, AI, and Node.js contract work. Review his portfolio at cesargomez.dev, the Vue developer profile at cesargomez.dev/vue-frontend-developer, the AI engineer profile at cesargomez.dev/ai-engineer, the Node.js backend profile at cesargomez.dev/nodejs-backend-developer, and contact him via the form, LinkedIn, or GitHub."
       },
       {
+        "question": "Looking for a Vue developer or Vue.js developer?",
+        "answer": "Yes. Cesar Gomez is a senior Vue developer / Vue.js developer. See his dedicated profile at cesargomez.dev/vue-frontend-developer — Vue 3, Nuxt, TypeScript, and production delivery."
+      },
+      {
         "question": "Is Cesar Gomez a good fit as a Vue frontend developer for remote teams?",
         "answer": "Yes. He is a senior Vue frontend developer based in Cartagena de Indias, Colombia with 13+ years of experience, production work at Colegium and LingoQuesto, and a clear preference for remote work with distributed teams in English and Spanish."
       },
@@ -787,63 +791,170 @@
       {
         "question": "Does Cesar Gomez work in English and Spanish?",
         "answer": "Yes. Cesar is a native Spanish speaker with intermediate English and collaborates with distributed international teams in both languages."
+      },
+      {
+        "question": "Does Cesar Gomez build design systems, PrimeVue UIs, and micro-frontends?",
+        "answer": "Yes. He designs and ships component libraries and design systems (PrimeVue, Vuetify, Tailwind CSS), and has led micro-frontend architectures used in large ed-tech platforms."
+      },
+      {
+        "question": "Can Cesar Gomez improve Core Web Vitals and frontend performance?",
+        "answer": "Yes. He optimizes Vue/Nuxt apps for LCP, INP, CLS, accessibility, and sustainable performance — from SSR/SSG strategy to rendering and asset delivery."
+      },
+      {
+        "question": "Is Cesar Gomez available as a freelance or contract engineer in LatAm?",
+        "answer": "Yes. He takes senior contract and freelance-style engagements from Cartagena, Colombia, preferably remote, collaborating with teams across Latin America and globally from August 2026."
+      },
+      {
+        "question": "What Vue tooling does Cesar Gomez use day to day?",
+        "answer": "Vue 3 Composition API, Nuxt 4, TypeScript, Pinia, Vue Router, Vite, PrimeVue, Tailwind CSS, and modern CI/CD — with SSR/SSG and hybrid rendering when the product needs it."
       }
     ]
   },
   "landingVue": {
     "meta": {
-      "title": "Senior Vue.js Frontend Developer | Nuxt & TypeScript — Cesar Gomez",
-      "description": "Hire a senior Vue frontend developer in Cartagena, Colombia — 13+ years in Vue.js, Nuxt.js, and TypeScript. Websites and product UIs for remote teams. Production at Colegium and LingoQuesto.",
-      "keywords": "Vue frontend developer, Vue.js developer, Vue 3 developer, senior Vue developer, senior frontend developer, senior frontend engineer Cartagena, Nuxt developer, Nuxt 4 developer, hire Vue developer, hire Nuxt developer, TypeScript frontend, TypeScript Nuxt developer, remote Vue developer Colombia, web developer Cartagena, website developer Colombia, ed-tech Vue developer, bilingual Vue developer, hire Cesar Gomez Vue"
+      "title": "Vue.js Developer | Vue 3, Nuxt & TypeScript — Cesar Gomez",
+      "description": "Hire a Vue.js developer and senior Vue developer in Colombia. 13+ years with Vue 3, Nuxt.js, TypeScript, Pinia, and PrimeVue. Remote Vue frontend developer for products, websites, and design systems. Cartagena · LatAm.",
+      "keywords": "Vue.js developer, Vue developer, Vue 3 developer, senior Vue developer, hire Vue.js developer, hire Vue developer, Vue frontend developer, Nuxt developer, Nuxt.js developer, Nuxt 4 developer, Vue developer Colombia, remote Vue developer, freelance Vue developer, Vue.js consultant, Pinia developer, PrimeVue developer, TypeScript Vue developer, SPA Vue developer, SSR Nuxt developer, Cesar Gomez Vue developer, hire Vue developer Colombia, Vue.js developer Cartagena, remote Vue.js developer LatAm, freelance Vue.js developer Colombia, hire senior Vue developer remote, Vue 3 developer Colombia, Nuxt developer Colombia, contract Vue developer LatAm, Vue frontend developer Colombia, hire Nuxt developer Colombia, remote senior Vue engineer LatAm, Vue.js contractor Colombia, bilingual Vue developer Colombia, Cartagena Vue developer"
     },
-    "eyebrow": "Vue.js Specialist",
-    "title": "Senior Vue.js",
-    "titleHighlight": "Frontend Developer",
-    "lead": "I'm Cesar Gomez — a senior Vue frontend developer with 13+ years shipping production interfaces with Vue 3, Nuxt, TypeScript, and performance-focused architecture.",
-    "expertiseTitle": "What I deliver as a Vue developer",
+    "eyebrow": "Vue.js Developer · Colombia",
+    "title": "Vue.js Developer",
+    "titleHighlight": "Senior",
+    "lead": "Looking for a Vue.js developer or senior Vue developer with real production experience? I'm Cesar Gomez — a senior Vue frontend developer with 13+ years shipping products with Vue 3, Nuxt, TypeScript, and performance-focused architecture — remote from Cartagena, Colombia.",
+    "intent": {
+      "title": "What a Vue.js developer does on your team",
+      "paragraphs": [
+        "A Vue.js developer turns product requirements into fast, maintainable production interfaces. As a senior Vue developer, I own Vue 3 + Nuxt architecture, Composition API, Pinia, Vue Router, TypeScript, and team frontend standards — not just one-off components.",
+        "If you need to hire a Vue developer in Colombia or a remote Vue.js developer for LatAm and international teams, this page is built for recruiters and engineering leaders who want end-to-end frontend ownership: SSR/SSG, design systems, micro-frontends, accessibility, and Core Web Vitals.",
+        "I also work as a Nuxt.js developer when the product needs SEO, strong first paint, or hybrid apps. The specialty is Vue; the delivery is real ed-tech and SaaS product work (Colegium, LingoQuesto)."
+      ]
+    },
+    "services": {
+      "title": "Hire a Vue developer for these scenarios",
+      "items": [
+        {
+          "title": "Vue.js developer for SaaS and product UIs",
+          "body": "Vue 3 architecture, Pinia state, Vue Router, and TypeScript product interfaces ready to scale with your team."
+        },
+        {
+          "title": "Nuxt.js developer (SSR, SSG, hybrid)",
+          "body": "Nuxt 4 sites and apps with technical SEO, the right rendering model, and Core Web Vitals when organic discovery matters."
+        },
+        {
+          "title": "Vue frontend developer + design systems",
+          "body": "Component libraries, PrimeVue/Tailwind, and micro-frontends so UI scales without losing consistency."
+        },
+        {
+          "title": "Remote / freelance Vue developer Colombia",
+          "body": "Senior remote contract from Cartagena for LatAm and global teams, collaborating in English and Spanish."
+        },
+        {
+          "title": "Vue.js developer in Cartagena / Colombia",
+          "body": "Local Cartagena de Indias profile with remote delivery — ideal if you need a Vue developer Colombia or Cartagena Vue.js contractor."
+        },
+        {
+          "title": "Hire a Vue 3 + TypeScript developer",
+          "body": "Vue 3, Composition API, Pinia, and strict TypeScript for teams that need a senior product Vue developer."
+        }
+      ]
+    },
+    "expertiseTitle": "Modern Vue developer stack and skills",
     "expertise": [
-      "Vue 3 + Nuxt 4 architecture for SSR, SSG, and hybrid apps",
-      "Design systems, component libraries, and micro-frontends",
-      "TypeScript end-to-end with strict typing and scalable patterns",
-      "Web Vitals, accessibility, and frontend performance optimization"
+      "Vue.js / Vue 3 + Composition API in production",
+      "Nuxt.js / Nuxt 4 (SSR, SSG, hybrid) and technical SEO",
+      "TypeScript, Pinia, Vue Router, and Vite",
+      "PrimeVue, Tailwind CSS, design systems, and micro-frontends",
+      "Web Vitals, accessibility, and frontend performance",
+      "Fullstack API integration with Node when the role needs it"
     ],
-    "experienceTitle": "Production Vue experience",
-    "experienceBody": "Led frontend work at Colegium (100k+ students) and LingoQuesto (founding engineer), building Vue/Nuxt products used daily at scale — not demos, production systems.",
-    "proofTitle": "Why teams hire me for Vue roles",
+    "experienceTitle": "Production experience as a Vue.js developer",
+    "experienceBody": "As a Vue.js developer at Colegium (100k+ students) and LingoQuesto (founding engineer), I built Vue/Nuxt products used at real scale — not demos, production systems with frontend architecture ownership.",
+    "proofTitle": "Why hire me as your Vue.js developer",
     "proof": [
-      "13+ years in frontend engineering with deep Vue.js specialization",
-      "Remote-ready from Colombia with English and Spanish collaboration",
-      "Fullstack depth when you need API integration and delivery ownership",
+      "13+ years in frontend with deep Vue.js and Nuxt specialization",
+      "Vue developer in Colombia with remote preference (LatAm and global)",
+      "Fullstack depth when APIs and delivery ownership matter",
       "Available for senior contract roles from August 2026"
     ],
     "portfolioCta": "View full portfolio",
-    "contactCta": "Contact me",
-    "faqTitle": "Vue developer hiring FAQ",
+    "contactCta": "Hire a Vue.js developer",
+    "faqTitle": "Vue.js developer / Vue developer FAQ",
     "faq": [
       {
+        "question": "Who is a good Vue.js developer to hire?",
+        "answer": "Look for Vue 3 in production, TypeScript, architecture ownership, and shipped products — not only tutorials. Cesar Gomez is a senior Vue.js developer with 13+ years and large-scale ed-tech delivery (Colegium, LingoQuesto)."
+      },
+      {
+        "question": "Looking for a Vue developer or Vue.js developer in Colombia?",
+        "answer": "Yes. Cesar Gomez is a Vue developer / Vue.js developer based in Cartagena, Colombia, available for remote contract work with LatAm and global teams."
+      },
+      {
         "question": "What does a senior Vue frontend developer do on your team?",
-        "answer": "I own Vue/Nuxt architecture, component systems, performance, and delivery — from scaffolding and state patterns to production releases and cross-team frontend standards."
+        "answer": "Vue/Nuxt architecture, component systems, performance, standards, and releases — from scaffolding and Pinia through production, working with design and backend."
       },
       {
         "question": "Do you work as a remote Vue.js developer?",
-        "answer": "Yes. I'm based in Colombia and work remotely with international teams across time zones in English and Spanish."
+        "answer": "Yes. I work remotely from Colombia with international teams across time zones in English and Spanish."
       },
       {
-        "question": "When are you available for a Vue frontend developer contract?",
-        "answer": "Target availability is August 2026. I'm already open to conversations, interviews, and early offers before that date."
+        "question": "Are you also a Nuxt.js developer?",
+        "answer": "Yes. Nuxt 4 is core to the stack: SSR, SSG, hybrid rendering, technical SEO, and Core Web Vitals for products that need discovery and performance."
+      },
+      {
+        "question": "When are you available for a Vue developer contract?",
+        "answer": "Target availability is August 2026. Already open to conversations, interviews, and early offers."
+      },
+      {
+        "question": "Do you work with PrimeVue, Pinia, and design systems?",
+        "answer": "Yes. I ship production UIs with PrimeVue, Pinia, Tailwind CSS, and design systems — including micro-frontends when scale requires it."
+      },
+      {
+        "question": "How do I hire a remote Vue developer in Colombia or LatAm?",
+        "answer": "Contact Cesar Gomez via the form on cesargomez.dev, LinkedIn, or GitHub. He is a remote Vue.js developer from Cartagena, available for senior contract work (target August 2026)."
+      },
+      {
+        "question": "Is there a Vue.js developer in Cartagena, Colombia?",
+        "answer": "Yes. Cesar Gomez is a senior Vue.js developer based in Cartagena de Indias, Colombia, with a remote-work preference and production Vue/Nuxt experience at scale."
       }
     ]
   },
   "landingAi": {
     "meta": {
       "title": "AI Engineer | NLP, LLM & Vue/Nuxt — Cesar Gomez",
-      "description": "Hire an AI engineer who integrates local and cloud AI/NLP models, builds conversational products, and turns agent-assisted Vue/Nuxt code into production systems.",
-      "keywords": "AI engineer, NLP engineer, LLM engineer, AI frontend engineer, AI-assisted development, conversational AI, conversational AI engineer, local LLM, Ollama, llama.cpp, Vue AI developer, Nuxt AI engineer, ed-tech AI engineer, vibe coding cleanup specialist, hire AI engineer Colombia, hire Cesar Gomez AI, senior AI engineer remote, AI engineer Cartagena, AI NLP engineer Colombia"
+      "description": "Hire an AI engineer / NLP engineer in Colombia. Local and cloud LLMs, conversational AI, ed-tech, and productionizing agent-assisted Vue/Nuxt code (Cursor, Copilot, Claude Code).",
+      "keywords": "AI engineer, hire AI engineer, NLP engineer, LLM engineer, AI developer, AI engineer Colombia, remote AI engineer, conversational AI engineer, local LLM, Ollama, llama.cpp, Vue AI developer, vibe coding cleanup, Cursor AI, Claude Code, chatbot engineer, Cesar Gomez AI engineer"
     },
-    "eyebrow": "AI/NLP · Production Engineering",
-    "title": "AI Engineering ·",
-    "titleHighlight": "Vue/Nuxt",
-    "lead": "I'm Cesar Gomez — a senior fullstack engineer integrating AI/NLP models locally and in the cloud, building conversational products, and turning agent-assisted code into production-ready systems.",
+    "eyebrow": "AI Engineer · NLP / LLM",
+    "title": "AI Engineer",
+    "titleHighlight": "NLP · Vue/Nuxt",
+    "lead": "Looking for an AI engineer or NLP engineer who also ships frontend product? I'm Cesar Gomez — I integrate local and cloud AI/NLP models, build conversational experiences, and turn agent-assisted code into production systems.",
+    "intent": {
+      "title": "What an AI engineer does in real products",
+      "paragraphs": [
+        "An AI engineer connects models (LLM/NLP) to usable products: APIs, interfaces, quality gates, and delivery ownership. Not just prompting — production engineering with Vue/Nuxt when the experience lives in the frontend.",
+        "If you need to hire an AI engineer in Colombia or a remote LatAm profile for conversational AI, ed-tech, or agent-generated code cleanup, this page covers local/cloud integration, audits, and release."
+      ]
+    },
+    "services": {
+      "title": "Hire an AI engineer for these scenarios",
+      "items": [
+        {
+          "title": "NLP / LLM engineer for conversational products",
+          "body": "Cloud and local model integration (Ollama, llama.cpp) into product flows with clear UX."
+        },
+        {
+          "title": "AI engineer + Vue/Nuxt frontend",
+          "body": "Interfaces and Vue architecture when AI must live in real apps, not demos."
+        },
+        {
+          "title": "Vibe coding cleanup / agent-assisted code",
+          "body": "Audit and harden Cursor, Copilot, or Claude Code output to production standards."
+        },
+        {
+          "title": "Remote AI engineer Colombia / LatAm",
+          "body": "Senior remote contract from Cartagena for teams that need applied AI with engineering judgment."
+        }
+      ]
+    },
     "expertiseTitle": "What I deliver in AI engineering",
     "expertise": [
       "Local and cloud AI/NLP integrations for conversational product experiences",
@@ -879,19 +990,55 @@
       {
         "question": "When are you available for an AI engineering contract?",
         "answer": "Target availability is August 2026. I'm already open to conversations, interviews, and early offers before that date."
+      },
+      {
+        "question": "Which AI coding tools do you use in production workflows?",
+        "answer": "I work with Cursor, Windsurf, GitHub Copilot, Claude Code, OpenCode, Ollama, and llama.cpp — always with human review, architecture ownership, and quality gates before release."
+      },
+      {
+        "question": "Do you build speech or conversational AI for ed-tech?",
+        "answer": "Yes. At LingoQuesto I help shape conversational AI/NLP product experiences for oral language practice, integrating models locally and in the cloud."
       }
     ]
   },
   "landingNode": {
     "meta": {
-      "title": "Node.js Backend Developer | Express & TypeScript — Cesar Gomez",
-      "description": "Hire a Node.js backend developer with 8+ years of Express in production. Typed APIs, fullstack delivery ownership, and Vue/Nuxt integration. Remote from Colombia.",
-      "keywords": "Node.js backend developer, Express.js developer, Express TypeScript API, Node API developer, hire Node developer, hire Cesar Gomez Node, TypeScript backend, REST API engineer, fullstack Node Vue, remote Node developer Colombia, Node.js developer Cartagena, hire Node engineer LatAm, 8 years Express"
+      "title": "Node.js Developer | Express Backend & TypeScript — Cesar Gomez",
+      "description": "Hire a Node.js developer and Express backend developer with 8+ years in production. Typed REST APIs, TypeScript, and Vue/Nuxt integration. Remote Node developer in Colombia / LatAm.",
+      "keywords": "Node.js developer, Node developer, Node.js backend developer, Express.js developer, hire Node.js developer, Node developer Colombia, Express developer, REST API TypeScript, TypeScript backend, fullstack Node Vue, remote Node developer, Cesar Gomez Node.js"
     },
-    "eyebrow": "Node.js · Express APIs",
-    "title": "Backend Engineering",
-    "titleHighlight": "· Node/Express",
-    "lead": "I'm Cesar Gomez — a senior engineer building production Node.js APIs with Express and TypeScript, and connecting them to real product interfaces as a strong fullstack profile.",
+    "eyebrow": "Node.js Developer · Express",
+    "title": "Node.js Developer",
+    "titleHighlight": "Backend · Express",
+    "lead": "Looking for a Node.js developer or Express developer with real production experience? I'm Cesar Gomez — I build production Node.js APIs with Express and TypeScript, and connect them to Vue/Nuxt interfaces as a strong fullstack profile.",
+    "intent": {
+      "title": "What a Node.js developer does in your product",
+      "paragraphs": [
+        "A Node.js developer designs and maintains APIs, typed contracts, and business logic that frontends can consume safely. I have 8+ years of Express + TypeScript in production.",
+        "If you need to hire a Node.js backend developer in Colombia or a remote LatAm profile who also understands Vue/Nuxt, this page covers API-to-UI ownership."
+      ]
+    },
+    "services": {
+      "title": "Hire a Node.js developer for these scenarios",
+      "items": [
+        {
+          "title": "Express.js developer / REST APIs",
+          "body": "Endpoints, middleware, and TypeScript contracts ready for frontend teams."
+        },
+        {
+          "title": "Node.js backend for Vue/Nuxt products",
+          "body": "Fullstack integration when the API and UI must move together."
+        },
+        {
+          "title": "Remote Node developer Colombia",
+          "body": "Senior remote contract from Cartagena for LatAm and global teams."
+        },
+        {
+          "title": "End-to-end TypeScript backend",
+          "body": "Typing from the API contract through to client consumption."
+        }
+      ]
+    },
     "expertiseTitle": "What I deliver in Node backend work",
     "expertise": [
       "Node.js REST APIs with Express in production for eight years",
@@ -927,6 +1074,10 @@
       {
         "question": "When are you available for a Node.js backend contract?",
         "answer": "Target availability is August 2026. I'm already open to conversations, interviews, and early offers before that date."
+      },
+      {
+        "question": "Do you design typed REST API contracts for Vue/Nuxt frontends?",
+        "answer": "Yes. I design Express + TypeScript API contracts that frontend teams can consume safely, and I stay effective owning the path from backend endpoints to Vue/Nuxt UI delivery."
       }
     ]
   },
@@ -948,20 +1099,20 @@
     "hire": "Hire"
   },
   "hireProfiles": {
-    "hireForVue": "Hire for Vue",
-    "hireForAi": "Hire for AI",
-    "hireForNode": "Hire for Node",
+    "hireForVue": "Vue.js developer",
+    "hireForAi": "AI engineer",
+    "hireForNode": "Node.js developer",
     "section": "Engagement",
-    "title": "Hire me for",
-    "titleHighlight": "what you need.",
-    "lead": "Focused profiles for recruiters and product teams — Vue/Nuxt, AI/NLP engineering, or Node.js backend with Express.",
-    "vueBlurb": "Senior Vue.js and Nuxt architecture, design systems, and performance-focused frontend delivery.",
-    "aiBlurb": "AI/NLP integrations, conversational products, and turning agent-assisted code into production systems.",
-    "nodeBlurb": "Node.js APIs with Express in production, typed contracts, and fullstack delivery when the product needs end-to-end ownership.",
-    "viewProfile": "View profile",
-    "alsoAvailable": "Also available",
-    "crossLinkFromVue": "Also available: Hire for AI",
-    "crossLinkFromAi": "Also available: Hire for Vue"
+    "title": "Hire me as a",
+    "titleHighlight": "Vue, AI, or Node developer.",
+    "lead": "Focused profiles for recruiters and product teams — Vue.js / Nuxt developer, AI/NLP engineer, or Node.js developer with Express.",
+    "vueBlurb": "Senior Vue.js developer: Vue/Nuxt architecture, design systems, and performance-focused frontend delivery.",
+    "aiBlurb": "AI engineer: NLP/LLM integrations, conversational products, and agent-assisted code ready for production.",
+    "nodeBlurb": "Node.js developer: production Express APIs, typed contracts, and fullstack API-to-UI delivery.",
+    "viewProfile": "View developer profile",
+    "alsoAvailable": "Also hire for",
+    "crossLinkFromVue": "Also available: AI engineer",
+    "crossLinkFromAi": "Also available: Vue.js developer"
   },
   "themes": {
     "dark-modern": "Dark Modern",
