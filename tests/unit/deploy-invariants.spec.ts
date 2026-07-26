@@ -59,7 +59,8 @@ describe('deploy / layout invariants (regression guards)', () => {
     const init = read('app/utils/themeInitScript.ts');
     const css = read('app/assets/css/main.css');
     expect(presets).toContain('FONT_STACKS_LOCAL');
-    expect(presets).toContain('Fira Code Fallback: Segoe UI');
+    expect(presets).toContain('Fira Code Fallback: Consolas');
+    expect(presets).toContain('ui-monospace, monospace');
     expect(presets).toContain('"Fira Code", ${FONT_STACKS_LOCAL[\'Fira Code\']}');
     // Blocking theme-init applies local stack first, then load+idle activates webfonts.
     expect(init).toContain('FONT_STACKS_LOCAL');
@@ -67,8 +68,12 @@ describe('deploy / layout invariants (regression guards)', () => {
     expect(init).toContain('dataset.webfonts');
     expect(init).toContain("addEventListener('load'");
     // CSS :root must not put "Fira Code" in the used --font-main (unused webfont vars OK).
-    expect(css).toMatch(/--font-main:\s*'Fira Code Fallback:/);
+    expect(css).toMatch(/--font-main:\s*'Fira Code Fallback: Consolas'/);
     expect(css).not.toMatch(/--font-main:\s*'Fira Code'/);
+    // Mono fallbacks for Fira — proportional locals CLS the hero name on activation.
+    expect(read('nuxt.config.ts')).toMatch(
+      /name:\s*'Fira Code'[\s\S]*?fallbacks:\s*\[\s*'Consolas'/,
+    );
   });
 
   it('keeps cssCodeSplit false so CSS preload can target one stylesheet', () => {

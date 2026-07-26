@@ -24,7 +24,7 @@ describe('themePresets', () => {
 
   it('applies local font stacks before webfont activation in theme-init', () => {
     const script = buildThemeInitScript();
-    expect(script).toContain('Fira Code Fallback: Segoe UI');
+    expect(script).toContain('Fira Code Fallback: Consolas');
     expect(script).toContain('requestIdleCallback');
     expect(script).toContain("dataset.webfonts='1'");
     // First --font-main write must use the local map (lf), not the webfont map (f).

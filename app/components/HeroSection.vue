@@ -326,14 +326,10 @@ onMounted(() => {
                   <div
                     class="absolute bottom-4 right-4 md:bottom-6 md:right-6 z-20 glass px-3 py-2 rounded-full flex items-center gap-2.5 border border-primary/20 bg-background/60 backdrop-blur-md shadow-lg animate-pulse-slow"
                   >
-                    <span class="relative flex h-2 w-2 md:h-2.5 md:w-2.5">
-                      <span
-                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"
-                      />
-                      <span
-                        class="relative inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-emerald-500"
-                      />
-                    </span>
+                    <span
+                      class="inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-emerald-500 shrink-0"
+                      aria-hidden="true"
+                    />
                     <div class="flex flex-col gap-0.5">
                       <span class="type-meta text-primary leading-none">
                         {{ $t('hero.hud.status') }}

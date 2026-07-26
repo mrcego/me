@@ -26,13 +26,23 @@ test.describe('generate artifacts', () => {
 
     const html = readFileSync(indexPath, 'utf8');
     expect(html).toMatch(/rel="preload"[^>]*as="style"/);
+    // LCP image preload must be discoverable before theme-init / inlined CSS.
+    const headOpen = html.search(/<head[^>]*>/i);
+    const lcpPreload = html.search(
+      /rel="preload"[^>]*as="image"[^>]*me\.jpg|as="image"[^>]*rel="preload"[^>]*me\.jpg/i,
+    );
+    const themeInit = html.indexOf('theme-init');
+    expect(lcpPreload).toBeGreaterThan(headOpen);
+    expect(lcpPreload).toBeLessThan(themeInit);
+    expect(html).toMatch(/s_448x560\/img\/me\.jpg/);
     // Webfonts must stay off the discovery/preload critical path (LCP is the hero image).
     expect(html).not.toMatch(/rel="preload"[^>]*as="font"/);
     expect(html).toMatch(/font-display:optional/);
     expect(html).not.toContain('font-display:swap');
     // First-paint --font-main uses metric-adjusted locals only (no "Fira Code",… webfont head).
-    expect(html).toMatch(/--font-main:"Fira Code Fallback:/);
-    expect(html).not.toMatch(/--font-main:"Fira Code",/);
+    // Minified CSS may use double quotes and drop spaces after `:`.
+    expect(html).toMatch(/--font-main:\s*["']Fira Code Fallback: Consolas["']/);
+    expect(html).not.toMatch(/--font-main:\s*["']Fira Code["']/);
     expect(html).toContain('requestIdleCallback');
     expect(html).toContain('dataset.webfonts');
   });

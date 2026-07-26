@@ -44,11 +44,20 @@ const footerColumns: FooterColumn[] = [
 ];
 
 const socials = [
-  { icon: 'simple-icons:linkedin', link: 'https://linkedin.com/in/mrcego' },
-  { icon: 'simple-icons:github', link: 'https://github.com/mrcego' },
+  {
+    icon: 'simple-icons:linkedin',
+    link: 'https://linkedin.com/in/mrcego',
+    labelKey: 'footer.socialLinkedIn',
+  },
+  {
+    icon: 'simple-icons:github',
+    link: 'https://github.com/mrcego',
+    labelKey: 'footer.socialGitHub',
+  },
   {
     icon: 'solar:letter-bold-duotone',
     link: 'mailto:cesargomezh90@gmail.com',
+    labelKey: 'footer.socialEmail',
   },
 ];
 </script>
@@ -165,7 +174,7 @@ const socials = [
             :key="s.icon"
             :href="s.link"
             class="size-11 md:size-12 glass rounded-xl md:rounded-2xl border border-foreground/10 hover:border-primary/40 flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,75,92,0.35)] group/social"
-            aria-label="Social Link"
+            :aria-label="$t(s.labelKey)"
           >
             <Icon
               :name="s.icon"

@@ -937,7 +937,10 @@
     "protocol": "Ancelab.",
     "status": "All Systems Operational",
     "navLabel": "Footer links",
-    "email": "Email Cesar"
+    "email": "Email Cesar",
+    "socialLinkedIn": "Visit LinkedIn profile",
+    "socialGitHub": "Visit GitHub profile",
+    "socialEmail": "Email Cesar"
   },
   "col": {
     "nav": "Navigation",

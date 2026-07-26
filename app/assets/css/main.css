@@ -78,9 +78,9 @@
       even with preload:false + font-display:optional (PSI Network Dependency Tree).
       theme-init / useTheme swap in the webfont after load+idle.
     */
-    --font-main: 'Fira Code Fallback: BlinkMacSystemFont', 'Fira Code Fallback: Segoe UI',
-      'Fira Code Fallback: Helvetica Neue', 'Fira Code Fallback: Arial',
-      'Fira Code Fallback: Noto Sans', ui-sans-serif, system-ui, sans-serif;
+    /* Mono metric fallbacks — must match FONT_STACKS_LOCAL / @nuxt/fonts Fira fallbacks. */
+    --font-main: 'Fira Code Fallback: Consolas', 'Fira Code Fallback: Monaco',
+      'Fira Code Fallback: Menlo', 'Fira Code Fallback: Courier New', ui-monospace, monospace;
     /* Unused until activation — keeps @nuxt/fonts metric fallbacks generated. */
     --font-main-webfont-fira: 'Fira Code', ui-sans-serif, system-ui, sans-serif;
     --font-main-webfont-outfit: 'Outfit', ui-sans-serif, system-ui, sans-serif;

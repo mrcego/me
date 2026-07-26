@@ -16,15 +16,20 @@ const enableGlobalParticles = ref(false);
 useHead({
   link: [
     {
-      // Match mobile DPR (~1.75–2x) so preload === LCP request (392w for 224 CSS px).
+      // Must match HeroSection NuxtImg sizes/srcset. Generate pipeline re-injects this
+      // at the start of <head> (scripts/lib/lcp-image-preload.mjs) so discovery is not
+      // delayed by theme-init + inlined CSS (~200KB) — that was ~320ms resource load delay.
+      // PSI mobile: 224 CSS px × ~2.625 DPR → 448w.
       rel: 'preload',
       as: 'image',
       type: 'image/webp',
-      href: '/_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg',
+      href: '/_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg',
       fetchpriority: 'high',
-      imagesizes: '224px',
+      tagPriority: 'critical',
+      imagesizes:
+        '(max-width: 640px) 224px, (max-width: 1024px) 256px, (max-width: 1280px) 392px, 448px',
       imagesrcset:
-        '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg 224w, /_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg 392w, /_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg 448w',
+        '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg 224w, /_ipx/f_webp&q_85&fit_cover&s_256x320/img/me.jpg 256w, /_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg 392w, /_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg 448w',
     },
   ],
 });

@@ -59,6 +59,11 @@ test.describe('SSG asset integrity', () => {
       expect(entryIdx, `${path} missing entry module`).toBeGreaterThan(-1);
       expect(preloadIdx, `${path} preload must precede entry module`).toBeLessThan(entryIdx);
 
+      // LCP image preload must precede CSS preload (cuts resource load delay).
+      const lcpIdx = html.search(/rel="preload"[^>]*as="image"|as="image"[^>]*rel="preload"/i);
+      expect(lcpIdx, `${path} missing LCP image preload`).toBeGreaterThan(-1);
+      expect(lcpIdx).toBeLessThan(preloadIdx);
+
       const css = await request.get(cssHref);
       expect(css.ok(), cssHref).toBeTruthy();
       expect(css.headers()['content-type'] || '').toMatch(/css/);

@@ -24,16 +24,20 @@ export const MUTED_LIGHT = '#64748b';
  * Metric-adjusted local faces from @nuxt/fonts (src:local only).
  * Used for first paint so the browser never requests /_fonts/*.woff2 on the LCP path.
  * Names must stay in sync with @nuxt/fonts / fontaine fallback naming.
+ *
+ * Fira Code is monospace — proportional sans fallbacks (Segoe UI, Arial) still shift
+ * the hero name when webfonts activate after idle. Use mono locals so size-adjust
+ * can match advance widths when "Fira Code" is swapped in.
  */
 const OUTFIT_LOCAL_FACES =
   '"Outfit Fallback: BlinkMacSystemFont", "Outfit Fallback: Segoe UI", "Outfit Fallback: Helvetica Neue", "Outfit Fallback: Arial", "Outfit Fallback: Noto Sans"';
 const FIRA_LOCAL_FACES =
-  '"Fira Code Fallback: BlinkMacSystemFont", "Fira Code Fallback: Segoe UI", "Fira Code Fallback: Helvetica Neue", "Fira Code Fallback: Arial", "Fira Code Fallback: Noto Sans"';
+  '"Fira Code Fallback: Consolas", "Fira Code Fallback: Monaco", "Fira Code Fallback: Menlo", "Fira Code Fallback: Courier New"';
 
 /** First-paint stacks — no webfont family name (no network font request). */
 export const FONT_STACKS_LOCAL: Record<ThemeFont, string> = {
   Sans: `${OUTFIT_LOCAL_FACES}, ui-sans-serif, system-ui, sans-serif`,
-  'Fira Code': `${FIRA_LOCAL_FACES}, ui-sans-serif, system-ui, sans-serif`,
+  'Fira Code': `${FIRA_LOCAL_FACES}, ui-monospace, monospace`,
 };
 
 /**

@@ -937,7 +937,10 @@
     "protocol": "Ancelab.",
     "status": "Todos los Sistemas Operativos",
     "navLabel": "Enlaces del pie de página",
-    "email": "Escribir a César"
+    "email": "Escribir a César",
+    "socialLinkedIn": "Visitar perfil de LinkedIn",
+    "socialGitHub": "Visitar perfil de GitHub",
+    "socialEmail": "Escribir a César"
   },
   "col": {
     "nav": "Navegación",

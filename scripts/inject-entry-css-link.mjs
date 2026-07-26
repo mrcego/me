@@ -24,7 +24,8 @@ if (!existsSync(nuxtDir)) {
 }
 
 try {
-  const { href, updated } = injectEntryCssLinkIntoPublicDir(publicDir);
+  const { href, updated, lcpUpdated } = injectEntryCssLinkIntoPublicDir(publicDir);
+  console.log(`[css-link] Preloaded LCP image in ${lcpUpdated} HTML file(s)`);
   console.log(`[css-link] Preloaded ${href} in ${updated} HTML file(s)`);
 } catch (error) {
   console.error(error instanceof Error ? error.message : error);

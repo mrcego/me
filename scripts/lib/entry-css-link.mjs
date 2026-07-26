@@ -1,9 +1,14 @@
 /**
- * Helpers for injecting an early CSS preload into generated HTML.
+ * Helpers for injecting early critical preloads into generated HTML.
  * Used by scripts/inject-entry-css-link.mjs and unit tests.
+ *
+ * Order after <head>: LCP image (fetchpriority=high), then CSS preload.
+ * Image must precede the ~200KB inline style block or resource load delay
+ * stays hundreds of ms even when a late useHead preload exists.
  */
 import { readdirSync, readFileSync, writeFileSync, statSync, existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
+import { injectHeroLcpImagePreload } from './lcp-image-preload.mjs';
 
 /** @param {string} name */
 export function isBundledStylesheetName(name) {
@@ -46,11 +51,18 @@ export function walkHtmlFiles(dir) {
  * @returns {{ html: string, changed: boolean }}
  */
 export function injectStylesheetPreload(html, href) {
-  const marker = `href="${href}"`;
+  const marker = `rel="preload" as="style" href="${href}"`;
   if (html.includes(marker)) return { html, changed: false };
 
   const linkTag = `<link rel="preload" as="style" href="${href}" crossorigin>`;
   if (!/<head[^>]*>/i.test(html)) return { html, changed: false };
+
+  // Prefer immediately after an early LCP image preload when present.
+  const afterLcp = html.replace(
+    /(<head[^>]*>\s*<link\b[^>]*\bas=["']image["'][^>]*>)/i,
+    `$1${linkTag}`,
+  );
+  if (afterLcp !== html) return { html: afterLcp, changed: true };
 
   return {
     html: html.replace(/<head[^>]*>/i, (open) => `${open}${linkTag}`),
@@ -60,7 +72,7 @@ export function injectStylesheetPreload(html, href) {
 
 /**
  * @param {string} publicDir
- * @returns {{ href: string, updated: number }}
+ * @returns {{ href: string, updated: number, lcpUpdated: number }}
  */
 export function injectEntryCssLinkIntoPublicDir(publicDir) {
   const nuxtDir = join(publicDir, '_nuxt');
@@ -71,16 +83,19 @@ export function injectEntryCssLinkIntoPublicDir(publicDir) {
 
   const href = `/_nuxt/${cssFile}`;
   let updated = 0;
+  let lcpUpdated = 0;
 
   for (const file of walkHtmlFiles(publicDir)) {
     const before = readFileSync(file, 'utf8');
-    const { html, changed } = injectStylesheetPreload(before, href);
-    if (!changed) continue;
-    writeFileSync(file, html, 'utf8');
-    updated += 1;
+    const lcp = injectHeroLcpImagePreload(before);
+    const css = injectStylesheetPreload(lcp.html, href);
+    if (!lcp.changed && !css.changed) continue;
+    writeFileSync(file, css.html, 'utf8');
+    if (lcp.changed) lcpUpdated += 1;
+    if (css.changed) updated += 1;
   }
 
-  return { href, updated };
+  return { href, updated, lcpUpdated };
 }
 
 export { relative };
