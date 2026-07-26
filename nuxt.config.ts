@@ -10,10 +10,8 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
-  // Match Netlify directory URLs (…/page/ → 200) so sitemap/canonicals avoid 301s.
-  trailingSlash: true,
-
   // Site configuration for SEO modules
+  // trailingSlash: keep loc/canonicals with `/` — Netlify serves directory URLs that way.
   site: {
     url: 'https://cesargomez.dev',
     name: 'César Gómez Portfolio',
