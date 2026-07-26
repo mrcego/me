@@ -11,7 +11,7 @@ export const usePortfolioSeo = () => {
 
   const canonicalUrl = computed(() => absoluteSiteUrl(localePath('/')));
 
-  const ogImage = `${SITE_ORIGIN}/img/og-image.png`;
+  const ogImage = `${SITE_ORIGIN}/img/og-image.png?v=cg2`;
   const profileImage = `${SITE_ORIGIN}/img/technical-identity.jpg`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
   const { public: publicConfig } = useRuntimeConfig();

@@ -51,7 +51,7 @@ withDefaults(
         width: 520px;
         height: 520px;
         border-radius: 9999px;
-        background: rgba(88, 166, 255, 0.22);
+        background: rgba(88, 166, 255, 0.23);
         display: flex;
       "
     />
@@ -63,7 +63,7 @@ withDefaults(
         width: 420px;
         height: 420px;
         border-radius: 9999px;
-        background: rgba(88, 166, 255, 0.12);
+        background: rgba(88, 166, 255, 0.13);
         display: flex;
       "
     />

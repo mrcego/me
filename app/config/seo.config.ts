@@ -8,7 +8,7 @@ export default {
     author: 'César Gómez',
     type: 'website',
     locale: 'en',
-    ogImage: '/img/og-image.png',
+    ogImage: '/img/og-image.png?v=cg2',
     ogImageAlt: 'César Gómez — Senior Vue/Nuxt · AI & NLP Expert',
     facebookAppId: '966242223397117',
     twitterCard: 'summary_large_image',

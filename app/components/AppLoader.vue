@@ -32,7 +32,7 @@ function onSplashAnimationEnd(event: AnimationEvent) {
           <div class="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse-slow" />
           <!-- Decorative only — must not steal LCP from the hero photo -->
           <img
-            src="/img/logo-final.svg?v=cg1"
+            src="/img/logo-final.svg?v=cg2"
             alt=""
             width="96"
             height="96"

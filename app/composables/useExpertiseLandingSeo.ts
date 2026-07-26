@@ -20,7 +20,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
   const canonicalUrl = computed(() => absoluteSiteUrl(route.path));
   const enUrl = absoluteSiteUrl(options.paths.en);
   const esUrl = absoluteSiteUrl(`/es${options.paths.es}`);
-  const ogImage = `${SITE_ORIGIN}/img/og-image.png`;
+  const ogImage = `${SITE_ORIGIN}/img/og-image.png?v=cg2`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
 
   const faqItems = computed(() => {
