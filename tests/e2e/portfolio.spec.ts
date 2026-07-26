@@ -78,6 +78,10 @@ test.describe('portfolio SSG under CSP', () => {
     expect(res.ok()).toBeTruthy();
     const html = await res.text();
     expect(html).toMatch(/rel="preload"[^>]*as="style"[^>]*href="\/_nuxt\/[^"]+\.css"/);
+    const lcpIdx = html.search(/rel="preload"[^>]*as="image"|as="image"[^>]*rel="preload"/i);
+    const cssIdx = html.search(/rel="preload"[^>]*as="style"/i);
+    expect(lcpIdx).toBeGreaterThan(-1);
+    expect(lcpIdx).toBeLessThan(cssIdx);
     expect(html).toMatch(/__NUXT__|#__NUXT_DATA__/);
   });
 

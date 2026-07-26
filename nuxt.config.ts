@@ -171,11 +171,14 @@ export default defineNuxtConfig({
         // still lands on PSI's critical path even with font-display:optional.
         // global: ship @font-face even though first paint uses local fallbacks only
         // (theme-init / useTheme name "Fira Code" only after load+idle).
+        // Mono fallbacks so deferred webfont activation does not CLS the hero name
+        // (proportional Segoe/Arial metrics cannot match a monospace face).
         name: 'Fira Code',
         provider: 'google',
         weights: [400, 600, 700],
         preload: false,
         global: true,
+        fallbacks: ['Consolas', 'Monaco', 'Menlo', 'Courier New'],
       },
     ],
   },
