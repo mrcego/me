@@ -20,13 +20,13 @@
 ## Canonical URLs
 
 - [English home](https://cesargomez.dev/)
-- [Spanish home](https://cesargomez.dev/es)
-- [Vue developer (EN)](https://cesargomez.dev/vue-frontend-developer)
-- [Desarrollador Vue (ES)](https://cesargomez.dev/es/desarrollador-vue)
-- [AI engineer (EN)](https://cesargomez.dev/ai-engineer)
-- [Ingeniero de IA (ES)](https://cesargomez.dev/es/ingeniero-ia)
-- [Node.js backend (EN)](https://cesargomez.dev/nodejs-backend-developer)
-- [Backend Node.js (ES)](https://cesargomez.dev/es/desarrollador-backend-nodejs)
+- [Spanish home](https://cesargomez.dev/es/)
+- [Vue developer (EN)](https://cesargomez.dev/vue-frontend-developer/)
+- [Desarrollador Vue (ES)](https://cesargomez.dev/es/desarrollador-vue/)
+- [AI engineer (EN)](https://cesargomez.dev/ai-engineer/)
+- [Ingeniero de IA (ES)](https://cesargomez.dev/es/ingeniero-ia/)
+- [Node.js backend (EN)](https://cesargomez.dev/nodejs-backend-developer/)
+- [Backend Node.js (ES)](https://cesargomez.dev/es/desarrollador-backend-nodejs/)
 - [Sitemap](https://cesargomez.dev/sitemap_index.xml)
 
 ## Professional summary
@@ -75,12 +75,12 @@ Open to senior frontend, website development, fullstack, AI/NLP, Node backend, a
 
 ## Optional pages
 
-- [Vue frontend developer profile](https://cesargomez.dev/vue-frontend-developer)
-- [Desarrollador Vue.js senior](https://cesargomez.dev/es/desarrollador-vue)
-- [AI engineer profile](https://cesargomez.dev/ai-engineer)
-- [Perfil ingeniero de IA](https://cesargomez.dev/es/ingeniero-ia)
-- [Node.js backend profile](https://cesargomez.dev/nodejs-backend-developer)
-- [Perfil backend Node.js](https://cesargomez.dev/es/desarrollador-backend-nodejs)
+- [Vue frontend developer profile](https://cesargomez.dev/vue-frontend-developer/)
+- [Desarrollador Vue.js senior](https://cesargomez.dev/es/desarrollador-vue/)
+- [AI engineer profile](https://cesargomez.dev/ai-engineer/)
+- [Perfil ingeniero de IA](https://cesargomez.dev/es/ingeniero-ia/)
+- [Node.js backend profile](https://cesargomez.dev/nodejs-backend-developer/)
+- [Perfil backend Node.js](https://cesargomez.dev/es/desarrollador-backend-nodejs/)
 - [About / Technical Identity](https://cesargomez.dev/#about)
 - [Tech stack](https://cesargomez.dev/#tech-stack)
 - [Certifications](https://cesargomez.dev/#certifications)

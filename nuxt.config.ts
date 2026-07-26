@@ -11,9 +11,11 @@ export default defineNuxtConfig({
   },
 
   // Site configuration for SEO modules
+  // trailingSlash: keep loc/canonicals with `/` — Netlify serves directory URLs that way.
   site: {
     url: 'https://cesargomez.dev',
     name: 'César Gómez Portfolio',
+    trailingSlash: true,
   },
 
   nitro: {
@@ -25,13 +27,13 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: [
         '/',
-        '/es',
-        '/vue-frontend-developer',
-        '/es/desarrollador-vue',
-        '/ai-engineer',
-        '/es/ingeniero-ia',
-        '/nodejs-backend-developer',
-        '/es/desarrollador-backend-nodejs',
+        '/es/',
+        '/vue-frontend-developer/',
+        '/es/desarrollador-vue/',
+        '/ai-engineer/',
+        '/es/ingeniero-ia/',
+        '/nodejs-backend-developer/',
+        '/es/desarrollador-backend-nodejs/',
       ],
     },
     compressPublicAssets: true,
@@ -51,7 +53,7 @@ export default defineNuxtConfig({
         // Matches DEFAULT_THEME_ID (github-dark); runtime script overrides per visitor
         { name: 'theme-color', content: '#58a6ff' },
         { name: 'msapplication-TileColor', content: '#58a6ff' },
-        { name: 'msapplication-TileImage', content: '/apple-touch-icon.png?v=cg1' },
+        { name: 'msapplication-TileImage', content: '/apple-touch-icon.png?v=cg2' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
         { 'http-equiv': 'X-XSS-Protection', content: '1; mode=block' },
       ],
@@ -67,11 +69,11 @@ export default defineNuxtConfig({
         { rel: 'dns-prefetch', href: '//www.linkedin.com' },
         { rel: 'dns-prefetch', href: '//github.com' },
         { rel: 'manifest', href: '/manifest.json' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png?v=cg1' },
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=cg1' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png?v=cg1' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png?v=cg1' },
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=cg1' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png?v=cg2' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg?v=cg2' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png?v=cg2' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png?v=cg2' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=cg2' },
         { rel: 'alternate', type: 'text/plain', href: '/llms.txt', title: 'LLM context' },
       ],
     },
@@ -216,15 +218,16 @@ export default defineNuxtConfig({
     strictNuxtContentPaths: true,
     zeroRuntime: true,
     xsl: false,
+    // Trailing slashes match static directory output (avoids GSC "Redirect error").
     urls: [
       '/',
-      '/es',
-      '/vue-frontend-developer',
-      '/es/desarrollador-vue',
-      '/ai-engineer',
-      '/es/ingeniero-ia',
-      '/nodejs-backend-developer',
-      '/es/desarrollador-backend-nodejs',
+      '/es/',
+      '/vue-frontend-developer/',
+      '/es/desarrollador-vue/',
+      '/ai-engineer/',
+      '/es/ingeniero-ia/',
+      '/nodejs-backend-developer/',
+      '/es/desarrollador-backend-nodejs/',
     ],
   },
 

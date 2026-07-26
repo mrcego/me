@@ -315,7 +315,7 @@ const scrollToSection = (e, href) => {
               class="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500"
             />
             <img
-              src="/img/logo-final.svg?v=cg1"
+              src="/img/logo-final.svg?v=cg2"
               alt="César Gómez"
               width="48"
               height="48"

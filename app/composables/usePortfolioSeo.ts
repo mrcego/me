@@ -1,22 +1,18 @@
-const SITE_URL = 'https://cesargomez.dev';
+import { SITE_ORIGIN, absoluteSiteUrl } from '~/utils/siteUrl';
 
 /** ProfilePage dates must be full ISO-8601 DateTime (GSC rejects YYYY-MM-DD). */
 const PROFILE_DATE_CREATED = '2024-06-01T12:00:00-05:00';
-const PROFILE_DATE_MODIFIED = '2026-07-25T20:00:00-05:00';
+const PROFILE_DATE_MODIFIED = '2026-07-25T21:00:00-05:00';
 
 export const usePortfolioSeo = () => {
   const { t, locale } = useI18n();
   const localePath = useLocalePath();
   const faqItems = useFaqItems();
 
-  const canonicalPath = computed(() => localePath('/'));
-  const canonicalUrl = computed(() => {
-    const path = canonicalPath.value;
-    return path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`;
-  });
+  const canonicalUrl = computed(() => absoluteSiteUrl(localePath('/')));
 
-  const ogImage = `${SITE_URL}/img/og-image.png`;
-  const profileImage = `${SITE_URL}/img/technical-identity.jpg`;
+  const ogImage = `${SITE_ORIGIN}/img/og-image.png?v=cg2`;
+  const profileImage = `${SITE_ORIGIN}/img/technical-identity.jpg`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
   const { public: publicConfig } = useRuntimeConfig();
 
@@ -66,9 +62,9 @@ export const usePortfolioSeo = () => {
     },
     link: [
       { rel: 'canonical', href: canonicalUrl.value },
-      { rel: 'alternate', hreflang: 'en', href: `${SITE_URL}/` },
-      { rel: 'alternate', hreflang: 'es', href: `${SITE_URL}/es` },
-      { rel: 'alternate', hreflang: 'x-default', href: `${SITE_URL}/` },
+      { rel: 'alternate', hreflang: 'en', href: absoluteSiteUrl('/') },
+      { rel: 'alternate', hreflang: 'es', href: absoluteSiteUrl('/es/') },
+      { rel: 'alternate', hreflang: 'x-default', href: absoluteSiteUrl('/') },
     ],
     meta: [
       { name: 'geo.region', content: 'CO-BOL' },
@@ -84,7 +80,7 @@ export const usePortfolioSeo = () => {
         innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Person',
-          '@id': `${SITE_URL}/#person`,
+          '@id': `${SITE_ORIGIN}/#person`,
           name: personName.value,
           givenName: locale.value === 'es' ? 'César' : 'Cesar',
           familyName: locale.value === 'es' ? 'Gómez' : 'Gomez',
@@ -183,20 +179,20 @@ export const usePortfolioSeo = () => {
         innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          '@id': `${SITE_URL}/#website`,
+          '@id': `${SITE_ORIGIN}/#website`,
           name: t('seo.siteName'),
           description: t('seo.description'),
-          url: SITE_URL,
+          url: absoluteSiteUrl('/'),
           keywords: t('seo.keywords')
             .split(',')
             .map((k) => k.trim())
             .filter(Boolean),
           inLanguage: ['en-US', 'es-ES'],
           publisher: {
-            '@id': `${SITE_URL}/#person`,
+            '@id': `${SITE_ORIGIN}/#person`,
           },
           about: {
-            '@id': `${SITE_URL}/#person`,
+            '@id': `${SITE_ORIGIN}/#person`,
           },
         }),
       },
@@ -215,7 +211,7 @@ export const usePortfolioSeo = () => {
           dateModified: PROFILE_DATE_MODIFIED,
           mainEntity: {
             '@type': 'Person',
-            '@id': `${SITE_URL}/#person`,
+            '@id': `${SITE_ORIGIN}/#person`,
             name: personName.value,
             alternateName: 'mrcego',
             url: canonicalUrl.value,
@@ -272,7 +268,7 @@ export const usePortfolioSeo = () => {
             'Worldwide',
           ],
           provider: {
-            '@id': `${SITE_URL}/#person`,
+            '@id': `${SITE_ORIGIN}/#person`,
           },
           serviceType: [
             'Frontend Development',
