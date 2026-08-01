@@ -5,8 +5,9 @@
  * [[headers]] are not present in that publish tree.
  *
  * After generate, write-csp-headers.mjs hashes executable inline `<script>` bodies
- * so we can drop script-src 'unsafe-inline' while keeping Nuxt SSG payloads,
- * then emits Cache-Control rules via `buildCacheHeaderBlocks()`.
+ * (including `type=importmap`) so we can drop script-src 'unsafe-inline' while
+ * keeping Nuxt SSG payloads and Vite entry maps, then emits Cache-Control rules
+ * via `buildCacheHeaderBlocks()`.
  */
 
 import { createHash } from 'node:crypto';
@@ -36,7 +37,9 @@ function* walkHtmlFiles(dir) {
 }
 
 /**
- * Executable inline scripts only (skip JSON / importmap payloads).
+ * Inline script bodies that need script-src hashes under strict CSP.
+ * Skips JSON / ld+json payloads. Includes `type=importmap` — Chromium treats
+ * import maps as script-src gated (Nuxt 4.5+/Vite 8 emit `#entry` maps).
  * @param {string} html
  * @returns {string[]}
  */
@@ -51,12 +54,7 @@ export function extractExecutableInlineScripts(html) {
     if (!body.trim()) continue;
     const typeMatch = attrs.match(/\btype\s*=\s*["']([^"']+)["']/i);
     const type = typeMatch?.[1]?.trim().toLowerCase() ?? 'text/javascript';
-    if (
-      type === 'application/json' ||
-      type === 'importmap' ||
-      type === 'application/ld+json' ||
-      type.endsWith('+json')
-    ) {
+    if (type === 'application/json' || type === 'application/ld+json' || type.endsWith('+json')) {
       continue;
     }
     bodies.push(body);
