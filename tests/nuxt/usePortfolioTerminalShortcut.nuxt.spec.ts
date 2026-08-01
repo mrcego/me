@@ -131,4 +131,55 @@ describe('usePortfolioTerminalShortcut', () => {
     expect(shortcut.gatePhase.value).toBe('idle');
     expect(shortcut.announce.value).toBe('');
   });
+
+  it('unlocks from logo long-press and opens the terminal', async () => {
+    vi.useFakeTimers();
+    const { shortcut, terminal } = await mountShortcut();
+    shortcut.resetGate();
+    terminal.closeTerminal();
+    terminal.terminalMounted.value = false;
+
+    shortcut.unlockFromLogoLongPress();
+    await nextTick();
+    expect(shortcut.gatePhase.value).toBe('unlocked');
+    expect(shortcut.announce.value).toMatch(/Terminal unlocked|Terminal desbloqueado/);
+
+    vi.advanceTimersByTime(350);
+    await nextTick();
+    expect(terminal.terminalOpen.value).toBe(true);
+    expect(terminal.terminalMounted.value).toBe(true);
+  });
+
+  it('skips unlock delay when prefers-reduced-motion is set', async () => {
+    vi.useFakeTimers();
+    const { shortcut, terminal } = await mountShortcut();
+    shortcut.resetGate();
+    terminal.closeTerminal();
+    terminal.terminalMounted.value = false;
+
+    shortcut.unlockFromLogoLongPress({ preferReducedMotion: true });
+    await nextTick();
+    expect(shortcut.gatePhase.value).toBe('unlocked');
+    vi.advanceTimersByTime(0);
+    await nextTick();
+    expect(terminal.terminalOpen.value).toBe(true);
+  });
+
+  it('does not re-arm logo unlock while terminal or gate is busy', async () => {
+    vi.useFakeTimers();
+    const { shortcut, terminal } = await mountShortcut();
+    terminal.openTerminal();
+    shortcut.resetGate();
+
+    shortcut.unlockFromLogoLongPress();
+    await nextTick();
+    expect(shortcut.gatePhase.value).toBe('idle');
+
+    terminal.closeTerminal();
+    shortcut.unlockFromLogoLongPress();
+    await nextTick();
+    expect(shortcut.gatePhase.value).toBe('unlocked');
+    shortcut.unlockFromLogoLongPress();
+    expect(shortcut.gatePhase.value).toBe('unlocked');
+  });
 });

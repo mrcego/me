@@ -35,6 +35,11 @@ test.describe('interactive chrome', () => {
     await expect
       .poll(async () => page.evaluate(() => localStorage.getItem('theme-preset-id')))
       .toBe('dracula');
+    await expect(page.locator('[data-theme-logo]')).toHaveCSS('color', 'rgb(189, 147, 249)');
+    await expect(page.locator('#theme-favicon')).toHaveAttribute(
+      'href',
+      /data:image\/svg\+xml,.*bd93f9/,
+    );
   });
 
   test('opens hire profiles menu and navigates a profile', async ({ page }) => {

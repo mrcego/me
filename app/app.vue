@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
+import { buildThemeFaviconHref } from '~/utils/themeFavicon';
 
 // Apply the persisted palette immediately; the navbar itself can hydrate on demand.
-useTheme();
+const { currentTheme } = useTheme();
 const { showAnnouncement } = useAvailability();
 // Keep intersection observers alive even while LazyAppNavbar is deferred.
 usePortfolio();
@@ -21,6 +22,7 @@ useWebVitalsRum();
 
 /** Fixed full-viewport particle canvas is too expensive on mobile scroll. */
 const enableGlobalParticles = ref(false);
+const faviconReady = ref(false);
 
 useHead({
   link: [
@@ -43,7 +45,26 @@ useHead({
   ],
 });
 
+useHead(() => {
+  if (!faviconReady.value) return {};
+
+  return {
+    link: [
+      {
+        id: 'theme-favicon',
+        key: 'theme-favicon',
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: buildThemeFaviconHref(currentTheme.value.primary),
+      },
+    ],
+  };
+});
+
 onMounted(() => {
+  // Keep the static favicon for SSR, then match the persisted theme after hydration.
+  faviconReady.value = true;
+
   const coarseOrNarrow =
     typeof window.matchMedia === 'function' &&
     window.matchMedia('(max-width: 1023px), (pointer: coarse)').matches;

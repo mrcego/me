@@ -71,7 +71,7 @@ onMounted(() => {
 <template>
   <section
     id="hero"
-    class="relative min-h-svh flex items-center justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+5rem)] pb-8 md:pb-12 lg:pt-[calc(var(--availability-banner-h,0px)+5.5rem)] lg:pb-14"
+    class="relative min-h-svh flex items-start lg:items-center justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+5rem)] pb-8 md:pb-12 lg:pt-[calc(var(--availability-banner-h,0px)+5.5rem)] lg:pb-14"
   >
     <LazyHeroParticles :hydrate-after="3200" />
 
