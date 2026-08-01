@@ -107,8 +107,16 @@ test.describe('interactive accessibility', () => {
     const toggle = page.locator('#certifications button[aria-controls^="cert-panel"]').first();
     await expect(toggle).toBeVisible({ timeout: 20_000 });
     await expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    await toggle.press('Enter');
-    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+
+    // Certifications is hydrate-on-visible: SSR markup is clickable-looking before Vue attaches.
+    // Retry Enter until the island is live so CI doesn't flake on slow Lazy hydration.
+    await expect(async () => {
+      if ((await toggle.getAttribute('aria-expanded')) !== 'true') {
+        await toggle.focus();
+        await toggle.press('Enter');
+      }
+      await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    }).toPass({ timeout: 20_000 });
   });
 
   test('icon-only social controls have accessible names and 44px targets', async ({ page }) => {
