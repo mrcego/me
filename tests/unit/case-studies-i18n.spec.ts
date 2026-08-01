@@ -33,6 +33,7 @@ function assertCaseStudiesContract(messages: LocaleMessages, locale: string) {
     'caseStudies.lead',
     'caseStudies.tagsLabel',
     'caseStudies.readMore',
+    'caseStudies.readMoreAria',
   ] as const;
 
   for (const key of topLevelKeys) {

@@ -706,6 +706,7 @@
     "lead": "Trabajo de producto con alcance verificable: arquitectura frontend, design systems y craft asistido por IA en ed-tech de producción.",
     "tagsLabel": "Tecnologías y áreas de enfoque",
     "readMore": "Leer caso de estudio",
+    "readMoreAria": "Leer caso de estudio: {title}",
     "items": {
       "colegium": {
         "role": "Senior Frontend · Colegium",

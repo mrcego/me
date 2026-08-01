@@ -706,6 +706,7 @@
     "lead": "Selected product work with verifiable scope — frontend architecture, design systems, and AI-assisted craft in production ed-tech.",
     "tagsLabel": "Technologies and focus areas",
     "readMore": "Read case study",
+    "readMoreAria": "Read case study: {title}",
     "items": {
       "colegium": {
         "role": "Senior Frontend · Colegium",
