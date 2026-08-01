@@ -56,7 +56,7 @@ const pill = (x, label) => {
   };
 };
 
-const pills = ['Vue.js', 'Nuxt', 'TypeScript', 'AI · NLP'];
+const pills = ['Vue.js', 'Nuxt', 'TypeScript', 'AI Craft'];
 let cursor = 90;
 const gap = 16;
 const pillSvg = pills
@@ -107,7 +107,7 @@ const background = Buffer.from(`
   <rect x="92" y="318" width="120" height="5" rx="2.5" fill="url(#rule)"/>
 
   <!-- Subtitle: matches the hero subtitle after the name -->
-  <text x="90" y="386" font-family="${FONT}" font-size="37" font-weight="600" fill="${MUTED}">Senior Vue/Nuxt · <tspan fill="${PRIMARY}">AI &amp; NLP Expert</tspan></text>
+  <text x="90" y="386" font-family="${FONT}" font-size="37" font-weight="600" fill="${MUTED}">Senior Vue/Nuxt · <tspan fill="${PRIMARY}">AI-Assisted Craft</tspan></text>
 
   ${pillSvg}
 

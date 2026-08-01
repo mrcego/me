@@ -7,6 +7,8 @@ export default defineVitestConfig({
     'import.meta.server': JSON.stringify(false),
   },
   test: {
+    // Nuxt environment setup under coverage can exceed Vitest's 10s default.
+    hookTimeout: 60_000,
     exclude: [
       '**/node_modules/**',
       '**/dist/**',
@@ -32,8 +34,15 @@ export default defineVitestConfig({
         'app/composables/useAiEngineerLandingSeo.ts',
         'app/composables/useVueDeveloperLandingSeo.ts',
         'app/composables/useNodeBackendLandingSeo.ts',
+        'app/composables/useCaseStudySeo.ts',
+        'app/composables/useContentPageSeo.ts',
+        'app/composables/useAiCraftLandingSeo.ts',
+        'app/composables/useLocalLandingSeo.ts',
         'app/composables/useSmoothedScroll.ts',
         'app/composables/usePortfolio.ts',
+        // Client wiring covered by e2e / focused nuxt specs; keep thresholds honest.
+        'app/composables/useWebVitalsRum.ts',
+        'app/composables/useSectionNavigation.ts',
       ],
       thresholds: {
         statements: 80,

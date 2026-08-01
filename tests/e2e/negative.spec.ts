@@ -1,16 +1,19 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('negative / edge paths', () => {
-  test('unknown routes serve the prerendered 404 page', async ({ page }) => {
-    const response = await page.goto('/this-route-does-not-exist-xyz', {
+  test('unknown routes serve the branded 404 page', async ({ page }) => {
+    const response = await page.goto('/this-route-does-not-exist-xyz/', {
       waitUntil: 'domcontentloaded',
     });
     // Static hosting may 404 or serve 404.html with 200 depending on server.
     expect(response).toBeTruthy();
     const status = response!.status();
     expect([200, 404]).toContain(status);
-    const body = await page.locator('body').innerText();
-    expect(body.length).toBeGreaterThan(0);
+    await expect(page.locator('.error-page')).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(
+      /offline|fuera de línea|not found|no encontrada|went wrong|salió mal/i,
+    );
+    await expect(page.getByRole('button', { name: /Back home|Volver al inicio/i })).toBeVisible();
   });
 
   test('closing theme menu with Escape leaves page interactive', async ({ page }) => {

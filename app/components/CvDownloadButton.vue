@@ -6,7 +6,7 @@ const { href, fileName } = useCvDownload();
   <a
     :href="href"
     :download="fileName"
-    class="cv-download-btn inline-flex items-center justify-center gap-2 rounded-2xl sm:rounded-3xl px-7 sm:px-9 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-foreground transition-transform hover:scale-[1.03] hover:text-primary active:scale-95 w-full sm:w-auto sm:shrink-0 whitespace-nowrap"
+    class="cv-download-btn inline-flex items-center justify-center gap-2 rounded-2xl sm:rounded-3xl px-7 sm:px-9 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-foreground transition-transform hover:scale-[1.03] hover:text-primary active:scale-95 w-full sm:w-auto sm:shrink-0 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
     :aria-label="$t('hero.downloadCvAria', { file: fileName })"
   >
     <Icon

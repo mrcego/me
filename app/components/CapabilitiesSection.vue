@@ -69,7 +69,7 @@ const capabilities = [
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-6 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-[3rem] border-foreground/5 cursor-pointer overflow-hidden h-full"
+          class="surface-card group relative glass p-6 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-[3rem] border-foreground/5 overflow-hidden h-full"
         >
           <!-- holographic scanline internal -->
           <div
@@ -101,7 +101,7 @@ const capabilities = [
               <NuxtLink
                 v-if="cap.to"
                 :to="localePath(cap.to)"
-                class="inline-flex items-center justify-center gap-2 pt-2 text-xs sm:text-sm font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors"
+                class="inline-flex items-center justify-center gap-2 pt-2 text-xs sm:text-sm font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
                 @click.stop
               >
                 {{ $t(cap.linkLabelKey) }}

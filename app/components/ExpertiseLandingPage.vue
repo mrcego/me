@@ -1,39 +1,34 @@
 <script setup lang="ts">
 import Button from 'primevue/button';
+import { hireProfileRoutes } from '~/config/routes.manifest';
+import type { ExpertiseLandingTranslationKey } from '~/composables/useExpertiseLandingSeo';
 
 interface Props {
-  translationKey: 'landingVue' | 'landingAi' | 'landingNode';
+  translationKey: ExpertiseLandingTranslationKey;
 }
 
 const props = defineProps<Props>();
-const { t, tm, rt } = useI18n();
+const { t, tm, rt, te } = useI18n();
 const localePath = useLocalePath();
 const openFaqIndexes = shallowRef<ReadonlySet<number>>(new Set());
 
 const copyKey = (key: string) => `${props.translationKey}.${key}`;
-const contactHref = computed(() => `${localePath('/')}#contact`);
+const { sectionHref } = useSectionNavigation();
+const contactHref = computed(() => sectionHref('#contact'));
+const methodologyHref = computed(() => localePath('/ai-assisted-craft'));
+const showMethodologyLink = computed(
+  () => props.translationKey === 'landingAi' && te('landingAi.methodologyCta'),
+);
 
-const sisterProfiles = computed(() => {
-  const profiles = [
-    {
-      key: 'landingVue',
-      to: localePath('/vue-frontend-developer'),
-      labelKey: 'hireProfiles.hireForVue',
-    },
-    {
-      key: 'landingAi',
-      to: localePath('/ai-engineer'),
-      labelKey: 'hireProfiles.hireForAi',
-    },
-    {
-      key: 'landingNode',
-      to: localePath('/nodejs-backend-developer'),
-      labelKey: 'hireProfiles.hireForNode',
-    },
-  ] as const;
-
-  return profiles.filter((profile) => profile.key !== props.translationKey);
-});
+const sisterProfiles = computed(() =>
+  hireProfileRoutes()
+    .filter((profile) => profile.landingKey !== props.translationKey)
+    .map((profile) => ({
+      key: profile.landingKey,
+      to: localePath(profile.localePath),
+      labelKey: profile.hireLabelKey,
+    })),
+);
 
 const expertiseItems = computed(() => {
   const data = tm(copyKey('expertise')) as unknown;
@@ -79,6 +74,26 @@ const toggleFaq = (index: number) => {
   }
   openFaqIndexes.value = nextOpenIndexes;
 };
+
+const proofLink = computed(() => {
+  const labelKey = copyKey('proofLink');
+  if (!te(labelKey)) return null;
+
+  const routes: Record<string, string> = {
+    landingVue: '/case-studies/colegium',
+    landingAi: '/ai-assisted-craft',
+    landingCraft: '/case-studies/lingoquesto',
+    landingLocal: '/case-studies/colegium',
+  };
+
+  const path = routes[props.translationKey];
+  if (!path) return null;
+
+  return {
+    label: t(labelKey),
+    to: localePath(path),
+  };
+});
 </script>
 
 <template>
@@ -123,6 +138,7 @@ const toggleFaq = (index: number) => {
           </div>
 
           <div
+            v-if="sisterProfiles.length"
             class="flex flex-col sm:flex-row flex-wrap items-center justify-center md:justify-start gap-3"
           >
             <span class="text-xs font-black uppercase tracking-widest text-muted">
@@ -138,6 +154,15 @@ const toggleFaq = (index: number) => {
               <Icon name="solar:arrow-right-linear" class="size-4" />
             </NuxtLink>
           </div>
+
+          <NuxtLink
+            v-if="showMethodologyLink"
+            :to="methodologyHref"
+            class="inline-flex items-center justify-center md:justify-start gap-2 text-sm font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors"
+          >
+            {{ t('landingAi.methodologyCta') }}
+            <Icon name="solar:arrow-right-linear" class="size-4" />
+          </NuxtLink>
         </div>
 
         <section
@@ -209,6 +234,14 @@ const toggleFaq = (index: number) => {
                 <span>{{ item }}</span>
               </li>
             </ul>
+            <NuxtLink
+              v-if="proofLink"
+              :to="proofLink.to"
+              class="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors"
+            >
+              {{ proofLink.label }}
+              <Icon name="solar:arrow-right-linear" class="size-4" />
+            </NuxtLink>
           </article>
         </div>
 

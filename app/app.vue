@@ -9,6 +9,15 @@ const { showAnnouncement } = useAvailability();
 usePortfolio();
 const { pageProgress } = useSmoothedScroll(0.14);
 const { vibeCodingModalMounted } = useVibeCodingModal();
+const { terminalMounted } = usePortfolioTerminal();
+const {
+  gatePhase,
+  revealedKeys,
+  progressIndex,
+  sequenceLength,
+  announce: gateAnnounce,
+} = usePortfolioTerminalShortcut();
+useWebVitalsRum();
 
 /** Fixed full-viewport particle canvas is too expensive on mobile scroll. */
 const enableGlobalParticles = ref(false);
@@ -69,6 +78,9 @@ onMounted(() => {
     :class="{ 'has-availability-banner': showAnnouncement }"
   >
     <SkipToContent />
+    <div data-terminal-gate-announcement class="sr-only" aria-live="polite" aria-atomic="true">
+      {{ gateAnnounce }}
+    </div>
 
     <AvailabilityBanner />
 
@@ -80,7 +92,7 @@ onMounted(() => {
       :aria-valuenow="Math.round(pageProgress)"
       aria-valuemin="0"
       aria-valuemax="100"
-      aria-label="Page scroll progress"
+      :aria-label="$t('a11y.pageScrollProgress')"
     />
 
     <!-- No reactive props: prop changes force immediate hydration on Lazy islands. -->
@@ -96,13 +108,15 @@ onMounted(() => {
       <NuxtPage />
     </div>
 
-    <!--
-      hydrate-after (not interaction): scroll-to-top + chat FAB need mounted listeners.
-      Interaction-only left them inert / invisible until a click that never came.
-    -->
-    <LazyAppProtocolChat :hydrate-after="4000" />
-
     <LazyVibeCodingModal v-if="vibeCodingModalMounted" />
+    <LazyTerminalKonamiSequenceGate
+      v-if="gatePhase !== 'idle'"
+      :phase="gatePhase"
+      :keys="revealedKeys"
+      :progress="progressIndex"
+      :total="sequenceLength"
+    />
+    <LazyPortfolioTerminal v-if="terminalMounted" />
 
     <LazyPerformanceOptimizations :hydrate-after="5000" />
   </div>

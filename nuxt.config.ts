@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 import tailwindcss from '@tailwindcss/vite';
+import { prerenderRoutesWithSitemap, sitemapUrls } from './app/config/routes.manifest';
 import { buildThemeInitScript } from './app/utils/themeInitScript';
 
 export default defineNuxtConfig({
@@ -25,16 +26,8 @@ export default defineNuxtConfig({
     },
     prerender: {
       crawlLinks: true,
-      routes: [
-        '/',
-        '/es/',
-        '/vue-frontend-developer/',
-        '/es/desarrollador-vue/',
-        '/ai-engineer/',
-        '/es/ingeniero-ia/',
-        '/nodejs-backend-developer/',
-        '/es/desarrollador-backend-nodejs/',
-      ],
+      // Page HTML + sitemap XML (zeroRuntime must emit static files for --no-build).
+      routes: prerenderRoutesWithSitemap(),
     },
     compressPublicAssets: true,
   },
@@ -75,6 +68,7 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png?v=cg2' },
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=cg2' },
         { rel: 'alternate', type: 'text/plain', href: '/llms.txt', title: 'LLM context' },
+        { rel: 'alternate', type: 'text/plain', href: '/ai.txt', title: 'AI assistant pointer' },
       ],
     },
   },
@@ -155,8 +149,9 @@ export default defineNuxtConfig({
       styles: ['normal'],
       subsets: ['latin'],
     },
-    // --font-main is set via CSS variables; metric-adjusted fallbacks cut CLS on hero name.
-    processCSSVariables: true,
+    // Process --font-* only. `true` makes the transformer treat Tailwind layout
+    // values such as calc(var(--spacing) * 2) as font faces during OG generation.
+    processCSSVariables: 'font-prefixed-only',
     families: [
       {
         name: 'Outfit',
@@ -207,6 +202,10 @@ export default defineNuxtConfig({
       height: 630,
       alt: 'César Gómez Portfolio',
     },
+    // Prerender can exceed the module default (15s) under Windows + cold Chromium.
+    security: {
+      renderTimeout: 60_000,
+    },
   },
 
   robots: {
@@ -219,16 +218,7 @@ export default defineNuxtConfig({
     zeroRuntime: true,
     xsl: false,
     // Trailing slashes match static directory output (avoids GSC "Redirect error").
-    urls: [
-      '/',
-      '/es/',
-      '/vue-frontend-developer/',
-      '/es/desarrollador-vue/',
-      '/ai-engineer/',
-      '/es/ingeniero-ia/',
-      '/nodejs-backend-developer/',
-      '/es/desarrollador-backend-nodejs/',
-    ],
+    urls: sitemapUrls(),
   },
 
   image: {
@@ -288,10 +278,19 @@ export default defineNuxtConfig({
       // Facebook Sharing Debugger asks for fb:app_id. Override with your own App ID via
       // NUXT_PUBLIC_FACEBOOK_APP_ID. Default is Meta's public fallback ID (silences the warning).
       facebookAppId: '966242223397117',
+      // Optional GA4 measurement ID — RUM loads gtag only with analytics consent (see quality/RUM.md).
+      gaMeasurementId: '',
     },
   },
 
   experimental: {
+    // Match site.trailingSlash / Netlify directory URLs so internal NuxtLinks
+    // never emit bare profile paths that 301 to the slash form (GSC redirects).
+    defaults: {
+      nuxtLink: {
+        trailingSlash: 'append',
+      },
+    },
     // Inline payload in HTML for the first visit; extract only for client navigations.
     // Shortens the "Network dependency tree" chain (no critical meta JSON before paint).
     // https://developer.chrome.com/docs/performance/insights/network-dependency-tree

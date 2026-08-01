@@ -59,7 +59,6 @@ test.describe('portfolio SSG under CSP', () => {
     expect(box!.width).toBeGreaterThan(24);
     expect(box!.x + box!.width).toBeLessThanOrEqual((await page.viewportSize())!.width + 1);
 
-    // Icons must paint locally (network silence alone can hide empty CSS icons)
     const iconBox = await page
       .locator('.hire-menu-trigger .iconify, .hire-menu-trigger svg')
       .first()
@@ -88,10 +87,10 @@ test.describe('portfolio SSG under CSP', () => {
   test('landing pages render under CSP', async ({ page }) => {
     const faults = await collectPageFaults(page);
     const paths = [
-      '/vue-frontend-developer',
-      '/ai-engineer',
-      '/nodejs-backend-developer',
-      '/es/desarrollador-vue',
+      '/vue-frontend-developer/',
+      '/ai-engineer/',
+      '/nodejs-backend-developer/',
+      '/es/desarrollador-vue/',
     ];
 
     for (const path of paths) {
@@ -102,5 +101,16 @@ test.describe('portfolio SSG under CSP', () => {
 
     expect(faults.cspErrors).toEqual([]);
     expect(faults.pageErrors).toEqual([]);
+  });
+
+  test('home hire-profile links use trailing-slash canonical hrefs', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+
+    const expected = ['/vue-frontend-developer/', '/nodejs-backend-developer/', '/ai-engineer/'];
+
+    for (const path of expected) {
+      const link = page.locator(`a[href="${path}"]`).first();
+      await expect(link, `expected href ${path}`).toBeAttached();
+    }
   });
 });

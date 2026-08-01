@@ -34,13 +34,14 @@ test.describe('homepage sections', () => {
       timeout: 20_000,
     });
 
-    for (const { name, id } of [
-      { name: /^About$/i, id: 'about' },
-      { name: /Tech Stack/i, id: 'tech-stack' },
-      { name: /Certifications/i, id: 'certifications' },
-      { name: /Testimonials/i, id: 'testimonials' },
+    // Prefer href over label — nav copy is intentionally short (Stack/Certs/Cases/Reviews).
+    for (const { href, id } of [
+      { href: '#about', id: 'about' },
+      { href: '#tech-stack', id: 'tech-stack' },
+      { href: '#certifications', id: 'certifications' },
+      { href: '#testimonials', id: 'testimonials' },
     ]) {
-      await page.getByRole('link', { name }).first().click();
+      await page.locator(`nav a[href="${href}"]`).first().click();
       await expect(page.locator(`#${id}`)).toBeInViewport({ timeout: 10_000 });
     }
   });

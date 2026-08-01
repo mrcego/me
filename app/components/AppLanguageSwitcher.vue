@@ -26,7 +26,7 @@ const toggleLanguage = async () => {
   <div class="relative">
     <button
       type="button"
-      class="w-[46px] h-[46px] md:w-[50px] md:h-[50px] flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-all active:scale-95 type-label tracking-[0.14em] font-black"
+      class="w-[46px] h-[46px] md:w-[50px] md:h-[50px] flex items-center justify-center rounded-full text-muted hover:text-foreground hover:bg-foreground/5 transition-[background-color,color,transform] duration-200 active:scale-95 type-label tracking-[0.14em] font-black cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
       :aria-label="$t('nav.switchLanguageLabel', { locale: nextLocaleLabel })"
       @click="toggleLanguage"
     >

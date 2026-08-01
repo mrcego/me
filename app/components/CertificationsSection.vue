@@ -177,7 +177,7 @@ watch(showAllRest, () => {
               :to="cert.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground hover:bg-primary hover:text-primary-contrast transition-all duration-500 group/btn"
+              class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground hover:bg-primary hover:text-primary-contrast transition-[background-color,color,transform,box-shadow] duration-500 group/btn"
               :aria-label="$t('certifications.viewCredentialNamed', { title: cert.title })"
             >
               <span aria-hidden="true">{{ $t('certifications.viewCredential') }}</span>
@@ -259,7 +259,7 @@ watch(showAllRest, () => {
         >
           <button
             type="button"
-            class="w-full min-h-11 flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground cursor-pointer hover:bg-primary hover:text-primary-contrast transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="w-full min-h-11 flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground cursor-pointer hover:bg-primary hover:text-primary-contrast transition-[background-color,color,transform,box-shadow] duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             :aria-expanded="showAllRest"
             aria-controls="cert-show-all-panel"
             @click="showAllRest = !showAllRest"

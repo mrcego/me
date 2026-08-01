@@ -1,15 +1,35 @@
+import { SEO_IDENTITY } from '~/config/seo.config';
+import {
+  buildHreflangAlternateLinks,
+  htmlLangForLocale,
+  ogLocaleForLocale,
+  personSchemaRef,
+  websiteSchemaRef,
+} from '~/utils/seo';
 import { SITE_ORIGIN, absoluteSiteUrl } from '~/utils/siteUrl';
 
+export type ExpertiseLandingTranslationKey =
+  'landingVue' | 'landingAi' | 'landingNode' | 'landingLocal' | 'landingCraft';
+
 interface ExpertiseLandingSeoOptions {
-  translationKey: 'landingVue' | 'landingAi' | 'landingNode';
+  translationKey: ExpertiseLandingTranslationKey;
   paths: {
     en: string;
     es: string;
   };
   knowsAbout: string[];
-  /** Role phrases search engines should associate with this page (EN + ES variants OK). */
+  /** Role phrases for this page — Occupation nodes on WebPage, not Person. */
   jobTitles: string[];
 }
+
+const occupationLocation = {
+  '@type': 'City' as const,
+  name: 'Cartagena de Indias',
+  containedInPlace: {
+    '@type': 'Country' as const,
+    name: 'Colombia',
+  },
+};
 
 export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
   const { t, tm, rt, locale } = useI18n();
@@ -20,7 +40,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
   const canonicalUrl = computed(() => absoluteSiteUrl(route.path));
   const enUrl = absoluteSiteUrl(options.paths.en);
   const esUrl = absoluteSiteUrl(`/es${options.paths.es}`);
-  const ogImage = `${SITE_ORIGIN}/img/og-image.png?v=cg2`;
+  const ogImage = `${SITE_ORIGIN}${SEO_IDENTITY.ogImage}`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
 
   const faqItems = computed(() => {
@@ -32,6 +52,13 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
     }));
   });
 
+  const pageOccupations = options.jobTitles.map((title) => ({
+    '@type': 'Occupation' as const,
+    name: title,
+    occupationLocation,
+    skills: options.knowsAbout.join(', '),
+  }));
+
   defineOgImage(
     'Portfolio',
     {
@@ -41,7 +68,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
       brandTag: 'PORTFOLIO',
       siteUrl: 'cesargomez.dev',
       footer: t('hero.locationLine'),
-      pills: ['Vue.js', 'Nuxt', 'TypeScript', 'AI · NLP'],
+      pills: ['Vue.js', 'Nuxt', 'TypeScript', 'AI-Assisted'],
     },
     {
       alt: `${personName.value} — ${t(copyKey('meta.title'))}`,
@@ -51,8 +78,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
   useSeoMeta({
     title: () => t(copyKey('meta.title')),
     description: () => t(copyKey('meta.description')),
-    keywords: () => t(copyKey('meta.keywords')),
-    author: 'César Gómez',
+    author: SEO_IDENTITY.author,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
     fbAppId: () => String(publicConfig.facebookAppId || ''),
     ogType: 'website',
@@ -61,23 +87,21 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
     // og:image / twitter:image injected by defineOgImage('Portfolio')
     ogUrl: () => canonicalUrl.value,
     ogSiteName: 'César Gómez Portfolio',
-    ogLocale: () => (locale.value === 'es' ? 'es_ES' : 'en_US'),
-    twitterCard: 'summary_large_image',
+    ogLocale: () => ogLocaleForLocale(locale.value),
+    twitterCard: SEO_IDENTITY.twitterCard,
     twitterTitle: () => t(copyKey('meta.title')),
     twitterDescription: () => t(copyKey('meta.description')),
-    twitterSite: '@codingwithcego',
-    twitterCreator: '@codingwithcego',
+    twitterSite: SEO_IDENTITY.twitterSite,
+    twitterCreator: SEO_IDENTITY.twitterCreator,
   });
 
   useHead(() => ({
     htmlAttrs: {
-      lang: locale.value === 'es' ? 'es-ES' : 'en-US',
+      lang: htmlLangForLocale(locale.value),
     },
     link: [
       { rel: 'canonical', href: canonicalUrl.value },
-      { rel: 'alternate', hreflang: 'en', href: enUrl },
-      { rel: 'alternate', hreflang: 'es', href: esUrl },
-      { rel: 'alternate', hreflang: 'x-default', href: enUrl },
+      ...buildHreflangAlternateLinks({ en: enUrl, es: esUrl }),
     ],
     script: [
       {
@@ -90,13 +114,11 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
           url: canonicalUrl.value,
           name: t(copyKey('meta.title')),
           description: t(copyKey('meta.description')),
-          keywords: t(copyKey('meta.keywords'))
-            .split(',')
-            .map((k) => k.trim())
-            .filter(Boolean),
-          inLanguage: locale.value === 'es' ? 'es-ES' : 'en-US',
-          isPartOf: { '@id': `${SITE_ORIGIN}/#website` },
-          about: { '@id': `${SITE_ORIGIN}/#person` },
+          inLanguage: htmlLangForLocale(locale.value),
+          isPartOf: websiteSchemaRef(),
+          // Reference home Person — do not redefine url/jobTitle on the same @id
+          about: [personSchemaRef(), ...pageOccupations],
+          mainEntity: personSchemaRef(),
           primaryImageOfPage: ogImage,
           mentions: options.knowsAbout.map((topic) => ({
             '@type': 'Thing',
@@ -140,39 +162,6 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
               text: item.answer,
             },
           })),
-        }),
-      },
-      {
-        type: 'application/ld+json',
-        key: `${options.translationKey}-person`,
-        innerHTML: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'Person',
-          '@id': `${SITE_ORIGIN}/#person`,
-          name: personName.value,
-          alternateName: ['César Gómez', 'Cesar Gomez', 'mrcego', ...options.jobTitles],
-          jobTitle: options.jobTitles[0] ?? t('seo.jobTitle'),
-          hasOccupation: options.jobTitles.map((title) => ({
-            '@type': 'Occupation',
-            name: title,
-            occupationLocation: {
-              '@type': 'City',
-              name: 'Cartagena de Indias',
-              containedInPlace: {
-                '@type': 'Country',
-                name: 'Colombia',
-              },
-            },
-            skills: options.knowsAbout.join(', '),
-          })),
-          url: canonicalUrl.value,
-          sameAs: [
-            'https://www.linkedin.com/in/mrcego',
-            'https://github.com/mrcego',
-            absoluteSiteUrl('/'),
-          ],
-          knowsAbout: options.knowsAbout,
-          knowsLanguage: ['en', 'es'],
         }),
       },
     ],

@@ -4,6 +4,13 @@ const NETLIFY_FORM_NAME = 'portfolio-contact';
 
 const FIELD_ORDER = ['name', 'email', 'subject', 'message'] as const;
 
+const FIELD_MAX_LENGTH = {
+  name: 100,
+  email: 254,
+  subject: 200,
+  message: 5000,
+} as const satisfies Record<(typeof FIELD_ORDER)[number], number>;
+
 type FieldKey = (typeof FIELD_ORDER)[number];
 
 export const useContactForm = () => {
@@ -57,6 +64,9 @@ export const useContactForm = () => {
     } else if (formData.name.trim().length < 2) {
       errors.name = t('contact.form.errors.nameMin');
       isValid = false;
+    } else if (formData.name.trim().length > FIELD_MAX_LENGTH.name) {
+      errors.name = t('contact.form.errors.nameMax');
+      isValid = false;
     }
 
     if (!formData.email.trim()) {
@@ -64,6 +74,9 @@ export const useContactForm = () => {
       isValid = false;
     } else if (!validateEmail(formData.email)) {
       errors.email = t('contact.form.errors.emailInvalid');
+      isValid = false;
+    } else if (formData.email.trim().length > FIELD_MAX_LENGTH.email) {
+      errors.email = t('contact.form.errors.emailMax');
       isValid = false;
     }
 
@@ -73,6 +86,9 @@ export const useContactForm = () => {
     } else if (formData.subject.trim().length < 3) {
       errors.subject = t('contact.form.errors.subjectMin');
       isValid = false;
+    } else if (formData.subject.trim().length > FIELD_MAX_LENGTH.subject) {
+      errors.subject = t('contact.form.errors.subjectMax');
+      isValid = false;
     }
 
     if (!formData.message.trim()) {
@@ -80,6 +96,9 @@ export const useContactForm = () => {
       isValid = false;
     } else if (formData.message.trim().length < 10) {
       errors.message = t('contact.form.errors.messageMin');
+      isValid = false;
+    } else if (formData.message.trim().length > FIELD_MAX_LENGTH.message) {
+      errors.message = t('contact.form.errors.messageMax');
       isValid = false;
     }
 
@@ -166,6 +185,7 @@ export const useContactForm = () => {
     isSubmitting,
     submitSuccess,
     submitError,
+    fieldMaxLength: FIELD_MAX_LENGTH,
     validateForm,
     submitForm,
     resetForm,

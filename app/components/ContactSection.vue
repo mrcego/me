@@ -7,7 +7,8 @@ import { useContactForm } from '~/composables/useContactForm';
 
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
-const { formData, errors, isSubmitting, submitSuccess, submitError, submitForm } = useContactForm();
+const { formData, errors, isSubmitting, submitSuccess, submitError, submitForm, fieldMaxLength } =
+  useContactForm();
 
 const fieldClass =
   'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-5! bg-foreground/7! border-foreground/15! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color] duration-300 text-sm md:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70!';
@@ -190,6 +191,7 @@ const contactMethods = [
                   v-model="formData.name"
                   name="name"
                   autocomplete="name"
+                  :maxlength="fieldMaxLength.name"
                   :placeholder="$t('contact.form.namePlaceholder')"
                   :aria-invalid="!!errors.name"
                   :aria-describedby="errors.name ? 'name-error' : undefined"
@@ -216,6 +218,7 @@ const contactMethods = [
                   name="email"
                   autocomplete="email"
                   inputmode="email"
+                  :maxlength="fieldMaxLength.email"
                   :spellcheck="false"
                   :placeholder="$t('contact.form.emailPlaceholder')"
                   :aria-invalid="!!errors.email"
@@ -243,6 +246,7 @@ const contactMethods = [
                 v-model="formData.subject"
                 name="subject"
                 autocomplete="off"
+                :maxlength="fieldMaxLength.subject"
                 :placeholder="$t('contact.form.subjectPlaceholder')"
                 :aria-invalid="!!errors.subject"
                 :aria-describedby="errors.subject ? 'subject-error' : undefined"
@@ -268,6 +272,7 @@ const contactMethods = [
                 v-model="formData.message"
                 name="message"
                 autocomplete="off"
+                :maxlength="fieldMaxLength.message"
                 :placeholder="$t('contact.form.messagePlaceholder')"
                 rows="4"
                 :aria-invalid="!!errors.message"

@@ -73,6 +73,18 @@ function resolveFile(urlPath) {
 const server = createServer((req, res) => {
   const file = resolveFile(req.url || '/');
   if (!file) {
+    // Match Netlify: unknown paths get the branded 404.html body with status 404.
+    const notFoundPage = join(root, '404.html');
+    if (existsSync(notFoundPage) && statSync(notFoundPage).isFile()) {
+      res.writeHead(404, {
+        'Content-Type': 'text/html; charset=utf-8',
+        'Content-Security-Policy': csp,
+        'X-Content-Type-Options': 'nosniff',
+      });
+      res.end(readFileSync(notFoundPage));
+      return;
+    }
+
     res.writeHead(404, {
       'Content-Type': 'text/plain; charset=utf-8',
       'Content-Security-Policy': csp,

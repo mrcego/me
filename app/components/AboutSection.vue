@@ -124,7 +124,7 @@ const aboutPoints: PhilosophyPoint[] = [
           class="xl:col-span-5 xl:sticky xl:top-28 2xl:top-32 w-full max-w-lg mx-auto xl:max-w-none xl:mx-0 min-w-0"
         >
           <div
-            class="surface-card group glass border-white/5 rounded-2xl sm:rounded-3xl xl:rounded-[2.5rem] overflow-hidden p-5 sm:p-7 md:p-8 xl:p-10 shadow-2xl relative bg-background/20 backdrop-blur-md md:backdrop-blur-3xl min-w-0"
+            class="surface-card group glass border-white/5 rounded-2xl sm:rounded-3xl xl:rounded-[2.5rem] overflow-hidden p-5 sm:p-7 md:p-8 xl:p-10 shadow-2xl relative min-w-0"
           >
             <!-- Gamified Energy Border -->
             <div
@@ -132,7 +132,7 @@ const aboutPoints: PhilosophyPoint[] = [
             />
 
             <div
-              class="relative aspect-square max-h-56 sm:max-h-64 md:max-h-72 xl:max-h-104 w-full max-w-xs sm:max-w-sm xl:max-w-none mx-auto rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 transition-all duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
+              class="relative aspect-square max-h-56 sm:max-h-64 md:max-h-72 xl:max-h-104 w-full max-w-xs sm:max-w-sm xl:max-w-none mx-auto rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 transition-[transform,opacity,filter,box-shadow] duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
             >
               <NuxtImg
                 src="/img/technical-identity.jpg"
@@ -143,7 +143,7 @@ const aboutPoints: PhilosophyPoint[] = [
                 quality="80"
                 loading="lazy"
                 sizes="(max-width: 1280px) 384px, 416px"
-                class="absolute inset-0 z-0 h-full w-full object-cover object-center grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-1000 scale-105 group-hover:scale-100"
+                class="absolute inset-0 z-0 h-full w-full object-cover object-center grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-[transform,opacity,filter] duration-1000 scale-105 group-hover:scale-100"
               />
 
               <!-- Cinematic HUD Overlay for Photo -->
@@ -160,11 +160,11 @@ const aboutPoints: PhilosophyPoint[] = [
             </div>
 
             <!-- Content inside card -->
-            <h2
+            <h3
               class="text-xl sm:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4 text-center xl:text-left"
             >
               {{ $t('about.philosophy') }}
-            </h2>
+            </h3>
 
             <p
               class="mb-6 sm:mb-8 text-base sm:text-lg font-medium text-muted leading-relaxed text-center xl:text-left text-pretty"
@@ -233,7 +233,7 @@ const aboutPoints: PhilosophyPoint[] = [
               class="h-full min-w-0"
             >
               <article
-                class="surface-card role-experience-card glass p-4 sm:p-5 xl:p-6 rounded-2xl sm:rounded-3xl border-foreground/5 group flex h-full min-h-48 sm:min-h-52 xl:min-h-56 flex-col relative w-full min-w-0 text-left cursor-pointer touch-manipulation"
+                class="surface-card surface-evidence role-experience-card p-4 sm:p-5 xl:p-6 rounded-2xl sm:rounded-3xl group flex h-full min-h-48 sm:min-h-52 xl:min-h-56 flex-col relative w-full min-w-0 text-left cursor-pointer touch-manipulation"
               >
                 <button
                   type="button"
@@ -248,7 +248,7 @@ const aboutPoints: PhilosophyPoint[] = [
                 >
                   <div class="flex items-start justify-between gap-2 sm:gap-3 min-w-0">
                     <div
-                      class="surface-card__chip type-chip glass rounded-lg sm:rounded-xl shadow-sm min-w-0 shrink max-w-[52%] sm:max-w-none px-3 py-1 sm:px-4 sm:py-1.5"
+                      class="surface-card__chip type-chip glass-lite rounded-lg sm:rounded-xl shadow-sm min-w-0 shrink max-w-[52%] sm:max-w-none px-3 py-1 sm:px-4 sm:py-1.5"
                     >
                       {{ $t(`about.roles.${role.key}.years`) }}
                     </div>
@@ -297,7 +297,7 @@ const aboutPoints: PhilosophyPoint[] = [
                     class="surface-card__footer mt-auto pt-4 sm:pt-6 border-t border-foreground/5"
                   >
                     <span
-                      class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground group-hover:bg-primary group-hover:text-primary-contrast group-focus-within:bg-primary group-focus-within:text-primary-contrast transition-all duration-500"
+                      class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground group-hover:bg-primary group-hover:text-primary-contrast group-focus-within:bg-primary group-focus-within:text-primary-contrast transition-[background-color,color,transform,box-shadow] duration-500"
                     >
                       {{ $t('about.roles.viewDetails') }}
                       <Icon
@@ -327,6 +327,7 @@ const aboutPoints: PhilosophyPoint[] = [
     block-scroll
     :draggable="false"
     :show-header="false"
+    aria-labelledby="role-experience-modal-title"
     class="experience-dialog"
     :style="{ width: 'min(44rem, calc(100vw - 1.5rem))' }"
     :pt="{
@@ -335,6 +336,7 @@ const aboutPoints: PhilosophyPoint[] = [
       },
       root: {
         class: 'experience-dialog',
+        'aria-labelledby': 'role-experience-modal-title',
       },
       content: {
         class: 'experience-dialog-content',
@@ -371,6 +373,7 @@ const aboutPoints: PhilosophyPoint[] = [
                 {{ $t(`about.roles.${selectedRoleKey}.company`) }}
               </p>
               <h3
+                id="role-experience-modal-title"
                 class="text-xl md:text-3xl font-black tracking-tight text-foreground leading-tight"
               >
                 {{ $t(`about.roles.${selectedRoleKey}.title`) }}

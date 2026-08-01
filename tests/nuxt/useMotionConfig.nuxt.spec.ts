@@ -51,6 +51,16 @@ describe('useMotionConfig', () => {
     expect(Math.abs((left.initial as { x: number }).x)).toBeLessThanOrEqual(14);
   });
 
+  it('uses a deterministic softened initial state on desktop', async () => {
+    stubMedia({ mobile: false, reduced: false });
+    const api = await mountMotion();
+
+    expect(api.motionInitial({ opacity: 0, x: -50 }, { opacity: 1, x: 0 })).toEqual({
+      opacity: 1,
+      x: -14,
+    });
+  });
+
   it('disables motion on mobile / reduced-motion (bad path)', async () => {
     stubMedia({ mobile: true, reduced: true });
     const api = await mountMotion();

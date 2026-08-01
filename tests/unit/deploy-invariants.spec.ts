@@ -33,9 +33,34 @@ describe('deploy / layout invariants (regression guards)', () => {
     // GH Actions only uploads .output/public — netlify.toml [[headers]] never reach the CDN.
     const cspLib = read('scripts/lib/csp.mjs');
     expect(cspLib).toMatch(/buildSecurityHeaders/);
+    expect(cspLib).toMatch(/buildCacheHeaderBlocks/);
     expect(cspLib).toMatch(/includeSubDomains/);
     expect(cspLib).toMatch(/Cross-Origin-Opener-Policy/);
     expect(cspLib).toMatch(/collectInlineScriptHashes/);
+  });
+
+  it('keeps sitemap zeroRuntime + static rewrite consistent (no function proxy)', () => {
+    // Artifact --no-build deploys have no Nitro server. sitemap_index must be a
+    // prerendered static file; public/_redirects may rewrite /sitemap.xml → index
+    // but must never force sitemap_index to /.netlify/functions|builders.
+    const cfg = read('nuxt.config.ts');
+    expect(cfg).toMatch(/sitemap:\s*\{[\s\S]*zeroRuntime:\s*true/);
+    expect(cfg).toMatch(/prerenderRoutesWithSitemap|SITEMAP_PRERENDER_ROUTES/);
+
+    const redirects = read('public/_redirects');
+    expect(redirects).toMatch(/\/sitemap\.xml\s+\/sitemap_index\.xml\s+200!/);
+    expect(redirects).not.toMatch(/sitemap_index\.xml\s+\/\.netlify\//);
+    expect(redirects).not.toMatch(/__sitemap__.*\/\.netlify\//);
+
+    const toml = read('netlify.toml');
+    expect(toml).toMatch(/from\s*=\s*"\/sitemap\.xml"/);
+    expect(toml).toMatch(/to\s*=\s*"\/sitemap_index\.xml"/);
+  });
+
+  it('wires prerender + sitemap URLs from the typed route manifest', () => {
+    const cfg = read('nuxt.config.ts');
+    expect(cfg).toMatch(/from\s+['"]\.\/app\/config\/routes\.manifest['"]/);
+    expect(cfg).toMatch(/urls:\s*sitemapUrls\(\)/);
   });
 
   it('softens webfont swap after generate to cut hero CLS', () => {
@@ -54,22 +79,31 @@ describe('deploy / layout invariants (regression guards)', () => {
     expect(cfg).toMatch(/name:\s*'Fira Code'[\s\S]*?global:\s*true/);
   });
 
+  it('limits font CSS-variable processing to font-prefixed variables', () => {
+    const cfg = read('nuxt.config.ts');
+
+    expect(cfg).toMatch(/processCSSVariables:\s*'font-prefixed-only'/);
+  });
+
   it('defers webfont family names until after load (keeps /_fonts off LCP chain)', () => {
     const presets = read('app/utils/themePresets.ts');
     const init = read('app/utils/themeInitScript.ts');
     const css = read('app/assets/css/main.css');
     expect(presets).toContain('FONT_STACKS_LOCAL');
-    expect(presets).toContain('Fira Code Fallback: Consolas');
-    expect(presets).toContain('ui-monospace, monospace');
+    expect(presets).toContain('ui-monospace');
+    expect(presets).toContain('SFMono-Regular');
+    expect(presets).not.toContain('Fira Code Fallback:');
     expect(presets).toContain('"Fira Code", ${FONT_STACKS_LOCAL[\'Fira Code\']}');
     // Blocking theme-init applies local stack first, then load+idle activates webfonts.
     expect(init).toContain('FONT_STACKS_LOCAL');
     expect(init).toContain('requestIdleCallback');
     expect(init).toContain('dataset.webfonts');
     expect(init).toContain("addEventListener('load'");
-    // CSS :root must not put "Fira Code" in the used --font-main (unused webfont vars OK).
-    expect(css).toMatch(/--font-main:\s*'Fira Code Fallback: Consolas'/);
-    expect(css).not.toMatch(/--font-main:\s*'Fira Code'/);
+    // CSS :root must not put "Fira Code" in the used --app-font (unused webfont vars OK).
+    // Its non--font-* name also keeps the OG font scanner away from local aliases.
+    expect(css).toMatch(/--app-font:\s*ui-monospace,\s*monospace/);
+    expect(css).not.toMatch(/--app-font:\s*'Fira Code'/);
+    expect(css).not.toContain('Fira Code Fallback:');
     // Mono fallbacks for Fira — proportional locals CLS the hero name on activation.
     expect(read('nuxt.config.ts')).toMatch(
       /name:\s*'Fira Code'[\s\S]*?fallbacks:\s*\[\s*'Consolas'/,

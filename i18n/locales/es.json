@@ -1,17 +1,37 @@
 {
+  "error": {
+    "notFound": {
+      "eyebrow": "Señal perdida",
+      "title": "Esta ruta está fuera de línea.",
+      "lead": "La página que pediste no forma parte de este portafolio. Vuelve al inicio o ve directo a contacto.",
+      "home": "Volver al inicio",
+      "metaTitle": "Página no encontrada | César Gómez"
+    },
+    "generic": {
+      "eyebrow": "Falla del sistema",
+      "title": "Algo salió mal.",
+      "lead": "Un error inesperado interrumpió esta vista. Vuelve al inicio e inténtalo de nuevo.",
+      "home": "Volver al inicio",
+      "metaTitle": "Error {code} | César Gómez"
+    }
+  },
   "nav": {
     "home": "Inicio",
     "about": "Acerca",
-    "techStack": "Stack Técnico",
+    "techStack": "Stack",
     "capabilities": "Capacidades",
     "projects": "Proyectos",
-    "certifications": "Certificaciones",
+    "caseStudies": "Casos",
+    "certifications": "Certs",
     "contact": "Contacto",
-    "testimonials": "Testimonios",
+    "testimonials": "Opiniones",
     "getInTouch": "Contáctame",
-    "hire": "Hire",
+    "cta": "Contacto",
+    "hire": "Contratar",
+    "contactShort": "Contacto",
     "hireMenu": "Perfiles de contratación",
     "hireSection": "Todos los perfiles",
+    "brandRole": "Vue / Nuxt",
     "switchLanguage": "Cambiar idioma",
     "switchLanguageLabel": "Cambiar idioma: {locale}",
     "themePresets": "Temas IDE",
@@ -23,39 +43,43 @@
       "immediate": "Disponibilidad inmediata"
     },
     "expertiseBadge": "Vibe Coding Cleanup Specialist",
-    "name": "CÉSAR GÓMEZ",
-    "title": "Senior Vue/Nuxt · Experto en IA y NLP",
+    "name": "César Gómez",
+    "differentiator": "Craft asistido por IA · Cartagena · Remoto",
     "location": "Cartagena de Indias, Colombia",
     "workPreference": "Remoto",
     "locationLine": "Cartagena de Indias, Colombia · Preferencia remoto",
-    "description": "Experto en ingeniería con IA/NLP (local y cloud) y en convertir código asistido por agentes en sistemas listos para producción. 13+ años en Vue.js, Nuxt y TypeScript con profundidad fullstack.",
+    "description": "Entrego sistemas Vue/Nuxt mantenibles y escalables con ownership de arquitectura y quality gates — 13+ años en frontends de producción con profundidad fullstack.",
     "cta": "Contáctame",
     "downloadCv": "Descargar CV",
     "downloadCvAria": "Descargar CV — PDF ({file})",
     "stats": {
       "experience": "Años de Experiencia",
-      "projects": "Proyectos Entregados",
-      "technologies": "Tecnologías Dominadas"
+      "projects": "Módulos y Librerías Entregados",
+      "technologies": "Tecnologías Core"
     },
     "tags": {
-      "ai": "AI Engineering",
+      "vue3": "Vue 3",
+      "nuxt4": "Nuxt 4",
+      "ts": "TypeScript",
+      "ai": "Craft asistido por IA",
       "nlp": "NLP",
       "vibeCoding": "Vibe Coding Cleanup",
       "frontArch": "Ingeniero Frontend Senior",
       "nuxt": "Nuxt.js",
-      "ts": "Typescript",
       "engineer": "Ingeniero"
     },
-    "marquee": "EXPERTO IA · FRONTEND",
+    "marquee": "CRAFT CON IA · FRONTEND",
     "hud": {
       "status": "Estado",
       "operational": "Operativo"
-    }
+    },
+    "h1": "Desarrollador Vue/Nuxt Senior",
+    "title": "Desarrollador Vue/Nuxt Senior"
   },
   "vibeCoding": {
     "modal": {
       "close": "Cerrar",
-      "badge": "Ingeniería de IA",
+      "badge": "Craft asistido por IA",
       "title": "Vibe Coding Cleanup Specialist",
       "lead": "La IA acelera la entrega. El oficio la hace shippable. Trabajo en esa intersección.",
       "whyTitle": "Por qué la IA importa en el desarrollo",
@@ -73,13 +97,14 @@
     }
   },
   "availability": {
+    "availableFrom": "2026-08-10",
     "banner": {
       "aria": "Anuncio de disponibilidad",
-      "badge": "Búsqueda activa",
+      "badge": "Disponible",
       "title": "Abierto a nuevas oportunidades",
-      "messages": ["Abierto a nuevas oportunidades", "¡Entrevistas desde ya!"],
+      "messages": ["Abierto a nuevas oportunidades", "Entrevistas desde ya"],
       "availableLabel": "Disponible",
-      "cta": "Contáctame"
+      "cta": "Contacto"
     },
     "announcement": {
       "dateValue": "10 de agosto de 2026"
@@ -91,17 +116,90 @@
     "closeWindow": "Cerrar ventana de chat",
     "scrollToTop": "Volver arriba"
   },
+  "terminal": {
+    "title": "cesar{'@'}portfolio:~",
+    "dialogLabel": "Terminal del portafolio",
+    "close": "Cerrar terminal",
+    "promptLabel": "Comando del terminal",
+    "promptPlaceholder": "Escribe un comando — prueba help",
+    "suggestionsLabel": "Sugerencias de comando",
+    "banner": "Terminal del portafolio desbloqueado. Solo comandos en lista blanca — sin shell real.",
+    "hint": "Escribe help para el índice. Escape cierra.",
+    "indexTitle": "Índice de comandos",
+    "indexHint": "Tab completa · ↑↓ historial · Esc cierra",
+    "indexGroups": {
+      "info": "Info",
+      "nav": "Navegar",
+      "system": "Sistema"
+    },
+    "themeIndicator": "Tema: {name}",
+    "gate": {
+      "armed": "Ruta de vuelo armada",
+      "progress": "Ruta de vuelo {current} de {total}",
+      "reset": "Ruta de vuelo reiniciada",
+      "unlocked": "Terminal desbloqueado",
+      "label": "RUTA DE VUELO // {current}/{total}",
+      "unlockedLabel": "TERMINAL DESBLOQUEADO",
+      "resetLabel": "RUTA PERDIDA // REINICIAR"
+    },
+    "commands": {
+      "help": { "usage": "help", "summary": "Listar comandos disponibles" },
+      "about": { "usage": "about | whoami", "summary": "Quién soy" },
+      "status": { "usage": "status", "summary": "Estado de disponibilidad" },
+      "stack": { "usage": "stack", "summary": "Stack tecnológico" },
+      "work": { "usage": "work [colegium|lingoquesto]", "summary": "Casos de estudio" },
+      "experience": { "usage": "experience", "summary": "Roles destacados" },
+      "profiles": { "usage": "profiles", "summary": "Perfiles de contratación" },
+      "certs": { "usage": "certs", "summary": "Conteo de certificaciones" },
+      "contact": { "usage": "contact", "summary": "Canales de contacto" },
+      "cv": { "usage": "cv", "summary": "Descargar CV en PDF" },
+      "go": { "usage": "go [sección]", "summary": "Ir a una sección del home" },
+      "theme": { "usage": "theme show|list|use [id]", "summary": "Ver o cambiar tema" },
+      "clear": { "usage": "clear", "summary": "Limpiar transcripción" },
+      "exit": { "usage": "exit | salir", "summary": "Cerrar terminal" }
+    },
+    "responses": {
+      "helpHeader": "Comandos disponibles:",
+      "about": "César Gómez — Desarrollador Fullstack Senior especializado en Arquitectura Frontend y craft asistido por IA. 13+ años entregando sistemas Vue/Nuxt con ownership de arquitectura y quality gates.",
+      "status": "Disponibilidad objetivo: 10 de agosto de 2026. Abierto a conversaciones, entrevistas y ofertas tempranas antes de esa fecha.",
+      "stack": "Vue 3 · Nuxt 4 · TypeScript · Node/Express · Tailwind · PrimeVue · motion-v · Playwright/Vitest · craft asistido por IA con revisión humana.",
+      "experience": "Enfoque reciente: Colegium (plataformas cloud educativas) y LingoQuesto (producto conversacional con IA/NLP). Abre About para el detalle de roles.",
+      "profiles": "Perfiles: desarrollador Vue · ingeniero IA / Vibe Coding Cleanup · desarrollador Node.js · Cartagena local · craft asistido por IA.",
+      "certs": "{count} credenciales en la sección Certificaciones — TypeScript, programación con IA, estructuras de datos, observabilidad y más.",
+      "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · O usa el formulario de contacto del sitio.",
+      "workList": "Casos: work colegium · work lingoquesto",
+      "cv": "Descargando {file}…",
+      "cleared": "Transcripción limpiada.",
+      "themeShow": "Tema activo: {name} ({id})",
+      "themeListHeader": "Presets de tema (* = activo):",
+      "themeSet": "Tema cambiado a {id}.",
+      "navigateSection": "Navegando a #{section}…",
+      "navigateWork": "Abriendo caso: {work}…"
+    },
+    "errors": {
+      "empty": "Entrada vacía. Escribe help para empezar.",
+      "unknown": "Comando desconocido: {command}. Escribe help.",
+      "blocked": "Bloqueado: no se permiten operadores shell, redirecciones ni URLs arbitrarias.",
+      "usage": "Uso incorrecto de `{command}`. Escribe help.",
+      "unknownSection": "Sección desconocida `{section}`. Prueba: about, stack, certifications, capabilities, cases, testimonials, profiles, contact, faq.",
+      "unknownWork": "Caso desconocido `{work}`. Prueba: colegium, lingoquesto.",
+      "unknownTheme": "Tema desconocido `{theme}`. Ejecuta: theme list.",
+      "unknownThemeAction": "Acción de tema desconocida `{action}`. Usa: show | list | use [id]."
+    }
+  },
   "a11y": {
     "skipToContent": "Saltar al contenido principal",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
-    "systemReady": "Sistema listo"
+    "mobileMenu": "Navegación del sitio",
+    "systemReady": "Sistema listo",
+    "pageScrollProgress": "Progreso de desplazamiento de la página"
   },
   "about": {
     "section": "Identidad Técnica",
     "title": "Profundidad Fullstack.",
-    "titleHighlight": "Frontend e IA.",
-    "description1": "Como Desarrollador Fullstack Senior especializado en Arquitectura Frontend e ingeniería con IA/NLP, he pasado 13+ años conectando diseño pixel-perfect, sistemas escalables y experiencias de producto inteligentes.",
+    "titleHighlight": "Frontend y craft con IA.",
+    "description1": "Como Desarrollador Fullstack Senior especializado en Arquitectura Frontend y craft asistido por IA, he pasado 13+ años conectando diseño pixel-perfect, sistemas escalables y experiencias de producto inteligentes.",
     "description2": "De las plataformas cloud de Colegium al producto conversacional con IA/NLP de LingoQuesto, mi obsesión es la misma: interfaces de alto rendimiento impulsadas por backends resilientes — y oficio listo para producción cuando la IA acelera el trabajo.",
     "philosophy": "Filosofía",
     "philosophyQuote": "Como Fullstack enfocado en Frontend con oficio en IA, creo que la interfaz — y la inteligencia detrás — es donde la ingeniería se encuentra con el impacto.",
@@ -208,15 +306,15 @@
     "levels": {
       "architect": "Ingeniero Frontend Senior",
       "senior": "Desarrollador Senior",
-      "principal": "Principal",
+      "principal": "Senior",
       "founding": "Ingeniero Fundador",
-      "ai": "AI Engineering"
+      "ai": "Craft asistido por IA"
     },
     "creds": "Credenciales Oficiales",
     "flow": "Lingüística y Flow",
     "detailed": {
       "vue": "Ingeniero frontend líder en ecosistemas SPA/SSR complejos, sistemas de UI modulares y optimización de rendimiento.",
-      "ts": "Seguridad de tipos de extremo a extremo, desde APIs en Node.js hasta estados reactivos frontend sofisticados.",
+      "ts": "Seguridad de tipos de extremo a extremo, a través de contratos de API y estados reactivos frontend sofisticados.",
       "js": "Profundo conocimiento en patrones de ingeniería de software, modularidad y escalabilidad empresarial.",
       "git": "Mentoría de equipos, definición de hojas de ruta técnicas y optimización de la velocidad de CI/CD.",
       "ai": "Integraciones LLM/NLP (local + cloud) y flujos agentic de desarrollo con control de calidad humano."
@@ -601,25 +699,95 @@
       }
     }
   },
-  "portfolio": {
-    "section_tag": "Portafolio",
-    "title_top": "Arte",
-    "title_bottom": "Frontend.",
-    "nexus": "Nexo de Proyectos",
-    "categories": {
-      "all": "Todos",
-      "systems": "Sistemas",
-      "fullstack": "Fullstack",
-      "frontend": "Frontend"
-    },
-    "projects": {
-      "0": {
-        "title": "Arquitectura Cloud Colegium",
-        "desc": "Liderando la evolución técnica de una plataforma educativa masiva. Refactoreando sistemas legados a arquitecturas Vue 3 modernas con más de 100k usuarios."
+  "caseStudies": {
+    "section_tag": "Casos de estudio",
+    "title_top": "Prueba en",
+    "title_bottom": "productos reales.",
+    "lead": "Trabajo de producto con alcance verificable: arquitectura frontend, design systems y craft asistido por IA en ed-tech de producción.",
+    "tagsLabel": "Tecnologías y áreas de enfoque",
+    "readMore": "Leer caso de estudio",
+    "items": {
+      "colegium": {
+        "role": "Senior Frontend · Colegium",
+        "period": "2021 – 2025",
+        "cardTitle": "Plataformas cloud para 100k+ estudiantes",
+        "cardSummary": "Lideré arquitectura frontend Vue 3, librerías compartidas y design system en superficies micro-frontend a escala ed-tech.",
+        "title": "Plataformas cloud para 100k+ estudiantes",
+        "summary": "Lideré arquitectura frontend Vue 3, librerías compartidas y design system en superficies micro-frontend a escala ed-tech.",
+        "tags": ["Vue 3", "Micro-frontends", "Design system", "Ed-tech"],
+        "meta": {
+          "title": "Caso Colegium — Senior Frontend, Vue 3 y micro-frontends",
+          "description": "Arquitectura frontend Vue 3, librerías compartidas y design system en superficies micro-frontend para más de 100k estudiantes en Colegium."
+        },
+        "page": {
+          "eyebrow": "Colegium · Caso de estudio",
+          "title": "Arquitectura Vue 3 para educación cloud a escala",
+          "lead": "Rol de Senior Frontend en Colegium Cloud — superficies micro-frontend, librerías compartidas y estándares de design system para más de 100k estudiantes.",
+          "contactCta": "Hablemos de tu proyecto",
+          "backCta": "Volver a casos de estudio",
+          "highlightsTitle": "Resultados clave",
+          "highlights": [
+            "Módulos Vue 3, herramientas internas y librerías compartidas en Colegium Cloud",
+            "Arquitectura micro-frontend con web components y modelos de entrega híbridos",
+            "Contribución al design system con estándares de UI/UX entre equipos de producto",
+            "Integración de SPA con superficies legacy en CodeIgniter Blade"
+          ],
+          "sections": [
+            {
+              "title": "Contexto",
+              "body": "Colegium Cloud atiende a más de 100.000 estudiantes en Latinoamérica. Como Desarrollador Frontend Senior, trabajé en la próxima generación de herramientas educativas en la nube — desde módulos para estudiantes hasta herramientas internas para administradores escolares."
+            },
+            {
+              "title": "Enfoque técnico",
+              "body": "El stack frontend se centró en Vue 3 con web components y una arquitectura micro-frontend que permitía a los equipos publicar de forma independiente sobre una base compartida. Desarrollé módulos, herramientas internas y librerías reutilizadas en múltiples superficies del producto."
+            },
+            {
+              "title": "Design system y librerías compartidas",
+              "body": "Contribuí al ecosistema del design system — estableciendo estándares de UI/UX y componentes reutilizables que redujeron la duplicación entre equipos. Las librerías compartidas aseguraron patrones consistentes para formularios, navegación y visualización de datos en Colegium Cloud."
+            }
+          ]
+        }
       },
-      "1": {
-        "title": "Interfaz LingoQuesto",
-        "desc": "Ingeniería frontend boutique enfocada en interfaces de aprendizaje de alto rendimiento y orquestación de movimiento fluida."
+      "lingoquesto": {
+        "role": "Fullstack fundador · LingoQuesto",
+        "period": "2025 – 2026",
+        "cardTitle": "Producto de idiomas con práctica oral",
+        "cardSummary": "Ingeniero fullstack fundador integrando flujos de práctica oral con IA/NLP en una experiencia Vue/Nuxt mantenible.",
+        "title": "Producto de idiomas con práctica oral",
+        "summary": "Ingeniero fullstack fundador integrando flujos de práctica oral con IA/NLP en una experiencia Vue/Nuxt mantenible.",
+        "tags": ["Vue 3", "Nuxt", "IA/NLP", "Ed-tech"],
+        "meta": {
+          "title": "Caso LingoQuesto — Fullstack fundador, voz e IA/NLP",
+          "description": "Ingeniero fullstack fundador integrando flujos de práctica oral con IA/NLP en un producto de aprendizaje de idiomas con Vue/Nuxt en LingoQuesto."
+        },
+        "page": {
+          "eyebrow": "LingoQuesto · Caso de estudio",
+          "title": "Integrar voz e IA/NLP en un producto de aprendizaje de idiomas",
+          "lead": "Ingeniero fullstack fundador en una plataforma ed-tech conversacional con IA/NLP — experiencias de práctica oral con Vue 3 y Nuxt para educadores, estudiantes y flujos administrativos.",
+          "contactCta": "Hablemos de tu proyecto",
+          "backCta": "Volver a casos de estudio",
+          "highlightsTitle": "Resultados clave",
+          "highlights": [
+            "Experiencias conversacionales interactivas para educadores y estudiantes en distintas versiones del producto",
+            "Arquitectura frontend con Nuxt, Vue 3 y TypeScript",
+            "Integración de modelos de IA/NLP para práctica oral de idiomas en el producto",
+            "Aportes transversales entre frontend y APIs de backend"
+          ],
+          "sections": [
+            {
+              "title": "Contexto",
+              "body": "LingoQuesto es un producto ed-tech conversacional enfocado en la práctica oral de idiomas. Como ingeniero fullstack fundador, ayudé a definir la hoja de ruta técnica y entregué funcionalidades para educadores, estudiantes y flujos administrativos."
+            },
+            {
+              "title": "Producto y oficio frontend",
+              "body": "El stack frontend usa Nuxt y Vue 3 con TypeScript. Lideré decisiones de arquitectura para experiencias conversacionales interactivas y personalizadas — desde flujos de lección hasta paneles administrativos para roles elevados."
+            },
+            {
+              "title": "Integración de IA/NLP",
+              "body": "Una parte central del producto es la práctica oral impulsada por modelos de IA y NLP. Integré y operé estos modelos — en local y en la nube — conectando reconocimiento de voz y flujos conversacionales directamente en la experiencia del producto."
+            }
+          ]
+        }
       }
     }
   },
@@ -630,42 +798,48 @@
     "titleEnd": "alta fidelidad.",
     "description": "Las hojas de ruta ambiciosas necesitan ejecución sólida — Vue/Nuxt, Node e IA/NLP con oficio de producción incluidos.",
     "methods": {
-      "email": "Señal Directa",
-      "linkedin": "Red Profesional",
-      "github": "Protocolo Abierto",
-      "whatsapp": "Línea Segura"
+      "email": "Email",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "whatsapp": "WhatsApp"
     },
     "methodAria": "Contactar por {method}: {value}",
     "form": {
-      "name": "Identidad del Comandante",
+      "name": "Nombre",
       "namePlaceholder": "Tu nombre…",
-      "email": "Frecuencia de Señal",
+      "email": "Email de trabajo",
       "emailPlaceholder": "tu{'@'}empresa.com",
-      "subject": "Objetivo de Misión",
+      "subject": "Tipo de proyecto",
       "subjectPlaceholder": "ej. Escalar un ecosistema Nuxt…",
-      "message": "Datos de Inteligencia",
+      "message": "Mensaje",
       "messagePlaceholder": "Describe el desafío técnico…",
-      "submit": "Iniciar Enlace Seguro",
+      "submit": "Enviar consulta",
       "sending": "Enviando…",
       "success": "Mensaje enviado con éxito. Te responderé pronto.",
       "error": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por email.",
       "errors": {
         "nameRequired": "Escribe tu nombre.",
         "nameMin": "Usa al menos 2 caracteres.",
+        "nameMax": "El nombre debe tener 100 caracteres o menos.",
         "emailRequired": "Escribe tu email.",
         "emailInvalid": "Usa un email válido (nombre{'@'}dominio.com).",
+        "emailMax": "El email debe tener 254 caracteres o menos.",
         "subjectRequired": "Añade un asunto.",
         "subjectMin": "Usa al menos 3 caracteres.",
+        "subjectMax": "El asunto debe tener 200 caracteres o menos.",
         "messageRequired": "Escribe un mensaje breve.",
-        "messageMin": "Usa al menos 10 caracteres para darme contexto suficiente."
+        "messageMin": "Usa al menos 10 caracteres para darme contexto suficiente.",
+        "messageMax": "El mensaje debe tener 5000 caracteres o menos."
       }
     }
   },
   "testimonials": {
-    "section": "Ecosystem Feedback",
+    "section": "Testimonios",
     "title": "Confianza de",
     "titleHighlight": "Innovadores.",
     "quote": "Referencia",
+    "expandQuote": "Leer cita completa",
+    "collapseQuote": "Ver menos",
     "data": [
       {
         "name": "Carol Valdebenito",
@@ -700,15 +874,14 @@
     ]
   },
   "seo": {
-    "title": "Senior Vue/Nuxt · Experto en IA y NLP",
-    "description": "Contrata a César Gómez — ingeniero frontend senior en Cartagena, Colombia. 13+ años creando páginas web y aplicaciones con Vue 3, Nuxt 4, TypeScript, PrimeVue y Tailwind. Ed-tech, IA/NLP, APIs Node/Express, design systems, micro-frontends, Core Web Vitals y trabajo remoto por contrato desde agosto de 2026. Hispanohablante nativo, inglés intermedio.",
-    "keywords": "desarrollador en Cartagena, desarrollador Cartagena, desarrollador web Cartagena de Indias, páginas web en Cartagena, páginas web Cartagena, desarrollo web Cartagena, crear páginas web Cartagena, sitios web a medida Cartagena, diseñador web Cartagena, programador web Cartagena, programador frontend Cartagena, desarrollador senior frontend, ingeniero frontend senior, frontend senior Cartagena, contratar desarrollador frontend, contratar César Gómez, contratar desarrollador en Cartagena, contratar desarrollador remoto Colombia, desarrollador Vue, desarrollador Vue.js, desarrollador Vue 3, desarrollador frontend Vue, desarrollador Nuxt, desarrollador Nuxt 4, desarrollador Vue senior, contratar desarrollador Vue, contratar desarrollador Nuxt, TypeScript frontend, TypeScript Nuxt Colombia, desarrollador Node.js, desarrollador backend Node.js, Express.js Colombia, APIs REST TypeScript, ingeniero IA NLP, ingeniero LLM, IA conversacional, Vibe Coding Cleanup Specialist, desarrollador ed-tech, desarrollador bilingüe español inglés, César Gómez, Cesar Gomez, mrcego, César Gómez desarrollador, desarrollador remoto Cartagena Colombia, desarrollador freelance Vue Colombia, contrato remoto frontend Colombia, ingeniero frontend Vue, freelance web Colombia, desarrollador sitios web Colombia, ingeniero de software Cartagena Colombia, desarrollador Pinia, desarrollador Vite Vue, experto Composition API, Vue Router, desarrollador SSR Nuxt, SSG sitios estáticos Nuxt, optimización Core Web Vitals, ingeniero rendimiento Lighthouse, accesibilidad a11y frontend, ingeniero design system, arquitecto micro-frontends, desarrollador PrimeVue, desarrollador Vuetify, desarrollador Tailwind CSS, desarrollador SPA Vue, CI/CD frontend GitHub Actions, desarrollador remoto LatAm, contratar ingeniero frontend Colombia, desarrollador Bolívar Colombia, desarrollador web Caribe Colombia, ed-tech IA voz, coding agéntico producción, desarrollador Cursor AI, desarrollador Windsurf, ingeniero Claude Code, ingeniero Copilot Vue, monorepo TypeScript, Web Components Vue, ingeniero software contrato Colombia, freelance Nuxt Colombia, contratar fullstack Cartagena, ingeniero UI Colombia, ingeniero frontend de producto, contratar desarrollador remoto Latinoamérica, consultor Vue Colombia, arquitecto SPA TypeScript, desarrollador Vue remoto Colombia, desarrollador Vue.js Cartagena, contratar desarrollador Vue Colombia, programador Vue Colombia, desarrollador Vue LatAm, desarrollador Vue 3 Colombia, ingeniero Vue.js Colombia",
-    "ogTitle": "Senior Vue/Nuxt · Experto en IA y NLP",
-    "ogDescription": "Desarrollador senior frontend en Cartagena de Indias, Colombia. Páginas web, design systems y productos con IA usando Vue.js, Nuxt.js, TypeScript y Node/Express. Preferencia remoto. Contrato desde ago 2026.",
-    "jobTitle": "Senior Vue/Nuxt · Experto en IA y NLP",
+    "title": "Senior Vue/Nuxt · Craft asistido por IA",
+    "description": "Contrata a César Gómez — ingeniero frontend senior en Cartagena, Colombia. 13+ años creando páginas web y aplicaciones con Vue 3, Nuxt 4, TypeScript, PrimeVue y Tailwind. Ed-tech, craft asistido por IA, Vibe Coding Cleanup, APIs Node/Express, design systems, micro-frontends, Core Web Vitals y trabajo remoto por contrato desde agosto de 2026. Hispanohablante nativo, inglés intermedio.",
+    "ogTitle": "Senior Vue/Nuxt · Craft asistido por IA",
+    "ogDescription": "Desarrollador senior frontend en Cartagena de Indias, Colombia. Páginas web, design systems y craft Vue/Nuxt asistido por IA con TypeScript y Node/Express. Preferencia remoto. Contrato desde ago 2026.",
+    "jobTitle": "Senior Vue/Nuxt · Craft asistido por IA",
     "siteName": "Portafolio de César Gómez",
     "serviceName": "César Gómez — Frontend, páginas web y desarrollo fullstack",
-    "serviceDescription": "Servicios senior de frontend y fullstack desde Cartagena, Colombia: páginas web a medida, apps Vue.js/Nuxt, TypeScript, design systems con PrimeVue/Tailwind, micro-frontends, APIs Node/Express, integración de productos AI/NLP e ingeniería orientada a Core Web Vitals para equipos remotos e internacionales.",
+    "serviceDescription": "Servicios senior de frontend y fullstack desde Cartagena, Colombia: páginas web a medida, apps Vue.js/Nuxt, TypeScript, design systems con PrimeVue/Tailwind, micro-frontends, APIs Node/Express, entrega asistida por IA y Vibe Coding Cleanup, e ingeniería orientada a Core Web Vitals para equipos remotos e internacionales.",
     "availability": "Roles senior frontend, páginas web y fullstack por contrato desde agosto de 2026 · Preferencia remoto · Cartagena de Indias, Colombia"
   },
   "faq": {
@@ -722,62 +895,18 @@
     },
     "hire": {
       "question": "¿Cómo contratar un desarrollador Vue.js senior?",
-      "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, IA y Node.js. Revisa su {portfolio}, {vueProfile}, {aiProfile} y {nodeProfile}; luego contáctalo por el {form}, {linkedin} o {github}.",
+      "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, craft asistido por IA y Node.js. Revisa su {portfolio}, {vueProfile}, {aiProfile} y {nodeProfile}; luego contáctalo por el {form}, {linkedin} o {github}.",
       "linkPortfolio": "portafolio",
       "linkVueProfile": "perfil de desarrollador Vue",
-      "linkAiProfile": "perfil de ingeniero de IA",
+      "linkAiProfile": "perfil de Vibe Coding Cleanup",
       "linkNodeProfile": "perfil backend Node.js",
       "linkForm": "formulario de contacto"
     },
     "items": [
       {
-        "question": "¿Quién es César Gómez?",
-        "answer": "César Gómez es desarrollador fullstack senior con foco en frontend y 13+ años de experiencia en Vue.js, Nuxt.js y TypeScript. Ha construido productos para plataformas ed-tech como Colegium (100k+ estudiantes) y LingoQuesto."
-      },
-      {
-        "question": "¿En qué tecnologías se especializa César Gómez?",
-        "answer": "Vue.js, Nuxt.js, TypeScript, JavaScript, Node.js, Express.js, PrimeVue, Tailwind CSS, design systems, micro-frontends, SSR/SSG, integración AI/NLP y optimización de rendimiento web."
-      },
-      {
-        "question": "¿Está disponible César Gómez para contratación?",
-        "answer": "Sí. Acepta trabajo senior frontend, fullstack y arquitectura por contrato (también en modalidad freelance). Disponibilidad objetivo: agosto de 2026. Basado en Cartagena de Indias, Colombia, con preferencia clara por trabajo remoto con equipos internacionales."
-      },
-      {
-        "question": "¿Qué experiencia tiene con Vue.js y Nuxt.js?",
-        "answer": "Ha liderado arquitectura frontend con Vue 3 y Nuxt 4 en producción, incluyendo ecosistemas micro-frontend, librerías compartidas, Web Components, UIs con TypeScript y plataformas educativas críticas en rendimiento."
-      },
-      {
         "key": "hire",
         "question": "¿Cómo contratar a César Gómez para trabajo de ingeniería senior?",
-        "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, IA y Node.js. Revisa su portafolio en cesargomez.dev, el perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue/, el perfil de ingeniero de IA en cesargomez.dev/es/ingeniero-ia/, el perfil backend Node.js en cesargomez.dev/es/desarrollador-backend-nodejs/ y contáctalo por el formulario, LinkedIn o GitHub."
-      },
-      {
-        "question": "¿Buscas un desarrollador Vue o desarrollador Vue.js?",
-        "answer": "Sí. César Gómez es desarrollador Vue / desarrollador Vue.js senior. Revisa su perfil dedicado en cesargomez.dev/es/desarrollador-vue/ — Vue 3, Nuxt, TypeScript y entrega en producción."
-      },
-      {
-        "question": "¿Es buen candidato como desarrollador frontend Vue para equipos remotos?",
-        "answer": "Sí. Es desarrollador frontend Vue senior basado en Cartagena de Indias, Colombia, con 13+ años de experiencia, trabajo en producción en Colegium y LingoQuesto, y preferencia clara por trabajo remoto con equipos distribuidos en inglés y español."
-      },
-      {
-        "question": "¿Dónde está ubicado César Gómez?",
-        "answer": "Está basado en Cartagena de Indias, Colombia. Su preferencia de trabajo es remoto, colaborando con equipos en Latinoamérica y a nivel global."
-      },
-      {
-        "question": "¿Puedo contratar un desarrollador en Cartagena o alguien que haga páginas web en Cartagena?",
-        "answer": "Sí. César Gómez es desarrollador senior frontend y fullstack en Cartagena de Indias. Crea páginas web y aplicaciones a medida con Vue.js, Nuxt.js y TypeScript, para clientes locales e internacionales, con preferencia por entrega remota."
-      },
-      {
-        "question": "¿César Gómez desarrolla páginas web y interfaces de producto?",
-        "answer": "Sí. Diseña y entrega sitios web, landing pages y UIs de producto en producción — orientados a rendimiento, accesibilidad y mantenimiento a largo plazo, no solo plantillas."
-      },
-      {
-        "question": "¿Qué experiencia tiene César Gómez en ed-tech?",
-        "answer": "Fue ingeniero fullstack fundador en LingoQuesto, un producto ed-tech conversacional con IA/NLP para práctica oral, y frontend senior en Colegium construyendo herramientas cloud usadas por más de 100.000 estudiantes."
-      },
-      {
-        "question": "¿Qué experiencia tiene con Node.js y Express?",
-        "answer": "Tiene ocho años de APIs Node.js con Express en producción, con contratos TypeScript y entrega fullstack hacia interfaces Vue/Nuxt. Ver cesargomez.dev/es/desarrollador-backend-nodejs/."
+        "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, craft asistido por IA y Node.js. Revisa su portafolio en cesargomez.dev, el perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue/, el perfil de Vibe Coding Cleanup en cesargomez.dev/es/ingeniero-ia/, el perfil backend Node.js en cesargomez.dev/es/desarrollador-backend-nodejs/ y contáctalo por el formulario, LinkedIn o GitHub."
       },
       {
         "key": "contact",
@@ -785,36 +914,31 @@
         "answer": "Usa el formulario en cesargomez.dev, conéctate en LinkedIn o revisa su trabajo open source en GitHub."
       },
       {
-        "question": "¿Con qué empresas ha trabajado César Gómez?",
-        "answer": "Experiencia reciente en LingoQuesto (ingeniero fundador), Colegium (frontend senior) y roles previos en TISSINI, Zabud, Cuarto Pixel y otros equipos de producto."
+        "question": "¿Quién es César Gómez?",
+        "answer": "César Gómez es desarrollador fullstack senior con foco en frontend y 13+ años de experiencia en Vue.js, Nuxt.js y TypeScript. Ha construido productos para plataformas ed-tech como Colegium (100k+ estudiantes) y LingoQuesto."
+      },
+      {
+        "question": "¿Está disponible César Gómez para contratación?",
+        "answer": "Sí. Trabaja por contrato en roles senior de frontend, fullstack y arquitectura. Disponible para empezar el 10 de agosto de 2026; las conversaciones e entrevistas son bienvenidas ahora. Prefiere remoto desde Cartagena de Indias, Colombia."
+      },
+      {
+        "question": "¿Qué experiencia tiene con Vue.js y Nuxt.js?",
+        "answer": "Ha liderado arquitectura frontend con Vue 3 y Nuxt 4 en producción, incluyendo ecosistemas micro-frontend, librerías compartidas, Web Components, UIs con TypeScript y plataformas educativas críticas en rendimiento."
+      },
+      {
+        "question": "¿Qué experiencia tiene César Gómez en ed-tech?",
+        "answer": "Fue ingeniero fullstack fundador en LingoQuesto, un producto ed-tech conversacional con IA/NLP para práctica oral, y frontend senior en Colegium construyendo herramientas cloud usadas por más de 100.000 estudiantes."
       },
       {
         "question": "¿Trabaja en inglés y español?",
         "answer": "Sí. César es hispanohablante nativo con inglés intermedio y colabora con equipos internacionales distribuidos en ambos idiomas."
-      },
-      {
-        "question": "¿César Gómez construye design systems, UIs con PrimeVue y micro-frontends?",
-        "answer": "Sí. Diseña y entrega librerías de componentes y design systems (PrimeVue, Vuetify, Tailwind CSS), y ha liderado arquitecturas micro-frontend en plataformas ed-tech a gran escala."
-      },
-      {
-        "question": "¿Puede mejorar Core Web Vitals y el rendimiento frontend?",
-        "answer": "Sí. Optimiza apps Vue/Nuxt para LCP, INP, CLS, accesibilidad y rendimiento sostenible — desde la estrategia SSR/SSG hasta el rendering y la entrega de assets."
-      },
-      {
-        "question": "¿Está disponible como freelance o por contrato en LatAm?",
-        "answer": "Sí. Acepta engagements senior por contrato y estilo freelance desde Cartagena, Colombia, con preferencia remota, colaborando con equipos en Latinoamérica y a nivel global desde agosto de 2026."
-      },
-      {
-        "question": "¿Qué tooling Vue usa César Gómez en el día a día?",
-        "answer": "Vue 3 Composition API, Nuxt 4, TypeScript, Pinia, Vue Router, Vite, PrimeVue, Tailwind CSS y CI/CD moderno — con SSR/SSG y rendering híbrido cuando el producto lo necesita."
       }
     ]
   },
   "landingVue": {
     "meta": {
       "title": "Desarrollador Vue.js | Vue 3, Nuxt y TypeScript — César Gómez",
-      "description": "Desarrollador Vue y desarrollador Vue.js senior en Colombia. 13+ años con Vue 3, Nuxt.js, TypeScript, Pinia y PrimeVue. Contrata un desarrollador frontend Vue remoto para productos, páginas web y design systems. Cartagena · LatAm.",
-      "keywords": "desarrollador Vue, desarrollador Vue.js, desarrollador Vue 3, programador Vue, programador Vue.js, desarrollador frontend Vue, desarrollador Vue senior, desarrollador Vue Colombia, desarrollador Vue.js Colombia, contratar desarrollador Vue, contratar desarrollador Vue.js, desarrollador Nuxt, desarrollador Nuxt.js, desarrollador Nuxt 4, ingeniero frontend Vue, freelance Vue Colombia, desarrollador Vue remoto, consultor Vue.js, especialista Vue.js, Vue.js LatAm, desarrollador Pinia, desarrollador PrimeVue, arquitecto frontend Vue, SPA Vue, SSR Nuxt, SSG Nuxt, César Gómez desarrollador Vue, desarrollador Vue remoto Colombia, desarrollador Vue.js Cartagena, contratar desarrollador Vue Colombia, programador Vue Colombia, desarrollador Vue freelance Colombia, desarrollador Vue LatAm, desarrollador Vue 3 Colombia, ingeniero Vue.js Colombia, especialista Vue.js remoto, desarrollador frontend Vue Cartagena, contratar desarrollador Nuxt Colombia, desarrollador Vue.js remoto LatAm, programador Vue.js Cartagena, desarrollador Vue contrato remoto, hire Vue developer Colombia"
+      "description": "Desarrollador Vue y desarrollador Vue.js senior en Colombia. 13+ años con Vue 3, Nuxt.js, TypeScript, Pinia y PrimeVue. Contrata un desarrollador frontend Vue remoto para productos, páginas web y design systems. Cartagena · LatAm."
     },
     "eyebrow": "Desarrollador Vue.js · Colombia",
     "title": "Desarrollador Vue.js",
@@ -869,6 +993,7 @@
     "experienceTitle": "Experiencia como desarrollador Vue en producción",
     "experienceBody": "Como desarrollador Vue.js en Colegium (100k+ estudiantes) y LingoQuesto (ingeniero fundador), construí productos Vue/Nuxt usados a escala real — no demos, sistemas en producción con ownership de arquitectura frontend.",
     "proofTitle": "Por qué contratarme como desarrollador Vue.js",
+    "proofLink": "Caso Colegium — producto web a escala",
     "proof": [
       "13+ años en frontend con especialización profunda en Vue.js y Nuxt",
       "Desarrollador Vue Colombia con preferencia remota (LatAm y global)",
@@ -919,76 +1044,76 @@
   },
   "landingAi": {
     "meta": {
-      "title": "Ingeniero de IA | NLP, LLM y Vue/Nuxt — César Gómez",
-      "description": "Contrata un ingeniero de IA / ingeniero NLP en Colombia. Integra LLM locales y cloud, IA conversacional y ed-tech, y lleva código Vue/Nuxt asistido por agentes (Cursor, Copilot, Claude Code) a producción.",
-      "keywords": "ingeniero de IA, ingeniero IA, ingeniero NLP, ingeniero LLM, desarrollador IA, contratar ingeniero de IA, ingeniero IA Colombia, ingeniero IA remoto, IA conversacional, LLM local, Ollama, llama.cpp, desarrollador Vue IA, Vibe Coding Cleanup, Cursor AI, Claude Code, ingeniero chatbot, César Gómez ingeniero IA"
+      "title": "Vibe Coding Cleanup · Craft Vue/Nuxt asistido por IA — César Gómez",
+      "description": "Contrata un desarrollador Vue/Nuxt senior para craft asistido por IA y Vibe Coding Cleanup. Convierte código de Cursor, Copilot y Claude Code en sistemas de producción mantenibles con quality gates y ownership claro. Remoto desde Colombia / LatAm."
     },
-    "eyebrow": "Ingeniero de IA · NLP / LLM",
-    "title": "Ingeniero de IA",
-    "titleHighlight": "NLP · Vue/Nuxt",
-    "lead": "Buscas un ingeniero de IA o ingeniero NLP que también entregue producto frontend? Soy César Gómez: integro modelos AI/NLP locales y cloud, construyo experiencias conversacionales y convierto código asistido por agentes en sistemas listos para producción.",
+    "eyebrow": "Vibe Coding Cleanup · Craft asistido por IA",
+    "title": "Vibe Coding Cleanup",
+    "titleHighlight": "Craft asistido por IA",
+    "lead": "Vue/Nuxt listo para producción con controles de calidad, ownership de arquitectura y craft — usando herramientas de IA como palanca, no como hype. Soy César Gómez: entrego sistemas mantenibles que el equipo puede asumir desde salida de Cursor, Copilot o Claude Code, y endurezco bases asistidas por agentes cuando hace falta limpieza de código.",
     "intent": {
-      "title": "Qué hace un ingeniero de IA en producto real",
+      "title": "Oferta comercial: entrega Vue/Nuxt asistida por IA y limpieza",
       "paragraphs": [
-        "Un ingeniero de IA conecta modelos (LLM/NLP) con productos usables: APIs, interfaces, calidad y ownership de entrega. No es solo prompting — es ingeniería de producción con Vue/Nuxt cuando la experiencia vive en el frontend.",
-        "Si necesitas contratar un ingeniero IA en Colombia o un perfil remoto LatAm para IA conversacional, ed-tech o cleanup de código generado por agentes, este perfil cubre integración local/cloud, auditoría y release."
+        "Este perfil de contratación es para equipos que necesitan un ingeniero senior Vue/Nuxt que use Cursor, Copilot o Claude Code para entregar más rápido — con responsabilidad técnica de arquitectura, contratos tipados y controles de calidad antes del lanzamiento.",
+        "Los encargos suelen incluir limpieza de vibe coding, entrega de features asistida por IA y endurecimiento de código generado por agentes. El método paso a paso está en la página de metodología Craft asistido por IA."
       ]
     },
     "services": {
-      "title": "Contrata un ingeniero de IA para estos escenarios",
+      "title": "Alcance en contratos asistidos por IA",
       "items": [
-        {
-          "title": "Ingeniero NLP / LLM para productos conversacionales",
-          "body": "Integración de modelos cloud y locales (Ollama, llama.cpp) en flujos de producto con UX clara."
-        },
-        {
-          "title": "Ingeniero de IA + frontend Vue/Nuxt",
-          "body": "Interfaces y arquitectura Vue cuando la IA tiene que vivir en apps reales, no en demos."
-        },
         {
           "title": "Vibe coding cleanup / código asistido por agentes",
           "body": "Auditoría y endurecimiento de código de Cursor, Copilot o Claude Code hasta estándares de producción."
         },
         {
-          "title": "Ingeniero IA remoto Colombia / LatAm",
-          "body": "Contrato senior remoto desde Cartagena para equipos que necesitan IA aplicada con criterio de ingeniería."
+          "title": "Entrega Vue/Nuxt asistida por IA",
+          "body": "Publica features Vue/Nuxt más rápido con agentes, manteniendo arquitectura, tipos y ownership claros."
+        },
+        {
+          "title": "Controles de calidad para salida de IA",
+          "body": "Detecta APIs alucinadas, lógica duplicada, brechas de seguridad y deuda de mantenibilidad antes del release."
+        },
+        {
+          "title": "Vue/Nuxt senior remoto · Colombia / LatAm",
+          "body": "Contrato senior remoto desde Cartagena para equipos que quieren apalancarse en IA con oficio, no con hype."
         }
       ]
     },
-    "expertiseTitle": "Qué aporto en ingeniería de IA",
+    "expertiseTitle": "Qué aporto en craft asistido por IA",
     "expertise": [
-      "Integraciones AI/NLP locales y cloud para experiencias de producto conversacionales",
       "Entrega asistida por agentes con revisión humana, ownership de arquitectura y controles de calidad",
       "Auditorías que fortalecen código generado por IA en seguridad, mantenibilidad y producción",
-      "Interfaces Vue/Nuxt con integración fullstack entre modelos, APIs y flujos de producto"
+      "Interfaces Vue/Nuxt e integración fullstack cuando el producto incluye features con IA",
+      "Flujos prácticos con Cursor, Windsurf, Copilot, Claude Code, OpenCode, Ollama y llama.cpp"
     ],
-    "experienceTitle": "Experiencia de IA en productos reales",
-    "experienceBody": "Como ingeniero fullstack fundador en LingoQuesto, defino un producto ed-tech AI/NLP para práctica oral e integro modelos localmente y en la nube. En el hackathon 2024 de Colegium, mi equipo obtuvo el 4.º lugar con un chatbot de soporte impulsado por IA.",
-    "proofTitle": "Por qué los equipos me incorporan a proyectos de IA",
+    "experienceTitle": "Herramientas de IA en trabajo de producto real",
+    "experienceBody": "Como ingeniero fullstack fundador en LingoQuesto, ayudo a definir un producto ed-tech que usa AI/NLP para práctica oral — integrando modelos en flujos de producto como ingeniero fullstack, no como investigador de IA. También uso herramientas de coding con IA a diario para entregar sistemas Vue/Nuxt mantenibles más rápido.",
+    "proofTitle": "Por qué los equipos me incorporan a proyectos asistidos por IA",
+    "proofLink": "Metodología Craft asistido por IA",
     "proof": [
-      "Ownership de producción entre visión de producto, arquitectura frontend, APIs e integración AI/NLP",
+      "Ownership senior Vue/Nuxt con herramientas de IA como palanca, no como título",
       "Flujos prácticos con Cursor, Windsurf, Copilot, Claude Code, OpenCode, Ollama y llama.cpp",
       "Criterio de ingeniería senior construido durante 13+ años entregando software mantenible",
       "Disponible para roles senior por contrato desde agosto de 2026"
     ],
     "portfolioCta": "Ver portafolio completo",
-    "contactCta": "Hablemos de tu proyecto de IA",
-    "faqTitle": "FAQ contratación ingeniero de IA",
+    "contactCta": "Hablemos de entrega asistida por IA",
+    "faqTitle": "FAQ craft asistido por IA y vibe coding",
     "faq": [
       {
-        "question": "¿Qué puedes entregar como ingeniero de IA?",
-        "answer": "Conecto capacidades AI/NLP con productos en producción: integración de modelos y APIs, interfaces conversacionales, arquitectura Vue/Nuxt, controles de calidad y ownership de entrega de extremo a extremo."
+        "question": "¿Qué puedes entregar con craft asistido por IA?",
+        "answer": "Uso herramientas de coding con IA para acelerar la entrega Vue/Nuxt manteniendo ownership de arquitectura, contratos tipados, controles de calidad y mantenibilidad — para que el código asistido por agentes sea software de producción que el equipo pueda poseer."
       },
       {
-        "question": "¿Trabajas con modelos de IA locales y cloud?",
-        "answer": "Sí. Integro y opero modelos cloud y runtimes locales como Ollama y llama.cpp, eligiendo el enfoque según las necesidades de producto, privacidad, latencia y restricciones operativas."
+        "question": "¿Eres ingeniero de IA?",
+        "answer": "No. Soy desarrollador Vue/Nuxt / fullstack senior que usa herramientas de IA para entrega mantenible y tiene experiencia de producto integrando features AI/NLP en LingoQuesto. No reclamo un rol dedicado de ingeniero de IA."
       },
       {
         "question": "¿Puedes mejorar una base de código asistida por IA o creada con vibe coding?",
         "answer": "Sí. Audito arquitectura, lógica duplicada, brechas de seguridad, APIs alucinadas, regresiones y riesgos de mantenibilidad; luego añado la estructura y los controles necesarios para producción."
       },
       {
-        "question": "¿Cuándo estás disponible para un contrato de ingeniería de IA?",
+        "question": "¿Cuándo estás disponible para un contrato Vue/Nuxt asistido por IA?",
         "answer": "La disponibilidad objetivo es agosto de 2026. Ya estoy abierto a conversaciones, entrevistas y ofertas anticipadas antes de esa fecha."
       },
       {
@@ -996,26 +1121,26 @@
         "answer": "Trabajo con Cursor, Windsurf, GitHub Copilot, Claude Code, OpenCode, Ollama y llama.cpp — siempre con revisión humana, ownership de arquitectura y controles de calidad antes del release."
       },
       {
-        "question": "¿Construyes IA de voz o conversacional para ed-tech?",
-        "answer": "Sí. En LingoQuesto ayudo a definir experiencias de producto conversacional AI/NLP para práctica oral, integrando modelos localmente y en la nube."
+        "question": "¿Has trabajado en features de producto AI/NLP?",
+        "answer": "Sí. En LingoQuesto contribuyo como ingeniero fullstack fundador en experiencias de producto conversacional AI/NLP para práctica oral, integrando modelos en flujos de producto usables."
       }
-    ]
+    ],
+    "methodologyCta": "Metodología Craft asistido por IA"
   },
   "landingNode": {
     "meta": {
-      "title": "Desarrollador Node.js | Backend Express y TypeScript — César Gómez",
-      "description": "Desarrollador Node.js y desarrollador backend Express con 8+ años en producción. APIs REST tipadas, TypeScript e integración Vue/Nuxt. Contrata un desarrollador Node remoto en Colombia / LatAm.",
-      "keywords": "desarrollador Node.js, desarrollador Node, desarrollador backend Node.js, desarrollador Express.js, programador Node.js, contratar desarrollador Node, desarrollador Node Colombia, desarrollador Express Colombia, API REST TypeScript, backend TypeScript, fullstack Node Vue, desarrollador Node remoto, César Gómez Node.js"
+      "title": "Vue + Node Fullstack | APIs tipadas y entrega UI — César Gómez",
+      "description": "Contrata un desarrollador Node.js que usa Express y TypeScript para APIs tipadas y tooling, asume ownership fullstack cuando hace falta, y aporta trabajo real de backend en Django/Python desde LingoQuesto. Desarrollador Node remoto en Colombia / LatAm."
     },
     "eyebrow": "Desarrollador Node.js · Express",
     "title": "Desarrollador Node.js",
-    "titleHighlight": "Backend · Express",
-    "lead": "Buscas un desarrollador Node.js o un desarrollador Express con experiencia real? Soy César Gómez: construyo APIs Node.js en producción con Express y TypeScript, y las conecto a interfaces Vue/Nuxt como perfil fullstack sólido.",
+    "titleHighlight": "API → UI",
+    "lead": "¿Necesitas APIs tipadas conectadas a UI Vue/Nuxt — no un especialista sólo de backend? Uso Node.js y Express para contratos de API y tooling, asumo la entrega fullstack cuando el rol lo pide, y lo complemento con trabajo backend real en Django/Python en LingoQuesto.",
     "intent": {
       "title": "Qué hace un desarrollador Node.js en tu producto",
       "paragraphs": [
-        "Un desarrollador Node.js diseña y mantiene APIs, contratos tipados y lógica de negocio que el frontend puede consumir con seguridad. Con Express + TypeScript llevo 8+ años en producción.",
-        "Si necesitas contratar un desarrollador backend Node.js en Colombia o un perfil remoto LatAm que también entienda Vue/Nuxt, este perfil cubre ownership API-to-UI."
+        "Un desarrollador Node.js diseña y mantiene APIs, contratos tipados y lógica de negocio que el frontend puede consumir con seguridad. Uso Express y TypeScript para APIs tipadas y tooling, con ownership fullstack cuando el producto lo necesita.",
+        "Si necesitas contratar un desarrollador backend Node.js en Colombia o un perfil remoto LatAm que también entienda Vue/Nuxt — y ha entregado lógica backend real en Django/Python en LingoQuesto — este perfil cubre ownership API-to-UI."
       ]
     },
     "services": {
@@ -1041,16 +1166,16 @@
     },
     "expertiseTitle": "Qué aporto en backend con Node",
     "expertise": [
-      "APIs REST en Node.js con Express en producción durante ocho años",
+      "Node.js y Express para APIs tipadas y tooling con contratos TypeScript claros",
       "TypeScript de extremo a extremo, desde contratos de API hasta el consumo frontend",
-      "Fundamentos backend mantenibles bajo presión de producto",
+      "Ownership backend real en Django/Python en LingoQuesto junto a APIs GraphQL y REST",
       "Ownership fullstack cuando APIs, auth y entrega Vue/Nuxt deben avanzar juntos"
     ],
-    "experienceTitle": "Node y Express en producción",
-    "experienceBody": "Ocho años entregando APIs Node.js con Express en entornos de producción: diseño de endpoints, lógica de negocio endurecida y ownership del camino desde contratos backend hasta las interfaces que los equipos publican.",
+    "experienceTitle": "Node, Express y entrega backend",
+    "experienceBody": "Uso Node.js y Express para APIs tipadas y tooling, asumo ownership fullstack cuando el rol lo requiere, y lo complemento con lógica de negocio backend real en Django/Python en LingoQuesto — trabajando con GraphQL y REST para que los frontends tengan contratos listos para publicar.",
     "proofTitle": "Por qué los equipos me contratan para roles Node",
     "proof": [
-      "Un segundo perfil fuerte junto a Vue/Nuxt — no un skill auxiliar, ownership backend de producción",
+      "Un segundo perfil fuerte junto a Vue/Nuxt — APIs y tooling tipados con Node/Express, más ownership fullstack cuando el rol lo necesita",
       "APIs Express + TypeScript con contratos claros e integración fullstack",
       "Criterio senior construido durante 13+ años entregando software mantenible",
       "Disponible para roles senior por contrato desde agosto de 2026"
@@ -1061,11 +1186,11 @@
     "faq": [
       {
         "question": "¿Qué puedes entregar como desarrollador backend Node.js?",
-        "answer": "Diseño y entrego APIs Express, contratos tipados y lógica backend de producción — y me mantengo efectivo cuando el trabajo cruza a integración Vue/Nuxt y entrega de extremo a extremo."
+        "answer": "Diseño APIs tipadas y tooling con Node.js y Express, asumo ownership fullstack cuando el rol lo necesita, y aporto experiencia backend real desde el trabajo en Django/Python en LingoQuesto — incluyendo integración GraphQL y REST hacia productos Vue/Nuxt."
       },
       {
         "question": "¿Cuánta experiencia tienes con Express?",
-        "answer": "Ocho años de Express en producción, construyendo y manteniendo APIs Node.js usadas por productos y equipos reales."
+        "answer": "Uso Express y TypeScript para APIs tipadas y tooling, asumo ownership fullstack cuando el producto lo necesita, y lo complemento con lógica de negocio backend real en Django/Python en LingoQuesto."
       },
       {
         "question": "¿Eres especialista puro de backend o fullstack?",
@@ -1100,19 +1225,20 @@
   },
   "hireProfiles": {
     "hireForVue": "Desarrollador Vue.js",
-    "hireForAi": "Ingeniero de IA",
+    "hireForAi": "Vibe Coding Cleanup",
     "hireForNode": "Desarrollador Node.js",
     "section": "Engagement",
     "title": "Contrátame como",
-    "titleHighlight": "desarrollador Vue, IA o Node.",
-    "lead": "Perfiles enfocados para recruiters y equipos de producto — desarrollador Vue.js / Nuxt, ingeniero de IA/NLP o desarrollador Node.js con Express.",
+    "titleHighlight": "desarrollador Vue, craft con IA o Node.",
+    "lead": "Perfiles enfocados para recruiters y equipos de producto — desarrollador Vue.js / Nuxt, Vibe Coding Cleanup / craft asistido por IA, o desarrollador Node.js con Express.",
     "vueBlurb": "Desarrollador Vue.js senior: arquitectura Vue/Nuxt, design systems y entrega frontend orientada al rendimiento.",
-    "aiBlurb": "Ingeniero de IA: integraciones NLP/LLM, productos conversacionales y código asistido por agentes listo para producción.",
+    "aiBlurb": "Vibe Coding Cleanup: endurece código Vue/Nuxt asistido por agentes y entrega craft con IA con quality gates y entrega mantenible.",
     "nodeBlurb": "Desarrollador Node.js: APIs Express en producción, contratos tipados y entrega fullstack API-to-UI.",
     "viewProfile": "Ver perfil de desarrollador",
     "alsoAvailable": "También puedes contratar",
-    "crossLinkFromVue": "También disponible: ingeniero de IA",
-    "crossLinkFromAi": "También disponible: desarrollador Vue.js"
+    "crossLinkFromVue": "También disponible: Vibe Coding Cleanup",
+    "crossLinkFromAi": "También disponible: desarrollador Vue.js",
+    "craftMethodology": "Metodología Craft asistido por IA"
   },
   "themes": {
     "dark-modern": "Oscuro Moderno",
@@ -1137,5 +1263,157 @@
     "andromeda": "Andromeda",
     "vercel-dark": "Vercel Oscuro",
     "github-light": "GitHub Claro"
+  },
+  "landingLocal": {
+    "meta": {
+      "title": "Desarrollador web Cartagena · Páginas Web Vue/Nuxt — César Gómez",
+      "description": "Contrata un desarrollador web senior en Cartagena, Colombia para páginas web a medida y apps Vue/Nuxt. Entrega remota desde el Caribe colombiano para equipos locales e internacionales."
+    },
+    "eyebrow": "Cartagena · Páginas web · Remoto",
+    "title": "Desarrollador web",
+    "titleHighlight": "Cartagena",
+    "lead": "¿Necesitas páginas web a medida o UI Vue/Nuxt desde Cartagena de Indias, con colaboración remota? Soy César Gómez: entrega frontend/fullstack senior para negocios locales y equipos internacionales — no una fábrica de plantillas genéricas.",
+    "intent": {
+      "title": "Páginas web y UI de producto — distinto al portafolio completo",
+      "paragraphs": [
+        "Esta página atiende la intención local de Cartagena/Colombia: sitios de marketing, landings de producto y apps Vue/Nuxt con ownership claro. El home cubre la historia completa de contratación; aquí el foco es visibilidad local más entrega remota.",
+        "Colaboración en español nativo e inglés intermedio. Preferencia remota; disponible para conversaciones de contrato senior con inicio objetivo en agosto 2026."
+      ]
+    },
+    "services": {
+      "title": "Contrata un desarrollador web en Cartagena para",
+      "items": [
+        {
+          "title": "Páginas web a medida",
+          "body": "Sitios de marketing y landings con rendimiento y accesibilidad en mente — con craft Vue/Nuxt moderno cuando el producto lo justifica."
+        },
+        {
+          "title": "UI de producto Vue 3 / Nuxt",
+          "body": "Interfaces orientadas a componentes, TypeScript tipado y arquitectura frontend mantenible para PyMEs y productos tipo ed-tech."
+        },
+        {
+          "title": "Contrato remoto desde Cartagena",
+          "body": "Equipos LatAm e internacionales bienvenidos. Comunicación async clara, handoffs bilingües y ownership senior sin inventar presencia de oficina local."
+        },
+        {
+          "title": "Lanzamientos orientados a rendimiento",
+          "body": "Nuxt/SSR consciente de Core Web Vitals cuando importa el descubrimiento; craft SPA sólido cuando el producto es app-first."
+        }
+      ]
+    },
+    "expertiseTitle": "Qué obtienes de un senior basado en Cartagena",
+    "expertise": [
+      "Sitios a medida y apps Vue/Nuxt — no churn de page builders",
+      "Colaboración en español nativo con inglés intermedio para equipos globales",
+      "Entrega remota desde Cartagena de Indias, Colombia",
+      "Camino claro a perfiles Vue, craft asistido por IA o Node cuando haga falta"
+    ],
+    "experienceTitle": "Por qué existe esta página",
+    "experienceBody": "La gente busca desarrollador web / páginas web en Cartagena y ayuda Vue/Nuxt remota desde Colombia. Este landing responde esa intención. Para prueba ed-tech a escala, ve los casos Colegium y LingoQuesto; para contratación por rol, usa los perfiles Vue, Vibe Coding Cleanup o Node.",
+    "proofTitle": "Señales locales + remotas honestas",
+    "proofLink": "Caso Colegium — producto web a escala",
+    "proof": [
+      "Base en Cartagena de Indias, Bolívar, Colombia",
+      "13+ años entregando sitios y productos web",
+      "Experiencia Vue/Nuxt en producción en Colegium y LingoQuesto",
+      "Disponibilidad objetivo de contrato desde agosto 2026"
+    ],
+    "portfolioCta": "Ver portafolio completo",
+    "contactCta": "Hablar de un proyecto web Cartagena / remoto",
+    "faqTitle": "FAQ desarrollador web Cartagena",
+    "faq": [
+      {
+        "question": "¿Construyes páginas web en Cartagena?",
+        "answer": "Sí. Construyo sitios a medida y UI Vue/Nuxt como desarrollador senior basado en Cartagena de Indias, con preferencia por colaboración remota."
+      },
+      {
+        "question": "¿Es lo mismo que contratar un desarrollador Vue.js?",
+        "answer": "Habilidades solapadas, intención distinta. Esta página apunta a búsqueda local de sitios / Cartagena; el perfil Vue profundiza en contratación de arquitectura Vue/Nuxt. Usa ambos si te sirven."
+      },
+      {
+        "question": "¿Solo trabajas con clientes de Cartagena?",
+        "answer": "No. Cartagena es mi base; prefiero trabajo remoto también con equipos LatAm e internacionales."
+      },
+      {
+        "question": "¿Cuándo estás disponible?",
+        "answer": "La disponibilidad objetivo es agosto 2026. Conversaciones, entrevistas y ofertas tempranas son bienvenidas antes."
+      }
+    ]
+  },
+  "landingCraft": {
+    "meta": {
+      "title": "Metodología Craft asistido por IA · Quality gates — César Gómez",
+      "description": "Metodología de Craft asistido por IA con Cursor, Copilot y Claude Code: ownership de arquitectura, quality gates y entrega Vue/Nuxt mantenible — explícitamente no un rol de ingeniero de IA."
+    },
+    "eyebrow": "Metodología · No título de ingeniero de IA",
+    "title": "Craft asistido por IA",
+    "titleHighlight": "metodología",
+    "lead": "Cómo uso Cursor, Copilot, Claude Code y herramientas relacionadas sin entregar código frágil: responsabilidad humana, revisión de arquitectura y controles de calidad. Esta página es la metodología; para contratar Vibe Coding Cleanup usa /es/ingeniero-ia/.",
+    "intent": {
+      "title": "Craft sobre el hype",
+      "paragraphs": [
+        "Las herramientas de IA aceleran andamiaje y exploración. El craft decide qué se mergea: contratos tipados, seguridad, tests, control de duplicación y claridad para el siguiente ingeniero.",
+        "No me posiciono como ingeniero de IA, ingeniero NLP ni investigador LLM dedicado. Soy desarrollador Vue/Nuxt / fullstack senior que usa agentes como palanca e integra features AI/NLP de producto cuando el producto lo necesita."
+      ]
+    },
+    "services": {
+      "title": "Quality gates en el flujo",
+      "items": [
+        {
+          "title": "Ownership de arquitectura",
+          "body": "Los agentes proponen; un senior posee límites, flujo de datos y mantenibilidad a largo plazo."
+        },
+        {
+          "title": "Revisión antes del merge",
+          "body": "Detectar APIs alucinadas, patrones inseguros, abstracciones muertas y lógica duplicada antes de llegar a main."
+        },
+        {
+          "title": "Entrega Vue/Nuxt tipada",
+          "body": "Mantener TypeScript, contratos de componentes y preocupaciones SSR/SSG honestas cuando la IA escribió el primer borrador."
+        },
+        {
+          "title": "Tooling con criterio",
+          "body": "Cursor, Copilot, Claude Code, Windsurf, OpenCode, Ollama y llama.cpp — elegidos por la tarea, siempre con gates humanos."
+        }
+      ]
+    },
+    "expertiseTitle": "Qué incluye esta metodología",
+    "expertise": [
+      "Andamiaje asistido por agentes con revisión humana obligatoria",
+      "Chequeos de seguridad, mantenibilidad y regresiones antes del release",
+      "Craft Vue/Nuxt de producción cuando la IA acelera la entrega",
+      "Rechazo claro de títulos de trabajo de ingeniero de IA"
+    ],
+    "experienceTitle": "Dónde se ve el método",
+    "experienceBody": "Entrega diaria Vue/Nuxt asistida por IA, vibe-coding cleanup en codebases pesadas de agentes, e integración de features AI/NLP de producto en LingoQuesto como ingeniero fullstack — no como investigador de modelos dedicado.",
+    "proofTitle": "Perfiles relacionados",
+    "proofLink": "Caso LingoQuesto — IA/NLP en producto",
+    "proof": [
+      "Perfil Vibe Coding Cleanup en /es/ingeniero-ia/",
+      "Entrega Vue/Nuxt senior en /es/desarrollador-vue/",
+      "Casos Colegium y LingoQuesto en el home del portafolio",
+      "Disponible para roles senior por contrato desde agosto 2026"
+    ],
+    "portfolioCta": "Ver portafolio completo",
+    "contactCta": "Hablar de entrega asistida por IA",
+    "faqTitle": "FAQ Craft asistido por IA",
+    "faq": [
+      {
+        "question": "¿Craft asistido por IA es lo mismo que ser ingeniero de IA?",
+        "answer": "No. Craft asistido por IA significa usar agentes de código con ownership senior y quality gates. No es un reclamo de rol dedicado de ingeniero de IA, NLP o investigación LLM."
+      },
+      {
+        "question": "¿Qué herramientas usas?",
+        "answer": "Cursor, GitHub Copilot, Claude Code, Windsurf, OpenCode, Ollama y llama.cpp — seleccionados por tarea, siempre con revisión humana."
+      },
+      {
+        "question": "¿Dónde deben contratar los recruiters esto?",
+        "answer": "Usa el perfil Vibe Coding Cleanup en cesargomez.dev/es/ingeniero-ia/ para intención de contratación. Esta página explica la metodología detrás de esa oferta."
+      },
+      {
+        "question": "¿Publicas salida de IA sin revisar?",
+        "answer": "No. Aptitud de arquitectura, seguridad, contratos tipados y chequeos de mantenibilidad forman parte de la definición de hecho."
+      }
+    ]
   }
 }

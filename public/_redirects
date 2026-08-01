@@ -2,3 +2,12 @@
 # uploaded with --no-build). Force (!) overrides the Nuxt HTML refresh at /sitemap.xml/.
 /sitemap.xml   /sitemap_index.xml  200!
 /sitemap.xml/  /sitemap_index.xml  200!
+
+# Apex canonical — www → bare domain
+https://www.cesargomez.dev/*  https://cesargomez.dev/:splat  301!
+
+# Legacy CV filenames (encoded + literal space variants)
+/cv/CV%20Cesar%20Gomez%20EN.pdf  /cv/cv-cesar-gomez-en.pdf  301
+/cv/CV%20Cesar%20Gomez%20ES.pdf  /cv/cv-cesar-gomez-es.pdf  301
+/cv/CV Cesar Gomez EN.pdf  /cv/cv-cesar-gomez-en.pdf  301
+/cv/CV Cesar Gomez ES.pdf  /cv/cv-cesar-gomez-es.pdf  301

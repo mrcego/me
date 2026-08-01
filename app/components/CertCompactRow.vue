@@ -34,7 +34,11 @@ const issuerIcon = computed(() => {
       class="absolute inset-0 w-full h-full cursor-pointer touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50 hover:bg-foreground/3 transition-colors"
       :aria-expanded="expanded"
       :aria-controls="panelId"
-      :aria-label="cert.title"
+      :aria-label="
+        (expanded
+          ? $t('certifications.collapseCredential')
+          : $t('certifications.expandCredential')) + `: ${cert.title}`
+      "
       @click="$emit('toggle')"
     />
 
@@ -63,7 +67,7 @@ const issuerIcon = computed(() => {
         :to="cert.url"
         target="_blank"
         rel="noopener noreferrer"
-        class="pointer-events-auto relative z-10 inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-xl px-3 glass text-xs font-black uppercase tracking-[0.15em] text-foreground hover:bg-primary hover:text-primary-contrast transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 group/btn"
+        class="pointer-events-auto relative z-10 inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-xl px-3 glass text-xs font-black uppercase tracking-[0.15em] text-foreground hover:bg-primary hover:text-primary-contrast transition-[background-color,color,transform,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 group/btn"
         :aria-label="$t('certifications.viewCredentialNamed', { title: cert.title })"
       >
         <span class="hidden sm:inline" aria-hidden="true">{{

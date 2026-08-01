@@ -42,7 +42,7 @@ const responses = {
   'CURRENT MISSION?':
     'ACTIVE MISSION: DEFINING THE NEXT GENERATION OF ED-TECH PLATFORMS AT LINGOQUESTO AND MAINTAINING HIGH-PERFORMANCE CLOUD ARCHITECTURES.',
   'EXPERIENCE LEVEL?':
-    'LEVEL: 13+ YEARS IN PRODUCTION. FRONTEND-FOCUSED FULLSTACK. 500+ PROJECTS DELIVERED. CITIZEN OF THE FULLSTACK ECOSYSTEM.',
+    'LEVEL: 13+ YEARS IN PRODUCTION. FRONTEND-FOCUSED FULLSTACK. 18+ MODULES & LIBRARIES SHIPPED. CITIZEN OF THE FULLSTACK ECOSYSTEM.',
 };
 
 const sendMessage = (content) => {
@@ -123,7 +123,7 @@ watch(isOpen, (val) => {
       <!-- Chat Trigger Toggle -->
       <button
         type="button"
-        class="size-12 md:size-14 glass rounded-2xl md:rounded-3xl flex items-center justify-center text-primary border-primary/20 shadow-4xl hover:scale-110 active:scale-95 transition-all pointer-events-auto relative group overflow-hidden"
+        class="size-12 md:size-14 glass rounded-2xl md:rounded-3xl flex items-center justify-center text-primary border-primary/20 shadow-4xl hover:scale-110 active:scale-95 transition-[transform,opacity,background-color] pointer-events-auto relative group overflow-hidden"
         :aria-label="isOpen ? $t('chat.close') : $t('chat.open')"
         :aria-expanded="isOpen"
         @click="isOpen = !isOpen"
@@ -240,7 +240,7 @@ watch(isOpen, (val) => {
             <button
               v-for="s in suggestions"
               :key="s"
-              class="px-3 py-1.5 glass rounded-xl type-label text-muted hover:text-primary hover:border-primary/30 transition-all"
+              class="px-3 py-1.5 glass rounded-xl type-label text-muted hover:text-primary hover:border-primary/30 transition-colors"
               @click="sendMessage(s)"
             >
               {{ s }}
@@ -258,7 +258,7 @@ watch(isOpen, (val) => {
             @keyup.enter="sendMessage()"
           />
           <button
-            class="p-2 text-primary hover:scale-110 active:scale-95 transition-all"
+            class="p-2 text-primary hover:scale-110 active:scale-95 transition-transform"
             @click="sendMessage()"
           >
             <Icon name="lucide:send" class="w-[38px] h-[38px]" />
