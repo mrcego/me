@@ -58,4 +58,20 @@ test.describe('hero conversion hierarchy', () => {
     const nameText = (await hero.locator('h1').innerText()).replace(/\s+/g, ' ');
     expect(nameText).toMatch(/César\s+Gómez|Cesar\s+Gomez|CESAR\s+GOMEZ/i);
   });
+
+  test('case-study CTAs include their destination in the accessible name', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+
+    const caseStudies = page.locator('#case-studies');
+    await expect(
+      caseStudies.getByRole('link', {
+        name: /Read case study: Cloud platforms for 100k\+ students/i,
+      }),
+    ).toBeVisible();
+    await expect(
+      caseStudies.getByRole('link', {
+        name: /Read case study: Speech-first language learning product/i,
+      }),
+    ).toBeVisible();
+  });
 });

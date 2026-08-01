@@ -118,6 +118,11 @@ function studyTags(slug: (typeof studies)[number]['slug']): string[] {
 
               <NuxtLink
                 :to="localePath(study.to)"
+                :aria-label="
+                  $t('caseStudies.readMoreAria', {
+                    title: $t(`caseStudies.items.${study.slug}.cardTitle`),
+                  })
+                "
                 class="btn-premium bg-primary text-primary-contrast rounded-2xl px-6 py-3 border-none w-fit inline-flex items-center gap-2 font-black uppercase tracking-widest"
               >
                 {{ $t('caseStudies.readMore') }}
