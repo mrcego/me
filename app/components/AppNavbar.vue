@@ -788,7 +788,7 @@ async function onNavSectionClick(event, href) {
         v-if="isMobileMenuOpen"
         id="mobile-nav-dialog"
         ref="mobileMenuRef"
-        class="fixed inset-2 sm:inset-4 md:inset-6 z-140 glass rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] overflow-y-auto border border-foreground/10 shadow-4xl lg:hidden overscroll-contain"
+        class="mobile-nav-dialog fixed inset-2 sm:inset-4 md:inset-6 z-140 rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] overflow-y-auto border border-foreground/10 shadow-4xl lg:hidden overscroll-contain"
         role="dialog"
         aria-modal="true"
         aria-labelledby="mobile-nav-title"
@@ -1020,6 +1020,14 @@ async function onNavSectionClick(event, href) {
   box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 35%, transparent);
 }
 
+/* Mobile menu panel: opaque enough that page content doesn't read through. */
+.mobile-nav-dialog {
+  background-color: color-mix(in srgb, var(--background) 88%, transparent);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  box-shadow: 0 24px 64px color-mix(in srgb, #000000 28%, transparent);
+}
+
 .nav-reveal {
   animation: nav-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -1038,6 +1046,12 @@ async function onNavSectionClick(event, href) {
 @media (prefers-reduced-motion: reduce) {
   .nav-reveal {
     animation: none;
+  }
+
+  .mobile-nav-dialog {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background-color: color-mix(in srgb, var(--background) 96%, transparent);
   }
 }
 </style>
