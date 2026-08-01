@@ -1,9 +1,12 @@
 <script setup>
-import { nextTick, ref, watch } from 'vue';
+import { nextTick, onBeforeUnmount, ref, watch } from 'vue';
 import { onClickOutside, onKeyStroke, useEventListener } from '@vueuse/core';
 import AppLanguageSwitcher from '~/components/AppLanguageSwitcher.vue';
 import { hireProfileRoutes } from '~/config/routes.manifest';
+import { useMatchMedia, usePrefersReducedMotion } from '~/composables/useMatchMedia';
+import { usePortfolioTerminalLogoUnlock } from '~/composables/usePortfolioTerminalShortcut';
 import { useTheme } from '~/composables/useTheme';
+import { createLogoLongPressController } from '~/utils/logoLongPress';
 
 const { activeSection } = usePortfolio();
 
@@ -12,6 +15,17 @@ useSmoothedScroll(0.14);
 const { href: cvHref, fileName: cvFileName } = useCvDownload();
 const localePath = useLocalePath();
 const { goToSection, sectionHref } = useSectionNavigation();
+const { unlockFromLogoLongPress } = usePortfolioTerminalLogoUnlock();
+const prefersReducedMotion = usePrefersReducedMotion();
+/** Same mobile/coarse budget as motion + HUD — logo long-press only here. */
+const isMobileUnlockTarget = useMatchMedia('(max-width: 1023px), (pointer: coarse)');
+
+const logoLongPress = createLogoLongPressController({
+  isEnabled: () => isMobileUnlockTarget.value,
+  onLongPress: () => {
+    unlockFromLogoLongPress({ preferReducedMotion: prefersReducedMotion.value });
+  },
+});
 
 const hireProfileLinks = hireProfileRoutes().map((profile) => ({
   name: profile.hireLabelKey,
@@ -260,10 +274,6 @@ onKeyStroke('Escape', (event) => {
   closeMobileMenu();
 });
 
-onBeforeUnmount(() => {
-  setBackgroundInert(false);
-});
-
 /** Commit selection (click / Enter / Space). */
 function selectTheme(id) {
   setThemePreset(id);
@@ -425,6 +435,16 @@ async function onNavSectionClick(event, href) {
   await nextTick();
   await goToSection(event, href);
 }
+
+async function onLogoClick(event) {
+  if (logoLongPress.onClick(event)) return;
+  await onNavSectionClick(event, '#hero');
+}
+
+onBeforeUnmount(() => {
+  logoLongPress.dispose();
+  setBackgroundInert(false);
+});
 </script>
 
 <template>
@@ -441,8 +461,13 @@ async function onNavSectionClick(event, href) {
         <!-- Logo Area — spans only (no div) so the control stays a valid <button> -->
         <button
           type="button"
-          class="nav-reveal flex items-center gap-1.5 sm:gap-2 group cursor-pointer min-w-0 shrink appearance-none bg-transparent border-0 p-0 text-left"
-          @click="onNavSectionClick($event, '#hero')"
+          class="nav-reveal nav-logo-unlock flex items-center gap-1.5 sm:gap-2 group cursor-pointer min-w-0 shrink appearance-none bg-transparent border-0 p-0 text-left"
+          @pointerdown="logoLongPress.onPointerDown"
+          @pointermove="logoLongPress.onPointerMove"
+          @pointerup="logoLongPress.onPointerUp"
+          @pointercancel="logoLongPress.onPointerCancel"
+          @click="onLogoClick"
+          @contextmenu="isMobileUnlockTarget && $event.preventDefault()"
         >
           <span
             class="relative w-7 h-7 sm:w-8 sm:h-9 md:w-10 md:h-11 lg:w-12 lg:h-12 overflow-hidden rounded-full transition-transform duration-500 group-hover:scale-105"
@@ -451,14 +476,34 @@ async function onNavSectionClick(event, href) {
               class="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500"
               aria-hidden="true"
             />
-            <img
-              src="/img/logo-final.svg?v=cg2"
-              alt=""
-              width="48"
-              height="48"
-              decoding="async"
-              class="w-full h-full object-contain scale-110 group-hover:scale-100 transition-transform duration-700"
-            />
+            <svg
+              data-theme-logo
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 64 64"
+              fill="none"
+              aria-hidden="true"
+              class="w-full h-full scale-110 group-hover:scale-100 text-primary transition-[color,transform] duration-500 motion-reduce:transition-none"
+            >
+              <path
+                d="M 27.43 23.13 A 11.25 11.25 0 1 0 27.43 40.87"
+                stroke="currentColor"
+                stroke-width="5.75"
+                stroke-linecap="butt"
+              />
+              <path
+                d="M 51.03 23.64 A 11.25 11.25 0 1 0 49.46 41.54"
+                stroke="currentColor"
+                stroke-width="5.75"
+                stroke-linecap="butt"
+              />
+              <path
+                d="M 43.00 32 H 55.10 V 38.40"
+                stroke="currentColor"
+                stroke-width="5.75"
+                stroke-linecap="butt"
+                stroke-linejoin="miter"
+              />
+            </svg>
           </span>
           <span class="site-nav__brand flex flex-col justify-center min-w-0">
             <span
@@ -1052,6 +1097,15 @@ async function onNavSectionClick(event, href) {
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
     background-color: color-mix(in srgb, var(--background) 96%, transparent);
+  }
+}
+
+/* Avoid iOS callout / text selection fighting the intentional logo long-press. */
+@media (max-width: 1023px), (pointer: coarse) {
+  .nav-logo-unlock {
+    -webkit-touch-callout: none;
+    user-select: none;
+    touch-action: manipulation;
   }
 }
 </style>

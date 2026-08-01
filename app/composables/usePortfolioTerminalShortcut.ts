@@ -17,6 +17,11 @@ export interface KonamiRevealedKey {
   kind: 'ok' | 'error';
 }
 
+export interface UnlockFromLogoLongPressOptions {
+  /** When true, open the terminal immediately (skip unlock settle delay). */
+  preferReducedMotion?: boolean;
+}
+
 export interface PortfolioTerminalShortcutApi {
   gatePhase: Ref<KonamiGatePhase>;
   revealedKeys: Ref<KonamiRevealedKey[]>;
@@ -24,6 +29,24 @@ export interface PortfolioTerminalShortcutApi {
   sequenceLength: number;
   announce: Ref<string>;
   resetGate: () => void;
+  /** Mobile/coarse: logo long-press unlocks the same gate/terminal path. */
+  unlockFromLogoLongPress: (options?: UnlockFromLogoLongPressOptions) => void;
+}
+
+/** Shared across composable call sites so logo unlock and keyboard stay in sync. */
+let armTimer: ReturnType<typeof setTimeout> | null = null;
+let settleTimer: ReturnType<typeof setTimeout> | null = null;
+let keySerial = 0;
+
+function clearTimers() {
+  if (armTimer) {
+    clearTimeout(armTimer);
+    armTimer = null;
+  }
+  if (settleTimer) {
+    clearTimeout(settleTimer);
+    settleTimer = null;
+  }
 }
 
 function isEditableTarget(target: EventTarget | null): boolean {
@@ -57,11 +80,10 @@ function eventToKonamiKey(event: KeyboardEvent): KonamiKey | null {
   return null;
 }
 
-/**
- * Global `/` + Konami unlock. Activate once from app.vue onMounted.
- * Exposes decorative gate state for KonamiSequenceGate.
- */
-export function usePortfolioTerminalShortcut(): PortfolioTerminalShortcutApi {
+function usePortfolioTerminalGateApi(): {
+  api: PortfolioTerminalShortcutApi;
+  onGlobalKeydown: (event: KeyboardEvent) => void;
+} {
   const { openTerminal, terminalOpen } = usePortfolioTerminal();
   const { t } = useI18n();
 
@@ -69,21 +91,6 @@ export function usePortfolioTerminalShortcut(): PortfolioTerminalShortcutApi {
   const revealedKeys = useState<KonamiRevealedKey[]>('portfolio-terminal-gate-keys', () => []);
   const progressIndex = useState('portfolio-terminal-gate-progress', () => 0);
   const announce = useState('portfolio-terminal-gate-announce', () => '');
-
-  let armTimer: ReturnType<typeof setTimeout> | null = null;
-  let settleTimer: ReturnType<typeof setTimeout> | null = null;
-  let keySerial = 0;
-
-  function clearTimers() {
-    if (armTimer) {
-      clearTimeout(armTimer);
-      armTimer = null;
-    }
-    if (settleTimer) {
-      clearTimeout(settleTimer);
-      settleTimer = null;
-    }
-  }
 
   function resetGate() {
     clearTimers();
@@ -119,14 +126,29 @@ export function usePortfolioTerminalShortcut(): PortfolioTerminalShortcutApi {
     }, KONAMI_FAIL_RESET_MS);
   }
 
-  function unlockSequence() {
+  function unlockSequence(delayMs: number = KONAMI_UNLOCK_DELAY_MS) {
     clearTimers();
     gatePhase.value = 'unlocked';
     announce.value = t('terminal.gate.unlocked');
     settleTimer = setTimeout(() => {
       openTerminal();
       resetGate();
-    }, KONAMI_UNLOCK_DELAY_MS);
+    }, delayMs);
+  }
+
+  /**
+   * Coarse-pointer / mobile entry: skip the keyboard sequence and open via the
+   * same unlocked → terminal path. Does not invent swipe-Konami gestures.
+   */
+  function unlockFromLogoLongPress(options: UnlockFromLogoLongPressOptions = {}) {
+    if (!import.meta.client) return;
+    if (terminalOpen.value || hasOpenDialog()) return;
+    if (gatePhase.value === 'unlocked') return;
+
+    const delayMs = options.preferReducedMotion ? 0 : KONAMI_UNLOCK_DELAY_MS;
+    progressIndex.value = KONAMI_SEQUENCE.length;
+    revealedKeys.value = [];
+    unlockSequence(delayMs);
   }
 
   function onGlobalKeydown(event: KeyboardEvent) {
@@ -212,20 +234,38 @@ export function usePortfolioTerminalShortcut(): PortfolioTerminalShortcutApi {
     }
   }
 
+  return {
+    api: {
+      gatePhase,
+      revealedKeys,
+      progressIndex,
+      sequenceLength: KONAMI_SEQUENCE.length,
+      announce,
+      resetGate,
+      unlockFromLogoLongPress,
+    },
+    onGlobalKeydown,
+  };
+}
+
+/**
+ * Logo long-press entry for AppNavbar — shares gate state/timers, no keyboard listener.
+ */
+export function usePortfolioTerminalLogoUnlock() {
+  const { api } = usePortfolioTerminalGateApi();
+  return { unlockFromLogoLongPress: api.unlockFromLogoLongPress };
+}
+
+/**
+ * Global `/` + Konami unlock. Activate once from app.vue.
+ * Exposes decorative gate state for KonamiSequenceGate.
+ */
+export function usePortfolioTerminalShortcut(): PortfolioTerminalShortcutApi {
+  const { api, onGlobalKeydown } = usePortfolioTerminalGateApi();
+
   if (import.meta.client) {
     useEventListener(window, 'keydown', onGlobalKeydown, { capture: true });
   }
 
-  onScopeDispose(() => {
-    clearTimers();
-  });
-
-  return {
-    gatePhase,
-    revealedKeys,
-    progressIndex,
-    sequenceLength: KONAMI_SEQUENCE.length,
-    announce,
-    resetGate,
-  };
+  return api;
 }
