@@ -30,14 +30,15 @@ describe('CSP builders', () => {
     expect(directives).toContain('trusted-types vue default');
   });
 
-  it('hashes only executable inline scripts (skips JSON / src scripts)', () => {
+  it('hashes executable inline scripts and import maps (skips JSON / src)', () => {
     const html = `
       <script src="/a.js"></script>
       <script type="application/json">{"x":1}</script>
+      <script type="importmap">{"imports":{"#entry":"/_nuxt/x.js"}}</script>
       <script>window.__NUXT__={}</script>
     `;
     const bodies = extractExecutableInlineScripts(html);
-    expect(bodies).toEqual(['window.__NUXT__={}']);
+    expect(bodies).toEqual(['{"imports":{"#entry":"/_nuxt/x.js"}}', 'window.__NUXT__={}']);
     expect(hashInlineScript(bodies[0]!)).toMatch(/^'sha256-[A-Za-z0-9+/=]+'$/);
   });
 
