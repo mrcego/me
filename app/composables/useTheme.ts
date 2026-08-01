@@ -140,9 +140,9 @@ export const useTheme = () => {
     if (activateWebfonts) {
       webfontsActivated = true;
       root.dataset.webfonts = '1';
-      root.style.setProperty('--font-main', FONT_STACKS[theme.font]);
+      root.style.setProperty('--app-font', FONT_STACKS[theme.font]);
     } else {
-      root.style.setProperty('--font-main', FONT_STACKS_LOCAL[theme.font]);
+      root.style.setProperty('--app-font', FONT_STACKS_LOCAL[theme.font]);
     }
     root.dataset.themeFont = theme.font === 'Fira Code' ? 'fira-code' : 'sans';
   };

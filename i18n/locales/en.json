@@ -134,13 +134,13 @@
     },
     "themeIndicator": "Theme: {name}",
     "gate": {
-      "armed": "Access gate armed",
-      "progress": "Access gate {current} of {total}",
-      "reset": "Sequence reset",
+      "armed": "Flight path armed",
+      "progress": "Flight path {current} of {total}",
+      "reset": "Flight path reset",
       "unlocked": "Terminal unlocked",
-      "label": "ACCESS GATE // {current}/{total}",
+      "label": "FLIGHT PATH // {current}/{total}",
       "unlockedLabel": "TERMINAL UNLOCKED",
-      "resetLabel": "SEQUENCE RESET"
+      "resetLabel": "ROUTE LOST // RESET"
     },
     "commands": {
       "help": { "usage": "help", "summary": "List available commands" },

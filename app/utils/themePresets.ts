@@ -21,27 +21,24 @@ export const MUTED_DARK = '#cbd5e1';
 export const MUTED_LIGHT = '#64748b';
 
 /**
- * Metric-adjusted local faces from @nuxt/fonts (src:local only).
- * Used for first paint so the browser never requests /_fonts/*.woff2 on the LCP path.
- * Names must stay in sync with @nuxt/fonts / fontaine fallback naming.
- *
- * Fira Code is monospace — proportional sans fallbacks (Segoe UI, Arial) still shift
- * the hero name when webfonts activate after idle. Use mono locals so size-adjust
- * can match advance widths when "Fira Code" is swapped in.
+ * Native first-paint stacks. They prevent a webfont request until after load.
+ * Keep aliases real: @nuxt/fonts does not emit the former synthetic fallback
+ * family names, which made browsers skip them and OG generation resolve them
+ * as missing remote fonts.
  */
-const OUTFIT_LOCAL_FACES =
-  '"Outfit Fallback: BlinkMacSystemFont", "Outfit Fallback: Segoe UI", "Outfit Fallback: Helvetica Neue", "Outfit Fallback: Arial", "Outfit Fallback: Noto Sans"';
-const FIRA_LOCAL_FACES =
-  '"Fira Code Fallback: Consolas", "Fira Code Fallback: Monaco", "Fira Code Fallback: Menlo", "Fira Code Fallback: Courier New"';
+const SANS_LOCAL_FACES =
+  'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+const MONO_LOCAL_FACES =
+  'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace';
 
 /** First-paint stacks — no webfont family name (no network font request). */
 export const FONT_STACKS_LOCAL: Record<ThemeFont, string> = {
-  Sans: `${OUTFIT_LOCAL_FACES}, ui-sans-serif, system-ui, sans-serif`,
-  'Fira Code': `${FIRA_LOCAL_FACES}, ui-monospace, monospace`,
+  Sans: SANS_LOCAL_FACES,
+  'Fira Code': MONO_LOCAL_FACES,
 };
 
 /**
- * Post-LCP stacks — webfont first, then metric-adjusted locals.
+ * Post-LCP stacks — webfont first, then local system fallbacks.
  * Outfit must not appear in the Fira stack (optional timeout used to race a second webfont).
  * Missing Fira weights (800/900) are clamped to 700 in main.css for fira-code themes.
  */

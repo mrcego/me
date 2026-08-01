@@ -24,11 +24,13 @@ describe('themePresets', () => {
 
   it('applies local font stacks before webfont activation in theme-init', () => {
     const script = buildThemeInitScript();
-    expect(script).toContain('Fira Code Fallback: Consolas');
+    expect(script).toContain('ui-monospace');
+    expect(script).toContain('SFMono-Regular');
+    expect(script).not.toContain('Fira Code Fallback:');
     expect(script).toContain('requestIdleCallback');
     expect(script).toContain("dataset.webfonts='1'");
-    // First --font-main write must use the local map (lf), not the webfont map (f).
-    expect(script).toMatch(/setProperty\('--font-main',lf\[t\.f\]\)/);
-    expect(script).toMatch(/setProperty\('--font-main',f\[t\.f\]\)/);
+    // First --app-font write must use the local map (lf), not the webfont map (f).
+    expect(script).toMatch(/setProperty\('--app-font',lf\[t\.f\]\)/);
+    expect(script).toMatch(/setProperty\('--app-font',f\[t\.f\]\)/);
   });
 });

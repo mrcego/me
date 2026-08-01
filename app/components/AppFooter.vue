@@ -162,27 +162,35 @@ const socials = [
       <div
         class="pt-10 md:pt-12 border-t border-foreground/5 flex flex-col sm:flex-row justify-between items-center gap-6 md:gap-8"
       >
+        <!--
+          min-w-0 + shrink: long copyright (esp. ES + tracking) must not overflow
+          and steal hit-testing from the social buttons on the right.
+        -->
         <p
-          class="text-xs md:text-sm font-bold uppercase tracking-widest text-muted flex flex-col sm:flex-row items-center gap-1 sm:gap-2 text-center sm:text-left"
+          class="min-w-0 shrink text-xs md:text-sm font-bold uppercase tracking-widest text-muted flex flex-col sm:flex-row items-center gap-1 sm:gap-2 text-center sm:text-left"
         >
           <span>{{ $t('footer.copyrightYear') }} {{ $t('footer.protocol') }}</span>
-          <span class="hidden sm:inline text-muted/30">|</span>
-          <span class="opacity-50 tracking-[0.2em]">{{ $t('footer.rights') }}</span>
+          <span class="hidden sm:inline text-muted/30" aria-hidden="true">|</span>
+          <span class="opacity-50 tracking-[0.12em] sm:tracking-[0.16em]">{{
+            $t('footer.rights')
+          }}</span>
         </p>
 
-        <!-- Socials: fixed hit targets (was w-full + 74px icons — blew up on tablet) -->
-        <div class="flex gap-3 md:gap-4">
+        <!--
+          Hover styles live in scoped CSS (not Tailwind hover:) so they still
+          fire when Chrome reports any-hover: none on Windows touch laptops.
+        -->
+        <div class="relative z-20 flex shrink-0 gap-3 md:gap-4 isolate">
           <a
             v-for="s in socials"
             :key="s.icon"
             :href="s.link"
-            class="size-11 md:size-12 glass rounded-xl md:rounded-2xl border border-foreground/10 hover:border-primary/40 flex items-center justify-center transition-[border-color,transform,box-shadow] duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,75,92,0.35)] group/social"
+            :target="s.link.startsWith('mailto:') ? undefined : '_blank'"
+            :rel="s.link.startsWith('mailto:') ? undefined : 'noopener noreferrer'"
+            class="footer-social-link size-11 md:size-12 rounded-xl md:rounded-2xl border flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             :aria-label="$t(s.labelKey)"
           >
-            <Icon
-              :name="s.icon"
-              class="size-5 md:size-6 transition-colors duration-300 text-muted group-hover/social:text-primary"
-            />
+            <Icon :name="s.icon" class="size-5 md:size-6 text-current pointer-events-none" />
           </a>
         </div>
       </div>
@@ -195,5 +203,25 @@ const socials = [
   background-image: radial-gradient(circle, rgba(255, 75, 92, 0.15) 1px, transparent 1px);
   background-size: 40px 40px;
   mask-image: linear-gradient(to bottom, black, transparent);
+}
+
+.footer-social-link {
+  color: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background: color-mix(in srgb, var(--secondary) 88%, var(--background));
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, #000000 14%, transparent);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 18%, var(--background));
+  border-color: color-mix(in srgb, var(--primary) 55%, transparent);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--primary) 40%, transparent);
 }
 </style>

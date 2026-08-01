@@ -85,6 +85,10 @@ function onKeydown(event: KeyboardEvent) {
           >~/me</span
         ><span class="portfolio-terminal__prompt-seg portfolio-terminal__prompt-seg--glyph">❯</span>
       </span>
+      <span class="portfolio-terminal__prompt-route" aria-hidden="true">
+        <span class="portfolio-terminal__prompt-route-line" />
+        <span class="portfolio-terminal__prompt-route-node" />
+      </span>
       <div class="portfolio-terminal__input-wrap">
         <span v-if="ghost" class="portfolio-terminal__ghost" aria-hidden="true">
           <span class="portfolio-terminal__ghost-pad">{{ modelValue }}</span

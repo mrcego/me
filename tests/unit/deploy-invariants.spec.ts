@@ -79,22 +79,31 @@ describe('deploy / layout invariants (regression guards)', () => {
     expect(cfg).toMatch(/name:\s*'Fira Code'[\s\S]*?global:\s*true/);
   });
 
+  it('limits font CSS-variable processing to font-prefixed variables', () => {
+    const cfg = read('nuxt.config.ts');
+
+    expect(cfg).toMatch(/processCSSVariables:\s*'font-prefixed-only'/);
+  });
+
   it('defers webfont family names until after load (keeps /_fonts off LCP chain)', () => {
     const presets = read('app/utils/themePresets.ts');
     const init = read('app/utils/themeInitScript.ts');
     const css = read('app/assets/css/main.css');
     expect(presets).toContain('FONT_STACKS_LOCAL');
-    expect(presets).toContain('Fira Code Fallback: Consolas');
-    expect(presets).toContain('ui-monospace, monospace');
+    expect(presets).toContain('ui-monospace');
+    expect(presets).toContain('SFMono-Regular');
+    expect(presets).not.toContain('Fira Code Fallback:');
     expect(presets).toContain('"Fira Code", ${FONT_STACKS_LOCAL[\'Fira Code\']}');
     // Blocking theme-init applies local stack first, then load+idle activates webfonts.
     expect(init).toContain('FONT_STACKS_LOCAL');
     expect(init).toContain('requestIdleCallback');
     expect(init).toContain('dataset.webfonts');
     expect(init).toContain("addEventListener('load'");
-    // CSS :root must not put "Fira Code" in the used --font-main (unused webfont vars OK).
-    expect(css).toMatch(/--font-main:\s*'Fira Code Fallback: Consolas'/);
-    expect(css).not.toMatch(/--font-main:\s*'Fira Code'/);
+    // CSS :root must not put "Fira Code" in the used --app-font (unused webfont vars OK).
+    // Its non--font-* name also keeps the OG font scanner away from local aliases.
+    expect(css).toMatch(/--app-font:\s*ui-monospace,\s*monospace/);
+    expect(css).not.toMatch(/--app-font:\s*'Fira Code'/);
+    expect(css).not.toContain('Fira Code Fallback:');
     // Mono fallbacks for Fira — proportional locals CLS the hero name on activation.
     expect(read('nuxt.config.ts')).toMatch(
       /name:\s*'Fira Code'[\s\S]*?fallbacks:\s*\[\s*'Consolas'/,

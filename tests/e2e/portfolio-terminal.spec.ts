@@ -59,6 +59,32 @@ test.describe('portfolio terminal', () => {
     await expect(page.locator('.konami-gate')).toBeHidden({ timeout: 3_000 });
   });
 
+  test('announces gate status outside its decorative aria-hidden overlay', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await waitForAppHydrated(page);
+
+    await page.keyboard.press('/');
+
+    await expect(page.locator('.konami-gate[aria-hidden="true"] [aria-live]')).toHaveCount(0);
+    await expect(page.locator('[data-terminal-gate-announcement]')).toContainText(
+      /Flight path|Ruta de vuelo/i,
+    );
+  });
+
+  test('renders Flight Deck route ticks only as inputs are accepted', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await waitForAppHydrated(page);
+
+    await page.keyboard.press('/');
+    await expect(page.locator('.konami-gate__route')).toBeVisible();
+    await expect(page.locator('.konami-gate__ticks .konami-gate__tick')).toHaveCount(10);
+    await expect(page.locator('.konami-gate__tick--filled')).toHaveCount(0);
+
+    await page.keyboard.press('ArrowUp');
+    await expect(page.locator('.konami-gate__tick--filled')).toHaveCount(1);
+    await expect(page.locator('.konami-gate__rail .konami-keycap')).toHaveCount(1);
+  });
+
   test('opens from home, focuses input, locks scroll, and restores focus', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/', { waitUntil: 'domcontentloaded' });
@@ -77,6 +103,16 @@ test.describe('portfolio terminal', () => {
     await page.keyboard.press('Escape');
     await expect(dialog).toBeHidden({ timeout: 5_000 });
     await expect(restoreTarget).toBeFocused();
+  });
+
+  test('renders Flight Deck chrome without changing prompt focus', async ({ page }) => {
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await waitForAppHydrated(page);
+    await unlockTerminal(page);
+
+    await expect(page.locator('.portfolio-terminal__flight-frame')).toBeVisible();
+    await expect(page.locator('.portfolio-terminal__prompt-route')).toBeVisible();
+    await expect(page.locator('#portfolio-terminal-input')).toBeFocused();
   });
 
   test('runs help, theme, clear, exit and Spanish alias', async ({ page }) => {

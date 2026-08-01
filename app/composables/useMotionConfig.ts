@@ -50,22 +50,22 @@ const softenDesktop = <T>(state: T): T => {
 export const useMotionConfig = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
   const isMobileBudget = useMatchMedia('(max-width: 1023px), (pointer: coarse)');
-  const nuxtApp = tryUseNuxtApp();
 
   /** Entrance motion only on desktop + when motion is allowed. */
   const motionEnabled = computed(() => !prefersReducedMotion.value && !isMobileBudget.value);
 
   /**
-   * Pre-scroll state. SSR/hydration stay at rest; mobile never animates;
-   * desktop uses softened transform offsets (never opacity 0).
+   * Motion's `initial` value must be identical in SSR and client hydration.
+   * Deferred hydration can happen after Nuxt's global isHydrating flag turns
+   * false, while client media queries have not resolved on their first render.
+   * Use the same softened transform on both sides so section entrances remain
+   * animated without a style mismatch.
    */
   const motionInitial = <T>(hidden: T, visible: T): T => {
     if (!motionEnabled.value) {
       return visible;
     }
-    if (import.meta.server || nuxtApp?.isHydrating) {
-      return visible;
-    }
+
     return softenDesktop(hidden);
   };
 

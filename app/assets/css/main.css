@@ -1,8 +1,17 @@
 @import 'tailwindcss';
 
-/* Hover only when the device has real hover (no sticky :hover while scrolling on touch). */
+/*
+  Hover only when *some* input can hover (mouse/trackpad).
+  Use any-hover / any-pointer — not hover / pointer.
+
+  On Windows touch laptops Chrome often reports primary `hover: none`
+  + `pointer: coarse` even with a mouse attached. Gating on those made
+  every Tailwind `hover:` utility dead until DevTools opened (which
+  changes how those media features resolve). Pure phones still get
+  any-hover: none, so sticky touch hover stays suppressed.
+*/
 @custom-variant hover {
-  @media (hover: hover) and (pointer: fine) {
+  @media (any-hover: hover) {
     &:hover {
       @slot;
     }
@@ -21,9 +30,9 @@
   --color-accent: #3b82f6;
   --color-border: var(--border);
 
-  --font-sans: var(--font-main), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--app-font), ui-sans-serif, system-ui, sans-serif;
   /* No Outfit/Inter webfont fallbacks here — they compete with LCP on mobile. */
-  --font-display: var(--font-main);
+  --font-display: var(--app-font);
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -73,18 +82,16 @@
     --primary-contrast: #000000;
     --secondary: #161b22;
     /*
-      First paint: metric-adjusted local faces only — do NOT name "Fira Code" here.
+      First paint: local system faces only — do NOT name "Fira Code" here.
       Naming the webfont makes Chromium fetch /_fonts/*.woff2 on the critical path
       even with preload:false + font-display:optional (PSI Network Dependency Tree).
       theme-init / useTheme swap in the webfont after load+idle.
     */
-    /* Mono metric fallbacks — must match FONT_STACKS_LOCAL / @nuxt/fonts Fira fallbacks. */
-    --font-main:
-      'Fira Code Fallback: Consolas', 'Fira Code Fallback: Monaco', 'Fira Code Fallback: Menlo',
-      'Fira Code Fallback: Courier New', ui-monospace, monospace;
-    /* Unused until activation — keeps @nuxt/fonts metric fallbacks generated. */
-    --font-main-webfont-fira: 'Fira Code', ui-sans-serif, system-ui, sans-serif;
-    --font-main-webfont-outfit: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+    /* Generic monospace keeps OG font discovery out of browser-only system aliases. */
+    --app-font: ui-monospace, monospace;
+    /* Unused until activation — documents the post-idle webfont stacks. */
+    --app-font-webfont-fira: 'Fira Code', ui-sans-serif, system-ui, sans-serif;
+    --app-font-webfont-outfit: 'Outfit', ui-sans-serif, system-ui, sans-serif;
 
     background-color: var(--background);
     color: var(--foreground);
@@ -112,7 +119,7 @@
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-white overflow-x-hidden;
     margin: 0;
-    font-family: var(--font-main);
+    font-family: var(--app-font);
     line-height: 1.5;
   }
 
@@ -307,7 +314,7 @@
     @apply absolute -inset-full bg-linear-to-tr from-transparent via-primary/10 to-transparent -rotate-45 -translate-x-full transition-transform duration-700;
   }
 
-  @media (hover: hover) and (pointer: fine) {
+  @media (any-hover: hover) {
     .particle-hover:hover::before {
       @apply translate-x-full;
     }
@@ -1618,7 +1625,7 @@ html[data-theme-font='fira-code'] .p-button {
     0 8px 24px color-mix(in srgb, black 20%, transparent);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover {
     transform: translateY(-6px);
     border-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
@@ -1632,7 +1639,7 @@ html[data-theme-font='fira-code'] .p-button {
   transform: none;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card--soft:hover {
     transform: none;
   }
@@ -1660,7 +1667,7 @@ html[data-theme-font='fira-code'] .p-button {
     filter 0.55s var(--surface-ease);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card {
     transition:
       transform 0.55s var(--surface-ease),
@@ -1694,7 +1701,7 @@ html[data-theme-font='fira-code'] .p-button {
   }
 }
 
-@media (hover: none), (pointer: coarse) {
+@media (any-hover: none) {
   .transition-colors,
   .transition-\[background-color\,border-color\,color\,box-shadow\],
   .transition-\[background-color\,color\,transform\,box-shadow\],
@@ -1743,7 +1750,7 @@ html[data-theme-font='fira-code'] .p-button {
   opacity: 1;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__glow {
     opacity: 1;
   }
@@ -1754,7 +1761,7 @@ html[data-theme-font='fira-code'] .p-button {
   transform: scale(1.05);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__glyph {
     color: var(--color-primary);
     transform: scale(1.05);
@@ -1767,7 +1774,7 @@ html[data-theme-font='fira-code'] .p-button {
   border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__chip {
     background-color: var(--color-primary);
     color: var(--color-primary-contrast);
@@ -1781,7 +1788,7 @@ html[data-theme-font='fira-code'] .p-button {
   transform: scale(1.05);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__icon {
     background-color: var(--color-primary);
     color: var(--color-primary-contrast);
@@ -1793,7 +1800,7 @@ html[data-theme-font='fira-code'] .p-button {
   transform: scale(1.05) rotate(4deg);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__icon--tilt {
     transform: scale(1.05) rotate(4deg);
   }
@@ -1803,7 +1810,7 @@ html[data-theme-font='fira-code'] .p-button {
   color: var(--color-primary);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__title:not(.surface-card__title--gradient) {
     color: var(--color-primary);
   }
@@ -1822,7 +1829,7 @@ html[data-theme-font='fira-code'] .p-button {
   -webkit-text-fill-color: transparent;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__title--gradient {
     background-image: linear-gradient(
       to bottom right,
@@ -1841,7 +1848,7 @@ html[data-theme-font='fira-code'] .p-button {
   color: color-mix(in srgb, var(--color-foreground) 55%, var(--color-muted));
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__text {
     color: color-mix(in srgb, var(--color-foreground) 55%, var(--color-muted));
   }
@@ -1852,7 +1859,7 @@ html[data-theme-font='fira-code'] .p-button {
   border-color: color-mix(in srgb, var(--color-foreground) 10%, transparent);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__desc {
     color: color-mix(in srgb, var(--color-foreground) 50%, var(--color-muted));
     border-color: color-mix(in srgb, var(--color-foreground) 10%, transparent);
@@ -1863,7 +1870,7 @@ html[data-theme-font='fira-code'] .p-button {
   color: color-mix(in srgb, var(--color-primary) 45%, var(--color-muted));
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__meta {
     color: color-mix(in srgb, var(--color-primary) 45%, var(--color-muted));
   }
@@ -1873,7 +1880,7 @@ html[data-theme-font='fira-code'] .p-button {
   color: var(--color-primary);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__cta {
     color: var(--color-primary);
   }
@@ -1883,7 +1890,7 @@ html[data-theme-font='fira-code'] .p-button {
   border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__footer {
     border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
   }
@@ -1895,7 +1902,7 @@ html[data-theme-font='fira-code'] .p-button {
   transform: scaleX(1);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__line {
     opacity: 1;
     background-color: color-mix(in srgb, var(--color-primary) 55%, transparent);
@@ -1917,7 +1924,7 @@ html[data-theme-font='fira-code'] .p-button {
   color: color-mix(in srgb, var(--color-foreground) 75%, var(--color-muted));
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__tag {
     border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
     background-color: color-mix(in srgb, var(--color-primary) 8%, transparent);
@@ -1929,7 +1936,7 @@ html[data-theme-font='fira-code'] .p-button {
   transform: scale(1.05);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__avatar {
     transform: scale(1.05);
   }
@@ -1939,7 +1946,7 @@ html[data-theme-font='fira-code'] .p-button {
   filter: grayscale(0) brightness(1);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__avatar .surface-card__image {
     filter: grayscale(0) brightness(1);
   }
@@ -1949,7 +1956,7 @@ html[data-theme-font='fira-code'] .p-button {
   color: var(--color-primary);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__quote-icon {
     color: var(--color-primary);
   }
@@ -1960,7 +1967,7 @@ html[data-theme-font='fira-code'] .p-button {
   transform: scale(1.03);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__image--zoom {
     filter: grayscale(0) brightness(1.05);
     transform: scale(1.03);
@@ -1971,7 +1978,7 @@ html[data-theme-font='fira-code'] .p-button {
   opacity: 1;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .surface-card:hover .surface-card__blob {
     opacity: 1;
   }
@@ -2002,7 +2009,7 @@ html[data-theme-font='fira-code'] .p-button {
     transform: none;
   }
 
-  @media (hover: hover) and (pointer: fine) {
+  @media (any-hover: hover) {
     .surface-card:hover {
       transform: none;
     }
@@ -2018,7 +2025,7 @@ html[data-theme-font='fira-code'] .p-button {
     transform: none;
   }
 
-  @media (hover: hover) and (pointer: fine) {
+  @media (any-hover: hover) {
     .surface-card:hover .surface-card__icon,
     .surface-card:hover .surface-card__glyph,
     .surface-card:hover .surface-card__avatar,
@@ -2032,7 +2039,7 @@ html[data-theme-font='fira-code'] .p-button {
     transform: scaleX(1);
   }
 
-  @media (hover: hover) and (pointer: fine) {
+  @media (any-hover: hover) {
     .surface-card:hover .surface-card__line--grow {
       transform: scaleX(1);
     }
@@ -2042,26 +2049,24 @@ html[data-theme-font='fira-code'] .p-button {
 /* ─── Secret portfolio terminal + Konami gate ─── */
 .portfolio-terminal,
 .konami-gate {
-  --pt-mono: var(--font-main), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --pt-mono: var(--app-font), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --pt-radius-shell: 1rem;
   --pt-radius-panel: 0.85rem;
   --pt-radius-control: 0.5rem;
   --pt-radius-key: 0.45rem;
-  --pt-bezel: color-mix(in srgb, var(--color-primary) 38%, transparent);
-  --pt-bezel-soft: color-mix(in srgb, var(--color-primary) 18%, transparent);
-  --pt-glow: color-mix(in srgb, var(--color-primary) 22%, transparent);
-  --pt-glow-strong: color-mix(in srgb, var(--color-primary) 40%, transparent);
+  --pt-bezel: color-mix(in srgb, var(--color-primary) 42%, transparent);
+  --pt-bezel-soft: color-mix(in srgb, var(--color-primary) 16%, transparent);
+  --pt-glow: color-mix(in srgb, var(--color-primary) 18%, transparent);
+  --pt-glow-strong: color-mix(in srgb, var(--color-primary) 32%, transparent);
   --pt-ink: var(--color-foreground);
   --pt-ink-dim: color-mix(in srgb, var(--color-muted) 92%, var(--color-foreground));
-  --pt-panel: color-mix(in srgb, var(--color-background) 88%, var(--color-surface));
-  --pt-panel-elevated: color-mix(in srgb, var(--color-surface) 82%, var(--color-background));
+  --pt-panel: color-mix(in srgb, var(--color-background) 82%, var(--color-surface));
+  --pt-panel-elevated: color-mix(in srgb, var(--color-surface) 88%, var(--color-background));
   --pt-hairline: color-mix(in srgb, var(--color-foreground) 10%, transparent);
   --pt-hairline-strong: color-mix(in srgb, var(--color-foreground) 16%, transparent);
-  --pt-scan: color-mix(in srgb, var(--color-primary) 7%, transparent);
-  --pt-noise: color-mix(in srgb, var(--color-foreground) 5%, transparent);
-  --pt-danger: color-mix(in srgb, #ef4444 65%, var(--color-foreground));
-  --pt-danger-soft: color-mix(in srgb, #ef4444 28%, var(--color-surface));
-  --pt-shadow: 0 28px 80px color-mix(in srgb, #000 42%, transparent);
+  --pt-route-lost: color-mix(in srgb, var(--color-primary) 30%, var(--color-foreground));
+  --pt-route-lost-soft: color-mix(in srgb, var(--pt-route-lost) 12%, transparent);
+  --pt-shadow: 0 28px 80px color-mix(in srgb, var(--color-foreground) 24%, transparent);
   --pt-line-gap: 0.22rem;
   --pt-chrome-h: 3.25rem;
   --pt-index-w: 17.5rem;
@@ -2081,71 +2086,162 @@ html[data-theme-font='fira-code'] .p-button {
 }
 
 .konami-gate__panel {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.8rem;
   min-width: min(92vw, 26rem);
-  padding: 1.15rem 1.35rem 1.35rem;
+  padding: 1.2rem 1.35rem 1.3rem;
   border-radius: var(--pt-radius-panel);
-  border-color: var(--pt-bezel);
-  background: color-mix(in srgb, var(--color-background) 78%, transparent);
+  border: 1px solid var(--pt-bezel);
+  background:
+    linear-gradient(135deg, var(--pt-bezel-soft), transparent 34%),
+    color-mix(in srgb, var(--color-background) 84%, var(--color-surface));
   box-shadow:
     var(--pt-shadow),
-    0 0 40px var(--pt-glow);
+    0 0 34px var(--pt-glow),
+    inset 0 0 0 1px var(--pt-hairline);
+}
+
+.konami-gate__panel::before {
+  content: '';
+  position: absolute;
+  inset: 0.45rem;
+  pointer-events: none;
+  border: 1px solid var(--pt-hairline);
+  border-radius: calc(var(--pt-radius-panel) - 0.35rem);
+}
+
+.konami-gate__route {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(2.5rem, 1fr) auto minmax(2.5rem, 1fr);
+  align-items: center;
+  width: min(100%, 20rem);
+  min-height: 3rem;
+  color: var(--pt-ink-dim);
+}
+
+.konami-gate__route-vector {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--pt-hairline-strong) 12%,
+    var(--pt-bezel) 48%,
+    var(--pt-hairline-strong) 88%,
+    transparent
+  );
+}
+
+.konami-gate__route-vector::after {
+  content: '';
+  display: block;
+  width: 30%;
+  height: 100%;
+  margin-left: 35%;
+  background: var(--color-primary);
+  opacity: 0;
+  transform: scaleX(0.6);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.konami-gate__route--active .konami-gate__route-vector::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .konami-gate__slash {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 2.75rem;
-  min-height: 2.75rem;
-  padding: 0 0.75rem;
+  grid-column: 2;
+  grid-row: 1;
+  z-index: 1;
+  display: inline-grid;
+  place-items: center;
+  width: 2.65rem;
+  height: 2.65rem;
+  border: 1px solid var(--pt-bezel);
   border-radius: var(--pt-radius-key);
-  font-family: var(--pt-mono);
-  font-weight: 900;
-  letter-spacing: 0.08em;
+  background: var(--pt-panel-elevated);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-background) 76%, transparent);
   color: var(--color-primary);
-  border: 1px solid color-mix(in srgb, var(--color-primary) 45%, transparent);
-  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
-  transition:
-    transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.18s ease;
+  font-family: var(--pt-mono);
+  font-size: 1.3rem;
+  font-weight: 900;
+  line-height: 1;
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .konami-gate__slash--armed {
-  box-shadow: 0 0 24px var(--pt-glow);
-  transform: scale(1.02);
+  transform: translateY(-1px);
+}
+
+.konami-gate__route-node {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  width: 0.42rem;
+  height: 0.42rem;
+  border: 1px solid var(--pt-bezel);
+  border-radius: 999px;
+  background: var(--pt-panel);
+}
+
+.konami-gate__panel--unlocked .konami-gate__route {
+  transform: scaleX(0.82);
+  opacity: 0.7;
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.22s ease;
+}
+
+.konami-gate__panel--failed .konami-gate__route {
+  color: var(--pt-route-lost);
 }
 
 .konami-gate__status {
+  position: relative;
+  z-index: 1;
   margin: 0;
-  color: var(--color-primary);
-  letter-spacing: 0.2em;
+  color: color-mix(in srgb, var(--color-primary) 72%, var(--color-foreground));
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
   font-variant-numeric: tabular-nums;
+  text-align: center;
 }
 
 .konami-gate__ticks {
+  position: relative;
+  z-index: 1;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 0.25rem;
+  width: min(100%, 17rem);
+  gap: 0.3rem;
 }
 
 .konami-gate__tick {
-  width: 0.4rem;
-  height: 0.2rem;
+  flex: 1;
+  height: 0.18rem;
+  border: 1px solid var(--pt-hairline-strong);
   border-radius: 1px;
-  background: var(--pt-hairline-strong);
+  background: color-mix(in srgb, var(--color-background) 72%, transparent);
+  transition: transform 0.16s ease;
 }
 
 .konami-gate__tick--filled {
+  border-color: var(--color-primary);
   background: var(--color-primary);
-  box-shadow: 0 0 8px var(--pt-glow);
+  transform: scaleY(1.45);
 }
 
 .konami-gate__rail {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -2154,6 +2250,13 @@ html[data-theme-font='fira-code'] .p-button {
   min-height: 3.5rem;
   width: 100%;
   padding: 0.25rem;
+}
+
+.konami-gate__rail--burning {
+  padding: 0.5rem;
+  border: 1px solid var(--pt-route-lost);
+  border-radius: var(--pt-radius-control);
+  background: var(--pt-route-lost-soft);
 }
 
 .konami-keycap {
@@ -2174,7 +2277,7 @@ html[data-theme-font='fira-code'] .p-button {
   box-shadow:
     inset 0 1px 0 color-mix(in srgb, var(--color-foreground) 14%, transparent),
     0 2px 0 color-mix(in srgb, var(--color-foreground) 18%, transparent),
-    0 10px 18px color-mix(in srgb, #000 20%, transparent);
+    0 10px 18px color-mix(in srgb, var(--color-foreground) 14%, transparent);
   color: var(--color-foreground);
   font-family: var(--pt-mono);
   font-weight: 700;
@@ -2202,27 +2305,9 @@ html[data-theme-font='fira-code'] .p-button {
 }
 
 .konami-keycap--error {
-  border-color: color-mix(in srgb, #ef4444 70%, transparent);
-  color: color-mix(in srgb, #fecaca 70%, var(--color-foreground));
-  background: var(--pt-danger-soft);
-}
-
-.konami-keycap--burn .konami-keycap__flame {
-  position: absolute;
-  left: 15%;
-  right: 15%;
-  bottom: 70%;
-  height: 1.4rem;
-  border-radius: 999px 999px 40% 40%;
-  background: linear-gradient(
-    to top,
-    color-mix(in srgb, #ef4444 80%, transparent),
-    color-mix(in srgb, #f59e0b 70%, transparent),
-    transparent
-  );
-  filter: blur(0.5px);
-  opacity: 0.9;
-  pointer-events: none;
+  border-color: var(--pt-route-lost);
+  color: var(--pt-route-lost);
+  background: var(--pt-route-lost-soft);
 }
 
 .konami-keycap__label {
@@ -2293,7 +2378,6 @@ html[data-theme-font='fira-code'] .p-button {
     var(--pt-shadow),
     0 0 56px var(--pt-glow);
   font-family: var(--pt-mono);
-  transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .portfolio-terminal__shell::before {
@@ -2302,11 +2386,10 @@ html[data-theme-font='fira-code'] .p-button {
   inset: 0;
   z-index: var(--pt-z-atmosphere);
   pointer-events: none;
-  opacity: 0.04;
-  background-image:
-    repeating-linear-gradient(0deg, var(--pt-noise) 0 1px, transparent 1px 2px),
-    repeating-linear-gradient(90deg, var(--pt-noise) 0 1px, transparent 1px 3px);
-  mix-blend-mode: soft-light;
+  opacity: 0.76;
+  background:
+    radial-gradient(110% 64% at 50% 100%, var(--pt-bezel-soft), transparent 62%),
+    linear-gradient(150deg, transparent 32%, var(--pt-hairline) 50%, transparent 68%);
 }
 
 .portfolio-terminal__shell::after {
@@ -2315,8 +2398,13 @@ html[data-theme-font='fira-code'] .p-button {
   inset: 0;
   z-index: var(--pt-z-atmosphere);
   pointer-events: none;
-  opacity: 0.5;
-  background: repeating-linear-gradient(to bottom, transparent 0 2px, var(--pt-scan) 3px);
+  opacity: 0.7;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-primary) 8%, transparent) 50%,
+    transparent
+  );
 }
 
 .portfolio-terminal__shell--armed {
@@ -2324,6 +2412,51 @@ html[data-theme-font='fira-code'] .p-button {
     0 0 0 1px var(--pt-bezel),
     var(--pt-shadow),
     0 0 72px var(--pt-glow-strong);
+}
+
+.portfolio-terminal__flight-frame {
+  position: absolute;
+  inset: 0.6rem;
+  z-index: var(--pt-z-atmosphere);
+  pointer-events: none;
+  border: 1px solid var(--pt-hairline);
+  border-radius: calc(var(--pt-radius-shell) - 0.35rem);
+}
+
+.portfolio-terminal__flight-horizon {
+  position: absolute;
+  left: 9%;
+  right: 9%;
+  top: 31%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pt-hairline-strong), transparent);
+}
+
+.portfolio-terminal__flight-vector {
+  position: absolute;
+  left: 50%;
+  top: 15%;
+  width: 1px;
+  height: 34%;
+  background: linear-gradient(var(--pt-bezel), transparent);
+}
+
+.portfolio-terminal__flight-node {
+  position: absolute;
+  top: calc(31% - 0.2rem);
+  width: 0.4rem;
+  height: 0.4rem;
+  border: 1px solid var(--pt-bezel);
+  border-radius: 999px;
+  background: var(--pt-panel);
+}
+
+.portfolio-terminal__flight-node--west {
+  left: 9%;
+}
+
+.portfolio-terminal__flight-node--east {
+  right: 9%;
 }
 
 .portfolio-terminal__chrome {
@@ -2439,6 +2572,7 @@ html[data-theme-font='fira-code'] .p-button {
   min-height: 0;
   border-right: 1px solid var(--pt-hairline);
   isolation: isolate;
+  overscroll-behavior: contain;
 }
 
 .portfolio-terminal__transcript {
@@ -2561,6 +2695,28 @@ html[data-theme-font='fira-code'] .p-button {
   padding-bottom: 0.15rem;
 }
 
+.portfolio-terminal__prompt-route {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18rem;
+  width: 1.2rem;
+  min-width: 1.2rem;
+}
+
+.portfolio-terminal__prompt-route-line {
+  width: 0.76rem;
+  height: 1px;
+  background: var(--pt-bezel);
+}
+
+.portfolio-terminal__prompt-route-node {
+  width: 0.28rem;
+  height: 0.28rem;
+  border: 1px solid var(--pt-bezel);
+  border-radius: 999px;
+  background: var(--pt-panel-elevated);
+}
+
 .portfolio-terminal__input-wrap {
   position: relative;
   flex: 1;
@@ -2642,11 +2798,19 @@ html[data-theme-font='fira-code'] .p-button {
 }
 
 .portfolio-terminal__index {
+  position: relative;
   flex-direction: column;
   gap: 0.65rem;
   padding: 0.85rem 0.9rem;
   background: color-mix(in srgb, var(--color-surface) 72%, var(--color-background));
   overflow: auto;
+}
+
+.portfolio-terminal__index::before {
+  content: 'TELEMETRY /';
+  color: var(--pt-ink-dim);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
 }
 
 .portfolio-terminal__index-title {
@@ -2684,7 +2848,7 @@ html[data-theme-font='fira-code'] .p-button {
   border: 1px solid transparent;
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .portfolio-terminal__index-item:hover {
     border-color: var(--pt-bezel-soft);
     background: color-mix(in srgb, var(--color-primary) 6%, transparent);
@@ -2702,12 +2866,11 @@ html[data-theme-font='fira-code'] .p-button {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .konami-keycap--burn .konami-keycap__flame {
-    display: none;
-  }
-
+  .konami-gate__route,
+  .konami-gate__route-vector::after,
   .konami-gate__slash,
   .konami-gate__slash--armed,
+  .konami-gate__tick,
   .portfolio-terminal__shell {
     transition: none;
     transform: none;

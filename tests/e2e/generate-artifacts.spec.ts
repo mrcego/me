@@ -44,10 +44,11 @@ test.describe('generate artifacts', () => {
     expect(html).not.toMatch(/rel="preload"[^>]*as="font"/);
     expect(html).toMatch(/font-display:optional/);
     expect(html).not.toContain('font-display:swap');
-    // First-paint --font-main uses metric-adjusted locals only (no "Fira Code",… webfont head).
+    // First-paint --app-font uses local monospace fallbacks only (no "Fira Code" webfont head).
     // Minified CSS may use double quotes and drop spaces after `:`.
-    expect(html).toMatch(/--font-main:\s*["']Fira Code Fallback: Consolas["']/);
-    expect(html).not.toMatch(/--font-main:\s*["']Fira Code["']/);
+    expect(html).toMatch(/--app-font:\s*ui-monospace,\s*monospace/);
+    expect(html).not.toMatch(/--app-font:\s*["']Fira Code["']/);
+    expect(html).not.toContain('Fira Code Fallback:');
     expect(html).toContain('requestIdleCallback');
     expect(html).toContain('dataset.webfonts');
   });

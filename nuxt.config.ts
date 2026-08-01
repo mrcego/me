@@ -149,8 +149,9 @@ export default defineNuxtConfig({
       styles: ['normal'],
       subsets: ['latin'],
     },
-    // --font-main is set via CSS variables; metric-adjusted fallbacks cut CLS on hero name.
-    processCSSVariables: true,
+    // Process --font-* only. `true` makes the transformer treat Tailwind layout
+    // values such as calc(var(--spacing) * 2) as font faces during OG generation.
+    processCSSVariables: 'font-prefixed-only',
     families: [
       {
         name: 'Outfit',

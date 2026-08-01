@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { PORTFOLIO_ROUTES } from '../../app/config/routes.manifest';
@@ -24,7 +24,7 @@ function collectSitemapXml(): string | null {
   }
 
   const rootSitemap = join(OUTPUT_PUBLIC, 'sitemap.xml');
-  if (existsSync(rootSitemap)) {
+  if (existsSync(rootSitemap) && statSync(rootSitemap).isFile()) {
     chunks.push(readFileSync(rootSitemap, 'utf8'));
   }
 

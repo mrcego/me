@@ -134,13 +134,13 @@
     },
     "themeIndicator": "Tema: {name}",
     "gate": {
-      "armed": "Puerta de acceso armada",
-      "progress": "Puerta de acceso {current} de {total}",
-      "reset": "Secuencia reiniciada",
+      "armed": "Ruta de vuelo armada",
+      "progress": "Ruta de vuelo {current} de {total}",
+      "reset": "Ruta de vuelo reiniciada",
       "unlocked": "Terminal desbloqueado",
-      "label": "ACCESS GATE // {current}/{total}",
-      "unlockedLabel": "TERMINAL UNLOCKED",
-      "resetLabel": "SEQUENCE RESET"
+      "label": "RUTA DE VUELO // {current}/{total}",
+      "unlockedLabel": "TERMINAL DESBLOQUEADO",
+      "resetLabel": "RUTA PERDIDA // REINICIAR"
     },
     "commands": {
       "help": { "usage": "help", "summary": "Listar comandos disponibles" },

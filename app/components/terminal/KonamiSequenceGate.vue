@@ -10,7 +10,6 @@ const props = defineProps<{
   keys: KonamiRevealedKey[];
   progress: number;
   total: number;
-  announce: string;
 }>();
 
 const { motionEnabled, motionTransition } = useMotionConfig();
@@ -84,15 +83,17 @@ const reduceMotion = computed(() => prefersReduced.value || !motionEnabled.value
 
 <template>
   <div v-if="showGate" class="konami-gate" aria-hidden="true">
-    <div class="sr-only" aria-live="polite">{{ announce }}</div>
-
-    <div class="konami-gate__panel glass-lite">
-      <div
-        class="konami-gate__slash"
-        :class="{ 'konami-gate__slash--armed': slashArmed }"
-        data-armed="/"
-      >
-        /
+    <div class="konami-gate__panel" :class="`konami-gate__panel--${phase}`">
+      <div class="konami-gate__route" :class="{ 'konami-gate__route--active': slashArmed }">
+        <span class="konami-gate__route-vector" />
+        <span
+          class="konami-gate__slash"
+          :class="{ 'konami-gate__slash--armed': slashArmed }"
+          data-armed="/"
+        >
+          /
+        </span>
+        <span class="konami-gate__route-node" />
       </div>
 
       <p class="konami-gate__status type-label">
@@ -131,7 +132,6 @@ const reduceMotion = computed(() => prefersReduced.value || !motionEnabled.value
           <span class="konami-keycap__face">
             <span class="konami-keycap__label">{{ key.label }}</span>
           </span>
-          <span v-if="phase === 'failed'" class="konami-keycap__flame" />
         </Motion>
       </div>
     </div>

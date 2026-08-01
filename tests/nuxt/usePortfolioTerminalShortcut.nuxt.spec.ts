@@ -107,4 +107,28 @@ describe('usePortfolioTerminalShortcut', () => {
     await nextTick();
     expect(shortcut.gatePhase.value).toBe('failed');
   });
+
+  it('publishes a single gate status for arm, progress, reset, and Escape cancellation', async () => {
+    const { shortcut } = await mountShortcut();
+    shortcut.resetGate();
+
+    press('/');
+    await nextTick();
+    expect(shortcut.announce.value).toMatch(/Flight path armed|Ruta de vuelo armada/);
+
+    press('ArrowUp');
+    await nextTick();
+    expect(shortcut.announce.value).toMatch(/Flight path 1 of 10|Ruta de vuelo 1 de 10/);
+
+    press('x');
+    await nextTick();
+    expect(shortcut.announce.value).toMatch(/Flight path reset|Ruta de vuelo reiniciada/);
+
+    shortcut.resetGate();
+    press('/');
+    press('Escape');
+    await nextTick();
+    expect(shortcut.gatePhase.value).toBe('idle');
+    expect(shortcut.announce.value).toBe('');
+  });
 });

@@ -669,90 +669,91 @@ async function onNavSectionClick(event, href) {
             </template>
           </ClientOnly>
 
-          <div class="w-px h-3 sm:h-4 bg-foreground/10 mx-0.5 hidden lg:block" />
+          <div class="w-px h-5 bg-foreground/10 mx-1 hidden lg:block shrink-0" aria-hidden="true" />
 
-          <!-- Hire profiles — secondary to Contact -->
-          <div ref="hireMenuRef" class="relative hidden lg:block shrink-0">
-            <button
-              ref="hireTriggerRef"
-              type="button"
-              class="hire-menu-trigger inline-flex items-center gap-1 px-2.5 xl:px-3 py-1.5 rounded-full text-[0.65rem] xl:text-xs font-bold uppercase tracking-wider text-muted hover:text-foreground border border-foreground/15 hover:border-primary/40 hover:bg-foreground/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-              :class="{ 'hire-menu-trigger--open': showHireMenu }"
-              :aria-label="`${$t('nav.hire')} — ${$t('nav.hireMenu')}`"
-              :aria-expanded="showHireMenu"
-              aria-haspopup="menu"
-              :aria-controls="showHireMenu ? 'hire-profile-menu' : undefined"
-              @click="toggleHireMenu"
-              @keydown="onHireTriggerKeydown"
-            >
-              <span class="relative z-10">{{ $t('nav.hire') }}</span>
-              <Icon
-                name="lucide:chevron-down"
-                class="relative z-10 size-3.5 transition-transform duration-300"
-                :class="{ 'rotate-180': showHireMenu }"
-              />
-            </button>
-            <Transition
-              enter-active-class="transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
-              enter-from-class="opacity-0 scale-95 translate-y-2"
-              enter-to-class="opacity-100 scale-100 translate-y-0"
-              leave-active-class="transition duration-200 ease-in"
-              leave-from-class="opacity-100 scale-100 translate-y-0"
-              leave-to-class="opacity-0 scale-95 translate-y-2"
-              @after-leave="onHireMenuAfterLeave"
-            >
-              <div
-                v-if="showHireMenu"
-                id="hire-profile-menu"
-                role="menu"
-                class="absolute top-full right-0 mt-2 sm:mt-3 w-64 rounded-2xl p-2 shadow-4xl z-100 border border-foreground/10 bg-background origin-top-right"
-                @keydown="onHireMenuKeydown"
+          <!-- Hire + Contact share one action cluster (matched size, intentional gap) -->
+          <div class="site-nav__actions relative hidden lg:flex items-center gap-3 shrink-0">
+            <div ref="hireMenuRef" class="relative shrink-0">
+              <button
+                ref="hireTriggerRef"
+                type="button"
+                class="hire-menu-trigger site-nav__action site-nav__action--hire inline-flex items-center justify-center gap-1.5 rounded-full transition-[color,background-color,border-color,box-shadow,transform] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 group/hire"
+                :class="{ 'hire-menu-trigger--open': showHireMenu }"
+                :aria-label="`${$t('nav.hire')} — ${$t('nav.hireMenu')}`"
+                :aria-expanded="showHireMenu"
+                aria-haspopup="menu"
+                :aria-controls="showHireMenu ? 'hire-profile-menu' : undefined"
+                @click="toggleHireMenu"
+                @keydown="onHireTriggerKeydown"
               >
-                <p
-                  id="hire-profile-menu-label"
-                  class="px-3 pt-2 pb-1 text-[10px] font-black uppercase tracking-[0.2em] text-muted"
+                <span>{{ $t('nav.hire') }}</span>
+                <Icon
+                  name="lucide:chevron-down"
+                  class="size-4 shrink-0 transition-transform duration-300 group-hover/hire:translate-y-px"
+                  :class="{ 'rotate-180': showHireMenu }"
+                />
+              </button>
+              <Transition
+                enter-active-class="transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                enter-from-class="opacity-0 scale-95 translate-y-2"
+                enter-to-class="opacity-100 scale-100 translate-y-0"
+                leave-active-class="transition duration-200 ease-in"
+                leave-from-class="opacity-100 scale-100 translate-y-0"
+                leave-to-class="opacity-0 scale-95 translate-y-2"
+                @after-leave="onHireMenuAfterLeave"
+              >
+                <div
+                  v-if="showHireMenu"
+                  id="hire-profile-menu"
+                  role="menu"
+                  class="absolute top-full right-0 mt-2 sm:mt-3 w-64 rounded-2xl p-2 shadow-4xl z-100 border border-foreground/10 bg-background origin-top-right"
+                  @keydown="onHireMenuKeydown"
                 >
-                  {{ $t('nav.hireMenu') }}
-                </p>
-                <NuxtLink
-                  v-for="profile in hireProfileLinks"
-                  :key="profile.to"
-                  :to="localePath(profile.to)"
-                  role="menuitem"
-                  tabindex="-1"
-                  class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-foreground hover:bg-foreground/5 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
-                  @click="closeHireMenu({ restoreFocus: false })"
-                >
-                  <Icon :name="profile.icon" class="size-5 shrink-0 text-primary" />
-                  <span>{{ $t(profile.name) }}</span>
-                </NuxtLink>
-                <div class="my-1 border-t border-foreground/5" />
-                <a
-                  :href="sectionHref('#hire-profiles')"
-                  role="menuitem"
-                  tabindex="-1"
-                  class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-black uppercase tracking-widest text-muted hover:text-foreground hover:bg-foreground/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
-                  @click="goToHireSection($event)"
-                >
-                  <Icon name="solar:widget-2-bold-duotone" class="size-5 shrink-0" />
-                  <span>{{ $t('nav.hireSection') }}</span>
-                </a>
-              </div>
-            </Transition>
-          </div>
+                  <p
+                    id="hire-profile-menu-label"
+                    class="px-3 pt-2 pb-1 text-[10px] font-black uppercase tracking-[0.2em] text-muted"
+                  >
+                    {{ $t('nav.hireMenu') }}
+                  </p>
+                  <NuxtLink
+                    v-for="profile in hireProfileLinks"
+                    :key="profile.to"
+                    :to="localePath(profile.to)"
+                    role="menuitem"
+                    tabindex="-1"
+                    class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-foreground hover:bg-foreground/5 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
+                    @click="closeHireMenu({ restoreFocus: false })"
+                  >
+                    <Icon :name="profile.icon" class="size-5 shrink-0 text-primary" />
+                    <span>{{ $t(profile.name) }}</span>
+                  </NuxtLink>
+                  <div class="my-1 border-t border-foreground/5" />
+                  <a
+                    :href="sectionHref('#hire-profiles')"
+                    role="menuitem"
+                    tabindex="-1"
+                    class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-black uppercase tracking-widest text-muted hover:text-foreground hover:bg-foreground/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
+                    @click="goToHireSection($event)"
+                  >
+                    <Icon name="solar:widget-2-bold-duotone" class="size-5 shrink-0" />
+                    <span>{{ $t('nav.hireSection') }}</span>
+                  </a>
+                </div>
+              </Transition>
+            </div>
 
-          <!-- Sole primary CTA -->
-          <a
-            :href="sectionHref('#contact')"
-            class="site-nav__cta hidden lg:inline-flex items-center gap-1.5 bg-primary hover:bg-primary-hover text-primary-contrast px-3.5 xl:px-4 py-2 rounded-full font-bold text-xs xl:text-sm uppercase tracking-wider transition-[color,background-color,box-shadow,transform] hover:shadow-[0_0_20px_rgba(var(--primary-rgb,59,130,246),0.35)] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn shrink-0"
-            @click="onNavSectionClick($event, '#contact')"
-          >
-            <span>{{ $t('nav.cta') }}</span>
-            <Icon
-              name="solar:arrow-right-up-linear"
-              class="size-3.5 xl:size-4 shrink-0 group-hover/btn:rotate-45 transition-transform duration-300"
-            />
-          </a>
+            <a
+              :href="sectionHref('#contact')"
+              class="site-nav__cta site-nav__action site-nav__action--contact inline-flex items-center justify-center gap-1.5 rounded-full transition-[color,background-color,border-color,box-shadow,transform] hover:-translate-y-0.5 active:translate-y-0 active:scale-95 group/btn focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              @click="onNavSectionClick($event, '#contact')"
+            >
+              <span>{{ $t('nav.cta') }}</span>
+              <Icon
+                name="solar:arrow-right-up-linear"
+                class="size-4 shrink-0 group-hover/btn:rotate-45 transition-transform duration-300"
+              />
+            </a>
+          </div>
 
           <!-- Mobile Toggle -->
           <button
@@ -970,14 +971,53 @@ async function onNavSectionClick(event, href) {
   background: rgba(var(--primary-rgb, 255, 75, 92), 0.4);
 }
 
-.hire-menu-trigger {
+/* Matched Hire / Contact chrome — same shell, same composition (label + trailing icon). */
+.site-nav__action {
+  box-sizing: border-box;
+  height: 2.5rem;
   min-height: 2.5rem;
+  padding-inline: 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.site-nav__action--hire {
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 14%, var(--color-background));
+  border-color: color-mix(in srgb, var(--color-primary) 45%, transparent);
+}
+
+.site-nav__action--hire:hover,
+.site-nav__action--hire:focus-visible {
+  color: var(--color-primary-contrast);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 35%, transparent);
 }
 
 .hire-menu-trigger--open {
-  color: var(--primary);
-  border-color: color-mix(in srgb, var(--primary) 45%, transparent);
-  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: var(--color-primary-contrast);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 35%, transparent);
+}
+
+.site-nav__action--contact {
+  color: var(--color-primary-contrast);
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.site-nav__action--contact:hover,
+.site-nav__action--contact:focus-visible {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  box-shadow: 0 0 20px color-mix(in srgb, var(--color-primary) 35%, transparent);
 }
 
 .nav-reveal {

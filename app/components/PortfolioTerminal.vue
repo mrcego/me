@@ -97,6 +97,12 @@ function onShellKeydown(event: KeyboardEvent) {
         class="portfolio-terminal__shell"
         :class="{ 'portfolio-terminal__shell--armed': shellArmed }"
       >
+        <div class="portfolio-terminal__flight-frame" aria-hidden="true">
+          <span class="portfolio-terminal__flight-horizon" />
+          <span class="portfolio-terminal__flight-vector" />
+          <span class="portfolio-terminal__flight-node portfolio-terminal__flight-node--west" />
+          <span class="portfolio-terminal__flight-node portfolio-terminal__flight-node--east" />
+        </div>
         <header class="portfolio-terminal__chrome">
           <div class="portfolio-terminal__traffic" aria-hidden="true"><span /><span /><span /></div>
           <p class="portfolio-terminal__title type-label">

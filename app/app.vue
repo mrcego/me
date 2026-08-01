@@ -78,6 +78,9 @@ onMounted(() => {
     :class="{ 'has-availability-banner': showAnnouncement }"
   >
     <SkipToContent />
+    <div data-terminal-gate-announcement class="sr-only" aria-live="polite" aria-atomic="true">
+      {{ gateAnnounce }}
+    </div>
 
     <AvailabilityBanner />
 
@@ -112,7 +115,6 @@ onMounted(() => {
       :keys="revealedKeys"
       :progress="progressIndex"
       :total="sequenceLength"
-      :announce="gateAnnounce"
     />
     <LazyPortfolioTerminal v-if="terminalMounted" />
 

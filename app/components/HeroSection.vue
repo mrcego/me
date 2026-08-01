@@ -124,7 +124,7 @@ onMounted(() => {
 
       <!-- CTA row — above photo on mobile -->
       <div
-        class="order-2 lg:col-start-1 hero-reveal hero-reveal--d80 flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center lg:justify-start w-full lg:w-auto"
+        class="relative z-20 order-2 lg:col-start-1 hero-reveal hero-reveal--d80 flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center lg:justify-start w-full lg:w-auto"
       >
         <a
           class="btn-premium bg-primary text-primary-contrast rounded-2xl sm:rounded-3xl px-7 sm:px-9 py-3.5 sm:py-4 shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-sm sm:text-base border-none"
@@ -143,18 +143,18 @@ onMounted(() => {
           aria-hidden="true"
         />
         <div
-          class="flex gap-2.5 sm:gap-3 items-center border-t border-foreground/10 pt-3 sm:border-t-0 sm:pt-0 w-full sm:w-auto justify-center lg:justify-start"
+          class="relative z-20 flex gap-2.5 sm:gap-3 items-center border-t border-foreground/10 pt-3 sm:border-t-0 sm:pt-0 w-full sm:w-auto justify-center lg:justify-start"
         >
           <a
             href="https://linkedin.com/in/mrcego"
             target="_blank"
             rel="noopener noreferrer"
             :aria-label="$t('footer.socialLinkedIn')"
-            class="surface-card group inline-flex items-center justify-center size-[66px] sm:size-[74px] glass rounded-xl text-muted active:scale-90 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="hero-social-link inline-flex items-center justify-center size-[66px] sm:size-[74px] rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <Icon
               name="simple-icons:linkedin"
-              class="surface-card__glyph size-[38px] sm:size-[42px] shrink-0"
+              class="size-[38px] sm:size-[42px] shrink-0 pointer-events-none text-current"
             />
           </a>
           <a
@@ -162,21 +162,21 @@ onMounted(() => {
             target="_blank"
             rel="noopener noreferrer"
             :aria-label="$t('footer.socialGitHub')"
-            class="surface-card group inline-flex items-center justify-center size-[66px] sm:size-[74px] glass rounded-xl text-muted active:scale-90 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="hero-social-link inline-flex items-center justify-center size-[66px] sm:size-[74px] rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <Icon
               name="simple-icons:github"
-              class="surface-card__glyph size-[38px] sm:size-[42px] shrink-0"
+              class="size-[38px] sm:size-[42px] shrink-0 pointer-events-none text-current"
             />
           </a>
           <a
             href="mailto:cesargomezh90@gmail.com"
             :aria-label="$t('footer.socialEmail')"
-            class="surface-card group inline-flex items-center justify-center size-[66px] sm:size-[74px] glass rounded-xl text-muted active:scale-90 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="hero-social-link inline-flex items-center justify-center size-[66px] sm:size-[74px] rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <Icon
               name="solar:letter-linear"
-              class="surface-card__glyph size-[38px] sm:size-[42px] shrink-0"
+              class="size-[38px] sm:size-[42px] shrink-0 pointer-events-none text-current"
             />
           </a>
         </div>
@@ -193,7 +193,7 @@ onMounted(() => {
           @pointerleave="onPhotoPointerLeave"
         >
           <div
-            class="relative z-10 flex w-full flex-col items-center gap-2.5 sm:gap-3"
+            class="relative z-0 flex w-full flex-col items-center gap-2.5 sm:gap-3 pointer-events-none"
             :style="photoTiltStyle"
           >
             <div
@@ -252,7 +252,7 @@ onMounted(() => {
 
             <button
               type="button"
-              class="inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full border border-primary/25 bg-primary/8 text-primary type-label hover:bg-primary/12 hover:border-primary/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation min-h-11"
+              class="pointer-events-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full border border-primary/25 bg-primary/8 text-primary type-label hover:bg-primary/12 hover:border-primary/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation min-h-11 cursor-pointer"
               :aria-label="$t('about.vibeCodingOpen')"
               aria-haspopup="dialog"
               @click="onVibeBadgeClick"
@@ -354,7 +354,7 @@ onMounted(() => {
     filter 1.05s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media (hover: hover) and (pointer: fine) {
+@media (any-hover: hover) {
   .hero-photo-wrap:hover .hero-photo-image {
     filter: brightness(1.03);
     transform: scale(1.02);
@@ -366,7 +366,7 @@ onMounted(() => {
     transition-duration: 0.01ms;
   }
 
-  @media (hover: hover) and (pointer: fine) {
+  @media (any-hover: hover) {
     .hero-photo-wrap:hover .hero-photo-image {
       transform: none;
       filter: none;
@@ -405,5 +405,26 @@ onMounted(() => {
   .hero-reveal {
     animation: none;
   }
+}
+
+.hero-social-link {
+  color: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background: color-mix(in srgb, var(--secondary) 88%, var(--background));
+  border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, #000000 14%, transparent);
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.hero-social-link:hover,
+.hero-social-link:focus-visible {
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 18%, var(--background));
+  border-color: color-mix(in srgb, var(--primary) 55%, transparent);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--primary) 40%, transparent);
 }
 </style>
