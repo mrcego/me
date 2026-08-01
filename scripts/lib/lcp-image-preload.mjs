@@ -2,16 +2,16 @@
  * Hero LCP image preload — keep attrs in sync with NuxtImg in HeroSection.vue
  * (sizes / densitites / format / quality) and app.vue useHead.
  *
- * PSI mobile (Moto G Power): 224 CSS px × ~2.625 DPR → prefers 448w.
- * Early <head> injection cuts resource load delay (preload must not sit after
- * ~200KB of inline CSS).
+ * Display widths follow HeroSection max-height + aspect-4/5 caps:
+ * mobile ~154 CSS px, sm ~205, md ~256, lg ~392, xl ~448.
+ * High-DPR mobile (×2–2.625) prefers 392w — not a bare 448w default.
  */
 
-export const HERO_LCP_IMAGE_HREF = '/_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg';
+export const HERO_LCP_IMAGE_HREF = '/_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg';
 
-/** Matches NuxtImg sizes="224px sm:256px lg:392px xl:448px" expanded form. */
+/** Matches NuxtImg sizes expanded from CSS display widths. */
 export const HERO_LCP_IMAGE_SIZES =
-  '(max-width: 640px) 224px, (max-width: 1024px) 256px, (max-width: 1280px) 392px, 448px';
+  '(max-width: 640px) 154px, (max-width: 768px) 205px, (max-width: 1024px) 256px, (max-width: 1280px) 392px, 448px';
 
 export const HERO_LCP_IMAGE_SRCSET = [
   '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg 224w',

@@ -85,8 +85,8 @@ describe('CSP builders', () => {
     expect(file).toMatch(/\/_nuxt\/\*[\s\S]*max-age=31536000,\s*immutable/);
     expect(file).toMatch(/\/_fonts\/\*[\s\S]*max-age=31536000,\s*immutable/);
     expect(file).toMatch(/\/_i18n\/\*[\s\S]*max-age=31536000,\s*immutable/);
-    expect(file).toMatch(/\/_ipx\/\*[\s\S]*max-age=604800,\s*stale-while-revalidate=86400/);
-    expect(file).toMatch(/\/img\/\*[\s\S]*max-age=604800,\s*stale-while-revalidate=86400/);
+    expect(file).toMatch(/\/_ipx\/\*[\s\S]*max-age=31536000,\s*immutable/);
+    expect(file).toMatch(/\/img\/\*[\s\S]*max-age=2592000,\s*stale-while-revalidate=604800/);
     expect(file).toMatch(/\/\n\s*Cache-Control:\s*no-cache/);
     expect(file).toMatch(/\/index\.html[\s\S]*no-cache/);
     expect(file).toMatch(/\/200\.html[\s\S]*no-cache/);

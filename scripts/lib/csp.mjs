@@ -153,8 +153,11 @@ export const CACHE_CONTROL_HTML = 'no-cache, no-store, must-revalidate';
 /** Hashed Nuxt / font / i18n assets — immutable year-long cache. */
 export const CACHE_CONTROL_IMMUTABLE = 'public, max-age=31536000, immutable';
 
-/** Optimized images — week cache + SWR day. */
-export const CACHE_CONTROL_IMAGES = 'public, max-age=604800, stale-while-revalidate=86400';
+/** Image CDN derivatives (/_ipx) — URL encodes transform; safe to treat as immutable. */
+export const CACHE_CONTROL_IPX = 'public, max-age=31536000, immutable';
+
+/** Source images under /img — shorter TTL so replacements propagate. */
+export const CACHE_CONTROL_IMAGES = 'public, max-age=2592000, stale-while-revalidate=604800';
 
 /** Favicons — short cache (brand marks change with redesigns). */
 export const CACHE_CONTROL_BRAND = 'public, max-age=86400, must-revalidate';
@@ -192,7 +195,7 @@ export function buildCacheHeaderBlocks() {
     { path: '/_fonts/*', headers: { 'Cache-Control': CACHE_CONTROL_IMMUTABLE } },
     { path: '/_i18n/*', headers: { 'Cache-Control': CACHE_CONTROL_IMMUTABLE } },
 
-    { path: '/_ipx/*', headers: { 'Cache-Control': CACHE_CONTROL_IMAGES } },
+    { path: '/_ipx/*', headers: { 'Cache-Control': CACHE_CONTROL_IPX } },
     { path: '/img/*', headers: { 'Cache-Control': CACHE_CONTROL_IMAGES } },
 
     { path: '/favicon.ico', headers: { 'Cache-Control': CACHE_CONTROL_BRAND } },

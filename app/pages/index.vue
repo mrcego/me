@@ -11,8 +11,8 @@ usePortfolioSeo();
       critical request chain; SSR HTML + inlined styles paint first.
       Far sections: hydrate-on-visible — only fetch when approaching viewport.
     -->
-    <LazyAboutSection :hydrate-after="4500" />
-    <LazyTechStackSection :hydrate-after="5000" />
+    <LazyAboutSection :hydrate-after="6500" />
+    <LazyTechStackSection :hydrate-after="7800" />
     <LazyCertificationsSection :hydrate-on-visible="{ rootMargin: '120px' }" />
     <LazyCapabilitiesSection :hydrate-on-visible="{ rootMargin: '120px' }" />
     <LazyTestimonialsSection :hydrate-on-visible="{ rootMargin: '120px' }" />

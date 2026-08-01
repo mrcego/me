@@ -39,8 +39,8 @@ curl -sI https://cesargomez.dev/ | grep -i cache-control
 # Hashed JS — immutable
 curl -sI "$(curl -s https://cesargomez.dev/ | grep -o '/_nuxt/[^"]*\.js' | head -1 | xargs -I{} echo https://cesargomez.dev{})" | grep -i cache-control
 
-# IPX image — week + SWR (see quality/IMAGE_DELIVERY.md)
-curl -sI "https://cesargomez.dev/_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg" | grep -i cache-control
+# IPX image — immutable 1y (see quality/IMAGE_DELIVERY.md)
+curl -sI "https://cesargomez.dev/_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg" | grep -i cache-control
 ```
 
 - [ ] CSP present on HTML responses (Netlify `_headers`).

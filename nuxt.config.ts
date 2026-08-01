@@ -193,9 +193,10 @@ export default defineNuxtConfig({
     provider: 'none',
     fallbackToApi: false,
     serverBundle: 'local',
+    // CSS mode — no Iconify client SVG payload. Keep scan off to avoid unused JS.
     clientBundle: {
-      // Scan templates (incl. Lazy modals) so icons like lucide:x ship in the build.
-      scan: true,
+      scan: false,
+      icons: [],
     },
   },
 
