@@ -73,7 +73,7 @@ onMounted(() => {
     id="hero"
     class="relative min-h-svh flex items-start lg:items-center justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+5rem)] pb-8 md:pb-12 lg:pt-[calc(var(--availability-banner-h,0px)+5.5rem)] lg:pb-14"
   >
-    <LazyHeroParticles :hydrate-after="3200" />
+    <LazyHeroParticles :hydrate-after="5200" />
 
     <div
       v-if="showMarquee"
@@ -219,7 +219,7 @@ onMounted(() => {
                   loading="eager"
                   fetchpriority="high"
                   densities="x1"
-                  sizes="224px sm:256px lg:392px xl:448px"
+                  sizes="154px sm:205px md:256px lg:392px xl:448px"
                   class="surface-card__image hero-photo-image w-full h-full object-cover"
                 />
 
@@ -253,7 +253,6 @@ onMounted(() => {
             <button
               type="button"
               class="pointer-events-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full border border-primary/25 bg-primary/8 text-primary type-label hover:bg-primary/12 hover:border-primary/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation min-h-11 cursor-pointer"
-              :aria-label="$t('about.vibeCodingOpen')"
               aria-haspopup="dialog"
               @click="onVibeBadgeClick"
               @pointerenter="prefetchVibeModal"
@@ -262,10 +261,12 @@ onMounted(() => {
               <Icon
                 name="solar:magic-stick-3-bold-duotone"
                 class="size-4 sm:size-[18px] shrink-0"
+                aria-hidden="true"
               />
               <span class="text-[10px] sm:text-xs tracking-[0.12em]">{{
                 $t('hero.expertiseBadge')
               }}</span>
+              <span class="sr-only">{{ $t('about.vibeCodingOpen') }}</span>
             </button>
           </div>
 

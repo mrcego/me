@@ -30,15 +30,15 @@ useHead({
       // Must match HeroSection NuxtImg sizes/srcset. Generate pipeline re-injects this
       // at the start of <head> (scripts/lib/lcp-image-preload.mjs) so discovery is not
       // delayed by theme-init + inlined CSS (~200KB) — that was ~320ms resource load delay.
-      // PSI mobile: 224 CSS px × ~2.625 DPR → 448w.
+      // Mobile display ~154 CSS px × ~2.625 DPR → prefers 392w (not a bare 448w default).
       rel: 'preload',
       as: 'image',
       type: 'image/webp',
-      href: '/_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg',
+      href: '/_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg',
       fetchpriority: 'high',
       tagPriority: 'critical',
       imagesizes:
-        '(max-width: 640px) 224px, (max-width: 1024px) 256px, (max-width: 1280px) 392px, 448px',
+        '(max-width: 640px) 154px, (max-width: 768px) 205px, (max-width: 1024px) 256px, (max-width: 1280px) 392px, 448px',
       imagesrcset:
         '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg 224w, /_ipx/f_webp&q_85&fit_cover&s_256x320/img/me.jpg 256w, /_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg 392w, /_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg 448w',
     },
@@ -117,7 +117,7 @@ onMounted(() => {
     />
 
     <!-- No reactive props: prop changes force immediate hydration on Lazy islands. -->
-    <LazyAppNavbar :hydrate-after="2800" />
+    <LazyAppNavbar :hydrate-after="4200" />
 
     <div class="relative min-w-0 overflow-x-clip">
       <!--

@@ -39,7 +39,7 @@ test.describe('generate artifacts', () => {
     const themeInit = html.indexOf('theme-init');
     expect(lcpPreload).toBeGreaterThan(headOpen);
     expect(lcpPreload).toBeLessThan(themeInit);
-    expect(html).toMatch(/s_448x560\/img\/me\.jpg/);
+    expect(html).toMatch(/s_392x490\/img\/me\.jpg/);
     // Webfonts must stay off the discovery/preload critical path (LCP is the hero image).
     expect(html).not.toMatch(/rel="preload"[^>]*as="font"/);
     expect(html).toMatch(/font-display:optional/);

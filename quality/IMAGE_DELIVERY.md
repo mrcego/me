@@ -10,13 +10,13 @@ This site is **SSG** (`nuxt generate`). `@nuxt/image` resolves `<NuxtImg>` at bu
 /_ipx/f_<format>&q_<quality>&fit_<fit>&s_<width>x<height>/<source-path>
 ```
 
-Example (hero LCP portrait):
+Example (hero LCP portrait — default preload candidate):
 
 ```
-/_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg
+/_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg
 ```
 
-Responsive `srcset` variants are generated from `sizes`, `width`/`height`, and `format` props on `<NuxtImg>`. The home page also preloads the LCP candidate in `app/app.vue` and re-injects matching `link rel=preload` during `scripts/inject-entry-css-link.mjs`.
+Responsive `srcset` variants are generated from `sizes`, `width`/`height`, and `format` props on `<NuxtImg>`. The home page also preloads the LCP candidate in `app/app.vue` and re-injects matching `link rel=preload` during `scripts/inject-entry-css-link.mjs`. Hero `sizes` track CSS display widths (`154px` → `448px`) so mobile high-DPR picks 392w instead of always defaulting to 448w.
 
 ### Defaults (`nuxt.config.ts`)
 
@@ -34,13 +34,13 @@ Brand and non-IPX assets live under `/img/*` (avatars, OG art, logos). Testimoni
 
 Headers ship in `.output/public/_headers` via `scripts/write-csp-headers.mjs` → `scripts/lib/csp.mjs`.
 
-| Path       | `Cache-Control`                                        | Rationale                                     |
-| ---------- | ------------------------------------------------------ | --------------------------------------------- |
-| `/_ipx/*`  | `public, max-age=604800, stale-while-revalidate=86400` | Week cache + 1-day SWR for transformed images |
-| `/img/*`   | same as `/_ipx/*`                                      | Source and raster brand assets                |
-| `/_nuxt/*` | `public, max-age=31536000, immutable`                  | Hashed build chunks only                      |
+| Path       | `Cache-Control`                                          | Rationale                                              |
+| ---------- | -------------------------------------------------------- | ------------------------------------------------------ |
+| `/_ipx/*`  | `public, max-age=31536000, immutable`                    | Transform URL is content-addressed; long cache is safe |
+| `/img/*`   | `public, max-age=2592000, stale-while-revalidate=604800` | Source assets — 30d + week SWR                         |
+| `/_nuxt/*` | `public, max-age=31536000, immutable`                    | Hashed build chunks only                               |
 
-Constants: `CACHE_CONTROL_IMAGES`, `CACHE_CONTROL_IMMUTABLE` in `scripts/lib/csp.mjs`.
+Constants: `CACHE_CONTROL_IPX`, `CACHE_CONTROL_IMAGES`, `CACHE_CONTROL_IMMUTABLE` in `scripts/lib/csp.mjs`.
 
 > **Note:** `netlify.toml` `[[headers]]` are **not** applied on artifact deploy (`netlify deploy --no-build`). The generated `_headers` file is the source of truth.
 
@@ -49,10 +49,10 @@ Constants: `CACHE_CONTROL_IMAGES`, `CACHE_CONTROL_IMMUTABLE` in `scripts/lib/csp
 1. **Response headers** — pick a live `/_ipx/...` URL from home HTML:
 
    ```bash
-   curl -sI "https://cesargomez.dev/_ipx/f_webp&q_85&fit_cover&s_448x560/img/me.jpg" | grep -i cache-control
+   curl -sI "https://cesargomez.dev/_ipx/f_webp&q_85&fit_cover&s_392x490/img/me.jpg" | grep -i cache-control
    ```
 
-   Expect: `public, max-age=604800, stale-while-revalidate=86400`
+   Expect: `public, max-age=31536000, immutable`
 
 2. **Format negotiation** — confirm `Content-Type` is `image/webp` (or `image/avif` when emitted).
 

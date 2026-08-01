@@ -554,10 +554,9 @@ onBeforeUnmount(() => {
           <a
             :href="sectionHref('#contact')"
             class="lg:hidden inline-flex items-center justify-center gap-1.5 min-h-11 min-w-11 px-2.5 sm:px-3 rounded-full text-primary bg-primary/10 border border-primary/25 hover:bg-primary/15 transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-            :aria-label="$t('nav.getInTouch')"
             @click="onNavSectionClick($event, '#contact')"
           >
-            <Icon name="solar:letter-bold" class="size-5 shrink-0" />
+            <Icon name="solar:letter-bold" class="size-5 shrink-0" aria-hidden="true" />
             <span class="text-[10px] sm:text-xs font-black uppercase tracking-widest">{{
               $t('nav.contactShort')
             }}</span>
