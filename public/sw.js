@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cesar-gomez-portfolio-v6';
+const CACHE_NAME = 'cesar-gomez-portfolio-v7';
 const IS_LOCALHOST = ['localhost', '127.0.0.1', '[::1]'].includes(self.location.hostname);
 const urlsToCache = [
   '/img/logo-final.svg?v=cg2',
@@ -10,6 +10,17 @@ const urlsToCache = [
 const isNavigationRequest = (request) =>
   request.mode === 'navigate' ||
   (request.method === 'GET' && request.headers.get('accept')?.includes('text/html'));
+
+/** Only http(s) GET — skip chrome-extension:, blob:, etc. (Cache.put rejects those schemes). */
+const isCacheableRequest = (request) => {
+  if (request.method !== 'GET') return false;
+  try {
+    const { protocol } = new URL(request.url);
+    return protocol === 'http:' || protocol === 'https:';
+  } catch {
+    return false;
+  }
+};
 
 /** Brand marks / favicons must not stick on stale cache-first entries after deploys. */
 const isBrandAsset = (url) => {
@@ -30,6 +41,17 @@ const isBrandAsset = (url) => {
   }
 };
 
+const matchOrNetworkError = (request) =>
+  caches.match(request).then((cached) => cached || Response.error());
+
+const putInCache = (request, response) => {
+  if (!isCacheableRequest(request)) return;
+  const copy = response.clone();
+  void caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)).catch(() => {
+    // Ignore quota / scheme errors — never reject the fetch handler.
+  });
+};
+
 // Install event - cache static assets only (not HTML — hashes change each deploy)
 self.addEventListener('install', (event) => {
   if (IS_LOCALHOST) {
@@ -44,6 +66,8 @@ self.addEventListener('install', (event) => {
 // Fetch event - network-first for pages + brand assets; cache-first for other static
 self.addEventListener('fetch', (event) => {
   if (IS_LOCALHOST) return;
+  // Let the browser handle non-http(s) / non-GET (extensions, WebSocket upgrades, etc.).
+  if (!isCacheableRequest(event.request)) return;
 
   if (isNavigationRequest(event.request)) {
     event.respondWith(fetch(event.request));
@@ -55,12 +79,11 @@ self.addEventListener('fetch', (event) => {
       fetch(event.request)
         .then((response) => {
           if (response && response.status === 200 && response.type === 'basic') {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+            putInCache(event.request, response);
           }
           return response;
         })
-        .catch(() => caches.match(event.request)),
+        .catch(() => matchOrNetworkError(event.request)),
     );
     return;
   }
@@ -71,23 +94,20 @@ self.addEventListener('fetch', (event) => {
         return response;
       }
 
-      const fetchRequest = event.request.clone();
-
-      return fetch(fetchRequest)
-        .then((response) => {
-          if (!response || response.status !== 200 || response.type !== 'basic') {
-            return response;
+      return fetch(event.request.clone())
+        .then((networkResponse) => {
+          if (
+            !networkResponse ||
+            networkResponse.status !== 200 ||
+            networkResponse.type !== 'basic'
+          ) {
+            return networkResponse;
           }
 
-          const responseToCache = response.clone();
-
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, responseToCache);
-          });
-
-          return response;
+          putInCache(event.request, networkResponse);
+          return networkResponse;
         })
-        .catch(() => caches.match(event.request));
+        .catch(() => matchOrNetworkError(event.request));
     }),
   );
 });
