@@ -27,7 +27,7 @@ Report: [uyky82oqhc](https://pagespeed.web.dev/analysis/https-cesargomez-dev/uyk
 - Hero `sizes`/preload aligned to CSS display (~154px mobile → prefer 392w) — cuts image-delivery + LCP load-delay.
 - `/_ipx/*` Cache-Control → immutable 1y; `/img/*` → 30d + SWR.
 - Accessible names: CONTACT / Vibe Coding include visible text (Label in Name).
-- Deferred navbar/about/tech/particles hydration; disabled card tilt on coarse pointers; Nuxt Icon CSS mode with `clientBundle.scan: false` (no Iconify SVG client payload).
+- Deferred navbar/about/tech/particles hydration; disabled card tilt on coarse pointers; Nuxt Icon CSS mode with `clientBundle.scan: true` (provider none — icons must ship in the client bundle).
 
 ### Documented residuals (not code-blocking)
 
