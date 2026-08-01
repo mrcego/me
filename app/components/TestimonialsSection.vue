@@ -6,6 +6,7 @@ const { getLocalAvatar, getInitials } = useTestimonialAvatar();
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
 const failedAvatars = ref(new Set<string>());
+const expandedQuotes = ref(new Set<string>());
 
 interface TestimonialEntry {
   name: string;
@@ -29,8 +30,21 @@ const markAvatarFailed = (name: string) => {
   failedAvatars.value = new Set([...failedAvatars.value, name]);
 };
 
+const isExpanded = (name: string) => expandedQuotes.value.has(name);
+
+const toggleQuote = (name: string) => {
+  const next = new Set(expandedQuotes.value);
+  if (next.has(name)) next.delete(name);
+  else next.add(name);
+  expandedQuotes.value = next;
+};
+
+/** Long enough that line-clamp-5 likely truncates — show expand control. */
+const needsExpand = (quote: string) => quote.length > 220;
+
 watch(testimonials, () => {
   failedAvatars.value = new Set();
+  expandedQuotes.value = new Set();
 });
 </script>
 
@@ -72,13 +86,13 @@ watch(testimonials, () => {
           :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true, amount: 0.1 }"
-          class="surface-card group relative glass p-6 sm:p-8 md:p-14 rounded-3xl sm:rounded-[3.5rem] border-foreground/5 overflow-hidden h-full min-w-0"
+          class="surface-card surface-evidence group relative p-6 sm:p-8 md:p-14 rounded-3xl sm:rounded-[3.5rem] overflow-hidden h-full min-w-0"
         >
           <div
             class="surface-card__glow absolute inset-0 bg-primary/2 pointer-events-none testimonial-dots"
           />
 
-          <div class="relative z-10 space-y-10">
+          <div class="relative z-10 space-y-8 sm:space-y-10">
             <div class="surface-card__quote-icon text-muted">
               <Icon
                 name="solar:chat-square-code-bold-duotone"
@@ -87,17 +101,33 @@ watch(testimonials, () => {
               />
             </div>
 
-            <blockquote
-              class="surface-card__text text-base sm:text-lg md:text-xl text-muted font-medium leading-relaxed italic max-h-[9.2rem] md:max-h-[10.2rem] overflow-y-auto overflow-x-hidden pr-3 sm:pr-4 custom-scrollbar wrap-break-word text-pretty"
-            >
-              <p>"{{ t.quote }}"</p>
+            <blockquote class="surface-card__text space-y-3">
+              <p
+                class="text-base sm:text-lg md:text-xl text-muted font-medium leading-relaxed italic wrap-break-word text-pretty"
+                :class="isExpanded(t.name) ? '' : 'line-clamp-5'"
+              >
+                "{{ t.quote }}"
+              </p>
+              <button
+                v-if="needsExpand(t.quote)"
+                type="button"
+                class="type-label text-primary hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded"
+                :aria-expanded="isExpanded(t.name)"
+                @click="toggleQuote(t.name)"
+              >
+                {{
+                  isExpanded(t.name)
+                    ? $t('testimonials.collapseQuote')
+                    : $t('testimonials.expandQuote')
+                }}
+              </button>
             </blockquote>
 
             <footer
               class="surface-card__footer flex items-center gap-6 pt-6 border-t border-foreground/5"
             >
               <div
-                class="surface-card__avatar w-14 h-14 rounded-2xl glass overflow-hidden border border-foreground/10 shrink-0"
+                class="surface-card__avatar w-14 h-14 rounded-2xl glass-lite overflow-hidden border border-foreground/10 shrink-0"
               >
                 <NuxtImg
                   v-if="!failedAvatars.has(t.name)"
@@ -143,27 +173,5 @@ watch(testimonials, () => {
 .testimonial-dots {
   background-image: radial-gradient(circle, rgba(255, 75, 92, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
-}
-
-.custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 75, 92, 0.2);
-  border-radius: 10px;
-}
-
-.custom-scrollbar:hover::-webkit-scrollbar-thumb {
-  background: rgba(255, 75, 92, 0.6);
-}
-
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 75, 92, 0.2) transparent;
 }
 </style>

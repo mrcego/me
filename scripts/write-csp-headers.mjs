@@ -1,10 +1,14 @@
 /**
- * After `nuxt generate`, write Netlify `_headers` with a CSP that works with
- * Nuxt SSG + Vue 3 on Netlify.
+ * After `nuxt generate`, write Netlify `_headers` with CSP + cache policies
+ * for Nuxt SSG + Vue 3 on Netlify.
  *
  * script-src uses per-build sha256 hashes of executable inline scripts (no
  * 'unsafe-inline'). Safe because deploy is artifact + `--no-build` (no second
  * generate that would desync hashes).
+ *
+ * Cache-Control rules (HTML no-cache, `/_nuxt` immutable, images SWR, favicons)
+ * are generated here too — GH Actions uploads only `.output/public`, so
+ * `netlify.toml` [[headers]] never reach production CDN.
  *
  * Trusted Types (`require-trusted-types-for`) stays OFF by default: Vue's
  * `vue` policy is not enough — other sinks (e.g. innerHTML) still throw under
@@ -45,4 +49,6 @@ console.log(`[csp] script-src hashes: ${scriptHashes.length} (no 'unsafe-inline'
 console.log(
   `[csp] Trusted Types: ${enableTrustedTypes ? "require-trusted-types-for 'script'; trusted-types vue default" : 'disabled (set NUXT_CSP_TRUSTED_TYPES=1 to experiment)'}`,
 );
-console.log(`[csp] Also ships HSTS (includeSubDomains; preload), COOP, CORP, and frame guards`);
+console.log(
+  `[csp] Also ships HSTS (includeSubDomains; preload), COOP, CORP, frame guards, and cache policies`,
+);

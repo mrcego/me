@@ -1,11 +1,11 @@
 import { expect, test } from '@playwright/test';
 
 async function waitForHydratedNav(page: import('@playwright/test').Page) {
-  await expect(
-    page
-      .getByRole('button', { name: /Theme Presets|Temas IDE|Open menu|Abrir menú|Abrir menu/i })
-      .first(),
-  ).toBeVisible({ timeout: 20_000 });
+  // Theme presets are ClientOnly with a disabled fallback — enabled means hydrated.
+  // The hamburger is SSR-painted earlier and must not be used as the hydration signal.
+  const themeBtn = page.getByRole('button', { name: /Theme Presets|Temas IDE/i });
+  await expect(themeBtn).toBeVisible({ timeout: 20_000 });
+  await expect(themeBtn).toBeEnabled({ timeout: 20_000 });
 }
 
 test.describe('interactive chrome', () => {
@@ -41,7 +41,7 @@ test.describe('interactive chrome', () => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     await waitForHydratedNav(page);
-    const hire = page.getByRole('button', { name: /Hire/i }).first();
+    const hire = page.getByRole('button', { name: /Hire|Contratar/i }).first();
     await hire.click();
     await expect(page.locator('#hire-profile-menu')).toBeVisible({ timeout: 10_000 });
     await page
@@ -78,35 +78,77 @@ test.describe('interactive chrome', () => {
     expect(await page.locator('#faq dd').count()).toBe(await page.locator('#faq dt').count());
   });
 
-  test('protocol chat opens and closes', async ({ page }) => {
+  test('decorative protocol chat is not mounted in runtime', async ({ page }) => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
-    // Lazy hydrate-after ~4000ms: SSR paints the FAB before listeners attach
-    const chatToggle = page.getByRole('button', { name: /chat assistant/i });
-    await expect(chatToggle).toBeVisible({ timeout: 30_000 });
-    await expect(async () => {
-      await chatToggle.click({ force: true });
-      await expect(chatToggle).toHaveAttribute('aria-expanded', 'true');
-    }).toPass({ timeout: 30_000 });
-    await expect(page.getByText(/Signal Protocol/i)).toBeVisible();
-    // Toggle FAB flips label to "Close chat assistant" when open
-    await page.getByRole('button', { name: 'Close chat assistant' }).click({ force: true });
-    await expect(page.getByRole('button', { name: 'Open chat assistant' })).toBeVisible({
-      timeout: 10_000,
-    });
+    await page.waitForTimeout(4500);
+    await expect(page.getByRole('button', { name: /chat assistant/i })).toHaveCount(0);
   });
 
   test('mobile menu opens, navigates, and closes', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/', { waitUntil: 'domcontentloaded' });
-    // SSR paints the hamburger before LazyAppNavbar hydrates — wait for ClientOnly theme first
-    await expect(page.getByRole('button', { name: /Theme Presets|Temas IDE/i })).toBeVisible({
-      timeout: 20_000,
+    // SSR paints the hamburger before LazyAppNavbar hydrates — wait for enabled theme control.
+    const themeBtn = page.getByRole('button', { name: /Theme Presets|Temas IDE/i });
+    await expect(themeBtn).toBeVisible({ timeout: 20_000 });
+    await expect(themeBtn).toBeEnabled({ timeout: 20_000 });
+    const menuToggle = page.getByRole('button', {
+      name: /Open menu|Abrir menú|Abrir menu/i,
     });
-    await page.getByRole('button', { name: /Open menu|Abrir menú|Abrir menu/i }).click();
+    await menuToggle.click();
     const drawer = page.getByRole('dialog');
     await expect(drawer).toBeVisible({ timeout: 10_000 });
-    await drawer.getByRole('link', { name: /^About$|^Sobre/i }).click();
+    await drawer.getByRole('link', { name: /^About$|^Acerca/i }).click();
     await expect(page.locator('#about')).toBeInViewport({ timeout: 15_000 });
+  });
+
+  test('mobile menu: Escape closes and focus returns to trigger', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await waitForHydratedNav(page);
+    const menuToggle = page.getByRole('button', {
+      name: /Open menu|Abrir menú|Abrir menu/i,
+    });
+    await expect(async () => {
+      await menuToggle.click();
+      await expect(page.getByRole('dialog')).toBeVisible();
+    }).toPass({ timeout: 15_000 });
+    await page.keyboard.press('Escape');
+    await expect(page.getByRole('dialog')).toBeHidden({ timeout: 10_000 });
+    await expect(menuToggle).toBeFocused();
+  });
+
+  test('mobile menu sets main-content inert while open', async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await waitForHydratedNav(page);
+    const main = page.locator('#main-content');
+    if ((await main.count()) === 0) {
+      test.skip(true, '#main-content not found');
+      return;
+    }
+    await expect(main).not.toHaveAttribute('inert');
+    const menuToggle = page.getByRole('button', {
+      name: /Open menu|Abrir menú|Abrir menu/i,
+    });
+    await expect(async () => {
+      await menuToggle.click();
+      await expect(page.getByRole('dialog')).toBeVisible();
+    }).toPass({ timeout: 15_000 });
+    await expect(main).toHaveAttribute('inert', '');
+    await page.keyboard.press('Escape');
+    await expect(main).not.toHaveAttribute('inert');
+  });
+
+  test('reduced-motion: page loads and hero CTA is visible', async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('#main-content, main').first()).toBeVisible({ timeout: 20_000 });
+    const cta = page.getByRole('link', { name: /contact|contacto|let's talk|hablemos/i }).first();
+    if ((await cta.count()) === 0) {
+      test.skip(true, 'hero CTA link not found');
+      return;
+    }
+    await expect(cta).toBeVisible({ timeout: 20_000 });
   });
 
   test('skip-to-content focuses main', async ({ page }) => {

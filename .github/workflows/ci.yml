@@ -55,6 +55,24 @@ jobs:
         env:
           CI: true
 
+      - name: Install Chrome for Lighthouse CI
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Lighthouse CI (soft-fail budgets)
+        continue-on-error: true
+        run: |
+          node scripts/serve-ssg-with-csp.mjs &
+          echo $! > /tmp/ssg.pid
+          for i in $(seq 1 60); do
+            curl -sf http://127.0.0.1:4173/ > /dev/null && break
+            sleep 1
+          done
+          pnpm lhci
+          kill "$(cat /tmp/ssg.pid)" 2>/dev/null || true
+        env:
+          LHCI_BASE_URL: http://127.0.0.1:4173
+          CHROME_PATH: /usr/bin/google-chrome
+
       - name: Upload site artifact
         uses: actions/upload-artifact@v4
         with:

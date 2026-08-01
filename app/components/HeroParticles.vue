@@ -26,6 +26,8 @@ let dpr = 1;
 let pointerX = -9999;
 let pointerY = -9999;
 let pointerActive = false;
+/** Mobile / coarse pointer: one static paint, no continuous rAF. */
+let staticBudget = false;
 
 const REPEL_RADIUS = 140;
 const REPEL_STRENGTH = 42;
@@ -71,6 +73,14 @@ function initParticles() {
   particles = Array.from({ length: count }, () => createParticle(width, height));
 }
 
+function drawStaticFrame() {
+  if (!ctx || width === 0 || height === 0) return;
+  ctx.clearRect(0, 0, width, height);
+  for (const particle of particles) {
+    drawParticle(particle);
+  }
+}
+
 function resize() {
   const canvas = canvasRef.value;
   const container = containerRef.value;
@@ -90,9 +100,13 @@ function resize() {
   if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
   initParticles();
+  if (staticBudget) {
+    drawStaticFrame();
+  }
 }
 
 function setPointerFromClient(clientX: number, clientY: number) {
+  if (staticBudget) return;
   const container = containerRef.value;
   if (!container) return;
 
@@ -180,7 +194,7 @@ let connectFrame = 0;
 
 const { pause, resume } = useRafFn(
   () => {
-    if (!ctx || width === 0 || height === 0) return;
+    if (staticBudget || !ctx || width === 0 || height === 0) return;
 
     const reduceMotion = prefersReducedMotion.value;
 
@@ -208,12 +222,24 @@ let heroVisible = true;
 let intersectionObserver: IntersectionObserver | null = null;
 
 function syncRaf() {
+  if (staticBudget) {
+    pause();
+    return;
+  }
   if (document.visibilityState === 'visible' && heroVisible) resume();
   else pause();
 }
 
 onMounted(() => {
+  staticBudget = isMobileBudget();
   resize();
+
+  if (staticBudget) {
+    drawStaticFrame();
+    pause();
+    return;
+  }
+
   if (containerRef.value && typeof IntersectionObserver !== 'undefined') {
     intersectionObserver = new IntersectionObserver(
       ([entry]) => {
@@ -240,6 +266,7 @@ useEventListener(document, 'visibilitychange', syncRaf);
 
 watch(prefersReducedMotion, () => {
   initParticles();
+  if (staticBudget) drawStaticFrame();
 });
 </script>
 

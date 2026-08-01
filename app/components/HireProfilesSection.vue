@@ -1,32 +1,26 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v';
+import { PORTFOLIO_ROUTES, hireProfileRoutes } from '~/config/routes.manifest';
 
 const localePath = useLocalePath();
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
-const profiles = [
-  {
-    key: 'vue',
-    titleKey: 'hireProfiles.hireForVue',
-    blurbKey: 'hireProfiles.vueBlurb',
-    icon: 'logos:vue',
-    to: '/vue-frontend-developer',
-  },
-  {
-    key: 'node',
-    titleKey: 'hireProfiles.hireForNode',
-    blurbKey: 'hireProfiles.nodeBlurb',
-    icon: 'logos:nodejs-icon',
-    to: '/nodejs-backend-developer',
-  },
-  {
-    key: 'ai',
-    titleKey: 'hireProfiles.hireForAi',
-    blurbKey: 'hireProfiles.aiBlurb',
-    icon: 'solar:cpu-bolt-bold-duotone',
-    to: '/ai-engineer',
-  },
-] as const;
+const BLURB_KEYS: Record<'vue' | 'ai' | 'node', string> = {
+  vue: 'hireProfiles.vueBlurb',
+  node: 'hireProfiles.nodeBlurb',
+  ai: 'hireProfiles.aiBlurb',
+};
+
+const profiles = hireProfileRoutes().map((link) => ({
+  key: link.id,
+  titleKey: link.hireLabelKey,
+  blurbKey: BLURB_KEYS[link.id],
+  icon: link.hireIcon,
+  to: link.localePath,
+}));
+
+const craftMethodologyTo =
+  PORTFOLIO_ROUTES.find((route) => route.id === 'craft')?.localePath ?? '/ai-assisted-craft';
 </script>
 
 <template>
@@ -85,7 +79,7 @@ const profiles = [
               <p class="text-muted leading-relaxed">{{ $t(profile.blurbKey) }}</p>
             </div>
             <span
-              class="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-primary group-hover:gap-3 transition-all"
+              class="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-primary group-hover:gap-3 transition-[gap,transform] duration-300"
             >
               {{ $t('hireProfiles.viewProfile') }}
               <Icon name="solar:arrow-right-linear" class="size-5" />
@@ -93,6 +87,16 @@ const profiles = [
           </NuxtLink>
         </Motion>
       </div>
+
+      <p class="text-center text-sm md:text-base text-muted">
+        <NuxtLink
+          :to="localePath(craftMethodologyTo)"
+          class="inline-flex items-center gap-2 font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors"
+        >
+          {{ $t('hireProfiles.craftMethodology') }}
+          <Icon name="solar:arrow-right-linear" class="size-4" />
+        </NuxtLink>
+      </p>
     </div>
   </section>
 </template>

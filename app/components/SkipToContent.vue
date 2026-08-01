@@ -31,10 +31,11 @@ const skipToContent = (e) => {
   letter-spacing: 0.1em;
   border-radius: 0.5rem;
   text-decoration: none;
+  cursor: pointer;
   transition: top 0.3s ease;
 }
 
-.skip-to-content:focus {
+.skip-to-content:focus-visible {
   top: 1rem;
   outline: 3px solid white;
   outline-offset: 4px;

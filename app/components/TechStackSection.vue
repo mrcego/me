@@ -23,21 +23,21 @@ const detailedStack = [
   },
   {
     name: 'Systems Engineering',
-    years: 'Principal',
+    years: 'Senior',
     level: 'techStack.levels.principal',
     icon: 'logos:javascript',
     descKey: 'techStack.detailed.js',
   },
   {
     name: 'Senior Leadership',
-    years: '13Y+',
+    years: '6Y+',
     level: 'techStack.levels.founding',
     icon: 'logos:git-icon',
     descKey: 'techStack.detailed.git',
   },
   {
-    name: 'AI Engineering',
-    years: 'Expert',
+    name: 'AI-Assisted Craft',
+    years: 'Applied',
     level: 'techStack.levels.ai',
     icon: 'solar:cpu-bolt-bold-duotone',
     descKey: 'techStack.detailed.ai',
@@ -116,7 +116,7 @@ const skills = [
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border-foreground/5 overflow-hidden min-h-0 flex flex-col justify-between cursor-crosshair h-full min-w-0"
+          class="surface-card surface-evidence group relative p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden min-h-0 flex flex-col justify-between cursor-crosshair h-full min-w-0"
         >
           <div
             class="surface-card__blob absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-0"

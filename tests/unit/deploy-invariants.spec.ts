@@ -33,9 +33,34 @@ describe('deploy / layout invariants (regression guards)', () => {
     // GH Actions only uploads .output/public — netlify.toml [[headers]] never reach the CDN.
     const cspLib = read('scripts/lib/csp.mjs');
     expect(cspLib).toMatch(/buildSecurityHeaders/);
+    expect(cspLib).toMatch(/buildCacheHeaderBlocks/);
     expect(cspLib).toMatch(/includeSubDomains/);
     expect(cspLib).toMatch(/Cross-Origin-Opener-Policy/);
     expect(cspLib).toMatch(/collectInlineScriptHashes/);
+  });
+
+  it('keeps sitemap zeroRuntime + static rewrite consistent (no function proxy)', () => {
+    // Artifact --no-build deploys have no Nitro server. sitemap_index must be a
+    // prerendered static file; public/_redirects may rewrite /sitemap.xml → index
+    // but must never force sitemap_index to /.netlify/functions|builders.
+    const cfg = read('nuxt.config.ts');
+    expect(cfg).toMatch(/sitemap:\s*\{[\s\S]*zeroRuntime:\s*true/);
+    expect(cfg).toMatch(/prerenderRoutesWithSitemap|SITEMAP_PRERENDER_ROUTES/);
+
+    const redirects = read('public/_redirects');
+    expect(redirects).toMatch(/\/sitemap\.xml\s+\/sitemap_index\.xml\s+200!/);
+    expect(redirects).not.toMatch(/sitemap_index\.xml\s+\/\.netlify\//);
+    expect(redirects).not.toMatch(/__sitemap__.*\/\.netlify\//);
+
+    const toml = read('netlify.toml');
+    expect(toml).toMatch(/from\s*=\s*"\/sitemap\.xml"/);
+    expect(toml).toMatch(/to\s*=\s*"\/sitemap_index\.xml"/);
+  });
+
+  it('wires prerender + sitemap URLs from the typed route manifest', () => {
+    const cfg = read('nuxt.config.ts');
+    expect(cfg).toMatch(/from\s+['"]\.\/app\/config\/routes\.manifest['"]/);
+    expect(cfg).toMatch(/urls:\s*sitemapUrls\(\)/);
   });
 
   it('softens webfont swap after generate to cut hero CLS', () => {

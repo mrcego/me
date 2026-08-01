@@ -5,6 +5,12 @@ import Dialog from 'primevue/dialog';
 
 const { t, tm } = useI18n();
 const { vibeCodingModalVisible, closeVibeCodingModal } = useVibeCodingModal();
+const { goToSection, sectionHref } = useSectionNavigation();
+
+async function onContactClick(event: Event) {
+  closeVibeCodingModal();
+  await goToSection(event, '#contact');
+}
 
 function onVisibleUpdate(visible: boolean) {
   vibeCodingModalVisible.value = visible;
@@ -27,6 +33,7 @@ const rolePoints = computed(() => {
     block-scroll
     :draggable="false"
     :show-header="false"
+    aria-labelledby="vibe-coding-modal-title"
     class="experience-dialog"
     :style="{ width: 'min(44rem, calc(100vw - 1.5rem))' }"
     :pt="{
@@ -35,6 +42,7 @@ const rolePoints = computed(() => {
       },
       root: {
         class: 'experience-dialog',
+        'aria-labelledby': 'vibe-coding-modal-title',
       },
       content: {
         class: 'experience-dialog-content',
@@ -126,7 +134,11 @@ const rolePoints = computed(() => {
         <span class="type-label text-muted tracking-[0.3em]">
           {{ $t('vibeCoding.modal.footer') }}
         </span>
-        <a href="#contact" class="experience-modal__linkedin" @click="closeVibeCodingModal">
+        <a
+          :href="sectionHref('#contact')"
+          class="experience-modal__linkedin"
+          @click="onContactClick"
+        >
           <Icon name="solar:letter-bold-duotone" class="w-5 h-5" />
           {{ $t('hero.cta') }}
         </a>

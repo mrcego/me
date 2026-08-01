@@ -29,6 +29,21 @@ jobs:
       contents: read
       pull-requests: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
       - name: Download validated site
         uses: actions/download-artifact@v4
         with:
@@ -42,7 +57,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
         run: |
           set -euo pipefail
-          json=$(npx --yes netlify-cli@latest deploy \
+          json=$(pnpm exec netlify deploy \
             --no-build \
             --dir=.output/public \
             --alias="pr-${{ github.event.number }}" \

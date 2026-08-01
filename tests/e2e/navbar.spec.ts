@@ -45,31 +45,39 @@ test.describe('navbar layout regressions', () => {
       .not.toMatch(/^blur\(0px\)/);
   });
 
-  test('hire CTA fits inside the shell at mid-desktop widths', async ({ page }) => {
+  test('hire CTA and primary Contact fit inside the shell at mid-desktop widths', async ({
+    page,
+  }) => {
     for (const width of [1024, 1280]) {
       await page.setViewportSize({ width, height: 800 });
       await page.goto('/', { waitUntil: 'domcontentloaded' });
       await expect(page.locator('.hire-menu-trigger')).toBeVisible({ timeout: 20_000 });
+      await expect(page.locator('.site-nav__cta')).toBeVisible();
 
       const geometry = await page.evaluate(() => {
         const shell = document.querySelector('.site-nav__shell');
         const hire = document.querySelector('.hire-menu-trigger');
-        if (!shell || !hire) return null;
+        const cta = document.querySelector('.site-nav__cta');
+        if (!shell || !hire || !cta) return null;
         const s = shell.getBoundingClientRect();
         const h = hire.getBoundingClientRect();
+        const c = cta.getBoundingClientRect();
+        const inside = (r: DOMRect) =>
+          r.left >= s.left - 1 &&
+          r.right <= s.right + 1 &&
+          r.top >= s.top - 1 &&
+          r.bottom <= s.bottom + 1;
         return {
           shellOverflow: shell.scrollWidth - shell.clientWidth,
-          hireInside:
-            h.left >= s.left - 1 &&
-            h.right <= s.right + 1 &&
-            h.top >= s.top - 1 &&
-            h.bottom <= s.bottom + 1,
+          hireInside: inside(h),
+          ctaInside: inside(c),
         };
       });
 
       expect(geometry, `geometry at ${width}px`).toBeTruthy();
       expect(geometry!.shellOverflow, `shell overflow at ${width}px`).toBeLessThanOrEqual(1);
       expect(geometry!.hireInside, `hire inside shell at ${width}px`).toBe(true);
+      expect(geometry!.ctaInside, `CTA inside shell at ${width}px`).toBe(true);
     }
   });
 });

@@ -1,8 +1,18 @@
+import {
+  PERSON_ENTITY_URL,
+  PERSON_KNOWS_ABOUT,
+  PERSON_SCHEMA_ID,
+  SEO_EDITORIAL_DATES,
+  SEO_IDENTITY,
+  WEBSITE_SCHEMA_ID,
+} from '~/config/seo.config';
+import {
+  buildHreflangAlternateLinks,
+  htmlLangForLocale,
+  ogLocaleForLocale,
+  personSchemaRef,
+} from '~/utils/seo';
 import { SITE_ORIGIN, absoluteSiteUrl } from '~/utils/siteUrl';
-
-/** ProfilePage dates must be full ISO-8601 DateTime (GSC rejects YYYY-MM-DD). */
-const PROFILE_DATE_CREATED = '2024-06-01T12:00:00-05:00';
-const PROFILE_DATE_MODIFIED = '2026-07-25T21:00:00-05:00';
 
 export const usePortfolioSeo = () => {
   const { t, locale } = useI18n();
@@ -11,7 +21,7 @@ export const usePortfolioSeo = () => {
 
   const canonicalUrl = computed(() => absoluteSiteUrl(localePath('/')));
 
-  const ogImage = `${SITE_ORIGIN}/img/og-image.png?v=cg2`;
+  const ogImage = `${SITE_ORIGIN}${SEO_IDENTITY.ogImage}`;
   const profileImage = `${SITE_ORIGIN}/img/technical-identity.jpg`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
   const { public: publicConfig } = useRuntimeConfig();
@@ -25,7 +35,7 @@ export const usePortfolioSeo = () => {
       brandTag: 'PORTFOLIO',
       siteUrl: 'cesargomez.dev',
       footer: t('hero.locationLine'),
-      pills: ['Vue.js', 'Nuxt', 'TypeScript', 'AI · NLP'],
+      pills: ['Vue.js', 'Nuxt', 'TypeScript', 'AI-Assisted'],
     },
     {
       alt: `${personName.value} — ${t('hero.title')}`,
@@ -36,8 +46,7 @@ export const usePortfolioSeo = () => {
     // Keep tab/share titles in sync with the hero subtitle after the name.
     title: () => t('hero.title'),
     description: () => t('seo.description'),
-    keywords: () => t('seo.keywords'),
-    author: 'César Gómez',
+    author: SEO_IDENTITY.author,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
     fbAppId: () => String(publicConfig.facebookAppId || ''),
 
@@ -47,24 +56,25 @@ export const usePortfolioSeo = () => {
     // og:image / twitter:image injected by defineOgImage('Portfolio')
     ogUrl: () => canonicalUrl.value,
     ogSiteName: 'César Gómez Portfolio',
-    ogLocale: () => (locale.value === 'es' ? 'es_ES' : 'en_US'),
+    ogLocale: () => ogLocaleForLocale(locale.value),
 
-    twitterCard: 'summary_large_image',
+    twitterCard: SEO_IDENTITY.twitterCard,
     twitterTitle: () => t('hero.title'),
     twitterDescription: () => t('seo.ogDescription'),
-    twitterSite: '@codingwithcego',
-    twitterCreator: '@codingwithcego',
+    twitterSite: SEO_IDENTITY.twitterSite,
+    twitterCreator: SEO_IDENTITY.twitterCreator,
   });
 
   useHead(() => ({
     htmlAttrs: {
-      lang: locale.value === 'es' ? 'es-ES' : 'en-US',
+      lang: htmlLangForLocale(locale.value),
     },
     link: [
       { rel: 'canonical', href: canonicalUrl.value },
-      { rel: 'alternate', hreflang: 'en', href: absoluteSiteUrl('/') },
-      { rel: 'alternate', hreflang: 'es', href: absoluteSiteUrl('/es/') },
-      { rel: 'alternate', hreflang: 'x-default', href: absoluteSiteUrl('/') },
+      ...buildHreflangAlternateLinks({
+        en: absoluteSiteUrl('/'),
+        es: absoluteSiteUrl('/es/'),
+      }),
     ],
     meta: [
       { name: 'geo.region', content: 'CO-BOL' },
@@ -80,14 +90,15 @@ export const usePortfolioSeo = () => {
         innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Person',
-          '@id': `${SITE_ORIGIN}/#person`,
+          '@id': PERSON_SCHEMA_ID,
           name: personName.value,
           givenName: locale.value === 'es' ? 'César' : 'Cesar',
           familyName: locale.value === 'es' ? 'Gómez' : 'Gomez',
           alternateName: ['César Gómez', 'Cesar Gomez', 'mrcego'],
           jobTitle: t('hero.title'),
           description: t('seo.description'),
-          url: canonicalUrl.value,
+          // Stable entity URL — never locale page or landing canonical
+          url: PERSON_ENTITY_URL,
           image: profileImage,
           nationality: {
             '@type': 'Country',
@@ -111,53 +122,9 @@ export const usePortfolioSeo = () => {
           sameAs: [
             'https://www.linkedin.com/in/mrcego',
             'https://github.com/mrcego',
-            'https://cesargomez.dev',
+            PERSON_ENTITY_URL,
           ],
-          knowsAbout: [
-            'Vue.js',
-            'Vue 3',
-            'Nuxt.js',
-            'Nuxt 4',
-            'TypeScript',
-            'JavaScript',
-            'Node.js',
-            'Express.js',
-            'REST APIs',
-            'Frontend Architecture',
-            'Senior Frontend Development',
-            'Web Development',
-            'Website Development',
-            'Fullstack Development',
-            'Web Performance',
-            'Core Web Vitals',
-            'UI Engineering',
-            'Design Systems',
-            'Micro-frontends',
-            'PrimeVue',
-            'Vuetify',
-            'Tailwind CSS',
-            'Pinia',
-            'Vue Router',
-            'Vite',
-            'Composition API',
-            'SSR/SSG',
-            'CI/CD',
-            'GitHub Actions',
-            'Accessibility',
-            'AI Engineering',
-            'Natural Language Processing',
-            'Conversational AI',
-            'Speech AI',
-            'Large Language Models',
-            'Local LLMs',
-            'Ollama',
-            'Agent-assisted Development',
-            'Vibe Coding Cleanup',
-            'Ed-tech',
-            'Cartagena Colombia Web Development',
-            'Remote Contract Engineering',
-            'Latin America Remote Development',
-          ],
+          knowsAbout: [...PERSON_KNOWS_ABOUT],
           knowsLanguage: ['en', 'es'],
           alumniOf: [
             { '@type': 'Organization', name: 'Colegium' },
@@ -179,21 +146,13 @@ export const usePortfolioSeo = () => {
         innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'WebSite',
-          '@id': `${SITE_ORIGIN}/#website`,
+          '@id': WEBSITE_SCHEMA_ID,
           name: t('seo.siteName'),
           description: t('seo.description'),
-          url: absoluteSiteUrl('/'),
-          keywords: t('seo.keywords')
-            .split(',')
-            .map((k) => k.trim())
-            .filter(Boolean),
+          url: PERSON_ENTITY_URL,
           inLanguage: ['en-US', 'es-ES'],
-          publisher: {
-            '@id': `${SITE_ORIGIN}/#person`,
-          },
-          about: {
-            '@id': `${SITE_ORIGIN}/#person`,
-          },
+          publisher: personSchemaRef(),
+          about: personSchemaRef(),
         }),
       },
       {
@@ -206,24 +165,11 @@ export const usePortfolioSeo = () => {
           url: canonicalUrl.value,
           name: t('hero.title'),
           description: t('seo.description'),
-          inLanguage: locale.value === 'es' ? 'es-ES' : 'en-US',
-          dateCreated: PROFILE_DATE_CREATED,
-          dateModified: PROFILE_DATE_MODIFIED,
-          mainEntity: {
-            '@type': 'Person',
-            '@id': `${SITE_ORIGIN}/#person`,
-            name: personName.value,
-            alternateName: 'mrcego',
-            url: canonicalUrl.value,
-            image: profileImage,
-            jobTitle: t('hero.title'),
-            description: t('seo.description'),
-            sameAs: [
-              'https://www.linkedin.com/in/mrcego',
-              'https://github.com/mrcego',
-              'https://cesargomez.dev',
-            ],
-          },
+          inLanguage: htmlLangForLocale(locale.value),
+          dateCreated: SEO_EDITORIAL_DATES.profileCreated,
+          dateModified: SEO_EDITORIAL_DATES.lastModified,
+          // Reference only — full Person node is published once above
+          mainEntity: personSchemaRef(),
         }),
       },
       {
@@ -267,9 +213,7 @@ export const usePortfolioSeo = () => {
             },
             'Worldwide',
           ],
-          provider: {
-            '@id': `${SITE_ORIGIN}/#person`,
-          },
+          provider: personSchemaRef(),
           serviceType: [
             'Frontend Development',
             'Senior Frontend Development',
@@ -284,32 +228,14 @@ export const usePortfolioSeo = () => {
             'Core Web Vitals Optimization',
             'Node.js Backend Development',
             'Express.js API Development',
-            'AI Engineering',
+            'AI-Assisted Craft',
+            'Vibe Coding Cleanup',
             'AI/NLP Product Integration',
-            'Conversational AI Engineering',
             'Ed-tech Frontend Engineering',
             'Remote Frontend Contracting',
             'LatAm Remote Contracting',
-            'Vibe Coding Cleanup',
           ],
-          knowsAbout: [
-            'Vue.js',
-            'Nuxt.js',
-            'TypeScript',
-            'Pinia',
-            'PrimeVue',
-            'Tailwind CSS',
-            'Web Architecture',
-            'Website Development',
-            'Design Systems',
-            'Micro-frontends',
-            'Core Web Vitals',
-            'Express.js',
-            'AI Engineering',
-            'Ed-tech',
-            'Cartagena Web Development',
-            'Remote LatAm Development',
-          ],
+          knowsAbout: [...PERSON_KNOWS_ABOUT],
         }),
       },
     ],

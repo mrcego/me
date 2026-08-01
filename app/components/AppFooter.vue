@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { hireProfileRoutes } from '~/config/routes.manifest';
+
 const localePath = useLocalePath();
 
 type FooterLink =
@@ -8,6 +10,11 @@ type FooterColumn = {
   title: string;
   links: FooterLink[];
 };
+
+const hireLinks: FooterLink[] = hireProfileRoutes().map((profile) => ({
+  name: profile.hireLabelKey,
+  to: profile.localePath,
+}));
 
 const footerColumns: FooterColumn[] = [
   {
@@ -21,11 +28,7 @@ const footerColumns: FooterColumn[] = [
   },
   {
     title: 'col.hire',
-    links: [
-      { name: 'hireProfiles.hireForVue', to: '/vue-frontend-developer' },
-      { name: 'hireProfiles.hireForAi', to: '/ai-engineer' },
-      { name: 'hireProfiles.hireForNode', to: '/nodejs-backend-developer' },
-    ],
+    links: hireLinks,
   },
   {
     title: 'col.connect',
@@ -83,7 +86,7 @@ const socials = [
       >
         <!-- Brand Identity -->
         <div
-          class="group cursor-pointer w-full xl:w-auto xl:max-w-sm flex flex-col md:flex-row md:items-end md:justify-between xl:flex-col xl:items-start gap-5 md:gap-8 xl:gap-5"
+          class="group w-full xl:w-auto xl:max-w-sm flex flex-col md:flex-row md:items-end md:justify-between xl:flex-col xl:items-start gap-5 md:gap-8 xl:gap-5"
         >
           <div class="flex items-center gap-4 shrink-0">
             <div
@@ -111,9 +114,9 @@ const socials = [
           </p>
         </div>
 
-        <!-- Navigation Columns — always 3 across from sm (no 2+1 wrap) -->
+        <!-- Navigation: 1–2 cols on narrow screens, 3 from md -->
         <nav
-          class="grid grid-cols-3 gap-x-4 gap-y-8 sm:gap-x-6 md:gap-x-8 xl:gap-x-12 w-full xl:w-auto xl:min-w-0 xl:max-w-2xl xl:grow"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 md:gap-x-8 xl:gap-x-12 w-full xl:w-auto xl:min-w-0 xl:max-w-2xl xl:grow"
           :aria-label="$t('footer.navLabel')"
         >
           <div v-for="col in footerColumns" :key="col.title" class="space-y-4 md:space-y-5 min-w-0">
@@ -128,10 +131,10 @@ const socials = [
                 <NuxtLink
                   v-if="link.to"
                   :to="localePath(link.to)"
-                  class="text-[11px] sm:text-xs md:text-sm font-medium text-muted hover:text-foreground transition-all hover:translate-x-1 inline-flex items-center gap-1.5 group/link"
+                  class="text-sm font-medium text-muted hover:text-foreground transition-[color,transform] hover:translate-x-1 inline-flex items-center gap-1.5 group/link"
                 >
                   <span
-                    class="w-0 overflow-hidden group-hover/link:w-3 transition-all duration-300 opacity-0 group-hover/link:opacity-100 text-primary shrink-0"
+                    class="w-0 overflow-hidden group-hover/link:w-3 transition-[width,opacity] duration-300 opacity-0 group-hover/link:opacity-100 text-primary shrink-0"
                   >
                     <Icon name="solar:arrow-right-linear" class="size-3.5" />
                   </span>
@@ -140,10 +143,10 @@ const socials = [
                 <a
                   v-else
                   :href="link.href"
-                  class="text-[11px] sm:text-xs md:text-sm font-medium text-muted hover:text-foreground transition-all hover:translate-x-1 inline-flex items-center gap-1.5 group/link"
+                  class="text-sm font-medium text-muted hover:text-foreground transition-[color,transform] hover:translate-x-1 inline-flex items-center gap-1.5 group/link"
                 >
                   <span
-                    class="w-0 overflow-hidden group-hover/link:w-3 transition-all duration-300 opacity-0 group-hover/link:opacity-100 text-primary shrink-0"
+                    class="w-0 overflow-hidden group-hover/link:w-3 transition-[width,opacity] duration-300 opacity-0 group-hover/link:opacity-100 text-primary shrink-0"
                   >
                     <Icon name="solar:arrow-right-linear" class="size-3.5" />
                   </span>
@@ -173,7 +176,7 @@ const socials = [
             v-for="s in socials"
             :key="s.icon"
             :href="s.link"
-            class="size-11 md:size-12 glass rounded-xl md:rounded-2xl border border-foreground/10 hover:border-primary/40 flex items-center justify-center transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,75,92,0.35)] group/social"
+            class="size-11 md:size-12 glass rounded-xl md:rounded-2xl border border-foreground/10 hover:border-primary/40 flex items-center justify-center transition-[border-color,transform,box-shadow] duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,75,92,0.35)] group/social"
             :aria-label="$t(s.labelKey)"
           >
             <Icon

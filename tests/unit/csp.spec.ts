@@ -73,4 +73,24 @@ describe('CSP builders', () => {
   it('returns null when _headers has no CSP line (bad path)', () => {
     expect(parseCspFromHeadersFile('# empty\n')).toBeNull();
   });
+
+  it('embeds immutable + HTML cache policies for artifact deploys', () => {
+    const file = buildNetlifyHeadersFile();
+    expect(file).toContain('/_nuxt/*');
+    expect(file).toContain('/_fonts/*');
+    expect(file).toContain('/_i18n/*');
+    expect(file).toContain('/_ipx/*');
+    expect(file).toContain('/img/*');
+    expect(file).toContain('/*.html');
+    expect(file).toMatch(/\/_nuxt\/\*[\s\S]*max-age=31536000,\s*immutable/);
+    expect(file).toMatch(/\/_fonts\/\*[\s\S]*max-age=31536000,\s*immutable/);
+    expect(file).toMatch(/\/_i18n\/\*[\s\S]*max-age=31536000,\s*immutable/);
+    expect(file).toMatch(/\/_ipx\/\*[\s\S]*max-age=604800,\s*stale-while-revalidate=86400/);
+    expect(file).toMatch(/\/img\/\*[\s\S]*max-age=604800,\s*stale-while-revalidate=86400/);
+    expect(file).toMatch(/\/\n\s*Cache-Control:\s*no-cache/);
+    expect(file).toMatch(/\/index\.html[\s\S]*no-cache/);
+    expect(file).toMatch(/\/200\.html[\s\S]*no-cache/);
+    expect(file).toMatch(/\/favicon\.ico[\s\S]*max-age=86400/);
+    expect(file).toMatch(/\/manifest\.json[\s\S]*stale-while-revalidate=604800/);
+  });
 });

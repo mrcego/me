@@ -1,10 +1,12 @@
 <script setup>
-// Structured Data is now handled in nuxt.config.ts to avoid conflicts
-// This component is kept for compatibility but doesn't inject anything
+// Compatibility stub — does not inject JSON-LD.
+// Person / WebSite / ProfilePage / FAQ / ProfessionalService live in usePortfolioSeo.
+// Landing WebPage / Breadcrumb / FAQ live in useExpertiseLandingSeo (via landing SEO composables).
+// Do not reintroduce conflicting Person nodes with the same @id here.
 </script>
 
 <template>
-  <div>
-    <!-- Structured Data will be injected via nuxt.config.ts -->
+  <div aria-hidden="true" class="hidden">
+    <!-- Schema is injected via useHead in SEO composables, not this component. -->
   </div>
 </template>
