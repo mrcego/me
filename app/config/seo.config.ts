@@ -7,6 +7,15 @@ export const PERSON_SCHEMA_ID = `${SITE_ORIGIN}/#person`;
 export const WEBSITE_SCHEMA_ID = `${SITE_ORIGIN}/#website`;
 
 /**
+ * Google SERP site name (line above the URL). One name per domain — keep
+ * WebSite.name, og:site_name, and nuxt `site.name` identical. Prefer brand over
+ * domain; list the domain in alternateName so Google can fall back cleanly.
+ * @see https://developers.google.com/search/docs/appearance/site-names
+ */
+export const SITE_NAME = 'César Gómez';
+export const SITE_NAME_ALTERNATES = ['Cesar Gomez', 'cesargomez.dev'] as const;
+
+/**
  * Canonical Person.url — always the site-origin home (EN default), never a
  * locale page or landing URL. Landings must only reference PERSON_SCHEMA_ID.
  */
@@ -25,7 +34,7 @@ export const SEO_HREFLANG = {
  */
 export const SEO_EDITORIAL_DATES = {
   profileCreated: '2024-06-01T12:00:00-05:00',
-  lastModified: '2026-07-31T12:00:00-05:00',
+  lastModified: '2026-08-01T21:00:00-05:00',
 } as const;
 
 /** Shared social / OG defaults used by composables and @nuxtjs/seo. */
@@ -44,6 +53,14 @@ export const SEO_IDENTITY = {
   twitterCreator: '@codingwithcego',
   twitterSite: '@codingwithcego',
 } as const;
+
+/** Contact phone — display (UI) and E.164 (schema / tel: / WhatsApp). */
+export const CONTACT_PHONE_DISPLAY = '+57 333 263 6550';
+export const CONTACT_PHONE_E164 = '+573332636550';
+export const CONTACT_PHONE_WHATSAPP = `https://wa.me/${CONTACT_PHONE_E164.replace('+', '')}`;
+
+/** LocalBusiness priceRange string (Rich Results) + dual-currency hourly Offers. */
+export const SERVICE_PRICE_RANGE = '$40–60 USD / COP 120.000–200.000 per hour' as const;
 
 /** Compact topical terms for Person / ProfessionalService knowsAbout (not meta keywords). */
 export const PERSON_KNOWS_ABOUT = [

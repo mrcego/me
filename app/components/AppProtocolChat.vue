@@ -253,15 +253,18 @@ watch(isOpen, (val) => {
           <input
             v-model="userInput"
             type="text"
-            placeholder="SEND COMMAND..."
-            class="flex-1 bg-transparent border-none outline-none text-foreground font-mono text-xs placeholder:text-muted/50"
+            :aria-label="$t('chat.inputLabel')"
+            :placeholder="$t('chat.inputLabel')"
+            class="flex-1 bg-transparent border-none outline-none text-foreground font-mono text-xs placeholder:text-muted/50 uppercase"
             @keyup.enter="sendMessage()"
           />
           <button
+            type="button"
             class="p-2 text-primary hover:scale-110 active:scale-95 transition-transform"
+            :aria-label="$t('chat.send')"
             @click="sendMessage()"
           >
-            <Icon name="lucide:send" class="w-[38px] h-[38px]" />
+            <Icon name="lucide:send" class="w-[38px] h-[38px]" aria-hidden="true" />
           </button>
         </div>
       </div>

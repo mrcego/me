@@ -29,11 +29,38 @@ Report: [uyky82oqhc](https://pagespeed.web.dev/analysis/https-cesargomez-dev/uyk
 - Accessible names: CONTACT / Vibe Coding include visible text (Label in Name).
 - Deferred navbar/about/tech/particles hydration; disabled card tilt on coarse pointers; Nuxt Icon CSS mode with `clientBundle.scan: true` (provider none — icons must ship in the client bundle).
 
+### Google SERP site name (above the URL)
+
+- Preferred name: **César Gómez** (`SITE_NAME` in `seo.config.ts` = Nuxt `site.name` = `WebSite.name` = `og:site_name`).
+- `alternateName`: `Cesar Gomez`, `cesargomez.dev` (domain fallback when Google is low-confidence).
+- Google may keep showing the bare domain until it recrawls the homepage — request indexing in GSC after deploy. One site name per domain (not per locale).
+
+### Open Graph / share titles
+
+- Document `<title>`, `og:title`, `twitter:title`, and OG image `alt` come from `seo.ogTitle` (AI-Assisted Craft), not `hero.h1` / `hero.title` (kept as “Senior Vue/Nuxt Developer” for on-page hierarchy).
+- Dynamic OG art via `defineOgImage('Portfolio')`; static fallback asset: `/img/og-image.png`.
+- Generic SEO preview tools often show a broken OG image even when `/_og/s/*` returns 200 — re-check with [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) / LinkedIn Post Inspector after deploy.
+
+### Accessibility scanner residuals
+
+- Many “empty” icon links/buttons already expose `aria-label` (cert rows, socials, theme/menu). Naive scanners that ignore ARIA inflate counts (~31 links / ~9 buttons).
+- Real gap fixed: protocol chat input + send control named via `chat.inputLabel` / `chat.send`.
+
+### Structured data (ProfessionalService / LocalBusiness)
+
+Intentional fields on home JSON-LD (`usePortfolioSeo`):
+
+- `@type: ['ProfessionalService', 'Service']` so `serviceType` is valid on schema.org (Service property).
+- `telephone` E.164 (`CONTACT_PHONE_E164`), `address` Cartagena `PostalAddress`, `priceRange` dual USD/COP hourly string.
+- `makesOffer` with two `UnitPriceSpecification` offers (USD 40–60 / COP 120000–200000 per hour).
+- Re-validate externally after deploy: [schema.org](https://validator.schema.org/#url=https%3A%2F%2Fcesargomez.dev%2F) + Google Rich Results.
+
 ### Documented residuals (not code-blocking)
 
 - **Trusted Types / “CSP effective against XSS”** — site already ships hash CSP via `_headers`. Trusted Types would require a full Trusted Types policy + build pipeline; deferred as platform/policy work, not a portfolio SSG default.
 - **Field CrUX No Data** — insufficient traffic; cannot invent field metrics.
-- **SEO structured-data manual validator** — run externally; JSON-LD already emitted by `@nuxtjs/seo` where configured.
+- **Text/HTML ratio &lt;15%** (generic SEO scanners) — expected on Nuxt SSG/SPA markup + JSON-LD; do not pad copy to hit an arbitrary % threshold.
+- **“Google Analytics not monitoring”** (generic scanners) — GA4 is optional and consent-gated (`quality/RUM.md`); scanners that expect always-on `gtag` in static HTML will flag this. Residual expected unless `NUXT_PUBLIC_GA_MEASUREMENT_ID` is set and consent is granted.
 - **DOM size (~1.1k nodes)** — largely real portfolio content; only redundant wrappers removed when found. Residual accepted.
 - **Lab variance** — local LH 12.x can score lower than PSI 13.x; treat PSI UI + production smoke as release check.
 
