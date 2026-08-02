@@ -83,6 +83,7 @@ withDefaults(
       <div style="display: flex; align-items: center">
         <img
           :src="logoSrc"
+          alt=""
           width="56"
           height="56"
           style="width: 56px; height: 56px; border-radius: 14px"
@@ -161,6 +162,7 @@ withDefaults(
         >
           <img
             :src="portraitSrc"
+            alt=""
             width="400"
             height="400"
             style="width: 400px; height: 400px; border-radius: 9999px; object-fit: cover"

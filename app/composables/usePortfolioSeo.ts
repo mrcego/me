@@ -1,9 +1,13 @@
 import {
+  CONTACT_PHONE_E164,
   PERSON_ENTITY_URL,
   PERSON_KNOWS_ABOUT,
   PERSON_SCHEMA_ID,
   SEO_EDITORIAL_DATES,
   SEO_IDENTITY,
+  SERVICE_PRICE_RANGE,
+  SITE_NAME,
+  SITE_NAME_ALTERNATES,
   WEBSITE_SCHEMA_ID,
 } from '~/config/seo.config';
 import {
@@ -26,11 +30,15 @@ export const usePortfolioSeo = () => {
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
   const { public: publicConfig } = useRuntimeConfig();
 
+  // Share/tab titles use seo.* (AI-Assisted Craft). Hero H1 stays hero.h1 (Developer).
+  const shareTitle = computed(() => t('seo.ogTitle'));
+  const shareImageAlt = computed(() => `${personName.value} — ${shareTitle.value}`);
+
   defineOgImage(
     'Portfolio',
     {
       title: personName.value,
-      description: t('hero.title'),
+      description: shareTitle.value,
       brandName: locale.value === 'es' ? 'CÉSAR GÓMEZ' : 'CESAR GOMEZ',
       brandTag: 'PORTFOLIO',
       siteUrl: 'cesargomez.dev',
@@ -38,29 +46,30 @@ export const usePortfolioSeo = () => {
       pills: ['Vue.js', 'Nuxt', 'TypeScript', 'AI-Assisted'],
     },
     {
-      alt: `${personName.value} — ${t('hero.title')}`,
+      alt: shareImageAlt.value,
     },
   );
 
   useSeoMeta({
-    // Keep tab/share titles in sync with the hero subtitle after the name.
-    title: () => t('hero.title'),
+    title: () => shareTitle.value,
     description: () => t('seo.description'),
     author: SEO_IDENTITY.author,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
     fbAppId: () => String(publicConfig.facebookAppId || ''),
 
     ogType: 'profile',
-    ogTitle: () => t('hero.title'),
+    ogTitle: () => shareTitle.value,
     ogDescription: () => t('seo.ogDescription'),
     // og:image / twitter:image injected by defineOgImage('Portfolio')
+    ogImageAlt: () => shareImageAlt.value,
     ogUrl: () => canonicalUrl.value,
-    ogSiteName: 'César Gómez Portfolio',
+    ogSiteName: SITE_NAME,
     ogLocale: () => ogLocaleForLocale(locale.value),
 
     twitterCard: SEO_IDENTITY.twitterCard,
-    twitterTitle: () => t('hero.title'),
+    twitterTitle: () => shareTitle.value,
     twitterDescription: () => t('seo.ogDescription'),
+    twitterImageAlt: () => shareImageAlt.value,
     twitterSite: SEO_IDENTITY.twitterSite,
     twitterCreator: SEO_IDENTITY.twitterCreator,
   });
@@ -95,7 +104,7 @@ export const usePortfolioSeo = () => {
           givenName: locale.value === 'es' ? 'César' : 'Cesar',
           familyName: locale.value === 'es' ? 'Gómez' : 'Gomez',
           alternateName: ['César Gómez', 'Cesar Gomez', 'mrcego'],
-          jobTitle: t('hero.title'),
+          jobTitle: t('seo.jobTitle'),
           description: t('seo.description'),
           // Stable entity URL — never locale page or landing canonical
           url: PERSON_ENTITY_URL,
@@ -147,7 +156,8 @@ export const usePortfolioSeo = () => {
           '@context': 'https://schema.org',
           '@type': 'WebSite',
           '@id': WEBSITE_SCHEMA_ID,
-          name: t('seo.siteName'),
+          name: SITE_NAME,
+          alternateName: [...SITE_NAME_ALTERNATES],
           description: t('seo.description'),
           url: PERSON_ENTITY_URL,
           inLanguage: ['en-US', 'es-ES'],
@@ -163,7 +173,7 @@ export const usePortfolioSeo = () => {
           '@type': 'ProfilePage',
           '@id': `${canonicalUrl.value}#profile`,
           url: canonicalUrl.value,
-          name: t('hero.title'),
+          name: shareTitle.value,
           description: t('seo.description'),
           inLanguage: htmlLangForLocale(locale.value),
           dateCreated: SEO_EDITORIAL_DATES.profileCreated,
@@ -193,11 +203,45 @@ export const usePortfolioSeo = () => {
         key: 'schema-service',
         innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
-          '@type': 'ProfessionalService',
+          // ProfessionalService (LocalBusiness) for Google local/business rich results;
+          // Service so schema.org accepts serviceType (not inherited by LocalBusiness).
+          '@type': ['ProfessionalService', 'Service'],
           name: t('seo.serviceName'),
           description: t('seo.serviceDescription'),
           url: canonicalUrl.value,
           image: ogImage,
+          telephone: CONTACT_PHONE_E164,
+          priceRange: SERVICE_PRICE_RANGE,
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Cartagena de Indias',
+            addressRegion: 'Bolívar',
+            addressCountry: 'CO',
+          },
+          makesOffer: [
+            {
+              '@type': 'Offer',
+              name: 'Hourly consulting (USD)',
+              priceSpecification: {
+                '@type': 'UnitPriceSpecification',
+                priceCurrency: 'USD',
+                minPrice: 40,
+                maxPrice: 60,
+                unitCode: 'HUR',
+              },
+            },
+            {
+              '@type': 'Offer',
+              name: 'Hourly consulting (COP)',
+              priceSpecification: {
+                '@type': 'UnitPriceSpecification',
+                priceCurrency: 'COP',
+                minPrice: 120000,
+                maxPrice: 200000,
+                unitCode: 'HUR',
+              },
+            },
+          ],
           areaServed: [
             {
               '@type': 'City',

@@ -15,7 +15,8 @@ export default defineNuxtConfig({
   // trailingSlash: keep loc/canonicals with `/` — Netlify serves directory URLs that way.
   site: {
     url: 'https://cesargomez.dev',
-    name: 'César Gómez Portfolio',
+    // SERP site name — must match WebSite.name / og:site_name (SITE_NAME in seo.config).
+    name: 'César Gómez',
     trailingSlash: true,
   },
 
@@ -206,7 +207,7 @@ export default defineNuxtConfig({
     defaults: {
       width: 1200,
       height: 630,
-      alt: 'César Gómez Portfolio',
+      alt: 'César Gómez — Senior Vue/Nuxt · AI-Assisted Craft',
     },
     // Prerender can exceed the module default (15s) under Windows + cold Chromium.
     security: {

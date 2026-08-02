@@ -1,4 +1,4 @@
-import { SEO_IDENTITY } from '~/config/seo.config';
+import { SEO_IDENTITY, SITE_NAME } from '~/config/seo.config';
 import {
   buildHreflangAlternateLinks,
   htmlLangForLocale,
@@ -86,7 +86,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
     ogDescription: () => t(copyKey('meta.description')),
     // og:image / twitter:image injected by defineOgImage('Portfolio')
     ogUrl: () => canonicalUrl.value,
-    ogSiteName: 'César Gómez Portfolio',
+    ogSiteName: SITE_NAME,
     ogLocale: () => ogLocaleForLocale(locale.value),
     twitterCard: SEO_IDENTITY.twitterCard,
     twitterTitle: () => t(copyKey('meta.title')),

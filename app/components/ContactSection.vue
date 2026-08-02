@@ -3,6 +3,7 @@ import { Motion } from 'motion-v';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
+import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_WHATSAPP } from '~/config/seo.config';
 import { useContactForm } from '~/composables/useContactForm';
 
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
@@ -40,9 +41,9 @@ const contactMethods = [
   },
   {
     key: 'whatsapp',
-    value: '+57 333 263 6550',
+    value: CONTACT_PHONE_DISPLAY,
     icon: 'logos:whatsapp-icon',
-    link: 'https://wa.me/573332636550',
+    link: CONTACT_PHONE_WHATSAPP,
     external: true,
   },
 ] as const;

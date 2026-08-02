@@ -1,13 +1,34 @@
 import { describe, expect, it } from 'vitest';
 import seoConfig, {
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_E164,
+  CONTACT_PHONE_WHATSAPP,
   PERSON_ENTITY_URL,
   PERSON_KNOWS_ABOUT,
   PERSON_SCHEMA_ID,
   SEO_EDITORIAL_DATES,
   SEO_HREFLANG,
   SEO_IDENTITY,
+  SERVICE_PRICE_RANGE,
+  SITE_NAME,
+  SITE_NAME_ALTERNATES,
   WEBSITE_SCHEMA_ID,
 } from '../../app/config/seo.config';
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const localesDir = join(dirname(fileURLToPath(import.meta.url)), '../../i18n/locales');
+const enSeoDescription = (
+  JSON.parse(readFileSync(join(localesDir, 'en.json'), 'utf8')) as {
+    seo: { description: string };
+  }
+).seo.description;
+const esSeoDescription = (
+  JSON.parse(readFileSync(join(localesDir, 'es.json'), 'utf8')) as {
+    seo: { description: string };
+  }
+).seo.description;
 
 describe('seo.config', () => {
   it('points SEO identity at the production site', () => {
@@ -49,5 +70,24 @@ describe('seo.config', () => {
     expect(PERSON_KNOWS_ABOUT.length).toBeLessThan(40);
     expect(PERSON_KNOWS_ABOUT).toContain('Vue.js');
     expect(seoConfig.seo.knowsAbout).toEqual(PERSON_KNOWS_ABOUT);
+  });
+
+  it('defines a single Google SERP site name with domain alternate', () => {
+    expect(SITE_NAME).toBe('César Gómez');
+    expect(SITE_NAME_ALTERNATES).toContain('cesargomez.dev');
+    expect(SITE_NAME_ALTERNATES).toContain('Cesar Gomez');
+  });
+
+  it('exposes contact phone and dual-currency hourly price range for LocalBusiness', () => {
+    expect(CONTACT_PHONE_DISPLAY).toBe('+57 333 263 6550');
+    expect(CONTACT_PHONE_E164).toBe('+573332636550');
+    expect(CONTACT_PHONE_WHATSAPP).toBe('https://wa.me/573332636550');
+    expect(SERVICE_PRICE_RANGE).toContain('USD');
+    expect(SERVICE_PRICE_RANGE).toContain('COP');
+  });
+
+  it('keeps home meta descriptions within the 300-character scanner budget', () => {
+    expect(enSeoDescription.length).toBeLessThanOrEqual(300);
+    expect(esSeoDescription.length).toBeLessThanOrEqual(300);
   });
 });

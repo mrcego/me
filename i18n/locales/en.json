@@ -114,7 +114,9 @@
     "open": "Open chat assistant",
     "close": "Close chat assistant",
     "closeWindow": "Close chat window",
-    "scrollToTop": "Scroll to top"
+    "scrollToTop": "Scroll to top",
+    "inputLabel": "Chat command",
+    "send": "Send message"
   },
   "terminal": {
     "title": "cesar{'@'}portfolio:~",
@@ -876,11 +878,11 @@
   },
   "seo": {
     "title": "Senior Vue/Nuxt · AI-Assisted Craft",
-    "description": "Hire Cesar Gomez — senior frontend engineer in Cartagena, Colombia. 13+ years building websites and web apps with Vue 3, Nuxt 4, TypeScript, PrimeVue, and Tailwind. Ed-tech, AI-assisted craft, Vibe Coding Cleanup, Node/Express APIs, design systems, micro-frontends, Core Web Vitals, and remote contract work from August 2026. Spanish native, English intermediate.",
+    "description": "Hire Cesar Gomez — senior frontend engineer in Cartagena, Colombia. 13+ years with Vue 3, Nuxt 4, TypeScript, PrimeVue, and Tailwind. Ed-tech, AI-assisted craft, Vibe Coding Cleanup, Node/Express, design systems, and Core Web Vitals. Remote contract from August 2026.",
     "ogTitle": "Senior Vue/Nuxt · AI-Assisted Craft",
     "ogDescription": "Senior frontend developer in Cartagena de Indias, Colombia. Websites, design systems, and AI-assisted Vue/Nuxt craft with TypeScript and Node/Express. Remote preferred. Contract from August 2026.",
     "jobTitle": "Senior Vue/Nuxt · AI-Assisted Craft",
-    "siteName": "Cesar Gomez Portfolio",
+    "siteName": "César Gómez",
     "serviceName": "Cesar Gomez — Frontend, Websites & Fullstack Development",
     "serviceDescription": "Senior frontend and fullstack services from Cartagena, Colombia: custom websites, Vue.js/Nuxt apps, TypeScript engineering, PrimeVue/Tailwind design systems, micro-frontends, Node/Express APIs, AI-assisted delivery and Vibe Coding Cleanup, and Core Web Vitals–focused delivery for remote and international teams.",
     "availability": "Senior frontend, website, and fullstack contract roles from August 2026 · Remote preferred · Cartagena de Indias, Colombia"

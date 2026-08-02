@@ -114,7 +114,9 @@
     "open": "Abrir asistente de chat",
     "close": "Cerrar asistente de chat",
     "closeWindow": "Cerrar ventana de chat",
-    "scrollToTop": "Volver arriba"
+    "scrollToTop": "Volver arriba",
+    "inputLabel": "Comando del chat",
+    "send": "Enviar mensaje"
   },
   "terminal": {
     "title": "cesar{'@'}portfolio:~",
@@ -876,11 +878,11 @@
   },
   "seo": {
     "title": "Senior Vue/Nuxt · Craft asistido por IA",
-    "description": "Contrata a César Gómez — ingeniero frontend senior en Cartagena, Colombia. 13+ años creando páginas web y aplicaciones con Vue 3, Nuxt 4, TypeScript, PrimeVue y Tailwind. Ed-tech, craft asistido por IA, Vibe Coding Cleanup, APIs Node/Express, design systems, micro-frontends, Core Web Vitals y trabajo remoto por contrato desde agosto de 2026. Hispanohablante nativo, inglés intermedio.",
+    "description": "Contrata a César Gómez — ingeniero frontend senior en Cartagena, Colombia. 13+ años con Vue 3, Nuxt 4, TypeScript, PrimeVue y Tailwind. Ed-tech, craft asistido por IA, Vibe Coding Cleanup, Node/Express, design systems y Core Web Vitals. Contrato remoto desde agosto de 2026.",
     "ogTitle": "Senior Vue/Nuxt · Craft asistido por IA",
     "ogDescription": "Desarrollador senior frontend en Cartagena de Indias, Colombia. Páginas web, design systems y craft Vue/Nuxt asistido por IA con TypeScript y Node/Express. Preferencia remoto. Contrato desde ago 2026.",
     "jobTitle": "Senior Vue/Nuxt · Craft asistido por IA",
-    "siteName": "Portafolio de César Gómez",
+    "siteName": "César Gómez",
     "serviceName": "César Gómez — Frontend, páginas web y desarrollo fullstack",
     "serviceDescription": "Servicios senior de frontend y fullstack desde Cartagena, Colombia: páginas web a medida, apps Vue.js/Nuxt, TypeScript, design systems con PrimeVue/Tailwind, micro-frontends, APIs Node/Express, entrega asistida por IA y Vibe Coding Cleanup, e ingeniería orientada a Core Web Vitals para equipos remotos e internacionales.",
     "availability": "Roles senior frontend, páginas web y fullstack por contrato desde agosto de 2026 · Preferencia remoto · Cartagena de Indias, Colombia"

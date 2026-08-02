@@ -1,4 +1,4 @@
-import { SEO_IDENTITY } from '~/config/seo.config';
+import { SEO_IDENTITY, SITE_NAME } from '~/config/seo.config';
 import {
   buildHreflangAlternateLinks,
   htmlLangForLocale,
@@ -36,7 +36,7 @@ export const useContentPageSeo = (options: ContentPageSeoOptions) => {
     ogTitle: () => t(`${options.metaKey}.title`),
     ogDescription: () => t(`${options.metaKey}.description`),
     ogUrl: () => canonicalUrl.value,
-    ogSiteName: 'César Gómez Portfolio',
+    ogSiteName: SITE_NAME,
     ogLocale: () => ogLocaleForLocale(locale.value),
     twitterCard: SEO_IDENTITY.twitterCard,
     twitterTitle: () => t(`${options.metaKey}.title`),
