@@ -1,8 +1,6 @@
 <script setup lang="ts">
 const { showAnnouncement } = useAvailability();
-const { activeIndex, messages, showDateChip } = useBannerMessageRotator(
-  () => showAnnouncement.value,
-);
+const { messages, showDateChip } = useBannerMessageRotator(() => showAnnouncement.value);
 const { goToSection, sectionHref } = useSectionNavigation();
 </script>
 
@@ -30,20 +28,12 @@ const { goToSection, sectionHref } = useSectionNavigation();
           <span class="availability-banner__text-wrap">
             <span class="availability-banner__inner">
               <span class="availability-banner__copy">
-                <span class="availability-banner__rotator" aria-live="polite">
-                  <span
-                    class="availability-banner__rotator-track"
-                    :style="{ transform: `translate3d(0, -${activeIndex * 100}%, 0)` }"
-                  >
-                    <span
-                      v-for="(message, index) in messages"
-                      :key="`${messages.length}-${index}`"
-                      class="availability-banner__rotator-line"
-                    >
-                      {{ message }}
-                    </span>
-                  </span>
-                </span>
+                <AppTextRotator
+                  :items="messages"
+                  container-class="availability-banner__rotator"
+                  track-class="availability-banner__rotator-track"
+                  line-class="availability-banner__rotator-line"
+                />
 
                 <span v-if="showDateChip" class="availability-banner__date-chip">
                   <span class="availability-banner__date-label">{{

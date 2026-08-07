@@ -30,8 +30,13 @@ export const usePortfolioSeo = () => {
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
   const { public: publicConfig } = useRuntimeConfig();
 
-  // Share/tab titles use seo.* (AI-Assisted Craft). Hero H1 stays hero.h1 (Developer).
+  const { currentRole } = useBrandRoleRotator();
   const shareTitle = computed(() => t('seo.ogTitle'));
+  const dynamicRoleTitle = computed(() => {
+    const name = personName.value;
+    const role = currentRole.value;
+    return role ? `${name} · ${role}` : `${name} — ${shareTitle.value}`;
+  });
   const shareImageAlt = computed(() => `${personName.value} — ${shareTitle.value}`);
 
   defineOgImage(
@@ -51,14 +56,14 @@ export const usePortfolioSeo = () => {
   );
 
   useSeoMeta({
-    title: () => shareTitle.value,
+    title: () => dynamicRoleTitle.value,
     description: () => t('seo.description'),
     author: SEO_IDENTITY.author,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
     fbAppId: () => String(publicConfig.facebookAppId || ''),
 
     ogType: 'profile',
-    ogTitle: () => shareTitle.value,
+    ogTitle: () => dynamicRoleTitle.value,
     ogDescription: () => t('seo.ogDescription'),
     // og:image / twitter:image injected by defineOgImage('Portfolio')
     ogImageAlt: () => shareImageAlt.value,

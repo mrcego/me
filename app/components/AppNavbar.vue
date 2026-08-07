@@ -9,6 +9,7 @@ import { useTheme } from '~/composables/useTheme';
 import { createLogoLongPressController } from '~/utils/logoLongPress';
 
 const { activeSection } = usePortfolio();
+const { brandRoles } = useBrandRoleRotator();
 
 // Keeps the shared scroll RAF alive for --nav-progress / --page-progress on :root.
 useSmoothedScroll(0.14);
@@ -511,11 +512,12 @@ onBeforeUnmount(() => {
             >
               {{ $t('hero.name') }}
             </span>
-            <span
-              class="hidden sm:block text-[10px] font-bold uppercase tracking-[0.18em] text-muted site-nav__brand-subtitle"
-            >
-              {{ $t('nav.brandRole') }}
-            </span>
+            <AppTextRotator
+              :items="brandRoles"
+              container-class="hidden sm:block text-[10px] font-bold uppercase tracking-[0.18em] text-muted site-nav__brand-subtitle h-[1.25em]"
+              track-class="site-nav__brand-subtitle-track"
+              line-class="site-nav__brand-subtitle-line"
+            />
           </span>
         </button>
 
@@ -1105,6 +1107,30 @@ onBeforeUnmount(() => {
     -webkit-touch-callout: none;
     user-select: none;
     touch-action: manipulation;
+  }
+}
+
+.site-nav__brand-subtitle-track {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.site-nav__brand-subtitle-line {
+  display: flex;
+  align-items: center;
+  flex: 0 0 100%;
+  height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav__brand-subtitle-track {
+    transition: none;
   }
 }
 </style>

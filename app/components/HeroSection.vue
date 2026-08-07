@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
+const { activeRoleIndex, currentRole } = useBrandRoleRotator();
 const { openVibeCodingModal, vibeCodingModalMounted } = useVibeCodingModal();
 const { goToSection, sectionHref } = useSectionNavigation();
 
@@ -31,7 +32,15 @@ const nameParts = computed(() => {
   return { first: parts[0], last: parts.slice(1).join(' ') };
 });
 
-const heroTags = ['hero.tags.vue3', 'hero.tags.nuxt4', 'hero.tags.ts'];
+const heroTags = [
+  'hero.tags.vue3',
+  'hero.tags.nuxt4',
+  'hero.tags.ts',
+  'hero.tags.nodejs',
+  'hero.tags.html',
+  'hero.tags.css',
+  'hero.tags.js',
+];
 
 const heroStats = [
   { value: '13+', label: 'hero.stats.experience' },
@@ -71,7 +80,7 @@ onMounted(() => {
 <template>
   <section
     id="hero"
-    class="relative min-h-svh flex items-start lg:items-center justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+5rem)] pb-8 md:pb-12 lg:pt-[calc(var(--availability-banner-h,0px)+5.5rem)] lg:pb-14"
+    class="relative min-h-svh flex items-start lg:items-center justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+6.5rem)] sm:pt-[calc(var(--availability-banner-h,0px)+7rem)] lg:pt-[calc(var(--availability-banner-h,0px)+8rem)] pb-8 md:pb-12 lg:pb-14"
   >
     <LazyHeroParticles :hydrate-after="5200" />
 
@@ -103,9 +112,16 @@ onMounted(() => {
           class="space-y-3 sm:space-y-4 md:space-y-5 font-black tracking-tighter text-balance w-full"
         >
           <span
-            class="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl leading-[1.05] text-gradient hover:text-foreground transition-colors duration-700"
+            class="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl leading-[1.05] min-h-[2.1em] sm:min-h-[2.0em] flex items-center justify-center lg:justify-start"
           >
-            {{ $t('hero.h1') }}
+            <Transition name="hero-role-fade" mode="out-in">
+              <span
+                :key="activeRoleIndex"
+                class="block text-gradient hover:text-foreground transition-colors duration-700 text-pretty"
+              >
+                {{ currentRole }}
+              </span>
+            </Transition>
           </span>
           <span
             class="flex flex-wrap items-baseline justify-center lg:justify-start gap-x-3 sm:gap-x-4 md:gap-x-5 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-snug text-foreground/85"
@@ -427,5 +443,34 @@ onMounted(() => {
   background: color-mix(in srgb, var(--primary) 18%, var(--background));
   border-color: color-mix(in srgb, var(--primary) 55%, transparent);
   box-shadow: 0 0 22px color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.hero-role-fade-enter-active,
+.hero-role-fade-leave-active {
+  transition:
+    opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-role-fade-enter-from {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.hero-role-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-role-fade-enter-active,
+  .hero-role-fade-leave-active {
+    transition: none;
+  }
+  .hero-role-fade-enter-from,
+  .hero-role-fade-leave-to {
+    opacity: 1;
+    transform: none;
+  }
 }
 </style>
