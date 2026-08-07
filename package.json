@@ -18,7 +18,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky",
-    "lint": "eslint . --max-warnings=0",
+    "lint": "eslint . --max-warnings=0 && nuxt typecheck",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{js,ts,mjs,vue,json,md,yml,yaml}\"",
     "format:check": "prettier --check \"**/*.{js,ts,mjs,vue,json,md,yml,yaml}\"",
