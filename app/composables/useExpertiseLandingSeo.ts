@@ -2,6 +2,7 @@ import { SEO_IDENTITY, SITE_NAME } from '~/config/seo.config';
 import {
   buildHreflangAlternateLinks,
   htmlLangForLocale,
+  jsonLdScript,
   ogLocaleForLocale,
   personSchemaRef,
   websiteSchemaRef,
@@ -104,66 +105,54 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
       ...buildHreflangAlternateLinks({ en: enUrl, es: esUrl }),
     ],
     script: [
-      {
-        type: 'application/ld+json',
-        key: `${options.translationKey}-webpage`,
-        children: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'WebPage',
-          '@id': `${canonicalUrl.value}#webpage`,
-          url: canonicalUrl.value,
-          name: t(copyKey('meta.title')),
-          description: t(copyKey('meta.description')),
-          inLanguage: htmlLangForLocale(locale.value),
-          isPartOf: websiteSchemaRef(),
-          // Reference home Person — do not redefine url/jobTitle on the same @id
-          about: [personSchemaRef(), ...pageOccupations],
-          mainEntity: personSchemaRef(),
-          primaryImageOfPage: ogImage,
-          mentions: options.knowsAbout.map((topic) => ({
-            '@type': 'Thing',
-            name: topic,
-          })),
-        }),
-      },
-      {
-        type: 'application/ld+json',
-        key: `${options.translationKey}-breadcrumb`,
-        children: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              name: t('seo.siteName'),
-              item: locale.value === 'es' ? absoluteSiteUrl('/es/') : absoluteSiteUrl('/'),
-            },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              name: t(copyKey('meta.title')),
-              item: canonicalUrl.value,
-            },
-          ],
-        }),
-      },
-      {
-        type: 'application/ld+json',
-        key: `${options.translationKey}-faq`,
-        children: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: faqItems.value.map((item) => ({
-            '@type': 'Question',
-            name: item.question,
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: item.answer,
-            },
-          })),
-        }),
-      },
+      jsonLdScript(`${options.translationKey}-webpage`, {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${canonicalUrl.value}#webpage`,
+        url: canonicalUrl.value,
+        name: t(copyKey('meta.title')),
+        description: t(copyKey('meta.description')),
+        inLanguage: htmlLangForLocale(locale.value),
+        isPartOf: websiteSchemaRef(),
+        // Reference home Person — do not redefine url/jobTitle on the same @id
+        about: [personSchemaRef(), ...pageOccupations],
+        mainEntity: personSchemaRef(),
+        primaryImageOfPage: ogImage,
+        mentions: options.knowsAbout.map((topic) => ({
+          '@type': 'Thing',
+          name: topic,
+        })),
+      }),
+      jsonLdScript(`${options.translationKey}-breadcrumb`, {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: t('seo.siteName'),
+            item: locale.value === 'es' ? absoluteSiteUrl('/es/') : absoluteSiteUrl('/'),
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: t(copyKey('meta.title')),
+            item: canonicalUrl.value,
+          },
+        ],
+      }),
+      jsonLdScript(`${options.translationKey}-faq`, {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqItems.value.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+          },
+        })),
+      }),
     ],
   }));
 };

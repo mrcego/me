@@ -2,6 +2,7 @@ import { SEO_IDENTITY, SITE_NAME } from '~/config/seo.config';
 import {
   buildHreflangAlternateLinks,
   htmlLangForLocale,
+  jsonLdScript,
   ogLocaleForLocale,
   personSchemaRef,
   websiteSchemaRef,
@@ -78,54 +79,46 @@ export const useCaseStudySeo = (slug: CaseStudySlug) => {
       ...buildHreflangAlternateLinks({ en: enUrl, es: esUrl }),
     ],
     script: [
-      {
-        type: 'application/ld+json',
-        key: `case-study-${slug}-webpage`,
-        children: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'WebPage',
-          '@id': `${canonicalUrl.value}#webpage`,
-          url: canonicalUrl.value,
-          name: t(copyKey('meta.title')),
-          description: t(copyKey('meta.description')),
-          inLanguage: htmlLangForLocale(locale.value),
-          isPartOf: websiteSchemaRef(),
-          about: personSchemaRef(),
-          mainEntity: personSchemaRef(),
-          primaryImageOfPage: ogImage,
-        }),
-      },
-      {
-        type: 'application/ld+json',
-        key: `case-study-${slug}-breadcrumb`,
-        children: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              name: t('seo.siteName'),
-              item: locale.value === 'es' ? absoluteSiteUrl('/es/') : absoluteSiteUrl('/'),
-            },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              name: t('caseStudies.section_tag'),
-              item:
-                locale.value === 'es'
-                  ? absoluteSiteUrl('/es/#case-studies')
-                  : absoluteSiteUrl('/#case-studies'),
-            },
-            {
-              '@type': 'ListItem',
-              position: 3,
-              name: t(copyKey('cardTitle')),
-              item: canonicalUrl.value,
-            },
-          ],
-        }),
-      },
+      jsonLdScript(`case-study-${slug}-webpage`, {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${canonicalUrl.value}#webpage`,
+        url: canonicalUrl.value,
+        name: t(copyKey('meta.title')),
+        description: t(copyKey('meta.description')),
+        inLanguage: htmlLangForLocale(locale.value),
+        isPartOf: websiteSchemaRef(),
+        about: personSchemaRef(),
+        mainEntity: personSchemaRef(),
+        primaryImageOfPage: ogImage,
+      }),
+      jsonLdScript(`case-study-${slug}-breadcrumb`, {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: t('seo.siteName'),
+            item: locale.value === 'es' ? absoluteSiteUrl('/es/') : absoluteSiteUrl('/'),
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: t('caseStudies.section_tag'),
+            item:
+              locale.value === 'es'
+                ? absoluteSiteUrl('/es/#case-studies')
+                : absoluteSiteUrl('/#case-studies'),
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: t(copyKey('cardTitle')),
+            item: canonicalUrl.value,
+          },
+        ],
+      }),
     ],
   }));
 };

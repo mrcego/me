@@ -2,6 +2,7 @@ import { SEO_IDENTITY, SITE_NAME } from '~/config/seo.config';
 import {
   buildHreflangAlternateLinks,
   htmlLangForLocale,
+  jsonLdScript,
   ogLocaleForLocale,
   personSchemaRef,
   websiteSchemaRef,
@@ -52,45 +53,37 @@ export const useContentPageSeo = (options: ContentPageSeoOptions) => {
       ...buildHreflangAlternateLinks({ en: enUrl, es: esUrl }),
     ],
     script: [
-      {
-        type: 'application/ld+json',
-        key: `content-${options.metaKey}-webpage`,
-        children: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'WebPage',
-          '@id': `${canonicalUrl.value}#webpage`,
-          url: canonicalUrl.value,
-          name: t(`${options.metaKey}.title`),
-          description: t(`${options.metaKey}.description`),
-          inLanguage: htmlLangForLocale(locale.value),
-          isPartOf: websiteSchemaRef(),
-          about: personSchemaRef(),
-          mainEntity: personSchemaRef(),
-          primaryImageOfPage: `${SITE_ORIGIN}${SEO_IDENTITY.ogImage}`,
-        }),
-      },
-      {
-        type: 'application/ld+json',
-        key: `content-${options.metaKey}-breadcrumb`,
-        children: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              name: t('seo.siteName'),
-              item: locale.value === 'es' ? absoluteSiteUrl('/es/') : absoluteSiteUrl('/'),
-            },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              name: t(options.breadcrumbNameKey || `${options.metaKey}.title`),
-              item: canonicalUrl.value,
-            },
-          ],
-        }),
-      },
+      jsonLdScript(`content-${options.metaKey}-webpage`, {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        '@id': `${canonicalUrl.value}#webpage`,
+        url: canonicalUrl.value,
+        name: t(`${options.metaKey}.title`),
+        description: t(`${options.metaKey}.description`),
+        inLanguage: htmlLangForLocale(locale.value),
+        isPartOf: websiteSchemaRef(),
+        about: personSchemaRef(),
+        mainEntity: personSchemaRef(),
+        primaryImageOfPage: `${SITE_ORIGIN}${SEO_IDENTITY.ogImage}`,
+      }),
+      jsonLdScript(`content-${options.metaKey}-breadcrumb`, {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: t('seo.siteName'),
+            item: locale.value === 'es' ? absoluteSiteUrl('/es/') : absoluteSiteUrl('/'),
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: t(options.breadcrumbNameKey || `${options.metaKey}.title`),
+            item: canonicalUrl.value,
+          },
+        ],
+      }),
     ],
   }));
 };
