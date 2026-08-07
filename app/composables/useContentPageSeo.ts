@@ -55,7 +55,7 @@ export const useContentPageSeo = (options: ContentPageSeoOptions) => {
       {
         type: 'application/ld+json',
         key: `content-${options.metaKey}-webpage`,
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'WebPage',
           '@id': `${canonicalUrl.value}#webpage`,
@@ -72,7 +72,7 @@ export const useContentPageSeo = (options: ContentPageSeoOptions) => {
       {
         type: 'application/ld+json',
         key: `content-${options.metaKey}-breadcrumb`,
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
           itemListElement: [

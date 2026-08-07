@@ -101,7 +101,7 @@ export const usePortfolioSeo = () => {
       {
         type: 'application/ld+json',
         key: 'schema-person',
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Person',
           '@id': PERSON_SCHEMA_ID,
@@ -157,7 +157,7 @@ export const usePortfolioSeo = () => {
       {
         type: 'application/ld+json',
         key: 'schema-website',
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'WebSite',
           '@id': WEBSITE_SCHEMA_ID,
@@ -173,7 +173,7 @@ export const usePortfolioSeo = () => {
       {
         type: 'application/ld+json',
         key: 'schema-profile',
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'ProfilePage',
           '@id': `${canonicalUrl.value}#profile`,
@@ -190,7 +190,7 @@ export const usePortfolioSeo = () => {
       {
         type: 'application/ld+json',
         key: 'schema-faq',
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
           mainEntity: faqItems.value.map((item) => ({
@@ -206,7 +206,7 @@ export const usePortfolioSeo = () => {
       {
         type: 'application/ld+json',
         key: 'schema-service',
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           // ProfessionalService (LocalBusiness) for Google local/business rich results;
           // Service so schema.org accepts serviceType (not inherited by LocalBusiness).

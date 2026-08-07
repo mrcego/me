@@ -81,7 +81,7 @@ export const useCaseStudySeo = (slug: CaseStudySlug) => {
       {
         type: 'application/ld+json',
         key: `case-study-${slug}-webpage`,
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'WebPage',
           '@id': `${canonicalUrl.value}#webpage`,
@@ -98,7 +98,7 @@ export const useCaseStudySeo = (slug: CaseStudySlug) => {
       {
         type: 'application/ld+json',
         key: `case-study-${slug}-breadcrumb`,
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
           itemListElement: [

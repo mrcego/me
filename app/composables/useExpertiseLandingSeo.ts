@@ -107,7 +107,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
       {
         type: 'application/ld+json',
         key: `${options.translationKey}-webpage`,
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'WebPage',
           '@id': `${canonicalUrl.value}#webpage`,
@@ -129,7 +129,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
       {
         type: 'application/ld+json',
         key: `${options.translationKey}-breadcrumb`,
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',
           itemListElement: [
@@ -151,7 +151,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
       {
         type: 'application/ld+json',
         key: `${options.translationKey}-faq`,
-        innerHTML: JSON.stringify({
+        children: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'FAQPage',
           mainEntity: faqItems.value.map((item) => ({
