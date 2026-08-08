@@ -212,7 +212,7 @@ export default defineNuxtConfig({
     defaults: {
       width: 1200,
       height: 630,
-      alt: 'César Gómez — Senior Vue/Nuxt · AI-Assisted Craft',
+      alt: 'César Gómez — Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem',
     },
     // Prerender can exceed the module default (15s) under Windows + cold Chromium.
     security: {

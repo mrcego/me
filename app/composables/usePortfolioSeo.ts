@@ -139,6 +139,7 @@ export const usePortfolioSeo = () => {
         knowsAbout: [...PERSON_KNOWS_ABOUT],
         knowsLanguage: ['en', 'es'],
         alumniOf: [
+          { '@type': 'Organization', name: 'TISSINI' },
           { '@type': 'Organization', name: 'Colegium' },
           { '@type': 'Organization', name: 'LingoQuesto' },
         ],
