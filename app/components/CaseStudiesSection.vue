@@ -7,6 +7,11 @@ const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
 const studies = [
   {
+    slug: 'tissini',
+    icon: 'solar:bag-smile-bold-duotone',
+    to: '/case-studies/tissini',
+  },
+  {
     slug: 'colegium',
     icon: 'solar:buildings-2-bold-duotone',
     to: '/case-studies/colegium',
@@ -15,11 +20,6 @@ const studies = [
     slug: 'lingoquesto',
     icon: 'solar:chat-round-dots-bold-duotone',
     to: '/case-studies/lingoquesto',
-  },
-  {
-    slug: 'tissini',
-    icon: 'solar:shop-bold-duotone',
-    to: '/case-studies/tissini',
   },
 ] as const;
 

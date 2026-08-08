@@ -825,7 +825,7 @@
         "cardSummary": "Desarrollé aplicaciones e-commerce mobile-first con Vue.js, reduciendo tiempos de despliegue en un 60% mediante CI/CD.",
         "title": "Plataformas e-commerce mobile-first a escala",
         "summary": "Desarrollé aplicaciones e-commerce mobile-first con Vue.js, reduciendo tiempos de despliegue en un 60% mediante CI/CD.",
-        "tags": ["Vue 3", "Vue.js", "Mobile-First", "CI/CD", "E-Commerce"],
+        "tags": ["Vue 2", "Vue 3", "Mobile-First", "CI/CD", "E-Commerce"],
         "meta": {
           "title": "Caso TISSINI — Senior Frontend Developer, Vue.js y E-Commerce",
           "description": "Desarrollo de soluciones e-commerce mobile-first en Vue.js, optimización de pipelines de CI/CD y productos para emprendedoras en TISSINI."

@@ -59,6 +59,11 @@ export const PORTFOLIO_ROUTES: readonly PortfolioRoute[] = [
     hireIcon: 'logos:nodejs-icon',
   },
   {
+    id: 'tissini',
+    paths: { en: '/case-studies/tissini/', es: '/es/casos/tissini/' },
+    localePath: '/case-studies/tissini',
+  },
+  {
     id: 'colegium',
     paths: { en: '/case-studies/colegium/', es: '/es/casos/colegium/' },
     localePath: '/case-studies/colegium',
@@ -67,11 +72,6 @@ export const PORTFOLIO_ROUTES: readonly PortfolioRoute[] = [
     id: 'lingoquesto',
     paths: { en: '/case-studies/lingoquesto/', es: '/es/casos/lingoquesto/' },
     localePath: '/case-studies/lingoquesto',
-  },
-  {
-    id: 'tissini',
-    paths: { en: '/case-studies/tissini/', es: '/es/casos/tissini/' },
-    localePath: '/case-studies/tissini',
   },
   {
     id: 'cartagena',

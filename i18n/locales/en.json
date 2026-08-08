@@ -822,7 +822,7 @@
         "cardSummary": "Built mobile-first e-commerce applications with Vue.js, reducing deployment times by 60% via automated CI/CD.",
         "title": "Mobile-first e-commerce platforms at scale",
         "summary": "Built mobile-first e-commerce applications with Vue.js, reducing deployment times by 60% via automated CI/CD.",
-        "tags": ["Vue 3", "Vue.js", "Mobile-First", "CI/CD", "E-Commerce"],
+        "tags": ["Vue 2", "Vue 3", "Mobile-First", "CI/CD", "E-Commerce"],
         "meta": {
           "title": "TISSINI case study — Senior Frontend Developer, Vue.js & E-Commerce",
           "description": "Mobile-first e-commerce solutions in Vue.js, CI/CD deployment pipeline optimization, and digital products for entrepreneurs at TISSINI."
