@@ -2,6 +2,7 @@
 
 import tailwindcss from '@tailwindcss/vite';
 import { prerenderRoutesWithSitemap, sitemapUrls } from './app/config/routes.manifest';
+import { SEO_EDITORIAL_DATES } from './app/config/seo.config';
 import { buildThemeInitScript } from './app/utils/themeInitScript';
 
 export default defineNuxtConfig({
@@ -228,6 +229,9 @@ export default defineNuxtConfig({
   sitemap: {
     strictNuxtContentPaths: true,
     zeroRuntime: true,
+    defaults: {
+      lastmod: SEO_EDITORIAL_DATES.lastModified,
+    },
     xsl: false,
     // Trailing slashes match static directory output (avoids GSC "Redirect error").
     urls: sitemapUrls(),
