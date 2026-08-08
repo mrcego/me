@@ -1,7 +1,7 @@
 import { pagePrerenderRoutes } from '../app/config/routes.manifest.ts';
 
 const HOST = 'cesargomez.dev';
-const KEY = 'c3e5a7g0m1e2z3d4e5v6i7n8d9e0x1n2';
+const KEY = 'c3e5a701234546789abcdef012345678';
 const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const ENDPOINTS = ['https://www.bing.com/indexnow', 'https://api.indexnow.org/indexnow'];
 
