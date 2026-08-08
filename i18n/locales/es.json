@@ -33,12 +33,12 @@
     "hireSection": "Todos los perfiles",
     "brandRole": "Desarrollador Senior Vue/Nuxt",
     "brandRoles": [
-      "Senior Vue/Nuxt Engineer",
+      "Ingeniero Senior Vue/Nuxt",
       "Arquitecto Frontend Lider",
       "Desarrollador Frontend Senior",
       "Ingeniero Fullstack Senior",
       "Entusiasta del Ecosistema Agéntico e IA",
-      "Vibe Coding Cleanup Specialist"
+      "Especialista en Limpieza de Código por IA"
     ],
     "switchLanguage": "Cambiar idioma",
     "switchLanguageLabel": "Cambiar idioma: {locale}",
@@ -166,7 +166,10 @@
         "usage": "services | servicios",
         "summary": "Servicios de ingeniería frontend"
       },
-      "work": { "usage": "work [colegium|lingoquesto]", "summary": "Casos de estudio" },
+      "work": {
+        "usage": "work [colegium|lingoquesto|tissini]",
+        "summary": "Casos de estudio"
+      },
       "experience": { "usage": "experience", "summary": "Roles destacados" },
       "profiles": { "usage": "profiles", "summary": "Perfiles de contratación" },
       "certs": { "usage": "certs", "summary": "Conteo de certificaciones" },
@@ -189,7 +192,7 @@
       "profiles": "Perfiles: desarrollador Vue · ingeniero IA / Vibe Coding Cleanup · desarrollador Node.js · Cartagena local · craft asistido por IA.",
       "certs": "{count} credenciales en la sección Certificaciones — TypeScript, programación con IA, estructuras de datos, observabilidad y más.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · O usa el formulario de contacto del sitio.",
-      "workList": "Casos: work colegium · work lingoquesto",
+      "workList": "Casos: work colegium · work lingoquesto · work tissini",
       "cv": "Descargando {file}…",
       "seo": "SEO Técnico: 98 rutas estáticas SSG prerenderizadas · 64 esquemas JSON-LD (Person {'@'}id: https://cesargomez.dev/#person, WebSite, ProfilePage, Service, FAQPage) · Sitemaps XML recíprocos · etiquetas hreflang en-US/es-ES/x-default · CSP con hashes SHA-256.",
       "lang": "Idioma actual: {locale}. Usa 'lang es' o 'lang en' para cambiar.",
@@ -207,7 +210,7 @@
       "blocked": "Bloqueado: no se permiten operadores shell, redirecciones ni URLs arbitrarias.",
       "usage": "Uso incorrecto de `{command}`. Escribe help.",
       "unknownSection": "Sección desconocida `{section}`. Prueba: about, stack, certifications, capabilities, cases, testimonials, profiles, contact, faq.",
-      "unknownWork": "Caso desconocido `{work}`. Prueba: colegium, lingoquesto.",
+      "unknownWork": "Caso desconocido `{work}`. Prueba: colegium, lingoquesto, tissini.",
       "unknownTheme": "Tema desconocido `{theme}`. Ejecuta: theme list.",
       "unknownThemeAction": "Acción de tema desconocida `{action}`. Usa: show | list | use [id]."
     }
@@ -811,6 +814,47 @@
             {
               "title": "Integración de IA/NLP",
               "body": "Una parte central del producto es la práctica oral impulsada por modelos de IA y NLP. Integré y operé estos modelos — en local y en la nube — conectando reconocimiento de voz y flujos conversacionales directamente en la experiencia del producto."
+            }
+          ]
+        }
+      },
+      "tissini": {
+        "role": "Senior Frontend · TISSINI",
+        "period": "2019 – 2021",
+        "cardTitle": "Plataformas e-commerce mobile-first a escala",
+        "cardSummary": "Desarrollé aplicaciones e-commerce mobile-first con Vue.js, reduciendo tiempos de despliegue en un 60% mediante CI/CD.",
+        "title": "Plataformas e-commerce mobile-first a escala",
+        "summary": "Desarrollé aplicaciones e-commerce mobile-first con Vue.js, reduciendo tiempos de despliegue en un 60% mediante CI/CD.",
+        "tags": ["Vue 3", "Vue.js", "Mobile-First", "CI/CD", "E-Commerce"],
+        "meta": {
+          "title": "Caso TISSINI — Senior Frontend Developer, Vue.js y E-Commerce",
+          "description": "Desarrollo de soluciones e-commerce mobile-first en Vue.js, optimización de pipelines de CI/CD y productos para emprendedoras en TISSINI."
+        },
+        "page": {
+          "eyebrow": "TISSINI · Caso de estudio",
+          "title": "Arquitectura e-commerce mobile-first y optimización de CI/CD",
+          "lead": "Rol de Senior Frontend Developer en TISSINI — construcción de plataformas de venta directa mobile-first con Vue.js, mentoría de buenas prácticas y automatización de despliegues.",
+          "contactCta": "Hablemos de tu proyecto",
+          "backCta": "Volver a casos de estudio",
+          "highlightsTitle": "Resultados clave",
+          "highlights": [
+            "Desarrollo de soluciones mobile-first en productos insignia como Mitiendatissini.com y TISSINI App",
+            "Reducción del 60% en tiempos de despliegue gracias al establecimiento de pipelines automatizados de CI/CD",
+            "Migración paulatina y adopción de Vue 3 (Options y Composition API) manteniendo estabilidad operativa",
+            "Mentoría a desarrolladores junior e implementación de estándares de calidad frontend"
+          ],
+          "sections": [
+            {
+              "title": "Contexto",
+              "body": "TISSINI opera plataformas e-commerce y de venta social enfocadas en emprendedoras hispanas en EE.UU. Como Desarrollador Frontend Senior, lideré el desarrollo de interfaces mobile-first orientadas a acelerar la conversión y la usabilidad del catálogo digital."
+            },
+            {
+              "title": "Enfoque técnico & Mobile-First",
+              "body": "Utilizamos Vue.js (Vue 2 y Vue 3) para construir interfaces reactivas, livianas y altamente responsivas. Dado el perfil de usuario principalmente móvil, priorizamos el rendimiento de carga, animaciones fluidas e interacciones optimizadas para conexiones celulares."
+            },
+            {
+              "title": "Automatización CI/CD & Calidad",
+              "body": "Implementé flujos de integración y despliegue continuo (CI/CD) que redujeron los tiempos de release en un 60%, permitiendo a ingeniería iterar con mayor seguridad y publicar nuevas funcionalidades sin fricción."
             }
           ]
         }

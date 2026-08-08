@@ -163,7 +163,10 @@
       "status": { "usage": "status", "summary": "Availability status" },
       "stack": { "usage": "stack", "summary": "Core tech stack" },
       "services": { "usage": "services", "summary": "Frontend engineering services" },
-      "work": { "usage": "work [colegium|lingoquesto]", "summary": "Case studies" },
+      "work": {
+        "usage": "work [colegium|lingoquesto|tissini]",
+        "summary": "Case studies"
+      },
       "experience": { "usage": "experience", "summary": "Role highlights" },
       "profiles": { "usage": "profiles", "summary": "Hire profiles" },
       "certs": { "usage": "certs", "summary": "Certification count" },
@@ -186,7 +189,7 @@
       "profiles": "Hire profiles: Vue frontend developer · AI engineer / Vibe Coding Cleanup · Node.js backend developer · Cartagena local · AI-assisted craft.",
       "certs": "{count} credentials listed on the Certifications section — TypeScript, AI programming, data structures, observability, and more.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · Or use the contact form on this site.",
-      "workList": "Case studies: work colegium · work lingoquesto",
+      "workList": "Case studies: work colegium · work lingoquesto · work tissini",
       "cv": "Downloading {file}…",
       "seo": "Technical SEO: 98 static SSG prerendered routes · 64 JSON-LD schemas (Person {'@'}id: https://cesargomez.dev/#person, WebSite, ProfilePage, Service, FAQPage) · Reciprocal XML Sitemaps · hreflang tags en-US/es-ES/x-default · CSP with SHA-256 hashes.",
       "lang": "Current language: {locale}. Use 'lang es' or 'lang en' to switch.",
@@ -204,7 +207,7 @@
       "blocked": "Blocked: shell operators, redirects, and arbitrary URLs are not allowed.",
       "usage": "Usage error for `{command}`. Type help.",
       "unknownSection": "Unknown section `{section}`. Try: about, stack, certifications, capabilities, cases, testimonials, profiles, contact, faq.",
-      "unknownWork": "Unknown case study `{work}`. Try: colegium, lingoquesto.",
+      "unknownWork": "Unknown case study `{work}`. Try: colegium, lingoquesto, tissini.",
       "unknownTheme": "Unknown theme `{theme}`. Run: theme list.",
       "unknownThemeAction": "Unknown theme action `{action}`. Use: show | list | use [id]."
     }
@@ -808,6 +811,47 @@
             {
               "title": "AI/NLP integration",
               "body": "A core part of the product is oral-practice powered by AI and NLP models. I integrated and operated these models — locally and in the cloud — wiring speech recognition and conversational flows directly into the product experience."
+            }
+          ]
+        }
+      },
+      "tissini": {
+        "role": "Senior Frontend · TISSINI",
+        "period": "2019 – 2021",
+        "cardTitle": "Mobile-first e-commerce platforms at scale",
+        "cardSummary": "Built mobile-first e-commerce applications with Vue.js, reducing deployment times by 60% via automated CI/CD.",
+        "title": "Mobile-first e-commerce platforms at scale",
+        "summary": "Built mobile-first e-commerce applications with Vue.js, reducing deployment times by 60% via automated CI/CD.",
+        "tags": ["Vue 3", "Vue.js", "Mobile-First", "CI/CD", "E-Commerce"],
+        "meta": {
+          "title": "TISSINI case study — Senior Frontend Developer, Vue.js & E-Commerce",
+          "description": "Mobile-first e-commerce solutions in Vue.js, CI/CD deployment pipeline optimization, and digital products for entrepreneurs at TISSINI."
+        },
+        "page": {
+          "eyebrow": "TISSINI · Case study",
+          "title": "Mobile-first e-commerce architecture & CI/CD optimization",
+          "lead": "Senior Frontend Developer role at TISSINI — crafting mobile-first direct selling platforms with Vue.js, mentoring on best practices, and automating releases.",
+          "contactCta": "Discuss your project",
+          "backCta": "Back to case studies",
+          "highlightsTitle": "Key outcomes",
+          "highlights": [
+            "Mobile-first development across flagship products including Mitiendatissini.com and the TISSINI App",
+            "60% reduction in deployment times by establishing automated CI/CD pipelines",
+            "Gradual adoption of Vue 3 (Options & Composition API) while maintaining operational stability",
+            "Mentored junior engineers on Vue.js best practices and frontend craftsmanship"
+          ],
+          "sections": [
+            {
+              "title": "Context",
+              "body": "TISSINI powers social selling and e-commerce platforms for Hispanic women entrepreneurs across the US. As Senior Frontend Developer, I led the creation of mobile-first interfaces focused on catalog conversion and frictionless mobile usability."
+            },
+            {
+              "title": "Technical approach & Mobile-First",
+              "body": "We leveraged Vue.js (Vue 2 and Vue 3) to deliver lightweight, reactive interfaces. With a predominantly mobile user base, we prioritized initial load performance, smooth micro-interactions, and cellular network optimizations."
+            },
+            {
+              "title": "CI/CD Automation & Quality",
+              "body": "I established automated continuous integration and delivery (CI/CD) pipelines that cut release cycles by 60%, empowering the engineering team to deploy features safely and frequently."
             }
           ]
         }

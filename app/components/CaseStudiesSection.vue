@@ -16,6 +16,11 @@ const studies = [
     icon: 'solar:chat-round-dots-bold-duotone',
     to: '/case-studies/lingoquesto',
   },
+  {
+    slug: 'tissini',
+    icon: 'solar:shop-bold-duotone',
+    to: '/case-studies/tissini',
+  },
 ] as const;
 
 function studyTags(slug: (typeof studies)[number]['slug']): string[] {
@@ -62,7 +67,7 @@ function studyTags(slug: (typeof studies)[number]['slug']): string[] {
         </p>
       </Motion>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-5xl mx-auto items-stretch">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto items-stretch">
         <Motion
           v-for="(study, index) in studies"
           :key="study.slug"

@@ -45,6 +45,10 @@ describe('parsePortfolioTerminalCommand', () => {
       type: 'navigate',
       target: { kind: 'work', id: 'colegium' },
     });
+    expect(parsePortfolioTerminalCommand('work tissini').effects[0]).toEqual({
+      type: 'navigate',
+      target: { kind: 'work', id: 'tissini' },
+    });
   });
 
   it('parses theme show/list/use', () => {

@@ -8,8 +8,8 @@ import {
 } from '../../app/config/routes.manifest';
 
 describe('routes.manifest', () => {
-  it('lists eight indexable page families', () => {
-    expect(PORTFOLIO_ROUTES).toHaveLength(8);
+  it('lists nine indexable page families', () => {
+    expect(PORTFOLIO_ROUTES).toHaveLength(9);
   });
 
   it('keeps the AI landing URL slug unchanged', () => {

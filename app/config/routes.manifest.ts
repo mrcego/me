@@ -69,6 +69,11 @@ export const PORTFOLIO_ROUTES: readonly PortfolioRoute[] = [
     localePath: '/case-studies/lingoquesto',
   },
   {
+    id: 'tissini',
+    paths: { en: '/case-studies/tissini/', es: '/es/casos/tissini/' },
+    localePath: '/case-studies/tissini',
+  },
+  {
     id: 'cartagena',
     paths: { en: '/web-developer-cartagena/', es: '/es/desarrollo-web-cartagena/' },
     localePath: '/web-developer-cartagena',

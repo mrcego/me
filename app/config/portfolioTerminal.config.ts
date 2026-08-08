@@ -47,7 +47,7 @@ export type TerminalSectionId =
   | 'contact'
   | 'faq';
 
-export type TerminalWorkId = 'colegium' | 'lingoquesto';
+export type TerminalWorkId = 'colegium' | 'lingoquesto' | 'tissini';
 
 export type TerminalProfileId = 'vue' | 'ai' | 'node' | 'cartagena' | 'craft';
 
@@ -112,6 +112,7 @@ export const TERMINAL_WORK_ALIASES: Record<string, TerminalWorkId> = {
   colegium: 'colegium',
   lingoquesto: 'lingoquesto',
   lingo: 'lingoquesto',
+  tissini: 'tissini',
 };
 
 export const TERMINAL_PROFILE_ROUTE_IDS: readonly TerminalProfileId[] = [

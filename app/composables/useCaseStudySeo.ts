@@ -9,7 +9,7 @@ import {
 } from '~/utils/seo';
 import { SITE_ORIGIN, absoluteSiteUrl } from '~/utils/siteUrl';
 
-export type CaseStudySlug = 'colegium' | 'lingoquesto';
+export type CaseStudySlug = 'colegium' | 'lingoquesto' | 'tissini';
 
 const CASE_STUDY_PATHS: Record<CaseStudySlug, { en: string; es: string }> = {
   colegium: {
@@ -19,6 +19,10 @@ const CASE_STUDY_PATHS: Record<CaseStudySlug, { en: string; es: string }> = {
   lingoquesto: {
     en: '/case-studies/lingoquesto',
     es: '/casos/lingoquesto',
+  },
+  tissini: {
+    en: '/case-studies/tissini',
+    es: '/casos/tissini',
   },
 };
 
