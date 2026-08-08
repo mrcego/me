@@ -59,6 +59,11 @@ export const PORTFOLIO_ROUTES: readonly PortfolioRoute[] = [
     hireIcon: 'logos:nodejs-icon',
   },
   {
+    id: 'tissini',
+    paths: { en: '/case-studies/tissini/', es: '/es/casos/tissini/' },
+    localePath: '/case-studies/tissini',
+  },
+  {
     id: 'colegium',
     paths: { en: '/case-studies/colegium/', es: '/es/casos/colegium/' },
     localePath: '/case-studies/colegium',

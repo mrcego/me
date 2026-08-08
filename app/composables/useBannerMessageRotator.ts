@@ -1,23 +1,26 @@
 import type { Ref } from 'vue';
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useAvailability } from '~/composables/useAvailability';
 import { useMatchMedia } from '~/composables/useMatchMedia';
+import { useTextRotator } from '~/composables/useTextRotator';
 
-const ROTATE_MS = 3000;
 /** Tailwind `xl` — date chip sits beside the rotator from this width up. */
 const XL_UP = '(min-width: 1280px)';
 
 export function useBannerMessageRotator(enabled: Ref<boolean> | (() => boolean)) {
   const { t } = useI18n();
-  const activeIndex = ref(0);
   const isXlUp = useMatchMedia(XL_UP);
   const isMounted = ref(false);
+  const { isAvailable } = useAvailability();
   const showDateChip = computed(() => isMounted.value && isXlUp.value);
-  let timer: ReturnType<typeof setInterval> | null = null;
 
-  const dateMessage = computed(
-    () => `${t('availability.banner.availableLabel')} ${t('availability.announcement.dateValue')}`,
-  );
+  const dateMessage = computed(() => {
+    if (isAvailable.value) {
+      return t('availability.banner.nowAvailable');
+    }
+    return `${t('availability.banner.availableLabel')} ${t('availability.announcement.dateValue')}`;
+  });
 
   const messages = computed(() => {
     const rotating = [t('availability.banner.messages.0'), t('availability.banner.messages.1')];
@@ -30,51 +33,18 @@ export function useBannerMessageRotator(enabled: Ref<boolean> | (() => boolean))
     return rotating;
   });
 
-  const isEnabled = computed(() => (typeof enabled === 'function' ? enabled() : enabled.value));
-
-  function clearTimer() {
-    if (!timer) return;
-    clearInterval(timer);
-    timer = null;
-  }
-
-  function advance() {
-    if (messages.value.length < 2) return;
-    activeIndex.value = (activeIndex.value + 1) % messages.value.length;
-  }
-
-  function startTimer() {
-    clearTimer();
-    if (!import.meta.client || !isEnabled.value || messages.value.length < 2) return;
-
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReduced) return;
-
-    timer = setInterval(advance, ROTATE_MS);
-  }
-
   onMounted(() => {
     // Keep the first client render identical to SSR. The real media query is
     // applied only after hydration, preventing 3→2 child-node mismatches.
     isMounted.value = true;
-    startTimer();
   });
 
-  watch(isEnabled, (value) => {
-    if (value) startTimer();
-    else clearTimer();
-  });
-
-  watch(messages, () => {
-    activeIndex.value = 0;
-    startTimer();
-  });
-
-  onUnmounted(clearTimer);
+  const { activeIndex } = useTextRotator(messages, { enabled });
 
   return {
     activeIndex,
     messages,
     showDateChip,
+    isAvailable,
   };
 }

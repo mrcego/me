@@ -7,6 +7,11 @@ const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
 const studies = [
   {
+    slug: 'tissini',
+    icon: 'solar:bag-2-bold-duotone',
+    to: '/case-studies/tissini',
+  },
+  {
     slug: 'colegium',
     icon: 'solar:buildings-2-bold-duotone',
     to: '/case-studies/colegium',
@@ -62,7 +67,7 @@ function studyTags(slug: (typeof studies)[number]['slug']): string[] {
         </p>
       </Motion>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-5xl mx-auto items-stretch">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto items-stretch">
         <Motion
           v-for="(study, index) in studies"
           :key="study.slug"
@@ -123,7 +128,7 @@ function studyTags(slug: (typeof studies)[number]['slug']): string[] {
                     title: $t(`caseStudies.items.${study.slug}.cardTitle`),
                   })
                 "
-                class="btn-premium bg-primary text-primary-contrast rounded-2xl px-6 py-3 border-none w-fit inline-flex items-center gap-2 font-black uppercase tracking-widest"
+                class="btn-premium bg-primary text-primary-contrast rounded-2xl px-6 py-3 border-none w-fit inline-flex items-center gap-2 font-black uppercase tracking-widest after:absolute after:inset-0 opacity-100 translate-y-0 pointer-events-auto md:opacity-0 md:translate-y-4 md:pointer-events-none md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-hover:pointer-events-auto md:group-focus-within:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:pointer-events-auto transition-all duration-300 ease-out"
               >
                 {{ $t('caseStudies.readMore') }}
                 <Icon name="solar:arrow-right-linear" class="size-5" />

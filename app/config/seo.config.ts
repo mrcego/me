@@ -13,7 +13,12 @@ export const WEBSITE_SCHEMA_ID = `${SITE_ORIGIN}/#website`;
  * @see https://developers.google.com/search/docs/appearance/site-names
  */
 export const SITE_NAME = 'César Gómez';
-export const SITE_NAME_ALTERNATES = ['Cesar Gomez', 'cesargomez.dev'] as const;
+export const SITE_NAME_ALTERNATES = [
+  'Cesar Gomez',
+  'César Gómez Portfolio',
+  'Cesar Gomez Portfolio',
+  'cesargomez.dev',
+] as const;
 
 /**
  * Canonical Person.url — always the site-origin home (EN default), never a
@@ -34,7 +39,7 @@ export const SEO_HREFLANG = {
  */
 export const SEO_EDITORIAL_DATES = {
   profileCreated: '2024-06-01T12:00:00-05:00',
-  lastModified: '2026-08-01T21:00:00-05:00',
+  lastModified: '2026-08-08T01:00:00-05:00',
 } as const;
 
 /** Shared social / OG defaults used by composables and @nuxtjs/seo. */
@@ -42,12 +47,12 @@ export const SEO_IDENTITY = {
   siteUrl: SITE_ORIGIN,
   name: 'César Gómez',
   description:
-    'Senior Fullstack Developer with 13+ years of experience specializing in Frontend Excellence. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.',
+    'Senior Vue/Nuxt Engineer, Frontend Architect Lead & AI Agentic Ecosystem Specialist with 13+ years of experience. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.',
   author: 'César Gómez',
   type: 'website',
   locale: 'en-US',
-  ogImage: '/img/og-image.png?v=cg2',
-  ogImageAlt: 'César Gómez — Senior Vue/Nuxt · AI-Assisted Craft',
+  ogImage: '/img/og-image.png?v=cg3',
+  ogImageAlt: 'César Gómez — Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem',
   facebookAppId: '966242223397117',
   twitterCard: 'summary_large_image',
   twitterCreator: '@codingwithcego',
@@ -91,6 +96,8 @@ export const PERSON_KNOWS_ABOUT = [
   'Vibe Coding Cleanup',
   'Agent-assisted Development',
   'AI/NLP Product Integration',
+  'E-commerce Platforms',
+  'Retailtech',
   'Ed-tech',
   'Remote Contract Engineering',
 ] as const;

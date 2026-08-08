@@ -45,7 +45,6 @@ export function usePortfolioTerminalSession(): PortfolioTerminalSessionApi {
   const { t, tm } = useI18n();
   const { closeTerminal } = usePortfolioTerminal();
   const { goToSection } = useSectionNavigation();
-  const { href: cvHref, fileName: cvFileName } = useCvDownload();
   const { currentTheme, setThemePreset } = useTheme();
   const localePath = useLocalePath();
   const router = useRouter();
@@ -121,6 +120,9 @@ export function usePortfolioTerminalSession(): PortfolioTerminalSessionApi {
     input.value = history.value[historyIndex.value] ?? '';
   }
 
+  const switchLocalePath = useSwitchLocalePath();
+  const { locale } = useI18n();
+
   function printCommandOutput(commandId: TerminalCommandId) {
     switch (commandId) {
       case 'help': {
@@ -139,6 +141,9 @@ export function usePortfolioTerminalSession(): PortfolioTerminalSessionApi {
       case 'stack':
         pushLine('output', t('terminal.responses.stack'));
         break;
+      case 'services':
+        pushLine('output', t('terminal.responses.services'));
+        break;
       case 'experience':
         pushLine('output', t('terminal.responses.experience'));
         break;
@@ -156,6 +161,12 @@ export function usePortfolioTerminalSession(): PortfolioTerminalSessionApi {
         break;
       case 'work':
         pushLine('output', t('terminal.responses.workList'));
+        break;
+      case 'seo':
+        pushLine('output', t('terminal.responses.seo'));
+        break;
+      case 'lang':
+        pushLine('output', t('terminal.responses.lang', { locale: locale.value }));
         break;
       default:
         break;
@@ -198,16 +209,24 @@ export function usePortfolioTerminalSession(): PortfolioTerminalSessionApi {
         closeTerminal();
         break;
       case 'downloadCv': {
-        pushLine('output', t('terminal.responses.cv', { file: cvFileName.value }));
+        const targetLang = effect.lang ?? (locale.value === 'es' ? 'es' : 'en');
+        const targetFileName = `cv-cesar-gomez-${targetLang}.pdf`;
+        const targetHref = `/cv/${targetFileName}`;
+        pushLine('output', t('terminal.responses.cv', { file: targetFileName }));
         if (import.meta.client) {
           const anchor = document.createElement('a');
-          anchor.href = cvHref.value;
-          anchor.download = cvFileName.value;
+          anchor.href = targetHref;
+          anchor.download = targetFileName;
           anchor.rel = 'noopener';
           document.body.appendChild(anchor);
           anchor.click();
           anchor.remove();
         }
+        break;
+      }
+      case 'setLang': {
+        pushLine('output', t('terminal.responses.langSet', { locale: effect.lang }));
+        await router.push(switchLocalePath(effect.lang));
         break;
       }
       case 'showTheme':

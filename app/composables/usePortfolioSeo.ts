@@ -13,6 +13,7 @@ import {
 import {
   buildHreflangAlternateLinks,
   htmlLangForLocale,
+  jsonLdScript,
   ogLocaleForLocale,
   personSchemaRef,
 } from '~/utils/seo';
@@ -30,8 +31,13 @@ export const usePortfolioSeo = () => {
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
   const { public: publicConfig } = useRuntimeConfig();
 
-  // Share/tab titles use seo.* (AI-Assisted Craft). Hero H1 stays hero.h1 (Developer).
+  const { currentRole } = useBrandRoleRotator();
   const shareTitle = computed(() => t('seo.ogTitle'));
+  const dynamicRoleTitle = computed(() => {
+    const name = personName.value;
+    const role = currentRole.value;
+    return role ? `${name} · ${role}` : `${name} — ${shareTitle.value}`;
+  });
   const shareImageAlt = computed(() => `${personName.value} — ${shareTitle.value}`);
 
   defineOgImage(
@@ -51,14 +57,14 @@ export const usePortfolioSeo = () => {
   );
 
   useSeoMeta({
-    title: () => shareTitle.value,
+    title: () => dynamicRoleTitle.value,
     description: () => t('seo.description'),
     author: SEO_IDENTITY.author,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
     fbAppId: () => String(publicConfig.facebookAppId || ''),
 
     ogType: 'profile',
-    ogTitle: () => shareTitle.value,
+    ogTitle: () => dynamicRoleTitle.value,
     ogDescription: () => t('seo.ogDescription'),
     // og:image / twitter:image injected by defineOgImage('Portfolio')
     ogImageAlt: () => shareImageAlt.value,
@@ -93,195 +99,218 @@ export const usePortfolioSeo = () => {
       { property: 'profile:username', content: 'mrcego' },
     ],
     script: [
-      {
-        type: 'application/ld+json',
-        key: 'schema-person',
-        innerHTML: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'Person',
-          '@id': PERSON_SCHEMA_ID,
-          name: personName.value,
-          givenName: locale.value === 'es' ? 'César' : 'Cesar',
-          familyName: locale.value === 'es' ? 'Gómez' : 'Gomez',
-          alternateName: ['César Gómez', 'Cesar Gomez', 'mrcego'],
-          jobTitle: t('seo.jobTitle'),
-          description: t('seo.description'),
-          // Stable entity URL — never locale page or landing canonical
-          url: PERSON_ENTITY_URL,
-          image: profileImage,
-          nationality: {
-            '@type': 'Country',
-            name: 'Colombia',
-          },
-          homeLocation: {
-            '@type': 'Place',
-            name: 'Cartagena de Indias',
-            address: {
-              '@type': 'PostalAddress',
-              addressLocality: 'Cartagena de Indias',
-              addressRegion: 'Bolívar',
-              addressCountry: 'CO',
-            },
-          },
-          workLocation: {
-            '@type': 'Place',
-            name: t('hero.workPreference'),
-            description: t('hero.locationLine'),
-          },
-          sameAs: [
-            'https://www.linkedin.com/in/mrcego',
-            'https://github.com/mrcego',
-            PERSON_ENTITY_URL,
-          ],
-          knowsAbout: [...PERSON_KNOWS_ABOUT],
-          knowsLanguage: ['en', 'es'],
-          alumniOf: [
-            { '@type': 'Organization', name: 'Colegium' },
-            { '@type': 'Organization', name: 'LingoQuesto' },
-          ],
-          worksFor: {
-            '@type': 'Organization',
-            name: 'LingoQuesto',
-          },
-          seeks: {
-            '@type': 'Demand',
-            name: t('seo.availability'),
-          },
-        }),
-      },
-      {
-        type: 'application/ld+json',
-        key: 'schema-website',
-        innerHTML: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'WebSite',
-          '@id': WEBSITE_SCHEMA_ID,
-          name: SITE_NAME,
-          alternateName: [...SITE_NAME_ALTERNATES],
-          description: t('seo.description'),
-          url: PERSON_ENTITY_URL,
-          inLanguage: ['en-US', 'es-ES'],
-          publisher: personSchemaRef(),
-          about: personSchemaRef(),
-        }),
-      },
-      {
-        type: 'application/ld+json',
-        key: 'schema-profile',
-        innerHTML: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'ProfilePage',
-          '@id': `${canonicalUrl.value}#profile`,
-          url: canonicalUrl.value,
-          name: shareTitle.value,
-          description: t('seo.description'),
-          inLanguage: htmlLangForLocale(locale.value),
-          dateCreated: SEO_EDITORIAL_DATES.profileCreated,
-          dateModified: SEO_EDITORIAL_DATES.lastModified,
-          // Reference only — full Person node is published once above
-          mainEntity: personSchemaRef(),
-        }),
-      },
-      {
-        type: 'application/ld+json',
-        key: 'schema-faq',
-        innerHTML: JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'FAQPage',
-          mainEntity: faqItems.value.map((item) => ({
-            '@type': 'Question',
-            name: item.question,
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: item.answer,
-            },
-          })),
-        }),
-      },
-      {
-        type: 'application/ld+json',
-        key: 'schema-service',
-        innerHTML: JSON.stringify({
-          '@context': 'https://schema.org',
-          // ProfessionalService (LocalBusiness) for Google local/business rich results;
-          // Service so schema.org accepts serviceType (not inherited by LocalBusiness).
-          '@type': ['ProfessionalService', 'Service'],
-          name: t('seo.serviceName'),
-          description: t('seo.serviceDescription'),
-          url: canonicalUrl.value,
-          image: ogImage,
-          telephone: CONTACT_PHONE_E164,
-          priceRange: SERVICE_PRICE_RANGE,
+      jsonLdScript('schema-person', {
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        '@id': PERSON_SCHEMA_ID,
+        name: personName.value,
+        givenName: locale.value === 'es' ? 'César' : 'Cesar',
+        familyName: locale.value === 'es' ? 'Gómez' : 'Gomez',
+        alternateName: ['César Gómez', 'Cesar Gomez', 'mrcego'],
+        jobTitle: t('seo.jobTitle'),
+        description: t('seo.description'),
+        // Stable entity URL — never locale page or landing canonical
+        url: PERSON_ENTITY_URL,
+        image: profileImage,
+        nationality: {
+          '@type': 'Country',
+          name: 'Colombia',
+        },
+        homeLocation: {
+          '@type': 'Place',
+          name: 'Cartagena de Indias',
           address: {
             '@type': 'PostalAddress',
             addressLocality: 'Cartagena de Indias',
             addressRegion: 'Bolívar',
             addressCountry: 'CO',
           },
-          makesOffer: [
-            {
-              '@type': 'Offer',
-              name: 'Hourly consulting (USD)',
-              priceSpecification: {
-                '@type': 'UnitPriceSpecification',
-                priceCurrency: 'USD',
-                minPrice: 40,
-                maxPrice: 60,
-                unitCode: 'HUR',
-              },
+        },
+        workLocation: {
+          '@type': 'Place',
+          name: t('hero.workPreference'),
+          description: t('hero.locationLine'),
+        },
+        sameAs: [
+          'https://www.linkedin.com/in/mrcego',
+          'https://github.com/mrcego',
+          'https://x.com/codingwithcego',
+          PERSON_ENTITY_URL,
+        ],
+        knowsAbout: [...PERSON_KNOWS_ABOUT],
+        knowsLanguage: ['en', 'es'],
+        alumniOf: [
+          {
+            '@type': 'Organization',
+            name: 'TISSINI',
+            url: 'https://tissini.com',
+            description:
+              'Latin-American social-commerce and direct-sales platform for fashion entrepreneurs.',
+          },
+          {
+            '@type': 'Organization',
+            name: 'Colegium',
+            url: 'https://www.colegium.com',
+            description:
+              'Ed-tech company providing cloud-based school management and learning tools across Latin America.',
+          },
+          {
+            '@type': 'Organization',
+            name: 'LingoQuesto',
+            description: 'AI/NLP conversational ed-tech product for oral language practice.',
+          },
+        ],
+        hasOccupation: [
+          {
+            '@type': 'Occupation',
+            name: 'Senior Frontend Developer',
+            occupationalCategory: '15-1252.00',
+            description:
+              'Senior frontend engineer specializing in Vue.js, Nuxt.js, TypeScript, and scalable web architecture.',
+          },
+          {
+            '@type': 'Occupation',
+            name: 'Frontend Architect',
+            occupationalCategory: '15-1252.00',
+            description:
+              'Lead frontend architecture for micro-frontends, design systems, and performance-critical platforms.',
+          },
+        ],
+        worksFor: {
+          '@type': 'Organization',
+          name: 'LingoQuesto',
+        },
+        seeks: {
+          '@type': 'Demand',
+          name: t('seo.availability'),
+        },
+      }),
+      jsonLdScript('schema-website', {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        '@id': WEBSITE_SCHEMA_ID,
+        name: SITE_NAME,
+        alternateName: [...SITE_NAME_ALTERNATES],
+        description: t('seo.description'),
+        url: PERSON_ENTITY_URL,
+        inLanguage: ['en-US', 'es-ES'],
+        publisher: personSchemaRef(),
+        about: personSchemaRef(),
+        potentialAction: {
+          '@type': 'ControlAction',
+          name: 'Portfolio Terminal Interface',
+          description:
+            'Interactive CLI command line interface for navigating portfolio sections, downloading localized CVs, and exploring technical architecture.',
+          target: `${PERSON_ENTITY_URL}#terminal`,
+        },
+      }),
+      jsonLdScript('schema-profile', {
+        '@context': 'https://schema.org',
+        '@type': 'ProfilePage',
+        '@id': `${canonicalUrl.value}#profile`,
+        url: canonicalUrl.value,
+        name: shareTitle.value,
+        description: t('seo.description'),
+        inLanguage: htmlLangForLocale(locale.value),
+        dateCreated: SEO_EDITORIAL_DATES.profileCreated,
+        dateModified: SEO_EDITORIAL_DATES.lastModified,
+        // Reference only — full Person node is published once above
+        mainEntity: personSchemaRef(),
+      }),
+      jsonLdScript('schema-faq', {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqItems.value.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+          },
+        })),
+      }),
+      jsonLdScript('schema-service', {
+        '@context': 'https://schema.org',
+        // ProfessionalService (LocalBusiness) for Google local/business rich results;
+        // Service so schema.org accepts serviceType (not inherited by LocalBusiness).
+        '@type': ['ProfessionalService', 'Service'],
+        name: t('seo.serviceName'),
+        description: t('seo.serviceDescription'),
+        url: canonicalUrl.value,
+        image: ogImage,
+        telephone: CONTACT_PHONE_E164,
+        priceRange: SERVICE_PRICE_RANGE,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Cartagena de Indias',
+          addressRegion: 'Bolívar',
+          addressCountry: 'CO',
+        },
+        makesOffer: [
+          {
+            '@type': 'Offer',
+            name: 'Hourly consulting (USD)',
+            priceSpecification: {
+              '@type': 'UnitPriceSpecification',
+              priceCurrency: 'USD',
+              minPrice: 40,
+              maxPrice: 60,
+              unitCode: 'HUR',
             },
-            {
-              '@type': 'Offer',
-              name: 'Hourly consulting (COP)',
-              priceSpecification: {
-                '@type': 'UnitPriceSpecification',
-                priceCurrency: 'COP',
-                minPrice: 120000,
-                maxPrice: 200000,
-                unitCode: 'HUR',
-              },
+          },
+          {
+            '@type': 'Offer',
+            name: 'Hourly consulting (COP)',
+            priceSpecification: {
+              '@type': 'UnitPriceSpecification',
+              priceCurrency: 'COP',
+              minPrice: 120000,
+              maxPrice: 200000,
+              unitCode: 'HUR',
             },
-          ],
-          areaServed: [
-            {
-              '@type': 'City',
-              name: 'Cartagena de Indias',
-              containedInPlace: {
-                '@type': 'Country',
-                name: 'Colombia',
-              },
-            },
-            {
+          },
+        ],
+        areaServed: [
+          {
+            '@type': 'City',
+            name: 'Cartagena de Indias',
+            containedInPlace: {
               '@type': 'Country',
               name: 'Colombia',
             },
-            'Worldwide',
-          ],
-          provider: personSchemaRef(),
-          serviceType: [
-            'Frontend Development',
-            'Senior Frontend Development',
-            'Website Development',
-            'Web Development',
-            'Fullstack Development',
-            'Vue.js Consulting',
-            'Nuxt.js Development',
-            'TypeScript Engineering',
-            'Design System Engineering',
-            'Micro-frontend Architecture',
-            'Core Web Vitals Optimization',
-            'Node.js Backend Development',
-            'Express.js API Development',
-            'AI-Assisted Craft',
-            'Vibe Coding Cleanup',
-            'AI/NLP Product Integration',
-            'Ed-tech Frontend Engineering',
-            'Remote Frontend Contracting',
-            'LatAm Remote Contracting',
-          ],
-          knowsAbout: [...PERSON_KNOWS_ABOUT],
-        }),
-      },
+          },
+          {
+            '@type': 'Country',
+            name: 'Colombia',
+          },
+          'Worldwide',
+        ],
+        provider: personSchemaRef(),
+        serviceType: [
+          'Frontend Development',
+          'Senior Frontend Development',
+          'Website Development',
+          'Web Development',
+          'Fullstack Development',
+          'Vue.js Consulting',
+          'Nuxt.js Development',
+          'TypeScript Engineering',
+          'Design System Engineering',
+          'Micro-frontend Architecture',
+          'Core Web Vitals Optimization',
+          'Node.js Backend Development',
+          'Express.js API Development',
+          'E-commerce Frontend Development',
+          'Retailtech Engineering',
+          'AI-Assisted Craft',
+          'Vibe Coding Cleanup',
+          'AI/NLP Product Integration',
+          'Ed-tech Frontend Engineering',
+          'Remote Frontend Contracting',
+          'LatAm Remote Contracting',
+        ],
+        knowsAbout: [...PERSON_KNOWS_ABOUT],
+      }),
     ],
   }));
 };

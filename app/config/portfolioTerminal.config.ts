@@ -47,7 +47,7 @@ export type TerminalSectionId =
   | 'contact'
   | 'faq';
 
-export type TerminalWorkId = 'colegium' | 'lingoquesto';
+export type TerminalWorkId = 'colegium' | 'lingoquesto' | 'tissini';
 
 export type TerminalProfileId = 'vue' | 'ai' | 'node' | 'cartagena' | 'craft';
 
@@ -56,12 +56,15 @@ export type TerminalCommandId =
   | 'about'
   | 'status'
   | 'stack'
+  | 'services'
   | 'work'
   | 'experience'
   | 'profiles'
   | 'certs'
   | 'contact'
   | 'cv'
+  | 'seo'
+  | 'lang'
   | 'go'
   | 'theme'
   | 'clear'
@@ -109,6 +112,7 @@ export const TERMINAL_WORK_ALIASES: Record<string, TerminalWorkId> = {
   colegium: 'colegium',
   lingoquesto: 'lingoquesto',
   lingo: 'lingoquesto',
+  tissini: 'tissini',
 };
 
 export const TERMINAL_PROFILE_ROUTE_IDS: readonly TerminalProfileId[] = [
@@ -123,7 +127,7 @@ export const TERMINAL_COMMANDS: readonly TerminalCommandDefinition[] = [
   {
     id: 'help',
     name: 'help',
-    aliases: ['help', 'ayuda', '?'],
+    aliases: ['help', 'ayuda', '?', 'list', 'ls', 'dir', 'commands'],
     usageKey: 'terminal.commands.help.usage',
     summaryKey: 'terminal.commands.help.summary',
     group: 'info',
@@ -150,6 +154,14 @@ export const TERMINAL_COMMANDS: readonly TerminalCommandDefinition[] = [
     aliases: ['stack', 'tech', 'skills'],
     usageKey: 'terminal.commands.stack.usage',
     summaryKey: 'terminal.commands.stack.summary',
+    group: 'info',
+  },
+  {
+    id: 'services',
+    name: 'services',
+    aliases: ['services', 'servicios', 'offers'],
+    usageKey: 'terminal.commands.services.usage',
+    summaryKey: 'terminal.commands.services.summary',
     group: 'info',
   },
   {
@@ -198,6 +210,22 @@ export const TERMINAL_COMMANDS: readonly TerminalCommandDefinition[] = [
     aliases: ['cv', 'resume', 'curriculum', 'currículum'],
     usageKey: 'terminal.commands.cv.usage',
     summaryKey: 'terminal.commands.cv.summary',
+    group: 'system',
+  },
+  {
+    id: 'seo',
+    name: 'seo',
+    aliases: ['seo', 'search', 'schema'],
+    usageKey: 'terminal.commands.seo.usage',
+    summaryKey: 'terminal.commands.seo.summary',
+    group: 'info',
+  },
+  {
+    id: 'lang',
+    name: 'lang',
+    aliases: ['lang', 'idioma', 'locale'],
+    usageKey: 'terminal.commands.lang.usage',
+    summaryKey: 'terminal.commands.lang.summary',
     group: 'system',
   },
   {

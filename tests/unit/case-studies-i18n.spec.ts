@@ -12,7 +12,7 @@ function loadLocale(filename: string) {
 const en = loadLocale('en.json');
 const es = loadLocale('es.json');
 
-const SLUGS = ['colegium', 'lingoquesto'] as const;
+const SLUGS = ['colegium', 'lingoquesto', 'tissini'] as const;
 
 type LocaleMessages = Record<string, unknown>;
 

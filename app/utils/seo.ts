@@ -45,6 +45,16 @@ export function ogLocaleForLocale(locale: string): 'es_ES' | 'en_US' {
   return locale === 'es' ? 'es_ES' : 'en_US';
 }
 
+export function jsonLdScript(key: string, data: Record<string, unknown>) {
+  const json = JSON.stringify(data);
+  return {
+    type: 'application/ld+json' as const,
+    key,
+    children: json,
+    innerHTML: json,
+  };
+}
+
 export {
   PERSON_ENTITY_URL,
   PERSON_SCHEMA_ID,

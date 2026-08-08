@@ -11,7 +11,7 @@ test.describe('hero conversion hierarchy', () => {
     await expect(hero).toBeVisible();
 
     const h1 = hero.locator('h1');
-    await expect(h1).toContainText(/Senior Vue\/Nuxt Developer/i);
+    await expect(h1).toContainText(/Senior Vue\/Nuxt (Engineer|Developer)/i);
 
     const nameText = (await h1.innerText()).replace(/\s+/g, ' ');
     expect(nameText).toMatch(/César Gómez|Cesar Gomez|CESAR GOMEZ/i);
@@ -28,12 +28,12 @@ test.describe('hero conversion hierarchy', () => {
     const photo = hero.locator('img[src*="me.jpg"], img[alt*="César"], img[alt*="Cesar"]').first();
     await expect(photo).toBeVisible();
 
-    // Case studies proof sits immediately after hero on home.
+    // Case studies proof sits under about on home.
     const caseStudies = page.locator('#case-studies');
     await expect(caseStudies).toBeVisible();
     const aboutBox = await page.locator('#about').boundingBox();
     const caseBox = await caseStudies.boundingBox();
-    expect(caseBox?.y ?? 0).toBeLessThan(aboutBox?.y ?? Number.POSITIVE_INFINITY);
+    expect(aboutBox?.y ?? 0).toBeLessThan(caseBox?.y ?? Number.POSITIVE_INFINITY);
   });
 
   test('mobile 390: CTA appears before photo; no stuck name', async ({ page }) => {

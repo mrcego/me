@@ -31,7 +31,15 @@
     "contactShort": "Contact",
     "hireMenu": "Hiring profiles",
     "hireSection": "All profiles",
-    "brandRole": "Vue / Nuxt",
+    "brandRole": "Senior Vue/Nuxt Developer",
+    "brandRoles": [
+      "Senior Vue/Nuxt Engineer",
+      "Frontend Architect Lead",
+      "Senior Frontend Developer",
+      "Senior Fullstack Engineer",
+      "AI & Agentic Ecosystem Enthusiast",
+      "Vibe Coding Cleanup Specialist"
+    ],
     "switchLanguage": "Switch language",
     "switchLanguageLabel": "Switch language: {locale}",
     "themePresets": "Theme Presets",
@@ -48,7 +56,7 @@
     "location": "Cartagena de Indias, Colombia",
     "workPreference": "Remote",
     "locationLine": "Cartagena de Indias, Colombia · Remote preferred",
-    "description": "I ship maintainable, scalable Vue/Nuxt systems with architecture ownership and quality gates — 13+ years in production frontends with fullstack depth.",
+    "description": "I ship maintainable Vue/Nuxt systems, scalable frontend architecture, and fullstack solutions empowered by AI & Vibe Coding Cleanup — 13+ years building production-grade software.",
     "cta": "Get in Touch",
     "downloadCv": "Download CV",
     "downloadCvAria": "Download CV — résumé PDF ({file})",
@@ -61,6 +69,10 @@
       "vue3": "Vue 3",
       "nuxt4": "Nuxt 4",
       "ts": "TypeScript",
+      "nodejs": "Node.js",
+      "html": "HTML",
+      "css": "CSS",
+      "js": "JavaScript",
       "ai": "AI-Assisted Craft",
       "nlp": "NLP",
       "vibeCoding": "Vibe Coding Cleanup",
@@ -104,6 +116,7 @@
       "title": "Open to new opportunities",
       "messages": ["Open to new opportunities", "Interviews welcome now"],
       "availableLabel": "Available",
+      "nowAvailable": "Now available to hire",
       "cta": "Contact"
     },
     "announcement": {
@@ -145,19 +158,25 @@
       "resetLabel": "ROUTE LOST // RESET"
     },
     "commands": {
-      "help": { "usage": "help", "summary": "List available commands" },
-      "about": { "usage": "about | whoami", "summary": "Who I am" },
+      "help": { "usage": "help | list | ls", "summary": "View command catalog" },
+      "about": { "usage": "about", "summary": "Professional profile & summary" },
       "status": { "usage": "status", "summary": "Availability status" },
       "stack": { "usage": "stack", "summary": "Core tech stack" },
-      "work": { "usage": "work [colegium|lingoquesto]", "summary": "Case studies" },
+      "services": { "usage": "services", "summary": "Frontend engineering services" },
+      "work": {
+        "usage": "work [colegium|lingoquesto|tissini]",
+        "summary": "Case studies"
+      },
       "experience": { "usage": "experience", "summary": "Role highlights" },
       "profiles": { "usage": "profiles", "summary": "Hire profiles" },
       "certs": { "usage": "certs", "summary": "Certification count" },
       "contact": { "usage": "contact", "summary": "Contact channels" },
-      "cv": { "usage": "cv", "summary": "Download résumé PDF" },
+      "cv": { "usage": "cv [en|es]", "summary": "Download résumé PDF (English or Spanish)" },
+      "seo": { "usage": "seo", "summary": "Technical SEO architecture & JSON-LD schemas" },
+      "lang": { "usage": "lang [en|es]", "summary": "View or switch site language" },
       "go": { "usage": "go [section]", "summary": "Jump to a home section" },
       "theme": { "usage": "theme show|list|use [id]", "summary": "Inspect or set theme" },
-      "clear": { "usage": "clear", "summary": "Clear transcript" },
+      "clear": { "usage": "clear | cls", "summary": "Clear transcript" },
       "exit": { "usage": "exit | salir", "summary": "Close terminal" }
     },
     "responses": {
@@ -165,12 +184,16 @@
       "about": "César Gómez — Senior Fullstack Developer specialized in Frontend Architecture and AI-assisted craft. 13+ years shipping Vue/Nuxt systems with architecture ownership and quality gates.",
       "status": "Target availability: August 10, 2026. Open to conversations, interviews, and early offers before that date.",
       "stack": "Vue 3 · Nuxt 4 · TypeScript · Node/Express · Tailwind · PrimeVue · motion-v · Playwright/Vitest · AI-assisted craft with human review.",
+      "services": "Engineering Services: 1) Vue 3 & Nuxt 3 Architecture & Scaling. 2) AI-Assisted Craft & Quality Gates. 3) Core Web Vitals Optimization (LCP, CLS, INP). 4) Fullstack Node.js / Nitro APIs.",
       "experience": "Recent focus: Colegium (education cloud platforms) and LingoQuesto (AI/NLP conversational product). Open the About section for role deep-dives.",
       "profiles": "Hire profiles: Vue frontend developer · AI engineer / Vibe Coding Cleanup · Node.js backend developer · Cartagena local · AI-assisted craft.",
       "certs": "{count} credentials listed on the Certifications section — TypeScript, AI programming, data structures, observability, and more.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · Or use the contact form on this site.",
-      "workList": "Case studies: work colegium · work lingoquesto",
+      "workList": "Case studies: work colegium · work lingoquesto · work tissini",
       "cv": "Downloading {file}…",
+      "seo": "Technical SEO: 98 static SSG prerendered routes · 64 JSON-LD schemas (Person {'@'}id: https://cesargomez.dev/#person, WebSite, ProfilePage, Service, FAQPage) · Reciprocal XML Sitemaps · hreflang tags en-US/es-ES/x-default · CSP with SHA-256 hashes.",
+      "lang": "Current language: {locale}. Use 'lang es' or 'lang en' to switch.",
+      "langSet": "Switching language to {locale}…",
       "cleared": "Transcript cleared.",
       "themeShow": "Active theme: {name} ({id})",
       "themeListHeader": "Theme presets (* = active):",
@@ -184,7 +207,7 @@
       "blocked": "Blocked: shell operators, redirects, and arbitrary URLs are not allowed.",
       "usage": "Usage error for `{command}`. Type help.",
       "unknownSection": "Unknown section `{section}`. Try: about, stack, certifications, capabilities, cases, testimonials, profiles, contact, faq.",
-      "unknownWork": "Unknown case study `{work}`. Try: colegium, lingoquesto.",
+      "unknownWork": "Unknown case study `{work}`. Try: colegium, lingoquesto, tissini.",
       "unknownTheme": "Unknown theme `{theme}`. Run: theme list.",
       "unknownThemeAction": "Unknown theme action `{action}`. Use: show | list | use [id]."
     }
@@ -791,6 +814,47 @@
             }
           ]
         }
+      },
+      "tissini": {
+        "role": "Senior Frontend · TISSINI",
+        "period": "2019 – 2021",
+        "cardTitle": "Mobile-first e-commerce platforms at scale",
+        "cardSummary": "Built mobile-first e-commerce applications with Vue.js, reducing deployment times by 60% via automated CI/CD.",
+        "title": "Mobile-first e-commerce platforms at scale",
+        "summary": "Built mobile-first e-commerce applications with Vue.js, reducing deployment times by 60% via automated CI/CD.",
+        "tags": ["Vue 2", "Vue 3", "Mobile-First", "CI/CD", "E-Commerce"],
+        "meta": {
+          "title": "TISSINI case study — Senior Frontend Developer, Vue.js & E-Commerce",
+          "description": "Mobile-first e-commerce solutions in Vue.js, CI/CD deployment pipeline optimization, and digital products for entrepreneurs at TISSINI."
+        },
+        "page": {
+          "eyebrow": "TISSINI · Case study",
+          "title": "Mobile-first e-commerce architecture & CI/CD optimization",
+          "lead": "Senior Frontend Developer role at TISSINI — crafting mobile-first direct selling platforms with Vue.js, mentoring on best practices, and automating releases.",
+          "contactCta": "Discuss your project",
+          "backCta": "Back to case studies",
+          "highlightsTitle": "Key outcomes",
+          "highlights": [
+            "Mobile-first development across flagship products including Mitiendatissini.com and the TISSINI App",
+            "60% reduction in deployment times by establishing automated CI/CD pipelines",
+            "Gradual adoption of Vue 3 (Options & Composition API) while maintaining operational stability",
+            "Mentored junior engineers on Vue.js best practices and frontend craftsmanship"
+          ],
+          "sections": [
+            {
+              "title": "Context",
+              "body": "TISSINI powers social selling and e-commerce platforms for Hispanic women entrepreneurs across the US. As Senior Frontend Developer, I led the creation of mobile-first interfaces focused on catalog conversion and frictionless mobile usability."
+            },
+            {
+              "title": "Technical approach & Mobile-First",
+              "body": "We leveraged Vue.js (Vue 2 and Vue 3) to deliver lightweight, reactive interfaces. With a predominantly mobile user base, we prioritized initial load performance, smooth micro-interactions, and cellular network optimizations."
+            },
+            {
+              "title": "CI/CD Automation & Quality",
+              "body": "I established automated continuous integration and delivery (CI/CD) pipelines that cut release cycles by 60%, empowering the engineering team to deploy features safely and frequently."
+            }
+          ]
+        }
       }
     }
   },
@@ -877,11 +941,11 @@
     ]
   },
   "seo": {
-    "title": "Senior Vue/Nuxt · AI-Assisted Craft",
-    "description": "Hire Cesar Gomez — senior frontend engineer in Cartagena, Colombia. 13+ years with Vue 3, Nuxt 4, TypeScript, PrimeVue, and Tailwind. Ed-tech, AI-assisted craft, Vibe Coding Cleanup, Node/Express, design systems, and Core Web Vitals. Remote contract from August 2026.",
-    "ogTitle": "Senior Vue/Nuxt · AI-Assisted Craft",
-    "ogDescription": "Senior frontend developer in Cartagena de Indias, Colombia. Websites, design systems, and AI-assisted Vue/Nuxt craft with TypeScript and Node/Express. Remote preferred. Contract from August 2026.",
-    "jobTitle": "Senior Vue/Nuxt · AI-Assisted Craft",
+    "title": "Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem",
+    "description": "Hire Cesar Gomez — senior Vue/Nuxt engineer and frontend architect in Cartagena, Colombia. 13+ years with Vue 3, Nuxt 4, TypeScript. TISSINI, Colegium, LingoQuesto. AI-assisted craft, design systems, Core Web Vitals. Remote contract from August 2026.",
+    "ogTitle": "Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem",
+    "ogDescription": "Senior frontend engineer and architect in Cartagena de Indias, Colombia. Websites, design systems, and AI-assisted Vue/Nuxt craft with TypeScript and Node/Express. TISSINI, Colegium, LingoQuesto. Remote preferred. Contract from August 2026.",
+    "jobTitle": "Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem",
     "siteName": "César Gómez",
     "serviceName": "Cesar Gomez — Frontend, Websites & Fullstack Development",
     "serviceDescription": "Senior frontend and fullstack services from Cartagena, Colombia: custom websites, Vue.js/Nuxt apps, TypeScript engineering, PrimeVue/Tailwind design systems, micro-frontends, Node/Express APIs, AI-assisted delivery and Vibe Coding Cleanup, and Core Web Vitals–focused delivery for remote and international teams.",
@@ -908,7 +972,7 @@
     "items": [
       {
         "question": "Who is Cesar Gomez?",
-        "answer": "Cesar Gomez is a senior fullstack developer with a frontend focus and 13+ years of experience in Vue.js, Nuxt.js, and TypeScript. He has built products for ed-tech platforms including Colegium (100k+ students) and LingoQuesto."
+        "answer": "Cesar Gomez is a senior fullstack developer with a frontend focus and 13+ years of experience in Vue.js, Nuxt.js, and TypeScript. He has built products for e-commerce platforms like TISSINI, and ed-tech platforms including Colegium (100k+ students) and LingoQuesto."
       },
       {
         "question": "Is Cesar Gomez available for hire?",
@@ -929,7 +993,7 @@
       },
       {
         "question": "Does Cesar Gomez have ed-tech experience?",
-        "answer": "Yes. He was founding fullstack engineer on LingoQuesto, an AI/NLP conversational ed-tech product for oral language practice, and senior frontend at Colegium building cloud tools used by more than 100,000 students."
+        "answer": "Yes. He was founding fullstack engineer on LingoQuesto, an AI/NLP conversational ed-tech product for oral language practice, senior frontend at Colegium building cloud tools used by more than 100,000 students, and senior frontend at TISSINI building mobile-first e-commerce platforms for entrepreneurs."
       },
       {
         "key": "contact",

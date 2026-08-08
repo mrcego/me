@@ -47,7 +47,7 @@ export default defineNuxtConfig({
         // Matches DEFAULT_THEME_ID (github-dark); runtime script overrides per visitor
         { name: 'theme-color', content: '#58a6ff' },
         { name: 'msapplication-TileColor', content: '#58a6ff' },
-        { name: 'msapplication-TileImage', content: '/apple-touch-icon.png?v=cg2' },
+        { name: 'msapplication-TileImage', content: '/apple-touch-icon.png?v=cg3' },
         { 'http-equiv': 'X-Content-Type-Options', content: 'nosniff' },
         { 'http-equiv': 'X-XSS-Protection', content: '1; mode=block' },
       ],
@@ -63,17 +63,17 @@ export default defineNuxtConfig({
         { rel: 'dns-prefetch', href: '//www.linkedin.com' },
         { rel: 'dns-prefetch', href: '//github.com' },
         { rel: 'manifest', href: '/manifest.json' },
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png?v=cg2' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png?v=cg3' },
         {
           id: 'theme-favicon',
           key: 'theme-favicon',
           rel: 'icon',
           type: 'image/svg+xml',
-          href: '/favicon.svg?v=cg2',
+          href: '/favicon.svg?v=cg3',
         },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png?v=cg2' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png?v=cg2' },
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=cg2' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png?v=cg3' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png?v=cg3' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico?v=cg3' },
         { rel: 'alternate', type: 'text/plain', href: '/llms.txt', title: 'LLM context' },
         { rel: 'alternate', type: 'text/plain', href: '/ai.txt', title: 'AI assistant pointer' },
       ],
@@ -197,6 +197,11 @@ export default defineNuxtConfig({
     // Scan templates (incl. Lazy islands) so icons ship offline — empty scan broke prod icons.
     clientBundle: {
       scan: true,
+      icons: [
+        'solar:bag-2-bold-duotone',
+        'solar:buildings-2-bold-duotone',
+        'solar:chat-round-dots-bold-duotone',
+      ],
     },
   },
 
@@ -207,7 +212,7 @@ export default defineNuxtConfig({
     defaults: {
       width: 1200,
       height: 630,
-      alt: 'César Gómez — Senior Vue/Nuxt · AI-Assisted Craft',
+      alt: 'César Gómez — Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem',
     },
     // Prerender can exceed the module default (15s) under Windows + cold Chromium.
     security: {
@@ -274,7 +279,7 @@ export default defineNuxtConfig({
     },
     experimental: {
       // Serve hashed messages.json as static assets (shorter critical chain vs Nitro route).
-      prerenderMessages: true,
+      prerenderMessages: !process.env.VITEST,
     },
   },
 

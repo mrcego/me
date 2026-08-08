@@ -22,7 +22,7 @@
     "capabilities": "Capacidades",
     "projects": "Proyectos",
     "caseStudies": "Casos",
-    "certifications": "Certs",
+    "certifications": "Certificaciones",
     "contact": "Contacto",
     "testimonials": "Opiniones",
     "getInTouch": "Contáctame",
@@ -31,7 +31,15 @@
     "contactShort": "Contacto",
     "hireMenu": "Perfiles de contratación",
     "hireSection": "Todos los perfiles",
-    "brandRole": "Vue / Nuxt",
+    "brandRole": "Desarrollador Senior Vue/Nuxt",
+    "brandRoles": [
+      "Ingeniero Senior Vue/Nuxt",
+      "Arquitecto Frontend Lider",
+      "Desarrollador Frontend Senior",
+      "Ingeniero Fullstack Senior",
+      "Entusiasta del Ecosistema Agéntico e IA",
+      "Especialista en Limpieza de Código por IA"
+    ],
     "switchLanguage": "Cambiar idioma",
     "switchLanguageLabel": "Cambiar idioma: {locale}",
     "themePresets": "Temas IDE",
@@ -48,7 +56,7 @@
     "location": "Cartagena de Indias, Colombia",
     "workPreference": "Remoto",
     "locationLine": "Cartagena de Indias, Colombia · Preferencia remoto",
-    "description": "Entrego sistemas Vue/Nuxt mantenibles y escalables con ownership de arquitectura y quality gates — 13+ años en frontends de producción con profundidad fullstack.",
+    "description": "Entrego sistemas Vue/Nuxt mantenibles, arquitectura frontend escalable y soluciones fullstack potenciadas por IA y Vibe Coding Cleanup — 13+ años construyendo productos en producción.",
     "cta": "Contáctame",
     "downloadCv": "Descargar CV",
     "downloadCvAria": "Descargar CV — PDF ({file})",
@@ -61,6 +69,10 @@
       "vue3": "Vue 3",
       "nuxt4": "Nuxt 4",
       "ts": "TypeScript",
+      "nodejs": "Node.js",
+      "html": "HTML",
+      "css": "CSS",
+      "js": "JavaScript",
       "ai": "Craft asistido por IA",
       "nlp": "NLP",
       "vibeCoding": "Vibe Coding Cleanup",
@@ -104,6 +116,7 @@
       "title": "Abierto a nuevas oportunidades",
       "messages": ["Abierto a nuevas oportunidades", "Entrevistas desde ya"],
       "availableLabel": "Disponible",
+      "nowAvailable": "Ya disponible para contratar",
       "cta": "Contacto"
     },
     "announcement": {
@@ -145,19 +158,28 @@
       "resetLabel": "RUTA PERDIDA // REINICIAR"
     },
     "commands": {
-      "help": { "usage": "help", "summary": "Listar comandos disponibles" },
-      "about": { "usage": "about | whoami", "summary": "Quién soy" },
+      "help": { "usage": "help | list | ls", "summary": "Ver catálogo de comandos" },
+      "about": { "usage": "about", "summary": "Perfil profesional y resumen" },
       "status": { "usage": "status", "summary": "Estado de disponibilidad" },
-      "stack": { "usage": "stack", "summary": "Stack tecnológico" },
-      "work": { "usage": "work [colegium|lingoquesto]", "summary": "Casos de estudio" },
+      "stack": { "usage": "stack", "summary": "Tecnologías clave" },
+      "services": {
+        "usage": "services | servicios",
+        "summary": "Servicios de ingeniería frontend"
+      },
+      "work": {
+        "usage": "work [colegium|lingoquesto|tissini]",
+        "summary": "Casos de estudio"
+      },
       "experience": { "usage": "experience", "summary": "Roles destacados" },
       "profiles": { "usage": "profiles", "summary": "Perfiles de contratación" },
       "certs": { "usage": "certs", "summary": "Conteo de certificaciones" },
       "contact": { "usage": "contact", "summary": "Canales de contacto" },
-      "cv": { "usage": "cv", "summary": "Descargar CV en PDF" },
+      "cv": { "usage": "cv [en|es]", "summary": "Descargar CV en PDF (inglés o español)" },
+      "seo": { "usage": "seo", "summary": "Arquitectura de SEO técnico y esquemas JSON-LD" },
+      "lang": { "usage": "lang [en|es]", "summary": "Ver o cambiar idioma del portafolio" },
       "go": { "usage": "go [sección]", "summary": "Ir a una sección del home" },
       "theme": { "usage": "theme show|list|use [id]", "summary": "Ver o cambiar tema" },
-      "clear": { "usage": "clear", "summary": "Limpiar transcripción" },
+      "clear": { "usage": "clear | cls", "summary": "Limpiar transcripción" },
       "exit": { "usage": "exit | salir", "summary": "Cerrar terminal" }
     },
     "responses": {
@@ -165,12 +187,16 @@
       "about": "César Gómez — Desarrollador Fullstack Senior especializado en Arquitectura Frontend y craft asistido por IA. 13+ años entregando sistemas Vue/Nuxt con ownership de arquitectura y quality gates.",
       "status": "Disponibilidad objetivo: 10 de agosto de 2026. Abierto a conversaciones, entrevistas y ofertas tempranas antes de esa fecha.",
       "stack": "Vue 3 · Nuxt 4 · TypeScript · Node/Express · Tailwind · PrimeVue · motion-v · Playwright/Vitest · craft asistido por IA con revisión humana.",
+      "services": "Servicios de Ingeniería: 1) Arquitectura & Escalabilidad Vue/Nuxt 3. 2) Craft Asistido por IA & Quality Gates. 3) Optimización de Core Web Vitals (LCP, CLS, INP). 4) Fullstack Node.js / Nitro APIs.",
       "experience": "Enfoque reciente: Colegium (plataformas cloud educativas) y LingoQuesto (producto conversacional con IA/NLP). Abre About para el detalle de roles.",
       "profiles": "Perfiles: desarrollador Vue · ingeniero IA / Vibe Coding Cleanup · desarrollador Node.js · Cartagena local · craft asistido por IA.",
       "certs": "{count} credenciales en la sección Certificaciones — TypeScript, programación con IA, estructuras de datos, observabilidad y más.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · O usa el formulario de contacto del sitio.",
-      "workList": "Casos: work colegium · work lingoquesto",
+      "workList": "Casos: work colegium · work lingoquesto · work tissini",
       "cv": "Descargando {file}…",
+      "seo": "SEO Técnico: 98 rutas estáticas SSG prerenderizadas · 64 esquemas JSON-LD (Person {'@'}id: https://cesargomez.dev/#person, WebSite, ProfilePage, Service, FAQPage) · Sitemaps XML recíprocos · etiquetas hreflang en-US/es-ES/x-default · CSP con hashes SHA-256.",
+      "lang": "Idioma actual: {locale}. Usa 'lang es' o 'lang en' para cambiar.",
+      "langSet": "Cambiando idioma a {locale}…",
       "cleared": "Transcripción limpiada.",
       "themeShow": "Tema activo: {name} ({id})",
       "themeListHeader": "Presets de tema (* = activo):",
@@ -184,7 +210,7 @@
       "blocked": "Bloqueado: no se permiten operadores shell, redirecciones ni URLs arbitrarias.",
       "usage": "Uso incorrecto de `{command}`. Escribe help.",
       "unknownSection": "Sección desconocida `{section}`. Prueba: about, stack, certifications, capabilities, cases, testimonials, profiles, contact, faq.",
-      "unknownWork": "Caso desconocido `{work}`. Prueba: colegium, lingoquesto.",
+      "unknownWork": "Caso desconocido `{work}`. Prueba: colegium, lingoquesto, tissini.",
       "unknownTheme": "Tema desconocido `{theme}`. Ejecuta: theme list.",
       "unknownThemeAction": "Acción de tema desconocida `{action}`. Usa: show | list | use [id]."
     }
@@ -791,6 +817,47 @@
             }
           ]
         }
+      },
+      "tissini": {
+        "role": "Senior Frontend · TISSINI",
+        "period": "2019 – 2021",
+        "cardTitle": "Plataformas e-commerce mobile-first a escala",
+        "cardSummary": "Desarrollé aplicaciones e-commerce mobile-first con Vue.js, reduciendo tiempos de despliegue en un 60% mediante CI/CD.",
+        "title": "Plataformas e-commerce mobile-first a escala",
+        "summary": "Desarrollé aplicaciones e-commerce mobile-first con Vue.js, reduciendo tiempos de despliegue en un 60% mediante CI/CD.",
+        "tags": ["Vue 2", "Vue 3", "Mobile-First", "CI/CD", "E-Commerce"],
+        "meta": {
+          "title": "Caso TISSINI — Senior Frontend Developer, Vue.js y E-Commerce",
+          "description": "Desarrollo de soluciones e-commerce mobile-first en Vue.js, optimización de pipelines de CI/CD y productos para emprendedoras en TISSINI."
+        },
+        "page": {
+          "eyebrow": "TISSINI · Caso de estudio",
+          "title": "Arquitectura e-commerce mobile-first y optimización de CI/CD",
+          "lead": "Rol de Senior Frontend Developer en TISSINI — construcción de plataformas de venta directa mobile-first con Vue.js, mentoría de buenas prácticas y automatización de despliegues.",
+          "contactCta": "Hablemos de tu proyecto",
+          "backCta": "Volver a casos de estudio",
+          "highlightsTitle": "Resultados clave",
+          "highlights": [
+            "Desarrollo de soluciones mobile-first en productos insignia como Mitiendatissini.com y TISSINI App",
+            "Reducción del 60% en tiempos de despliegue gracias al establecimiento de pipelines automatizados de CI/CD",
+            "Migración paulatina y adopción de Vue 3 (Options y Composition API) manteniendo estabilidad operativa",
+            "Mentoría a desarrolladores junior e implementación de estándares de calidad frontend"
+          ],
+          "sections": [
+            {
+              "title": "Contexto",
+              "body": "TISSINI opera plataformas e-commerce y de venta social enfocadas en emprendedoras hispanas en EE.UU. Como Desarrollador Frontend Senior, lideré el desarrollo de interfaces mobile-first orientadas a acelerar la conversión y la usabilidad del catálogo digital."
+            },
+            {
+              "title": "Enfoque técnico & Mobile-First",
+              "body": "Utilizamos Vue.js (Vue 2 y Vue 3) para construir interfaces reactivas, livianas y altamente responsivas. Dado el perfil de usuario principalmente móvil, priorizamos el rendimiento de carga, animaciones fluidas e interacciones optimizadas para conexiones celulares."
+            },
+            {
+              "title": "Automatización CI/CD & Calidad",
+              "body": "Implementé flujos de integración y despliegue continuo (CI/CD) que redujeron los tiempos de release en un 60%, permitiendo a ingeniería iterar con mayor seguridad y publicar nuevas funcionalidades sin fricción."
+            }
+          ]
+        }
       }
     }
   },
@@ -877,11 +944,11 @@
     ]
   },
   "seo": {
-    "title": "Senior Vue/Nuxt · Craft asistido por IA",
-    "description": "Contrata a César Gómez — ingeniero frontend senior en Cartagena, Colombia. 13+ años con Vue 3, Nuxt 4, TypeScript, PrimeVue y Tailwind. Ed-tech, craft asistido por IA, Vibe Coding Cleanup, Node/Express, design systems y Core Web Vitals. Contrato remoto desde agosto de 2026.",
-    "ogTitle": "Senior Vue/Nuxt · Craft asistido por IA",
-    "ogDescription": "Desarrollador senior frontend en Cartagena de Indias, Colombia. Páginas web, design systems y craft Vue/Nuxt asistido por IA con TypeScript y Node/Express. Preferencia remoto. Contrato desde ago 2026.",
-    "jobTitle": "Senior Vue/Nuxt · Craft asistido por IA",
+    "title": "Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem",
+    "description": "Contrata a César Gómez — ingeniero senior Vue/Nuxt y arquitecto frontend en Cartagena, Colombia. 13+ años con Vue 3, Nuxt 4, TypeScript. TISSINI, Colegium, LingoQuesto. Craft asistido por IA, design systems, Core Web Vitals. Contrato remoto desde agosto de 2026.",
+    "ogTitle": "Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem",
+    "ogDescription": "Ingeniero senior frontend y arquitecto en Cartagena de Indias, Colombia. Páginas web, design systems y craft Vue/Nuxt asistido por IA con TypeScript y Node/Express. TISSINI, Colegium, LingoQuesto. Preferencia remoto. Contrato desde ago 2026.",
+    "jobTitle": "Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem",
     "siteName": "César Gómez",
     "serviceName": "César Gómez — Frontend, páginas web y desarrollo fullstack",
     "serviceDescription": "Servicios senior de frontend y fullstack desde Cartagena, Colombia: páginas web a medida, apps Vue.js/Nuxt, TypeScript, design systems con PrimeVue/Tailwind, micro-frontends, APIs Node/Express, entrega asistida por IA y Vibe Coding Cleanup, e ingeniería orientada a Core Web Vitals para equipos remotos e internacionales.",
@@ -918,7 +985,7 @@
       },
       {
         "question": "¿Quién es César Gómez?",
-        "answer": "César Gómez es desarrollador fullstack senior con foco en frontend y 13+ años de experiencia en Vue.js, Nuxt.js y TypeScript. Ha construido productos para plataformas ed-tech como Colegium (100k+ estudiantes) y LingoQuesto."
+        "answer": "César Gómez es desarrollador fullstack senior con foco en frontend y 13+ años de experiencia en Vue.js, Nuxt.js y TypeScript. Ha construido productos para plataformas de e-commerce como TISSINI, y plataformas ed-tech como Colegium (100k+ estudiantes) y LingoQuesto."
       },
       {
         "question": "¿Está disponible César Gómez para contratación?",
@@ -930,7 +997,7 @@
       },
       {
         "question": "¿Qué experiencia tiene César Gómez en ed-tech?",
-        "answer": "Fue ingeniero fullstack fundador en LingoQuesto, un producto ed-tech conversacional con IA/NLP para práctica oral, y frontend senior en Colegium construyendo herramientas cloud usadas por más de 100.000 estudiantes."
+        "answer": "Fue ingeniero fullstack fundador en LingoQuesto, un producto ed-tech conversacional con IA/NLP para práctica oral, frontend senior en Colegium construyendo herramientas cloud usadas por más de 100.000 estudiantes, y frontend senior en TISSINI construyendo plataformas de e-commerce mobile-first para emprendedores."
       },
       {
         "question": "¿Trabaja en inglés y español?",

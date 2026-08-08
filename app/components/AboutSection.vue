@@ -37,8 +37,9 @@ const COMPANY_LOGOS = {
 } as const;
 
 type CompanyLogoId = keyof typeof COMPANY_LOGOS;
+type RoleItem = { key: CompanyLogoId };
 
-const roles: { key: CompanyLogoId }[] = [
+const roles: RoleItem[] = [
   { key: 'lingoquesto' },
   { key: 'colegium' },
   { key: 'tissini' },

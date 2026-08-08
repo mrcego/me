@@ -5,13 +5,8 @@ usePortfolioSeo();
 <template>
   <main id="main-content" class="portfolio-content relative" tabindex="-1">
     <HeroSection />
-    <LazyCaseStudiesSection :hydrate-on-visible="{ rootMargin: '120px' }" />
-    <!--
-      Near-fold: long hydrate-after (not visible). Keeps section JS off the LCP
-      critical request chain; SSR HTML + inlined styles paint first.
-      Far sections: hydrate-on-visible — only fetch when approaching viewport.
-    -->
     <LazyAboutSection :hydrate-after="6500" />
+    <LazyCaseStudiesSection :hydrate-on-visible="{ rootMargin: '120px' }" />
     <LazyTechStackSection :hydrate-after="7800" />
     <LazyCertificationsSection :hydrate-on-visible="{ rootMargin: '120px' }" />
     <LazyCapabilitiesSection :hydrate-on-visible="{ rootMargin: '120px' }" />

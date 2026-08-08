@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test';
 const SECTION_IDS = [
   'hero',
   'about',
+  'case-studies',
   'tech-stack',
   'certifications',
   'capabilities',
@@ -37,6 +38,7 @@ test.describe('homepage sections', () => {
     // Prefer href over label — nav copy is intentionally short (Stack/Certs/Cases/Reviews).
     for (const { href, id } of [
       { href: '#about', id: 'about' },
+      { href: '#case-studies', id: 'case-studies' },
       { href: '#tech-stack', id: 'tech-stack' },
       { href: '#certifications', id: 'certifications' },
       { href: '#testimonials', id: 'testimonials' },
