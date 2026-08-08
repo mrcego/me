@@ -116,6 +116,7 @@
       "title": "Abierto a nuevas oportunidades",
       "messages": ["Abierto a nuevas oportunidades", "Entrevistas desde ya"],
       "availableLabel": "Disponible",
+      "nowAvailable": "Ya disponible para contratar",
       "cta": "Contacto"
     },
     "announcement": {
@@ -157,19 +158,25 @@
       "resetLabel": "RUTA PERDIDA // REINICIAR"
     },
     "commands": {
-      "help": { "usage": "help", "summary": "Listar comandos disponibles" },
-      "about": { "usage": "about | whoami", "summary": "Quién soy" },
+      "help": { "usage": "help | list | ls", "summary": "Ver catálogo de comandos" },
+      "about": { "usage": "about", "summary": "Perfil profesional y resumen" },
       "status": { "usage": "status", "summary": "Estado de disponibilidad" },
-      "stack": { "usage": "stack", "summary": "Stack tecnológico" },
+      "stack": { "usage": "stack", "summary": "Tecnologías clave" },
+      "services": {
+        "usage": "services | servicios",
+        "summary": "Servicios de ingeniería frontend"
+      },
       "work": { "usage": "work [colegium|lingoquesto]", "summary": "Casos de estudio" },
       "experience": { "usage": "experience", "summary": "Roles destacados" },
       "profiles": { "usage": "profiles", "summary": "Perfiles de contratación" },
       "certs": { "usage": "certs", "summary": "Conteo de certificaciones" },
       "contact": { "usage": "contact", "summary": "Canales de contacto" },
-      "cv": { "usage": "cv", "summary": "Descargar CV en PDF" },
+      "cv": { "usage": "cv [en|es]", "summary": "Descargar CV en PDF (inglés o español)" },
+      "seo": { "usage": "seo", "summary": "Arquitectura de SEO técnico y esquemas JSON-LD" },
+      "lang": { "usage": "lang [en|es]", "summary": "Ver o cambiar idioma del portafolio" },
       "go": { "usage": "go [sección]", "summary": "Ir a una sección del home" },
       "theme": { "usage": "theme show|list|use [id]", "summary": "Ver o cambiar tema" },
-      "clear": { "usage": "clear", "summary": "Limpiar transcripción" },
+      "clear": { "usage": "clear | cls", "summary": "Limpiar transcripción" },
       "exit": { "usage": "exit | salir", "summary": "Cerrar terminal" }
     },
     "responses": {
@@ -177,12 +184,16 @@
       "about": "César Gómez — Desarrollador Fullstack Senior especializado en Arquitectura Frontend y craft asistido por IA. 13+ años entregando sistemas Vue/Nuxt con ownership de arquitectura y quality gates.",
       "status": "Disponibilidad objetivo: 10 de agosto de 2026. Abierto a conversaciones, entrevistas y ofertas tempranas antes de esa fecha.",
       "stack": "Vue 3 · Nuxt 4 · TypeScript · Node/Express · Tailwind · PrimeVue · motion-v · Playwright/Vitest · craft asistido por IA con revisión humana.",
+      "services": "Servicios de Ingeniería: 1) Arquitectura & Escalabilidad Vue/Nuxt 3. 2) Craft Asistido por IA & Quality Gates. 3) Optimización de Core Web Vitals (LCP, CLS, INP). 4) Fullstack Node.js / Nitro APIs.",
       "experience": "Enfoque reciente: Colegium (plataformas cloud educativas) y LingoQuesto (producto conversacional con IA/NLP). Abre About para el detalle de roles.",
       "profiles": "Perfiles: desarrollador Vue · ingeniero IA / Vibe Coding Cleanup · desarrollador Node.js · Cartagena local · craft asistido por IA.",
       "certs": "{count} credenciales en la sección Certificaciones — TypeScript, programación con IA, estructuras de datos, observabilidad y más.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · O usa el formulario de contacto del sitio.",
       "workList": "Casos: work colegium · work lingoquesto",
       "cv": "Descargando {file}…",
+      "seo": "SEO Técnico: 98 rutas estáticas SSG prerenderizadas · 64 esquemas JSON-LD (Person @id: https://cesargomez.dev/#person, WebSite, ProfilePage, Service, FAQPage) · Sitemaps XML recíprocos · etiquetas hreflang en-US/es-ES/x-default · CSP con hashes SHA-256.",
+      "lang": "Idioma actual: {locale}. Usa 'lang es' o 'lang en' para cambiar.",
+      "langSet": "Cambiando idioma a {locale}…",
       "cleared": "Transcripción limpiada.",
       "themeShow": "Tema activo: {name} ({id})",
       "themeListHeader": "Presets de tema (* = activo):",

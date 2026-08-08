@@ -33,14 +33,16 @@ export function isImmediatelyAvailable(
  */
 export function useAvailability() {
   const showAnnouncement = ref(true);
+  const isAvailable = ref(false);
 
   if (import.meta.client) {
     onMounted(() => {
-      showAnnouncement.value = !isImmediatelyAvailable();
+      isAvailable.value = isImmediatelyAvailable();
     });
   }
 
   return {
     showAnnouncement: readonly(showAnnouncement),
+    isAvailable: readonly(isAvailable),
   };
 }

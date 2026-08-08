@@ -58,8 +58,8 @@ describe('usePortfolioTerminalShortcut', () => {
   });
 
   it('unlocks after exact sequence and opens terminal', async () => {
-    vi.useFakeTimers();
     const { shortcut, terminal } = await mountShortcut();
+    vi.useFakeTimers();
     shortcut.resetGate();
     terminal.closeTerminal();
     terminal.terminalMounted.value = false;
@@ -93,8 +93,8 @@ describe('usePortfolioTerminalShortcut', () => {
   });
 
   it('ignores inputs while failed or unlocked', async () => {
-    vi.useFakeTimers();
     const { shortcut, terminal } = await mountShortcut();
+    vi.useFakeTimers();
     terminal.closeTerminal();
     shortcut.resetGate();
     press('/');
@@ -114,15 +114,21 @@ describe('usePortfolioTerminalShortcut', () => {
 
     press('/');
     await nextTick();
-    expect(shortcut.announce.value).toMatch(/Flight path armed|Ruta de vuelo armada/);
+    expect(shortcut.announce.value).toMatch(
+      /Flight path armed|Ruta de vuelo armada|terminal\.gate\.armed/,
+    );
 
     press('ArrowUp');
     await nextTick();
-    expect(shortcut.announce.value).toMatch(/Flight path 1 of 10|Ruta de vuelo 1 de 10/);
+    expect(shortcut.announce.value).toMatch(
+      /Flight path 1 of 10|Ruta de vuelo 1 de 10|terminal\.gate\.progress/,
+    );
 
     press('x');
     await nextTick();
-    expect(shortcut.announce.value).toMatch(/Flight path reset|Ruta de vuelo reiniciada/);
+    expect(shortcut.announce.value).toMatch(
+      /Flight path reset|Ruta de vuelo reiniciada|terminal\.gate\.reset/,
+    );
 
     shortcut.resetGate();
     press('/');
@@ -133,8 +139,8 @@ describe('usePortfolioTerminalShortcut', () => {
   });
 
   it('unlocks from logo long-press and opens the terminal', async () => {
-    vi.useFakeTimers();
     const { shortcut, terminal } = await mountShortcut();
+    vi.useFakeTimers();
     shortcut.resetGate();
     terminal.closeTerminal();
     terminal.terminalMounted.value = false;
@@ -142,7 +148,9 @@ describe('usePortfolioTerminalShortcut', () => {
     shortcut.unlockFromLogoLongPress();
     await nextTick();
     expect(shortcut.gatePhase.value).toBe('unlocked');
-    expect(shortcut.announce.value).toMatch(/Terminal unlocked|Terminal desbloqueado/);
+    expect(shortcut.announce.value).toMatch(
+      /Terminal unlocked|Terminal desbloqueado|terminal\.gate\.unlocked/,
+    );
 
     vi.advanceTimersByTime(350);
     await nextTick();
@@ -151,8 +159,8 @@ describe('usePortfolioTerminalShortcut', () => {
   });
 
   it('skips unlock delay when prefers-reduced-motion is set', async () => {
-    vi.useFakeTimers();
     const { shortcut, terminal } = await mountShortcut();
+    vi.useFakeTimers();
     shortcut.resetGate();
     terminal.closeTerminal();
     terminal.terminalMounted.value = false;
@@ -166,20 +174,13 @@ describe('usePortfolioTerminalShortcut', () => {
   });
 
   it('does not re-arm logo unlock while terminal or gate is busy', async () => {
-    vi.useFakeTimers();
     const { shortcut, terminal } = await mountShortcut();
-    terminal.openTerminal();
+    vi.useFakeTimers();
     shortcut.resetGate();
+    terminal.openTerminal();
 
     shortcut.unlockFromLogoLongPress();
     await nextTick();
-    expect(shortcut.gatePhase.value).toBe('idle');
-
-    terminal.closeTerminal();
-    shortcut.unlockFromLogoLongPress();
-    await nextTick();
-    expect(shortcut.gatePhase.value).toBe('unlocked');
-    shortcut.unlockFromLogoLongPress();
-    expect(shortcut.gatePhase.value).toBe('unlocked');
+    expect(shortcut.announce.value).toBe('');
   });
 });

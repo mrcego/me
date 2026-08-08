@@ -56,8 +56,43 @@ describe('parsePortfolioTerminalCommand', () => {
     });
   });
 
-  it('returns downloadCv for cv', () => {
+  it('parses list, services, seo, and lang commands', () => {
+    expect(parsePortfolioTerminalCommand('list').effects[0]).toMatchObject({
+      type: 'print',
+      commandId: 'help',
+    });
+    expect(parsePortfolioTerminalCommand('ls').effects[0]).toMatchObject({
+      type: 'print',
+      commandId: 'help',
+    });
+    expect(parsePortfolioTerminalCommand('services').effects[0]).toMatchObject({
+      type: 'print',
+      commandId: 'services',
+    });
+    expect(parsePortfolioTerminalCommand('seo').effects[0]).toMatchObject({
+      type: 'print',
+      commandId: 'seo',
+    });
+    expect(parsePortfolioTerminalCommand('lang').effects[0]).toMatchObject({
+      type: 'print',
+      commandId: 'lang',
+    });
+    expect(parsePortfolioTerminalCommand('lang es').effects[0]).toEqual({
+      type: 'setLang',
+      lang: 'es',
+    });
+  });
+
+  it('returns downloadCv for cv with optional language', () => {
     expect(parsePortfolioTerminalCommand('cv').effects[0]).toEqual({ type: 'downloadCv' });
+    expect(parsePortfolioTerminalCommand('cv en').effects[0]).toEqual({
+      type: 'downloadCv',
+      lang: 'en',
+    });
+    expect(parsePortfolioTerminalCommand('cv es').effects[0]).toEqual({
+      type: 'downloadCv',
+      lang: 'es',
+    });
   });
 
   it('rejects empty input', () => {

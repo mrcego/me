@@ -16,6 +16,8 @@ describe('useFaqItems', () => {
       }),
     );
 
+    await nextTick();
+
     expect(items.value.length).toBeGreaterThan(3);
     expect(items.value[0]?.question.length).toBeGreaterThan(5);
     expect(items.value[0]?.answer.length).toBeGreaterThan(5);

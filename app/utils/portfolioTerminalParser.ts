@@ -15,7 +15,8 @@ export type TerminalParseEffect =
       type: 'navigate';
       target: { kind: 'section'; id: TerminalSectionId } | { kind: 'work'; id: TerminalWorkId };
     }
-  | { type: 'downloadCv' }
+  | { type: 'downloadCv'; lang?: 'en' | 'es' }
+  | { type: 'setLang'; lang: 'en' | 'es' }
   | { type: 'setTheme'; presetId: string }
   | { type: 'listThemes' }
   | { type: 'showTheme' }
@@ -94,10 +95,12 @@ export function parsePortfolioTerminalCommand(rawInput: string): TerminalParseRe
     case 'about':
     case 'status':
     case 'stack':
+    case 'services':
     case 'experience':
     case 'profiles':
     case 'certs':
     case 'contact':
+    case 'seo':
       if (args.length > 0) return { input, normalized, effects: [usage(command.id)] };
       return {
         input,
@@ -105,9 +108,35 @@ export function parsePortfolioTerminalCommand(rawInput: string): TerminalParseRe
         effects: [{ type: 'print', commandId: command.id, args: [] }],
       };
 
-    case 'cv':
-      if (args.length > 0) return { input, normalized, effects: [usage(command.id)] };
-      return { input, normalized, effects: [{ type: 'downloadCv' }] };
+    case 'cv': {
+      if (args.length === 0) {
+        return { input, normalized, effects: [{ type: 'downloadCv' }] };
+      }
+      if (args.length === 1) {
+        const lang = args[0]?.toLowerCase();
+        if (lang === 'es' || lang === 'en') {
+          return { input, normalized, effects: [{ type: 'downloadCv', lang }] };
+        }
+      }
+      return { input, normalized, effects: [usage(command.id)] };
+    }
+
+    case 'lang': {
+      if (args.length === 0) {
+        return {
+          input,
+          normalized,
+          effects: [{ type: 'print', commandId: command.id, args: [] }],
+        };
+      }
+      if (args.length === 1) {
+        const lang = args[0]?.toLowerCase();
+        if (lang === 'es' || lang === 'en') {
+          return { input, normalized, effects: [{ type: 'setLang', lang }] };
+        }
+      }
+      return { input, normalized, effects: [usage(command.id)] };
+    }
 
     case 'clear':
       if (args.length > 0) return { input, normalized, effects: [usage(command.id)] };

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const { showAnnouncement } = useAvailability();
-const { messages, showDateChip } = useBannerMessageRotator(() => showAnnouncement.value);
+const { messages, showDateChip, isAvailable } = useBannerMessageRotator(
+  () => showAnnouncement.value,
+);
 const { goToSection, sectionHref } = useSectionNavigation();
 </script>
 
@@ -36,12 +38,19 @@ const { goToSection, sectionHref } = useSectionNavigation();
                 />
 
                 <span v-if="showDateChip" class="availability-banner__date-chip">
-                  <span class="availability-banner__date-label">{{
-                    $t('availability.banner.availableLabel')
-                  }}</span>
-                  <strong class="availability-banner__date">{{
-                    $t('availability.announcement.dateValue')
-                  }}</strong>
+                  <template v-if="isAvailable">
+                    <strong class="availability-banner__date">{{
+                      $t('availability.banner.nowAvailable')
+                    }}</strong>
+                  </template>
+                  <template v-else>
+                    <span class="availability-banner__date-label">{{
+                      $t('availability.banner.availableLabel')
+                    }}</span>
+                    <strong class="availability-banner__date">{{
+                      $t('availability.announcement.dateValue')
+                    }}</strong>
+                  </template>
                 </span>
               </span>
 

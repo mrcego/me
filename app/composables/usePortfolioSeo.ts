@@ -162,6 +162,13 @@ export const usePortfolioSeo = () => {
         inLanguage: ['en-US', 'es-ES'],
         publisher: personSchemaRef(),
         about: personSchemaRef(),
+        potentialAction: {
+          '@type': 'ControlAction',
+          name: 'Portfolio Terminal Interface',
+          description:
+            'Interactive CLI command line interface for navigating portfolio sections, downloading localized CVs, and exploring technical architecture.',
+          target: `${PERSON_ENTITY_URL}#terminal`,
+        },
       }),
       jsonLdScript('schema-profile', {
         '@context': 'https://schema.org',

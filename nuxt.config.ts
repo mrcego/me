@@ -274,7 +274,7 @@ export default defineNuxtConfig({
     },
     experimental: {
       // Serve hashed messages.json as static assets (shorter critical chain vs Nitro route).
-      prerenderMessages: true,
+      prerenderMessages: !process.env.VITEST,
     },
   },
 

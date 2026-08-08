@@ -1,6 +1,7 @@
 import type { Ref } from 'vue';
 import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useAvailability } from '~/composables/useAvailability';
 import { useMatchMedia } from '~/composables/useMatchMedia';
 import { useTextRotator } from '~/composables/useTextRotator';
 
@@ -11,11 +12,15 @@ export function useBannerMessageRotator(enabled: Ref<boolean> | (() => boolean))
   const { t } = useI18n();
   const isXlUp = useMatchMedia(XL_UP);
   const isMounted = ref(false);
+  const { isAvailable } = useAvailability();
   const showDateChip = computed(() => isMounted.value && isXlUp.value);
 
-  const dateMessage = computed(
-    () => `${t('availability.banner.availableLabel')} ${t('availability.announcement.dateValue')}`,
-  );
+  const dateMessage = computed(() => {
+    if (isAvailable.value) {
+      return t('availability.banner.nowAvailable');
+    }
+    return `${t('availability.banner.availableLabel')} ${t('availability.announcement.dateValue')}`;
+  });
 
   const messages = computed(() => {
     const rotating = [t('availability.banner.messages.0'), t('availability.banner.messages.1')];
@@ -40,5 +45,6 @@ export function useBannerMessageRotator(enabled: Ref<boolean> | (() => boolean))
     activeIndex,
     messages,
     showDateChip,
+    isAvailable,
   };
 }
