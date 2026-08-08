@@ -1,10 +1,10 @@
-const CACHE_NAME = 'cesar-gomez-portfolio-v7';
+const CACHE_NAME = 'cesar-gomez-portfolio-v8';
 const IS_LOCALHOST = ['localhost', '127.0.0.1', '[::1]'].includes(self.location.hostname);
 const urlsToCache = [
-  '/img/logo-final.svg?v=cg2',
+  '/img/logo-final.svg?v=cg3',
   '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg',
-  '/img/og-image.png?v=cg2',
-  '/favicon.ico?v=cg2',
+  '/img/og-image.png?v=cg3',
+  '/favicon.ico?v=cg3',
 ];
 
 const isNavigationRequest = (request) =>
