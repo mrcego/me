@@ -134,14 +134,47 @@ export const usePortfolioSeo = () => {
         sameAs: [
           'https://www.linkedin.com/in/mrcego',
           'https://github.com/mrcego',
+          'https://x.com/codingwithcego',
           PERSON_ENTITY_URL,
         ],
         knowsAbout: [...PERSON_KNOWS_ABOUT],
         knowsLanguage: ['en', 'es'],
         alumniOf: [
-          { '@type': 'Organization', name: 'TISSINI' },
-          { '@type': 'Organization', name: 'Colegium' },
-          { '@type': 'Organization', name: 'LingoQuesto' },
+          {
+            '@type': 'Organization',
+            name: 'TISSINI',
+            url: 'https://tissini.com',
+            description:
+              'Latin-American social-commerce and direct-sales platform for fashion entrepreneurs.',
+          },
+          {
+            '@type': 'Organization',
+            name: 'Colegium',
+            url: 'https://www.colegium.com',
+            description:
+              'Ed-tech company providing cloud-based school management and learning tools across Latin America.',
+          },
+          {
+            '@type': 'Organization',
+            name: 'LingoQuesto',
+            description: 'AI/NLP conversational ed-tech product for oral language practice.',
+          },
+        ],
+        hasOccupation: [
+          {
+            '@type': 'Occupation',
+            name: 'Senior Frontend Developer',
+            occupationalCategory: '15-1252.00',
+            description:
+              'Senior frontend engineer specializing in Vue.js, Nuxt.js, TypeScript, and scalable web architecture.',
+          },
+          {
+            '@type': 'Occupation',
+            name: 'Frontend Architect',
+            occupationalCategory: '15-1252.00',
+            description:
+              'Lead frontend architecture for micro-frontends, design systems, and performance-critical platforms.',
+          },
         ],
         worksFor: {
           '@type': 'Organization',
@@ -267,6 +300,8 @@ export const usePortfolioSeo = () => {
           'Core Web Vitals Optimization',
           'Node.js Backend Development',
           'Express.js API Development',
+          'E-commerce Frontend Development',
+          'Retailtech Engineering',
           'AI-Assisted Craft',
           'Vibe Coding Cleanup',
           'AI/NLP Product Integration',
