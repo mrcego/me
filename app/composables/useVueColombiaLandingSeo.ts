@@ -1,0 +1,46 @@
+import { useExpertiseLandingSeo } from './useExpertiseLandingSeo';
+
+export const useVueColombiaLandingSeo = () =>
+  useExpertiseLandingSeo({
+    translationKey: 'landingVueColombia',
+    paths: {
+      en: '/vue-developer-colombia',
+      es: '/desarrollador-vue-colombia',
+    },
+    jobTitles: [
+      'Desarrollador Vue.js Colombia',
+      'Desarrollador Vue Colombia',
+      'Vue.js Developer Colombia',
+      'Vue Developer Colombia',
+      'Senior Vue Frontend Developer Colombia',
+      'Desarrollador Nuxt.js Colombia',
+      'Nuxt.js Developer Colombia',
+    ],
+    knowsAbout: [
+      'Vue.js',
+      'Vue 3',
+      'Desarrollador Vue Colombia',
+      'Desarrollador Vue.js Colombia',
+      'Nuxt.js',
+      'Nuxt 4',
+      'TypeScript',
+      'Pinia',
+      'Vue Router',
+      'Vite',
+      'Composition API',
+      'PrimeVue',
+      'Tailwind CSS',
+      'Frontend Development Colombia',
+      'Senior Frontend Development',
+      'Website Development Colombia',
+      'Design Systems',
+      'Micro-frontends',
+      'SSR/SSG',
+      'Core Web Vitals',
+      'Accessibility',
+      'Web Performance',
+      'Ed-tech',
+      'Remote Vue Contracting Colombia',
+      'LatAm Remote Contracting',
+    ],
+  });

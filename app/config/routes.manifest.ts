@@ -8,7 +8,12 @@
 export type LocaleCode = 'en' | 'es';
 
 export type LandingTranslationKey =
-  'landingVue' | 'landingAi' | 'landingNode' | 'landingLocal' | 'landingCraft';
+  | 'landingVue'
+  | 'landingAi'
+  | 'landingNode'
+  | 'landingLocal'
+  | 'landingCraft'
+  | 'landingVueColombia';
 
 export type HireProfileId = 'vue' | 'ai' | 'node';
 
@@ -84,6 +89,12 @@ export const PORTFOLIO_ROUTES: readonly PortfolioRoute[] = [
     paths: { en: '/ai-assisted-craft/', es: '/es/craft-asistido-ia/' },
     localePath: '/ai-assisted-craft',
     landingKey: 'landingCraft',
+  },
+  {
+    id: 'vueColombia',
+    paths: { en: '/vue-developer-colombia/', es: '/es/desarrollador-vue-colombia/' },
+    localePath: '/vue-developer-colombia',
+    landingKey: 'landingVueColombia',
   },
 ] as const;
 

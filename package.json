@@ -36,7 +36,8 @@
     "test:perf": "node scripts/run-lhci.mjs",
     "avatars:fetch": "node scripts/fetch-avatars.mjs",
     "avatars:scrape": "node scripts/scrape-linkedin-avatars.mjs",
-    "og:generate": "node scripts/generate-og.mjs"
+    "og:generate": "node scripts/generate-og.mjs",
+    "indexnow:submit": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
     "@nuxt/vite-builder": "^4.5.1",

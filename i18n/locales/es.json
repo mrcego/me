@@ -1112,6 +1112,85 @@
       }
     ]
   },
+  "landingVueColombia": {
+    "meta": {
+      "title": "Desarrollador Vue.js Colombia | Senior Vue 3 & Nuxt — César Gómez",
+      "description": "Contrata un desarrollador Vue.js en Colombia. Ingeniero senior Vue 3, Nuxt 4, TypeScript, Pinia y PrimeVue. 13+ años entregando productos en ed-tech y e-commerce. Desarrollo remoto desde Colombia."
+    },
+    "eyebrow": "Desarrollador Vue.js · Colombia",
+    "title": "Desarrollador Vue.js Colombia",
+    "titleHighlight": "Senior",
+    "lead": "¿Buscas un desarrollador Vue.js senior en Colombia con experiencia real en producción? Soy César Gómez: desarrollador frontend senior con 13+ años enviando software con Vue 3, Nuxt 4, TypeScript y arquitectura enfocada en rendimiento — remoto desde Cartagena, Colombia para equipos globales y de LatAm.",
+    "intent": {
+      "title": "Por qué contratar un desarrollador Vue.js en Colombia",
+      "paragraphs": [
+        "Un desarrollador Vue.js senior en Colombia ofrece talento técnico de alto nivel alineado con zonas horarias de América y Europa. Como desarrollador senior Vue, asumo la arquitectura Vue 3 + Nuxt 4, Composition API, Pinia, Vue Router, TypeScript y estándares de equipo.",
+        "Si necesitas contratar un desarrollador Vue en Colombia o un desarrollador remoto para equipos en LatAm e internacionales, esta página está creada para reclutadores y líderes de ingeniería que buscan propiedad frontend integral: SSR/SSG, design systems, micro-frontends y Core Web Vitals.",
+        "También me desempeño como desarrollador Nuxt.js cuando el producto requiere SEO técnico, SSR de alto rendimiento o aplicaciones híbridas. La especialidad es Vue; la entrega es trabajo en productos reales (Colegium, TISSINI, LingoQuesto)."
+      ]
+    },
+    "services": {
+      "title": "Escenarios para contratar un desarrollador Vue.js en Colombia",
+      "items": [
+        {
+          "title": "Desarrollador Vue.js en Colombia para SaaS y productos",
+          "body": "Arquitectura Vue 3, estado Pinia, Vue Router y UIs con TypeScript listas para escalar."
+        },
+        {
+          "title": "Desarrollador Nuxt.js Colombia (SSR, SSG, híbrido)",
+          "body": "Sitios y apps Nuxt 4 con SEO técnico, SSG zero-runtime y Core Web Vitals optimizados."
+        },
+        {
+          "title": "Desarrollador frontend Vue + design systems",
+          "body": "Librerías de componentes, PrimeVue/Tailwind y micro-frontends para escalar interfaces sin perder consistencia."
+        },
+        {
+          "title": "Desarrollador Vue remoto / freelance en Colombia",
+          "body": "Contrato senior remoto desde Cartagena para equipos internacionales, colaborando en inglés y español."
+        },
+        {
+          "title": "Contratar desarrollador Vue 3 + TypeScript en Colombia",
+          "body": "Vue 3, Composition API, Pinia y TypeScript estricto para equipos que necesitan propiedad técnica senior."
+        }
+      ]
+    },
+    "expertiseTitle": "Stack y habilidades de un desarrollador Vue en Colombia",
+    "expertise": [
+      "Vue.js / Vue 3 + Composition API en producción",
+      "Nuxt.js / Nuxt 4 (SSR, SSG, híbrido) y SEO técnico",
+      "TypeScript, Pinia, Vue Router y Vite",
+      "PrimeVue, Tailwind CSS, design systems y micro-frontends",
+      "Web Vitals, accesibilidad y rendimiento frontend",
+      "Integración API fullstack con Node & Express cuando se requiere"
+    ],
+    "experienceTitle": "Experiencia en producción como desarrollador Vue.js en Colombia",
+    "experienceBody": "Como desarrollador Vue.js en TISSINI (e-commerce mobile-first), Colegium (100k+ estudiantes) y LingoQuesto (ingeniero fundador), he construido sistemas Vue/Nuxt usados a escala real.",
+    "proofTitle": "Por qué contratarme como tu desarrollador Vue.js en Colombia",
+    "proofLink": "Leer el caso de estudio de TISSINI",
+    "proof": [
+      "13+ años en frontend con especialización en Vue.js y Nuxt",
+      "Desarrollador Vue senior basado en Cartagena, Colombia (Remoto LatAm/Global)",
+      "Profundidad fullstack cuando las APIs y el delivery completo importan",
+      "Disponible para roles senior por contrato desde agosto de 2026"
+    ],
+    "portfolioCta": "Ver portafolio completo",
+    "contactCta": "Contratar desarrollador Vue.js en Colombia",
+    "faqTitle": "Preguntas frecuentes sobre desarrollador Vue.js en Colombia",
+    "faq": [
+      {
+        "question": "¿Cómo contratar un desarrollador Vue.js senior en Colombia?",
+        "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, craft asistido por IA y Node.js. Contáctalo mediante el formulario en cesargomez.dev, LinkedIn o GitHub."
+      },
+      {
+        "question": "¿Por qué contratar un desarrollador Vue remoto en Colombia?",
+        "answer": "¿Colombia ofrece talento senior de ingeniería en zonas horarias convenientes (EST/COT). César Gómez aporta 13+ años de experiencia en producción Vue.js para equipos globales."
+      },
+      {
+        "question": "¿Está disponible César Gómez para contratos en Colombia?",
+        "answer": "Sí. Disponible para contratos senior frontend a partir de agosto de 2026. Entrevistas y conversaciones abiertas desde ahora."
+      }
+    ]
+  },
   "landingAi": {
     "meta": {
       "title": "Vibe Coding Cleanup · Craft Vue/Nuxt asistido por IA — César Gómez",
