@@ -827,7 +827,7 @@
         "summary": "Desarrollé aplicaciones e-commerce mobile-first con Vue.js, reduciendo tiempos de despliegue en un 60% mediante CI/CD.",
         "tags": ["Vue 2", "Vue 3", "Mobile-First", "CI/CD", "E-Commerce"],
         "meta": {
-          "title": "Caso TISSINI — Senior Frontend Developer, Vue.js y E-Commerce",
+          "title": "Caso TISSINI — Senior Frontend Vue.js",
           "description": "Desarrollo de soluciones e-commerce mobile-first en Vue.js, optimización de pipelines de CI/CD y productos para emprendedoras en TISSINI."
         },
         "page": {
@@ -1491,7 +1491,7 @@
   },
   "landingCraft": {
     "meta": {
-      "title": "Metodología Craft asistido por IA · Quality gates — César Gómez",
+      "title": "Craft asistido por IA — César Gómez",
       "description": "Metodología de Craft asistido por IA con Cursor, Copilot y Claude Code: ownership de arquitectura, quality gates y entrega Vue/Nuxt mantenible — explícitamente no un rol de ingeniero de IA."
     },
     "eyebrow": "Metodología · No título de ingeniero de IA",

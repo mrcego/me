@@ -742,7 +742,7 @@
         "summary": "Led Vue 3 frontend architecture, shared libraries, and design-system work across micro-frontend surfaces used at ed-tech scale.",
         "tags": ["Vue 3", "Micro-frontends", "Design system", "Ed-tech"],
         "meta": {
-          "title": "Colegium case study — Senior Frontend, Vue 3 & micro-frontends",
+          "title": "Colegium Case Study — Senior Frontend Vue 3",
           "description": "Vue 3 frontend architecture, shared libraries, and design-system work across micro-frontend surfaces serving 100k+ students at Colegium."
         },
         "page": {
@@ -783,7 +783,7 @@
         "summary": "Founding fullstack engineer integrating AI/NLP oral-practice flows into a maintainable Vue/Nuxt product experience.",
         "tags": ["Vue 3", "Nuxt", "AI/NLP", "Ed-tech"],
         "meta": {
-          "title": "LingoQuesto case study — Founding Fullstack, speech & AI/NLP",
+          "title": "LingoQuesto Case Study — Founding Fullstack AI",
           "description": "Founding fullstack engineer integrating AI/NLP oral-practice flows into a Vue/Nuxt language-learning product at LingoQuesto."
         },
         "page": {
@@ -824,7 +824,7 @@
         "summary": "Built mobile-first e-commerce applications with Vue.js, reducing deployment times by 60% via automated CI/CD.",
         "tags": ["Vue 2", "Vue 3", "Mobile-First", "CI/CD", "E-Commerce"],
         "meta": {
-          "title": "TISSINI case study — Senior Frontend Developer, Vue.js & E-Commerce",
+          "title": "TISSINI Case Study — Senior Frontend Vue.js",
           "description": "Mobile-first e-commerce solutions in Vue.js, CI/CD deployment pipeline optimization, and digital products for entrepreneurs at TISSINI."
         },
         "page": {
@@ -1488,7 +1488,7 @@
   },
   "landingCraft": {
     "meta": {
-      "title": "AI-Assisted Craft Methodology · Quality Gates — Cesar Gomez",
+      "title": "AI-Assisted Craft Methodology — Cesar Gomez",
       "description": "Methodology for AI-Assisted Craft with Cursor, Copilot, and Claude Code: architecture ownership, quality gates, and maintainable Vue/Nuxt delivery — explicitly not an AI Engineer role."
     },
     "eyebrow": "Methodology · Not an AI Engineer title",
