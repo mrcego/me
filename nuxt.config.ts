@@ -294,8 +294,8 @@ export default defineNuxtConfig({
       // Facebook Sharing Debugger asks for fb:app_id. Override with your own App ID via
       // NUXT_PUBLIC_FACEBOOK_APP_ID. Default is Meta's public fallback ID (silences the warning).
       facebookAppId: '966242223397117',
-      // Optional GA4 measurement ID — RUM loads gtag only with analytics consent (see quality/RUM.md).
-      gaMeasurementId: '',
+      // GA4 measurement ID — RUM & page views telemetry (see quality/RUM.md).
+      gaMeasurementId: process.env.NUXT_PUBLIC_GA_MEASUREMENT_ID || 'G-X7WC2774ZJ',
     },
   },
 

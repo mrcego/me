@@ -13,7 +13,9 @@ import {
 describe('CSP builders', () => {
   it('falls back to unsafe-inline when no script hashes are provided', () => {
     const directives = buildCspDirectives();
-    expect(directives).toContain("script-src 'self' 'unsafe-inline'");
+    const scriptSrc = directives.find((d) => d.startsWith('script-src'));
+    expect(scriptSrc).toContain("'self'");
+    expect(scriptSrc).toContain("'unsafe-inline'");
     expect(directives.some((d) => d.includes('require-trusted-types-for'))).toBe(false);
   });
 
@@ -42,8 +44,11 @@ describe('CSP builders', () => {
     expect(hashInlineScript(bodies[0]!)).toMatch(/^'sha256-[A-Za-z0-9+/=]+'$/);
   });
 
-  it('locks connect-src to self so Iconify CDN cannot be fetched', () => {
-    expect(buildCspDirectives()).toContain("connect-src 'self'");
+  it('locks connect-src to self and analytics domains so Iconify CDN cannot be fetched', () => {
+    const directives = buildCspDirectives();
+    const connect = directives.find((d) => d.startsWith('connect-src'));
+    expect(connect).toContain("'self'");
+    expect(connect).toContain('https://*.google-analytics.com');
   });
 
   it('writes a Netlify _headers file that parses back to the same CSP', () => {

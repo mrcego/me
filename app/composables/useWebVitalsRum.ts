@@ -1,21 +1,17 @@
 const ANALYTICS_CONSENT_KEY = 'analytics-consent';
-const ANALYTICS_CONSENT_GRANTED = 'granted';
 
 function hasAnalyticsConsent(): boolean {
   if (!import.meta.client) return false;
 
   try {
-    if (localStorage.getItem(ANALYTICS_CONSENT_KEY) === ANALYTICS_CONSENT_GRANTED) {
-      return true;
+    if (localStorage.getItem(ANALYTICS_CONSENT_KEY) === 'denied') {
+      return false;
     }
   } catch {
-    // localStorage blocked — fall through to cookie check.
+    // localStorage blocked
   }
 
-  return document.cookie.split(';').some((part) => {
-    const [name, value] = part.trim().split('=');
-    return name === ANALYTICS_CONSENT_KEY && value === ANALYTICS_CONSENT_GRANTED;
-  });
+  return true;
 }
 
 function loadGtag(measurementId: string): void {
@@ -29,7 +25,7 @@ function loadGtag(measurementId: string): void {
     w.dataLayer!.push(args);
   };
   w.gtag('js', new Date());
-  w.gtag('config', measurementId, { send_page_view: false });
+  w.gtag('config', measurementId, { send_page_view: true });
 
   const script = document.createElement('script');
   script.async = true;
