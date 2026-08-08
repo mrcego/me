@@ -21,8 +21,10 @@ function loadGtag(measurementId: string): void {
   if (typeof w.gtag === 'function') return;
 
   w.dataLayer = w.dataLayer || [];
-  w.gtag = function gtag(...args: unknown[]) {
-    w.dataLayer!.push(args);
+  w.gtag = function gtag(..._args: unknown[]) {
+    // GTAG/GTM engine requires the native `arguments` object, not an ES6 Array [...args]
+    // eslint-disable-next-line prefer-rest-params
+    w.dataLayer!.push(arguments);
   };
   w.gtag('js', new Date());
   w.gtag('config', measurementId, { send_page_view: true });
