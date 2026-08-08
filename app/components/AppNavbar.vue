@@ -421,9 +421,9 @@ watch(showThemeSelector, (open) => {
 const navLinks = [
   { name: 'nav.home', href: '#hero', id: 'hero' },
   { name: 'nav.about', href: '#about', id: 'about' },
+  { name: 'nav.caseStudies', href: '#case-studies', id: 'case-studies' },
   { name: 'nav.techStack', href: '#tech-stack', id: 'tech-stack' },
   { name: 'nav.certifications', href: '#certifications', id: 'certifications' },
-  { name: 'nav.caseStudies', href: '#case-studies', id: 'case-studies' },
   { name: 'nav.testimonials', href: '#testimonials', id: 'testimonials' },
 ];
 
