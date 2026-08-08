@@ -764,7 +764,7 @@
           "sections": [
             {
               "title": "Contexto",
-              "body": "Colegium Cloud atiende a más de 100.000 estudiantes en Latinoamérica. Como Desarrollador Frontend Senior, trabajé en la próxima generación de herramientas educativas en la nube — desde módulos para estudiantes hasta herramientas internas para administradores escolares."
+              "body": "Colegium Cloud atiende a más de 100.000 estudiantes en Latinoamérica (fuente: analíticas de plataforma Colegium Cloud, 2024). Como Desarrollador Frontend Senior, trabajé en la próxima generación de herramientas educativas en la nube — desde módulos para estudiantes hasta herramientas internas para administradores escolares."
             },
             {
               "title": "Enfoque técnico",
@@ -854,7 +854,7 @@
             },
             {
               "title": "Automatización CI/CD & Calidad",
-              "body": "Implementé flujos de integración y despliegue continuo (CI/CD) que redujeron los tiempos de release en un 60%, permitiendo a ingeniería iterar con mayor seguridad y publicar nuevas funcionalidades sin fricción."
+              "body": "Implementé flujos de integración y despliegue continuo (CI/CD) que redujeron los tiempos de release en un 60% (fuente: métricas de despliegues TISSINI, 2021), permitiendo a ingeniería iterar con mayor seguridad y publicar nuevas funcionalidades sin fricción."
             }
           ]
         }
