@@ -197,6 +197,11 @@ export default defineNuxtConfig({
     // Scan templates (incl. Lazy islands) so icons ship offline — empty scan broke prod icons.
     clientBundle: {
       scan: true,
+      icons: [
+        'solar:bag-2-bold-duotone',
+        'solar:buildings-2-bold-duotone',
+        'solar:chat-round-dots-bold-duotone',
+      ],
     },
   },
 

@@ -8,7 +8,7 @@ const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 const studies = [
   {
     slug: 'tissini',
-    icon: 'solar:bag-smile-bold-duotone',
+    icon: 'solar:bag-2-bold-duotone',
     to: '/case-studies/tissini',
   },
   {
