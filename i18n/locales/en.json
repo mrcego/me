@@ -188,7 +188,7 @@
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · Or use the contact form on this site.",
       "workList": "Case studies: work colegium · work lingoquesto",
       "cv": "Downloading {file}…",
-      "seo": "Technical SEO: 98 static SSG prerendered routes · 64 JSON-LD schemas (Person @id: https://cesargomez.dev/#person, WebSite, ProfilePage, Service, FAQPage) · Reciprocal XML Sitemaps · hreflang tags en-US/es-ES/x-default · CSP with SHA-256 hashes.",
+      "seo": "Technical SEO: 98 static SSG prerendered routes · 64 JSON-LD schemas (Person {'@'}id: https://cesargomez.dev/#person, WebSite, ProfilePage, Service, FAQPage) · Reciprocal XML Sitemaps · hreflang tags en-US/es-ES/x-default · CSP with SHA-256 hashes.",
       "lang": "Current language: {locale}. Use 'lang es' or 'lang en' to switch.",
       "langSet": "Switching language to {locale}…",
       "cleared": "Transcript cleared.",
