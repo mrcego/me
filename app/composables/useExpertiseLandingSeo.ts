@@ -10,7 +10,12 @@ import {
 import { SITE_ORIGIN, absoluteSiteUrl } from '~/utils/siteUrl';
 
 export type ExpertiseLandingTranslationKey =
-  'landingVue' | 'landingAi' | 'landingNode' | 'landingLocal' | 'landingCraft';
+  | 'landingVue'
+  | 'landingAi'
+  | 'landingNode'
+  | 'landingLocal'
+  | 'landingCraft'
+  | 'landingVueColombia';
 
 interface ExpertiseLandingSeoOptions {
   translationKey: ExpertiseLandingTranslationKey;

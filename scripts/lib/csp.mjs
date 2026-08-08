@@ -93,8 +93,14 @@ export function buildCspDirectives(options = {}) {
 
   const scriptSrc =
     scriptHashes.length > 0
-      ? ['script-src', "'self'", ...scriptHashes].join(' ')
-      : "script-src 'self' 'unsafe-inline'";
+      ? [
+          'script-src',
+          "'self'",
+          'https://www.googletagmanager.com',
+          'https://*.google-analytics.com',
+          ...scriptHashes,
+        ].join(' ')
+      : "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.google-analytics.com";
 
   /** @type {string[]} */
   const directives = [
@@ -103,11 +109,11 @@ export function buildCspDirectives(options = {}) {
     "object-src 'none'",
     "frame-ancestors 'none'",
     "form-action 'self'",
-    "img-src 'self' data:",
+    "img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com",
     "font-src 'self'",
     "style-src 'self' 'unsafe-inline'",
     scriptSrc,
-    "connect-src 'self'",
+    "connect-src 'self' https://*.google-analytics.com https://www.googletagmanager.com",
     "manifest-src 'self'",
     'upgrade-insecure-requests',
   ];

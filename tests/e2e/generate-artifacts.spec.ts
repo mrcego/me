@@ -15,7 +15,7 @@ test.describe('generate artifacts', () => {
     const headersText = readFileSync(headersPath, 'utf8');
     const csp = parseCspFromHeadersFile(headersText);
     expect(csp).toBeTruthy();
-    expect(csp).toMatch(/script-src 'self' 'sha256-/);
+    expect(csp).toMatch(/script-src 'self'.*'sha256-/);
     expect(csp).not.toMatch(/script-src[^;]*'unsafe-inline'/);
     // TT enforcement breaks non-Vue innerHTML sinks on this stack — keep off in prod CSP.
     expect(csp).not.toContain('require-trusted-types-for');

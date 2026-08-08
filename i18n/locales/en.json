@@ -761,7 +761,7 @@
           "sections": [
             {
               "title": "Context",
-              "body": "Colegium Cloud serves more than 100,000 students across Latin America. As Senior Frontend Developer, I worked on the next generation of cloud-based educational tools — from student-facing modules to internal tooling used by school administrators."
+              "body": "Colegium Cloud serves more than 100,000 students across Latin America (source: Colegium platform analytics, 2024). As Senior Frontend Developer, I worked on the next generation of cloud-based educational tools — from student-facing modules to internal tooling used by school administrators."
             },
             {
               "title": "Technical approach",
@@ -851,7 +851,7 @@
             },
             {
               "title": "CI/CD Automation & Quality",
-              "body": "I established automated continuous integration and delivery (CI/CD) pipelines that cut release cycles by 60%, empowering the engineering team to deploy features safely and frequently."
+              "body": "I established automated continuous integration and delivery (CI/CD) pipelines that cut release cycles by 60% (source: TISSINI release deployment metrics, 2021), empowering the engineering team to deploy features safely and frequently."
             }
           ]
         }
@@ -1106,6 +1106,85 @@
       {
         "question": "Is there a Vue.js developer in Cartagena, Colombia?",
         "answer": "Yes. Cesar Gomez is a senior Vue.js developer based in Cartagena de Indias, Colombia, with a remote-work preference and production Vue/Nuxt experience at scale."
+      }
+    ]
+  },
+  "landingVueColombia": {
+    "meta": {
+      "title": "Vue.js Developer Colombia | Senior Vue 3 & Nuxt — Cesar Gomez",
+      "description": "Hire a Vue.js developer in Colombia. Senior Vue 3, Nuxt 4, TypeScript, Pinia & PrimeVue engineer. 13+ years shipping production products for ed-tech & e-commerce. Remote Vue developer in Colombia / LatAm."
+    },
+    "eyebrow": "Vue.js Developer · Colombia",
+    "title": "Vue.js Developer Colombia",
+    "titleHighlight": "Senior",
+    "lead": "Looking for a Vue.js developer or senior Vue developer in Colombia? I'm Cesar Gomez — a senior Vue frontend developer with 13+ years shipping products with Vue 3, Nuxt 4, TypeScript, and performance-focused architecture — remote from Cartagena, Colombia for global and LatAm teams.",
+    "intent": {
+      "title": "Why hire a Vue.js developer in Colombia for your team",
+      "paragraphs": [
+        "A senior Vue.js developer in Colombia offers top-tier engineering talent aligned with US/EU time zones. As a senior Vue developer, I own Vue 3 + Nuxt 4 architecture, Composition API, Pinia, Vue Router, TypeScript, and team frontend standards — not just one-off components.",
+        "If you need to hire a Vue developer in Colombia or a remote Vue.js developer for LatAm and international teams, this page is built for recruiters and engineering leaders who want end-to-end frontend ownership: SSR/SSG, design systems, micro-frontends, accessibility, and Core Web Vitals.",
+        "I also work as a Nuxt.js developer when the product needs technical SEO, high-performance SSR, or hybrid apps. The specialty is Vue; the delivery is real production product work (Colegium, TISSINI, LingoQuesto)."
+      ]
+    },
+    "services": {
+      "title": "Hire a Vue.js developer in Colombia for these scenarios",
+      "items": [
+        {
+          "title": "Vue.js developer in Colombia for SaaS & product UIs",
+          "body": "Vue 3 architecture, Pinia state, Vue Router, and TypeScript product interfaces ready to scale with your team."
+        },
+        {
+          "title": "Nuxt.js developer Colombia (SSR, SSG, hybrid)",
+          "body": "Nuxt 4 sites and apps with technical SEO, zero-runtime SSG, and Core Web Vitals when organic discovery matters."
+        },
+        {
+          "title": "Vue frontend developer + design systems",
+          "body": "Component libraries, PrimeVue/Tailwind, and micro-frontends so UI scales without losing consistency."
+        },
+        {
+          "title": "Remote / contract Vue developer Colombia",
+          "body": "Senior remote contract from Cartagena for LatAm and global teams, collaborating seamlessly in English and Spanish."
+        },
+        {
+          "title": "Hire a Vue 3 + TypeScript developer in Colombia",
+          "body": "Vue 3, Composition API, Pinia, and strict TypeScript for teams that need a senior product Vue developer."
+        }
+      ]
+    },
+    "expertiseTitle": "Modern Vue developer stack and skills in Colombia",
+    "expertise": [
+      "Vue.js / Vue 3 + Composition API in production",
+      "Nuxt.js / Nuxt 4 (SSR, SSG, hybrid) and technical SEO",
+      "TypeScript, Pinia, Vue Router, and Vite",
+      "PrimeVue, Tailwind CSS, design systems, and micro-frontends",
+      "Web Vitals, accessibility, and frontend performance",
+      "Fullstack API integration with Node & Express when needed"
+    ],
+    "experienceTitle": "Production experience as a Vue.js developer in Colombia",
+    "experienceBody": "As a Vue.js developer at TISSINI (mobile-first e-commerce), Colegium (100k+ students), and LingoQuesto (founding engineer), I built Vue/Nuxt products used at real scale — production systems with complete architecture ownership.",
+    "proofTitle": "Why hire me as your Vue.js developer in Colombia",
+    "proofLink": "Read the TISSINI case study",
+    "proof": [
+      "13+ years in frontend with deep Vue.js and Nuxt specialization",
+      "Senior Vue developer based in Cartagena, Colombia (Remote LatAm/Global)",
+      "Fullstack depth when APIs and delivery ownership matter",
+      "Available for senior contract roles from August 2026"
+    ],
+    "portfolioCta": "View full portfolio",
+    "contactCta": "Hire a Vue.js developer in Colombia",
+    "faqTitle": "Vue.js developer Colombia FAQ",
+    "faq": [
+      {
+        "question": "How do I hire a senior Vue.js developer in Colombia?",
+        "answer": "You can hire Cesar Gomez for senior Vue/Nuxt, AI-assisted craft, and Node.js contract work. Contact him via the form on cesargomez.dev, LinkedIn, or GitHub."
+      },
+      {
+        "question": "Why hire a remote Vue developer from Colombia?",
+        "answer": "Colombia offers senior engineering talent in convenient LatAm/US time zones (EST/COT). Cesar Gomez brings 13+ years of production Vue.js experience to global teams."
+      },
+      {
+        "question": "Is Cesar Gomez available for contract work in Colombia?",
+        "answer": "Yes. Available for senior frontend contract roles starting August 2026. Open to interviews and conversations now."
       }
     ]
   },

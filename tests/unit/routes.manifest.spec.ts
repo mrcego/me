@@ -8,8 +8,8 @@ import {
 } from '../../app/config/routes.manifest';
 
 describe('routes.manifest', () => {
-  it('lists nine indexable page families', () => {
-    expect(PORTFOLIO_ROUTES).toHaveLength(9);
+  it('lists ten indexable page families', () => {
+    expect(PORTFOLIO_ROUTES).toHaveLength(10);
   });
 
   it('keeps the AI landing URL slug unchanged', () => {
@@ -26,6 +26,7 @@ describe('routes.manifest', () => {
     expect(routes).toContain('/case-studies/colegium/');
     expect(routes).toContain('/web-developer-cartagena/');
     expect(routes).toContain('/ai-assisted-craft/');
+    expect(routes).toContain('/vue-developer-colombia/');
     expect(routes).toContain('/sitemap_index.xml');
     expect(sitemapUrls()).toEqual(
       expect.arrayContaining([
@@ -34,6 +35,7 @@ describe('routes.manifest', () => {
         '/case-studies/colegium/',
         '/web-developer-cartagena/',
         '/ai-assisted-craft/',
+        '/vue-developer-colombia/',
       ]),
     );
     expect(sitemapUrls()).not.toContain('/sitemap_index.xml');
