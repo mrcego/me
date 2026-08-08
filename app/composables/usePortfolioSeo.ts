@@ -217,6 +217,51 @@ export const usePortfolioSeo = () => {
         // Reference only — full Person node is published once above
         mainEntity: personSchemaRef(),
       }),
+      jsonLdScript('schema-sitenavigation', {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement: [
+          {
+            '@type': 'SiteNavigationElement',
+            position: 1,
+            name: locale.value === 'es' ? 'Desarrollador Vue.js' : 'Vue.js Developer',
+            url: absoluteSiteUrl(
+              locale.value === 'es' ? '/es/desarrollador-vue/' : '/vue-frontend-developer/',
+            ),
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 2,
+            name: 'Vibe Coding Cleanup',
+            url: absoluteSiteUrl(locale.value === 'es' ? '/es/ingeniero-ia/' : '/ai-engineer/'),
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 3,
+            name:
+              locale.value === 'es' ? 'Desarrollador Backend Node.js' : 'Node.js Backend Developer',
+            url: absoluteSiteUrl(
+              locale.value === 'es'
+                ? '/es/desarrollador-backend-nodejs/'
+                : '/nodejs-backend-developer/',
+            ),
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 4,
+            name: locale.value === 'es' ? 'Desarrollo Web Cartagena' : 'Web Developer Cartagena',
+            url: absoluteSiteUrl(
+              locale.value === 'es' ? '/es/desarrollo-web-cartagena/' : '/web-developer-cartagena/',
+            ),
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 5,
+            name: locale.value === 'es' ? 'Casos de Estudio' : 'Case Studies',
+            url: absoluteSiteUrl(locale.value === 'es' ? '/es/#case-studies' : '/#case-studies'),
+          },
+        ],
+      }),
       jsonLdScript('schema-faq', {
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
