@@ -7,6 +7,9 @@ Full profile: https://cesargomez.dev/llms-full.txt
 
 - https://cesargomez.dev/
 - https://cesargomez.dev/vue-frontend-developer/
+- https://cesargomez.dev/frontend-architect/
+- https://cesargomez.dev/fullstack-engineer/
+- https://cesargomez.dev/angular-developer/
 - https://cesargomez.dev/ai-engineer/  (Vibe Coding Cleanup — NOT “AI Engineer” as a job title)
 - https://cesargomez.dev/ai-assisted-craft/
 - https://cesargomez.dev/web-developer-cartagena/
