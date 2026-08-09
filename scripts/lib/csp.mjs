@@ -193,6 +193,12 @@ export function buildCacheHeaderBlocks() {
     { path: '/es/desarrollo-web-cartagena/', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
     { path: '/ai-assisted-craft/', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
     { path: '/es/craft-asistido-ia/', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
+    { path: '/angular-developer/', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
+    { path: '/es/desarrollador-angular/', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
+    { path: '/frontend-architect/', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
+    { path: '/es/arquitecto-frontend/', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
+    { path: '/fullstack-engineer/', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
+    { path: '/es/ingeniero-fullstack/', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
     { path: '/*.html', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
 
     { path: '/_nuxt/*', headers: { 'Cache-Control': CACHE_CONTROL_IMMUTABLE } },

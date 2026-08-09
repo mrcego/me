@@ -119,6 +119,15 @@ const proofLink = computed(() => {
             {{ t(copyKey('lead')) }}
           </p>
 
+          <!-- GEO Answer Block — structured self-contained definition for AI citation -->
+          <p
+            v-if="te(copyKey('answerBlock'))"
+            id="answer-block"
+            class="text-sm md:text-base text-muted/80 leading-relaxed max-w-3xl border-l-2 border-primary/20 pl-4"
+          >
+            {{ t(copyKey('answerBlock')) }}
+          </p>
+
           <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <Button
               class="btn-premium bg-primary text-primary-contrast rounded-2xl! px-8! py-4! border-none!"

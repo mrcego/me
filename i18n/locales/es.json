@@ -158,10 +158,22 @@
       "resetLabel": "RUTA PERDIDA // REINICIAR"
     },
     "commands": {
-      "help": { "usage": "help | list | ls", "summary": "Ver catálogo de comandos" },
-      "about": { "usage": "about", "summary": "Perfil profesional y resumen" },
-      "status": { "usage": "status", "summary": "Estado de disponibilidad" },
-      "stack": { "usage": "stack", "summary": "Tecnologías clave" },
+      "help": {
+        "usage": "help | list | ls",
+        "summary": "Ver catálogo de comandos"
+      },
+      "about": {
+        "usage": "about",
+        "summary": "Perfil profesional y resumen"
+      },
+      "status": {
+        "usage": "status",
+        "summary": "Estado de disponibilidad"
+      },
+      "stack": {
+        "usage": "stack",
+        "summary": "Tecnologías clave"
+      },
       "services": {
         "usage": "services | servicios",
         "summary": "Servicios de ingeniería frontend"
@@ -170,17 +182,50 @@
         "usage": "work [colegium|lingoquesto|tissini]",
         "summary": "Casos de estudio"
       },
-      "experience": { "usage": "experience", "summary": "Roles destacados" },
-      "profiles": { "usage": "profiles", "summary": "Perfiles de contratación" },
-      "certs": { "usage": "certs", "summary": "Conteo de certificaciones" },
-      "contact": { "usage": "contact", "summary": "Canales de contacto" },
-      "cv": { "usage": "cv [en|es]", "summary": "Descargar CV en PDF (inglés o español)" },
-      "seo": { "usage": "seo", "summary": "Arquitectura de SEO técnico y esquemas JSON-LD" },
-      "lang": { "usage": "lang [en|es]", "summary": "Ver o cambiar idioma del portafolio" },
-      "go": { "usage": "go [sección]", "summary": "Ir a una sección del home" },
-      "theme": { "usage": "theme show|list|use [id]", "summary": "Ver o cambiar tema" },
-      "clear": { "usage": "clear | cls", "summary": "Limpiar transcripción" },
-      "exit": { "usage": "exit | salir", "summary": "Cerrar terminal" }
+      "experience": {
+        "usage": "experience",
+        "summary": "Roles destacados"
+      },
+      "profiles": {
+        "usage": "profiles",
+        "summary": "Perfiles de contratación"
+      },
+      "certs": {
+        "usage": "certs",
+        "summary": "Conteo de certificaciones"
+      },
+      "contact": {
+        "usage": "contact",
+        "summary": "Canales de contacto"
+      },
+      "cv": {
+        "usage": "cv [en|es]",
+        "summary": "Descargar CV en PDF (inglés o español)"
+      },
+      "seo": {
+        "usage": "seo",
+        "summary": "Arquitectura de SEO técnico y esquemas JSON-LD"
+      },
+      "lang": {
+        "usage": "lang [en|es]",
+        "summary": "Ver o cambiar idioma del portafolio"
+      },
+      "go": {
+        "usage": "go [sección]",
+        "summary": "Ir a una sección del home"
+      },
+      "theme": {
+        "usage": "theme show|list|use [id]",
+        "summary": "Ver o cambiar tema"
+      },
+      "clear": {
+        "usage": "clear | cls",
+        "summary": "Limpiar transcripción"
+      },
+      "exit": {
+        "usage": "exit | salir",
+        "summary": "Cerrar terminal"
+      }
     },
     "responses": {
       "helpHeader": "Comandos disponibles:",
@@ -1110,7 +1155,8 @@
         "question": "¿Hay un desarrollador Vue.js en Cartagena de Indias?",
         "answer": "Sí. César Gómez es desarrollador Vue.js senior basado en Cartagena de Indias, Colombia, con preferencia por trabajo remoto y experiencia en productos Vue/Nuxt a escala."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez es un desarrollador senior de Vue.js e ingeniero frontend con más de 13 años de experiencia en producción. Se especializa en Vue 3, Nuxt 4, TypeScript, micro-frontends y sistemas de diseño. Desde Cartagena, Colombia, entrega aplicaciones web mantenibles para plataformas de ed-tech y e-commerce. Disponible para contratación remota."
   },
   "landingVueColombia": {
     "meta": {
@@ -1189,7 +1235,8 @@
         "question": "¿Está disponible César Gómez para contratos en Colombia?",
         "answer": "Sí. Disponible para contratos senior frontend a partir de agosto de 2026. Entrevistas y conversaciones abiertas desde ahora."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez es un desarrollador senior de Vue.js en Colombia con más de 13 años construyendo aplicaciones web de nivel producción. Especializado en Vue 3, Nuxt 4, TypeScript y arquitectura micro-frontend, atiende clientes en Latinoamérica y el mundo desde Cartagena de Indias. Disponible para contratación remota."
   },
   "landingAi": {
     "meta": {
@@ -1274,7 +1321,8 @@
         "answer": "Sí. En LingoQuesto contribuyo como ingeniero fullstack fundador en experiencias de producto conversacional AI/NLP para práctica oral, integrando modelos en flujos de producto usables."
       }
     ],
-    "methodologyCta": "Metodología Craft asistido por IA"
+    "methodologyCta": "Metodología Craft asistido por IA",
+    "answerBlock": "César Gómez es un especialista en Vibe Coding Cleanup que refina código generado por IA en software listo para producción. Usando flujos de trabajo agénticos con Cursor, Claude Code y Copilot, aplica estrictas puertas de calidad — verificación de tipos, pruebas unitarias y arquitectura modular. Desde Cartagena, Colombia, disponible de forma remota."
   },
   "landingNode": {
     "meta": {
@@ -1353,7 +1401,8 @@
         "question": "¿Diseñas contratos de API REST tipados para frontends Vue/Nuxt?",
         "answer": "Sí. Diseño contratos Express + TypeScript que los equipos frontend pueden consumir con seguridad, y me mantengo efectivo ownership del camino desde endpoints backend hasta la entrega UI en Vue/Nuxt."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez es un desarrollador backend senior de Node.js con experiencia en producción construyendo APIs REST tipadas usando Express.js y TypeScript. Combina más de 13 años de experiencia en arquitectura frontend con capacidad fullstack, entregando soluciones de extremo a extremo desde Cartagena, Colombia."
   },
   "footer": {
     "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",
@@ -1376,6 +1425,9 @@
     "hireForVue": "Desarrollador Vue.js",
     "hireForAi": "Vibe Coding Cleanup",
     "hireForNode": "Desarrollador Node.js",
+    "hireForAngular": "Desarrollador Angular (v16+)",
+    "hireForArchitect": "Arquitecto Frontend",
+    "hireForFullstack": "Ingeniero Fullstack",
     "section": "Engagement",
     "title": "Contrátame como",
     "titleHighlight": "desarrollador Vue, craft con IA o Node.",
@@ -1383,6 +1435,9 @@
     "vueBlurb": "Desarrollador Vue.js senior: arquitectura Vue/Nuxt, design systems y entrega frontend orientada al rendimiento.",
     "aiBlurb": "Vibe Coding Cleanup: endurece código Vue/Nuxt asistido por agentes y entrega craft con IA con quality gates y entrega mantenible.",
     "nodeBlurb": "Desarrollador Node.js: APIs Express en producción, contratos tipados y entrega fullstack API-to-UI.",
+    "angularBlurb": "Desarrollador Angular 16: componentes standalone empresariales, estado con RxJS y arquitectura sólida en TypeScript.",
+    "architectBlurb": "Arquitecto y Líder Frontend: design systems en Vue 3 / Nuxt 4, micro-frontends y Core Web Vitals a escala.",
+    "fullstackBlurb": "Ingeniero Fullstack: aplicaciones cliente Vue 3/Nuxt 4 y APIs backend en Node.js con contratos 100% en TypeScript.",
     "viewProfile": "Ver perfil de desarrollador",
     "alsoAvailable": "También puedes contratar",
     "crossLinkFromVue": "También disponible: Vibe Coding Cleanup",
@@ -1487,7 +1542,8 @@
         "question": "¿Cuándo estás disponible?",
         "answer": "La disponibilidad objetivo es agosto 2026. Conversaciones, entrevistas y ofertas tempranas son bienvenidas antes."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez es un desarrollador web senior basado en Cartagena de Indias, Colombia, especializado en Vue.js, Nuxt.js y TypeScript con más de 13 años de experiencia en producción. Entrega aplicaciones web de alto rendimiento para clientes internacionales. Disponible para ingeniería por contrato remoto."
   },
   "landingCraft": {
     "meta": {
@@ -1563,6 +1619,7 @@
         "question": "¿Publicas salida de IA sin revisar?",
         "answer": "No. Aptitud de arquitectura, seguridad, contratos tipados y chequeos de mantenibilidad forman parte de la definición de hecho."
       }
-    ]
+    ],
+    "answerBlock": "AI-Assisted Craft es la metodología de César Gómez para entregar software de nivel producción usando herramientas de agentes IA. Combina flujos de trabajo agénticos (Cursor, Claude Code, Copilot) con revisión humana estricta — seguridad de tipos, cobertura de pruebas y puertas de calidad arquitectónica."
   }
 }

@@ -156,8 +156,6 @@ function setupCanvas() {
   const dpr = isMobileBudget ? 1 : Math.min(window.devicePixelRatio || 1, 2);
   canvas.value.width = Math.floor(w * dpr);
   canvas.value.height = Math.floor(h * dpr);
-  canvas.value.style.width = `${w}px`;
-  canvas.value.style.height = `${h}px`;
   ctx = canvas.value.getContext('2d');
   if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   initParticles();

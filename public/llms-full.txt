@@ -53,9 +53,9 @@ César Gómez is a senior software engineer with 13+ years of experience special
 
 | Domain | Mastered Technologies & Tools |
 |---|---|
-| **Core Frontend** | Vue 3, Nuxt 4, Vue 2, JavaScript (ESNext), TypeScript |
-| **State & Routing** | Pinia, Vuex, Vue Router |
-| **UI & Styling** | PrimeVue, Tailwind CSS, Web Components, Micro-frontends |
+| **Core Frontend** | Vue 3, Nuxt 4, Vue 2, Angular (v16+), JavaScript (ESNext), TypeScript |
+| **State & Routing** | Pinia, Vuex, Vue Router, RxJS, Angular Router |
+| **UI & Styling** | PrimeVue, Tailwind CSS, Angular Material, Web Components, Micro-frontends |
 | **Build & Tooling** | Vite, Nitro, Webpack, ESLint, Prettier, pnpm |
 | **Backend & APIs** | Node.js, Express.js, REST APIs, Python, Django |
 | **Performance & SEO** | Core Web Vitals, SSR/SSG, JSON-LD Schema, Technical SEO |

@@ -216,6 +216,10 @@ export const usePortfolioSeo = () => {
         dateModified: SEO_EDITORIAL_DATES.lastModified,
         // Reference only — full Person node is published once above
         mainEntity: personSchemaRef(),
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['#hero .text-gradient', '#about .text-muted', '#case-studies h2', '#faq'],
+        },
       }),
       jsonLdScript('schema-sitenavigation', {
         '@context': 'https://schema.org',

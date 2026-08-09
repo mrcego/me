@@ -80,7 +80,7 @@ onMounted(() => {
 <template>
   <section
     id="hero"
-    class="relative min-h-svh flex items-start lg:items-center justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+6.5rem)] sm:pt-[calc(var(--availability-banner-h,0px)+7rem)] lg:pt-[calc(var(--availability-banner-h,0px)+8rem)] pb-8 md:pb-12 lg:pb-14"
+    class="relative min-h-svh flex items-start justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+6.25rem)] sm:pt-[calc(var(--availability-banner-h,0px)+6.75rem)] lg:pt-[calc(var(--availability-banner-h,0px)+7.25rem)] pb-8 md:pb-12 lg:pb-14"
   >
     <LazyHeroParticles :hydrate-after="5200" />
 
@@ -140,37 +140,37 @@ onMounted(() => {
 
       <!-- CTA row — above photo on mobile -->
       <div
-        class="relative z-20 order-2 lg:col-start-1 hero-reveal hero-reveal--d80 flex flex-col sm:flex-row gap-3 sm:gap-5 items-center justify-center lg:justify-start w-full lg:w-auto"
+        class="relative z-20 order-2 lg:col-start-1 hero-reveal hero-reveal--d80 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full"
       >
-        <a
-          class="btn-premium bg-primary text-primary-contrast rounded-2xl sm:rounded-3xl px-7 sm:px-9 py-3.5 sm:py-4 shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-sm sm:text-base border-none"
-          :href="sectionHref('#contact')"
-          @click="goToSection($event, '#contact')"
+        <div
+          class="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 w-full sm:w-auto shrink-0"
         >
-          <Icon
-            name="solar:rocket-2-bold-duotone"
-            class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
-          />
-          <span>{{ $t('hero.cta') }}</span>
-        </a>
-        <CvDownloadButton />
+          <a
+            class="btn-premium bg-primary text-primary-contrast rounded-2xl sm:rounded-3xl px-6 sm:px-8 py-3.5 sm:py-4 shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-sm sm:text-base border-none whitespace-nowrap"
+            :href="sectionHref('#contact')"
+            @click="goToSection($event, '#contact')"
+          >
+            <Icon name="solar:rocket-2-bold-duotone" class="w-6 h-6 sm:w-7 sm:h-7 shrink-0" />
+            <span class="whitespace-nowrap">{{ $t('hero.cta') }}</span>
+          </a>
+          <CvDownloadButton class="w-full sm:w-auto" />
+        </div>
+
+        <div class="hidden lg:block h-8 w-px bg-foreground/15 shrink-0" aria-hidden="true" />
+
         <div
-          class="hidden sm:block w-px self-stretch bg-foreground/10 shrink-0"
-          aria-hidden="true"
-        />
-        <div
-          class="relative z-20 flex gap-2.5 sm:gap-3 items-center border-t border-foreground/10 pt-3 sm:border-t-0 sm:pt-0 w-full sm:w-auto justify-center lg:justify-start"
+          class="relative z-20 flex gap-2 sm:gap-2.5 items-center justify-center lg:justify-start shrink-0"
         >
           <a
             href="https://linkedin.com/in/mrcego"
             target="_blank"
             rel="noopener noreferrer"
             :aria-label="$t('footer.socialLinkedIn')"
-            class="hero-social-link inline-flex items-center justify-center size-[66px] sm:size-[74px] rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="hero-social-link inline-flex items-center justify-center size-12 sm:size-[52px] rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <Icon
               name="simple-icons:linkedin"
-              class="size-[38px] sm:size-[42px] shrink-0 pointer-events-none text-current"
+              class="size-5 sm:size-6 shrink-0 pointer-events-none text-current"
             />
           </a>
           <a
@@ -178,21 +178,21 @@ onMounted(() => {
             target="_blank"
             rel="noopener noreferrer"
             :aria-label="$t('footer.socialGitHub')"
-            class="hero-social-link inline-flex items-center justify-center size-[66px] sm:size-[74px] rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="hero-social-link inline-flex items-center justify-center size-12 sm:size-[52px] rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <Icon
               name="simple-icons:github"
-              class="size-[38px] sm:size-[42px] shrink-0 pointer-events-none text-current"
+              class="size-5 sm:size-6 shrink-0 pointer-events-none text-current"
             />
           </a>
           <a
             href="mailto:cesargomezh90@gmail.com"
             :aria-label="$t('footer.socialEmail')"
-            class="hero-social-link inline-flex items-center justify-center size-[66px] sm:size-[74px] rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="hero-social-link inline-flex items-center justify-center size-12 sm:size-[52px] rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <Icon
               name="solar:letter-linear"
-              class="size-[38px] sm:size-[42px] shrink-0 pointer-events-none text-current"
+              class="size-5 sm:size-6 shrink-0 pointer-events-none text-current"
             />
           </a>
         </div>
@@ -213,10 +213,10 @@ onMounted(() => {
             :style="photoTiltStyle"
           >
             <div
-              class="surface-card surface-card--soft relative w-full rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden border border-white/10 glass p-2.5 md:p-3.5"
+              class="surface-card relative w-full rounded-[1.8rem] md:rounded-[2.2rem] lg:rounded-[2.6rem] overflow-hidden border border-primary/25 glass p-1 md:p-1.5 shadow-2xl"
             >
               <div
-                class="relative aspect-4/5 max-h-[min(12rem,26svh)] sm:max-h-[min(16rem,32svh)] md:max-h-[min(20rem,38svh)] lg:max-h-[min(30.5rem,62svh)] xl:max-h-[min(34.5rem,66svh)] mx-auto rounded-[1.6rem] md:rounded-[2rem] lg:rounded-[2.4rem] overflow-hidden bg-secondary"
+                class="relative aspect-4/5 max-h-[min(12rem,26svh)] sm:max-h-[min(16rem,32svh)] md:max-h-[min(20rem,38svh)] lg:max-h-[min(30.5rem,62svh)] xl:max-h-[min(34.5rem,66svh)] mx-auto rounded-[1.5rem] md:rounded-[1.9rem] lg:rounded-[2.3rem] overflow-hidden bg-secondary"
               >
                 <div class="absolute inset-x-0 top-0 h-px bg-primary/20 z-20" />
                 <div class="absolute inset-y-0 left-0 w-px bg-primary/20 z-20" />

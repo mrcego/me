@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v';
+import type { HireProfileId } from '~/config/routes.manifest';
 import { PORTFOLIO_ROUTES, hireProfileRoutes } from '~/config/routes.manifest';
 
 const localePath = useLocalePath();
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
-const BLURB_KEYS: Record<'vue' | 'ai' | 'node', string> = {
+const BLURB_KEYS: Record<HireProfileId, string> = {
   vue: 'hireProfiles.vueBlurb',
   node: 'hireProfiles.nodeBlurb',
   ai: 'hireProfiles.aiBlurb',
+  angular: 'hireProfiles.angularBlurb',
+  architect: 'hireProfiles.architectBlurb',
+  fullstack: 'hireProfiles.fullstackBlurb',
 };
 
 const profiles = hireProfileRoutes().map((link) => ({
