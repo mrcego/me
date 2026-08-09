@@ -3,7 +3,9 @@ import { computed, ref } from 'vue';
 import { Motion } from 'motion-v';
 import { useI18n } from 'vue-i18n';
 import Dialog from 'primevue/dialog';
-import type { PhilosophyPoint } from './PhilosophyPointItem.vue';
+import type { PhilosophyPoint } from '~/components/ui/PhilosophyPointItem.vue';
+
+import { getI18nArray } from '~/core/utils/i18nHelpers';
 
 const { t, tm } = useI18n();
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
@@ -55,13 +57,8 @@ function getCompanyLogo(key: string) {
 
 const roleHighlights = computed(() => {
   if (!selectedRoleKey.value) return [];
-
-  const items = tm(`about.roles.${selectedRoleKey.value}.highlights`) as unknown;
-  if (!Array.isArray(items)) return [];
-
-  return items.map((_: unknown, index: number) =>
-    t(`about.roles.${selectedRoleKey.value}.highlights.${index}`),
-  );
+  const items = getI18nArray(tm, `about.roles.${selectedRoleKey.value}.highlights`);
+  return items.map((_, index) => t(`about.roles.${selectedRoleKey.value}.highlights.${index}`));
 });
 
 const selectedCompanyLogo = computed(() => {

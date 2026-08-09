@@ -69,25 +69,39 @@ const craftMethodologyTo =
         >
           <NuxtLink
             :to="localePath(profile.to)"
-            class="surface-card glass group flex h-full flex-col gap-5 rounded-3xl border border-foreground/5 p-6 md:p-8 transition-colors hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="surface-card glass group relative flex h-full flex-col gap-5 rounded-3xl border border-foreground/5 p-6 md:p-8 transition-all duration-300 hover:border-primary/30 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
+            <!-- holographic scanline hover animation -->
             <div
-              class="hire-profile__icon glass shrink-0 transition-transform group-hover:scale-105"
-            >
-              <Icon :name="profile.icon" class="hire-profile__glyph shrink-0" />
+              class="absolute inset-0 bg-linear-to-tr from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[0.85s] pointer-events-none"
+              style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1)"
+              aria-hidden="true"
+            />
+
+            <div class="relative z-10 flex flex-col h-full gap-5">
+              <CoreIconBadge
+                :name="profile.icon"
+                size="xl"
+                class="transition-transform group-hover:scale-105"
+              />
+              <div class="space-y-3 flex-1">
+                <h3 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
+                  {{ $t(profile.titleKey) }}
+                </h3>
+                <p class="text-muted leading-relaxed">{{ $t(profile.blurbKey) }}</p>
+              </div>
+              <div class="pt-2">
+                <span
+                  class="inline-flex items-center gap-2 text-xs sm:text-sm font-black uppercase tracking-widest text-primary glass px-4 py-2.5 rounded-xl border border-primary/20 group-hover:border-primary/50 group-hover:bg-primary group-hover:text-background group-hover:shadow-lg transition-all duration-300"
+                >
+                  {{ $t('hireProfiles.viewProfile') }}
+                  <Icon
+                    name="solar:arrow-right-linear"
+                    class="size-4 shrink-0 transition-transform group-hover:translate-x-1"
+                  />
+                </span>
+              </div>
             </div>
-            <div class="space-y-3 flex-1">
-              <h3 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
-                {{ $t(profile.titleKey) }}
-              </h3>
-              <p class="text-muted leading-relaxed">{{ $t(profile.blurbKey) }}</p>
-            </div>
-            <span
-              class="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-primary group-hover:gap-3 transition-[gap,transform] duration-300"
-            >
-              {{ $t('hireProfiles.viewProfile') }}
-              <Icon name="solar:arrow-right-linear" class="size-6" />
-            </span>
           </NuxtLink>
         </Motion>
       </div>

@@ -1,3 +1,5 @@
+import type { GtagWindow } from '~/core/types/webVitals';
+
 const ANALYTICS_CONSENT_KEY = 'analytics-consent';
 
 function hasAnalyticsConsent(): boolean {
@@ -17,7 +19,7 @@ function hasAnalyticsConsent(): boolean {
 function loadGtag(measurementId: string): void {
   if (!import.meta.client) return;
 
-  const w = window as Window & { dataLayer?: unknown[]; gtag?: (...args: unknown[]) => void };
+  const w = window as GtagWindow;
   if (typeof w.gtag === 'function') return;
 
   w.dataLayer = w.dataLayer || [];
@@ -61,7 +63,7 @@ export function useWebVitalsRum() {
         ts: Date.now(),
       };
 
-      const gtag = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag;
+      const gtag = (window as GtagWindow).gtag;
       if (measurementId && consentGranted && typeof gtag === 'function') {
         gtag('event', metric.name, {
           event_category: 'Web Vitals',

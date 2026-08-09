@@ -3,6 +3,9 @@ import Button from 'primevue/button';
 import { hireProfileRoutes } from '~/config/routes.manifest';
 import type { ExpertiseLandingTranslationKey } from '~/composables/useExpertiseLandingSeo';
 
+import type { I18nFaqItem, I18nSectionContent } from '~/core/types/i18n';
+import { getI18nArray } from '~/core/utils/i18nHelpers';
+
 interface Props {
   translationKey: ExpertiseLandingTranslationKey;
 }
@@ -31,23 +34,19 @@ const sisterProfiles = computed(() =>
 );
 
 const expertiseItems = computed(() => {
-  const data = tm(copyKey('expertise')) as unknown;
-  return Array.isArray(data) ? data.map((item) => rt(item)) : [];
+  return getI18nArray(tm, copyKey('expertise')).map((item) => rt(item));
 });
 
 const proofItems = computed(() => {
-  const data = tm(copyKey('proof')) as unknown;
-  return Array.isArray(data) ? data.map((item) => rt(item)) : [];
+  return getI18nArray(tm, copyKey('proof')).map((item) => rt(item));
 });
 
 const intentParagraphs = computed(() => {
-  const data = tm(copyKey('intent.paragraphs')) as unknown;
-  return Array.isArray(data) ? data.map((item) => rt(item)) : [];
+  return getI18nArray(tm, copyKey('intent.paragraphs')).map((item) => rt(item));
 });
 
 const serviceItems = computed(() => {
-  const data = tm(copyKey('services.items')) as Array<{ title: unknown; body: unknown }> | unknown;
-  if (!Array.isArray(data)) return [];
+  const data = getI18nArray<I18nSectionContent>(tm, copyKey('services.items'));
   return data.map((item) => ({
     title: rt(item.title),
     body: rt(item.body),
@@ -55,8 +54,7 @@ const serviceItems = computed(() => {
 });
 
 const faqItems = computed(() => {
-  const data = tm(copyKey('faq')) as Array<{ question: unknown; answer: unknown }> | unknown;
-  if (!Array.isArray(data)) return [];
+  const data = getI18nArray<I18nFaqItem>(tm, copyKey('faq'));
   return data.map((item) => ({
     question: rt(item.question),
     answer: rt(item.answer),

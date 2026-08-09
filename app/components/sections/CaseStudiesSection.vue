@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v';
 
+import { getI18nArray } from '~/core/utils/i18nHelpers';
+
 const localePath = useLocalePath();
 const { tm, rt } = useI18n();
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
@@ -24,8 +26,8 @@ const studies = [
 ] as const;
 
 function studyTags(slug: (typeof studies)[number]['slug']): string[] {
-  const data = tm(`caseStudies.items.${slug}.tags`) as unknown;
-  return Array.isArray(data) ? data.map((item) => rt(item)) : [];
+  const data = getI18nArray(tm, `caseStudies.items.${slug}.tags`);
+  return data.map((item) => rt(item));
 }
 </script>
 
@@ -87,11 +89,11 @@ function studyTags(slug: (typeof studies)[number]['slug']): string[] {
 
             <div class="relative z-10 flex flex-col h-full gap-6 md:gap-8">
               <div class="flex items-start justify-between gap-4">
-                <div
-                  class="case-study__icon glass shrink-0 transition-transform group-hover:scale-105"
-                >
-                  <Icon :name="study.icon" class="case-study__glyph shrink-0" />
-                </div>
+                <CoreIconBadge
+                  :name="study.icon"
+                  size="xl"
+                  class="transition-transform group-hover:scale-105"
+                />
                 <p class="type-meta text-muted font-bold text-right">
                   {{ $t(`caseStudies.items.${study.slug}.period`) }}
                 </p>

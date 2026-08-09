@@ -1,4 +1,5 @@
 import type { Ref } from 'vue';
+import { getI18nArray } from '~/core/utils/i18nHelpers';
 import { TERMINAL_COMMANDS, type TerminalCommandId } from '~/config/portfolioTerminal.config';
 import { PORTFOLIO_ROUTES } from '~/config/routes.manifest';
 import {
@@ -151,9 +152,8 @@ export function usePortfolioTerminalSession(): PortfolioTerminalSessionApi {
         pushLine('output', t('terminal.responses.profiles'));
         break;
       case 'certs': {
-        const data = tm('certifications.data') as unknown;
-        const count = Array.isArray(data) ? data.length : 0;
-        pushLine('output', t('terminal.responses.certs', { count }));
+        const data = getI18nArray(tm, 'certifications.data');
+        pushLine('output', t('terminal.responses.certs', { count: data.length }));
         break;
       }
       case 'contact':

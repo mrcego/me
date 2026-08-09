@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Button from 'primevue/button';
 import type { CaseStudySlug } from '~/composables/useCaseStudySeo';
+import type { I18nSectionContent } from '~/core/types/i18n';
+import { getI18nArray } from '~/core/utils/i18nHelpers';
 
 interface Props {
   slug: CaseStudySlug;
@@ -12,11 +14,11 @@ const { t, tm, rt } = useI18n();
 const copyKey = (key: string) => `caseStudies.items.${props.slug}.${key}`;
 const { sectionHref } = useSectionNavigation();
 const contactHref = computed(() => sectionHref('#contact'));
+
 const homeCaseStudiesHref = computed(() => sectionHref('#case-studies'));
 
 const sectionBlocks = computed(() => {
-  const data = tm(copyKey('page.sections')) as Array<{ title: unknown; body: unknown }> | unknown;
-  if (!Array.isArray(data)) return [];
+  const data = getI18nArray<I18nSectionContent>(tm, copyKey('page.sections'));
   return data.map((item) => ({
     title: rt(item.title),
     body: rt(item.body),
@@ -24,13 +26,13 @@ const sectionBlocks = computed(() => {
 });
 
 const highlightItems = computed(() => {
-  const data = tm(copyKey('page.highlights')) as unknown;
-  return Array.isArray(data) ? data.map((item) => rt(item)) : [];
+  const data = getI18nArray(tm, copyKey('page.highlights'));
+  return data.map((item) => rt(item));
 });
 
 const tagItems = computed(() => {
-  const data = tm(copyKey('tags')) as unknown;
-  return Array.isArray(data) ? data.map((item) => rt(item)) : [];
+  const data = getI18nArray(tm, copyKey('tags'));
+  return data.map((item) => rt(item));
 });
 </script>
 

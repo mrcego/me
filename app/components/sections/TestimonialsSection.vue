@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Motion } from 'motion-v';
 
+import { getI18nArray } from '~/core/utils/i18nHelpers';
+
 const { tm, rt } = useI18n();
 const { getLocalAvatar, getInitials } = useTestimonialAvatar();
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
@@ -15,8 +17,7 @@ interface TestimonialEntry {
 }
 
 const testimonials = computed(() => {
-  const data = tm('testimonials.data') as TestimonialEntry[] | unknown;
-  if (!Array.isArray(data)) return [];
+  const data = getI18nArray<TestimonialEntry>(tm, 'testimonials.data');
   return data.map((t) => ({
     name: rt(t.name),
     role: rt(t.role),

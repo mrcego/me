@@ -2,6 +2,9 @@
 import { Motion } from 'motion-v';
 import { useI18n } from 'vue-i18n';
 
+import type { I18nCertData } from '~/core/types/i18n';
+import { getI18nArray } from '~/core/utils/i18nHelpers';
+
 interface CertificationItem {
   id: string;
   title: string;
@@ -33,26 +36,16 @@ function certIssuerIcon(issuer: string): string {
 }
 
 const certifications = computed<CertificationItem[]>(() => {
-  const data = tm('certifications.data') as unknown;
-  if (!Array.isArray(data)) return [];
+  const data = getI18nArray<I18nCertData>(tm, 'certifications.data');
 
-  return data.map((item: unknown, index: number) => {
-    const record = item as {
-      title: string;
-      issuer: string;
-      date: string;
-      skills?: string[];
-      url: string;
-      featured?: boolean | string;
-    };
-
+  return data.map((record, index) => {
     return {
       id: `cert-${index}`,
       title: rt(record.title),
       issuer: rt(record.issuer),
       date: rt(record.date),
       skills: Array.isArray(record.skills) ? record.skills.map((s) => rt(s)) : [],
-      url: rt(record.url),
+      url: rt(record.url ?? ''),
       featured: isFeaturedFlag(record.featured),
     };
   });
@@ -98,10 +91,10 @@ watch(showAllRest, () => {
     <div class="container mx-auto">
       <!-- Section Header -->
       <Motion
-        :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
+        :initial="motionInitial({ opacity: 0, y: 16 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.4 })"
-        :viewport="{ once: true }"
+        :viewport="{ once: true, amount: 0.1 }"
         class="max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto text-center space-y-6 md:space-y-10 mb-12 md:mb-24 px-2 sm:px-0"
       >
         <div class="flex items-center justify-center gap-4 md:gap-6">
@@ -141,9 +134,7 @@ watch(showAllRest, () => {
 
           <div class="space-y-5 sm:space-y-6 relative z-10">
             <div class="flex justify-between items-start gap-3">
-              <div class="cert-card__icon glass shrink-0">
-                <Icon name="solar:medal-ribbon-bold" class="cert-card__glyph shrink-0" />
-              </div>
+              <CoreIconBadge name="solar:medal-ribbon-bold" size="lg" />
               <span class="surface-card__meta type-meta text-muted">{{ cert.date }}</span>
             </div>
 

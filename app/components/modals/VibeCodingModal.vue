@@ -3,6 +3,8 @@ import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import Dialog from 'primevue/dialog';
 
+import { getI18nArray } from '~/core/utils/i18nHelpers';
+
 const { t, tm } = useI18n();
 const { vibeCodingModalVisible, closeVibeCodingModal } = useVibeCodingModal();
 const { goToSection, sectionHref } = useSectionNavigation();
@@ -17,10 +19,8 @@ function onVisibleUpdate(visible: boolean) {
 }
 
 const rolePoints = computed(() => {
-  const items = tm('vibeCoding.modal.points') as unknown;
-  if (!Array.isArray(items)) return [];
-
-  return items.map((_: unknown, index: number) => t(`vibeCoding.modal.points.${index}`));
+  const items = getI18nArray(tm, 'vibeCoding.modal.points');
+  return items.map((_, index) => t(`vibeCoding.modal.points.${index}`));
 });
 </script>
 

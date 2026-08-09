@@ -9,7 +9,7 @@
 import { computed } from 'vue';
 import { useMatchMedia, usePrefersReducedMotion } from '~/composables/useMatchMedia';
 
-type MotionState = Record<string, unknown>;
+import type { MotionState } from '~/core/types/motion';
 
 const smoothEase = [0.22, 1, 0.36, 1] as const;
 

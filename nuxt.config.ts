@@ -12,6 +12,13 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
+
   // Site configuration for SEO modules
   // trailingSlash: keep loc/canonicals with `/` — Netlify serves directory URLs that way.
   site: {

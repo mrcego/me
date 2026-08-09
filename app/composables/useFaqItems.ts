@@ -1,8 +1,5 @@
-type FaqMessageItem = {
-  question: unknown;
-  answer: unknown;
-  key?: string;
-};
+import type { I18nFaqItem } from '~/core/types/i18n';
+import { getI18nArray } from '~/core/utils/i18nHelpers';
 
 export type FaqItem = {
   key?: string;
@@ -14,11 +11,13 @@ export const useFaqItems = () => {
   const { tm, rt, locale, getLocaleMessage } = useI18n();
 
   return computed<FaqItem[]>(() => {
-    const data = tm('faq.items') as FaqMessageItem[] | unknown;
-    if (!data || !Array.isArray(data)) return [];
+    const data = getI18nArray<I18nFaqItem>(tm, 'faq.items');
+    if (!data.length) return [];
 
-    const rawItems =
-      (getLocaleMessage(locale.value) as { faq?: { items?: FaqMessageItem[] } }).faq?.items ?? [];
+    const rawMessages = getLocaleMessage(locale.value) as {
+      faq?: { items?: Array<{ key?: string }> };
+    };
+    const rawItems = rawMessages.faq?.items ?? [];
 
     return data.map((item, index) => ({
       key: rawItems[index]?.key,

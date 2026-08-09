@@ -1,3 +1,5 @@
+import type { I18nFaqItem } from '~/core/types/i18n';
+import { getI18nArray } from '~/core/utils/i18nHelpers';
 import { SEO_IDENTITY, SITE_NAME } from '~/config/seo.config';
 import {
   buildHreflangAlternateLinks,
@@ -53,8 +55,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
 
   const faqItems = computed(() => {
-    const data = tm(copyKey('faq')) as Array<{ question: unknown; answer: unknown }> | unknown;
-    if (!Array.isArray(data)) return [];
+    const data = getI18nArray<I18nFaqItem>(tm, copyKey('faq'));
     return data.map((item) => ({
       question: rt(item.question),
       answer: rt(item.answer),
