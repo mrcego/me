@@ -88,9 +88,9 @@ function studyTags(slug: (typeof studies)[number]['slug']): string[] {
             <div class="relative z-10 flex flex-col h-full gap-6 md:gap-8">
               <div class="flex items-start justify-between gap-4">
                 <div
-                  class="flex size-18 sm:size-22 md:size-24 items-center justify-center rounded-2xl sm:rounded-3xl glass text-primary shadow-xl shadow-primary/10 transition-transform group-hover:scale-105"
+                  class="case-study__icon glass shrink-0 transition-transform group-hover:scale-105"
                 >
-                  <Icon :name="study.icon" class="size-12 sm:size-14 md:size-16 shrink-0" />
+                  <Icon :name="study.icon" class="case-study__glyph shrink-0" />
                 </div>
                 <p class="type-meta text-muted font-bold text-right">
                   {{ $t(`caseStudies.items.${study.slug}.period`) }}
@@ -152,5 +152,52 @@ function studyTags(slug: (typeof studies)[number]['slug']): string[] {
     linear-gradient(0deg, var(--foreground) 1px, transparent 1px),
     linear-gradient(90deg, var(--foreground) 1px, transparent 1px);
   background-size: 100px 100px;
+}
+
+.case-study__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem; /* 64px */
+  height: 4rem;
+  border-radius: 1rem;
+  color: var(--color-primary);
+  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .case-study__icon {
+    width: 4.75rem; /* 76px */
+    height: 4.75rem;
+    border-radius: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .case-study__icon {
+    width: 5.5rem; /* 88px */
+    height: 5.5rem;
+  }
+}
+
+.case-study__glyph {
+  width: 2.5rem; /* 40px */
+  height: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .case-study__glyph {
+    width: 3rem; /* 48px */
+    height: 3rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .case-study__glyph {
+    width: 3.5rem; /* 56px */
+    height: 3.5rem;
+  }
 }
 </style>

@@ -199,6 +199,12 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
       icons: [
+        // Hero section & social
+        'solar:rocket-2-bold-duotone',
+        'solar:letter-linear',
+        'solar:letter-bold',
+        'solar:arrow-left-linear',
+        'solar:arrow-down-linear',
         // Capabilities section
         'solar:rocket-bold-duotone',
         'solar:database-bold-duotone',
@@ -211,17 +217,26 @@ export default defineNuxtConfig({
         'solar:cpu-bolt-bold-duotone',
         'solar:layers-minimalistic-bold-duotone',
         'solar:code-square-bold-duotone',
-        // Case studies
+        // Tech stack
+        'logos:typescript-icon',
+        'logos:javascript',
+        'logos:git-icon',
+        'solar:crown-star-bold',
+        'solar:global-linear',
+        // Case studies & testimonials
         'solar:bag-2-bold-duotone',
         'solar:buildings-2-bold-duotone',
         'solar:chat-round-dots-bold-duotone',
         'solar:school-bold-duotone',
+        'solar:chat-square-code-bold-duotone',
         // About & philosophy points
         'logos:nuxt-icon',
         'logos:figma',
         // Contact & social
         'solar:letter-bold-duotone',
         'solar:phone-calling-bold-duotone',
+        'solar:plain-bold-duotone',
+        'solar:sort-vertical-linear',
         'logos:linkedin-icon',
         'logos:github-icon',
         'logos:twitter',
@@ -241,6 +256,7 @@ export default defineNuxtConfig({
         'solar:arrow-right-up-linear',
         'solar:download-minimalistic-bold-duotone',
         'lucide:check-circle-2',
+        'lucide:chevron-down',
         'lucide:x',
         'solar:hamburger-menu-linear',
         'solar:close-square-linear',

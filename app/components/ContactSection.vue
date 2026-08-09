@@ -109,13 +109,10 @@ const contactMethods = [
               :rel="c.external ? 'noopener noreferrer' : undefined"
             >
               <div
-                class="contact-method__icon flex size-20 md:size-24 lg:size-28 shrink-0 items-center justify-center rounded-2xl md:rounded-3xl border border-foreground/15 bg-background/45 text-primary shadow-xl transition-transform group-hover:scale-105"
+                class="contact-method__icon glass flex shrink-0 items-center justify-center rounded-2xl md:rounded-3xl border border-foreground/15 text-primary shadow-xl transition-transform group-hover:scale-105"
                 aria-hidden="true"
               >
-                <Icon
-                  :name="c.icon"
-                  class="contact-method__glyph size-11 md:size-14 lg:size-16 shrink-0"
-                />
+                <Icon :name="c.icon" class="contact-method__glyph shrink-0" />
               </div>
               <div class="min-w-0 flex-1 space-y-1 text-left">
                 <p
@@ -395,11 +392,31 @@ const contactMethods = [
 }
 
 .contact-method__icon {
+  width: 3.5rem; /* 56px */
+  height: 3.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
   transition:
     background-color 0.5s ease,
     border-color 0.5s ease,
     color 0.5s ease,
     transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 640px) {
+  .contact-method__icon {
+    width: 4rem; /* 64px */
+    height: 4rem;
+    border-radius: 1.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-method__icon {
+    width: 4.5rem; /* 72px */
+    height: 4.5rem;
+    border-radius: 1.25rem;
+  }
 }
 
 .contact-method:hover .contact-method__icon {
@@ -409,8 +426,24 @@ const contactMethods = [
 }
 
 .contact-method__glyph {
+  width: 2rem; /* 32px */
+  height: 2rem;
   transform-box: fill-box;
   transform-origin: center;
+}
+
+@media (min-width: 640px) {
+  .contact-method__glyph {
+    width: 2.25rem; /* 36px */
+    height: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-method__glyph {
+    width: 2.5rem; /* 40px */
+    height: 2.5rem;
+  }
 }
 
 .contact-submit__sweep {

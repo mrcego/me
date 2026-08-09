@@ -72,9 +72,9 @@ const craftMethodologyTo =
             class="surface-card glass group flex h-full flex-col gap-5 rounded-3xl border border-foreground/5 p-6 md:p-8 transition-colors hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <div
-              class="flex size-16 sm:size-18 md:size-20 items-center justify-center rounded-2xl glass text-primary shadow-lg shadow-primary/10 transition-transform group-hover:scale-105"
+              class="hire-profile__icon glass shrink-0 transition-transform group-hover:scale-105"
             >
-              <Icon :name="profile.icon" class="size-10 sm:size-12 md:size-14 shrink-0" />
+              <Icon :name="profile.icon" class="hire-profile__glyph shrink-0" />
             </div>
             <div class="space-y-3 flex-1">
               <h3 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
@@ -104,3 +104,52 @@ const craftMethodologyTo =
     </div>
   </section>
 </template>
+
+<style scoped>
+.hire-profile__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.5rem; /* 72px */
+  height: 4.5rem;
+  border-radius: 1.25rem;
+  color: var(--color-primary);
+  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .hire-profile__icon {
+    width: 5.25rem; /* 84px */
+    height: 5.25rem;
+    border-radius: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hire-profile__icon {
+    width: 6rem; /* 96px */
+    height: 6rem;
+  }
+}
+
+.hire-profile__glyph {
+  width: 3rem; /* 48px */
+  height: 3rem;
+}
+
+@media (min-width: 640px) {
+  .hire-profile__glyph {
+    width: 3.5rem; /* 56px */
+    height: 3.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hire-profile__glyph {
+    width: 4rem; /* 64px */
+    height: 4rem;
+  }
+}
+</style>

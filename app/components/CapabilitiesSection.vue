@@ -79,13 +79,8 @@ const capabilities = [
           <div
             class="relative z-10 space-y-4 sm:space-y-6 md:space-y-8 h-full flex flex-col justify-center items-center text-center"
           >
-            <div
-              class="surface-card__icon surface-card__icon--tilt w-[72px] h-[72px] sm:w-[86px] sm:h-[86px] md:w-[100px] md:h-[100px] glass rounded-2xl sm:rounded-3xl flex items-center justify-center text-primary shadow-2xl transition-transform group-hover:scale-110"
-            >
-              <Icon
-                :name="cap.icon"
-                class="w-[48px] h-[48px] sm:w-[60px] sm:h-[60px] md:w-[72px] md:h-[72px] shrink-0"
-              />
+            <div class="capability-icon glass shrink-0 transition-transform group-hover:scale-110">
+              <Icon :name="cap.icon" class="capability-glyph shrink-0" />
             </div>
             <div class="space-y-3 sm:space-y-4 max-w-xs mx-auto">
               <h4
@@ -131,5 +126,52 @@ const capabilities = [
 
 .capability-ambient-glow {
   background: radial-gradient(circle at 50% 0%, rgba(255, 75, 92, 0.03), transparent);
+}
+
+.capability-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem; /* 64px */
+  height: 4rem;
+  border-radius: 1rem;
+  color: var(--color-primary);
+  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .capability-icon {
+    width: 5rem; /* 80px */
+    height: 5rem;
+    border-radius: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .capability-icon {
+    width: 5.75rem; /* 92px */
+    height: 5.75rem;
+  }
+}
+
+.capability-glyph {
+  width: 2.5rem; /* 40px */
+  height: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .capability-glyph {
+    width: 3.25rem; /* 52px */
+    height: 3.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .capability-glyph {
+    width: 3.75rem; /* 60px */
+    height: 3.75rem;
+  }
 }
 </style>
