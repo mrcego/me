@@ -72,9 +72,9 @@ const craftMethodologyTo =
             class="surface-card glass group flex h-full flex-col gap-5 rounded-3xl border border-foreground/5 p-6 md:p-8 transition-colors hover:border-primary/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <div
-              class="flex size-14 items-center justify-center rounded-2xl glass text-primary shadow-lg shadow-primary/10"
+              class="flex size-16 sm:size-18 md:size-20 items-center justify-center rounded-2xl glass text-primary shadow-lg shadow-primary/10 transition-transform group-hover:scale-105"
             >
-              <Icon :name="profile.icon" class="size-8" />
+              <Icon :name="profile.icon" class="size-10 sm:size-12 md:size-14 shrink-0" />
             </div>
             <div class="space-y-3 flex-1">
               <h3 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
@@ -86,7 +86,7 @@ const craftMethodologyTo =
               class="inline-flex items-center gap-2 text-sm font-black uppercase tracking-widest text-primary group-hover:gap-3 transition-[gap,transform] duration-300"
             >
               {{ $t('hireProfiles.viewProfile') }}
-              <Icon name="solar:arrow-right-linear" class="size-5" />
+              <Icon name="solar:arrow-right-linear" class="size-6" />
             </span>
           </NuxtLink>
         </Motion>

@@ -199,11 +199,33 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
       icons: [
+        // Hire profiles & PSEO landings
+        'logos:vue',
+        'logos:nodejs-icon',
+        'logos:angular-icon',
+        'solar:cpu-bolt-bold-duotone',
+        'solar:layers-minimalistic-bold-duotone',
+        'solar:code-square-bold-duotone',
+        // Case studies
         'solar:bag-2-bold-duotone',
         'solar:buildings-2-bold-duotone',
         'solar:chat-round-dots-bold-duotone',
-        'solar:layers-minimalistic-bold-duotone',
-        'logos:angular-icon',
+        // Contact & social
+        'solar:letter-bold-duotone',
+        'solar:phone-calling-bold-duotone',
+        'logos:linkedin-icon',
+        'logos:github-icon',
+        'logos:twitter',
+        // Certifications & navbar
+        'solar:medal-ribbon-bold',
+        'logos:google-icon',
+        'logos:meta-icon',
+        'logos:aws',
+        'solar:widget-2-bold-duotone',
+        'solar:arrow-right-linear',
+        'solar:arrow-right-up-bold',
+        'solar:download-minimalistic-bold-duotone',
+        'solar:magic-stick-3-bold-duotone',
       ],
     },
   },

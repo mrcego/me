@@ -767,10 +767,14 @@ onBeforeUnmount(() => {
                     :to="localePath(profile.to)"
                     role="menuitem"
                     tabindex="-1"
-                    class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-bold text-foreground hover:bg-foreground/5 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
+                    class="flex items-center gap-3.5 rounded-xl px-3 py-2.5 text-sm font-bold text-foreground hover:bg-primary/8 hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50 group/ditem"
                     @click="closeHireMenu({ restoreFocus: false })"
                   >
-                    <Icon :name="profile.icon" class="size-5 shrink-0 text-primary" />
+                    <div
+                      class="flex size-8 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover/ditem:bg-primary group-hover/ditem:text-primary-contrast transition-colors shrink-0"
+                    >
+                      <Icon :name="profile.icon" class="size-5 shrink-0" />
+                    </div>
                     <span>{{ $t(profile.name) }}</span>
                   </NuxtLink>
                   <div class="my-1 border-t border-foreground/5" />
@@ -781,7 +785,7 @@ onBeforeUnmount(() => {
                     class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-xs font-black uppercase tracking-widest text-muted hover:text-foreground hover:bg-foreground/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
                     @click="goToHireSection($event)"
                   >
-                    <Icon name="solar:widget-2-bold-duotone" class="size-5 shrink-0" />
+                    <Icon name="solar:widget-2-bold-duotone" class="size-6 shrink-0 text-primary" />
                     <span>{{ $t('nav.hireSection') }}</span>
                   </a>
                 </div>
@@ -801,32 +805,28 @@ onBeforeUnmount(() => {
             </a>
           </div>
 
-          <!-- Mobile Toggle -->
+          <!-- Mobile Navigation Trigger (Hamburger) -->
           <button
             ref="mobileMenuToggleRef"
             type="button"
-            class="site-nav__icon-btn lg:hidden flex items-center justify-center rounded-full text-foreground bg-foreground/5 hover:bg-foreground/10 transition-colors focus-visible:ring-2 focus-visible:ring-primary shrink-0"
-            :aria-label="isMobileMenuOpen ? $t('a11y.closeMenu') : $t('a11y.openMenu')"
+            class="site-nav__action lg:hidden inline-flex size-10 items-center justify-center rounded-full text-foreground hover:bg-foreground/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer"
+            :aria-label="$t('a11y.openMenu')"
             :aria-expanded="isMobileMenuOpen"
-            :aria-controls="isMobileMenuOpen ? 'mobile-nav-dialog' : undefined"
-            aria-haspopup="dialog"
+            aria-controls="mobile-nav-dialog"
             @click="toggleMobileMenu"
           >
-            <Icon
-              :name="isMobileMenuOpen ? 'solar:close-square-linear' : 'solar:hamburger-menu-linear'"
-              class="size-6"
-            />
+            <Icon name="solar:hamburger-menu-linear" class="size-6" />
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Mobile Menu Overlay -->
+    <!-- Mobile Navigation Modal -->
     <Transition
-      enter-active-class="transition duration-500 cubic-bezier(0.16, 1, 0.3, 1)"
+      enter-active-class="transition duration-300 ease-out"
       enter-from-class="opacity-0 translate-y-10 scale-95"
       enter-to-class="opacity-100 translate-y-0 scale-100"
-      leave-active-class="transition duration-300 ease-in"
+      leave-active-class="transition duration-200 ease-in"
       leave-from-class="opacity-100 translate-y-0 scale-100"
       leave-to-class="opacity-0 translate-y-10 scale-95"
     >
@@ -834,7 +834,7 @@ onBeforeUnmount(() => {
         v-if="isMobileMenuOpen"
         id="mobile-nav-dialog"
         ref="mobileMenuRef"
-        class="mobile-nav-dialog fixed inset-2 sm:inset-4 md:inset-6 z-140 rounded-2xl sm:rounded-3xl md:rounded-[2.5rem] overflow-y-auto border border-foreground/10 shadow-4xl lg:hidden overscroll-contain"
+        class="mobile-nav-dialog fixed inset-2 sm:inset-4 md:inset-6 z-140 rounded-3xl md:rounded-[2.5rem] overflow-y-auto border border-foreground/15 glass shadow-4xl lg:hidden overscroll-contain bg-background/95 backdrop-blur-2xl p-6 sm:p-8"
         role="dialog"
         aria-modal="true"
         aria-labelledby="mobile-nav-title"
@@ -846,50 +846,59 @@ onBeforeUnmount(() => {
         <button
           ref="mobileMenuCloseRef"
           type="button"
-          class="sticky top-3 sm:top-4 ml-auto mr-3 sm:mr-4 mt-3 sm:mt-4 z-10 flex size-11 sm:size-12 items-center justify-center rounded-full border border-foreground/10 bg-background/80 text-muted shadow-2xl backdrop-blur-xl transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+          class="sticky top-0 ml-auto z-10 flex size-12 items-center justify-center rounded-full border border-foreground/15 bg-background/80 text-foreground shadow-2xl backdrop-blur-xl transition-transform hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer"
           :aria-label="$t('a11y.closeMenu')"
           @click="closeMobileMenu()"
         >
-          <Icon name="lucide:x" class="size-5 sm:size-6" />
+          <Icon name="lucide:x" class="size-6" />
         </button>
 
         <div
-          class="flex min-h-[calc(100%-4.75rem)] flex-col items-center justify-center px-4 py-8 sm:py-10"
+          class="flex min-h-[calc(100%-3rem)] flex-col items-center justify-between gap-8 max-w-lg mx-auto py-4"
         >
-          <nav
-            class="space-y-3 sm:space-y-4 md:space-y-5 text-center"
-            :aria-label="$t('a11y.mobileMenu')"
-          >
+          <nav class="space-y-3 text-center w-full" :aria-label="$t('a11y.mobileMenu')">
             <a
               v-for="link in navLinks"
               :key="link.id"
               :href="sectionHref(link.href)"
-              class="block text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground hover:text-primary transition-colors cursor-pointer"
+              class="block text-2xl sm:text-3xl font-black tracking-tight text-foreground hover:text-primary transition-all duration-300 cursor-pointer hover:scale-[1.02]"
               @click="onNavSectionClick($event, link.href)"
             >
               {{ $t(link.name) }}
             </a>
           </nav>
 
-          <div class="mt-8 w-full max-w-sm space-y-4 text-center">
+          <div class="w-full space-y-4 text-center border-t border-foreground/10 pt-6">
             <p class="text-xs font-black uppercase tracking-[0.3em] text-muted">
               {{ $t('nav.hireMenu') }}
             </p>
-            <div class="flex flex-col gap-2">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left">
               <NuxtLink
                 v-for="profile in hireProfileLinks"
                 :key="profile.to"
                 :to="localePath(profile.to)"
-                class="inline-flex items-center justify-center gap-2 min-h-11 px-4 py-2 rounded-full border border-foreground/15 text-sm font-bold text-muted hover:text-primary hover:border-primary/40 transition-colors"
+                class="flex items-center gap-3 p-3 rounded-2xl glass border border-foreground/10 hover:border-primary/40 hover:bg-primary/5 transition-all group/mitem"
                 @click="closeMobileMenu({ restoreFocus: false })"
               >
-                <Icon :name="profile.icon" class="size-4" />
-                {{ $t(profile.name) }}
+                <div
+                  class="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover/mitem:bg-primary group-hover/mitem:text-primary-contrast transition-colors shrink-0"
+                >
+                  <Icon :name="profile.icon" class="size-6 shrink-0" />
+                </div>
+                <span
+                  class="text-sm font-bold text-foreground group-hover/mitem:text-primary transition-colors flex-1 line-clamp-1"
+                >
+                  {{ $t(profile.name) }}
+                </span>
+                <Icon
+                  name="solar:arrow-right-linear"
+                  class="size-4 text-primary opacity-0 group-hover/mitem:opacity-100 transition-all -translate-x-1 group-hover/mitem:translate-x-0 shrink-0"
+                />
               </NuxtLink>
             </div>
             <a
               :href="sectionHref('#hire-profiles')"
-              class="inline-flex items-center justify-center gap-2 min-h-11 text-xs font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors"
+              class="inline-flex items-center justify-center gap-2 pt-2 text-xs font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors"
               @click="goToHireSection($event)"
             >
               {{ $t('nav.hireSection') }}
@@ -897,10 +906,10 @@ onBeforeUnmount(() => {
             </a>
           </div>
 
-          <div class="mt-8 flex flex-col items-center gap-3 w-full max-w-sm">
+          <div class="flex flex-col sm:flex-row gap-3 w-full border-t border-foreground/10 pt-6">
             <a
               :href="sectionHref('#contact')"
-              class="inline-flex w-full items-center justify-center gap-2 min-h-12 px-6 py-3 bg-primary text-primary-contrast rounded-full font-bold uppercase tracking-wider hover:bg-primary-hover transition-colors text-sm"
+              class="btn-premium bg-primary text-primary-contrast rounded-2xl py-3.5 px-6 flex-1 inline-flex items-center justify-center gap-2 font-black uppercase tracking-wider text-sm shadow-xl shadow-primary/20"
               @click="onNavSectionClick($event, '#contact')"
             >
               {{ $t('nav.getInTouch') }}
@@ -909,7 +918,7 @@ onBeforeUnmount(() => {
             <a
               :href="cvHref"
               :download="cvFileName"
-              class="inline-flex w-full items-center justify-center gap-2 min-h-12 px-6 py-3 border border-foreground/20 text-foreground rounded-full font-bold uppercase tracking-wider hover:border-primary/40 hover:text-primary transition-colors text-sm"
+              class="btn-premium glass border border-foreground/15 text-foreground rounded-2xl py-3.5 px-6 flex-1 inline-flex items-center justify-center gap-2 font-black uppercase tracking-wider text-sm hover:border-primary/40 hover:text-primary transition-colors"
               :aria-label="$t('hero.downloadCvAria', { file: cvFileName })"
               @click="closeMobileMenu({ restoreFocus: false })"
             >
