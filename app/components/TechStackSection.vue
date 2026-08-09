@@ -126,13 +126,8 @@ const skills = [
             class="relative space-y-3 sm:space-y-4 md:space-y-6 lg:space-y-8 h-full flex flex-col z-10"
           >
             <div class="flex justify-between items-start">
-              <div
-                class="surface-card__icon surface-card__icon--tilt w-[54px] h-[54px] sm:w-[58px] sm:h-[58px] md:w-[66px] md:h-[66px] glass rounded-xl sm:rounded-2xl flex items-center justify-center text-primary shadow-2xl shrink-0"
-              >
-                <Icon
-                  :name="t.icon"
-                  class="w-[34px] h-[34px] sm:w-[38px] sm:h-[38px] md:w-[42px] md:h-[42px]"
-                />
+              <div class="tech-card__icon glass shrink-0">
+                <Icon :name="t.icon" class="tech-card__glyph shrink-0" />
               </div>
               <div class="flex flex-col items-end gap-0.5 sm:gap-1">
                 <span
@@ -182,13 +177,8 @@ const skills = [
           />
 
           <div class="flex items-center gap-3 sm:gap-4 md:gap-6 relative z-10">
-            <div
-              class="surface-card__icon w-[46px] h-[46px] sm:w-[50px] sm:h-[50px] md:w-[54px] md:h-[54px] glass rounded-lg sm:rounded-xl flex items-center justify-center text-primary shrink-0"
-            >
-              <Icon
-                name="solar:crown-star-bold"
-                class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
-              />
+            <div class="tech-hud__icon glass shrink-0">
+              <Icon name="solar:crown-star-bold" class="tech-hud__glyph shrink-0" />
             </div>
             <h4 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-foreground">
               {{ $t('techStack.principles') }}
@@ -223,13 +213,8 @@ const skills = [
 
           <div class="space-y-8 md:space-y-10 relative z-10">
             <div class="flex items-center gap-4 md:gap-6 relative z-10">
-              <div
-                class="surface-card__icon surface-card__icon--tilt w-[46px] h-[46px] sm:w-[50px] sm:h-[50px] md:w-[54px] md:h-[54px] glass rounded-xl flex items-center justify-center text-primary shrink-0"
-              >
-                <Icon
-                  name="solar:global-linear"
-                  class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px]"
-                />
+              <div class="tech-hud__icon glass shrink-0">
+                <Icon name="solar:global-linear" class="tech-hud__glyph shrink-0" />
               </div>
               <h4 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
                 {{ $t('techStack.flow') }}
@@ -285,5 +270,71 @@ const skills = [
     transparent 1px,
     rgba(255, 75, 92, 0.05) 2px
   );
+}
+
+.tech-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem; /* 56px */
+  height: 3.5rem;
+  border-radius: 1rem;
+  color: var(--color-primary);
+  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .tech-card__icon {
+    width: 4rem; /* 64px */
+    height: 4rem;
+    border-radius: 1.125rem;
+  }
+}
+
+.tech-card__glyph {
+  width: 2.25rem; /* 36px */
+  height: 2.25rem;
+}
+
+@media (min-width: 640px) {
+  .tech-card__glyph {
+    width: 2.625rem; /* 42px */
+    height: 2.625rem;
+  }
+}
+
+.tech-hud__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem; /* 48px */
+  height: 3rem;
+  border-radius: 0.875rem;
+  color: var(--color-primary);
+  box-shadow: 0 8px 20px color-mix(in srgb, #000 24%, transparent);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .tech-hud__icon {
+    width: 3.5rem; /* 56px */
+    height: 3.5rem;
+    border-radius: 1rem;
+  }
+}
+
+.tech-hud__glyph {
+  width: 1.875rem; /* 30px */
+  height: 1.875rem;
+}
+
+@media (min-width: 640px) {
+  .tech-hud__glyph {
+    width: 2.25rem; /* 36px */
+    height: 2.25rem;
+  }
 }
 </style>

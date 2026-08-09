@@ -141,10 +141,8 @@ watch(showAllRest, () => {
 
           <div class="space-y-5 sm:space-y-6 relative z-10">
             <div class="flex justify-between items-start gap-3">
-              <div
-                class="surface-card__icon w-[72px] h-[72px] sm:w-[84px] sm:h-[84px] glass rounded-2xl flex items-center justify-center text-primary shadow-xl shrink-0"
-              >
-                <Icon name="solar:medal-ribbon-bold" class="w-12 h-12 sm:w-14 sm:h-14 shrink-0" />
+              <div class="cert-card__icon glass shrink-0">
+                <Icon name="solar:medal-ribbon-bold" class="cert-card__glyph shrink-0" />
               </div>
               <span class="surface-card__meta type-meta text-muted">{{ cert.date }}</span>
             </div>
@@ -156,7 +154,7 @@ watch(showAllRest, () => {
                 {{ cert.title }}
               </h4>
               <div class="flex items-center gap-2 text-sm font-medium text-muted">
-                <Icon :name="certIssuerIcon(cert.issuer)" class="size-7 shrink-0" />
+                <Icon :name="certIssuerIcon(cert.issuer)" class="cert-issuer__glyph shrink-0" />
                 <span>{{ cert.issuer }}</span>
               </div>
             </div>
@@ -304,6 +302,44 @@ watch(showAllRest, () => {
   .certifications-heading {
     font-size: 1.75rem;
   }
+}
+
+.cert-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem; /* 64px */
+  height: 4rem;
+  border-radius: 1rem;
+  color: var(--color-primary);
+  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+@media (min-width: 640px) {
+  .cert-card__icon {
+    width: 4.75rem; /* 76px */
+    height: 4.75rem;
+    border-radius: 1.25rem;
+  }
+}
+
+.cert-card__glyph {
+  width: 2.5rem; /* 40px */
+  height: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .cert-card__glyph {
+    width: 3rem; /* 48px */
+    height: 3rem;
+  }
+}
+
+.cert-issuer__glyph {
+  width: 1.375rem; /* 22px */
+  height: 1.375rem;
 }
 
 .cert-show-all-chevron {

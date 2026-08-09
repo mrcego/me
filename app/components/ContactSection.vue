@@ -392,30 +392,30 @@ const contactMethods = [
 }
 
 .contact-method__icon {
-  width: 3.5rem; /* 56px */
-  height: 3.5rem;
-  border-radius: 1rem;
-  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
+  width: 2.75rem; /* 44px */
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px color-mix(in srgb, #000 20%, transparent);
   transition:
-    background-color 0.5s ease,
-    border-color 0.5s ease,
-    color 0.5s ease,
-    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 640px) {
   .contact-method__icon {
-    width: 4rem; /* 64px */
-    height: 4rem;
-    border-radius: 1.125rem;
+    width: 3rem; /* 48px */
+    height: 3rem;
+    border-radius: 0.875rem;
   }
 }
 
 @media (min-width: 1024px) {
   .contact-method__icon {
-    width: 4.5rem; /* 72px */
-    height: 4.5rem;
-    border-radius: 1.25rem;
+    width: 3.25rem; /* 52px */
+    height: 3.25rem;
+    border-radius: 1rem;
   }
 }
 
@@ -426,23 +426,23 @@ const contactMethods = [
 }
 
 .contact-method__glyph {
-  width: 2rem; /* 32px */
-  height: 2rem;
+  width: 1.375rem; /* 22px */
+  height: 1.375rem;
   transform-box: fill-box;
   transform-origin: center;
 }
 
 @media (min-width: 640px) {
   .contact-method__glyph {
-    width: 2.25rem; /* 36px */
-    height: 2.25rem;
+    width: 1.5rem; /* 24px */
+    height: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .contact-method__glyph {
-    width: 2.5rem; /* 40px */
-    height: 2.5rem;
+    width: 1.625rem; /* 26px */
+    height: 1.625rem;
   }
 }
 

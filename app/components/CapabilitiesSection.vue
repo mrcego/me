@@ -59,9 +59,7 @@ const capabilities = [
         </h3>
       </Motion>
 
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8 md:gap-12 items-stretch"
-      >
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch">
         <Motion
           v-for="(cap, i) in capabilities"
           :key="cap.key"
@@ -69,7 +67,7 @@ const capabilities = [
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-6 sm:p-8 md:p-10 lg:p-14 rounded-2xl sm:rounded-[3rem] border-foreground/5 overflow-hidden h-full"
+          class="surface-card group relative glass p-8 sm:p-10 md:p-12 lg:p-14 rounded-3xl sm:rounded-[2.5rem] border-foreground/5 overflow-hidden h-full"
         >
           <!-- holographic scanline internal -->
           <div
@@ -82,7 +80,7 @@ const capabilities = [
             <div class="capability-icon glass shrink-0 transition-transform group-hover:scale-110">
               <Icon :name="cap.icon" class="capability-glyph shrink-0" />
             </div>
-            <div class="space-y-3 sm:space-y-4 max-w-xs mx-auto">
+            <div class="space-y-3 sm:space-y-4 max-w-md mx-auto">
               <h4
                 class="surface-card__title text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground"
               >
