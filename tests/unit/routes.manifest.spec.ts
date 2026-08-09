@@ -8,8 +8,8 @@ import {
 } from '../../app/config/routes.manifest';
 
 describe('routes.manifest', () => {
-  it('lists ten indexable page families', () => {
-    expect(PORTFOLIO_ROUTES).toHaveLength(10);
+  it('lists thirteen indexable page families', () => {
+    expect(PORTFOLIO_ROUTES).toHaveLength(13);
   });
 
   it('keeps the AI landing URL slug unchanged', () => {
@@ -27,6 +27,9 @@ describe('routes.manifest', () => {
     expect(routes).toContain('/web-developer-cartagena/');
     expect(routes).toContain('/ai-assisted-craft/');
     expect(routes).toContain('/vue-developer-colombia/');
+    expect(routes).toContain('/angular-developer/');
+    expect(routes).toContain('/frontend-architect/');
+    expect(routes).toContain('/fullstack-engineer/');
     expect(routes).toContain('/sitemap_index.xml');
     expect(sitemapUrls()).toEqual(
       expect.arrayContaining([
@@ -36,6 +39,9 @@ describe('routes.manifest', () => {
         '/web-developer-cartagena/',
         '/ai-assisted-craft/',
         '/vue-developer-colombia/',
+        '/angular-developer/',
+        '/frontend-architect/',
+        '/fullstack-engineer/',
       ]),
     );
     expect(sitemapUrls()).not.toContain('/sitemap_index.xml');
@@ -48,11 +54,11 @@ describe('routes.manifest', () => {
     }
   });
 
-  it('exposes three hire profiles', () => {
+  it('exposes six hire profiles', () => {
     expect(
       hireProfileRoutes()
         .map((r) => r.id)
         .sort(),
-    ).toEqual(['ai', 'node', 'vue']);
+    ).toEqual(['ai', 'angular', 'architect', 'fullstack', 'node', 'vue']);
   });
 });

@@ -13,11 +13,20 @@ export type LandingTranslationKey =
   | 'landingNode'
   | 'landingLocal'
   | 'landingCraft'
-  | 'landingVueColombia';
+  | 'landingVueColombia'
+  | 'landingAngular'
+  | 'landingArchitect'
+  | 'landingFullstack';
 
-export type HireProfileId = 'vue' | 'ai' | 'node';
+export type HireProfileId = 'vue' | 'ai' | 'node' | 'angular' | 'architect' | 'fullstack';
 
-export type HireProfileIcon = 'logos:vue' | 'logos:nodejs-icon' | 'solar:cpu-bolt-bold-duotone';
+export type HireProfileIcon =
+  | 'logos:vue'
+  | 'logos:nodejs-icon'
+  | 'solar:cpu-bolt-bold-duotone'
+  | 'logos:angular-icon'
+  | 'solar:layers-minimalistic-bold-duotone'
+  | 'solar:code-square-bold-duotone';
 
 export interface PortfolioRoute {
   id: string;
@@ -62,6 +71,30 @@ export const PORTFOLIO_ROUTES: readonly PortfolioRoute[] = [
     landingKey: 'landingNode',
     hireLabelKey: 'hireProfiles.hireForNode',
     hireIcon: 'logos:nodejs-icon',
+  },
+  {
+    id: 'angular',
+    paths: { en: '/angular-developer/', es: '/es/desarrollador-angular/' },
+    localePath: '/angular-developer',
+    landingKey: 'landingAngular',
+    hireLabelKey: 'hireProfiles.hireForAngular',
+    hireIcon: 'logos:angular-icon',
+  },
+  {
+    id: 'architect',
+    paths: { en: '/frontend-architect/', es: '/es/arquitecto-frontend/' },
+    localePath: '/frontend-architect',
+    landingKey: 'landingArchitect',
+    hireLabelKey: 'hireProfiles.hireForArchitect',
+    hireIcon: 'solar:layers-minimalistic-bold-duotone',
+  },
+  {
+    id: 'fullstack',
+    paths: { en: '/fullstack-engineer/', es: '/es/ingeniero-fullstack/' },
+    localePath: '/fullstack-engineer',
+    landingKey: 'landingFullstack',
+    hireLabelKey: 'hireProfiles.hireForFullstack',
+    hireIcon: 'solar:code-square-bold-duotone',
   },
   {
     id: 'tissini',
@@ -131,12 +164,19 @@ export function sitemapUrls(): string[] {
 
 export interface HireProfileRoute extends PortfolioRoute {
   id: HireProfileId;
-  landingKey: 'landingVue' | 'landingAi' | 'landingNode';
+  landingKey: LandingTranslationKey;
   hireLabelKey: string;
   hireIcon: HireProfileIcon;
 }
 
-const HIRE_IDS: readonly HireProfileId[] = ['vue', 'ai', 'node'];
+const HIRE_IDS: readonly HireProfileId[] = [
+  'vue',
+  'ai',
+  'node',
+  'angular',
+  'architect',
+  'fullstack',
+];
 
 /** Hire landings for navbar / footer / sister-profile lists. */
 export function hireProfileRoutes(): HireProfileRoute[] {

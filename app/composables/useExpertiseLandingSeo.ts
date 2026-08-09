@@ -15,7 +15,10 @@ export type ExpertiseLandingTranslationKey =
   | 'landingNode'
   | 'landingLocal'
   | 'landingCraft'
-  | 'landingVueColombia';
+  | 'landingVueColombia'
+  | 'landingAngular'
+  | 'landingArchitect'
+  | 'landingFullstack';
 
 interface ExpertiseLandingSeoOptions {
   translationKey: ExpertiseLandingTranslationKey;

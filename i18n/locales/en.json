@@ -1373,6 +1373,9 @@
     "hireForVue": "Vue.js developer",
     "hireForAi": "Vibe Coding Cleanup",
     "hireForNode": "Node.js developer",
+    "hireForAngular": "Angular developer (v16+)",
+    "hireForArchitect": "Frontend Architect",
+    "hireForFullstack": "Fullstack Engineer",
     "section": "Engagement",
     "title": "Hire me as a",
     "titleHighlight": "Vue, AI-assisted, or Node developer.",
@@ -1380,6 +1383,9 @@
     "vueBlurb": "Senior Vue.js developer: Vue/Nuxt architecture, design systems, and performance-focused frontend delivery.",
     "aiBlurb": "Vibe Coding Cleanup: harden agent-assisted Vue/Nuxt code and ship AI-assisted craft with quality gates and maintainable delivery.",
     "nodeBlurb": "Node.js developer: production Express APIs, typed contracts, and fullstack API-to-UI delivery.",
+    "angularBlurb": "Angular 16 developer: enterprise standalone components, RxJS state, and robust TypeScript architecture.",
+    "architectBlurb": "Frontend Architect & Lead: Vue 3 / Nuxt 4 design systems, micro-frontends, and Core Web Vitals at scale.",
+    "fullstackBlurb": "Fullstack Engineer: production Vue 3/Nuxt 4 client apps and Node.js backend APIs with 100% TypeScript contracts.",
     "viewProfile": "View developer profile",
     "alsoAvailable": "Also hire for",
     "crossLinkFromVue": "Also available: Vibe Coding Cleanup",
@@ -1559,6 +1565,202 @@
       {
         "question": "Do you ship unreviewed AI output?",
         "answer": "No. Architecture fitness, security, typed contracts, and maintainability checks are part of the definition of done."
+      }
+    ]
+  },
+  "landingAngular": {
+    "meta": {
+      "title": "Angular Developer (v16+) — Cesar Gomez",
+      "description": "Senior Angular developer experienced up to Angular 16: standalone components, RxJS, NgRx, TypeScript, and enterprise frontend architecture."
+    },
+    "eyebrow": "Hire Profile · Angular v16+ Specialist",
+    "title": "Angular Developer",
+    "titleHighlight": "(v16+)",
+    "lead": "Enterprise Angular development up to version 16: standalone components, Signals, RxJS state management, and robust TypeScript frontend architecture.",
+    "intent": {
+      "title": "Angular frontend engineering alongside Vue/Nuxt expertise",
+      "paragraphs": [
+        "With deep experience in modern frontend frameworks, I maintain strong proficiency in Angular up to version 16. I help enterprise teams build, refactor, and scale Angular applications with standalone component architecture and reactive patterns.",
+        "Available for senior contract roles, frontend migrations, and team enablement starting August 2026."
+      ]
+    },
+    "services": {
+      "title": "Hire an Angular developer for",
+      "items": [
+        {
+          "title": "Angular 16 & Modern Architecture",
+          "body": "Leveraging standalone components, Signals, and reactive RxJS pipelines for enterprise SPA applications."
+        },
+        {
+          "title": "State Management & RxJS",
+          "body": "Clean reactive data flows using NgRx, RxJS operators, and predictable state structures."
+        },
+        {
+          "title": "Angular to Vue/Nuxt Migrations",
+          "body": "Pragmatic migration strategies between Angular enterprise codebases and Vue 3 / Nuxt 4 stacks."
+        },
+        {
+          "title": "TypeScript & Form Optimization",
+          "body": "Strictly-typed reactive forms, custom validators, and performant Angular UI components."
+        }
+      ]
+    },
+    "expertiseTitle": "What you get with Angular v16 capability",
+    "expertise": [
+      "Angular 16 standalone components & signals",
+      "RxJS reactive state & async stream management",
+      "Strict TypeScript typings & modular architecture",
+      "Cross-framework experience across Angular, Vue, and Nuxt"
+    ],
+    "experienceTitle": "Enterprise frontend delivery",
+    "experienceBody": "Over 13 years of frontend craftsmanship including hands-on production delivery with Angular up to version 16 alongside deep Vue 3 / Nuxt 4 leadership.",
+    "proofTitle": "Core Angular signals",
+    "proofLink": "View full tech stack",
+    "proof": [
+      "Angular v16 production experience",
+      "RxJS & NgRx state architecture",
+      "100% TypeScript strict typings",
+      "Target availability from August 2026"
+    ],
+    "portfolioCta": "View full portfolio",
+    "contactCta": "Discuss an Angular project",
+    "faqTitle": "Angular Developer FAQ",
+    "faq": [
+      {
+        "question": "Which Angular versions do you support?",
+        "answer": "I specialize in Angular up to version 16, utilizing standalone components, Signals, RxJS, and modern Angular architecture."
+      },
+      {
+        "question": "Can you assist with Angular to Vue/Nuxt migrations?",
+        "answer": "Yes. Dual mastery in Angular and Vue 3 / Nuxt 4 allows me to lead incremental migration paths without service disruption."
+      }
+    ]
+  },
+  "landingArchitect": {
+    "meta": {
+      "title": "Frontend Architect — Senior Web Lead — Cesar Gomez",
+      "description": "Frontend Architect specializing in Vue 3, Nuxt 4, design systems, micro-frontends, Core Web Vitals, and scalable web engineering."
+    },
+    "eyebrow": "Hire Profile · Technical Leadership",
+    "title": "Frontend Architect",
+    "titleHighlight": "& Lead",
+    "lead": "Senior technical leadership across Vue 3, Nuxt 4, design systems, micro-frontends, and performance-first web delivery for scale products.",
+    "intent": {
+      "title": "Strategic frontend engineering for complex web applications",
+      "paragraphs": [
+        "Building applications at scale requires more than UI components—it requires architectural foresight, strict quality gates, and maintainable systems. As Frontend Architect, I establish foundational patterns, design systems, and CI/CD pipelines.",
+        "Target availability for senior leadership and contract roles from August 2026."
+      ]
+    },
+    "services": {
+      "title": "Hire a Frontend Architect for",
+      "items": [
+        {
+          "title": "Design Systems & UI Governance",
+          "body": "Multi-brand component systems with Tailwind variants, accessibility compliance, and design token consistency."
+        },
+        {
+          "title": "Micro-Frontends & Module Boundaries",
+          "body": "Decoupled web applications using Web Components, Nuxt modules, and clean domain boundaries."
+        },
+        {
+          "title": "Performance & Core Web Vitals",
+          "body": "Sub-second LCP, hydration optimization, payload minimization, and CSP Grado A+ security."
+        },
+        {
+          "title": "Team Mentorship & Code Review",
+          "body": "Establishing engineering standards, AI-assisted quality gates, and mentoring junior to mid-level engineers."
+        }
+      ]
+    },
+    "expertiseTitle": "Architecture pillars",
+    "expertise": [
+      "Vue 3 & Nuxt 4 zero-runtime SSG & hybrid SSR",
+      "Design systems & component library governance",
+      "Micro-frontend module federation & web components",
+      "Core Web Vitals RUM & automated CI/CD pipelines"
+    ],
+    "experienceTitle": "Scale engineering proof",
+    "experienceBody": "Led Vue 3 micro-frontend architecture at Colegium serving 100k+ active students, established CI/CD automation at TISSINI reducing deployment times by 60%, and authored LingoQuesto AI/NLP platform.",
+    "proofTitle": "Architectural highlights",
+    "proofLink": "Colegium case study",
+    "proof": [
+      "Multi-tenant micro-frontend architecture",
+      "60% deployment velocity improvement",
+      "CSP Grado A+ & security hardening",
+      "Available for senior contract roles from August 2026"
+    ],
+    "portfolioCta": "View full portfolio",
+    "contactCta": "Discuss Frontend Architecture",
+    "faqTitle": "Frontend Architect FAQ",
+    "faq": [
+      {
+        "question": "What is the difference between a Senior Frontend Developer and a Frontend Architect?",
+        "answer": "A Senior Developer builds features; an Architect designs the foundational systems, design tokens, micro-frontend boundaries, performance strategy, and engineering guidelines for entire teams."
+      }
+    ]
+  },
+  "landingFullstack": {
+    "meta": {
+      "title": "Fullstack Engineer (Vue/Node) — Cesar Gomez",
+      "description": "Senior Fullstack Engineer with end-to-end expertise in Vue 3, Nuxt 4, Node.js APIs, PostgreSQL, and TypeScript contract delivery."
+    },
+    "eyebrow": "Hire Profile · End-to-End Delivery",
+    "title": "Fullstack Engineer",
+    "titleHighlight": "(Vue & Node)",
+    "lead": "Production-grade fullstack web development across Vue 3/Nuxt 4 client apps and Node.js backend APIs with 100% TypeScript type safety.",
+    "intent": {
+      "title": "Full-stack ownership from database schema to interactive UI",
+      "paragraphs": [
+        "Bridging frontend perfection and backend resilience. I deliver complete features—REST/GraphQL endpoints, database models, business logic, and reactive Vue/Nuxt UIs—without context switching or handoff gaps.",
+        "Available for senior fullstack contract engagements starting August 2026."
+      ]
+    },
+    "services": {
+      "title": "Hire a Fullstack Engineer for",
+      "items": [
+        {
+          "title": "Vue 3 / Nuxt 4 Client Applications",
+          "body": "Reactive, fast, and accessible user interfaces built with Composition API, Pinia, and Nuxt 4."
+        },
+        {
+          "title": "Node.js & Express / Nitro APIs",
+          "body": "Typed REST and GraphQL APIs, JWT/session authentication, and scalable microservices."
+        },
+        {
+          "title": "Database Schema & ORM",
+          "body": "PostgreSQL and SQLite database design, migrations, and query optimization."
+        },
+        {
+          "title": "End-to-End Type Safety",
+          "body": "Shared TypeScript DTO contracts between backend handlers and frontend composables."
+        }
+      ]
+    },
+    "expertiseTitle": "Fullstack technology stack",
+    "expertise": [
+      "Client: Vue 3, Nuxt 4, Pinia, Tailwind CSS",
+      "Server: Node.js, Express, Nitro, TypeScript",
+      "Data: PostgreSQL, SQLite, Drizzle / Prisma ORM",
+      "DevOps: Docker, Netlify, GitHub Actions CI/CD"
+    ],
+    "experienceTitle": "Production fullstack proof",
+    "experienceBody": "Founding fullstack engineer at LingoQuesto building speech AI ed-tech platform across Vue 3, Nuxt, and Node.js microservices.",
+    "proofTitle": "Fullstack signals",
+    "proofLink": "LingoQuesto case study",
+    "proof": [
+      "End-to-end feature delivery",
+      "100% TypeScript type-safe contracts",
+      "Node.js API & database architecture",
+      "Available for contract hire from August 2026"
+    ],
+    "portfolioCta": "View full portfolio",
+    "contactCta": "Discuss a Fullstack Project",
+    "faqTitle": "Fullstack Engineer FAQ",
+    "faq": [
+      {
+        "question": "What is your main fullstack tech stack?",
+        "answer": "Vue 3 and Nuxt 4 on the frontend, combined with Node.js, Express/Nitro, PostgreSQL, and TypeScript on the backend."
       }
     ]
   }
