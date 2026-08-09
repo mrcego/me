@@ -74,9 +74,9 @@ const profileTo = computed(() => (props.point.to ? localePath(props.point.to) : 
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.875rem; /* 46px — was 36px +10 */
-  height: 2.875rem;
-  border-radius: 0.5rem;
+  width: 3.5rem; /* 56px */
+  height: 3.5rem;
+  border-radius: 0.75rem;
   color: var(--color-primary);
   box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
   overflow: hidden;
@@ -86,59 +86,59 @@ const profileTo = computed(() => (props.point.to ? localePath(props.point.to) : 
 
 @media (min-width: 640px) {
   .philosophy-point__icon {
-    width: 3.125rem; /* 50px */
-    height: 3.125rem;
-    border-radius: 0.75rem;
+    width: 4rem; /* 64px */
+    height: 4rem;
+    border-radius: 1rem;
   }
 }
 
 @media (min-width: 768px) {
   .philosophy-point__icon {
-    width: 3.625rem; /* 58px */
-    height: 3.625rem;
+    width: 4.5rem; /* 72px */
+    height: 4.5rem;
   }
 }
 
 .philosophy-point__icon--multi {
-  gap: 0.125rem;
-  padding-inline: 0.25rem;
+  gap: 0.25rem;
+  padding-inline: 0.35rem;
 }
 
 .philosophy-point__glyph {
+  width: 2.25rem; /* 36px */
+  height: 2.25rem;
+}
+
+@media (min-width: 640px) {
+  .philosophy-point__glyph {
+    width: 2.625rem; /* 42px */
+    height: 2.625rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .philosophy-point__glyph {
+    width: 3rem; /* 48px */
+    height: 3rem;
+  }
+}
+
+.philosophy-point__glyph--multi {
   width: 1.875rem; /* 30px */
   height: 1.875rem;
 }
 
 @media (min-width: 640px) {
-  .philosophy-point__glyph {
+  .philosophy-point__glyph--multi {
     width: 2.125rem; /* 34px */
     height: 2.125rem;
   }
 }
 
 @media (min-width: 768px) {
-  .philosophy-point__glyph {
+  .philosophy-point__glyph--multi {
     width: 2.375rem; /* 38px */
     height: 2.375rem;
-  }
-}
-
-.philosophy-point__glyph--multi {
-  width: 1.625rem; /* 26px */
-  height: 1.625rem;
-}
-
-@media (min-width: 640px) {
-  .philosophy-point__glyph--multi {
-    width: 1.775rem; /* ~28px */
-    height: 1.775rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .philosophy-point__glyph--multi {
-    width: 1.875rem; /* 30px */
-    height: 1.875rem;
   }
 }
 
