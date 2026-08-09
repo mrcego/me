@@ -202,6 +202,8 @@ export default defineNuxtConfig({
         'solar:bag-2-bold-duotone',
         'solar:buildings-2-bold-duotone',
         'solar:chat-round-dots-bold-duotone',
+        'solar:layers-minimalistic-bold-duotone',
+        'logos:angular-icon',
       ],
     },
   },
