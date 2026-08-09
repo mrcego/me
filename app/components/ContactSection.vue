@@ -109,10 +109,13 @@ const contactMethods = [
               :rel="c.external ? 'noopener noreferrer' : undefined"
             >
               <div
-                class="contact-method__icon flex size-16 md:size-18 lg:size-20 shrink-0 items-center justify-center rounded-2xl border border-foreground/15 bg-background/45 text-primary shadow-xl"
+                class="contact-method__icon flex size-20 md:size-24 lg:size-28 shrink-0 items-center justify-center rounded-2xl md:rounded-3xl border border-foreground/15 bg-background/45 text-primary shadow-xl transition-transform group-hover:scale-105"
                 aria-hidden="true"
               >
-                <Icon :name="c.icon" class="contact-method__glyph size-7 md:size-8 lg:size-9" />
+                <Icon
+                  :name="c.icon"
+                  class="contact-method__glyph size-11 md:size-14 lg:size-16 shrink-0"
+                />
               </div>
               <div class="min-w-0 flex-1 space-y-1 text-left">
                 <p

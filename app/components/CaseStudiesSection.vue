@@ -88,9 +88,9 @@ function studyTags(slug: (typeof studies)[number]['slug']): string[] {
             <div class="relative z-10 flex flex-col h-full gap-6 md:gap-8">
               <div class="flex items-start justify-between gap-4">
                 <div
-                  class="flex size-14 items-center justify-center rounded-2xl glass text-primary shadow-lg shadow-primary/10"
+                  class="flex size-18 sm:size-22 md:size-24 items-center justify-center rounded-2xl sm:rounded-3xl glass text-primary shadow-xl shadow-primary/10 transition-transform group-hover:scale-105"
                 >
-                  <Icon :name="study.icon" class="size-8" />
+                  <Icon :name="study.icon" class="size-12 sm:size-14 md:size-16 shrink-0" />
                 </div>
                 <p class="type-meta text-muted font-bold text-right">
                   {{ $t(`caseStudies.items.${study.slug}.period`) }}

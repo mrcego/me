@@ -142,9 +142,9 @@ watch(showAllRest, () => {
           <div class="space-y-5 sm:space-y-6 relative z-10">
             <div class="flex justify-between items-start gap-3">
               <div
-                class="surface-card__icon w-[58px] h-[58px] glass rounded-2xl flex items-center justify-center text-primary shadow-xl shrink-0"
+                class="surface-card__icon w-[72px] h-[72px] sm:w-[84px] sm:h-[84px] glass rounded-2xl flex items-center justify-center text-primary shadow-xl shrink-0"
               >
-                <Icon name="solar:medal-ribbon-bold" class="w-8 h-8 sm:w-9 sm:h-9" />
+                <Icon name="solar:medal-ribbon-bold" class="w-12 h-12 sm:w-14 sm:h-14 shrink-0" />
               </div>
               <span class="surface-card__meta type-meta text-muted">{{ cert.date }}</span>
             </div>
@@ -156,7 +156,7 @@ watch(showAllRest, () => {
                 {{ cert.title }}
               </h4>
               <div class="flex items-center gap-2 text-sm font-medium text-muted">
-                <Icon :name="certIssuerIcon(cert.issuer)" class="size-5 shrink-0" />
+                <Icon :name="certIssuerIcon(cert.issuer)" class="size-7 shrink-0" />
                 <span>{{ cert.issuer }}</span>
               </div>
             </div>
