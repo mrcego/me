@@ -130,6 +130,10 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
           '@type': 'Thing',
           name: topic,
         })),
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['h1', '#answer-block', '.faq-section'],
+        },
       }),
       jsonLdScript(`${options.translationKey}-breadcrumb`, {
         '@context': 'https://schema.org',

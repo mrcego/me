@@ -158,26 +158,74 @@
       "resetLabel": "ROUTE LOST // RESET"
     },
     "commands": {
-      "help": { "usage": "help | list | ls", "summary": "View command catalog" },
-      "about": { "usage": "about", "summary": "Professional profile & summary" },
-      "status": { "usage": "status", "summary": "Availability status" },
-      "stack": { "usage": "stack", "summary": "Core tech stack" },
-      "services": { "usage": "services", "summary": "Frontend engineering services" },
+      "help": {
+        "usage": "help | list | ls",
+        "summary": "View command catalog"
+      },
+      "about": {
+        "usage": "about",
+        "summary": "Professional profile & summary"
+      },
+      "status": {
+        "usage": "status",
+        "summary": "Availability status"
+      },
+      "stack": {
+        "usage": "stack",
+        "summary": "Core tech stack"
+      },
+      "services": {
+        "usage": "services",
+        "summary": "Frontend engineering services"
+      },
       "work": {
         "usage": "work [colegium|lingoquesto|tissini]",
         "summary": "Case studies"
       },
-      "experience": { "usage": "experience", "summary": "Role highlights" },
-      "profiles": { "usage": "profiles", "summary": "Hire profiles" },
-      "certs": { "usage": "certs", "summary": "Certification count" },
-      "contact": { "usage": "contact", "summary": "Contact channels" },
-      "cv": { "usage": "cv [en|es]", "summary": "Download résumé PDF (English or Spanish)" },
-      "seo": { "usage": "seo", "summary": "Technical SEO architecture & JSON-LD schemas" },
-      "lang": { "usage": "lang [en|es]", "summary": "View or switch site language" },
-      "go": { "usage": "go [section]", "summary": "Jump to a home section" },
-      "theme": { "usage": "theme show|list|use [id]", "summary": "Inspect or set theme" },
-      "clear": { "usage": "clear | cls", "summary": "Clear transcript" },
-      "exit": { "usage": "exit | salir", "summary": "Close terminal" }
+      "experience": {
+        "usage": "experience",
+        "summary": "Role highlights"
+      },
+      "profiles": {
+        "usage": "profiles",
+        "summary": "Hire profiles"
+      },
+      "certs": {
+        "usage": "certs",
+        "summary": "Certification count"
+      },
+      "contact": {
+        "usage": "contact",
+        "summary": "Contact channels"
+      },
+      "cv": {
+        "usage": "cv [en|es]",
+        "summary": "Download résumé PDF (English or Spanish)"
+      },
+      "seo": {
+        "usage": "seo",
+        "summary": "Technical SEO architecture & JSON-LD schemas"
+      },
+      "lang": {
+        "usage": "lang [en|es]",
+        "summary": "View or switch site language"
+      },
+      "go": {
+        "usage": "go [section]",
+        "summary": "Jump to a home section"
+      },
+      "theme": {
+        "usage": "theme show|list|use [id]",
+        "summary": "Inspect or set theme"
+      },
+      "clear": {
+        "usage": "clear | cls",
+        "summary": "Clear transcript"
+      },
+      "exit": {
+        "usage": "exit | salir",
+        "summary": "Close terminal"
+      }
     },
     "responses": {
       "helpHeader": "Available commands:",
@@ -1107,7 +1155,8 @@
         "question": "Is there a Vue.js developer in Cartagena, Colombia?",
         "answer": "Yes. Cesar Gomez is a senior Vue.js developer based in Cartagena de Indias, Colombia, with a remote-work preference and production Vue/Nuxt experience at scale."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez is a senior Vue.js developer and frontend engineer with 13+ years of production experience. He specializes in Vue 3, Nuxt 4, TypeScript, micro-frontends, and design systems. Based in Cartagena, Colombia, he delivers maintainable web applications for ed-tech and e-commerce platforms. Available for remote contract work worldwide."
   },
   "landingVueColombia": {
     "meta": {
@@ -1186,7 +1235,8 @@
         "question": "Is Cesar Gomez available for contract work in Colombia?",
         "answer": "Yes. Available for senior frontend contract roles starting August 2026. Open to interviews and conversations now."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez is a senior Vue.js developer in Colombia with 13+ years building production-grade web applications. Specializing in Vue 3, Nuxt 4, TypeScript, and micro-frontend architecture, he serves clients across Latin America and worldwide from Cartagena de Indias. Available for remote contract engineering."
   },
   "landingAi": {
     "meta": {
@@ -1271,7 +1321,8 @@
         "answer": "Yes. At LingoQuesto I contribute as a founding fullstack engineer on conversational AI/NLP product experiences for oral language practice, integrating models into usable product flows."
       }
     ],
-    "methodologyCta": "AI-Assisted Craft methodology"
+    "methodologyCta": "AI-Assisted Craft methodology",
+    "answerBlock": "César Gómez is a Vibe Coding Cleanup specialist who refines AI-generated code into production-ready software. Using agent-assisted workflows with Cursor, Claude Code, and Copilot, he applies strict quality gates — type checking, unit testing, and modular architecture — to deliver maintainable codebases. Based in Cartagena, Colombia, available remotely."
   },
   "landingNode": {
     "meta": {
@@ -1350,7 +1401,8 @@
         "question": "Do you design typed REST API contracts for Vue/Nuxt frontends?",
         "answer": "Yes. I design Express + TypeScript API contracts that frontend teams can consume safely, and I stay effective owning the path from backend endpoints to Vue/Nuxt UI delivery."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez is a senior Node.js backend developer with production experience building typed REST APIs using Express.js and TypeScript. He combines 13+ years of frontend architecture expertise with fullstack capability, delivering end-to-end solutions for ed-tech and e-commerce platforms from Cartagena, Colombia."
   },
   "footer": {
     "tagline": "Building high-fidelity products with frontend excellence",
@@ -1490,7 +1542,8 @@
         "question": "When are you available?",
         "answer": "Target availability is August 2026. Conversations, interviews, and early offers are welcome before then."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez is a senior web developer based in Cartagena de Indias, Colombia, specializing in Vue.js, Nuxt.js, and TypeScript with 13+ years of production experience. He delivers high-performance web applications for international clients, combining frontend architecture expertise with fullstack capability. Available for remote contract engineering."
   },
   "landingCraft": {
     "meta": {
@@ -1566,7 +1619,8 @@
         "question": "Do you ship unreviewed AI output?",
         "answer": "No. Architecture fitness, security, typed contracts, and maintainability checks are part of the definition of done."
       }
-    ]
+    ],
+    "answerBlock": "AI-Assisted Craft is César Gómez's methodology for delivering production-grade software using AI agent tooling. It combines agentic workflows (Cursor, Claude Code, Copilot) with strict human review — type safety, test coverage, and architectural quality gates — ensuring AI-generated code meets production standards."
   },
   "landingAngular": {
     "meta": {
@@ -1634,7 +1688,8 @@
         "question": "Can you assist with Angular to Vue/Nuxt migrations?",
         "answer": "Yes. Dual mastery in Angular and Vue 3 / Nuxt 4 allows me to lead incremental migration paths without service disruption."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez is an experienced Angular developer with production expertise up to Angular v16+. He builds enterprise applications using standalone components, Signals, RxJS state management, and robust TypeScript architecture. Based in Cartagena, Colombia, with 13+ years of frontend engineering experience. Available for remote contracts."
   },
   "landingArchitect": {
     "meta": {
@@ -1698,7 +1753,8 @@
         "question": "What is the difference between a Senior Frontend Developer and a Frontend Architect?",
         "answer": "A Senior Developer builds features; an Architect designs the foundational systems, design tokens, micro-frontend boundaries, performance strategy, and engineering guidelines for entire teams."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez is a senior frontend architect with 13+ years leading technical delivery across Vue 3, Nuxt 4, design systems, micro-frontends, and performance-critical web platforms. He provides architecture ownership, quality gates, and scalable frontend foundations for product teams. Based in Cartagena, Colombia, available remotely."
   },
   "landingFullstack": {
     "meta": {
@@ -1762,6 +1818,7 @@
         "question": "What is your main fullstack tech stack?",
         "answer": "Vue 3 and Nuxt 4 on the frontend, combined with Node.js, Express/Nitro, PostgreSQL, and TypeScript on the backend."
       }
-    ]
+    ],
+    "answerBlock": "César Gómez is a senior fullstack engineer delivering production-grade web applications across Vue 3/Nuxt 4 client apps and Node.js/Express backend APIs with TypeScript. With 13+ years of experience, he provides end-to-end development for ed-tech and e-commerce platforms. Based in Cartagena, Colombia, available remotely."
   }
 }
