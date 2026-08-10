@@ -6,6 +6,8 @@ export interface PhilosophyPoint {
   icons?: string[];
   to?: string;
   linkLabelKey?: string;
+  accent?: 'emerald' | 'violet' | 'cyan' | 'red' | 'indigo' | 'amber';
+  featured?: boolean;
 }
 
 const props = defineProps<{

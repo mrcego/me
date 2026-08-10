@@ -290,6 +290,11 @@
     "architectDesc": "Tailwind/PrimeVue design systems, micro-frontend ecosystems, and quality-driven engineering standards.",
     "fullstackPillar": "Fullstack Engineering",
     "fullstackDesc": "End-to-end product ownership: from responsive UI and accessibility down to APIs and CI/CD deployment.",
+    "hud": {
+      "zeroDuplication": "Zero Duplication",
+      "typeSafe": "100% Type-Safe",
+      "webVitals": "Web Vitals 95+"
+    },
     "roles": {
       "viewDetails": "View role details",
       "highlightsTitle": "Key contributions",

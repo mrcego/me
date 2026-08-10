@@ -78,27 +78,8 @@ const aboutPoints: PhilosophyPoint[] = [
     icons: ['logos:vue', 'logos:nuxt-icon'],
     to: '/vue-frontend-developer',
     linkLabelKey: 'hireProfiles.hireForVue',
-  },
-  {
-    label: 'about.logic',
-    descKey: 'about.logicDesc',
-    icon: 'logos:nodejs-icon',
-    to: '/nodejs-backend-developer',
-    linkLabelKey: 'hireProfiles.hireForNode',
-  },
-  {
-    label: 'about.angularPillar',
-    descKey: 'about.angularDesc',
-    icon: 'logos:angular-icon',
-    to: '/angular-developer',
-    linkLabelKey: 'hireProfiles.hireForAngular',
-  },
-  {
-    label: 'about.architectPillar',
-    descKey: 'about.architectDesc',
-    icon: 'solar:widget-2-bold-duotone',
-    to: '/frontend-architect',
-    linkLabelKey: 'hireProfiles.hireForArchitect',
+    accent: 'emerald',
+    featured: true,
   },
   {
     label: 'about.vibeCoding',
@@ -106,6 +87,32 @@ const aboutPoints: PhilosophyPoint[] = [
     icon: 'solar:magic-stick-3-bold-duotone',
     to: '/ai-engineer',
     linkLabelKey: 'hireProfiles.hireForAi',
+    accent: 'violet',
+    featured: true,
+  },
+  {
+    label: 'about.logic',
+    descKey: 'about.logicDesc',
+    icon: 'logos:nodejs-icon',
+    to: '/nodejs-backend-developer',
+    linkLabelKey: 'hireProfiles.hireForNode',
+    accent: 'cyan',
+  },
+  {
+    label: 'about.angularPillar',
+    descKey: 'about.angularDesc',
+    icon: 'logos:angular-icon',
+    to: '/angular-developer',
+    linkLabelKey: 'hireProfiles.hireForAngular',
+    accent: 'red',
+  },
+  {
+    label: 'about.architectPillar',
+    descKey: 'about.architectDesc',
+    icon: 'solar:widget-2-bold-duotone',
+    to: '/frontend-architect',
+    linkLabelKey: 'hireProfiles.hireForArchitect',
+    accent: 'indigo',
   },
   {
     label: 'about.fullstackPillar',
@@ -113,6 +120,7 @@ const aboutPoints: PhilosophyPoint[] = [
     icon: 'solar:layers-minimalistic-bold-duotone',
     to: '/fullstack-engineer',
     linkLabelKey: 'hireProfiles.hireForFullstack',
+    accent: 'amber',
   },
 ];
 </script>
@@ -160,17 +168,33 @@ const aboutPoints: PhilosophyPoint[] = [
                 class="absolute inset-0 z-0 h-full w-full object-cover object-center grayscale brightness-90 group-hover:grayscale-0 group-hover:brightness-110 transition-[transform,opacity,filter] duration-1000 scale-105 group-hover:scale-100"
               />
 
-              <!-- Cinematic HUD Overlay for Photo -->
+              <!-- Cinematic HUD Overlay for Photo with Live Metrics -->
               <div
                 class="absolute inset-0 z-10 pointer-events-none border-8 md:border-12 border-white/5 rounded-3xl"
               />
               <div
-                class="absolute inset-0 z-10 pointer-events-none bg-linear-to-t from-background/80 via-transparent to-transparent opacity-60"
+                class="absolute inset-0 z-10 pointer-events-none bg-linear-to-t from-background/90 via-transparent to-transparent opacity-80"
               />
 
               <div
                 class="absolute inset-x-0 top-0 z-20 h-1 bg-primary/40 blur-sm animate-scanline opacity-0 group-hover:opacity-100"
               />
+
+              <!-- Live Code Craft Spec HUD -->
+              <div
+                class="absolute bottom-3 inset-x-3 z-20 flex items-center justify-between gap-1.5 p-2.5 rounded-xl bg-background/80 backdrop-blur-md border border-white/10 text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-foreground shadow-lg"
+              >
+                <div class="flex items-center gap-1.5 text-emerald-400">
+                  <span class="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>{{ $t('about.hud.zeroDuplication') }}</span>
+                </div>
+                <div class="text-primary">
+                  <span>{{ $t('about.hud.typeSafe') }}</span>
+                </div>
+                <div class="text-amber-400">
+                  <span>{{ $t('about.hud.webVitals') }}</span>
+                </div>
+              </div>
             </div>
 
             <!-- Content inside card -->
@@ -186,8 +210,13 @@ const aboutPoints: PhilosophyPoint[] = [
               "{{ $t('about.philosophyQuote') }}"
             </p>
 
-            <div class="philosophy-points space-y-6 sm:space-y-7 md:space-y-8">
-              <PhilosophyPointItem v-for="point in aboutPoints" :key="point.label" :point="point" />
+            <div class="philosophy-points space-y-4 sm:space-y-5">
+              <PhilosophyBentoCard
+                v-for="(point, idx) in aboutPoints"
+                :key="point.label"
+                :point="point"
+                :index="idx"
+              />
             </div>
 
             <div

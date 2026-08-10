@@ -290,6 +290,11 @@
     "architectDesc": "Design systems con Tailwind/PrimeVue, micro-frontends y estándares de equipo orientados a calidad.",
     "fullstackPillar": "Ingeniería Fullstack",
     "fullstackDesc": "Ownership completo de la pila técnica: desde el diseño de interfaz hasta la API y despliegue CI/CD.",
+    "hud": {
+      "zeroDuplication": "Cero Duplicación",
+      "typeSafe": "100% Type-Safe",
+      "webVitals": "Web Vitals 95+"
+    },
     "roles": {
       "viewDetails": "Ver detalles del rol",
       "highlightsTitle": "Contribuciones clave",
