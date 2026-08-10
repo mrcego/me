@@ -45,6 +45,13 @@ domain:prashikshan.in
 domain:www.prashikshan.in
 domain:getwebsiteworth.com
 domain:mail.getwebsiteworth.com
+domain:alljobs.info
+domain:www.alljobs.info
+domain:linksnatcher.com
+domain:mail.linksnatcher.com
+domain:indians.cc
+domain:mail.indians.cc
+domain:procycling.org
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
