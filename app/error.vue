@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app';
 import { computed, watch } from 'vue';
+import { Motion } from 'motion-v';
 
 const props = defineProps<{
   error: NuxtError;

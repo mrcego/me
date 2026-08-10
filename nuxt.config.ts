@@ -15,6 +15,10 @@ export default defineNuxtConfig({
   components: [
     {
       path: '~/components',
+      pathPrefix: true,
+    },
+    {
+      path: '~/core/components',
       pathPrefix: false,
     },
   ],
@@ -234,7 +238,6 @@ export default defineNuxtConfig({
         'solar:bag-2-bold-duotone',
         'solar:buildings-2-bold-duotone',
         'solar:chat-round-dots-bold-duotone',
-        'solar:school-bold-duotone',
         'solar:chat-square-code-bold-duotone',
         // About & philosophy points
         'logos:nuxt-icon',
