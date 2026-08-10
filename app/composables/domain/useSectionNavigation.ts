@@ -1,4 +1,9 @@
-import { buildSectionHref, normalizeSectionHash, pathsMatchHome } from '~/utils/sectionNavigation';
+import {
+  buildSectionHref,
+  normalizeSectionHash,
+  pathsMatchHome,
+  revealSectionGeometry,
+} from '~/utils/sectionNavigation';
 import { withTrailingSlash } from '~/utils/siteUrl';
 
 /**
@@ -13,22 +18,6 @@ export function useSectionNavigation() {
   const homePath = computed(() => localePath('/'));
 
   const isOnHome = computed(() => pathsMatchHome(route.path, homePath.value));
-
-  function revealSectionGeometry(targetId?: string) {
-    // content-visibility can under-report height; reveal the target and near siblings only.
-    const sections = [...document.querySelectorAll('.portfolio-content > [id]')] as HTMLElement[];
-    if (!sections.length) return;
-
-    let focusIndex = targetId ? sections.findIndex((section) => section.id === targetId) : -1;
-    if (focusIndex < 0) focusIndex = 0;
-
-    const start = Math.max(0, focusIndex - 1);
-    const end = Math.min(sections.length - 1, focusIndex + 1);
-    for (let i = start; i <= end; i++) {
-      const section = sections[i];
-      if (section) section.style.contentVisibility = 'visible';
-    }
-  }
 
   function scrollToHash(hash: string) {
     const targetHash = normalizeSectionHash(hash);
