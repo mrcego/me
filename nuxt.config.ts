@@ -14,7 +14,27 @@ export default defineNuxtConfig({
 
   components: [
     {
-      path: '~/components',
+      path: '~/components/sections',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/layout',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/landings',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/modals',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/ui',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/terminal',
       pathPrefix: true,
     },
     {
