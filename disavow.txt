@@ -89,6 +89,15 @@ domain:sergechel.info
 domain:hebagh.cv
 domain:www.hebagh.cv
 domain:webworthchecker.cv
+domain:tunca.org
+domain:www.tunca.org
+domain:thirty.co.in
+domain:www.thirty.co.in
+domain:domain.com.lc
+domain:mail.domain.com.lc
+domain:www.domain.com.lc
+domain:youtoo.in
+domain:www.youtoo.in
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
