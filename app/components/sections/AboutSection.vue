@@ -193,18 +193,19 @@ const aboutPoints: PhilosophyPoint[] = [
               <div class="h-px w-12 bg-foreground/10" />
               <div class="flex items-center gap-3 shrink-0">
                 <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <h2 class="type-eyebrow">
+                <p class="type-eyebrow">
                   {{ $t('about.section') }}
-                </h2>
+                </p>
               </div>
             </div>
 
-            <h3
+            <h2
+              id="about-heading"
               class="text-3xl sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-black tracking-tighter leading-[0.92] sm:leading-[0.9] text-foreground text-center xl:text-left text-balance"
             >
               {{ $t('about.title') }}<br />
               <span class="text-gradient">{{ $t('about.titleHighlight') }}</span>
-            </h3>
+            </h2>
 
             <div
               class="prose prose-invert prose-lg sm:prose-xl xl:prose-2xl max-w-none text-muted font-medium leading-relaxed space-y-4 sm:space-y-6 text-center xl:text-left mx-auto xl:mx-0 text-pretty"

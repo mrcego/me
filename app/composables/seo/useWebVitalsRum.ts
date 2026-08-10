@@ -16,20 +16,27 @@ function hasAnalyticsConsent(): boolean {
   return true;
 }
 
+let gtagLoaded = false;
+
 function loadGtag(measurementId: string): void {
   if (!import.meta.client) return;
+  if (gtagLoaded || document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
+    gtagLoaded = true;
+    return;
+  }
 
+  gtagLoaded = true;
   const w = window as GtagWindow;
-  if (typeof w.gtag === 'function') return;
-
   w.dataLayer = w.dataLayer || [];
-  w.gtag = function gtag(..._args: unknown[]) {
-    // GTAG/GTM engine requires the native `arguments` object, not an ES6 Array [...args]
-    // eslint-disable-next-line prefer-rest-params
-    w.dataLayer!.push(arguments);
-  };
-  w.gtag('js', new Date());
-  w.gtag('config', measurementId, { send_page_view: true });
+  if (typeof w.gtag !== 'function') {
+    w.gtag = function gtag(..._args: unknown[]) {
+      // GTAG/GTM engine requires the native `arguments` object, not an ES6 Array [...args]
+      // eslint-disable-next-line prefer-rest-params
+      w.dataLayer!.push(arguments);
+    };
+    w.gtag('js', new Date());
+    w.gtag('config', measurementId, { send_page_view: true });
+  }
 
   const script = document.createElement('script');
   script.async = true;

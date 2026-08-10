@@ -812,7 +812,7 @@ onBeforeUnmount(() => {
             class="site-nav__action lg:hidden inline-flex size-10 items-center justify-center rounded-full text-foreground hover:bg-foreground/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer"
             :aria-label="$t('a11y.openMenu')"
             :aria-expanded="isMobileMenuOpen"
-            aria-controls="mobile-nav-dialog"
+            :aria-controls="isMobileMenuOpen ? 'mobile-nav-dialog' : undefined"
             @click="toggleMobileMenu"
           >
             <Icon name="solar:hamburger-menu-linear" class="size-6" />

@@ -9,6 +9,7 @@ export default defineVitestConfig({
   test: {
     // Nuxt environment setup under coverage can exceed Vitest's 10s default.
     hookTimeout: 60_000,
+    testTimeout: 15_000,
     exclude: [
       '**/node_modules/**',
       '**/dist/**',

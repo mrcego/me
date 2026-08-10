@@ -35,7 +35,7 @@ export default defineNuxtConfig({
     },
     {
       path: '~/components/terminal',
-      pathPrefix: true,
+      pathPrefix: false,
     },
     {
       path: '~/core/components',
