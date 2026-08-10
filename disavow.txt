@@ -119,6 +119,9 @@ domain:fiverr-seo-for-small-businesses.site
 domain:fiverr-affordable-seo-services.site
 domain:fiverr-quality-seo-at-affordable-rates.site
 domain:fiverr-cost-effective-seo.site
+domain:fiverr-seo-for-business-growth.site
+domain:menehune.pages.dev
+domain:mbnintlimda.blogspot.com
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
