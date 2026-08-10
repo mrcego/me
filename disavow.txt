@@ -98,6 +98,14 @@ domain:mail.domain.com.lc
 domain:www.domain.com.lc
 domain:youtoo.in
 domain:www.youtoo.in
+domain:booksreadr.org
+domain:www.booksreadr.org
+domain:freemyip.com
+domain:websites.freemyip.com
+domain:drjack.world
+domain:jake.eu
+domain:sites.jake.eu
+domain:bye.fyi
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
