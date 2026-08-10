@@ -113,6 +113,12 @@ domain:ready.pro
 domain:www.ready.pro
 domain:factmags.com
 domain:www.factmags.com
+domain:thecloudherald.com
+domain:webs.thecloudherald.com
+domain:fiverr-seo-for-small-businesses.site
+domain:fiverr-affordable-seo-services.site
+domain:fiverr-quality-seo-at-affordable-rates.site
+domain:fiverr-cost-effective-seo.site
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
