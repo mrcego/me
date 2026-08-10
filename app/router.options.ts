@@ -1,5 +1,6 @@
 import type { RouterConfig } from '@nuxt/schema';
 import { consumeLocaleSwitchScroll, isHomeLocalePath } from '~/utils/locale-switch-scroll';
+import { revealSectionGeometry } from '~/utils/sectionNavigation';
 
 export default <RouterConfig>{
   scrollBehavior(to, from, savedPosition) {
@@ -20,6 +21,8 @@ export default <RouterConfig>{
     }
 
     if (to.hash) {
+      const id = to.hash.replace(/^#/, '');
+      revealSectionGeometry(id);
       return {
         el: to.hash,
         top: 96,

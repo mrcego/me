@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
 import { defineComponent } from 'vue';
-import { useFaqItems } from '~/composables/useFaqItems';
+import { useFaqItems } from '~/composables/ui/useFaqItems';
 
 describe('useFaqItems', () => {
   it('resolves FAQ questions and answers from i18n (happy path)', async () => {

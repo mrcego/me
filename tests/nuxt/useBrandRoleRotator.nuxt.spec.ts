@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick } from 'vue';
-import { useBrandRoleRotator } from '~/composables/useBrandRoleRotator';
+import { useBrandRoleRotator } from '~/composables/ui/useBrandRoleRotator';
 
 describe('useBrandRoleRotator', () => {
   afterEach(() => {

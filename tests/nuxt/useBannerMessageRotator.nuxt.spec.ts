@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick, ref } from 'vue';
-import { useBannerMessageRotator } from '~/composables/useBannerMessageRotator';
+import { useBannerMessageRotator } from '~/composables/ui/useBannerMessageRotator';
 
 describe('useBannerMessageRotator', () => {
   afterEach(() => {

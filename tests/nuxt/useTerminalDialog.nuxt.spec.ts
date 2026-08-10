@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick, ref } from 'vue';
-import { useTerminalDialog } from '~/composables/useTerminalDialog';
+import { useTerminalDialog } from '~/composables/terminal/useTerminalDialog';
 
 function polyfillDialog(dialog: HTMLDialogElement) {
   if (typeof dialog.showModal === 'function') return;

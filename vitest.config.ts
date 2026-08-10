@@ -9,6 +9,7 @@ export default defineVitestConfig({
   test: {
     // Nuxt environment setup under coverage can exceed Vitest's 10s default.
     hookTimeout: 60_000,
+    testTimeout: 15_000,
     exclude: [
       '**/node_modules/**',
       '**/dist/**',
@@ -29,20 +30,20 @@ export default defineVitestConfig({
         'scripts/lib/**/*.{mjs,ts}',
       ],
       exclude: [
-        'app/composables/usePortfolioSeo.ts',
-        'app/composables/useExpertiseLandingSeo.ts',
-        'app/composables/useAiEngineerLandingSeo.ts',
-        'app/composables/useVueDeveloperLandingSeo.ts',
-        'app/composables/useNodeBackendLandingSeo.ts',
-        'app/composables/useCaseStudySeo.ts',
-        'app/composables/useContentPageSeo.ts',
-        'app/composables/useAiCraftLandingSeo.ts',
-        'app/composables/useLocalLandingSeo.ts',
-        'app/composables/useSmoothedScroll.ts',
-        'app/composables/usePortfolio.ts',
+        'app/composables/seo/usePortfolioSeo.ts',
+        'app/composables/seo/useExpertiseLandingSeo.ts',
+        'app/composables/seo/useAiEngineerLandingSeo.ts',
+        'app/composables/seo/useVueDeveloperLandingSeo.ts',
+        'app/composables/seo/useNodeBackendLandingSeo.ts',
+        'app/composables/seo/useCaseStudySeo.ts',
+        'app/composables/seo/useContentPageSeo.ts',
+        'app/composables/seo/useAiCraftLandingSeo.ts',
+        'app/composables/seo/useLocalLandingSeo.ts',
+        'app/composables/ui/useSmoothedScroll.ts',
+        'app/composables/domain/usePortfolio.ts',
         // Client wiring covered by e2e / focused nuxt specs; keep thresholds honest.
-        'app/composables/useWebVitalsRum.ts',
-        'app/composables/useSectionNavigation.ts',
+        'app/composables/seo/useWebVitalsRum.ts',
+        'app/composables/domain/useSectionNavigation.ts',
       ],
       thresholds: {
         statements: 80,

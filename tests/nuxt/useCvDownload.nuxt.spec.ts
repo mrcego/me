@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
 import { defineComponent } from 'vue';
-import { useCvDownload } from '~/composables/useCvDownload';
+import { useCvDownload } from '~/composables/ui/useCvDownload';
 
 describe('useCvDownload', () => {
   it('returns the English CV for locale en', async () => {

@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick, ref } from 'vue';
-import { useTextRotator } from '~/composables/useTextRotator';
+import { useTextRotator } from '~/composables/ui/useTextRotator';
 
 describe('useTextRotator', () => {
   afterEach(() => {

@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick } from 'vue';
-import { useCardTilt } from '~/composables/useCardTilt';
+import { useCardTilt } from '~/composables/ui/useCardTilt';
 
 function stubReduced(reduced: boolean) {
   vi.stubGlobal(

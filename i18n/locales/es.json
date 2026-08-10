@@ -234,7 +234,7 @@
       "stack": "Vue 3 · Nuxt 4 · TypeScript · Node/Express · Tailwind · PrimeVue · motion-v · Playwright/Vitest · craft asistido por IA con revisión humana.",
       "services": "Servicios de Ingeniería: 1) Arquitectura & Escalabilidad Vue/Nuxt 3. 2) Craft Asistido por IA & Quality Gates. 3) Optimización de Core Web Vitals (LCP, CLS, INP). 4) Fullstack Node.js / Nitro APIs.",
       "experience": "Enfoque reciente: Colegium (plataformas cloud educativas) y LingoQuesto (producto conversacional con IA/NLP). Abre About para el detalle de roles.",
-      "profiles": "Perfiles: desarrollador Vue · ingeniero IA / Vibe Coding Cleanup · desarrollador Node.js · Cartagena local · craft asistido por IA.",
+      "profiles": "Perfiles: desarrollador Vue · Vibe Coding Cleanup · Node.js backend · Angular 16+ · Arquitecto Frontend · ingeniero Fullstack.",
       "certs": "{count} credenciales en la sección Certificaciones — TypeScript, programación con IA, estructuras de datos, observabilidad y más.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · O usa el formulario de contacto del sitio.",
       "workList": "Casos: work colegium · work lingoquesto · work tissini",
@@ -270,18 +270,31 @@
   },
   "about": {
     "section": "Identidad Técnica",
-    "title": "Profundidad Fullstack.",
-    "titleHighlight": "Frontend y craft con IA.",
-    "description1": "Como Desarrollador Fullstack Senior especializado en Arquitectura Frontend y craft asistido por IA, he pasado 13+ años conectando diseño pixel-perfect, sistemas escalables y experiencias de producto inteligentes.",
-    "description2": "De las plataformas cloud de Colegium al producto conversacional con IA/NLP de LingoQuesto, mi obsesión es la misma: interfaces de alto rendimiento impulsadas por backends resilientes — y oficio listo para producción cuando la IA acelera el trabajo.",
-    "philosophy": "Filosofía",
-    "philosophyQuote": "Como Fullstack enfocado en Frontend con oficio en IA, creo que la interfaz — y la inteligencia detrás — es donde la ingeniería se encuentra con el impacto.",
-    "expertise": "Experiencia Frontend",
-    "logic": "Lógica Fullstack",
+    "title": "Ingeniería Fullstack.",
+    "titleHighlight": "Arquitectura Frontend y Craft asistido por IA.",
+    "description1": "Como Desarrollador Fullstack Senior especializado en Arquitectura Frontend y desarrollo asistido por IA, cuento con 13+ años construyendo sistemas web de alto rendimiento, design systems resilientes y experiencias de producto inteligentes.",
+    "description2": "Mi propuesta integra 6 especialidades: arquitectura Vue 3/Nuxt 4, desarrollo Angular senior, backend Node.js, liderazgo fullstack, diseño de sistemas frontend y el saneamiento profesional de código generado por agentes de IA (Vibe Coding Cleanup).",
+    "philosophy": "Filosofía Técnica",
+    "philosophyQuote": "La velocidad del prototipado asistido por IA solo genera valor real cuando se combina con arquitectura sólida, cero duplicación y calidad lista para producción.",
+    "expertise": "Arquitectura Vue & Nuxt",
+    "expertiseDesc": "Arquitectura Vue 3 & Nuxt 4 en producción, SSR/SSG, estado con Pinia y rendimiento Core Web Vitals.",
+    "logic": "Lógica Node.js & Backend",
+    "logicDesc": "Desarrollo backend con Node.js y APIs REST/GraphQL escalables, integrando modelos de IA local y cloud.",
     "userCentric": "Centrado en el Usuario",
     "vibeCoding": "IA y Vibe Coding",
-    "vibeCodingDesc": "Vibe Coding Cleanup Specialist — calidad de producción a partir de código asistido por agentes.",
+    "vibeCodingDesc": "Vibe Coding Cleanup Specialist — saneamiento y refinamiento a calidad de producción de código asistido por IA.",
     "vibeCodingOpen": "Abrir detalles de Vibe Coding",
+    "angularPillar": "Desarrollo Angular Senior",
+    "angularDesc": "Aplicaciones empresariales robustas con Angular (v16+), RxJS, TypeScript y arquitectura limpia por capas.",
+    "architectPillar": "Arquitectura Frontend",
+    "architectDesc": "Design systems con Tailwind/PrimeVue, micro-frontends y estándares de equipo orientados a calidad.",
+    "fullstackPillar": "Ingeniería Fullstack",
+    "fullstackDesc": "Ownership completo de la pila técnica: desde el diseño de interfaz hasta la API y despliegue CI/CD.",
+    "hud": {
+      "zeroDuplication": "Cero Duplicación",
+      "typeSafe": "100% Type-Safe",
+      "webVitals": "Web Vitals 95+"
+    },
     "roles": {
       "viewDetails": "Ver detalles del rol",
       "highlightsTitle": "Contribuciones clave",
@@ -1002,51 +1015,58 @@
   "faq": {
     "section": "Preguntas frecuentes",
     "title": "Preguntas frecuentes",
-    "description": "Respuestas rápidas para reclutadores, líderes técnicos y equipos que evalúan a César Gómez para roles senior frontend, páginas web o fullstack en Cartagena y remoto.",
+    "description": "Respuestas directas para reclutadores, líderes técnicos y equipos que evalúan a César Gómez para roles senior de ingeniería por contrato.",
     "contact": {
       "question": "¿Cómo puedo contactar a César Gómez?",
       "answer": "Usa el {form}, conéctate en {linkedin} o revisa su trabajo open source en {github}.",
       "linkForm": "formulario de contacto"
     },
     "hire": {
-      "question": "¿Cómo contratar un desarrollador Vue.js senior?",
-      "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, craft asistido por IA y Node.js. Revisa su {portfolio}, {vueProfile}, {aiProfile} y {nodeProfile}; luego contáctalo por el {form}, {linkedin} o {github}.",
-      "linkPortfolio": "portafolio",
-      "linkVueProfile": "perfil de desarrollador Vue",
-      "linkAiProfile": "perfil de Vibe Coding Cleanup",
-      "linkNodeProfile": "perfil backend Node.js",
+      "question": "¿Cómo contratar a César Gómez para roles de ingeniería senior?",
+      "answer": "Puedes contratar a César Gómez por contrato en cualquiera de sus 6 especialidades: {vueProfile}, {aiProfile}, {nodeProfile}, {angularProfile}, {architectProfile} y {fullstackProfile}. Revisa su {portfolio}; luego contáctalo por el {form}, {linkedin} o {github}.",
+      "linkPortfolio": "portafolio principal",
+      "linkVueProfile": "Desarrollador Vue.js Senior",
+      "linkAiProfile": "AI Engineer (Vibe Coding)",
+      "linkNodeProfile": "Desarrollador Backend Node.js",
+      "linkAngularProfile": "Desarrollador Angular Senior",
+      "linkArchitectProfile": "Arquitecto Frontend",
+      "linkFullstackProfile": "Desarrollador Fullstack",
       "linkForm": "formulario de contacto"
     },
     "items": [
       {
         "key": "hire",
-        "question": "¿Cómo contratar a César Gómez para trabajo de ingeniería senior?",
-        "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, craft asistido por IA y Node.js. Revisa su portafolio en cesargomez.dev, el perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue/, el perfil de Vibe Coding Cleanup en cesargomez.dev/es/ingeniero-ia/, el perfil backend Node.js en cesargomez.dev/es/desarrollador-backend-nodejs/ y contáctalo por el formulario, LinkedIn o GitHub."
+        "question": "¿Cómo contratar a César Gómez para roles de ingeniería senior?",
+        "answer": "Puedes contratar a César Gómez por contrato en cualquiera de sus 6 especialidades: Desarrollador Vue.js Senior, AI Engineer (Vibe Coding), Desarrollador Backend Node.js, Desarrollador Angular Senior, Arquitecto Frontend y Desarrollador Fullstack. Revisa su portafolio principal; luego contáctalo por el formulario de contacto, LinkedIn o GitHub."
       },
       {
         "key": "contact",
         "question": "¿Cómo puedo contactar a César Gómez?",
-        "answer": "Usa el formulario en cesargomez.dev, conéctate en LinkedIn o revisa su trabajo open source en GitHub."
+        "answer": "Usa el formulario de contacto directo en este sitio, conéctate en LinkedIn o revisa su código y proyectos open source en GitHub."
       },
       {
-        "question": "¿Quién es César Gómez?",
-        "answer": "César Gómez es desarrollador fullstack senior con foco en frontend y 13+ años de experiencia en Vue.js, Nuxt.js y TypeScript. Ha construido productos para plataformas de e-commerce como TISSINI, y plataformas ed-tech como Colegium (100k+ estudiantes) y LingoQuesto."
+        "question": "¿Quién es César Gómez y cuál es su trayectoria?",
+        "answer": "César Gómez es un ingeniero fullstack senior con foco en frontend y 13+ años de experiencia construyendo arquitectura web escalable en Vue.js, Nuxt.js, Angular, Node.js, TypeScript y desarrollo asistido por IA. Ha liderado productos en ed-tech como Colegium (100k+ estudiantes) y LingoQuesto, y e-commerce como TISSINI."
       },
       {
-        "question": "¿Está disponible César Gómez para contratación?",
-        "answer": "Sí. Trabaja por contrato en roles senior de frontend, fullstack y arquitectura. Disponible para empezar el 10 de agosto de 2026; las conversaciones e entrevistas son bienvenidas ahora. Prefiere remoto desde Cartagena de Indias, Colombia."
+        "question": "¿Está disponible César Gómez para proyectos por contrato?",
+        "answer": "Sí. Está disponible para iniciar roles por contrato (remoto preferido desde Cartagena de Indias, Colombia) a partir del 10 de agosto de 2026. Las entrevistas y conversaciones de alineación técnica y comercial están abiertas desde hoy."
       },
       {
-        "question": "¿Qué experiencia tiene con Vue.js y Nuxt.js?",
-        "answer": "Ha liderado arquitectura frontend con Vue 3 y Nuxt 4 en producción, incluyendo ecosistemas micro-frontend, librerías compartidas, Web Components, UIs con TypeScript y plataformas educativas críticas en rendimiento."
+        "question": "¿En qué 6 roles principales se especializa César Gómez?",
+        "answer": "Se especializa en 6 perfiles técnicos: Desarrollador Vue.js Senior (Vue 3/Nuxt 4), AI Engineer / Vibe Coding Cleanup, Desarrollador Backend Node.js, Desarrollador Angular Senior, Arquitecto Frontend (Micro-frontends & Design Systems) y Desarrollador Fullstack."
       },
       {
-        "question": "¿Qué experiencia tiene César Gómez en ed-tech?",
-        "answer": "Fue ingeniero fullstack fundador en LingoQuesto, un producto ed-tech conversacional con IA/NLP para práctica oral, frontend senior en Colegium construyendo herramientas cloud usadas por más de 100.000 estudiantes, y frontend senior en TISSINI construyendo plataformas de e-commerce mobile-first para emprendedores."
+        "question": "¿Qué tecnologías domina y cómo aplica el Vibe Coding con IA?",
+        "answer": "Domina Vue 3, Nuxt 4, Angular, TypeScript, Node.js, Vite, Pinia y Tailwind. Aplica Vibe Coding acelerado con IA para prototipar a máxima velocidad y refactorizar con rigor de producción, manteniendo código limpio, modular y con alta cobertura de pruebas."
       },
       {
-        "question": "¿Trabaja en inglés y español?",
-        "answer": "Sí. César es hispanohablante nativo con inglés intermedio y colabora con equipos internacionales distribuidos en ambos idiomas."
+        "question": "¿Qué experiencia tiene en EdTech e industria de productos digitales?",
+        "answer": "Fue desarrollador fullstack fundador en LingoQuesto (app ed-tech conversacional con IA/NLP para aprendizaje de idiomas), senior frontend en Colegium (sistemas cloud masivos para 100k+ estudiantes en LatAm) y senior frontend en TISSINI (plataforma e-commerce mobile-first)."
+      },
+      {
+        "question": "¿En qué idiomas trabaja y cuál es su zona horaria?",
+        "answer": "Es hispanohablante nativo con nivel de inglés profesional intermedio. Trabaja 100% remoto alineado con zonas horarias de LatAm y Norteamérica (COT / EST / PST)."
       }
     ]
   },
@@ -1430,8 +1450,8 @@
     "hireForFullstack": "Ingeniero Fullstack",
     "section": "Engagement",
     "title": "Contrátame como",
-    "titleHighlight": "desarrollador Vue, craft con IA o Node.",
-    "lead": "Perfiles enfocados para recruiters y equipos de producto — desarrollador Vue.js / Nuxt, Vibe Coding Cleanup / craft asistido por IA, o desarrollador Node.js con Express.",
+    "titleHighlight": "desarrollador Vue, craft con IA, Node, Angular, Arquitecto o Fullstack.",
+    "lead": "Perfiles enfocados para recruiters y líderes de ingeniería — Vue/Nuxt, Vibe Coding Cleanup, Node.js backend, Angular v16+, Arquitectura Frontend y entrega Fullstack.",
     "vueBlurb": "Desarrollador Vue.js senior: arquitectura Vue/Nuxt, design systems y entrega frontend orientada al rendimiento.",
     "aiBlurb": "Vibe Coding Cleanup: endurece código Vue/Nuxt asistido por agentes y entrega craft con IA con quality gates y entrega mantenible.",
     "nodeBlurb": "Desarrollador Node.js: APIs Express en producción, contratos tipados y entrega fullstack API-to-UI.",
@@ -1513,7 +1533,7 @@
       "Camino claro a perfiles Vue, craft asistido por IA o Node cuando haga falta"
     ],
     "experienceTitle": "Por qué existe esta página",
-    "experienceBody": "La gente busca desarrollador web / páginas web en Cartagena y ayuda Vue/Nuxt remota desde Colombia. Este landing responde esa intención. Para prueba ed-tech a escala, ve los casos Colegium y LingoQuesto; para contratación por rol, usa los perfiles Vue, Vibe Coding Cleanup o Node.",
+    "experienceBody": "La gente busca desarrollador web / páginas web en Cartagena y ayuda Vue/Nuxt remota desde Colombia. Este landing responde esa intención. Para prueba ed-tech a escala, ve los casos Colegium y LingoQuesto; para contratación por rol, usa los perfiles Vue, Vibe Coding Cleanup, Node, Angular, Arquitecto o Fullstack.",
     "proofTitle": "Señales locales + remotas honestas",
     "proofLink": "Caso Colegium — producto web a escala",
     "proof": [
@@ -1621,5 +1641,204 @@
       }
     ],
     "answerBlock": "AI-Assisted Craft es la metodología de César Gómez para entregar software de nivel producción usando herramientas de agentes IA. Combina flujos de trabajo agénticos (Cursor, Claude Code, Copilot) con revisión humana estricta — seguridad de tipos, cobertura de pruebas y puertas de calidad arquitectónica."
+  },
+  "landingAngular": {
+    "meta": {
+      "title": "Desarrollador Angular (v16+) — César Gómez",
+      "description": "Desarrollador Senior Angular con experiencia hasta Angular 16: componentes independientes (standalone), RxJS, NgRx, TypeScript y arquitectura frontend empresarial."
+    },
+    "eyebrow": "Perfil de Contratación · Especialista Angular v16+",
+    "title": "Desarrollador Angular",
+    "titleHighlight": "(v16+)",
+    "lead": "Desarrollo empresarial en Angular hasta la versión 16: componentes independientes, Signals, gestión de estado con RxJS y arquitectura frontend robusta en TypeScript.",
+    "intent": {
+      "title": "Ingeniería frontend Angular junto con experiencia en Vue/Nuxt",
+      "paragraphs": [
+        "Con profunda experiencia en frameworks frontend modernos, mantengo una alta capacidad de entrega en Angular hasta la versión 16. Ayudo a equipos empresariales a construir, refactorizar y escalar aplicaciones Angular con arquitectura de componentes independientes y patrones reactivos.",
+        "Disponible para contratos senior, migraciones frontend y fortalecimiento de equipos desde agosto de 2026."
+      ]
+    },
+    "services": {
+      "title": "Contrata a un desarrollador Angular para",
+      "items": [
+        {
+          "title": "Angular 16 & Arquitectura Moderna",
+          "body": "Aprovechando componentes independientes, Signals y flujos reactivos RxJS para aplicaciones SPA empresariales."
+        },
+        {
+          "title": "Gestión de Estado & RxJS",
+          "body": "Flujos de datos reactivos y limpios utilizando NgRx, operadores RxJS y estructuras de estado predecibles."
+        },
+        {
+          "title": "Migraciones de Angular a Vue/Nuxt",
+          "body": "Estrategias pragmáticas de migración entre bases de código empresariales de Angular y stacks de Vue 3 / Nuxt 4."
+        },
+        {
+          "title": "TypeScript & Optimización de Formularios",
+          "body": "Formularios reactivos estrictamente tipados, validadores personalizados y componentes UI performantes en Angular."
+        }
+      ]
+    },
+    "expertiseTitle": "Lo que obtienes con capacidad Angular v16",
+    "expertise": [
+      "Componentes independientes y Signals en Angular 16",
+      "Estado reactivo RxJS y gestión de flujos asíncronos",
+      "Tipado estricto en TypeScript y arquitectura modular",
+      "Experiencia multiplataforma en Angular, Vue y Nuxt"
+    ],
+    "experienceTitle": "Entrega frontend empresarial",
+    "experienceBody": "Más de 13 años de experiencia en ingeniería frontend, incluyendo entrega en producción con Angular hasta versión 16 junto con liderazgo profundo en Vue 3 / Nuxt 4.",
+    "proofTitle": "Señales clave de Angular",
+    "proofLink": "Ver stack tecnológico completo",
+    "proof": [
+      "Experiencia en producción con Angular v16",
+      "Arquitectura de estado con RxJS & NgRx",
+      "100% tipado estricto en TypeScript",
+      "Disponibilidad para contratación desde agosto de 2026"
+    ],
+    "portfolioCta": "Ver portafolio completo",
+    "contactCta": "Discutir un proyecto Angular",
+    "faqTitle": "Preguntas Frecuentes — Desarrollador Angular",
+    "faq": [
+      {
+        "question": "¿Con qué versiones de Angular trabajas?",
+        "answer": "Me especializo en Angular hasta la versión 16, utilizando componentes independientes, Signals, RxJS y arquitectura Angular moderna."
+      },
+      {
+        "question": "¿Puedes ayudar con migraciones de Angular a Vue/Nuxt?",
+        "answer": "Sí. El dominio dual en Angular y Vue 3 / Nuxt 4 me permite liderar rutas de migración incremental sin interrupción del servicio."
+      }
+    ],
+    "answerBlock": "César Gómez es un desarrollador Angular experimentado con alcance de producción hasta Angular v16+. Construye aplicaciones empresariales utilizando componentes independientes, Signals, gestión de estado RxJS y arquitectura robusta en TypeScript. Ubicado en Cartagena, Colombia, con más de 13 años de experiencia en ingeniería frontend. Disponible para contratos remotos."
+  },
+  "landingArchitect": {
+    "meta": {
+      "title": "Arquitecto Frontend — Líder Técnico Web — César Gómez",
+      "description": "Arquitecto Frontend especializado en Vue 3, Nuxt 4, sistemas de diseño, micro-frontends, Core Web Vitals e ingeniería web escalable."
+    },
+    "eyebrow": "Perfil de Contratación · Liderazgo Técnico",
+    "title": "Arquitecto Frontend",
+    "titleHighlight": "& Líder",
+    "lead": "Liderazgo técnico senior en Vue 3, Nuxt 4, sistemas de diseño, micro-frontends y entrega web orientada al alto rendimiento para productos a escala.",
+    "intent": {
+      "title": "Ingeniería frontend estratégica para aplicaciones web complejas",
+      "paragraphs": [
+        "Construir aplicaciones a escala requiere más que componentes UI: exige visión arquitectónica, puertas de calidad estrictas y sistemas mantenibles. Como Arquitecto Frontend, establezco patrones fundacionales, sistemas de diseño y pipelines de CI/CD.",
+        "Disponibilidad objetivo para liderazgo técnico y roles por contrato desde agosto de 2026."
+      ]
+    },
+    "services": {
+      "title": "Contrata a un Arquitecto Frontend para",
+      "items": [
+        {
+          "title": "Sistemas de Diseño & Gobernanza UI",
+          "body": "Sistemas de componentes multimarca con variantes de Tailwind, cumplimiento de accesibilidad y consistencia de tokens de diseño."
+        },
+        {
+          "title": "Micro-Frontends & Límites de Dominio",
+          "body": "Aplicaciones web desacopladas utilizando Web Components, módulos de Nuxt y límites limpios de dominio."
+        },
+        {
+          "title": "Rendimiento & Core Web Vitals",
+          "body": "LCP por debajo del segundo, optimización de hidratación, minimización de payload y seguridad CSP Grado A+."
+        },
+        {
+          "title": "Mentoría de Equipo & Revisión de Código",
+          "body": "Establecimiento de estándares de ingeniería, puertas de calidad asistidas por IA y mentoría a ingenieros del equipo."
+        }
+      ]
+    },
+    "expertiseTitle": "Pilares de arquitectura",
+    "expertise": [
+      "SSG sin runtime y SSR híbrido en Vue 3 & Nuxt 4",
+      "Sistemas de diseño y gobernanza de librerías UI",
+      "Federación de módulos micro-frontend & web components",
+      "RUM para Core Web Vitals y pipelines automatizados de CI/CD"
+    ],
+    "experienceTitle": "Prueba de ingeniería a escala",
+    "experienceBody": "Lideré la arquitectura micro-frontend en Vue 3 en Colegium sirviendo a más de 100k estudiantes activos, establecí automatización CI/CD en TISSINI reduciendo tiempos de despliegue en un 60% y creé la plataforma de IA/NLP LingoQuesto.",
+    "proofTitle": "Hitos arquitectónicos",
+    "proofLink": "Caso de estudio Colegium",
+    "proof": [
+      "Arquitectura micro-frontend multitenant",
+      "60% de mejora en velocidad de despliegue",
+      "Seguridad CSP Grado A+ y blindaje técnico",
+      "Disponible para roles senior por contrato desde agosto de 2026"
+    ],
+    "portfolioCta": "Ver portafolio completo",
+    "contactCta": "Discutir Arquitectura Frontend",
+    "faqTitle": "Preguntas Frecuentes — Arquitecto Frontend",
+    "faq": [
+      {
+        "question": "¿Cuál es la diferencia entre un Desarrollador Frontend Senior y un Arquitecto Frontend?",
+        "answer": "Un Desarrollador Senior construye funcionalidades; un Arquitecto diseña los sistemas fundamentales, tokens de diseño, límites de micro-frontends, estrategia de rendimiento y guías de ingeniería para equipos completos."
+      }
+    ],
+    "answerBlock": "César Gómez es un arquitecto frontend senior con más de 13 años liderando entregas técnicas en Vue 3, Nuxt 4, sistemas de diseño, micro-frontends y plataformas web críticas para rendimiento. Brinda ownership arquitectónico, puertas de calidad y bases escalables para equipos de producto. Ubicado en Cartagena, Colombia, disponible de forma remota."
+  },
+  "landingFullstack": {
+    "meta": {
+      "title": "Ingeniero Fullstack (Vue/Node) — César Gómez",
+      "description": "Ingeniero Fullstack Senior con experiencia end-to-end en Vue 3, Nuxt 4, APIs Node.js, PostgreSQL y entrega de proyectos en TypeScript."
+    },
+    "eyebrow": "Perfil de Contratación · Entrega End-to-End",
+    "title": "Ingeniero Fullstack",
+    "titleHighlight": "(Vue & Node)",
+    "lead": "Desarrollo web fullstack de nivel producción en aplicaciones cliente Vue 3/Nuxt 4 y APIs backend en Node.js con 100% de seguridad de tipos en TypeScript.",
+    "intent": {
+      "title": "Ownership full-stack desde el esquema de base de datos hasta la UI interactiva",
+      "paragraphs": [
+        "Conectando la excelencia frontend con la resiliencia backend. Entrego funcionalidades completas — endpoints REST/GraphQL, modelos de base de datos, lógica de negocio y UIs reactivas en Vue/Nuxt — sin cambios de contexto ni brechas de entrega.",
+        "Disponible para contratos fullstack senior desde agosto de 2026."
+      ]
+    },
+    "services": {
+      "title": "Contrata a un Ingeniero Fullstack para",
+      "items": [
+        {
+          "title": "Aplicaciones Cliente Vue 3 / Nuxt 4",
+          "body": "Interfaces de usuario reactivas, rápidas y accesibles construidas con Composition API, Pinia y Nuxt 4."
+        },
+        {
+          "title": "APIs Node.js & Express / Nitro",
+          "body": "APIs REST y GraphQL tipadas, autenticación JWT/sesiones y microservicios escalables."
+        },
+        {
+          "title": "Esquema de Base de Datos & ORM",
+          "body": "Diseño de bases de datos PostgreSQL y SQLite, migraciones y optimización de consultas."
+        },
+        {
+          "title": "Seguridad de Tipos End-to-End",
+          "body": "Contratos DTO compartidos en TypeScript entre handlers backend y composables frontend."
+        }
+      ]
+    },
+    "expertiseTitle": "Stack tecnológico fullstack",
+    "expertise": [
+      "Cliente: Vue 3, Nuxt 4, Pinia, Tailwind CSS",
+      "Servidor: Node.js, Express, Nitro, TypeScript",
+      "Datos: PostgreSQL, SQLite, Drizzle / Prisma ORM",
+      "DevOps: Docker, Netlify, GitHub Actions CI/CD"
+    ],
+    "experienceTitle": "Prueba fullstack en producción",
+    "experienceBody": "Ingeniero fullstack fundador en LingoQuesto construyendo una plataforma ed-tech de IA de voz a través de microservicios en Vue 3, Nuxt y Node.js.",
+    "proofTitle": "Señales clave fullstack",
+    "proofLink": "Caso de estudio LingoQuesto",
+    "proof": [
+      "Entrega completa de funcionalidades end-to-end",
+      "Contratos 100% seguros con TypeScript",
+      "Arquitectura de APIs Node.js y bases de datos",
+      "Disponible para contratación desde agosto de 2026"
+    ],
+    "portfolioCta": "Ver portafolio completo",
+    "contactCta": "Discutir un Proyecto Fullstack",
+    "faqTitle": "Preguntas Frecuentes — Ingeniero Fullstack",
+    "faq": [
+      {
+        "question": "¿Cuál es tu stack tecnológico fullstack principal?",
+        "answer": "Vue 3 y Nuxt 4 en el frontend, combinados con Node.js, Express/Nitro, PostgreSQL y TypeScript en el backend."
+      }
+    ],
+    "answerBlock": "César Gómez es un ingeniero fullstack senior con más de 13 años construyendo aplicaciones web completas en Vue 3, Nuxt 4, Node.js y TypeScript. Desarrolla UIs reactivas y APIs backend de alto rendimiento con ownership end-to-end. Ubicado en Cartagena, Colombia, disponible para contratación remota."
   }
 }

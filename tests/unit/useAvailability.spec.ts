@@ -4,7 +4,7 @@ import {
   AVAILABILITY_START,
   isImmediatelyAvailable,
   parseAvailableFrom,
-} from '../../app/composables/useAvailability';
+} from '../../app/composables/domain/useAvailability';
 
 describe('isImmediatelyAvailable', () => {
   it('parses availableFrom ISO as local midnight', () => {

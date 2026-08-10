@@ -12,6 +12,41 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  components: [
+    {
+      path: '~/components/sections',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/layout',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/landings',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/modals',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/ui',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/terminal',
+      pathPrefix: false,
+    },
+    {
+      path: '~/core/components',
+      pathPrefix: false,
+    },
+  ],
+
+  imports: {
+    dirs: ['composables', 'composables/**', 'core/composables', 'core/utils'],
+  },
+
   // Site configuration for SEO modules
   // trailingSlash: keep loc/canonicals with `/` — Netlify serves directory URLs that way.
   site: {
@@ -199,9 +234,66 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
       icons: [
+        // Hero section & social
+        'solar:rocket-2-bold-duotone',
+        'solar:letter-linear',
+        'solar:letter-bold',
+        'solar:arrow-left-linear',
+        'solar:arrow-down-linear',
+        // Capabilities section
+        'solar:rocket-bold-duotone',
+        'solar:database-bold-duotone',
+        'solar:shield-check-bold-duotone',
+        'solar:magic-stick-3-bold-duotone',
+        // Hire profiles & PSEO landings
+        'logos:vue',
+        'logos:nodejs-icon',
+        'logos:angular-icon',
+        'solar:cpu-bolt-bold-duotone',
+        'solar:layers-minimalistic-bold-duotone',
+        'solar:code-square-bold-duotone',
+        // Tech stack
+        'logos:typescript-icon',
+        'logos:javascript',
+        'logos:git-icon',
+        'solar:crown-star-bold',
+        'solar:global-linear',
+        // Case studies & testimonials
         'solar:bag-2-bold-duotone',
         'solar:buildings-2-bold-duotone',
         'solar:chat-round-dots-bold-duotone',
+        'solar:chat-square-code-bold-duotone',
+        // About & philosophy points
+        'logos:nuxt-icon',
+        'logos:figma',
+        // Contact & social
+        'solar:letter-bold-duotone',
+        'solar:phone-calling-bold-duotone',
+        'solar:plain-bold-duotone',
+        'solar:sort-vertical-linear',
+        'logos:linkedin-icon',
+        'logos:github-icon',
+        'logos:twitter',
+        'simple-icons:linkedin',
+        'simple-icons:github',
+        // Certifications & navbar
+        'solar:medal-ribbon-bold',
+        'logos:google-icon',
+        'logos:meta-icon',
+        'logos:aws',
+        'simple-icons:platzi',
+        'simple-icons:udemy',
+        'simple-icons:newrelic',
+        'solar:widget-2-bold-duotone',
+        'solar:arrow-right-linear',
+        'solar:arrow-right-up-bold',
+        'solar:arrow-right-up-linear',
+        'solar:download-minimalistic-bold-duotone',
+        'lucide:check-circle-2',
+        'lucide:chevron-down',
+        'lucide:x',
+        'solar:hamburger-menu-linear',
+        'solar:close-square-linear',
       ],
     },
   },

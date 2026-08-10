@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
 import { defineComponent } from 'vue';
-import { useSectionNavigation } from '~/composables/useSectionNavigation';
+import { useSectionNavigation } from '~/composables/domain/useSectionNavigation';
 
 describe('useSectionNavigation', () => {
   it('exposes hash-only hrefs while on home', async () => {

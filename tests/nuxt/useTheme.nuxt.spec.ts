@@ -2,7 +2,7 @@ import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { defineComponent } from 'vue';
 import { DEFAULT_THEME_ID } from '~/utils/themePresets';
-import { useTheme } from '~/composables/useTheme';
+import { useTheme } from '~/composables/ui/useTheme';
 
 async function mountTheme() {
   let api!: ReturnType<typeof useTheme>;

@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick } from 'vue';
-import { useMotionConfig } from '~/composables/useMotionConfig';
+import { useMotionConfig } from '~/composables/ui/useMotionConfig';
 
 function stubMedia({ mobile = false, reduced = false } = {}) {
   vi.stubGlobal(

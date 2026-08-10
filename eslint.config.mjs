@@ -18,6 +18,7 @@ export default withNuxt(eslintConfigPrettier, {
     '@typescript-eslint/no-empty-object-type': 'error',
     '@typescript-eslint/no-wrapper-object-types': 'error',
     '@typescript-eslint/no-unsafe-function-type': 'error',
+    'vue/multi-word-component-names': 'off',
     'vue/html-self-closing': [
       'error',
       {

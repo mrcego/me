@@ -1,8 +1,8 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
 import { defineComponent, nextTick } from 'vue';
-import { usePortfolioTerminal } from '~/composables/usePortfolioTerminal';
-import { usePortfolioTerminalSession } from '~/composables/usePortfolioTerminalSession';
+import { usePortfolioTerminal } from '~/composables/terminal/usePortfolioTerminal';
+import { usePortfolioTerminalSession } from '~/composables/terminal/usePortfolioTerminalSession';
 
 async function mountSession() {
   let session!: ReturnType<typeof usePortfolioTerminalSession>;

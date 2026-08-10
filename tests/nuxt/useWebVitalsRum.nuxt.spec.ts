@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it, vi } from 'vitest';
 import { defineComponent } from 'vue';
-import { useWebVitalsRum } from '~/composables/useWebVitalsRum';
+import { useWebVitalsRum } from '~/composables/seo/useWebVitalsRum';
 
 describe('useWebVitalsRum', () => {
   it('registers web-vitals reporters on mount without throwing', async () => {

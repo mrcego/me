@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick } from 'vue';
-import { useMatchMedia, usePrefersReducedMotion } from '~/composables/useMatchMedia';
+import { useMatchMedia, usePrefersReducedMotion } from '~/composables/ui/useMatchMedia';
 
 describe('useMatchMedia', () => {
   afterEach(() => {

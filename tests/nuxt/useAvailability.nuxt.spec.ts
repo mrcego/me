@@ -1,17 +1,16 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick } from 'vue';
-import { AVAILABILITY_START, useAvailability } from '~/composables/useAvailability';
+import { AVAILABILITY_START, useAvailability } from '~/composables/domain/useAvailability';
 
 describe('useAvailability', () => {
   it('shows announcement and evaluates isAvailable=false before start date', async () => {
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date(AVAILABILITY_START.getTime() - 86_400_000));
-
     let api!: ReturnType<typeof useAvailability>;
     const wrapper = await mountSuspended(
       defineComponent({
         setup() {
+          vi.useFakeTimers();
+          vi.setSystemTime(new Date(AVAILABILITY_START.getTime() - 86_400_000));
           api = useAvailability();
           return {};
         },
