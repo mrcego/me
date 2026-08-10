@@ -1,0 +1,17 @@
+# Google Search Console Disavow File for cesargomez.dev
+# Generated for toxic backlink cleanup
+
+# Toxic domains identified in SEMrush Backlink Audit
+domain:miranlinda.blogspot.com
+domain:hebagh.cx
+domain:factnage.com
+domain:www.factnage.com
+domain:mail.alivewebsitesdirectory.com
+domain:alivewebsitesdirectory.com
+
+# Additional PBN & Spam Backlink Directories
+domain:cheapbacklinkseo.com
+domain:fiverrseo.net
+domain:niche-edits-provider.com
+domain:seo-backlink-builder.org
+domain:free-directory-submit.com
