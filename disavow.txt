@@ -68,6 +68,14 @@ domain:mail.domainsc.com
 domain:jobsapp.info
 domain:backlinksbank.com
 domain:www.backlinksbank.com
+domain:backlinkstree.com
+domain:www.backlinkstree.com
+domain:backlinkon.com
+domain:www.backlinkon.com
+domain:gamerkun.com
+domain:www.gamerkun.com
+domain:backlinkhouse.com
+domain:www.backlinkhouse.com
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
