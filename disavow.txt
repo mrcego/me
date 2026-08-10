@@ -8,6 +8,12 @@ domain:factnage.com
 domain:www.factnage.com
 domain:mail.alivewebsitesdirectory.com
 domain:alivewebsitesdirectory.com
+domain:allwebsitesdirectory.com
+domain:mail.allwebsitesdirectory.com
+domain:indexaward.com
+domain:www.indexaward.com
+domain:wonvision.com
+domain:www.wonvision.com
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
