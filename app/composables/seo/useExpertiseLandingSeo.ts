@@ -43,7 +43,7 @@ const occupationLocation = {
 };
 
 export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
-  const { t, tm, rt, locale } = useI18n();
+  const { t, tm, rt, locale, te } = useI18n();
   const route = useRoute();
   const { public: publicConfig } = useRuntimeConfig();
 
@@ -53,6 +53,25 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
   const esUrl = absoluteSiteUrl(`/es${options.paths.es}`);
   const ogImage = `${SITE_ORIGIN}${SEO_IDENTITY.ogImage}`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
+
+  const metaTitle = computed(() => {
+    const key = copyKey('meta.title');
+    if (te(key)) {
+      const val = t(key);
+      if (val && !val.startsWith('landing')) return val;
+    }
+    const primaryJob = options.jobTitles[0] || 'Senior Engineer';
+    return `${primaryJob} — ${personName.value}`;
+  });
+
+  const metaDescription = computed(() => {
+    const key = copyKey('meta.description');
+    if (te(key)) {
+      const val = t(key);
+      if (val && !val.startsWith('landing')) return val;
+    }
+    return `${options.jobTitles.join(', ')} — ${personName.value}`;
+  });
 
   const faqItems = computed(() => {
     const data = getI18nArray<I18nFaqItem>(tm, copyKey('faq'));
@@ -73,7 +92,7 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
     'Portfolio',
     {
       title: personName.value,
-      description: t(copyKey('meta.title')),
+      description: metaTitle.value,
       brandName: locale.value === 'es' ? 'CÉSAR GÓMEZ' : 'CESAR GOMEZ',
       brandTag: 'PORTFOLIO',
       siteUrl: 'cesargomez.dev',
@@ -81,26 +100,26 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
       pills: ['Vue.js', 'Nuxt', 'TypeScript', 'AI-Assisted'],
     },
     {
-      alt: `${personName.value} — ${t(copyKey('meta.title'))}`,
+      alt: `${personName.value} — ${metaTitle.value}`,
     },
   );
 
   useSeoMeta({
-    title: () => t(copyKey('meta.title')),
-    description: () => t(copyKey('meta.description')),
+    title: metaTitle,
+    description: metaDescription,
     author: SEO_IDENTITY.author,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
     fbAppId: () => String(publicConfig.facebookAppId || ''),
     ogType: 'website',
-    ogTitle: () => t(copyKey('meta.title')),
-    ogDescription: () => t(copyKey('meta.description')),
+    ogTitle: metaTitle,
+    ogDescription: metaDescription,
     // og:image / twitter:image injected by defineOgImage('Portfolio')
     ogUrl: () => canonicalUrl.value,
     ogSiteName: SITE_NAME,
     ogLocale: () => ogLocaleForLocale(locale.value),
     twitterCard: SEO_IDENTITY.twitterCard,
-    twitterTitle: () => t(copyKey('meta.title')),
-    twitterDescription: () => t(copyKey('meta.description')),
+    twitterTitle: metaTitle,
+    twitterDescription: metaDescription,
     twitterSite: SEO_IDENTITY.twitterSite,
     twitterCreator: SEO_IDENTITY.twitterCreator,
   });

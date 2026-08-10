@@ -9,15 +9,14 @@ describe('useAvailability', () => {
     const wrapper = await mountSuspended(
       defineComponent({
         setup() {
+          vi.useFakeTimers();
+          vi.setSystemTime(new Date(AVAILABILITY_START.getTime() - 86_400_000));
           api = useAvailability();
           return {};
         },
         template: '<div />',
       }),
     );
-
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date(AVAILABILITY_START.getTime() - 86_400_000));
 
     await nextTick();
     expect(api.showAnnouncement.value).toBe(true);

@@ -14,6 +14,20 @@ domain:indexaward.com
 domain:www.indexaward.com
 domain:wonvision.com
 domain:www.wonvision.com
+domain:pagesearch.net
+domain:www.pagesearch.net
+domain:getonline.co.in
+domain:www.getonline.co.in
+domain:australianwebdirectory.shop
+domain:www.australianwebdirectory.shop
+domain:all-aged-domains.com
+domain:bestwebstats.com
+domain:mail.bestwebstats.com
+domain:wallpapers.pro
+domain:mail.wallpapers.pro
+domain:ycm.info
+domain:www.ycm.info
+domain:carplz.com
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
