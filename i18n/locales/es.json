@@ -234,7 +234,7 @@
       "stack": "Vue 3 · Nuxt 4 · TypeScript · Node/Express · Tailwind · PrimeVue · motion-v · Playwright/Vitest · craft asistido por IA con revisión humana.",
       "services": "Servicios de Ingeniería: 1) Arquitectura & Escalabilidad Vue/Nuxt 3. 2) Craft Asistido por IA & Quality Gates. 3) Optimización de Core Web Vitals (LCP, CLS, INP). 4) Fullstack Node.js / Nitro APIs.",
       "experience": "Enfoque reciente: Colegium (plataformas cloud educativas) y LingoQuesto (producto conversacional con IA/NLP). Abre About para el detalle de roles.",
-      "profiles": "Perfiles: desarrollador Vue · ingeniero IA / Vibe Coding Cleanup · desarrollador Node.js · Cartagena local · craft asistido por IA.",
+      "profiles": "Perfiles: desarrollador Vue · Vibe Coding Cleanup · Node.js backend · Angular 16+ · Arquitecto Frontend · ingeniero Fullstack.",
       "certs": "{count} credenciales en la sección Certificaciones — TypeScript, programación con IA, estructuras de datos, observabilidad y más.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · O usa el formulario de contacto del sitio.",
       "workList": "Casos: work colegium · work lingoquesto · work tissini",
@@ -1021,12 +1021,12 @@
       {
         "key": "hire",
         "question": "¿Cómo contratar a César Gómez para trabajo de ingeniería senior?",
-        "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, craft asistido por IA y Node.js. Revisa su portafolio en cesargomez.dev, el perfil de desarrollador Vue en cesargomez.dev/es/desarrollador-vue/, el perfil de Vibe Coding Cleanup en cesargomez.dev/es/ingeniero-ia/, el perfil backend Node.js en cesargomez.dev/es/desarrollador-backend-nodejs/ y contáctalo por el formulario, LinkedIn o GitHub."
+        "answer": "Puedes contratar a César Gómez para trabajo senior por contrato en Vue/Nuxt, craft asistido por IA y Node.js. Revisa su portafolio, perfil de desarrollador Vue, perfil de Vibe Coding Cleanup y perfil backend Node.js; luego contáctalo por el formulario de contacto, LinkedIn o GitHub."
       },
       {
         "key": "contact",
         "question": "¿Cómo puedo contactar a César Gómez?",
-        "answer": "Usa el formulario en cesargomez.dev, conéctate en LinkedIn o revisa su trabajo open source en GitHub."
+        "answer": "Usa el formulario de contacto, conéctate en LinkedIn o revisa su trabajo open source en GitHub."
       },
       {
         "question": "¿Quién es César Gómez?",
@@ -1430,8 +1430,8 @@
     "hireForFullstack": "Ingeniero Fullstack",
     "section": "Engagement",
     "title": "Contrátame como",
-    "titleHighlight": "desarrollador Vue, craft con IA o Node.",
-    "lead": "Perfiles enfocados para recruiters y equipos de producto — desarrollador Vue.js / Nuxt, Vibe Coding Cleanup / craft asistido por IA, o desarrollador Node.js con Express.",
+    "titleHighlight": "desarrollador Vue, craft con IA, Node, Angular, Arquitecto o Fullstack.",
+    "lead": "Perfiles enfocados para recruiters y líderes de ingeniería — Vue/Nuxt, Vibe Coding Cleanup, Node.js backend, Angular v16+, Arquitectura Frontend y entrega Fullstack.",
     "vueBlurb": "Desarrollador Vue.js senior: arquitectura Vue/Nuxt, design systems y entrega frontend orientada al rendimiento.",
     "aiBlurb": "Vibe Coding Cleanup: endurece código Vue/Nuxt asistido por agentes y entrega craft con IA con quality gates y entrega mantenible.",
     "nodeBlurb": "Desarrollador Node.js: APIs Express en producción, contratos tipados y entrega fullstack API-to-UI.",
@@ -1513,7 +1513,7 @@
       "Camino claro a perfiles Vue, craft asistido por IA o Node cuando haga falta"
     ],
     "experienceTitle": "Por qué existe esta página",
-    "experienceBody": "La gente busca desarrollador web / páginas web en Cartagena y ayuda Vue/Nuxt remota desde Colombia. Este landing responde esa intención. Para prueba ed-tech a escala, ve los casos Colegium y LingoQuesto; para contratación por rol, usa los perfiles Vue, Vibe Coding Cleanup o Node.",
+    "experienceBody": "La gente busca desarrollador web / páginas web en Cartagena y ayuda Vue/Nuxt remota desde Colombia. Este landing responde esa intención. Para prueba ed-tech a escala, ve los casos Colegium y LingoQuesto; para contratación por rol, usa los perfiles Vue, Vibe Coding Cleanup, Node, Angular, Arquitecto o Fullstack.",
     "proofTitle": "Señales locales + remotas honestas",
     "proofLink": "Caso Colegium — producto web a escala",
     "proof": [

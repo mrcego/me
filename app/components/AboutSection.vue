@@ -3,7 +3,7 @@ import { computed, ref } from 'vue';
 import { Motion } from 'motion-v';
 import { useI18n } from 'vue-i18n';
 import Dialog from 'primevue/dialog';
-import type { PhilosophyPoint } from '~/components/ui/PhilosophyPointItem.vue';
+import type { PhilosophyPoint } from '~/components/PhilosophyPointItem.vue';
 
 import { getI18nArray } from '~/core/utils/i18nHelpers';
 

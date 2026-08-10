@@ -33,6 +33,7 @@ function loadGtag(measurementId: string): void {
 
   const script = document.createElement('script');
   script.async = true;
+  script.crossOrigin = 'anonymous';
   script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
   document.head.appendChild(script);
 }
