@@ -52,6 +52,22 @@ domain:mail.linksnatcher.com
 domain:indians.cc
 domain:mail.indians.cc
 domain:procycling.org
+domain:way2check.art
+domain:www.way2check.art
+domain:way2check.cv
+domain:mail.way2check.cv
+domain:musweb.org
+domain:mail.musweb.org
+domain:read.org.in
+domain:cheapsmmprovider.online
+domain:www.cheapsmmprovider.online
+domain:globalecommerce.org
+domain:mail.globalecommerce.org
+domain:domainsc.com
+domain:mail.domainsc.com
+domain:jobsapp.info
+domain:backlinksbank.com
+domain:www.backlinksbank.com
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
