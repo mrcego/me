@@ -76,6 +76,19 @@ domain:gamerkun.com
 domain:www.gamerkun.com
 domain:backlinkhouse.com
 domain:www.backlinkhouse.com
+domain:websiterace.com
+domain:www.websiterace.com
+domain:shop-for-all.shop
+domain:backlinkshouse.com
+domain:www.backlinkshouse.com
+domain:pudhe.com
+domain:www.pudhe.com
+domain:mp3fresh.net
+domain:www.mp3fresh.net
+domain:sergechel.info
+domain:hebagh.cv
+domain:www.hebagh.cv
+domain:webworthchecker.cv
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
