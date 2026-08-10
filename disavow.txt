@@ -106,6 +106,13 @@ domain:drjack.world
 domain:jake.eu
 domain:sites.jake.eu
 domain:bye.fyi
+domain:goooogla.com
+domain:www.goooogla.com
+domain:byteshort.xyz
+domain:ready.pro
+domain:www.ready.pro
+domain:factmags.com
+domain:www.factmags.com
 
 # Additional PBN & Spam Backlink Directories
 domain:cheapbacklinkseo.com
