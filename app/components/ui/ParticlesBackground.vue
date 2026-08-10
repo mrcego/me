@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, watch } from 'vue';
-import { usePrefersReducedMotion } from '~/composables/useMatchMedia';
+import { usePrefersReducedMotion } from '~/composables/ui/useMatchMedia';
 
 const canvas = ref<HTMLCanvasElement | null>(null);
 const enabled = ref(false);

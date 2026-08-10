@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Button from 'primevue/button';
 import { hireProfileRoutes } from '~/config/routes.manifest';
-import type { ExpertiseLandingTranslationKey } from '~/composables/useExpertiseLandingSeo';
+import type { ExpertiseLandingTranslationKey } from '~/composables/seo/useExpertiseLandingSeo';
 
 import type { I18nFaqItem, I18nSectionContent } from '~/core/types/i18n';
 import { getI18nArray } from '~/core/utils/i18nHelpers';

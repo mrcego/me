@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { useSmoothedScroll } from '~/composables/useSmoothedScroll';
+import { useSmoothedScroll } from '~/composables/ui/useSmoothedScroll';
 import { buildThemeFaviconHref } from '~/utils/themeFavicon';
 
 // Apply the persisted palette immediately; the navbar itself can hydrate on demand.

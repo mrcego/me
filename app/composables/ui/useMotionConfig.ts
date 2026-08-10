@@ -7,7 +7,7 @@
  */
 
 import { computed } from 'vue';
-import { useMatchMedia, usePrefersReducedMotion } from '~/composables/useMatchMedia';
+import { useMatchMedia, usePrefersReducedMotion } from '~/composables/ui/useMatchMedia';
 
 import type { MotionState } from '~/core/types/motion';
 

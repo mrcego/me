@@ -1,9 +1,9 @@
 import type { Ref } from 'vue';
 import { computed, onMounted, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useAvailability } from '~/composables/useAvailability';
-import { useMatchMedia } from '~/composables/useMatchMedia';
-import { useTextRotator } from '~/composables/useTextRotator';
+import { useAvailability } from '~/composables/domain/useAvailability';
+import { useMatchMedia } from '~/composables/ui/useMatchMedia';
+import { useTextRotator } from '~/composables/ui/useTextRotator';
 
 /** Tailwind `xl` — date chip sits beside the rotator from this width up. */
 const XL_UP = '(min-width: 1280px)';

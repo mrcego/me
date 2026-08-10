@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
 import { defineComponent } from 'vue';
-import { usePortfolioTerminal } from '~/composables/usePortfolioTerminal';
+import { usePortfolioTerminal } from '~/composables/terminal/usePortfolioTerminal';
 
 async function mountTerminalState() {
   let api!: ReturnType<typeof usePortfolioTerminal>;

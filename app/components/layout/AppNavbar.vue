@@ -1,11 +1,11 @@
 <script setup>
 import { nextTick, onBeforeUnmount, ref, watch } from 'vue';
 import { onClickOutside, onKeyStroke, useEventListener } from '@vueuse/core';
-import AppLanguageSwitcher from '~/components/AppLanguageSwitcher.vue';
+import AppLanguageSwitcher from '~/components/layout/AppLanguageSwitcher.vue';
 import { hireProfileRoutes } from '~/config/routes.manifest';
-import { useMatchMedia, usePrefersReducedMotion } from '~/composables/useMatchMedia';
-import { usePortfolioTerminalLogoUnlock } from '~/composables/usePortfolioTerminalShortcut';
-import { useTheme } from '~/composables/useTheme';
+import { useMatchMedia, usePrefersReducedMotion } from '~/composables/ui/useMatchMedia';
+import { usePortfolioTerminalLogoUnlock } from '~/composables/terminal/usePortfolioTerminalShortcut';
+import { useTheme } from '~/composables/ui/useTheme';
 import { createLogoLongPressController } from '~/utils/logoLongPress';
 
 const { activeSection } = usePortfolio();

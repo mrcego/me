@@ -4,7 +4,7 @@ import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
 import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_WHATSAPP } from '~/config/seo.config';
-import { useContactForm } from '~/composables/useContactForm';
+import { useContactForm } from '~/composables/domain/useContactForm';
 
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 

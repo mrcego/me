@@ -2,8 +2,8 @@ import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick } from 'vue';
 import { KONAMI_SEQUENCE } from '~/config/portfolioTerminal.config';
-import { usePortfolioTerminal } from '~/composables/usePortfolioTerminal';
-import { usePortfolioTerminalShortcut } from '~/composables/usePortfolioTerminalShortcut';
+import { usePortfolioTerminal } from '~/composables/terminal/usePortfolioTerminal';
+import { usePortfolioTerminalShortcut } from '~/composables/terminal/usePortfolioTerminalShortcut';
 
 function press(key: string, code?: string) {
   window.dispatchEvent(

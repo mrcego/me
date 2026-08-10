@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Button from 'primevue/button';
-import type { CaseStudySlug } from '~/composables/useCaseStudySeo';
+import type { CaseStudySlug } from '~/composables/seo/useCaseStudySeo';
 import type { I18nSectionContent } from '~/core/types/i18n';
 import { getI18nArray } from '~/core/utils/i18nHelpers';
 

@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { defineComponent } from 'vue';
-import { useContactForm } from '~/composables/useContactForm';
+import { useContactForm } from '~/composables/domain/useContactForm';
 
 async function mountForm() {
   let api!: ReturnType<typeof useContactForm>;

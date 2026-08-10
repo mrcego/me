@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { useTestimonialAvatar } from '../../app/composables/useTestimonialAvatar';
+import { useTestimonialAvatar } from '../../app/composables/ui/useTestimonialAvatar';
 
 describe('useTestimonialAvatar', () => {
   const { getLocalAvatar, getInitials } = useTestimonialAvatar();

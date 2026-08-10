@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TerminalLine } from '~/composables/usePortfolioTerminalSession';
+import type { TerminalLine } from '~/composables/terminal/usePortfolioTerminalSession';
 
 const props = defineProps<{
   lines: TerminalLine[];

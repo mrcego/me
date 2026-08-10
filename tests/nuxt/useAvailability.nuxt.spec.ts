@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it, vi } from 'vitest';
 import { defineComponent, nextTick } from 'vue';
-import { AVAILABILITY_START, useAvailability } from '~/composables/useAvailability';
+import { AVAILABILITY_START, useAvailability } from '~/composables/domain/useAvailability';
 
 describe('useAvailability', () => {
   it('shows announcement and evaluates isAvailable=false before start date', async () => {

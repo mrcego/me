@@ -13,12 +13,39 @@ export default defineNuxtConfig({
   },
 
   components: [
-    '~/components',
+    {
+      path: '~/components/sections',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/layout',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/landings',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/modals',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/ui',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/terminal',
+      pathPrefix: true,
+    },
     {
       path: '~/core/components',
       pathPrefix: false,
     },
   ],
+
+  imports: {
+    dirs: ['composables', 'composables/**', 'core/composables', 'core/utils'],
+  },
 
   // Site configuration for SEO modules
   // trailingSlash: keep loc/canonicals with `/` — Netlify serves directory URLs that way.

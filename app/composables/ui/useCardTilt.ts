@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'vue';
-import { useMatchMedia, usePrefersReducedMotion } from '~/composables/useMatchMedia';
+import { useMatchMedia, usePrefersReducedMotion } from '~/composables/ui/useMatchMedia';
 
 type UseCardTiltOptions = {
   /** Max rotation in degrees from center toward an edge. */

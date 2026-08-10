@@ -6,7 +6,10 @@ const root = resolve(import.meta.dirname, '../..');
 
 describe('homepage heading hierarchy', () => {
   it('uses an h3 for the About section title before its role-card h4 headings', () => {
-    const aboutSection = readFileSync(resolve(root, 'app/components/AboutSection.vue'), 'utf8');
+    const aboutSection = readFileSync(
+      resolve(root, 'app/components/sections/AboutSection.vue'),
+      'utf8',
+    );
     const titleIndex = aboutSection.indexOf("{{ $t('about.title') }}");
     const roleCardHeadingIndex = aboutSection.indexOf('class="surface-card__title');
 

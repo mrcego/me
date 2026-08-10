@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRafFn, useEventListener } from '@vueuse/core';
-import { usePrefersReducedMotion } from '~/composables/useMatchMedia';
+import { usePrefersReducedMotion } from '~/composables/ui/useMatchMedia';
 
 type Particle = {
   x: number;

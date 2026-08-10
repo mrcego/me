@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
 import { defineComponent } from 'vue';
-import { useVibeCodingModal } from '~/composables/useVibeCodingModal';
+import { useVibeCodingModal } from '~/composables/ui/useVibeCodingModal';
 
 describe('useVibeCodingModal', () => {
   it('opens and closes the modal, mounting only on first open', async () => {

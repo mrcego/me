@@ -3,7 +3,7 @@ import { Motion } from 'motion-v';
 import type {
   KonamiGatePhase,
   KonamiRevealedKey,
-} from '~/composables/usePortfolioTerminalShortcut';
+} from '~/composables/terminal/usePortfolioTerminalShortcut';
 
 const props = defineProps<{
   phase: KonamiGatePhase;

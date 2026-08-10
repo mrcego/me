@@ -1,6 +1,6 @@
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { useTextRotator } from '~/composables/useTextRotator';
+import { useTextRotator } from '~/composables/ui/useTextRotator';
 
 import { getI18nArray } from '~/core/utils/i18nHelpers';
 

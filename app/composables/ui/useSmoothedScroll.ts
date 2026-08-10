@@ -7,7 +7,7 @@ import {
   type ComputedRef,
   type Ref,
 } from 'vue';
-import { usePrefersReducedMotion } from '~/composables/useMatchMedia';
+import { usePrefersReducedMotion } from '~/composables/ui/useMatchMedia';
 
 function isMobileScrollBudget() {
   return (
