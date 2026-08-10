@@ -5,9 +5,6 @@ import { AVAILABILITY_START, useAvailability } from '~/composables/domain/useAva
 
 describe('useAvailability', () => {
   it('shows announcement and evaluates isAvailable=false before start date', async () => {
-    vi.useFakeTimers();
-    vi.setSystemTime(new Date(AVAILABILITY_START.getTime() - 86_400_000));
-
     let api!: ReturnType<typeof useAvailability>;
     const wrapper = await mountSuspended(
       defineComponent({
@@ -18,6 +15,9 @@ describe('useAvailability', () => {
         template: '<div />',
       }),
     );
+
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(AVAILABILITY_START.getTime() - 86_400_000));
 
     await nextTick();
     expect(api.showAnnouncement.value).toBe(true);

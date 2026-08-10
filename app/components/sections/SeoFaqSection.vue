@@ -9,6 +9,9 @@ const homeTo = computed(() => localePath('/'));
 const vueProfileTo = computed(() => localePath('/vue-frontend-developer'));
 const aiProfileTo = computed(() => localePath('/ai-engineer'));
 const nodeProfileTo = computed(() => localePath('/nodejs-backend-developer'));
+const angularProfileTo = computed(() => localePath('/angular-developer'));
+const architectProfileTo = computed(() => localePath('/frontend-architect'));
+const fullstackProfileTo = computed(() => localePath('/fullstack-engineer'));
 const contactFormTo = computed(() => ({
   path: localePath('/'),
   hash: '#contact',
@@ -108,6 +111,21 @@ const faqLinkClass =
               <template #nodeProfile>
                 <NuxtLink :to="nodeProfileTo" :class="faqLinkClass">{{
                   $t('faq.hire.linkNodeProfile')
+                }}</NuxtLink>
+              </template>
+              <template #angularProfile>
+                <NuxtLink :to="angularProfileTo" :class="faqLinkClass">{{
+                  $t('faq.hire.linkAngularProfile')
+                }}</NuxtLink>
+              </template>
+              <template #architectProfile>
+                <NuxtLink :to="architectProfileTo" :class="faqLinkClass">{{
+                  $t('faq.hire.linkArchitectProfile')
+                }}</NuxtLink>
+              </template>
+              <template #fullstackProfile>
+                <NuxtLink :to="fullstackProfileTo" :class="faqLinkClass">{{
+                  $t('faq.hire.linkFullstackProfile')
                 }}</NuxtLink>
               </template>
               <template #form>

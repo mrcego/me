@@ -74,22 +74,31 @@ function openRoleModal(key: string) {
 const aboutPoints: PhilosophyPoint[] = [
   {
     label: 'about.expertise',
-    descKey: 'techStack.levels.architect',
+    descKey: 'about.expertiseDesc',
     icons: ['logos:vue', 'logos:nuxt-icon'],
     to: '/vue-frontend-developer',
     linkLabelKey: 'hireProfiles.hireForVue',
   },
   {
     label: 'about.logic',
-    descKey: 'techStack.levels.senior',
+    descKey: 'about.logicDesc',
     icon: 'logos:nodejs-icon',
     to: '/nodejs-backend-developer',
     linkLabelKey: 'hireProfiles.hireForNode',
   },
   {
-    label: 'about.userCentric',
-    descKey: 'techStack.levels.founding',
-    icon: 'logos:figma',
+    label: 'about.angularPillar',
+    descKey: 'about.angularDesc',
+    icon: 'logos:angular-icon',
+    to: '/angular-developer',
+    linkLabelKey: 'hireProfiles.hireForAngular',
+  },
+  {
+    label: 'about.architectPillar',
+    descKey: 'about.architectDesc',
+    icon: 'solar:widget-2-bold-duotone',
+    to: '/frontend-architect',
+    linkLabelKey: 'hireProfiles.hireForArchitect',
   },
   {
     label: 'about.vibeCoding',
@@ -97,6 +106,13 @@ const aboutPoints: PhilosophyPoint[] = [
     icon: 'solar:magic-stick-3-bold-duotone',
     to: '/ai-engineer',
     linkLabelKey: 'hireProfiles.hireForAi',
+  },
+  {
+    label: 'about.fullstackPillar',
+    descKey: 'about.fullstackDesc',
+    icon: 'solar:layers-minimalistic-bold-duotone',
+    to: '/fullstack-engineer',
+    linkLabelKey: 'hireProfiles.hireForFullstack',
   },
 ];
 </script>

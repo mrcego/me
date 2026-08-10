@@ -87,18 +87,19 @@ const skills = [
       >
         <div class="flex items-center justify-center gap-4 md:gap-6">
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
-          <h2 class="type-eyebrow tracking-[0.4em]">
+          <p class="type-eyebrow tracking-[0.4em]">
             {{ $t('techStack.section') }}
-          </h2>
+          </p>
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
         </div>
-        <h3
+        <h2
+          id="tech-stack-heading"
           class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black tracking-tighter leading-[0.9] text-foreground"
         >
           {{ $t('techStack.title') }}
           <br />
           <span class="text-gradient">{{ $t('techStack.titleHighlight') }}</span>
-        </h3>
+        </h2>
         <p
           class="text-muted text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto px-4 md:px-0"
         >

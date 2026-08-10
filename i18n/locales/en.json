@@ -270,18 +270,26 @@
   },
   "about": {
     "section": "Technical Identity",
-    "title": "Fullstack Depth.",
-    "titleHighlight": "Frontend & AI Craft.",
-    "description1": "As a Senior Fullstack Developer specialized in Frontend Architecture and AI-assisted craft, I've spent 13+ years bridging pixel-perfect design, scalable systems, and intelligent product experiences.",
-    "description2": "From Colegium's cloud platforms to LingoQuesto's AI/NLP conversational product, my obsession is the same: high-performance interfaces powered by resilient backends — and production-ready craft when AI accelerates the work.",
-    "philosophy": "Philosophy",
-    "philosophyQuote": "As a Frontend-focused fullstack with AI craft, I believe the interface — and the intelligence behind it — is where engineering meets impact.",
-    "expertise": "Frontend Expertise",
-    "logic": "Fullstack Logic",
+    "title": "Fullstack Engineering.",
+    "titleHighlight": "Frontend Architecture & AI Craft.",
+    "description1": "As a Senior Fullstack Developer specialized in Frontend Architecture and AI-assisted engineering, I bring 13+ years of experience building high-performance web systems, resilient design systems, and intelligent product experiences.",
+    "description2": "My value proposition spans 6 core specializations: Vue 3/Nuxt 4 architecture, senior Angular development, Node.js backend engineering, fullstack leadership, frontend systems design, and production-grade Vibe Coding Cleanup for agentic AI code.",
+    "philosophy": "Technical Philosophy",
+    "philosophyQuote": "AI-assisted prototyping speed only creates true value when paired with solid architecture, zero code duplication, and production-ready quality.",
+    "expertise": "Vue & Nuxt Architecture",
+    "expertiseDesc": "Production Vue 3 & Nuxt 4 architecture, SSR/SSG rendering, Pinia state, and Core Web Vitals performance.",
+    "logic": "Node.js & Backend Logic",
+    "logicDesc": "Node.js backend engineering and scalable REST/GraphQL APIs, integrating local and cloud AI models.",
     "userCentric": "User Centric",
     "vibeCoding": "AI & Vibe Coding",
-    "vibeCodingDesc": "Vibe Coding Cleanup Specialist — production quality from agent-assisted code.",
+    "vibeCodingDesc": "Vibe Coding Cleanup Specialist — transforming agent-generated AI code into production-grade craftsmanship.",
     "vibeCodingOpen": "Open Vibe Coding details",
+    "angularPillar": "Senior Angular Engineering",
+    "angularDesc": "Enterprise web applications built with Angular (v16+), RxJS, TypeScript, and clean layered architecture.",
+    "architectPillar": "Frontend Architecture",
+    "architectDesc": "Tailwind/PrimeVue design systems, micro-frontend ecosystems, and quality-driven engineering standards.",
+    "fullstackPillar": "Fullstack Engineering",
+    "fullstackDesc": "End-to-end product ownership: from responsive UI and accessibility down to APIs and CI/CD deployment.",
     "roles": {
       "viewDetails": "View role details",
       "highlightsTitle": "Key contributions",
@@ -1002,51 +1010,58 @@
   "faq": {
     "section": "FAQ",
     "title": "Frequently Asked Questions",
-    "description": "Quick answers for recruiters, hiring managers, and teams evaluating Cesar Gomez for senior frontend, website development, or fullstack roles in Cartagena and remote.",
+    "description": "Direct answers for recruiters, hiring managers, and engineering leads evaluating Cesar Gomez for senior contract roles.",
     "contact": {
       "question": "How can I contact Cesar Gomez?",
       "answer": "Use the {form}, connect on {linkedin}, or review his open-source work on {github}.",
       "linkForm": "contact form"
     },
     "hire": {
-      "question": "How do I hire a senior Vue.js frontend developer?",
-      "answer": "You can hire Cesar Gomez for senior Vue/Nuxt, AI-assisted craft, and Node.js contract work. Review his {portfolio}, {vueProfile}, {aiProfile}, and {nodeProfile}, then contact him via the {form}, {linkedin}, or {github}.",
-      "linkPortfolio": "portfolio",
-      "linkVueProfile": "Vue developer profile",
-      "linkAiProfile": "Vibe Coding Cleanup profile",
-      "linkNodeProfile": "Node.js backend profile",
+      "question": "How do I hire Cesar Gomez for senior engineering roles?",
+      "answer": "You can hire Cesar Gomez on a contract basis across 6 core specializations: {vueProfile}, {aiProfile}, {nodeProfile}, {angularProfile}, {architectProfile}, and {fullstackProfile}. Review his {portfolio}, then contact him via the {form}, {linkedin}, or {github}.",
+      "linkPortfolio": "main portfolio",
+      "linkVueProfile": "Senior Vue.js Developer",
+      "linkAiProfile": "AI Engineer (Vibe Coding)",
+      "linkNodeProfile": "Node.js Backend Developer",
+      "linkAngularProfile": "Senior Angular Developer",
+      "linkArchitectProfile": "Frontend Architect",
+      "linkFullstackProfile": "Fullstack Engineer",
       "linkForm": "contact form"
     },
     "items": [
       {
-        "question": "Who is Cesar Gomez?",
-        "answer": "Cesar Gomez is a senior fullstack developer with a frontend focus and 13+ years of experience in Vue.js, Nuxt.js, and TypeScript. He has built products for e-commerce platforms like TISSINI, and ed-tech platforms including Colegium (100k+ students) and LingoQuesto."
-      },
-      {
-        "question": "Is Cesar Gomez available for hire?",
-        "answer": "Yes. He takes senior frontend, fullstack, and architecture work on a contract basis. Available to start August 10, 2026; conversations and interviews are welcome now. Based in Cartagena de Indias, Colombia, with a clear preference for remote work."
-      },
-      {
-        "question": "What is Cesar Gomez's experience with Vue.js and Nuxt.js?",
-        "answer": "He has led frontend architecture with Vue 3 and Nuxt 4 in production, including micro-frontend ecosystems, shared libraries, Web Components, TypeScript-heavy UIs, and performance-critical educational platforms."
-      },
-      {
         "key": "hire",
-        "question": "How do I hire Cesar Gomez for senior engineering work?",
-        "answer": "You can hire Cesar Gomez for senior Vue/Nuxt, AI-assisted craft, and Node.js contract work. Review his portfolio, Vue developer profile, Vibe Coding Cleanup profile, and Node.js backend profile, then contact him via the contact form, LinkedIn, or GitHub."
-      },
-      {
-        "question": "Where is Cesar Gomez based?",
-        "answer": "Cesar is based in Cartagena de Indias, Colombia. His preferred work mode is remote, collaborating with teams across Latin America and globally."
-      },
-      {
-        "question": "Does Cesar Gomez have ed-tech experience?",
-        "answer": "Yes. He was founding fullstack engineer on LingoQuesto, an AI/NLP conversational ed-tech product for oral language practice, senior frontend at Colegium building cloud tools used by more than 100,000 students, and senior frontend at TISSINI building mobile-first e-commerce platforms for entrepreneurs."
+        "question": "How do I hire Cesar Gomez for senior engineering roles?",
+        "answer": "You can hire Cesar Gomez on a contract basis across 6 core specializations: Senior Vue.js Developer, AI Engineer (Vibe Coding), Node.js Backend Developer, Senior Angular Developer, Frontend Architect, and Fullstack Engineer. Review his main portfolio, then contact him via the contact form, LinkedIn, or GitHub."
       },
       {
         "key": "contact",
         "question": "How can I contact Cesar Gomez?",
-        "answer": "Use the contact form, connect on LinkedIn, or review his open-source work on GitHub."
+        "answer": "Use the direct contact form on this site, connect on LinkedIn, or review his code and open-source projects on GitHub."
+      },
+      {
+        "question": "Who is Cesar Gomez and what is his background?",
+        "answer": "Cesar Gomez is a senior fullstack engineer with a frontend focus and 13+ years of experience building scalable web architecture in Vue.js, Nuxt.js, Angular, Node.js, TypeScript, and AI-assisted tooling. He has engineered products for ed-tech leaders like Colegium (100k+ students) and LingoQuesto, as well as e-commerce platforms like TISSINI."
+      },
+      {
+        "question": "Is Cesar Gomez available for contract projects?",
+        "answer": "Yes. He is available for senior contract roles (remote preferred from Cartagena de Indias, Colombia) starting August 10, 2026. Technical and commercial interviews and alignment conversations are open right now."
+      },
+      {
+        "question": "What 6 core roles does Cesar Gomez specialize in?",
+        "answer": "He specializes in 6 dedicated technical roles: Senior Vue.js Developer (Vue 3/Nuxt 4), AI Engineer / Vibe Coding Cleanup, Node.js Backend Developer, Senior Angular Developer, Frontend Architect (Micro-frontends & Design Systems), and Fullstack Engineer."
+      },
+      {
+        "question": "What tech stack does he master and how does he use AI Vibe Coding?",
+        "answer": "He masters Vue 3, Nuxt 4, Angular, TypeScript, Node.js, Vite, Pinia, and Tailwind. He applies AI-accelerated Vibe Coding for rapid prototyping followed by production-grade refactoring, maintaining clean, modular code with high test coverage."
+      },
+      {
+        "question": "What is his track record in EdTech and product companies?",
+        "answer": "He served as founding fullstack engineer at LingoQuesto (conversational AI/NLP ed-tech app for oral language learning), senior frontend engineer at Colegium (cloud platforms for 100k+ students across LatAm), and senior frontend engineer at TISSINI (mobile-first e-commerce platform)."
+      },
+      {
+        "question": "What languages does he speak and what is his timezone alignment?",
+        "answer": "He is a native Spanish speaker with professional intermediate English proficiency. He works 100% remotely aligned with LatAm and North American time zones (COT / EST / PST)."
       }
     ]
   },
