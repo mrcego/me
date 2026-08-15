@@ -7,7 +7,7 @@ const { isOpen, toggleChat } = useAngieChat();
 
 <template>
   <div
-    class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-40 flex items-center gap-2.5 sm:gap-3 pointer-events-none"
+    class="fixed bottom-[max(1rem,env(safe-area-inset-bottom,1rem))] right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-40 flex items-center gap-2.5 sm:gap-3 pointer-events-none"
   >
     <!-- Floating Scroll To Top Button -->
     <ScrollToTopButton />
@@ -15,7 +15,7 @@ const { isOpen, toggleChat } = useAngieChat();
     <!-- Angie AI Trigger FAB -->
     <button
       type="button"
-      class="angie-fab group pointer-events-auto size-12 sm:size-13 md:size-14 glass rounded-2xl md:rounded-3xl flex items-center justify-center border border-primary/30 shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 relative overflow-hidden cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+      class="angie-fab group pointer-events-auto size-12 sm:size-13 md:size-14 glass rounded-2xl md:rounded-3xl flex items-center justify-center border border-primary/30 shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 relative overflow-hidden cursor-pointer touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
       :class="{ 'angie-fab--active': isOpen }"
       :aria-label="isOpen ? $t('angie.close') : $t('angie.launcher.aria')"
       :aria-expanded="isOpen"

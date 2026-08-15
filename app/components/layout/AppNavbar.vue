@@ -839,7 +839,7 @@ onBeforeUnmount(() => {
         v-if="isMobileMenuOpen"
         id="mobile-nav-dialog"
         ref="mobileMenuRef"
-        class="mobile-nav-dialog fixed inset-2 sm:inset-4 md:inset-6 z-140 rounded-3xl md:rounded-[2.5rem] overflow-y-auto border border-foreground/15 shadow-4xl lg:hidden overscroll-contain bg-background/95 backdrop-blur-2xl p-5 sm:p-7 custom-scrollbar"
+        class="mobile-nav-dialog fixed inset-2 sm:inset-4 md:inset-6 z-140 rounded-3xl md:rounded-[2.5rem] overflow-y-auto border border-foreground/15 shadow-4xl lg:hidden overscroll-contain bg-background/95 backdrop-blur-2xl p-4 sm:p-7 pb-[calc(env(safe-area-inset-bottom,0px)+1.5rem)] custom-scrollbar"
         role="dialog"
         aria-modal="true"
         aria-labelledby="mobile-nav-title"
@@ -850,18 +850,20 @@ onBeforeUnmount(() => {
         </h2>
 
         <!-- Header bar with identity & close button -->
-        <div class="flex items-center justify-between w-full pb-4 border-b border-foreground/10">
+        <div class="flex items-center justify-between w-full pb-3.5 border-b border-foreground/10">
           <div class="flex items-center gap-3">
             <div
-              class="flex size-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/25 text-primary"
+              class="flex size-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/25 text-primary shrink-0"
             >
               <Icon name="solar:crown-star-bold" class="size-5" />
             </div>
-            <div>
-              <span class="block text-sm font-black tracking-tight text-foreground">
+            <div class="min-w-0">
+              <span class="block text-sm font-black tracking-tight text-foreground truncate">
                 César Gómez
               </span>
-              <span class="block text-[10px] uppercase font-bold tracking-widest text-primary">
+              <span
+                class="block text-[10px] uppercase font-bold tracking-widest text-primary truncate"
+              >
                 {{ $t('nav.menuSubtitle') }}
               </span>
             </div>
@@ -870,7 +872,7 @@ onBeforeUnmount(() => {
           <button
             ref="mobileMenuCloseRef"
             type="button"
-            class="flex size-10 items-center justify-center rounded-full border border-foreground/15 bg-secondary/70 hover:bg-foreground/10 text-foreground transition-all hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer"
+            class="flex size-11 min-h-11 min-w-11 items-center justify-center rounded-full border border-foreground/15 bg-secondary/70 hover:bg-foreground/10 text-foreground transition-all hover:scale-105 active:scale-95 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer shrink-0"
             :aria-label="$t('a11y.closeMenu')"
             @click="closeMobileMenu()"
           >
@@ -879,7 +881,7 @@ onBeforeUnmount(() => {
         </div>
 
         <div
-          class="flex min-h-[calc(100%-4rem)] flex-col items-center justify-between gap-6 max-w-lg mx-auto py-4"
+          class="flex min-h-[calc(100%-4rem)] flex-col items-center justify-between gap-5 sm:gap-6 max-w-lg mx-auto py-3 sm:py-4"
         >
           <!-- Section Navigation Links Grid -->
           <nav class="grid grid-cols-2 gap-2 w-full" :aria-label="$t('a11y.mobileMenu')">
@@ -887,7 +889,7 @@ onBeforeUnmount(() => {
               v-for="link in navLinks"
               :key="link.id"
               :href="sectionHref(link.href)"
-              class="flex items-center justify-center py-2.5 px-3 rounded-xl border border-foreground/10 bg-secondary/30 hover:bg-primary/10 hover:border-primary/40 text-foreground hover:text-primary font-bold text-sm tracking-tight transition-all active:scale-95 cursor-pointer"
+              class="flex items-center justify-center min-h-11 py-2.5 px-3 rounded-xl border border-foreground/10 bg-secondary/30 hover:bg-primary/10 hover:border-primary/40 text-foreground hover:text-primary font-bold text-sm tracking-tight transition-all active:scale-95 touch-manipulation cursor-pointer text-center"
               @click="onNavSectionClick($event, link.href)"
             >
               {{ $t(link.name) }}
@@ -895,7 +897,7 @@ onBeforeUnmount(() => {
           </nav>
 
           <!-- Hiring Profiles Section -->
-          <div class="w-full space-y-3 border-t border-foreground/10 pt-5">
+          <div class="w-full space-y-3 border-t border-foreground/10 pt-4 sm:pt-5">
             <div class="flex items-center justify-between px-1">
               <div class="flex items-center gap-2">
                 <Icon name="solar:case-minimalistic-bold-duotone" class="size-4.5 text-primary" />
@@ -910,18 +912,18 @@ onBeforeUnmount(() => {
               </span>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 text-left">
               <NuxtLink
                 v-for="profile in hireProfileLinks"
                 :key="profile.to"
                 :to="localePath(profile.to)"
-                class="relative flex items-center gap-3 p-3 rounded-2xl border border-foreground/10 bg-secondary/40 hover:bg-secondary/80 hover:border-primary/40 active:scale-[0.98] transition-all group/mitem"
+                class="relative flex items-center gap-3 p-2.5 sm:p-3 min-h-12 rounded-2xl border border-foreground/10 bg-secondary/40 hover:bg-secondary/80 hover:border-primary/40 active:scale-[0.98] transition-all group/mitem touch-manipulation"
                 @click="closeMobileMenu({ restoreFocus: false })"
               >
                 <div
-                  class="flex size-11 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover/mitem:bg-primary group-hover/mitem:text-primary-contrast group-hover/mitem:scale-105 transition-all duration-300 shrink-0"
+                  class="flex size-10 sm:size-11 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover/mitem:bg-primary group-hover/mitem:text-primary-contrast group-hover/mitem:scale-105 transition-all duration-300 shrink-0"
                 >
-                  <Icon :name="profile.icon" class="size-6 shrink-0" />
+                  <Icon :name="profile.icon" class="size-5 sm:size-6 shrink-0" />
                 </div>
                 <div class="flex-1 min-w-0">
                   <span
@@ -945,7 +947,7 @@ onBeforeUnmount(() => {
 
             <a
               :href="sectionHref('#hire-profiles')"
-              class="inline-flex items-center justify-center gap-2 pt-1 text-xs font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors w-full"
+              class="inline-flex items-center justify-center min-h-11 gap-2 pt-1 text-xs font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors w-full touch-manipulation"
               @click="goToHireSection($event)"
             >
               {{ $t('nav.hireSection') }}
@@ -954,10 +956,12 @@ onBeforeUnmount(() => {
           </div>
 
           <!-- Bottom Actions -->
-          <div class="flex flex-col sm:flex-row gap-3 w-full border-t border-foreground/10 pt-5">
+          <div
+            class="flex flex-col sm:flex-row gap-2.5 sm:gap-3 w-full border-t border-foreground/10 pt-4 sm:pt-5"
+          >
             <a
               :href="sectionHref('#contact')"
-              class="btn-premium bg-primary text-primary-contrast rounded-2xl py-3.5 px-6 flex-1 inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm shadow-xl shadow-primary/20"
+              class="btn-premium bg-primary text-primary-contrast rounded-2xl min-h-12 py-3 px-5 sm:py-3.5 sm:px-6 flex-1 inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm shadow-xl shadow-primary/20 touch-manipulation"
               @click="onNavSectionClick($event, '#contact')"
             >
               {{ $t('nav.getInTouch') }}
@@ -966,7 +970,7 @@ onBeforeUnmount(() => {
             <a
               :href="cvHref"
               :download="cvFileName"
-              class="btn-premium glass border border-foreground/15 text-foreground rounded-2xl py-3.5 px-6 flex-1 inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm hover:border-primary/40 hover:text-primary transition-colors"
+              class="btn-premium glass border border-foreground/15 text-foreground rounded-2xl min-h-12 py-3 px-5 sm:py-3.5 sm:px-6 flex-1 inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm hover:border-primary/40 hover:text-primary transition-colors touch-manipulation"
               :aria-label="$t('hero.downloadCvAria', { file: cvFileName })"
               @click="closeMobileMenu({ restoreFocus: false })"
             >

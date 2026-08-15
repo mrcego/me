@@ -32,10 +32,10 @@ function copyReceipt() {
 }
 
 const fieldClass =
-  'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-5! bg-foreground/7! border-foreground/15! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color] duration-300 text-sm md:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70!';
+  'rounded-xl sm:rounded-2xl md:rounded-3xl p-3.5! sm:p-4! md:p-5! bg-foreground/7! border-foreground/15! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color] duration-300 text-base sm:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70!';
 
 const textareaClass =
-  'rounded-xl sm:rounded-2xl md:rounded-3xl !p-4 sm:!p-5 md:!p-6 !bg-foreground/7 !border-foreground/15 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color,border-radius] duration-300 focus:rounded-2xl text-sm md:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70! min-h-32';
+  'rounded-xl sm:rounded-2xl md:rounded-3xl !p-4 sm:!p-5 md:!p-6 !bg-foreground/7 !border-foreground/15 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color,border-radius] duration-300 focus:rounded-2xl text-base sm:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70! min-h-32';
 
 const contactMethods = [
   {
@@ -288,7 +288,7 @@ const contactMethods = [
                 id="contact-engagement-type"
                 v-model="formData.engagementType"
                 name="engagementType"
-                class="w-full rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 md:p-5 bg-foreground/7 border border-foreground/15 focus:border-primary/60 focus:ring-4 sm:focus:ring-8 focus:ring-primary/10 transition-[border-color,box-shadow,background-color] duration-300 text-sm md:text-base hover:border-foreground/25 text-foreground cursor-pointer"
+                class="w-full rounded-xl sm:rounded-2xl md:rounded-3xl p-3.5 sm:p-4 md:p-5 bg-foreground/7 border border-foreground/15 focus:border-primary/60 focus:ring-4 sm:focus:ring-8 focus:ring-primary/10 transition-[border-color,box-shadow,background-color] duration-300 text-base hover:border-foreground/25 text-foreground cursor-pointer"
               >
                 <option value="" disabled class="bg-background text-muted">
                   {{ $t('contact.form.engagementTypePlaceholder') }}

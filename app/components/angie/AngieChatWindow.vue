@@ -141,7 +141,7 @@ watch(isOpen, (open) => {
     >
       <div
         v-if="isOpen"
-        class="angie-window fixed bottom-20 right-4 sm:bottom-24 sm:right-6 md:bottom-26 md:right-8 z-50 w-[calc(100vw-2rem)] sm:w-[26rem] md:w-[28rem] h-[34rem] max-h-[calc(100svh-7rem)] glass rounded-3xl border border-primary/25 shadow-4xl flex flex-col overflow-hidden text-foreground"
+        class="angie-window fixed bottom-18 sm:bottom-24 right-3 sm:right-6 md:bottom-26 md:right-8 z-50 w-[calc(100vw-1.5rem)] sm:w-[26rem] md:w-[28rem] h-[34rem] max-h-[calc(100svh-5.5rem)] glass rounded-2xl sm:rounded-3xl border border-primary/25 shadow-4xl flex flex-col overflow-hidden text-foreground"
         role="dialog"
         aria-modal="true"
         :aria-label="$t('angie.header.title')"
@@ -155,39 +155,41 @@ watch(isOpen, (open) => {
 
         <!-- Header -->
         <header
-          class="p-4 sm:p-5 border-b border-foreground/10 bg-secondary/80 backdrop-blur-md flex items-center justify-between relative z-10"
+          class="p-3.5 sm:p-5 border-b border-foreground/10 bg-secondary/80 backdrop-blur-md flex items-center justify-between relative z-10"
         >
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div
-              class="relative flex items-center justify-center size-9 rounded-xl bg-primary/10 border border-primary/30 text-primary"
+              class="relative flex items-center justify-center size-8.5 sm:size-9 rounded-xl bg-primary/10 border border-primary/30 text-primary shrink-0"
             >
-              <Icon name="solar:stars-minimalistic-bold-duotone" class="size-5" />
+              <Icon name="solar:stars-minimalistic-bold-duotone" class="size-4.5 sm:size-5" />
               <span
                 class="absolute -top-1 -right-1 size-2.5 rounded-full bg-emerald-400 animate-pulse border border-background"
               />
             </div>
-            <div>
-              <div class="flex items-center gap-2">
-                <h3 class="font-mono text-xs font-black tracking-wider uppercase text-foreground">
+            <div class="min-w-0">
+              <div class="flex items-center gap-1.5 sm:gap-2">
+                <h3
+                  class="font-mono text-xs font-black tracking-wider uppercase text-foreground truncate"
+                >
                   {{ $t('angie.header.title') }}
                 </h3>
                 <span
-                  class="font-mono text-[9px] px-1.5 py-0.2 rounded bg-primary/15 text-primary font-bold"
+                  class="font-mono text-[9px] px-1.5 py-0.2 rounded bg-primary/15 text-primary font-bold shrink-0"
                 >
                   {{ $t('angie.header.badge') }}
                 </span>
               </div>
-              <p class="font-mono text-[10px] text-muted flex items-center gap-1.5">
-                <span class="size-1.5 rounded-full bg-emerald-400" />
-                {{ $t('angie.header.status') }}
+              <p class="font-mono text-[10px] text-muted flex items-center gap-1.5 truncate">
+                <span class="size-1.5 rounded-full bg-emerald-400 shrink-0" />
+                <span class="truncate">{{ $t('angie.header.status') }}</span>
               </p>
             </div>
           </div>
 
-          <div class="flex items-center gap-1">
+          <div class="flex items-center gap-0.5 sm:gap-1 shrink-0">
             <button
               type="button"
-              class="p-2 text-muted hover:text-foreground rounded-lg hover:bg-foreground/5 transition-colors cursor-pointer"
+              class="min-h-9 min-w-9 sm:min-h-8 sm:min-w-8 p-2 text-muted hover:text-foreground rounded-lg hover:bg-foreground/5 transition-colors cursor-pointer touch-manipulation flex items-center justify-center"
               :title="$t('angie.clearTranscript')"
               :aria-label="$t('angie.clearTranscript')"
               @click="clearTranscript"
@@ -196,7 +198,7 @@ watch(isOpen, (open) => {
             </button>
             <button
               type="button"
-              class="p-2 text-muted hover:text-foreground rounded-lg hover:bg-foreground/5 transition-colors cursor-pointer"
+              class="min-h-9 min-w-9 sm:min-h-8 sm:min-w-8 p-2 text-muted hover:text-foreground rounded-lg hover:bg-foreground/5 transition-colors cursor-pointer touch-manipulation flex items-center justify-center"
               :aria-label="$t('angie.close')"
               @click="closeChat"
             >
@@ -207,7 +209,7 @@ watch(isOpen, (open) => {
 
         <!-- Neural Engine Telemetry HUD Banner -->
         <div
-          class="px-4 py-1.5 bg-foreground/4 border-b border-foreground/5 flex items-center justify-between text-[10px] font-mono relative z-10"
+          class="px-3.5 sm:px-4 py-1.5 bg-foreground/4 border-b border-foreground/5 flex items-center justify-between text-[10px] font-mono relative z-10 gap-2"
         >
           <div class="flex items-center gap-1.5 min-w-0">
             <!-- Loading state -->
@@ -257,13 +259,13 @@ watch(isOpen, (open) => {
 
         <!-- Category Selector Tabs -->
         <div
-          class="px-4 py-2 bg-foreground/3 border-b border-foreground/5 flex items-center gap-1.5 overflow-x-auto scrollbar-hide relative z-10"
+          class="px-3 sm:px-4 py-2 bg-foreground/3 border-b border-foreground/5 flex items-center gap-1.5 overflow-x-auto scrollbar-hide relative z-10"
         >
           <button
             v-for="cat in categories"
             :key="cat.id"
             type="button"
-            class="px-2.5 py-1 rounded-lg font-mono text-[11px] font-bold uppercase transition-all duration-200 cursor-pointer whitespace-nowrap"
+            class="px-2.5 py-1.5 sm:py-1 rounded-lg font-mono text-[11px] font-bold uppercase transition-all duration-200 cursor-pointer whitespace-nowrap touch-manipulation min-h-7"
             :class="
               activeCategory === cat.id
                 ? 'bg-primary text-primary-contrast shadow-sm shadow-primary/20'
@@ -278,7 +280,7 @@ watch(isOpen, (open) => {
         <!-- Chat Log Stream -->
         <div
           ref="transcriptRef"
-          class="flex-1 overflow-y-auto p-4 sm:p-5 space-y-4 font-sans text-xs sm:text-sm relative z-10 scrollbar-thin"
+          class="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-3.5 sm:space-y-4 font-sans text-xs sm:text-sm relative z-10 scrollbar-thin"
           role="log"
           aria-live="polite"
         >
@@ -301,7 +303,7 @@ watch(isOpen, (open) => {
             </div>
 
             <div
-              class="max-w-[88%] p-3 sm:p-3.5 rounded-2xl leading-relaxed whitespace-pre-wrap"
+              class="max-w-[90%] sm:max-w-[88%] p-3 sm:p-3.5 rounded-2xl leading-relaxed whitespace-pre-wrap text-pretty"
               :class="
                 msg.role === 'user'
                   ? 'bg-primary/90 text-primary-contrast font-medium rounded-tr-xs shadow-md shadow-primary/10'
@@ -318,13 +320,13 @@ watch(isOpen, (open) => {
             <!-- Action Badges for Angie messages -->
             <div
               v-if="msg.actions && msg.actions.length > 0 && !msg.isStreaming"
-              class="flex flex-wrap gap-1.5 pt-1 max-w-[90%]"
+              class="flex flex-wrap gap-1.5 pt-1 max-w-[95%] sm:max-w-[90%]"
             >
               <button
                 v-for="action in msg.actions"
                 :key="action.id"
                 type="button"
-                class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg font-mono text-[10px] sm:text-[11px] font-bold text-primary bg-primary/10 hover:bg-primary hover:text-primary-contrast border border-primary/30 transition-all duration-200 cursor-pointer active:scale-95"
+                class="inline-flex items-center gap-1 px-2.5 py-1.5 sm:py-1 rounded-lg font-mono text-[10px] sm:text-[11px] font-bold text-primary bg-primary/10 hover:bg-primary hover:text-primary-contrast border border-primary/30 transition-all duration-200 cursor-pointer active:scale-95 touch-manipulation min-h-7"
                 @click="onActionClick(action, $event)"
               >
                 <span>{{ $t(action.labelKey) }}</span>
@@ -345,13 +347,13 @@ watch(isOpen, (open) => {
 
         <!-- Quick Prompts Slider -->
         <div
-          class="p-2.5 bg-foreground/2 border-t border-foreground/5 relative z-10 flex gap-1.5 overflow-x-auto scrollbar-hide"
+          class="p-2 sm:p-2.5 bg-foreground/2 border-t border-foreground/5 relative z-10 flex gap-1.5 overflow-x-auto scrollbar-hide"
         >
           <button
             v-for="prompt in categoryPrompts"
             :key="prompt"
             type="button"
-            class="px-2.5 py-1 rounded-md bg-foreground/5 hover:bg-primary/15 hover:text-primary border border-foreground/5 font-mono text-[11px] text-muted transition-colors cursor-pointer whitespace-nowrap text-left"
+            class="px-2.5 py-1.5 sm:py-1 rounded-md bg-foreground/5 hover:bg-primary/15 hover:text-primary border border-foreground/5 font-mono text-[11px] text-muted transition-colors cursor-pointer whitespace-nowrap text-left touch-manipulation min-h-7"
             @click="handleSend(prompt)"
           >
             {{ prompt }}
@@ -360,7 +362,7 @@ watch(isOpen, (open) => {
 
         <!-- Input Box -->
         <form
-          class="p-3 bg-secondary/90 border-t border-foreground/10 flex items-center gap-2 relative z-10"
+          class="p-2.5 sm:p-3 bg-secondary/90 border-t border-foreground/10 flex items-center gap-2 relative z-10"
           @submit.prevent="handleSend()"
         >
           <input
@@ -368,13 +370,13 @@ watch(isOpen, (open) => {
             type="text"
             :placeholder="$t('angie.inputPlaceholder')"
             :aria-label="$t('angie.inputPlaceholder')"
-            class="flex-1 bg-foreground/5 border border-foreground/10 focus:border-primary/50 rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-1 focus:ring-primary/40 transition-all"
+            class="flex-1 bg-foreground/5 border border-foreground/10 focus:border-primary/50 rounded-xl px-3.5 py-2.5 text-base sm:text-sm text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-1 focus:ring-primary/40 transition-all"
             maxlength="200"
           />
           <button
             type="submit"
             :disabled="!userInput.trim() || isTyping"
-            class="size-9 sm:size-10 rounded-xl bg-primary text-primary-contrast flex items-center justify-center disabled:opacity-40 disabled:cursor-not-allowed hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-md shadow-primary/20 shrink-0"
+            class="size-10 sm:size-10 rounded-xl bg-primary text-primary-contrast flex items-center justify-center disabled:opacity-40 disabled:cursor-not-allowed hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-md shadow-primary/20 shrink-0 touch-manipulation"
             :aria-label="$t('angie.send')"
           >
             <Icon name="lucide:send" class="size-4" />

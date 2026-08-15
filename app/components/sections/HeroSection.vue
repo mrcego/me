@@ -224,7 +224,7 @@ onMounted(() => {
                 target="_blank"
                 rel="noopener noreferrer"
                 :aria-label="$t('footer.socialLinkedIn')"
-                class="hero-social-link inline-flex items-center justify-center size-10.5 sm:size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="simple-icons:linkedin"
@@ -236,7 +236,7 @@ onMounted(() => {
                 target="_blank"
                 rel="noopener noreferrer"
                 :aria-label="$t('footer.socialGitHub')"
-                class="hero-social-link inline-flex items-center justify-center size-10.5 sm:size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="simple-icons:github"
@@ -246,7 +246,7 @@ onMounted(() => {
               <a
                 href="mailto:cesargomezh90@gmail.com"
                 :aria-label="$t('footer.socialEmail')"
-                class="hero-social-link inline-flex items-center justify-center size-10.5 sm:size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="solar:letter-linear"
@@ -366,26 +366,26 @@ onMounted(() => {
 
         <!-- Stats HUD Dock under photo -->
         <div
-          class="w-full grid grid-cols-3 gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-2xl sm:rounded-3xl border border-primary/20 bg-secondary/60 backdrop-blur-md shadow-xl"
+          class="w-full grid grid-cols-3 gap-1.5 sm:gap-3 p-2 sm:p-3 rounded-2xl sm:rounded-3xl border border-primary/20 bg-secondary/60 backdrop-blur-md shadow-xl"
         >
           <div
             v-for="(stat, i) in heroStats"
             :key="stat.labelKey"
-            class="hero-reveal text-center p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-background/50 border border-foreground/5 group/stat hover:border-primary/30 transition-all duration-300 flex flex-col items-center justify-center gap-1"
+            class="hero-reveal text-center p-1.5 sm:p-2.5 rounded-xl sm:rounded-2xl bg-background/50 border border-foreground/5 group/stat hover:border-primary/30 transition-all duration-300 flex flex-col items-center justify-center gap-0.5 sm:gap-1"
             :style="{ animationDelay: `${0.4 + i * 0.1}s` }"
           >
             <Icon
               :name="stat.icon"
-              class="size-4 sm:size-4.5 text-primary/70 group-hover/stat:text-primary transition-colors"
+              class="size-3.5 sm:size-4.5 text-primary/70 group-hover/stat:text-primary transition-colors"
               aria-hidden="true"
             />
             <div
-              class="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
+              class="text-lg sm:text-2xl md:text-3xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
             >
               {{ stat.value }}
             </div>
             <div
-              class="text-xs text-muted group-hover/stat:text-foreground transition-colors font-medium leading-tight line-clamp-2"
+              class="text-[10px] sm:text-xs text-muted group-hover/stat:text-foreground transition-colors font-medium leading-tight line-clamp-2"
             >
               {{ $t(stat.labelKey) }}
             </div>
