@@ -70,4 +70,11 @@ describe('useAngieChat', () => {
       });
     }).not.toThrow();
   });
+
+  it('exposes reactive neural status and progress properties', async () => {
+    const angie = await mountAngie();
+    expect(['idle', 'loading', 'ready', 'fallback']).toContain(angie.neuralStatus.value);
+    expect(typeof angie.neuralProgress.value).toBe('number');
+    expect(angie.neuralModel.value).toBe('smollm2-135m-instruct');
+  });
 });

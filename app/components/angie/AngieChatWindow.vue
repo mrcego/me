@@ -10,6 +10,8 @@ const {
   isTyping,
   messages,
   activeCategory,
+  neuralStatus,
+  neuralProgress,
   closeChat,
   clearTranscript,
   sendMessage,
@@ -203,6 +205,56 @@ watch(isOpen, (open) => {
           </div>
         </header>
 
+        <!-- Neural Engine Telemetry HUD Banner -->
+        <div
+          class="px-4 py-1.5 bg-foreground/4 border-b border-foreground/5 flex items-center justify-between text-[10px] font-mono relative z-10"
+        >
+          <div class="flex items-center gap-1.5 min-w-0">
+            <!-- Loading state -->
+            <template v-if="neuralStatus === 'loading'">
+              <span class="size-1.5 rounded-full bg-amber-400 animate-ping shrink-0" />
+              <span class="text-amber-400 font-semibold truncate">
+                {{ $t('angie.neural.loading', { progress: neuralProgress }) }}
+              </span>
+            </template>
+
+            <!-- Ready state -->
+            <template v-else-if="neuralStatus === 'ready'">
+              <span
+                class="size-1.5 rounded-full bg-emerald-400 shrink-0 shadow-xs shadow-emerald-400"
+              />
+              <span class="text-emerald-400 font-bold truncate">
+                {{ $t('angie.neural.ready') }}
+              </span>
+            </template>
+
+            <!-- Fast mode / fallback -->
+            <template v-else>
+              <span class="size-1.5 rounded-full bg-primary shrink-0" />
+              <span class="text-muted font-medium truncate">
+                {{ $t('angie.neural.fastMode') }}
+              </span>
+            </template>
+          </div>
+
+          <span
+            class="px-1.5 py-0.5 rounded bg-primary/10 text-primary text-[9px] font-bold tracking-wider shrink-0 uppercase"
+          >
+            {{ $t('angie.neural.badge') }}
+          </span>
+        </div>
+
+        <!-- Neural Loading Micro Progress Bar -->
+        <div
+          v-if="neuralStatus === 'loading'"
+          class="w-full h-0.5 bg-foreground/5 overflow-hidden relative z-10"
+        >
+          <div
+            class="h-full bg-linear-to-r from-amber-400 via-primary to-emerald-400 transition-all duration-300 ease-out"
+            :style="{ width: `${neuralProgress}%` }"
+          />
+        </div>
+
         <!-- Category Selector Tabs -->
         <div
           class="px-4 py-2 bg-foreground/3 border-b border-foreground/5 flex items-center gap-1.5 overflow-x-auto scrollbar-hide relative z-10"
@@ -236,9 +288,17 @@ watch(isOpen, (open) => {
             class="flex flex-col gap-1.5"
             :class="msg.role === 'user' ? 'items-end' : 'items-start'"
           >
-            <span class="font-mono text-[10px] text-muted/60 uppercase tracking-widest px-1">
-              {{ msg.role === 'user' ? $t('angie.roles.user') : $t('angie.roles.angie') }}
-            </span>
+            <div class="flex items-center gap-1.5 px-1">
+              <span class="font-mono text-[10px] text-muted/60 uppercase tracking-widest">
+                {{ msg.role === 'user' ? $t('angie.roles.user') : $t('angie.roles.angie') }}
+              </span>
+              <span
+                v-if="msg.isNeural"
+                class="font-mono text-[8px] font-bold px-1 py-0.2 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
+              >
+                WebGPU
+              </span>
+            </div>
 
             <div
               class="max-w-[88%] p-3 sm:p-3.5 rounded-2xl leading-relaxed whitespace-pre-wrap"

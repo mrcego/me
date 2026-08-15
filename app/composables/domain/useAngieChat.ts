@@ -9,14 +9,20 @@ export interface AngieChatMessage {
   text: string;
   actions?: AngieAction[];
   isStreaming?: boolean;
+  isNeural?: boolean;
 }
 
 export type AngieCategory = 'all' | 'recruiter' | 'lead' | 'founder';
+export type AngieNeuralStatus = 'idle' | 'loading' | 'ready' | 'fallback';
 
 const isOpen = ref(false);
 const isTyping = ref(false);
 const messages = ref<AngieChatMessage[]>([]);
 const activeCategory = ref<AngieCategory>('all');
+const neuralStatus = ref<AngieNeuralStatus>('idle');
+const neuralProgress = ref(0);
+const neuralModel = ref('smollm2-135m-instruct');
+
 let workerInstance: Worker | null = null;
 let messageSerial = 0;
 
@@ -36,7 +42,21 @@ export function useAngieChat() {
       });
 
       workerInstance.onmessage = (event: MessageEvent) => {
-        const { id, type, chunk, fullText, actions } = event.data;
+        const data = event.data;
+        if (!data) return;
+
+        if (data.type === 'neural_status') {
+          neuralStatus.value = data.status || 'fallback';
+          if (typeof data.progress === 'number') {
+            neuralProgress.value = data.progress;
+          }
+          if (data.model) {
+            neuralModel.value = data.model;
+          }
+          return;
+        }
+
+        const { id, type, chunk, fullText, actions, isNeural } = data;
         const msg = messages.value.find((m) => m.id === id);
 
         if (type === 'chunk' && msg) {
@@ -46,6 +66,7 @@ export function useAngieChat() {
           msg.text = fullText;
           msg.actions = actions;
           msg.isStreaming = false;
+          msg.isNeural = isNeural;
           isTyping.value = false;
         } else if (type === 'error' && msg) {
           msg.text = fullText || t('angie.errorGeneric');
@@ -55,6 +76,14 @@ export function useAngieChat() {
       };
     } catch {
       workerInstance = null;
+      neuralStatus.value = 'fallback';
+    }
+  }
+
+  function warmupNeuralEngine() {
+    initWorker();
+    if (workerInstance && neuralStatus.value === 'idle') {
+      workerInstance.postMessage({ type: 'warmup' });
     }
   }
 
@@ -93,6 +122,7 @@ export function useAngieChat() {
   function openChat() {
     isOpen.value = true;
     initWorker();
+    warmupNeuralEngine();
     bootstrapGreeting();
     trackEvent('angie_chat_opened', { locale: locale.value });
   }
@@ -139,6 +169,7 @@ export function useAngieChat() {
 
     if (workerInstance) {
       workerInstance.postMessage({
+        type: 'query',
         id: responseId,
         query,
         locale: locale.value === 'es' ? 'es' : 'en',
@@ -152,6 +183,7 @@ export function useAngieChat() {
           targetMsg.text = text;
           targetMsg.actions = actions;
           targetMsg.isStreaming = false;
+          targetMsg.isNeural = false;
         }
         isTyping.value = false;
       }, 300);
@@ -198,9 +230,13 @@ export function useAngieChat() {
     isTyping,
     messages,
     activeCategory,
+    neuralStatus,
+    neuralProgress,
+    neuralModel,
     openChat,
     closeChat,
     toggleChat,
+    warmupNeuralEngine,
     clearTranscript,
     sendMessage,
     triggerAction,

@@ -40,6 +40,7 @@
     "indexnow:submit": "node scripts/submit-indexnow.mjs"
   },
   "dependencies": {
+    "@browserai/browserai": "^2.1.1",
     "@nuxt/vite-builder": "^4.5.1",
     "@nuxtjs/i18n": "^10.6.0",
     "@nuxtjs/seo": "^5.3.6",

@@ -124,9 +124,15 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        '@aspect/flare': 'unenv/runtime/mock/empty',
+      },
+    },
     optimizeDeps: {
       // Avoid prebundling the full @vueuse/core barrel into the graph.
       include: ['@unhead/schema-org/vue'],
+      exclude: ['@browserai/browserai', '@aspect/flare'],
     },
     build: {
       modulePreload: false,
@@ -135,6 +141,9 @@ export default defineNuxtConfig({
       // only found after entry JS executed.
       // https://developer.chrome.com/docs/performance/insights/network-dependency-tree
       cssCodeSplit: false,
+    },
+    worker: {
+      format: 'es',
     },
   },
 

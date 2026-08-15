@@ -1900,8 +1900,14 @@
     },
     "header": {
       "title": "Angie // AI Concierge",
-      "badge": "Worker v4.0",
+      "badge": "WebGPU v4.0",
       "status": "Online · 60 FPS"
+    },
+    "neural": {
+      "loading": "Neural Engine: Loading Shaders ({progress}%)",
+      "ready": "Neural Engine: Online (WebGPU · SmolLM2)",
+      "fastMode": "Fast Mode: Online (0ms RAG)",
+      "badge": "WebGPU LLM"
     },
     "roles": {
       "user": "You",
