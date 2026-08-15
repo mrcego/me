@@ -14,18 +14,18 @@ const { isOpen, toggleChat } = useAngieChat();
 
     <!-- Angie AI Trigger FAB & Tooltip Container -->
     <div class="relative flex items-center group/angie-launcher pointer-events-auto">
-      <!-- Tooltip on Hover / Focus -->
+      <!-- Tooltip on Hover / Focus — positioned ABOVE the FAB -->
       <div
         v-if="!isOpen"
-        class="absolute right-full mr-3.5 top-1/2 -translate-y-1/2 pointer-events-none opacity-0 translate-x-2 scale-95 group-hover/angie-launcher:opacity-100 group-hover/angie-launcher:translate-x-0 group-hover/angie-launcher:scale-100 group-focus-within/angie-launcher:opacity-100 group-focus-within/angie-launcher:translate-x-0 group-focus-within/angie-launcher:scale-100 transition-all duration-300 ease-out z-50 hidden sm:block"
+        class="absolute bottom-full mb-3 right-0 pointer-events-none opacity-0 translate-y-2 scale-95 group-hover/angie-launcher:opacity-100 group-hover/angie-launcher:translate-y-0 group-hover/angie-launcher:scale-100 group-focus-within/angie-launcher:opacity-100 group-focus-within/angie-launcher:translate-y-0 group-focus-within/angie-launcher:scale-100 transition-all duration-300 ease-out z-50 hidden sm:block"
         role="tooltip"
       >
         <div
           class="bg-secondary border border-primary/40 rounded-2xl p-3.5 shadow-2xl shadow-black/90 backdrop-blur-2xl w-64 sm:w-72 text-left relative"
         >
-          <!-- Arrow caret pointing right towards the FAB -->
+          <!-- Arrow caret pointing down towards the FAB -->
           <div
-            class="absolute -right-1.5 top-1/2 -translate-y-1/2 size-3 bg-secondary border-t border-r border-primary/40 rotate-45 pointer-events-none"
+            class="absolute -bottom-1.5 right-5 size-3 bg-secondary border-b border-r border-primary/40 rotate-45 pointer-events-none"
             aria-hidden="true"
           />
 
