@@ -59,12 +59,12 @@ export const SEO_IDENTITY = {
   twitterSite: '@codingwithcego',
 } as const;
 
-/** Contact WhatsApp — official username handle and direct click-to-chat URL (privacy-first). */
+/** Contact WhatsApp — username handle displayed in UI, with direct click-to-chat href. */
 export const CONTACT_WHATSAPP_USERNAME = 'mrcego.fsdev';
 export const CONTACT_WHATSAPP_DISPLAY = `@${CONTACT_WHATSAPP_USERNAME}`;
-export const CONTACT_PHONE_WHATSAPP = `https://wa.me/${CONTACT_WHATSAPP_USERNAME}`;
+export const CONTACT_PHONE_E164 = '+573332636550';
+export const CONTACT_PHONE_WHATSAPP = `https://wa.me/${CONTACT_PHONE_E164.replace('+', '')}`;
 export const CONTACT_PHONE_DISPLAY = CONTACT_WHATSAPP_DISPLAY;
-export const CONTACT_PHONE_E164 = '';
 
 /** Compact topical terms for Person / ProfessionalService knowsAbout (not meta keywords). */
 export const PERSON_KNOWS_ABOUT = [

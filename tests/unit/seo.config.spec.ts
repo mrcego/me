@@ -78,10 +78,10 @@ describe('seo.config', () => {
     expect(SITE_NAME_ALTERNATES).toContain('Cesar Gomez');
   });
 
-  it('exposes contact whatsapp handle and url without exposing raw phone', () => {
+  it('exposes contact whatsapp handle and direct click-to-chat url', () => {
     expect(CONTACT_WHATSAPP_USERNAME).toBe('mrcego.fsdev');
     expect(CONTACT_WHATSAPP_DISPLAY).toBe('@mrcego.fsdev');
-    expect(CONTACT_PHONE_WHATSAPP).toBe('https://wa.me/mrcego.fsdev');
+    expect(CONTACT_PHONE_WHATSAPP).toBe('https://wa.me/573332636550');
     expect(CONTACT_PHONE_DISPLAY).toBe('@mrcego.fsdev');
   });
 
