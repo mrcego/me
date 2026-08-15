@@ -1898,7 +1898,10 @@
   "angie": {
     "launcher": {
       "aria": "Open Angie AI Portfolio Concierge",
-      "tooltip": "Ask Angie AI"
+      "tooltip": "Ask Angie AI",
+      "tooltipTitle": "Angie · AI Concierge",
+      "tooltipText": "Ask me about César's 13+ YOE, tech stack, architecture, and hiring availability.",
+      "tooltipPrompt": "Click to chat"
     },
     "header": {
       "title": "Angie // AI Concierge",

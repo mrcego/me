@@ -1898,7 +1898,10 @@
   "angie": {
     "launcher": {
       "aria": "Abrir asistente Angie de IA",
-      "tooltip": "Preguntar a Angie IA"
+      "tooltip": "Preguntar a Angie IA",
+      "tooltipTitle": "Angie · Concierge IA",
+      "tooltipText": "Pregúntame sobre la experiencia de César, stack técnico, arquitectura y disponibilidad.",
+      "tooltipPrompt": "Clic para chatear"
     },
     "header": {
       "title": "Angie // Concierge IA",
