@@ -519,13 +519,13 @@ onBeforeUnmount(() => {
           </span>
           <span class="site-nav__brand flex flex-col justify-center min-w-0">
             <span
-              class="text-[11px] sm:text-sm md:text-base font-black tracking-tight text-foreground group-hover:text-primary leading-none uppercase truncate transition-colors duration-300 site-nav__brand-title"
+              class="text-xs sm:text-sm md:text-base font-black tracking-tight text-foreground group-hover:text-primary leading-none uppercase truncate transition-colors duration-300 site-nav__brand-title"
             >
               {{ $t('hero.name') }}
             </span>
             <AppTextRotator
               :items="brandRoles"
-              container-class="hidden sm:block text-[10px] font-bold uppercase tracking-[0.18em] text-muted site-nav__brand-subtitle h-[1.25em]"
+              container-class="hidden xl:block text-[10px] font-bold uppercase tracking-[0.18em] text-muted site-nav__brand-subtitle h-[1.25em]"
               track-class="site-nav__brand-subtitle-track"
               line-class="site-nav__brand-subtitle-line"
             />
@@ -534,12 +534,12 @@ onBeforeUnmount(() => {
 
         <!-- Desktop Navigation -->
         <div
-          class="site-nav__links hidden lg:flex items-center gap-0.5 xl:gap-0.5 rounded-full px-1 xl:px-1.5 py-1 border min-w-0 shrink"
+          class="site-nav__links hidden lg:flex items-center gap-1 xl:gap-1.5 rounded-full px-2 xl:px-2.5 py-1 border min-w-0 shrink"
         >
           <template v-for="(link, i) in navLinks" :key="link.id">
             <a
               :href="sectionHref(link.href)"
-              class="nav-reveal relative px-1.5 lg:px-2 xl:px-2.5 py-1.5 rounded-full text-[0.65rem] xl:text-xs font-bold uppercase tracking-wide xl:tracking-wider transition-colors duration-300 isolate group/link overflow-hidden cursor-pointer whitespace-nowrap"
+              class="nav-reveal relative px-2.5 xl:px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 isolate group/link overflow-hidden cursor-pointer whitespace-nowrap"
               :class="[
                 isActiveSection(link.id) ? 'text-foreground' : 'text-muted hover:text-foreground',
               ]"

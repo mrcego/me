@@ -88,7 +88,7 @@ const contactMethods = [
     />
 
     <div class="container mx-auto z-10 relative">
-      <div class="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
+      <div class="grid xl:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
         <Motion
           :initial="motionInitial({ opacity: 0, x: -50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
@@ -96,8 +96,8 @@ const contactMethods = [
           :viewport="{ once: true }"
           class="space-y-8 sm:space-y-10 md:space-y-14"
         >
-          <div class="space-y-6 sm:space-y-8 md:space-y-12 group text-center lg:text-left">
-            <div class="flex items-center justify-center lg:justify-start gap-4 md:gap-6">
+          <div class="space-y-6 sm:space-y-8 md:space-y-12 group text-center xl:text-left">
+            <div class="flex items-center justify-center xl:justify-start gap-4 md:gap-6">
               <div class="h-px w-12 md:w-16 bg-primary" aria-hidden="true" />
               <p class="type-eyebrow tracking-[0.4em]">
                 {{ $t('contact.section') }}
@@ -113,7 +113,7 @@ const contactMethods = [
               {{ $t('contact.titleEnd') }}
             </h2>
             <p
-              class="text-muted text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto lg:mx-0 text-pretty"
+              class="text-muted text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto xl:mx-0 text-pretty"
             >
               {{ $t('contact.description') }}
             </p>
@@ -160,7 +160,7 @@ const contactMethods = [
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="motionTransition({ duration: 0.42, delay: 0.08 })"
           :viewport="{ once: true }"
-          class="surface-card group glass p-6 sm:p-8 md:p-10 lg:p-12 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 relative overflow-hidden shadow-4xl mt-12 lg:mt-0"
+          class="surface-card group glass p-6 sm:p-8 md:p-10 lg:p-12 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 relative overflow-hidden shadow-4xl mt-12 xl:mt-0"
         >
           <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
 

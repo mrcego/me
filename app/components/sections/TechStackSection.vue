@@ -255,7 +255,7 @@ const skillGroups = [
       </div>
 
       <!-- Stats & Bio HUD -->
-      <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative px-2 md:px-0">
+      <div class="grid xl:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative px-2 md:px-0">
         <Motion
           :initial="motionInitial({ opacity: 0, x: -30 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
