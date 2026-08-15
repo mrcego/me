@@ -133,7 +133,7 @@ const aboutPoints: PhilosophyPoint[] = [
     <!-- Background Decorative Element -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] -z-10" />
 
-    <div class="container mx-auto min-w-0 max-w-7xl">
+    <div class="container mx-auto min-w-0">
       <div
         class="grid grid-cols-1 xl:grid-cols-12 gap-8 sm:gap-10 xl:gap-14 2xl:gap-20 items-start min-w-0"
       >

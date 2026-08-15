@@ -40,10 +40,10 @@ const craftMethodologyTo =
 <template>
   <section
     id="hire-profiles"
-    class="py-20 md:py-28 px-6 md:px-12 bg-secondary/5 border-y border-foreground/5"
+    class="py-20 sm:py-24 md:py-28 xl:py-32 px-4 sm:px-6 md:px-8 lg:px-10 bg-secondary/5 border-y border-foreground/5"
     aria-labelledby="hire-profiles-heading"
   >
-    <div class="container mx-auto max-w-6xl space-y-10 md:space-y-14">
+    <div class="container mx-auto space-y-12 md:space-y-16">
       <Motion
         :initial="motionInitial({ opacity: 0, y: 16 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
@@ -68,7 +68,7 @@ const craftMethodologyTo =
         </p>
       </Motion>
 
-      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         <Motion
           v-for="(profile, index) in profiles"
           :key="profile.key"

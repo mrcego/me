@@ -39,7 +39,7 @@ function onCaseStudyClick(slug: string) {
 <template>
   <section
     id="case-studies"
-    class="py-24 md:py-40 px-6 md:px-12 bg-background relative overflow-hidden"
+    class="py-24 sm:py-28 md:py-32 xl:py-40 px-4 sm:px-6 md:px-8 lg:px-10 bg-background relative overflow-hidden"
     aria-labelledby="case-studies-heading"
   >
     <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -74,7 +74,7 @@ function onCaseStudyClick(slug: string) {
       </Motion>
 
       <div
-        class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-6 xl:gap-8 max-w-7xl mx-auto items-stretch"
+        class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-6 xl:gap-8 w-full items-stretch"
       >
         <Motion
           v-for="(study, index) in studies"

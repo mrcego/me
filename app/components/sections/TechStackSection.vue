@@ -151,7 +151,7 @@ const skillGroups = [
 <template>
   <section
     id="tech-stack"
-    class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
+    class="py-24 sm:py-28 md:py-32 xl:py-40 px-4 sm:px-6 md:px-8 lg:px-10 bg-background relative overflow-hidden"
   >
     <!-- Kinetic Grid Background -->
     <div
@@ -161,7 +161,7 @@ const skillGroups = [
       class="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent"
     />
 
-    <div class="container mx-auto space-y-24 md:space-y-32">
+    <div class="container mx-auto max-w-7xl space-y-24 md:space-y-32">
       <Motion
         :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 }, { opacity: 1, scale: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
