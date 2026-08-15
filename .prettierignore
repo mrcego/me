@@ -1,5 +1,16 @@
 .output
 .nuxt
+.nitro
+.data
+dist
+coverage
 node_modules
 pnpm-lock.yaml
 public
+
+.opencode
+.agent
+.gemini
+.github/skills
+.github/agents
+.cursor/agents
