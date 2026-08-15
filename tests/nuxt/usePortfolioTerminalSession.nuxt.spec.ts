@@ -68,11 +68,22 @@ describe('usePortfolioTerminalSession', () => {
 
     session.input.value = 'benchmark';
     await session.submit();
-    expect(session.lines.value.some((line) => line.text.includes('BENCHMARK'))).toBe(true);
+    expect(
+      session.lines.value.some(
+        (line) => line.text.includes('BENCHMARK') || line.text.includes('RENDIMIENTO'),
+      ),
+    ).toBe(true);
 
     session.input.value = 'deploy';
     await session.submit();
-    expect(session.lines.value.some((line) => line.text.includes('DEPLOYMENT'))).toBe(true);
+    expect(
+      session.lines.value.some(
+        (line) =>
+          line.text.includes('DEPLOYMENT') ||
+          line.text.includes('DESPLIEGUE') ||
+          line.text.includes('PRODUCCIÓN'),
+      ),
+    ).toBe(true);
 
     session.input.value = 'stack';
     await session.submit();

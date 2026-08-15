@@ -61,6 +61,8 @@
     "secondaryCta": "Ver casos de producto",
     "downloadCv": "Descargar CV",
     "downloadCvAria": "Descargar CV — PDF ({file})",
+    "cvPackaging": "[EMPAQUETANDO ARTEFACTO...]",
+    "cvReady": "[VERIFICADO Y LISTO ✓]",
     "stats": {
       "experience": "Años de Experiencia",
       "projects": "Módulos y Librerías Entregados",
@@ -87,6 +89,8 @@
       "operational": "Operativo"
     },
     "terminalPrompt": "cesargomez.dev/terminal ~ $ presiona \"/\" para abrir comandos",
+    "terminalChipAria": "Abrir terminal de comandos (presiona / o ingresa el código Konami)",
+    "terminalChipTooltip": "Clic para armar flight path (o presiona /)",
     "h1": "Ingeniero Fullstack Senior y Arquitecto Frontend",
     "title": "César Gómez | Ingeniero Fullstack Senior y Arquitecto Frontend"
   },
@@ -156,7 +160,8 @@
       "unlocked": "Terminal desbloqueado",
       "label": "RUTA DE VUELO // {current}/{total}",
       "unlockedLabel": "TERMINAL DESBLOQUEADO",
-      "resetLabel": "RUTA PERDIDA // REINICIAR"
+      "resetLabel": "RUTA PERDIDA // REINICIAR",
+      "konamiHint": "INGRESA EL CÓDIGO KONAMI: ↑ ↑ ↓ ↓ ← → ← → B A"
     },
     "commands": {
       "help": {
@@ -251,6 +256,22 @@
       "seo": "SEO Técnico: 98 rutas estáticas SSG prerenderizadas · 64 esquemas JSON-LD (Person {'@'}id: https://cesargomez.dev/#person, WebSite, ProfilePage, Service, FAQPage) · Sitemaps XML recíprocos · etiquetas hreflang en-US/es-ES/x-default · CSP con hashes SHA-256.",
       "lang": "Idioma actual: {locale}. Usa 'lang es' o 'lang en' para cambiar.",
       "langSet": "Cambiando idioma a {locale}…",
+      "benchmarkHeader": "⚡ RENDIMIENTO Y BENCHMARK DEL SISTEMA (RUM EN TIEMPO REAL)",
+      "benchmarkCores": "  ├─ Núcleos CPU Hardware ... {cores} hilos lógicos",
+      "benchmarkMemory": "  ├─ Memoria RAM Dispositivo . {memory}",
+      "benchmarkNetwork": "  ├─ Ancho de Banda de Red .. {connection}",
+      "benchmarkEngine": "  ├─ Motor de Renderizado ... Nuxt 4 (SSG) + Nitro (0 Overhead de API)",
+      "benchmarkFps": "  ├─ FPS Objetivo ........... 60.0 FPS (0 Caídas de Cuadros)",
+      "benchmarkLcp": "  ├─ Baseline LCP ........... < 1.2s (WebP IPX Pre-cargado)",
+      "benchmarkCls": "  ├─ Métrica CLS ............ 0.00 (Cero Desplazamiento Acumulado)",
+      "benchmarkInp": "  └─ INP / TBT .............. < 50ms (Loop Único RAF Lerpeado)",
+      "benchmarkGrade": "🚀 SALUD GENERAL: CALIFICACIÓN 100/100 LIGHTHOUSE (CERTIFICADO ARQUITECTO)",
+      "deployHeader": "⚡ REGISTROS Y TELEMETRÍA DE DESPLIEGUE A PRODUCCIÓN",
+      "deployPrerender": "  ├─ [1/4] Pre-renderizado SSG Nuxt 4 (134 Rutas) .. [✓ 97.4s]",
+      "deployIcons": "  ├─ [2/4] Validación de Iconos SVG Offline ........ [✓ 63/63 OK]",
+      "deployCsp": "  ├─ [3/4] Verificación de Integridad Hashes CSP ... [✓ PASÓ]",
+      "deployEdge": "  └─ [4/4] Sincronización CDN Global Netlify Edge .. [✓ 100% SALUDABLE]",
+      "deployStatus": "✨ ESTADO: EN VIVO EN NETLIFY EDGE (https://cesargomez.dev)",
       "cleared": "Transcripción limpiada.",
       "themeShow": "Tema activo: {name} ({id})",
       "themeListHeader": "Presets de tema (* = activo):",
@@ -969,6 +990,11 @@
       "messagePlaceholder": "Describe el desafío técnico…",
       "submit": "Enviar consulta",
       "sending": "Enviando…",
+      "encrypting": "[ENCRIPTANDO...]",
+      "establishingLink": "[ESTABLECIENDO ENLACE...]",
+      "transmissionConfirmed": "[TRANSMISIÓN REGISTRADA Y CONFIRMADA]",
+      "copyToken": "Copiar token de transmisión",
+      "tokenCopied": "COPIADO ✓",
       "success": "Mensaje enviado con éxito. Te responderé pronto.",
       "error": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por email.",
       "errors": {
@@ -1481,6 +1507,7 @@
     "architectBlurb": "Arquitecto y Líder Frontend: design systems en Vue 3 / Nuxt 4, micro-frontends y Core Web Vitals a escala.",
     "fullstackBlurb": "Ingeniero Fullstack: aplicaciones cliente Vue 3/Nuxt 4 y APIs backend en Node.js con contratos 100% en TypeScript.",
     "viewProfile": "Ver perfil de desarrollador",
+    "availableLead": "DISPONIBLE // LEAD",
     "alsoAvailable": "También puedes contratar",
     "crossLinkFromVue": "También disponible: Ingeniería Aumentada por IA",
     "crossLinkFromAi": "También disponible: desarrollador Vue.js",

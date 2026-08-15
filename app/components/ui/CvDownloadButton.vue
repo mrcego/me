@@ -44,13 +44,13 @@ function onCvClick() {
       v-if="downloadState === 'packaging'"
       class="relative z-10 whitespace-nowrap font-mono text-xs text-primary"
     >
-      [PACKAGING ARTIFACT...]
+      {{ $t('hero.cvPackaging') }}
     </span>
     <span
       v-else-if="downloadState === 'ready'"
       class="relative z-10 whitespace-nowrap font-mono text-xs text-emerald-400"
     >
-      [VERIFIED & READY ✓]
+      {{ $t('hero.cvReady') }}
     </span>
     <span v-else class="relative z-10 whitespace-nowrap">{{ $t('hero.downloadCv') }}</span>
 

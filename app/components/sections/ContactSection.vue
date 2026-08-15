@@ -195,17 +195,17 @@ const contactMethods = [
                   class="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold uppercase tracking-wider"
                 >
                   <span class="size-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>[TRANSMISSION LOGGED & CONFIRMED]</span>
+                  <span>{{ $t('contact.form.transmissionConfirmed') }}</span>
                 </div>
                 <button
                   v-if="txReceipt"
                   type="button"
                   class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-mono text-xs cursor-pointer transition-colors"
-                  aria-label="Copy Transmission Token"
+                  :aria-label="$t('contact.form.copyToken')"
                   @click="copyReceipt"
                 >
                   <Icon name="solar:check-circle-bold" class="size-3.5 text-emerald-400" />
-                  <span>{{ copiedReceipt ? 'COPIED ✓' : txReceipt }}</span>
+                  <span>{{ copiedReceipt ? $t('contact.form.tokenCopied') : txReceipt }}</span>
                 </button>
               </div>
               <p class="text-sm sm:text-base font-medium text-emerald-300 text-pretty">
@@ -397,13 +397,13 @@ const contactMethods = [
                   aria-hidden="true"
                 />
                 <span v-if="isSubmitting && dispatchStage === 'encrypting'" class="font-mono">
-                  [ENCRYPTING...]
+                  {{ $t('contact.form.encrypting') }}
                 </span>
                 <span
                   v-else-if="isSubmitting && dispatchStage === 'transmitting'"
                   class="font-mono"
                 >
-                  [ESTABLISHING LINK...]
+                  {{ $t('contact.form.establishingLink') }}
                 </span>
                 <span v-else-if="isSubmitting" class="font-mono">
                   {{ $t('contact.form.sending') }}

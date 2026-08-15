@@ -5,7 +5,7 @@ import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 const { activeRoleIndex, currentRole } = useBrandRoleRotator();
 const { openVibeCodingModal, vibeCodingModalMounted } = useVibeCodingModal();
-const { openTerminal } = usePortfolioTerminal();
+const { armGate } = usePortfolioTerminalArmGate();
 const { goToSection, sectionHref } = useSectionNavigation();
 const { trackEvent } = useAnalytics();
 
@@ -21,7 +21,7 @@ function onSecondaryCtaClick(event: MouseEvent) {
 
 function onTerminalPromptClick() {
   trackEvent('terminal_shortcut_click', { location: 'hero' });
-  openTerminal();
+  armGate();
 }
 
 const {
@@ -139,10 +139,12 @@ onMounted(() => {
 
             <span class="text-muted/40 hidden sm:inline" aria-hidden="true">•</span>
 
-            <!-- Interactive Terminal Trigger Chip -->
+            <!-- Interactive Terminal Trigger Chip (Arms the Flight Gate) -->
             <button
               type="button"
               class="group/term inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/80 hover:bg-secondary border border-primary/20 hover:border-primary/50 text-muted hover:text-foreground transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              :aria-label="$t('hero.terminalChipAria')"
+              :title="$t('hero.terminalChipTooltip')"
               @click="onTerminalPromptClick"
             >
               <Icon

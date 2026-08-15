@@ -98,7 +98,7 @@ const craftMethodologyTo =
                 <span
                   class="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400/90 px-2 py-1 rounded-md bg-emerald-400/10 border border-emerald-400/20"
                 >
-                  AVAILABLE // LEAD
+                  {{ $t('hireProfiles.availableLead') }}
                 </span>
               </div>
               <div class="space-y-3 flex-1">

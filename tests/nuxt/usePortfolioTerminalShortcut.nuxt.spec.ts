@@ -57,6 +57,15 @@ describe('usePortfolioTerminalShortcut', () => {
     expect(shortcut.revealedKeys.value.some((k) => k.kind === 'error')).toBe(true);
   });
 
+  it('arms the gate when armGate() is invoked programmatically', async () => {
+    const { shortcut } = await mountShortcut();
+    shortcut.resetGate();
+    shortcut.armGate();
+    await nextTick();
+    expect(shortcut.gatePhase.value).toBe('armed');
+    expect(shortcut.revealedKeys.value).toHaveLength(0);
+  });
+
   it('unlocks after exact sequence and opens terminal', async () => {
     const { shortcut, terminal } = await mountShortcut();
     vi.useFakeTimers();

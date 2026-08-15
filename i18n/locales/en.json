@@ -61,6 +61,8 @@
     "secondaryCta": "See proven product work",
     "downloadCv": "Download CV",
     "downloadCvAria": "Download CV — résumé PDF ({file})",
+    "cvPackaging": "[PACKAGING ARTIFACT...]",
+    "cvReady": "[VERIFIED & READY ✓]",
     "stats": {
       "experience": "Years Experience",
       "projects": "Modules & Libraries Shipped",
@@ -87,6 +89,8 @@
       "operational": "Operational"
     },
     "terminalPrompt": "cesargomez.dev/terminal ~ $ press \"/\" for command index",
+    "terminalChipAria": "Open command terminal (press / or enter Konami code)",
+    "terminalChipTooltip": "Click to arm flight path (or press /)",
     "h1": "Senior Vue/Nuxt & Fullstack Engineer",
     "title": "César Gómez | Senior Vue/Nuxt & Fullstack Engineer"
   },
@@ -156,7 +160,8 @@
       "unlocked": "Terminal unlocked",
       "label": "FLIGHT PATH // {current}/{total}",
       "unlockedLabel": "TERMINAL UNLOCKED",
-      "resetLabel": "ROUTE LOST // RESET"
+      "resetLabel": "ROUTE LOST // RESET",
+      "konamiHint": "ENTER KONAMI CODE: ↑ ↑ ↓ ↓ ← → ← → B A"
     },
     "commands": {
       "help": {
@@ -251,6 +256,22 @@
       "seo": "Technical SEO: 98 static SSG prerendered routes · 64 JSON-LD schemas (Person {'@'}id: https://cesargomez.dev/#person, WebSite, ProfilePage, Service, FAQPage) · Reciprocal XML Sitemaps · hreflang tags en/es-CO/x-default · CSP with SHA-256 hashes.",
       "lang": "Current language: {locale}. Use 'lang es' or 'lang en' to switch.",
       "langSet": "Switching language to {locale}…",
+      "benchmarkHeader": "⚡ SYSTEM PERFORMANCE BENCHMARK (REAL-TIME RUM)",
+      "benchmarkCores": "  ├─ Hardware CPU Cores ... {cores} logical threads",
+      "benchmarkMemory": "  ├─ Device RAM Memory .... {memory}",
+      "benchmarkNetwork": "  ├─ Network Bandwidth .... {connection}",
+      "benchmarkEngine": "  ├─ Render Engine ........ Nuxt 4 (SSG) + Nitro (0 API Overhead)",
+      "benchmarkFps": "  ├─ Target FPS ........... 60.0 FPS (0 Frame Drops)",
+      "benchmarkLcp": "  ├─ LCP Baseline ......... < 1.2s (Preloaded IPX WebP)",
+      "benchmarkCls": "  ├─ CLS Metric ........... 0.00 (Zero Cumulative Shift)",
+      "benchmarkInp": "  └─ INP / TBT ............ < 50ms (Single RAF Lerped Loop)",
+      "benchmarkGrade": "🚀 OVERALL HEALTH: 100/100 LIGHTHOUSE GRADE (ARCHITECT CERTIFIED)",
+      "deployHeader": "⚡ PRODUCTION DEPLOYMENT LOGS & TELEMETRY",
+      "deployPrerender": "  ├─ [1/4] Nuxt 4 SSG Prerender 134 Routes ...... [✓ 97.4s]",
+      "deployIcons": "  ├─ [2/4] Offline SVG Icon Validation .......... [✓ 63/63 OK]",
+      "deployCsp": "  ├─ [3/4] Strict CSP Hash Integrity Check ...... [✓ PASSED]",
+      "deployEdge": "  └─ [4/4] Netlify Global Edge CDN Sync ......... [✓ 100% HEALTHY]",
+      "deployStatus": "✨ STATUS: LIVE ON NETLIFY EDGE (https://cesargomez.dev)",
       "cleared": "Transcript cleared.",
       "themeShow": "Active theme: {name} ({id})",
       "themeListHeader": "Theme presets (* = active):",
@@ -969,6 +990,11 @@
       "messagePlaceholder": "Describe the technical challenge…",
       "submit": "Send message",
       "sending": "Sending…",
+      "encrypting": "[ENCRYPTING...]",
+      "establishingLink": "[ESTABLISHING LINK...]",
+      "transmissionConfirmed": "[TRANSMISSION LOGGED & CONFIRMED]",
+      "copyToken": "Copy transmission token",
+      "tokenCopied": "COPIED ✓",
       "success": "Message sent successfully. I'll get back to you soon.",
       "error": "Couldn't send the message. Try again, or email me directly.",
       "errors": {
@@ -1481,6 +1507,7 @@
     "architectBlurb": "Frontend Architect & Lead: Vue 3 / Nuxt 4 design systems, micro-frontends, and Core Web Vitals at scale.",
     "fullstackBlurb": "Fullstack Engineer: production Vue 3/Nuxt 4 client apps and Node.js backend APIs with 100% TypeScript contracts.",
     "viewProfile": "View developer profile",
+    "availableLead": "AVAILABLE // LEAD",
     "alsoAvailable": "Also hire for",
     "crossLinkFromVue": "Also available: AI-Augmented Engineering",
     "crossLinkFromAi": "Also available: Vue.js developer",

@@ -173,25 +173,25 @@ export function usePortfolioTerminalSession(): PortfolioTerminalSessionApi {
         const memory = '16 GB / High Performance';
         const connection = '10 Gbps Edge / Fiber';
 
-        pushLine('output', '⚡ SYSTEM PERFORMANCE BENCHMARK (REAL-TIME RUM)');
-        pushLine('output', `  ├─ Hardware CPU Cores ... ${cores} logical threads`);
-        pushLine('output', `  ├─ Device RAM Memory .... ${memory}`);
-        pushLine('output', `  ├─ Network Bandwidth .... ${connection}`);
-        pushLine('output', '  ├─ Render Engine ........ Nuxt 4 (SSG) + Nitro (0 API Overhead)');
-        pushLine('output', '  ├─ Target FPS ........... 60.0 FPS (0 Frame Drops)');
-        pushLine('output', '  ├─ LCP Baseline ......... < 1.2s (Preloaded IPX WebP)');
-        pushLine('output', '  ├─ CLS Metric ........... 0.00 (Zero Cumulative Shift)');
-        pushLine('output', '  └─ INP / TBT ............ < 50ms (Single RAF Lerped Loop)');
-        pushLine('output', '🚀 OVERALL HEALTH: 100/100 LIGHTHOUSE GRADE (ARCHITECT CERTIFIED)');
+        pushLine('output', t('terminal.responses.benchmarkHeader'));
+        pushLine('output', t('terminal.responses.benchmarkCores', { cores }));
+        pushLine('output', t('terminal.responses.benchmarkMemory', { memory }));
+        pushLine('output', t('terminal.responses.benchmarkNetwork', { connection }));
+        pushLine('output', t('terminal.responses.benchmarkEngine'));
+        pushLine('output', t('terminal.responses.benchmarkFps'));
+        pushLine('output', t('terminal.responses.benchmarkLcp'));
+        pushLine('output', t('terminal.responses.benchmarkCls'));
+        pushLine('output', t('terminal.responses.benchmarkInp'));
+        pushLine('output', t('terminal.responses.benchmarkGrade'));
         break;
       }
       case 'deploy': {
-        pushLine('output', '⚡ PRODUCTION DEPLOYMENT LOGS & TELEMETRY');
-        pushLine('output', '  ├─ [1/4] Nuxt 4 SSG Prerender 134 Routes ...... [✓ 97.4s]');
-        pushLine('output', '  ├─ [2/4] Offline SVG Icon Validation .......... [✓ 63/63 OK]');
-        pushLine('output', '  ├─ [3/4] Strict CSP Hash Integrity Check ...... [✓ PASSED]');
-        pushLine('output', '  └─ [4/4] Netlify Global Edge CDN Sync ......... [✓ 100% HEALTHY]');
-        pushLine('output', '✨ STATUS: LIVE ON NETLIFY EDGE (https://cesargomez.dev)');
+        pushLine('output', t('terminal.responses.deployHeader'));
+        pushLine('output', t('terminal.responses.deployPrerender'));
+        pushLine('output', t('terminal.responses.deployIcons'));
+        pushLine('output', t('terminal.responses.deployCsp'));
+        pushLine('output', t('terminal.responses.deployEdge'));
+        pushLine('output', t('terminal.responses.deployStatus'));
         break;
       }
       default:

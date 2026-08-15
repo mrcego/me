@@ -113,6 +113,13 @@ const reduceMotion = computed(() => prefersReduced.value || !motionEnabled.value
         />
       </div>
 
+      <p
+        v-if="phase === 'armed' || phase === 'progress'"
+        class="konami-gate__hint text-[10px] sm:text-[11px] font-mono font-bold tracking-wider text-primary/90 uppercase text-center mt-2"
+      >
+        {{ $t('terminal.gate.konamiHint') }}
+      </p>
+
       <div class="konami-gate__rail" :class="{ 'konami-gate__rail--burning': phase === 'failed' }">
         <Motion
           v-for="(key, index) in keys"
