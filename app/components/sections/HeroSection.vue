@@ -5,6 +5,7 @@ import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 const { activeRoleIndex, currentRole } = useBrandRoleRotator();
 const { openVibeCodingModal, vibeCodingModalMounted } = useVibeCodingModal();
+const { openTerminal } = usePortfolioTerminal();
 const { goToSection, sectionHref } = useSectionNavigation();
 const { trackEvent } = useAnalytics();
 
@@ -16,6 +17,11 @@ function onPrimaryCtaClick(event: MouseEvent) {
 function onSecondaryCtaClick(event: MouseEvent) {
   trackEvent('view_case_study', { location: 'hero' });
   goToSection(event, '#case-studies');
+}
+
+function onTerminalPromptClick() {
+  trackEvent('terminal_shortcut_click', { location: 'hero' });
+  openTerminal();
 }
 
 const {
@@ -54,9 +60,13 @@ const heroTags = [
 ];
 
 const heroStats = [
-  { value: '13+', labelKey: 'hero.stats.experience' },
-  { value: '40+', labelKey: 'hero.stats.projects' },
-  { value: '5', labelKey: 'hero.stats.technologies' },
+  { value: '13+', labelKey: 'hero.stats.experience', icon: 'solar:calendar-date-bold-duotone' },
+  { value: '40+', labelKey: 'hero.stats.projects', icon: 'solar:rocket-2-bold-duotone' },
+  {
+    value: '5',
+    labelKey: 'hero.stats.technologies',
+    icon: 'solar:layers-minimalistic-bold-duotone',
+  },
 ];
 
 onMounted(() => {
@@ -113,17 +123,40 @@ onMounted(() => {
             </span>
           </h1>
 
-          <!-- Rotator pill badge for specialized sub-roles -->
-          <p
-            class="type-meta text-muted flex items-center justify-center lg:justify-start gap-2 pt-1"
+          <!-- Rotator & Interactive Terminal Trigger Strip -->
+          <div
+            class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1 w-full"
           >
-            <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <Transition name="hero-role-fade" mode="out-in">
-              <span :key="activeRoleIndex" class="font-bold text-foreground">
-                {{ currentRole }}
-              </span>
-            </Transition>
-          </p>
+            <!-- Rotator pill badge for specialized sub-roles -->
+            <p class="type-meta text-muted flex items-center justify-center lg:justify-start gap-2">
+              <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse" />
+              <Transition name="hero-role-fade" mode="out-in">
+                <span :key="activeRoleIndex" class="font-bold text-foreground">
+                  {{ currentRole }}
+                </span>
+              </Transition>
+            </p>
+
+            <span class="text-muted/40 hidden sm:inline" aria-hidden="true">•</span>
+
+            <!-- Interactive Terminal Trigger Chip -->
+            <button
+              type="button"
+              class="group/term inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/80 hover:bg-secondary border border-primary/20 hover:border-primary/50 text-muted hover:text-foreground transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              @click="onTerminalPromptClick"
+            >
+              <Icon
+                name="solar:code-file-bold-duotone"
+                class="size-3.5 text-primary group-hover/term:rotate-12 transition-transform"
+                aria-hidden="true"
+              />
+              <span class="font-mono text-xs">{{ $t('hero.terminalPrompt') }}</span>
+              <span
+                class="font-mono text-[10px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-bold"
+                >/</span
+              >
+            </button>
+          </div>
 
           <p
             class="hero-reveal hero-reveal--d35 w-full max-w-2xl text-base sm:text-lg text-muted text-center lg:text-left text-pretty font-medium leading-relaxed"
@@ -139,7 +172,7 @@ onMounted(() => {
           <!-- Primary & Secondary Action CTAs -->
           <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-3.5 w-full sm:w-auto">
             <a
-              class="hero-cta-btn hero-cta-btn--primary bg-primary text-primary-contrast rounded-xl sm:rounded-2xl px-6 sm:px-7 py-3.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-flex items-center justify-center gap-2.5 font-bold text-sm sm:text-base border border-primary/50 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 w-full sm:w-auto"
+              class="hero-cta-btn hero-cta-btn--primary bg-primary text-primary-contrast rounded-xl sm:rounded-2xl px-6 sm:px-7 py-3.5 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-flex items-center justify-center gap-2.5 font-bold text-sm sm:text-base border border-primary/50 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 w-full sm:w-auto"
               :href="sectionHref('#contact')"
               @click="onPrimaryCtaClick"
             >
@@ -220,7 +253,7 @@ onMounted(() => {
 
       <!-- Right Column: Photo + Vibe Badge + Stats HUD Card -->
       <div
-        class="order-2 lg:col-start-2 flex flex-col items-center gap-4 sm:gap-5 w-full max-w-[15rem] sm:max-w-md lg:max-w-none mx-auto lg:self-start"
+        class="order-2 lg:col-start-2 flex flex-col items-center gap-4 sm:gap-5 w-full max-w-[16rem] sm:max-w-md lg:max-w-none mx-auto lg:self-start"
       >
         <!-- Photo & Tilt Card -->
         <div
@@ -237,7 +270,7 @@ onMounted(() => {
               class="surface-card relative w-full rounded-[1.8rem] md:rounded-[2.2rem] lg:rounded-[2.6rem] overflow-hidden border border-primary/25 glass p-1 md:p-1.5 shadow-2xl"
             >
               <div
-                class="relative aspect-4/5 max-h-[min(12rem,26svh)] sm:max-h-[min(16rem,32svh)] md:max-h-[min(20rem,38svh)] lg:max-h-[min(26rem,52svh)] xl:max-h-[min(30rem,58svh)] mx-auto rounded-[1.5rem] md:rounded-[1.9rem] lg:rounded-[2.3rem] overflow-hidden bg-secondary"
+                class="relative aspect-4/5 max-h-[min(13rem,28svh)] sm:max-h-[min(17rem,34svh)] md:max-h-[min(22rem,40svh)] lg:max-h-[min(28rem,54svh)] xl:max-h-[min(32rem,60svh)] mx-auto rounded-[1.5rem] md:rounded-[1.9rem] lg:rounded-[2.3rem] overflow-hidden bg-secondary"
               >
                 <div class="absolute inset-x-0 top-0 h-px bg-primary/20 z-20" />
                 <div class="absolute inset-y-0 left-0 w-px bg-primary/20 z-20" />
@@ -266,7 +299,7 @@ onMounted(() => {
                   class="absolute bottom-3 right-3 md:bottom-5 md:right-5 z-20 glass px-2.5 py-1.5 md:px-3 md:py-2 rounded-full flex items-center gap-2 border border-primary/20 bg-background/60 backdrop-blur-md shadow-lg"
                 >
                   <span
-                    class="inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-emerald-500 shrink-0"
+                    class="inline-flex rounded-full h-2 w-2 md:h-2.5 md:w-2.5 bg-emerald-500 shrink-0 animate-pulse"
                     aria-hidden="true"
                   />
                   <div class="flex flex-col gap-0.5">
@@ -306,27 +339,32 @@ onMounted(() => {
           </div>
 
           <div
-            class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-radial from-primary/10 to-transparent blur-[60px] md:blur-[80px] opacity-40 group-hover:opacity-60 transition-opacity duration-1000 pointer-events-none"
+            class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-radial from-primary/15 via-primary/5 to-transparent blur-[60px] md:blur-[80px] opacity-50 group-hover:opacity-80 transition-opacity duration-1000 pointer-events-none"
           />
         </div>
 
-        <!-- Stats HUD Card under photo -->
+        <!-- Stats HUD Dock under photo -->
         <div
-          class="w-full grid grid-cols-3 gap-2 sm:gap-3 p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl border border-foreground/10 bg-secondary/50 backdrop-blur-md shadow-xl"
+          class="w-full grid grid-cols-3 gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-2xl sm:rounded-3xl border border-primary/20 bg-secondary/60 backdrop-blur-md shadow-xl"
         >
           <div
             v-for="(stat, i) in heroStats"
             :key="stat.labelKey"
-            class="hero-reveal text-center space-y-0.5 sm:space-y-1 group/stat"
+            class="hero-reveal text-center p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-background/50 border border-foreground/5 group/stat hover:border-primary/30 transition-all duration-300 flex flex-col items-center justify-center gap-1"
             :style="{ animationDelay: `${0.4 + i * 0.1}s` }"
           >
+            <Icon
+              :name="stat.icon"
+              class="size-4 sm:size-4.5 text-primary/70 group-hover/stat:text-primary transition-colors"
+              aria-hidden="true"
+            />
             <div
               class="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
             >
               {{ stat.value }}
             </div>
             <div
-              class="text-xs text-muted group-hover/stat:text-foreground transition-colors font-medium leading-tight"
+              class="text-xs text-muted group-hover/stat:text-foreground transition-colors font-medium leading-tight line-clamp-2"
             >
               {{ $t(stat.labelKey) }}
             </div>

@@ -86,6 +86,7 @@
       "status": "Estado",
       "operational": "Operativo"
     },
+    "terminalPrompt": "cesargomez.dev/terminal ~ $ presiona \"/\" para abrir comandos",
     "h1": "Ingeniero Fullstack Senior y Arquitecto Frontend",
     "title": "César Gómez | Ingeniero Fullstack Senior y Arquitecto Frontend"
   },

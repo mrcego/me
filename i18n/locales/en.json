@@ -86,6 +86,7 @@
       "status": "Status",
       "operational": "Operational"
     },
+    "terminalPrompt": "cesargomez.dev/terminal ~ $ press \"/\" for command index",
     "h1": "Senior Vue/Nuxt & Fullstack Engineer",
     "title": "César Gómez | Senior Vue/Nuxt & Fullstack Engineer"
   },
