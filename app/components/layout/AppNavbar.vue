@@ -534,12 +534,12 @@ onBeforeUnmount(() => {
 
         <!-- Desktop Navigation -->
         <div
-          class="site-nav__links hidden lg:flex items-center gap-1 xl:gap-1.5 rounded-full px-2 xl:px-2.5 py-1 border min-w-0 shrink"
+          class="site-nav__links hidden 2xl:flex items-center gap-1.5 rounded-full px-2.5 py-1 border min-w-0 shrink"
         >
           <template v-for="(link, i) in navLinks" :key="link.id">
             <a
               :href="sectionHref(link.href)"
-              class="nav-reveal relative px-2.5 xl:px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 isolate group/link overflow-hidden cursor-pointer whitespace-nowrap"
+              class="nav-reveal relative px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 isolate group/link overflow-hidden cursor-pointer whitespace-nowrap"
               :class="[
                 isActiveSection(link.id) ? 'text-foreground' : 'text-muted hover:text-foreground',
               ]"
@@ -560,17 +560,17 @@ onBeforeUnmount(() => {
         </div>
 
         <!-- Right Utilities -->
-        <div class="flex items-center gap-0.5 sm:gap-1 shrink-0">
+        <div class="flex items-center gap-1 sm:gap-1.5 shrink-0">
           <AppLanguageSwitcher />
 
           <!-- Mobile contact — persistent before theme -->
           <a
             :href="sectionHref('#contact')"
-            class="lg:hidden inline-flex items-center justify-center gap-1.5 min-h-11 min-w-11 px-2.5 sm:px-3 rounded-full text-primary bg-primary/10 border border-primary/25 hover:bg-primary/15 transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="2xl:hidden inline-flex items-center justify-center gap-1.5 min-h-11 min-w-11 px-3 sm:px-3.5 rounded-full text-primary bg-primary/10 border border-primary/25 hover:bg-primary/15 transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             @click="onNavSectionClick($event, '#contact')"
           >
             <Icon name="solar:letter-bold" class="size-5 shrink-0" aria-hidden="true" />
-            <span class="text-[10px] sm:text-xs font-black uppercase tracking-widest">{{
+            <span class="text-xs font-black uppercase tracking-wider">{{
               $t('nav.contactShort')
             }}</span>
           </a>
@@ -579,7 +579,7 @@ onBeforeUnmount(() => {
           <a
             :href="cvHref"
             :download="cvFileName"
-            class="hidden sm:flex w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] items-center justify-center rounded-full text-foreground/80 hover:text-primary hover:bg-foreground/5 transition-colors active:scale-95 cursor-pointer"
+            class="hidden 2xl:flex w-[48px] h-[48px] items-center justify-center rounded-full text-foreground/80 hover:text-primary hover:bg-foreground/5 transition-colors active:scale-95 cursor-pointer"
             :aria-label="$t('hero.downloadCvAria', { file: cvFileName })"
             :title="$t('hero.downloadCv')"
           >
@@ -720,10 +720,13 @@ onBeforeUnmount(() => {
             </template>
           </ClientOnly>
 
-          <div class="w-px h-5 bg-foreground/10 mx-1 hidden lg:block shrink-0" aria-hidden="true" />
+          <div
+            class="w-px h-5 bg-foreground/10 mx-1 hidden 2xl:block shrink-0"
+            aria-hidden="true"
+          />
 
           <!-- Hire + Contact share one action cluster (matched size, intentional gap) -->
-          <div class="site-nav__actions relative hidden lg:flex items-center gap-3 shrink-0">
+          <div class="site-nav__actions relative hidden 2xl:flex items-center gap-3 shrink-0">
             <div ref="hireMenuRef" class="relative shrink-0">
               <button
                 ref="hireTriggerRef"
@@ -814,7 +817,7 @@ onBeforeUnmount(() => {
           <button
             ref="mobileMenuToggleRef"
             type="button"
-            class="lg:hidden inline-flex size-11 items-center justify-center rounded-full border border-foreground/15 text-foreground hover:text-primary hover:border-primary/40 hover:bg-foreground/5 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer shrink-0"
+            class="2xl:hidden inline-flex size-11 items-center justify-center rounded-full border border-foreground/15 text-foreground hover:text-primary hover:border-primary/40 hover:bg-foreground/5 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer shrink-0"
             :aria-label="$t('a11y.openMenu')"
             :aria-expanded="isMobileMenuOpen"
             :aria-controls="isMobileMenuOpen ? 'mobile-nav-dialog' : undefined"
@@ -839,7 +842,7 @@ onBeforeUnmount(() => {
         v-if="isMobileMenuOpen"
         id="mobile-nav-dialog"
         ref="mobileMenuRef"
-        class="mobile-nav-dialog fixed inset-2 sm:inset-4 md:inset-6 z-140 rounded-3xl md:rounded-[2.5rem] overflow-y-auto border border-foreground/15 shadow-4xl lg:hidden overscroll-contain bg-background/95 backdrop-blur-2xl p-4 sm:p-7 pb-[calc(env(safe-area-inset-bottom,0px)+1.5rem)] custom-scrollbar"
+        class="mobile-nav-dialog fixed inset-2 sm:inset-4 md:inset-6 z-140 rounded-3xl md:rounded-[2.5rem] overflow-y-auto border border-foreground/15 shadow-4xl 2xl:hidden overscroll-contain bg-background/95 backdrop-blur-2xl p-4 sm:p-7 pb-[calc(env(safe-area-inset-bottom,0px)+1.5rem)] custom-scrollbar"
         role="dialog"
         aria-modal="true"
         aria-labelledby="mobile-nav-title"

@@ -45,10 +45,10 @@ test.describe('navbar layout regressions', () => {
       .not.toMatch(/^blur\(0px\)/);
   });
 
-  test('hire CTA and primary Contact fit inside the shell at mid-desktop widths', async ({
+  test('hire CTA and primary Contact fit inside the shell at large desktop widths', async ({
     page,
   }) => {
-    for (const width of [1024, 1280]) {
+    for (const width of [1536, 1920]) {
       await page.setViewportSize({ width, height: 800 });
       await page.goto('/', { waitUntil: 'domcontentloaded' });
       await expect(page.locator('.hire-menu-trigger')).toBeVisible({ timeout: 20_000 });
@@ -78,6 +78,29 @@ test.describe('navbar layout regressions', () => {
       expect(geometry!.shellOverflow, `shell overflow at ${width}px`).toBeLessThanOrEqual(1);
       expect(geometry!.hireInside, `hire inside shell at ${width}px`).toBe(true);
       expect(geometry!.ctaInside, `CTA inside shell at ${width}px`).toBe(true);
+    }
+  });
+
+  test('responsive navigation is clean with zero overflow at tablet and mid-desktop widths', async ({
+    page,
+  }) => {
+    for (const width of [768, 1024, 1100, 1280]) {
+      await page.setViewportSize({ width, height: 800 });
+      await page.goto('/', { waitUntil: 'domcontentloaded' });
+      await expect(
+        page.getByRole('button', { name: /Open menu|Abrir menú|Abrir menu/i }),
+      ).toBeVisible({ timeout: 20_000 });
+
+      const geometry = await page.evaluate(() => {
+        const shell = document.querySelector('.site-nav__shell');
+        if (!shell) return null;
+        return {
+          shellOverflow: shell.scrollWidth - shell.clientWidth,
+        };
+      });
+
+      expect(geometry, `geometry at ${width}px`).toBeTruthy();
+      expect(geometry!.shellOverflow, `shell overflow at ${width}px`).toBeLessThanOrEqual(1);
     }
   });
 });
