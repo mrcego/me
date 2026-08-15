@@ -1927,18 +1927,18 @@
       "founder": "Founder / Cliente"
     },
     "actions": {
-      "viewAbout": "Ver Perfil Completo ↗",
-      "viewTechStack": "Explorar Stack Técnico ↗",
-      "viewProfiles": "Especialidades de Contrato ↗",
-      "viewColegium": "Caso Colegium ↗",
-      "viewLingoQuesto": "Caso LingoQuesto ↗",
-      "viewTissini": "Caso TISSINI ↗",
-      "viewAllCerts": "Credenciales y Certs ↗",
-      "downloadCvNow": "Descargar CV en PDF ↗",
-      "discussProject": "Hablar de Proyecto ↗",
-      "contactCesar": "Contactar a César ↗",
-      "openContactForm": "Abrir Formulario ↗",
-      "runTelemetry": "Ejecutar Telemetría CLI ↗"
+      "viewAbout": "Ver Perfil Completo",
+      "viewTechStack": "Explorar Stack Técnico",
+      "viewProfiles": "Especialidades de Contrato",
+      "viewColegium": "Caso Colegium",
+      "viewLingoQuesto": "Caso LingoQuesto",
+      "viewTissini": "Caso TISSINI",
+      "viewAllCerts": "Credenciales y Certs",
+      "downloadCvNow": "Descargar CV en PDF",
+      "discussProject": "Hablar de Proyecto",
+      "contactCesar": "Contactar a César",
+      "openContactForm": "Abrir Formulario",
+      "runTelemetry": "Ejecutar Telemetría CLI"
     }
   }
 }

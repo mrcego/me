@@ -18,6 +18,8 @@ const {
   triggerAction,
 } = useAngieChat();
 
+useBodyScrollLock(isOpen);
+
 const userInput = ref('');
 const transcriptRef = ref<HTMLElement | null>(null);
 
@@ -131,6 +133,14 @@ watch(isOpen, (open) => {
 
 <template>
   <Teleport to="body">
+    <!-- Backdrop overlay on mobile -->
+    <div
+      v-if="isOpen"
+      class="fixed inset-0 bg-background/70 backdrop-blur-xs z-190 sm:hidden"
+      aria-hidden="true"
+      @click="closeChat"
+    />
+
     <Transition
       enter-active-class="transition duration-300 ease-out"
       enter-from-class="opacity-0 scale-95 translate-y-4"
@@ -141,7 +151,7 @@ watch(isOpen, (open) => {
     >
       <div
         v-if="isOpen"
-        class="angie-window fixed bottom-18 sm:bottom-24 right-3 sm:right-6 md:bottom-26 md:right-8 z-50 w-[calc(100vw-1.5rem)] sm:w-[26rem] md:w-[28rem] h-[34rem] max-h-[calc(100svh-5.5rem)] glass rounded-2xl sm:rounded-3xl border border-primary/25 shadow-4xl flex flex-col overflow-hidden text-foreground"
+        class="angie-window fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 md:bottom-26 md:right-8 z-200 w-full sm:w-[26rem] md:w-[28rem] h-[100dvh] sm:h-[34rem] sm:max-h-[calc(100svh-5.5rem)] bg-background sm:glass rounded-none sm:rounded-3xl border-0 sm:border sm:border-primary/25 shadow-4xl flex flex-col overflow-hidden text-foreground"
         role="dialog"
         aria-modal="true"
         :aria-label="$t('angie.header.title')"
@@ -155,7 +165,7 @@ watch(isOpen, (open) => {
 
         <!-- Header -->
         <header
-          class="p-3.5 sm:p-5 border-b border-foreground/10 bg-secondary/80 backdrop-blur-md flex items-center justify-between relative z-10"
+          class="p-3.5 sm:p-5 pt-[max(0.875rem,env(safe-area-inset-top,0.875rem))] border-b border-foreground/10 bg-secondary/95 sm:bg-secondary/80 backdrop-blur-md flex items-center justify-between relative z-10 shrink-0"
         >
           <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div
@@ -189,27 +199,27 @@ watch(isOpen, (open) => {
           <div class="flex items-center gap-0.5 sm:gap-1 shrink-0">
             <button
               type="button"
-              class="min-h-9 min-w-9 sm:min-h-8 sm:min-w-8 p-2 text-muted hover:text-foreground rounded-lg hover:bg-foreground/5 transition-colors cursor-pointer touch-manipulation flex items-center justify-center"
+              class="min-h-10 min-w-10 sm:min-h-8 sm:min-w-8 p-2 text-muted hover:text-foreground rounded-lg hover:bg-foreground/5 transition-colors cursor-pointer touch-manipulation flex items-center justify-center"
               :title="$t('angie.clearTranscript')"
               :aria-label="$t('angie.clearTranscript')"
               @click="clearTranscript"
             >
-              <Icon name="solar:restart-linear" class="size-4" />
+              <Icon name="solar:restart-linear" class="size-4.5 sm:size-4" />
             </button>
             <button
               type="button"
-              class="min-h-9 min-w-9 sm:min-h-8 sm:min-w-8 p-2 text-muted hover:text-foreground rounded-lg hover:bg-foreground/5 transition-colors cursor-pointer touch-manipulation flex items-center justify-center"
+              class="min-h-10 min-w-10 sm:min-h-8 sm:min-w-8 p-2 text-muted hover:text-foreground rounded-lg hover:bg-foreground/5 transition-colors cursor-pointer touch-manipulation flex items-center justify-center"
               :aria-label="$t('angie.close')"
               @click="closeChat"
             >
-              <Icon name="lucide:x" class="size-4" />
+              <Icon name="lucide:x" class="size-4.5 sm:size-4" />
             </button>
           </div>
         </header>
 
         <!-- Neural Engine Telemetry HUD Banner -->
         <div
-          class="px-3.5 sm:px-4 py-1.5 bg-foreground/4 border-b border-foreground/5 flex items-center justify-between text-[10px] font-mono relative z-10 gap-2"
+          class="px-3.5 sm:px-4 py-1.5 bg-foreground/4 border-b border-foreground/5 flex items-center justify-between text-[10px] font-mono relative z-10 gap-2 shrink-0"
         >
           <div class="flex items-center gap-1.5 min-w-0">
             <!-- Loading state -->
@@ -249,7 +259,7 @@ watch(isOpen, (open) => {
         <!-- Neural Loading Micro Progress Bar -->
         <div
           v-if="neuralStatus === 'loading'"
-          class="w-full h-0.5 bg-foreground/5 overflow-hidden relative z-10"
+          class="w-full h-0.5 bg-foreground/5 overflow-hidden relative z-10 shrink-0"
         >
           <div
             class="h-full bg-linear-to-r from-amber-400 via-primary to-emerald-400 transition-all duration-300 ease-out"
@@ -259,13 +269,13 @@ watch(isOpen, (open) => {
 
         <!-- Category Selector Tabs -->
         <div
-          class="px-3 sm:px-4 py-2 bg-foreground/3 border-b border-foreground/5 flex items-center gap-1.5 overflow-x-auto scrollbar-hide relative z-10"
+          class="px-3 sm:px-4 py-2 bg-foreground/3 border-b border-foreground/5 flex items-center gap-1.5 overflow-x-auto scrollbar-hide relative z-10 shrink-0"
         >
           <button
             v-for="cat in categories"
             :key="cat.id"
             type="button"
-            class="px-2.5 py-1.5 sm:py-1 rounded-lg font-mono text-[11px] font-bold uppercase transition-all duration-200 cursor-pointer whitespace-nowrap touch-manipulation min-h-7"
+            class="px-3 py-1.5 sm:py-1 rounded-lg font-mono text-[11px] font-bold uppercase transition-all duration-200 cursor-pointer whitespace-nowrap touch-manipulation min-h-7 shrink-0"
             :class="
               activeCategory === cat.id
                 ? 'bg-primary text-primary-contrast shadow-sm shadow-primary/20'
@@ -280,7 +290,7 @@ watch(isOpen, (open) => {
         <!-- Chat Log Stream -->
         <div
           ref="transcriptRef"
-          class="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-3.5 sm:space-y-4 font-sans text-xs sm:text-sm relative z-10 scrollbar-thin"
+          class="flex-1 overflow-y-auto p-3.5 sm:p-5 space-y-3.5 sm:space-y-4 font-sans text-xs sm:text-sm relative z-10 scrollbar-thin overscroll-contain"
           role="log"
           aria-live="polite"
         >
@@ -330,7 +340,7 @@ watch(isOpen, (open) => {
                 @click="onActionClick(action, $event)"
               >
                 <span>{{ $t(action.labelKey) }}</span>
-                <Icon name="solar:arrow-right-up-linear" class="size-3" />
+                <Icon name="solar:arrow-right-up-linear" class="size-3 shrink-0" />
               </button>
             </div>
           </div>
@@ -347,13 +357,13 @@ watch(isOpen, (open) => {
 
         <!-- Quick Prompts Slider -->
         <div
-          class="p-2 sm:p-2.5 bg-foreground/2 border-t border-foreground/5 relative z-10 flex gap-1.5 overflow-x-auto scrollbar-hide"
+          class="p-2 sm:p-2.5 bg-foreground/2 border-t border-foreground/5 relative z-10 flex gap-1.5 overflow-x-auto scrollbar-hide shrink-0"
         >
           <button
             v-for="prompt in categoryPrompts"
             :key="prompt"
             type="button"
-            class="px-2.5 py-1.5 sm:py-1 rounded-md bg-foreground/5 hover:bg-primary/15 hover:text-primary border border-foreground/5 font-mono text-[11px] text-muted transition-colors cursor-pointer whitespace-nowrap text-left touch-manipulation min-h-7"
+            class="px-2.5 py-1.5 sm:py-1 rounded-md bg-foreground/5 hover:bg-primary/15 hover:text-primary border border-foreground/5 font-mono text-[11px] text-muted transition-colors cursor-pointer whitespace-nowrap text-left touch-manipulation min-h-7 shrink-0"
             @click="handleSend(prompt)"
           >
             {{ prompt }}
@@ -362,7 +372,7 @@ watch(isOpen, (open) => {
 
         <!-- Input Box -->
         <form
-          class="p-2.5 sm:p-3 bg-secondary/90 border-t border-foreground/10 flex items-center gap-2 relative z-10"
+          class="p-2.5 sm:p-3 pb-[max(0.75rem,env(safe-area-inset-bottom,0.75rem))] bg-secondary/95 sm:bg-secondary/90 border-t border-foreground/10 flex items-center gap-2 relative z-10 shrink-0"
           @submit.prevent="handleSend()"
         >
           <input
