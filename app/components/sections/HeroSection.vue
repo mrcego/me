@@ -92,116 +92,140 @@ onMounted(() => {
     </div>
 
     <div
-      class="container mx-auto grid lg:grid-cols-[1.15fr_0.85fr] items-start gap-4 sm:gap-6 lg:gap-12 xl:gap-16 z-10 relative w-full"
+      class="container mx-auto grid lg:grid-cols-[1.15fr_0.85fr] items-start gap-6 sm:gap-8 lg:gap-12 xl:gap-16 z-10 relative w-full"
     >
-      <!-- Headline: H1 + name + differentiator -->
-      <header
-        class="order-1 lg:col-start-1 space-y-3 sm:space-y-4 md:space-y-5 flex flex-col items-center lg:items-start text-center lg:text-left w-full"
-      >
-        <h1 class="space-y-2 sm:space-y-3 font-black tracking-tighter text-balance w-full">
-          <span class="block text-2xl sm:text-3xl md:text-4xl text-gradient tracking-tight">
-            {{ nameParts.first }} {{ nameParts.last }}
-          </span>
-          <span
-            class="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] text-foreground text-pretty"
-          >
-            {{ $t('hero.h1') }}
-          </span>
-        </h1>
-
-        <!-- Rotator pill badge for specialized sub-roles -->
-        <p
-          class="type-meta text-muted flex items-center justify-center lg:justify-start gap-2 pt-1"
-        >
-          <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <Transition name="hero-role-fade" mode="out-in">
-            <span :key="activeRoleIndex" class="font-bold text-foreground">
-              {{ currentRole }}
-            </span>
-          </Transition>
-        </p>
-
-        <p
-          class="hero-reveal hero-reveal--d35 w-full max-w-2xl text-base sm:text-lg text-muted text-center lg:text-left text-pretty font-medium leading-relaxed"
-        >
-          {{ $t('hero.description') }}
-        </p>
-      </header>
-
-      <!-- CTA row — above photo on mobile -->
+      <!-- Left Column: Header + CTAs + Tags -->
       <div
-        class="relative z-20 order-2 lg:col-start-1 hero-reveal hero-reveal--d80 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 w-full"
+        class="order-1 lg:col-start-1 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 sm:space-y-7 lg:space-y-8 w-full"
       >
-        <div
-          class="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-4 w-full sm:w-auto shrink-0"
+        <!-- Headline: H1 + name + differentiator -->
+        <header
+          class="space-y-3 sm:space-y-4 md:space-y-5 flex flex-col items-center lg:items-start text-center lg:text-left w-full"
         >
-          <a
-            class="btn-premium bg-primary text-primary-contrast rounded-2xl sm:rounded-3xl px-6 sm:px-8 py-3.5 sm:py-4 shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-sm sm:text-base border-none whitespace-nowrap"
-            :href="sectionHref('#contact')"
-            @click="onPrimaryCtaClick"
+          <h1 class="space-y-2 sm:space-y-3 font-black tracking-tighter text-balance w-full">
+            <span class="block text-2xl sm:text-3xl md:text-4xl text-gradient tracking-tight">
+              {{ nameParts.first }} {{ nameParts.last }}
+            </span>
+            <span
+              class="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] text-foreground text-pretty"
+            >
+              {{ $t('hero.h1') }}
+            </span>
+          </h1>
+
+          <!-- Rotator pill badge for specialized sub-roles -->
+          <p
+            class="type-meta text-muted flex items-center justify-center lg:justify-start gap-2 pt-1"
           >
-            <Icon name="solar:rocket-2-bold-duotone" class="w-6 h-6 sm:w-7 sm:h-7 shrink-0" />
-            <span class="whitespace-nowrap">{{ $t('hero.cta') }}</span>
-          </a>
-          <a
-            class="rounded-2xl sm:rounded-3xl px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-foreground border border-foreground/15 hover:border-primary/50 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-center whitespace-nowrap transition-transform duration-200"
-            :href="sectionHref('#case-studies')"
-            @click="onSecondaryCtaClick"
+            <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse" />
+            <Transition name="hero-role-fade" mode="out-in">
+              <span :key="activeRoleIndex" class="font-bold text-foreground">
+                {{ currentRole }}
+              </span>
+            </Transition>
+          </p>
+
+          <p
+            class="hero-reveal hero-reveal--d35 w-full max-w-2xl text-base sm:text-lg text-muted text-center lg:text-left text-pretty font-medium leading-relaxed"
           >
-            <span class="whitespace-nowrap">{{ $t('hero.secondaryCta') }}</span>
-          </a>
-          <CvDownloadButton class="w-full sm:w-auto" />
+            {{ $t('hero.description') }}
+          </p>
+        </header>
+
+        <!-- CTA row -->
+        <div
+          class="relative z-20 hero-reveal hero-reveal--d80 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-3.5 w-full"
+        >
+          <div
+            class="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto shrink-0"
+          >
+            <a
+              class="hero-cta-btn hero-cta-btn--primary bg-primary text-primary-contrast rounded-xl sm:rounded-2xl px-6 sm:px-7 py-3.5 sm:py-3.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-flex items-center justify-center gap-2.5 font-bold text-sm sm:text-base border border-primary/50 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 w-full sm:w-auto"
+              :href="sectionHref('#contact')"
+              @click="onPrimaryCtaClick"
+            >
+              <Icon name="solar:chat-round-dots-bold-duotone" class="size-5 shrink-0" />
+              <span class="whitespace-nowrap">{{ $t('hero.cta') }}</span>
+            </a>
+            <a
+              class="hero-cta-btn hero-cta-btn--secondary rounded-xl sm:rounded-2xl px-5 sm:px-6 py-3.5 sm:py-3.5 text-sm sm:text-base font-bold text-foreground border border-foreground/15 hover:border-primary/40 hover:bg-primary/5 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-flex items-center justify-center gap-2 text-center whitespace-nowrap bg-secondary/60 backdrop-blur-xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 w-full sm:w-auto"
+              :href="sectionHref('#case-studies')"
+              @click="onSecondaryCtaClick"
+            >
+              <Icon
+                name="solar:case-minimalistic-bold-duotone"
+                class="size-5 shrink-0 text-primary/80"
+              />
+              <span class="whitespace-nowrap">{{ $t('hero.secondaryCta') }}</span>
+            </a>
+            <CvDownloadButton class="w-full sm:w-auto" />
+          </div>
+
+          <div class="hidden xl:block h-7 w-px bg-foreground/15 shrink-0 mx-1" aria-hidden="true" />
+
+          <div
+            class="relative z-20 flex gap-2 items-center justify-center lg:justify-start shrink-0"
+          >
+            <a
+              href="https://linkedin.com/in/mrcego"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="$t('footer.socialLinkedIn')"
+              class="hero-social-link inline-flex items-center justify-center size-11 sm:size-12 rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            >
+              <Icon
+                name="simple-icons:linkedin"
+                class="size-4.5 sm:size-5 shrink-0 pointer-events-none text-current"
+              />
+            </a>
+            <a
+              href="https://github.com/mrcego"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="$t('footer.socialGitHub')"
+              class="hero-social-link inline-flex items-center justify-center size-11 sm:size-12 rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            >
+              <Icon
+                name="simple-icons:github"
+                class="size-4.5 sm:size-5 shrink-0 pointer-events-none text-current"
+              />
+            </a>
+            <a
+              href="mailto:cesargomezh90@gmail.com"
+              :aria-label="$t('footer.socialEmail')"
+              class="hero-social-link inline-flex items-center justify-center size-11 sm:size-12 rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            >
+              <Icon
+                name="solar:letter-linear"
+                class="size-4.5 sm:size-5 shrink-0 pointer-events-none text-current"
+              />
+            </a>
+          </div>
         </div>
 
-        <div class="hidden lg:block h-8 w-px bg-foreground/15 shrink-0" aria-hidden="true" />
-
-        <div
-          class="relative z-20 flex gap-2 sm:gap-2.5 items-center justify-center lg:justify-start shrink-0"
-        >
-          <a
-            href="https://linkedin.com/in/mrcego"
-            target="_blank"
-            rel="noopener noreferrer"
-            :aria-label="$t('footer.socialLinkedIn')"
-            class="hero-social-link inline-flex items-center justify-center size-12 sm:size-[52px] rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-          >
-            <Icon
-              name="simple-icons:linkedin"
-              class="size-5 sm:size-6 shrink-0 pointer-events-none text-current"
-            />
-          </a>
-          <a
-            href="https://github.com/mrcego"
-            target="_blank"
-            rel="noopener noreferrer"
-            :aria-label="$t('footer.socialGitHub')"
-            class="hero-social-link inline-flex items-center justify-center size-12 sm:size-[52px] rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-          >
-            <Icon
-              name="simple-icons:github"
-              class="size-5 sm:size-6 shrink-0 pointer-events-none text-current"
-            />
-          </a>
-          <a
-            href="mailto:cesargomezh90@gmail.com"
-            :aria-label="$t('footer.socialEmail')"
-            class="hero-social-link inline-flex items-center justify-center size-12 sm:size-[52px] rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-          >
-            <Icon
-              name="solar:letter-linear"
-              class="size-5 sm:size-6 shrink-0 pointer-events-none text-current"
-            />
-          </a>
+        <!-- Tech Stack Tags -->
+        <div class="hero-reveal hero-reveal--d60 w-full max-w-2xl">
+          <div class="flex flex-wrap justify-center lg:justify-start gap-x-4 sm:gap-x-5 gap-y-2">
+            <div
+              v-for="tag in heroTags"
+              :key="tag"
+              class="flex items-center gap-1.5 sm:gap-2 type-label text-muted"
+            >
+              <div class="w-1 h-1 rounded-full bg-primary/40" />
+              {{ $t(tag) }}
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Photo — identity visual, vibe badge is secondary control -->
+      <!-- Right Column: Photo + Vibe Badge + Stats HUD Card -->
       <div
-        class="relative order-3 lg:col-start-2 lg:row-start-1 lg:row-span-4 px-2 sm:px-4 md:px-0 w-full max-w-[13rem] sm:max-w-md lg:max-w-none mx-auto lg:self-start"
+        class="order-2 lg:col-start-2 flex flex-col items-center gap-4 sm:gap-5 w-full max-w-[15rem] sm:max-w-md lg:max-w-none mx-auto lg:self-start"
       >
+        <!-- Photo & Tilt Card -->
         <div
           ref="photoHitRef"
-          class="group hero-photo-wrap relative perspective-[1000px]"
+          class="group hero-photo-wrap relative perspective-[1000px] w-full"
           @pointermove="onPhotoPointerMove"
           @pointerleave="onPhotoPointerLeave"
         >
@@ -213,7 +237,7 @@ onMounted(() => {
               class="surface-card relative w-full rounded-[1.8rem] md:rounded-[2.2rem] lg:rounded-[2.6rem] overflow-hidden border border-primary/25 glass p-1 md:p-1.5 shadow-2xl"
             >
               <div
-                class="relative aspect-4/5 max-h-[min(12rem,26svh)] sm:max-h-[min(16rem,32svh)] md:max-h-[min(20rem,38svh)] lg:max-h-[min(30.5rem,62svh)] xl:max-h-[min(34.5rem,66svh)] mx-auto rounded-[1.5rem] md:rounded-[1.9rem] lg:rounded-[2.3rem] overflow-hidden bg-secondary"
+                class="relative aspect-4/5 max-h-[min(12rem,26svh)] sm:max-h-[min(16rem,32svh)] md:max-h-[min(20rem,38svh)] lg:max-h-[min(26rem,52svh)] xl:max-h-[min(30rem,58svh)] mx-auto rounded-[1.5rem] md:rounded-[1.9rem] lg:rounded-[2.3rem] overflow-hidden bg-secondary"
               >
                 <div class="absolute inset-x-0 top-0 h-px bg-primary/20 z-20" />
                 <div class="absolute inset-y-0 left-0 w-px bg-primary/20 z-20" />
@@ -287,48 +311,27 @@ onMounted(() => {
             class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-radial from-primary/10 to-transparent blur-[60px] md:blur-[80px] opacity-40 group-hover:opacity-60 transition-opacity duration-1000 pointer-events-none"
           />
         </div>
-      </div>
 
-      <!-- Description + tags -->
-      <div
-        class="order-4 lg:col-start-1 hero-reveal hero-reveal--d60 space-y-3 sm:space-y-4 w-full max-w-2xl mx-auto lg:mx-0 text-center lg:text-left"
-      >
-        <p
-          class="text-muted text-sm sm:text-base md:text-lg leading-relaxed font-medium tracking-tight text-pretty"
-        >
-          {{ $t('hero.description') }}
-        </p>
-        <div class="flex flex-wrap justify-center lg:justify-start gap-x-4 sm:gap-x-5 gap-y-2">
-          <div
-            v-for="tag in heroTags"
-            :key="tag"
-            class="flex items-center gap-1.5 sm:gap-2 type-label text-muted"
-          >
-            <div class="w-1 h-1 rounded-full bg-primary/40" />
-            {{ $t(tag) }}
-          </div>
-        </div>
-      </div>
-
-      <!-- Stats -->
-      <div
-        class="order-5 lg:col-start-1 grid grid-cols-3 gap-3 sm:gap-6 md:gap-10 pt-4 sm:pt-5 border-t border-foreground/5 w-full max-w-lg lg:max-w-none mx-auto lg:mx-0"
-      >
+        <!-- Stats HUD Card under photo -->
         <div
-          v-for="(stat, i) in heroStats"
-          :key="stat.labelKey"
-          class="hero-reveal space-y-0.5 md:space-y-1 group/stat"
-          :style="{ animationDelay: `${1 + i * 0.15}s` }"
+          class="w-full grid grid-cols-3 gap-2 sm:gap-3 p-3.5 sm:p-4 rounded-2xl sm:rounded-3xl border border-foreground/10 bg-secondary/50 backdrop-blur-md shadow-xl"
         >
           <div
-            class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
+            v-for="(stat, i) in heroStats"
+            :key="stat.labelKey"
+            class="hero-reveal text-center space-y-0.5 sm:space-y-1 group/stat"
+            :style="{ animationDelay: `${0.4 + i * 0.1}s` }"
           >
-            {{ stat.value }}
-          </div>
-          <div
-            class="type-stat-label text-muted group-hover/stat:text-foreground transition-colors"
-          >
-            {{ $t(stat.labelKey) }}
+            <div
+              class="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
+            >
+              {{ stat.value }}
+            </div>
+            <div
+              class="text-[10px] sm:text-xs text-muted group-hover/stat:text-foreground transition-colors font-medium leading-tight"
+            >
+              {{ $t(stat.labelKey) }}
+            </div>
           </div>
         </div>
       </div>

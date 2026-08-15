@@ -11,13 +11,13 @@ function onCvClick() {
   <a
     :href="href"
     :download="fileName"
-    class="cv-download-btn inline-flex items-center justify-center gap-2 rounded-2xl sm:rounded-3xl px-7 sm:px-9 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-foreground transition-transform hover:scale-[1.03] hover:text-primary active:scale-95 w-full sm:w-auto sm:shrink-0 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+    class="cv-download-btn inline-flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl px-5 sm:px-6 py-3.5 sm:py-3.5 text-sm sm:text-base font-bold text-foreground transition-all duration-200 hover:scale-[1.02] hover:text-primary active:scale-[0.98] w-full sm:w-auto sm:shrink-0 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
     :aria-label="$t('hero.downloadCvAria', { file: fileName })"
     @click="onCvClick"
   >
     <Icon
       name="solar:download-minimalistic-bold-duotone"
-      class="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px] shrink-0 relative z-10"
+      class="size-5 shrink-0 relative z-10 text-primary/80"
     />
     <span class="relative z-10 whitespace-nowrap">{{ $t('hero.downloadCv') }}</span>
   </a>

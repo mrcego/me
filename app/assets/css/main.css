@@ -301,7 +301,7 @@
   }
 
   .btn-premium {
-    @apply relative flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black uppercase tracking-widest transition-transform duration-500 overflow-hidden active:scale-95 border border-foreground/5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50;
+    @apply relative flex items-center justify-center gap-3 px-10 py-5 rounded-full font-bold transition-transform duration-500 overflow-hidden active:scale-95 border border-foreground/5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50;
   }
 
   /* Interactive Particle Utilities */
