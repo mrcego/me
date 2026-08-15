@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-15T11:06:30.000Z",
+  "title": "Design System: César Gómez Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Electric Cyan-Blue",
+        "canonical": "oklch(70% 0.18 240)",
+        "tonalRamp": [
+          "#081b33",
+          "#103460",
+          "#1c5294",
+          "#2b74cb",
+          "#58a6ff",
+          "#79b8ff",
+          "#a5ceff",
+          "#dbeaff"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Obsidian Dark",
+        "canonical": "oklch(14% 0.01 260)",
+        "tonalRamp": [
+          "#05070a",
+          "#0d1117",
+          "#161b22",
+          "#21262d",
+          "#30363d",
+          "#484f58",
+          "#6e7681",
+          "#8b949e"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Deep Slate",
+        "canonical": "oklch(18% 0.015 260)",
+        "tonalRamp": [
+          "#0a0d12",
+          "#12171f",
+          "#161b22",
+          "#232933",
+          "#333b47",
+          "#495363",
+          "#637085",
+          "#8291a8"
+        ]
+      },
+      "foreground": {
+        "role": "neutral",
+        "displayName": "Crisp White",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "#6e7681",
+          "#8b949e",
+          "#b1bac4",
+          "#c9d1d9",
+          "#e6edf3",
+          "#f0f6fc",
+          "#ffffff",
+          "#ffffff"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Cool Slate",
+        "canonical": "oklch(85% 0.02 240)",
+        "tonalRamp": [
+          "#1e293b",
+          "#334155",
+          "#475569",
+          "#64748b",
+          "#94a3b8",
+          "#cbd5e1",
+          "#e2e8f0",
+          "#f8fafc"
+        ]
+      },
+      "accent": {
+        "role": "tertiary",
+        "displayName": "Neon Indigo",
+        "canonical": "oklch(68% 0.2 260)",
+        "tonalRamp": [
+          "#0f172a",
+          "#1e1b4b",
+          "#312e81",
+          "#4338ca",
+          "#6366f1",
+          "#7aa2f7",
+          "#a5b4fc",
+          "#e0e7ff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero title and primary section landing statements."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings, case study titles, and key metrics."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card titles, service role names, and table headers."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Narrative paragraphs, descriptions, and FAQ items."
+      },
+      "label": {
+        "displayName": "Label / Mono",
+        "purpose": "Terminal badges, availability tags, and code labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-low",
+        "value": "0 8px 24px rgba(0, 0, 0, 0.15)",
+        "purpose": "Subtle depth on resting cards and glass pills."
+      },
+      {
+        "name": "accent-glow",
+        "value": "0 0 25px rgba(88, 166, 255, 0.25)",
+        "purpose": "Interactive hover glow on primary buttons and active indicators."
+      },
+      {
+        "name": "modal-depth",
+        "value": "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+        "purpose": "Elevation for the terminal dialog and mobile navigation drawer."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Default timing for state transitions and hover effects."
+      },
+      {
+        "name": "spring-snappy",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Snappy feedback for button presses and drawer entrances."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" },
+      { "name": "2xl", "value": "1536px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "High-conversion primary CTA for contact booking and key hiring paths.",
+      "html": "<button class=\"ds-btn-primary\">GET IN TOUCH</button>",
+      "css": ".ds-btn-primary { background: #58a6ff; color: #000000; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 14px 32px; border-radius: 9999px; border: none; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s; } .ds-btn-primary:hover { background-color: #79b8ff; transform: scale(1.02); box-shadow: 0 0 20px rgba(88, 166, 255, 0.4); } .ds-btn-primary:active { transform: scale(0.95); }"
+    },
+    {
+      "name": "Glass Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action button with translucent glass effect and crisp border.",
+      "html": "<button class=\"ds-btn-glass\">DOWNLOAD CV</button>",
+      "css": ".ds-btn-glass { background: rgba(255, 255, 255, 0.05); color: #ffffff; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 14px 32px; border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); cursor: pointer; transition: all 0.2s; } .ds-btn-glass:hover { border-color: rgba(88, 166, 255, 0.5); color: #58a6ff; background: rgba(88, 166, 255, 0.08); }"
+    },
+    {
+      "name": "Glass Evidence Card",
+      "kind": "card",
+      "refersTo": "card-glass",
+      "description": "Structured card for case studies, testimonials, and architectural capabilities.",
+      "html": "<div class=\"ds-card-glass\"><span class=\"ds-card-tag\">ARCHITECT</span><h3 class=\"ds-card-title\">Frontend Architecture</h3><p class=\"ds-card-body\">Enterprise micro-frontends, design systems, and sub-second Core Web Vitals delivery.</p></div>",
+      "css": ".ds-card-glass { background: rgba(22, 27, 34, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 28px; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); transition: border-color 0.3s, transform 0.3s; } .ds-card-glass:hover { border-color: rgba(88, 166, 255, 0.35); transform: translateY(-3px); } .ds-card-tag { display: inline-block; font-family: ui-monospace, monospace; font-size: 11px; font-weight: 700; color: #58a6ff; background: rgba(88, 166, 255, 0.1); border: 1px solid rgba(88, 166, 255, 0.2); padding: 3px 10px; border-radius: 8px; margin-bottom: 14px; } .ds-card-title { font-family: 'Outfit', ui-sans-serif, sans-serif; font-size: 20px; font-weight: 700; color: #ffffff; margin: 0 0 10px 0; } .ds-card-body { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; color: #cbd5e1; line-height: 1.6; margin: 0; }"
+    },
+    {
+      "name": "Status Badge",
+      "kind": "chip",
+      "refersTo": "chip-badge",
+      "description": "Monospace pill indicator for availability, versions, and system telemetry.",
+      "html": "<span class=\"ds-badge\"><span class=\"ds-badge-dot\"></span>AVAILABLE FOR CONTRACTS</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 8px; font-family: ui-monospace, monospace; font-size: 12px; font-weight: 700; color: #58a6ff; background: rgba(88, 166, 255, 0.08); border: 1px solid rgba(88, 166, 255, 0.2); padding: 6px 14px; border-radius: 9999px; } .ds-badge-dot { width: 8px; height: 8px; border-radius: 9999px; background-color: #22c55e; box-shadow: 0 0 10px #22c55e; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Modern IDE Sanctuary",
+    "overview": "The visual language marries the technical rigor and precision of an advanced developer IDE (subtle HUD grid lines, scanlines, monospace badges, terminal overlays) with the elegance and conversion clarity of a world-class digital product. Dark canvases provide a calm, distraction-free backdrop where vibrant electric accents and multi-theme palettes spotlight architecture case studies, metrics, and hiring paths.",
+    "keyCharacteristics": [
+      "IDE-Inspired Atmosphere: Obsidian backdrops, terminal prompts, code-level badges, and custom theme switches.",
+      "Tactile Glass Layering: Translucent surfaces with calibrated backdrop blurs (8px to 24px) and luminous 1px perimeter borders.",
+      "Zero-Regret Performance: Visual enhancements defer until post-idle (html.fx-on) to keep FCP/LCP sub-second.",
+      "Dual Conversion & Proof Focus: Prominent CTA buttons with fluid hover states paired with real interactive engineering proof."
+    ],
+    "rules": [
+      {
+        "name": "The Rare Electric Accent Rule",
+        "body": "The primary electric accent is restricted to key interactive affordances, active states, and focal metrics (<=10% of any viewport). Its restraint commands instant visual priority.",
+        "section": "colors"
+      },
+      {
+        "name": "The Multi-Theme Invariant Rule",
+        "body": "Every color role must resolve dynamically through CSS custom properties (--primary, --background, --surface), allowing instant runtime switching between IDE presets without hardcoded overrides.",
+        "section": "colors"
+      },
+      {
+        "name": "The First-Paint System Font Rule",
+        "body": "First paint renders strictly with native local system font faces (ui-monospace, ui-sans-serif) to eliminate layout shifts and network blocking. Webfonts load asynchronously and hydrate smoothly after load.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glass Blur Hierarchy Rule",
+        "body": "Mobile viewports compute lightweight backdrop blurs (8px), while desktop viewports receive deep blurs (20px - 24px), preventing mobile GPU rendering bottlenecks.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No-Double-Blur Rule",
+        "body": "Nested containers within a glass card must use .glass-lite or .surface-utility (zero extra blur) to prevent stacking multiple heavy blur layers.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use semantic CSS variables (var(--primary), var(--background)) for every visual property to guarantee complete multi-theme support.",
+      "Do preserve 44px minimum touch targets on all mobile interactive elements.",
+      "Do test high contrast (4.5:1 text-to-background ratio) across both Dark Modern and Tokyo Night themes.",
+      "Do use .glass-lite on nested cards inside glass containers to keep frame rates at 60fps."
+    ],
+    "donts": [
+      "Don't hardcode static hex colors in component templates when a theme token exists.",
+      "Don't apply heavy drop shadows without a glass border; dark themes require luminous border contours for boundary definition.",
+      "Don't load render-blocking webfonts on initial paint; let the local system stack render FCP instantly.",
+      "Don't crowd the screen with neon accents; reserve {colors.primary} for focused interactive elements."
+    ]
+  }
+}
