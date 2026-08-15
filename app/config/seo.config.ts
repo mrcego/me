@@ -90,7 +90,7 @@ export const PERSON_KNOWS_ABOUT = [
   'SSR/SSG',
   'Accessibility',
   'AI-Assisted Craft',
-  'Vibe Coding Cleanup',
+  'AI-Augmented Engineering',
   'Agent-assisted Development',
   'AI/NLP Product Integration',
   'E-commerce Platforms',

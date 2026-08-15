@@ -9,13 +9,13 @@ export const useAiCraftLandingSeo = () =>
     },
     jobTitles: [
       'AI-Assisted Craft',
-      'Vibe Coding Cleanup Specialist',
+      'AI-Augmented Software Engineer',
       'Senior Vue/Nuxt Developer',
       'Craft asistido por IA',
     ],
     knowsAbout: [
       'AI-Assisted Craft',
-      'Vibe Coding Cleanup',
+      'AI-Augmented Engineering',
       'Cursor',
       'GitHub Copilot',
       'Claude Code',

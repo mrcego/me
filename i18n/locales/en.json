@@ -41,7 +41,9 @@
     "switchLanguage": "Switch language",
     "switchLanguageLabel": "Switch language: {locale}",
     "themePresets": "Theme Presets",
-    "modes": "Modes"
+    "modes": "Modes",
+    "menuSubtitle": "Frontend Architect & Fullstack",
+    "rolesLabel": "Roles"
   },
   "hero": {
     "tagline": {
@@ -785,7 +787,7 @@
         "desc": "Expert CI/CD orchestration and automated pipelines that reduce friction and boost velocity."
       },
       "vibeCoding": {
-        "title": "Vibe Coding Cleanup Specialist",
+        "title": "AI-Augmented Engineering",
         "desc": "Expert at turning AI-assisted code into production-ready systems. I integrate AI/NLP models locally and in the cloud, and run delivery workflows with Cursor, Windsurf, Copilot, Claude Code, OpenCode, Ollama, and llama.cpp."
       }
     }
@@ -1024,7 +1026,7 @@
     "jobTitle": "Senior Vue/Nuxt Engineer · Frontend Architect · Senior Fullstack Engineer",
     "siteName": "César Gómez",
     "serviceName": "Cesar Gomez — Frontend, Websites & Fullstack Development",
-    "serviceDescription": "Senior frontend and fullstack services from Cartagena, Colombia: custom websites, Vue.js/Nuxt apps, TypeScript engineering, PrimeVue/Tailwind design systems, micro-frontends, Node/Express APIs, AI-assisted delivery and Vibe Coding Cleanup, and Core Web Vitals–focused delivery for remote and international teams.",
+    "serviceDescription": "Senior frontend and fullstack services from Cartagena, Colombia: custom websites, Vue.js/Nuxt apps, TypeScript engineering, PrimeVue/Tailwind design systems, micro-frontends, Node/Express APIs, AI-assisted delivery and AI-Augmented Engineering, and Core Web Vitals–focused delivery for remote and international teams.",
     "availability": "Senior frontend, website, and fullstack contract roles from now · Remote preferred · Cartagena de Indias, Colombia"
   },
   "faq": {
@@ -1041,7 +1043,7 @@
       "answer": "You can hire Cesar Gomez on a contract basis across 6 core specializations: {vueProfile}, {aiProfile}, {nodeProfile}, {angularProfile}, {architectProfile}, and {fullstackProfile}. Review his {portfolio}, then contact him via the {form}, {linkedin}, or {github}.",
       "linkPortfolio": "main portfolio",
       "linkVueProfile": "Senior Vue.js Developer",
-      "linkAiProfile": "Vibe Coding Cleanup",
+      "linkAiProfile": "AI-Augmented Engineering",
       "linkNodeProfile": "Node.js Backend Developer",
       "linkAngularProfile": "Senior Angular Developer",
       "linkArchitectProfile": "Frontend Architect",
@@ -1265,25 +1267,25 @@
   },
   "landingAi": {
     "meta": {
-      "title": "Vibe Coding Cleanup · AI-Assisted Vue/Nuxt — Cesar Gomez",
+      "title": "AI-Augmented Engineering · AI-Assisted Vue/Nuxt — Cesar Gomez",
       "description": "AI-assisted Vue/Nuxt delivery with Cursor, Copilot, and Claude Code. Senior code review, architecture ownership, and quality gates — not an AI Engineer role."
     },
-    "eyebrow": "Vibe Coding Cleanup · AI-Assisted Craft",
-    "title": "Vibe Coding Cleanup",
+    "eyebrow": "AI-Augmented Engineering · AI-Assisted Craft",
+    "title": "AI-Augmented Engineering",
     "titleHighlight": "AI-Assisted Craft",
-    "lead": "Production-ready Vue/Nuxt with quality gates, architecture ownership, and craft — using AI tools as leverage, not hype. I'm Cesar Gomez: I ship maintainable systems teams can own from Cursor, Copilot, or Claude Code output, and harden agent-assisted codebases when cleanup is needed.",
+    "lead": "Production-ready Vue/Nuxt with quality gates, architecture ownership, and craft — using AI tools as leverage, not hype. I'm Cesar Gomez: I ship maintainable systems teams can own from Cursor, Copilot, or Claude Code output, and harden agent-assisted codebases when refactoring is needed.",
     "intent": {
-      "title": "Commercial offer: AI-assisted Vue/Nuxt delivery & cleanup",
+      "title": "Commercial offer: AI-assisted Vue/Nuxt delivery & engineering",
       "paragraphs": [
         "This hire profile is for teams that need a senior Vue/Nuxt engineer who uses Cursor, Copilot, or Claude Code to ship faster — with architecture ownership, typed contracts, and quality gates before release.",
-        "Engagements typically include vibe-coding cleanup, AI-assisted feature delivery, and production hardening of agent-generated code. For the step-by-step method, see the AI-Assisted Craft methodology page."
+        "Engagements typically include AI-assisted feature delivery, production hardening of agent-generated code, and codebase refactoring. For the step-by-step method, see the AI-Assisted Craft methodology page."
       ]
     },
     "services": {
       "title": "Scope I deliver on AI-assisted contracts",
       "items": [
         {
-          "title": "Vibe coding cleanup / agent-assisted code",
+          "title": "Agent-assisted code hardening & refactoring",
           "body": "Audit and harden Cursor, Copilot, or Claude Code output to production standards."
         },
         {
@@ -1319,7 +1321,7 @@
     ],
     "portfolioCta": "View full portfolio",
     "contactCta": "Discuss AI-assisted delivery",
-    "faqTitle": "AI-assisted craft & vibe coding FAQ",
+    "faqTitle": "AI-assisted craft & engineering FAQ",
     "faq": [
       {
         "question": "What can you deliver with AI-assisted craft?",
@@ -1330,7 +1332,7 @@
         "answer": "No. I'm a senior Vue/Nuxt / fullstack developer who uses AI tools for maintainable delivery and has product experience integrating AI/NLP features at LingoQuesto. I don't claim a dedicated AI engineer role."
       },
       {
-        "question": "Can you improve an AI-assisted or vibe-coded codebase?",
+        "question": "Can you improve an AI-assisted codebase?",
         "answer": "Yes. I audit architecture, duplicated logic, security gaps, hallucinated APIs, regressions, and maintainability risks, then add the structure and quality gates needed for production."
       },
       {
@@ -1347,7 +1349,7 @@
       }
     ],
     "methodologyCta": "AI-Assisted Craft methodology",
-    "answerBlock": "César Gómez is a Vibe Coding Cleanup specialist who refines AI-generated code into production-ready software. Using agent-assisted workflows with Cursor, Claude Code, and Copilot, he applies strict quality gates — type checking, unit testing, and modular architecture — to deliver maintainable codebases. Based in Cartagena, Colombia, available remotely."
+    "answerBlock": "César Gómez is a Senior Engineer specializing in AI-Augmented Engineering who refines AI-assisted code into production-ready software. Using agentic workflows with Cursor, Claude Code, and Copilot, he applies strict quality gates — type checking, unit testing, and modular architecture — to deliver maintainable codebases. Based in Cartagena, Colombia, available remotely."
   },
   "landingNode": {
     "meta": {
@@ -1448,24 +1450,30 @@
   },
   "hireProfiles": {
     "hireForVue": "Vue.js developer",
-    "hireForAi": "Vibe Coding Cleanup",
+    "hireForAi": "AI-Augmented Engineering",
     "hireForNode": "Node.js developer",
     "hireForAngular": "Angular developer (v16+)",
     "hireForArchitect": "Frontend Architect",
     "hireForFullstack": "Fullstack Engineer",
+    "vueTag": "Vue 3 · Nuxt 4 · TS",
+    "aiTag": "Agentic Workflows · Quality Gates",
+    "nodeTag": "Express APIs · Node.js",
+    "angularTag": "Angular 16+ · RxJS State",
+    "architectTag": "Design Systems · Architecture",
+    "fullstackTag": "Vue/Nuxt + Node APIs",
     "section": "Engagement",
     "title": "Hire me as a",
     "titleHighlight": "Vue, AI, Node, Angular, Architect, or Fullstack specialist.",
-    "lead": "Targeted profiles for recruiters and engineering leaders — Vue/Nuxt, Vibe Coding Cleanup, Node.js backend, Angular v16+, Frontend Architecture, and Fullstack delivery.",
+    "lead": "Targeted profiles for recruiters and engineering leaders — Vue/Nuxt, AI-Augmented Engineering, Node.js backend, Angular v16+, Frontend Architecture, and Fullstack delivery.",
     "vueBlurb": "Senior Vue.js developer: Vue/Nuxt architecture, design systems, and performance-focused frontend delivery.",
-    "aiBlurb": "Vibe Coding Cleanup: harden agent-assisted Vue/Nuxt code and ship AI-assisted craft with quality gates and maintainable delivery.",
+    "aiBlurb": "AI-Augmented Engineering: harden agent-assisted Vue/Nuxt code and ship AI-assisted craft with quality gates and maintainable delivery.",
     "nodeBlurb": "Node.js developer: production Express APIs, typed contracts, and fullstack API-to-UI delivery.",
     "angularBlurb": "Angular 16 developer: enterprise standalone components, RxJS state, and robust TypeScript architecture.",
     "architectBlurb": "Frontend Architect & Lead: Vue 3 / Nuxt 4 design systems, micro-frontends, and Core Web Vitals at scale.",
     "fullstackBlurb": "Fullstack Engineer: production Vue 3/Nuxt 4 client apps and Node.js backend APIs with 100% TypeScript contracts.",
     "viewProfile": "View developer profile",
     "alsoAvailable": "Also hire for",
-    "crossLinkFromVue": "Also available: Vibe Coding Cleanup",
+    "crossLinkFromVue": "Also available: AI-Augmented Engineering",
     "crossLinkFromAi": "Also available: Vue.js developer",
     "craftMethodology": "AI-Assisted Craft methodology"
   },
@@ -1538,7 +1546,7 @@
       "Clear path into deeper Vue, AI-assisted craft, or Node hire profiles when needed"
     ],
     "experienceTitle": "Why this page exists",
-    "experienceBody": "People search for desarrollador web / páginas web in Cartagena and for remote Vue/Nuxt help from Colombia. This landing answers that intent directly. For large-scale ed-tech proof, see the Colegium and LingoQuesto case studies; for role-specific hiring, use the Vue, Vibe Coding Cleanup, Node, Angular, Architect, or Fullstack profiles.",
+    "experienceBody": "People search for desarrollador web / páginas web in Cartagena and for remote Vue/Nuxt help from Colombia. This landing answers that intent directly. For large-scale ed-tech proof, see the Colegium and LingoQuesto case studies; for role-specific hiring, use the Vue, AI-Augmented Engineering, Node, Angular, Architect, or Fullstack profiles.",
     "proofTitle": "Honest local + remote signals",
     "proofLink": "Colegium case study — web product at scale",
     "proof": [
@@ -1578,7 +1586,7 @@
     "eyebrow": "Methodology · Not an AI Engineer title",
     "title": "AI-Assisted Craft",
     "titleHighlight": "methodology",
-    "lead": "How I use Cursor, Copilot, Claude Code, and related tools without shipping slop: human ownership, architecture review, and quality gates. This page is the methodology — hire for Vibe Coding Cleanup at /ai-engineer/.",
+    "lead": "How I use Cursor, Copilot, Claude Code, and related tools without shipping slop: human ownership, architecture review, and quality gates. This page is the methodology — hire for AI-Augmented Engineering at /ai-assisted-craft/.",
     "intent": {
       "title": "Craft over hype",
       "paragraphs": [
@@ -1615,11 +1623,11 @@
       "Clear refusal of AI Engineer job-title claims"
     ],
     "experienceTitle": "Where the method shows up",
-    "experienceBody": "Daily AI-assisted Vue/Nuxt delivery, vibe-coding cleanup for agent-heavy codebases, and product integration of AI/NLP features at LingoQuesto as a fullstack engineer — not as a dedicated model researcher.",
+    "experienceBody": "Daily AI-assisted Vue/Nuxt delivery, agentic refactoring for heavy codebases, and product integration of AI/NLP features at LingoQuesto as a fullstack engineer — not as a dedicated model researcher.",
     "proofTitle": "Related profiles",
     "proofLink": "LingoQuesto case study — AI/NLP in product",
     "proof": [
-      "Vibe Coding Cleanup hire profile at /ai-engineer/",
+      "AI-Augmented Engineering hire profile at /ai-assisted-craft/",
       "Vue/Nuxt senior delivery at /vue-frontend-developer/",
       "Case studies for Colegium and LingoQuesto on the portfolio home",
       "Available for senior contract roles from now"
@@ -1638,7 +1646,7 @@
       },
       {
         "question": "Where should recruiters hire for this?",
-        "answer": "Use the Vibe Coding Cleanup profile at cesargomez.dev/ai-engineer/ for hiring intent. This page explains the methodology behind that offer."
+        "answer": "Use the AI-Augmented Engineering profile at cesargomez.dev/ai-assisted-craft/ for hiring intent. This page explains the methodology behind that offer."
       },
       {
         "question": "Do you ship unreviewed AI output?",

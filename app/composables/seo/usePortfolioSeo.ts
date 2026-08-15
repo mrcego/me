@@ -297,7 +297,7 @@ export const usePortfolioSeo = () => {
           'E-commerce Frontend Development',
           'Retailtech Engineering',
           'AI-Assisted Craft',
-          'Vibe Coding Cleanup',
+          'AI-Augmented Engineering',
           'AI/NLP Product Integration',
           'Ed-tech Frontend Engineering',
           'Remote Frontend Contracting',

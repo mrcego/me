@@ -15,7 +15,7 @@ export const useAiEngineerLandingSeo = () =>
     ],
     knowsAbout: [
       'AI-Assisted Software Engineering',
-      'Vibe Coding Cleanup',
+      'AI-Augmented Engineering',
       'Agentic Coding',
       'Agent-assisted Development',
       'Cursor',
