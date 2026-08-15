@@ -25,7 +25,7 @@ test.describe('interactive chrome', () => {
   });
 
   test('applies a theme from the preset list', async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.setViewportSize({ width: 1536, height: 800 });
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     await waitForHydratedNav(page);
     const themeBtn = page.getByRole('button', { name: /Theme Presets|Temas IDE/i }).first();
@@ -43,7 +43,7 @@ test.describe('interactive chrome', () => {
   });
 
   test('opens hire profiles menu and navigates a profile', async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.setViewportSize({ width: 1536, height: 800 });
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     await waitForHydratedNav(page);
     const hire = page.getByRole('button', { name: /Hire|Contratar/i }).first();

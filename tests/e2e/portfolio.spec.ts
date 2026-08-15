@@ -28,6 +28,7 @@ async function collectPageFaults(page: Page) {
 
 test.describe('portfolio SSG under CSP', () => {
   test('boots Vue, keeps icons local, and stays interactive', async ({ page }) => {
+    await page.setViewportSize({ width: 1536, height: 800 });
     const faults = await collectPageFaults(page);
 
     const response = await page.goto('/', { waitUntil: 'networkidle' });
