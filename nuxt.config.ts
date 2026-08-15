@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+import { fileURLToPath } from 'node:url';
 import tailwindcss from '@tailwindcss/vite';
 import { prerenderRoutesWithSitemap, sitemapUrls } from './app/config/routes.manifest';
 import { SEO_EDITORIAL_DATES } from './app/config/seo.config';
@@ -123,10 +124,23 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      {
+        name: 'vite-plugin-aspect-flare-fallback',
+        enforce: 'pre',
+        resolveId(id: string) {
+          if (id === '@aspect/flare') {
+            return fileURLToPath(new URL('./app/utils/mocks/aspectFlareMock.ts', import.meta.url));
+          }
+        },
+      },
+    ],
     resolve: {
       alias: {
-        '@aspect/flare': 'unenv/runtime/mock/empty',
+        '@aspect/flare': fileURLToPath(
+          new URL('./app/utils/mocks/aspectFlareMock.ts', import.meta.url),
+        ),
       },
     },
     optimizeDeps: {
