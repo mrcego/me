@@ -38,6 +38,10 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
     {
+      path: '~/components/angie',
+      pathPrefix: false,
+    },
+    {
       path: '~/core/components',
       pathPrefix: false,
     },
