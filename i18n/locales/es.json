@@ -1889,5 +1889,47 @@
       }
     ],
     "answerBlock": "César Gómez es un ingeniero fullstack senior con más de 13 años construyendo aplicaciones web completas en Vue 3, Nuxt 4, Node.js y TypeScript. Desarrolla UIs reactivas y APIs backend de alto rendimiento con ownership end-to-end. Ubicado en Cartagena, Colombia, disponible para contratación remota."
+  },
+  "angie": {
+    "launcher": {
+      "aria": "Abrir asistente Angie de IA",
+      "tooltip": "Preguntar a Angie IA"
+    },
+    "header": {
+      "title": "Angie // Concierge IA",
+      "badge": "Worker v4.0",
+      "status": "En línea · 60 FPS"
+    },
+    "roles": {
+      "user": "Tú",
+      "angie": "Angie IA"
+    },
+    "welcomeMessage": "¡Hola! Soy Angie, la asistente de IA del portafolio de César Gómez. Puedo responder preguntas sobre sus más de 13 años de experiencia en producción, arquitectura en Vue 3 / Nuxt 4, casos de estudio empresariales y disponibilidad para contratación. ¿En qué puedo ayudarte hoy?",
+    "thinking": "Sintetizando respuesta...",
+    "errorGeneric": "Ocurrió un error al procesar tu consulta. Inténtalo de nuevo o contáctale directamente.",
+    "inputPlaceholder": "Hazle una pregunta a Angie sobre el trabajo de César…",
+    "send": "Enviar mensaje a Angie",
+    "clearTranscript": "Limpiar conversación",
+    "close": "Cerrar asistente",
+    "categories": {
+      "all": "Todas",
+      "recruiter": "Recruiter / HR",
+      "lead": "Líder Técnico",
+      "founder": "Founder / Cliente"
+    },
+    "actions": {
+      "viewAbout": "Ver Perfil Completo ↗",
+      "viewTechStack": "Explorar Stack Técnico ↗",
+      "viewProfiles": "Especialidades de Contrato ↗",
+      "viewColegium": "Caso Colegium ↗",
+      "viewLingoQuesto": "Caso LingoQuesto ↗",
+      "viewTissini": "Caso TISSINI ↗",
+      "viewAllCerts": "Credenciales y Certs ↗",
+      "downloadCvNow": "Descargar CV en PDF ↗",
+      "discussProject": "Hablar de Proyecto ↗",
+      "contactCesar": "Contactar a César ↗",
+      "openContactForm": "Abrir Formulario ↗",
+      "runTelemetry": "Ejecutar Telemetría CLI ↗"
+    }
   }
 }

@@ -306,6 +306,8 @@ export default defineNuxtConfig({
         'lucide:arrow-right',
         'solar:hamburger-menu-linear',
         'solar:close-square-linear',
+        'solar:stars-minimalistic-bold-duotone',
+        'solar:restart-linear',
       ],
     },
   },

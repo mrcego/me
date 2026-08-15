@@ -1889,5 +1889,47 @@
       }
     ],
     "answerBlock": "César Gómez is a senior fullstack engineer delivering production-grade web applications across Vue 3/Nuxt 4 client apps and Node.js/Express backend APIs with TypeScript. With 13+ years of experience, he provides end-to-end development for ed-tech and e-commerce platforms. Based in Cartagena, Colombia, available remotely."
+  },
+  "angie": {
+    "launcher": {
+      "aria": "Open Angie AI Portfolio Concierge",
+      "tooltip": "Ask Angie AI"
+    },
+    "header": {
+      "title": "Angie // AI Concierge",
+      "badge": "Worker v4.0",
+      "status": "Online · 60 FPS"
+    },
+    "roles": {
+      "user": "You",
+      "angie": "Angie AI"
+    },
+    "welcomeMessage": "Hello! I am Angie, César Gómez's AI Portfolio Concierge. I can provide verified insights on his 13+ years of production experience, Vue 3 / Nuxt 4 architecture, enterprise case studies, and availability for contract or leadership roles. How can I help you today?",
+    "thinking": "Synthesizing response...",
+    "errorGeneric": "An error occurred while processing your request. Please try again or reach out directly.",
+    "inputPlaceholder": "Ask Angie a question about César's work…",
+    "send": "Send message to Angie",
+    "clearTranscript": "Clear conversation",
+    "close": "Close assistant",
+    "categories": {
+      "all": "All Questions",
+      "recruiter": "Recruiter / HR",
+      "lead": "Tech Lead / Arch",
+      "founder": "Founder / Client"
+    },
+    "actions": {
+      "viewAbout": "View Full Profile ↗",
+      "viewTechStack": "Explore Tech Stack ↗",
+      "viewProfiles": "Hire Specializations ↗",
+      "viewColegium": "Colegium Case Study ↗",
+      "viewLingoQuesto": "LingoQuesto Case Study ↗",
+      "viewTissini": "TISSINI Case Study ↗",
+      "viewAllCerts": "Credentials & Certs ↗",
+      "downloadCvNow": "Download Résumé PDF ↗",
+      "discussProject": "Discuss Project ↗",
+      "contactCesar": "Contact César ↗",
+      "openContactForm": "Open Contact Form ↗",
+      "runTelemetry": "Run CLI Telemetry ↗"
+    }
   }
 }

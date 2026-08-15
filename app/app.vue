@@ -139,6 +139,8 @@ onMounted(() => {
     />
     <LazyPortfolioTerminal v-if="terminalMounted" />
 
+    <LazyAngieChatLauncher :hydrate-after="3500" />
+
     <LazyPerformanceOptimizations :hydrate-after="5000" />
   </div>
 </template>
