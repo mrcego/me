@@ -43,7 +43,9 @@
     "themePresets": "Temas IDE",
     "modes": "Modos",
     "menuSubtitle": "Arquitecto Frontend & Fullstack",
-    "rolesLabel": "Roles"
+    "rolesLabel": "Roles",
+    "navigationTitle": "Navegación del sitio",
+    "sectionsLabel": "Secciones"
   },
   "hero": {
     "tagline": {

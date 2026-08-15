@@ -43,7 +43,9 @@
     "themePresets": "Theme Presets",
     "modes": "Modes",
     "menuSubtitle": "Frontend Architect & Fullstack",
-    "rolesLabel": "Roles"
+    "rolesLabel": "Roles",
+    "navigationTitle": "Site Navigation",
+    "sectionsLabel": "Sections"
   },
   "hero": {
     "tagline": {
