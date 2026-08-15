@@ -39,4 +39,17 @@ describe('angieRetriever (Search & Intent Synthesis)', () => {
     expect(fallback.text).toContain('César');
     expect(fallback.actions.some((a) => a.type === 'contact_form')).toBe(true);
   });
+
+  it('builds RAG context for queries with matched topic and general summary fallback', async () => {
+    const { buildRagContext } = await import('~/workers/angie.worker');
+    const matchedContext = buildRagContext('Vue and Nuxt architecture', 'en');
+    expect(matchedContext).toContain('[TOPIC:');
+
+    const genericContext = buildRagContext('quantum mechanical physics', 'es');
+    expect(genericContext).toContain('César');
+
+    const emptyRes = searchKnowledge('', 'en');
+    expect(emptyRes.entry).toBeNull();
+    expect(emptyRes.confidence).toBe(0);
+  });
 });

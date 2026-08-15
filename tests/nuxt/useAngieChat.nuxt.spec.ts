@@ -61,6 +61,7 @@ describe('useAngieChat', () => {
 
   it('triggers action callbacks without throwing', async () => {
     const angie = await mountAngie();
+    // Contact form
     expect(() => {
       angie.triggerAction({
         id: 'test_act',
@@ -69,12 +70,59 @@ describe('useAngieChat', () => {
         labelKey: 'angie.actions.openContactForm',
       });
     }).not.toThrow();
+
+    // Hash navigation
+    expect(() => {
+      angie.triggerAction({
+        id: 'test_nav_hash',
+        type: 'navigate',
+        target: '#tech-stack',
+        labelKey: 'angie.actions.viewTechStack',
+      });
+    }).not.toThrow();
+
+    // Route navigation
+    expect(() => {
+      angie.triggerAction({
+        id: 'test_nav_route',
+        type: 'navigate',
+        target: '/case-studies/colegium',
+        labelKey: 'angie.actions.viewColegium',
+      });
+    }).not.toThrow();
+
+    // CV Download
+    expect(() => {
+      angie.triggerAction({
+        id: 'test_download',
+        type: 'download_cv',
+        labelKey: 'angie.actions.downloadCvNow',
+      });
+    }).not.toThrow();
+
+    // Open terminal
+    expect(() => {
+      angie.triggerAction({
+        id: 'test_term',
+        type: 'open_terminal',
+        labelKey: 'angie.actions.runTelemetry',
+      });
+    }).not.toThrow();
   });
 
-  it('exposes reactive neural status and progress properties', async () => {
+  it('exposes reactive neural status and handles empty queries', async () => {
     const angie = await mountAngie();
     expect(['idle', 'loading', 'ready', 'fallback']).toContain(angie.neuralStatus.value);
     expect(typeof angie.neuralProgress.value).toBe('number');
     expect(angie.neuralModel.value).toBe('smollm2-135m-instruct');
+
+    // Empty query does nothing
+    const countBefore = angie.messages.value.length;
+    await angie.sendMessage('   ');
+    expect(angie.messages.value.length).toBe(countBefore);
+
+    // Warmup neural engine
+    angie.warmupNeuralEngine();
+    expect(angie.neuralStatus.value).toBeDefined();
   });
 });
