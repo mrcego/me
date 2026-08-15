@@ -1,9 +1,14 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useSmoothedScroll } from '~/composables/ui/useSmoothedScroll';
 
+const isMounted = ref(false);
+onMounted(() => {
+  isMounted.value = true;
+});
+
 const { rawY } = useSmoothedScroll(0.14);
-const showScrollTop = computed(() => rawY.value > 300);
+const showScrollTop = computed(() => isMounted.value && rawY.value > 300);
 
 function scrollToTop() {
   if (!import.meta.client) return;

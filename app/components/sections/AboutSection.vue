@@ -321,11 +321,11 @@ const aboutPoints: PhilosophyPoint[] = [
                   </div>
 
                   <div class="space-y-1.5 sm:space-y-2 min-w-0">
-                    <h4
+                    <h3
                       class="surface-card__title text-base sm:text-lg xl:text-xl font-black tracking-tight text-pretty line-clamp-2"
                     >
                       {{ $t(`about.roles.${role.key}.title`) }}
-                    </h4>
+                    </h3>
                     <p class="surface-card__meta type-meta">
                       {{ $t(`about.roles.${role.key}.company`) }}
                     </p>

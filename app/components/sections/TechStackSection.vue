@@ -230,11 +230,11 @@ const skillGroups = [
             </div>
 
             <div class="space-y-1.5 sm:space-y-2 md:space-y-3">
-              <h4
+              <h3
                 class="surface-card__title surface-card__title--gradient text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground"
               >
                 {{ t.name }}
-              </h4>
+              </h3>
               <p class="type-meta text-muted leading-normal">
                 {{ $t(t.level) }}
               </p>
@@ -271,9 +271,9 @@ const skillGroups = [
             <div class="tech-hud__icon glass shrink-0">
               <Icon name="solar:crown-star-bold" class="tech-hud__glyph shrink-0" />
             </div>
-            <h4 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-foreground">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-foreground">
               {{ $t('techStack.principles') }}
-            </h4>
+            </h3>
           </div>
 
           <div class="space-y-6 relative z-10">
@@ -322,9 +322,9 @@ const skillGroups = [
               <div class="tech-hud__icon glass shrink-0">
                 <Icon name="solar:global-linear" class="tech-hud__glyph shrink-0" />
               </div>
-              <h4 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
+              <h3 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
                 {{ $t('techStack.flow') }}
-              </h4>
+              </h3>
             </div>
             <div class="flex flex-wrap gap-3 md:gap-4">
               <div

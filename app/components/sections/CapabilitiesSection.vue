@@ -48,15 +48,15 @@ const capabilities = [
       >
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
-          <h2 class="type-eyebrow tracking-[0.4em]">
+          <p class="type-eyebrow tracking-[0.4em]">
             {{ $t('capabilities.section') }}
-          </h2>
+          </p>
           <div class="h-px w-10 bg-primary/40" />
         </div>
-        <h3 class="text-5xl md:text-8xl font-black tracking-tighter text-foreground">
+        <h2 class="text-5xl md:text-8xl font-black tracking-tighter text-foreground">
           {{ $t('capabilities.title') }}<br />
           <span class="text-gradient">{{ $t('capabilities.titleHighlight') }}</span>
-        </h3>
+        </h2>
       </Motion>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch">
@@ -84,11 +84,11 @@ const capabilities = [
               class="transition-transform group-hover:scale-110"
             />
             <div class="space-y-3 sm:space-y-4 max-w-md mx-auto">
-              <h4
+              <h3
                 class="surface-card__title text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground"
               >
                 {{ $t(`capabilities.items.${cap.key}.title`) }}
-              </h4>
+              </h3>
               <p
                 class="surface-card__text text-muted text-base sm:text-lg leading-relaxed font-medium"
               >
