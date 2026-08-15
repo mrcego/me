@@ -122,7 +122,7 @@ const tagItems = computed(() => {
               :key="item"
               class="flex gap-3 text-muted leading-relaxed"
             >
-              <Icon name="lucide:check-circle-2" class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <Icon name="lucide:circle-check" class="w-5 h-5 text-primary shrink-0 mt-0.5" />
               <span>{{ item }}</span>
             </li>
           </ul>

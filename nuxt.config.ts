@@ -268,9 +268,12 @@ export default defineNuxtConfig({
         'solar:buildings-2-bold-duotone',
         'solar:chat-round-dots-bold-duotone',
         'solar:chat-square-code-bold-duotone',
+        'solar:check-circle-bold',
         // About & philosophy points
         'logos:nuxt-icon',
         'logos:figma',
+        'lucide:calendar-range',
+        'lucide:map-pin',
         // Contact & social
         'solar:letter-bold-duotone',
         'solar:phone-calling-bold-duotone',
@@ -279,6 +282,8 @@ export default defineNuxtConfig({
         'logos:linkedin-icon',
         'logos:github-icon',
         'logos:twitter',
+        'logos:google-gmail',
+        'logos:whatsapp-icon',
         'simple-icons:linkedin',
         'simple-icons:github',
         // Certifications & navbar
@@ -297,6 +302,8 @@ export default defineNuxtConfig({
         'lucide:circle-check',
         'lucide:chevron-down',
         'lucide:x',
+        'lucide:send',
+        'lucide:arrow-right',
         'solar:hamburger-menu-linear',
         'solar:close-square-linear',
       ],
