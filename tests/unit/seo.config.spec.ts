@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import seoConfig, {
   CONTACT_PHONE_DISPLAY,
-  CONTACT_PHONE_E164,
   CONTACT_PHONE_WHATSAPP,
+  CONTACT_WHATSAPP_DISPLAY,
+  CONTACT_WHATSAPP_USERNAME,
   PERSON_ENTITY_URL,
   PERSON_KNOWS_ABOUT,
   PERSON_SCHEMA_ID,
@@ -77,10 +78,11 @@ describe('seo.config', () => {
     expect(SITE_NAME_ALTERNATES).toContain('Cesar Gomez');
   });
 
-  it('exposes contact phone numbers for LocalBusiness schema', () => {
-    expect(CONTACT_PHONE_DISPLAY).toBe('+57 333 263 6550');
-    expect(CONTACT_PHONE_E164).toBe('+573332636550');
-    expect(CONTACT_PHONE_WHATSAPP).toBe('https://wa.me/573332636550');
+  it('exposes contact whatsapp handle and url without exposing raw phone', () => {
+    expect(CONTACT_WHATSAPP_USERNAME).toBe('mrcego.fsdev');
+    expect(CONTACT_WHATSAPP_DISPLAY).toBe('@mrcego.fsdev');
+    expect(CONTACT_PHONE_WHATSAPP).toBe('https://wa.me/mrcego.fsdev');
+    expect(CONTACT_PHONE_DISPLAY).toBe('@mrcego.fsdev');
   });
 
   it('keeps home meta descriptions within the 300-character scanner budget', () => {

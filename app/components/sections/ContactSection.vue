@@ -4,7 +4,7 @@ import { Motion } from 'motion-v';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
-import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_WHATSAPP } from '~/config/seo.config';
+import { CONTACT_WHATSAPP_DISPLAY, CONTACT_PHONE_WHATSAPP } from '~/config/seo.config';
 import { useContactForm } from '~/composables/domain/useContactForm';
 
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
@@ -61,7 +61,7 @@ const contactMethods = [
   },
   {
     key: 'whatsapp',
-    value: CONTACT_PHONE_DISPLAY,
+    value: CONTACT_WHATSAPP_DISPLAY,
     icon: 'logos:whatsapp-icon',
     link: CONTACT_PHONE_WHATSAPP,
     external: true,

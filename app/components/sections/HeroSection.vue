@@ -5,9 +5,11 @@ import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 const { activeRoleIndex, currentRole } = useBrandRoleRotator();
 const { openVibeCodingModal, vibeCodingModalMounted } = useVibeCodingModal();
-const { armGate } = usePortfolioTerminalArmGate();
+const { armGate, unlockDirect } = usePortfolioTerminalArmGate();
 const { goToSection, sectionHref } = useSectionNavigation();
 const { trackEvent } = useAnalytics();
+const prefersReducedMotion = usePrefersReducedMotion();
+const isMobileDevice = useMatchMedia('(max-width: 1023px), (pointer: coarse)');
 
 function onPrimaryCtaClick(event: MouseEvent) {
   trackEvent('primary_cta_click', { location: 'hero' });
@@ -21,7 +23,11 @@ function onSecondaryCtaClick(event: MouseEvent) {
 
 function onTerminalPromptClick() {
   trackEvent('terminal_shortcut_click', { location: 'hero' });
-  armGate();
+  if (isMobileDevice.value) {
+    unlockDirect({ preferReducedMotion: prefersReducedMotion.value });
+  } else {
+    armGate();
+  }
 }
 
 const {
@@ -139,12 +145,18 @@ onMounted(() => {
 
             <span class="text-muted/40 hidden sm:inline" aria-hidden="true">•</span>
 
-            <!-- Interactive Terminal Trigger Chip (Arms the Flight Gate) -->
+            <!-- Interactive Terminal Trigger Chip (Direct unlock on mobile, Arms Flight Gate on desktop) -->
             <button
               type="button"
               class="group/term inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/80 hover:bg-secondary border border-primary/20 hover:border-primary/50 text-muted hover:text-foreground transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-              :aria-label="$t('hero.terminalChipAria')"
-              :title="$t('hero.terminalChipTooltip')"
+              :aria-label="
+                isMobileDevice ? $t('hero.terminalChipAriaMobile') : $t('hero.terminalChipAria')
+              "
+              :title="
+                isMobileDevice
+                  ? $t('hero.terminalChipTooltipMobile')
+                  : $t('hero.terminalChipTooltip')
+              "
               @click="onTerminalPromptClick"
             >
               <Icon
@@ -152,10 +164,17 @@ onMounted(() => {
                 class="size-3.5 text-primary group-hover/term:rotate-12 transition-transform"
                 aria-hidden="true"
               />
-              <span class="font-mono text-xs">{{ $t('hero.terminalPrompt') }}</span>
+              <span class="font-mono text-xs hidden sm:inline">{{
+                $t('hero.terminalPrompt')
+              }}</span>
+              <span class="font-mono text-xs sm:hidden">{{ $t('hero.terminalPromptMobile') }}</span>
               <span
-                class="font-mono text-[10px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-bold"
+                class="hidden sm:inline-block font-mono text-[10px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-bold"
                 >/</span
+              >
+              <span
+                class="sm:hidden inline-flex items-center font-mono text-[10px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-bold"
+                >CMD</span
               >
             </button>
           </div>

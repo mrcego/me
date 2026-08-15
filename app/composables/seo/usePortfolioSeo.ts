@@ -257,7 +257,7 @@ export const usePortfolioSeo = () => {
         description: t('seo.serviceDescription'),
         url: canonicalUrl.value,
         image: ogImage,
-        telephone: CONTACT_PHONE_E164,
+        ...(CONTACT_PHONE_E164 ? { telephone: CONTACT_PHONE_E164 } : {}),
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Cartagena de Indias',

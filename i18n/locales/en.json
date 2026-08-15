@@ -89,8 +89,11 @@
       "operational": "Operational"
     },
     "terminalPrompt": "cesargomez.dev/terminal ~ $ press \"/\" for command index",
+    "terminalPromptMobile": "cesargomez.dev/terminal ~ $ tap for command index",
     "terminalChipAria": "Open command terminal (press / or enter Konami code)",
+    "terminalChipAriaMobile": "Open command terminal",
     "terminalChipTooltip": "Click to arm flight path (or press /)",
+    "terminalChipTooltipMobile": "Tap to open command terminal",
     "h1": "Senior Vue/Nuxt & Fullstack Engineer",
     "title": "César Gómez | Senior Vue/Nuxt & Fullstack Engineer"
   },

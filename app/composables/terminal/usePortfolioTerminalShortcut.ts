@@ -251,11 +251,15 @@ function usePortfolioTerminalGateApi(): {
 }
 
 /**
- * Hero trigger chip / direct button entry — arms the Konami flight gate.
+ * Hero trigger chip / direct button entry — arms the Konami flight gate on desktop,
+ * or unlocks directly on mobile/coarse pointer.
  */
 export function usePortfolioTerminalArmGate() {
   const { api } = usePortfolioTerminalGateApi();
-  return { armGate: api.armGate };
+  return {
+    armGate: api.armGate,
+    unlockDirect: api.unlockFromLogoLongPress,
+  };
 }
 
 /**

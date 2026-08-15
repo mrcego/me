@@ -89,8 +89,11 @@
       "operational": "Operativo"
     },
     "terminalPrompt": "cesargomez.dev/terminal ~ $ presiona \"/\" para abrir comandos",
+    "terminalPromptMobile": "cesargomez.dev/terminal ~ $ toca para abrir comandos",
     "terminalChipAria": "Abrir terminal de comandos (presiona / o ingresa el código Konami)",
+    "terminalChipAriaMobile": "Abrir terminal de comandos",
     "terminalChipTooltip": "Clic para armar flight path (o presiona /)",
+    "terminalChipTooltipMobile": "Toca para abrir terminal de comandos",
     "h1": "Ingeniero Fullstack Senior y Arquitecto Frontend",
     "title": "César Gómez | Ingeniero Fullstack Senior y Arquitecto Frontend"
   },
