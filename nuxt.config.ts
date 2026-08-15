@@ -240,6 +240,8 @@ export default defineNuxtConfig({
         'solar:letter-bold',
         'solar:arrow-left-linear',
         'solar:arrow-down-linear',
+        'solar:download-minimalistic-bold-duotone',
+        'solar:case-minimalistic-bold-duotone',
         // Capabilities section
         'solar:rocket-bold-duotone',
         'solar:database-bold-duotone',

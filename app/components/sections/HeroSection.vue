@@ -132,15 +132,14 @@ onMounted(() => {
           </p>
         </header>
 
-        <!-- CTA row -->
+        <!-- CTA Action Cluster -->
         <div
-          class="relative z-20 hero-reveal hero-reveal--d80 flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-3.5 w-full"
+          class="relative z-20 hero-reveal hero-reveal--d80 flex flex-col items-center lg:items-start gap-4 sm:gap-4.5 w-full"
         >
-          <div
-            class="flex flex-wrap sm:flex-nowrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto shrink-0"
-          >
+          <!-- Primary & Secondary Action CTAs -->
+          <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-3.5 w-full sm:w-auto">
             <a
-              class="hero-cta-btn hero-cta-btn--primary bg-primary text-primary-contrast rounded-xl sm:rounded-2xl px-6 sm:px-7 py-3.5 sm:py-3.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-flex items-center justify-center gap-2.5 font-bold text-sm sm:text-base border border-primary/50 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 w-full sm:w-auto"
+              class="hero-cta-btn hero-cta-btn--primary bg-primary text-primary-contrast rounded-xl sm:rounded-2xl px-6 sm:px-7 py-3.5 shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-flex items-center justify-center gap-2.5 font-bold text-sm sm:text-base border border-primary/50 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 w-full sm:w-auto"
               :href="sectionHref('#contact')"
               @click="onPrimaryCtaClick"
             >
@@ -148,58 +147,59 @@ onMounted(() => {
               <span class="whitespace-nowrap">{{ $t('hero.cta') }}</span>
             </a>
             <a
-              class="hero-cta-btn hero-cta-btn--secondary rounded-xl sm:rounded-2xl px-5 sm:px-6 py-3.5 sm:py-3.5 text-sm sm:text-base font-bold text-foreground border border-foreground/15 hover:border-primary/40 hover:bg-primary/5 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-flex items-center justify-center gap-2 text-center whitespace-nowrap bg-secondary/60 backdrop-blur-xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 w-full sm:w-auto"
+              class="hero-cta-btn hero-cta-btn--secondary rounded-xl sm:rounded-2xl px-5 sm:px-6 py-3.5 text-sm sm:text-base font-bold text-foreground border border-foreground/15 hover:border-primary/40 hover:bg-primary/5 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-flex items-center justify-center gap-2.5 text-center whitespace-nowrap bg-secondary/60 backdrop-blur-xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 w-full sm:w-auto"
               :href="sectionHref('#case-studies')"
               @click="onSecondaryCtaClick"
             >
-              <Icon
-                name="solar:case-minimalistic-bold-duotone"
-                class="size-5 shrink-0 text-primary/80"
-              />
+              <Icon name="solar:bag-2-bold-duotone" class="size-5 shrink-0 text-primary" />
               <span class="whitespace-nowrap">{{ $t('hero.secondaryCta') }}</span>
             </a>
-            <CvDownloadButton class="w-full sm:w-auto" />
           </div>
 
-          <div class="hidden xl:block h-7 w-px bg-foreground/15 shrink-0 mx-1" aria-hidden="true" />
-
+          <!-- Credentials & Direct Channels (Download CV + Social Profiles) -->
           <div
-            class="relative z-20 flex gap-2 items-center justify-center lg:justify-start shrink-0"
+            class="flex items-center gap-3 sm:gap-3.5 w-full sm:w-auto justify-center lg:justify-start"
           >
-            <a
-              href="https://linkedin.com/in/mrcego"
-              target="_blank"
-              rel="noopener noreferrer"
-              :aria-label="$t('footer.socialLinkedIn')"
-              class="hero-social-link inline-flex items-center justify-center size-11 sm:size-12 rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-            >
-              <Icon
-                name="simple-icons:linkedin"
-                class="size-4.5 sm:size-5 shrink-0 pointer-events-none text-current"
-              />
-            </a>
-            <a
-              href="https://github.com/mrcego"
-              target="_blank"
-              rel="noopener noreferrer"
-              :aria-label="$t('footer.socialGitHub')"
-              class="hero-social-link inline-flex items-center justify-center size-11 sm:size-12 rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-            >
-              <Icon
-                name="simple-icons:github"
-                class="size-4.5 sm:size-5 shrink-0 pointer-events-none text-current"
-              />
-            </a>
-            <a
-              href="mailto:cesargomezh90@gmail.com"
-              :aria-label="$t('footer.socialEmail')"
-              class="hero-social-link inline-flex items-center justify-center size-11 sm:size-12 rounded-xl sm:rounded-2xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-            >
-              <Icon
-                name="solar:letter-linear"
-                class="size-4.5 sm:size-5 shrink-0 pointer-events-none text-current"
-              />
-            </a>
+            <CvDownloadButton />
+
+            <div class="h-6 w-px bg-foreground/15 shrink-0" aria-hidden="true" />
+
+            <div class="flex items-center gap-2 shrink-0">
+              <a
+                href="https://linkedin.com/in/mrcego"
+                target="_blank"
+                rel="noopener noreferrer"
+                :aria-label="$t('footer.socialLinkedIn')"
+                class="hero-social-link inline-flex items-center justify-center size-10.5 sm:size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              >
+                <Icon
+                  name="simple-icons:linkedin"
+                  class="size-4.5 shrink-0 pointer-events-none text-current"
+                />
+              </a>
+              <a
+                href="https://github.com/mrcego"
+                target="_blank"
+                rel="noopener noreferrer"
+                :aria-label="$t('footer.socialGitHub')"
+                class="hero-social-link inline-flex items-center justify-center size-10.5 sm:size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              >
+                <Icon
+                  name="simple-icons:github"
+                  class="size-4.5 shrink-0 pointer-events-none text-current"
+                />
+              </a>
+              <a
+                href="mailto:cesargomezh90@gmail.com"
+                :aria-label="$t('footer.socialEmail')"
+                class="hero-social-link inline-flex items-center justify-center size-10.5 sm:size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              >
+                <Icon
+                  name="solar:letter-linear"
+                  class="size-4.5 shrink-0 pointer-events-none text-current"
+                />
+              </a>
+            </div>
           </div>
         </div>
 
