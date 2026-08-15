@@ -13,4 +13,5 @@ public
 .gemini
 .github/skills
 .github/agents
+.github/hooks
 .cursor/agents
