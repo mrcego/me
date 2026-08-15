@@ -236,6 +236,9 @@ export default defineNuxtConfig({
       icons: [
         // Hero section & social
         'solar:rocket-2-bold-duotone',
+        'solar:calendar-date-bold-duotone',
+        'solar:code-file-bold-duotone',
+        'solar:code-square-bold-duotone',
         'solar:letter-linear',
         'solar:letter-bold',
         'solar:arrow-left-linear',
@@ -291,7 +294,7 @@ export default defineNuxtConfig({
         'solar:arrow-right-up-bold',
         'solar:arrow-right-up-linear',
         'solar:download-minimalistic-bold-duotone',
-        'lucide:check-circle-2',
+        'lucide:circle-check',
         'lucide:chevron-down',
         'lucide:x',
         'solar:hamburger-menu-linear',
