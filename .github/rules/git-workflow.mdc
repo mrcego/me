@@ -1,0 +1,28 @@
+---
+description: Mandatory Branch-First Git Workflow — Never commit or push directly to main
+alwaysApply: true
+---
+
+# Git Workflow & Branching Canon
+
+> **CRITICAL INVARIANT**: **NEVER commit directly to `main`. NEVER push directly to `main`.**
+
+## Rules for AI Assistants
+
+1. **Branch First**:
+   - Before writing or committing changes, ensure the repository is on a dedicated branch:
+     - `feat/<topic>`
+     - `fix/<topic>`
+     - `refactor/<topic>`
+     - `chore/<topic>`
+   - Create and switch to the branch: `git checkout -b <branch-name>`
+
+2. **Validate Before Push**:
+   - Run `pnpm format:check`
+   - Run `pnpm lint`
+   - Run `pnpm test`
+   - Never use `--no-verify` to bypass Husky pre-commit or pre-push hooks.
+
+3. **Deliver via Branch**:
+   - Push to `origin <branch-name>`: `git push -u origin <branch-name>`
+   - Notify the user or create a PR to merge into `main`.

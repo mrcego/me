@@ -85,6 +85,18 @@ describe('parsePortfolioTerminalCommand', () => {
       type: 'setLang',
       lang: 'es',
     });
+    expect(parsePortfolioTerminalCommand('benchmark').effects[0]).toMatchObject({
+      type: 'print',
+      commandId: 'benchmark',
+    });
+    expect(parsePortfolioTerminalCommand('bench').effects[0]).toMatchObject({
+      type: 'print',
+      commandId: 'benchmark',
+    });
+    expect(parsePortfolioTerminalCommand('deploy').effects[0]).toMatchObject({
+      type: 'print',
+      commandId: 'deploy',
+    });
   });
 
   it('returns downloadCv for cv with optional language', () => {

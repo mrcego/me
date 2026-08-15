@@ -44,11 +44,15 @@ describe('CSP builders', () => {
     expect(hashInlineScript(bodies[0]!)).toMatch(/^'sha256-[A-Za-z0-9+/=]+'$/);
   });
 
-  it('locks connect-src to self and analytics domains so Iconify CDN cannot be fetched', () => {
+  it('locks connect-src to self, analytics, and Hugging Face model CDNs', () => {
     const directives = buildCspDirectives();
     const connect = directives.find((d) => d.startsWith('connect-src'));
+    const worker = directives.find((d) => d.startsWith('worker-src'));
     expect(connect).toContain("'self'");
     expect(connect).toContain('https://*.google-analytics.com');
+    expect(connect).toContain('https://huggingface.co');
+    expect(connect).toContain('https://*.hf.co');
+    expect(worker).toBe("worker-src 'self' blob:");
   });
 
   it('writes a Netlify _headers file that parses back to the same CSP', () => {

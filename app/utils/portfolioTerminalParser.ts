@@ -101,6 +101,8 @@ export function parsePortfolioTerminalCommand(rawInput: string): TerminalParseRe
     case 'certs':
     case 'contact':
     case 'seo':
+    case 'benchmark':
+    case 'deploy':
       if (args.length > 0) return { input, normalized, effects: [usage(command.id)] };
       return {
         input,
@@ -273,6 +275,8 @@ export function suggestPortfolioTerminalCommands(rawInput: string, limit = 5): s
           'about',
           'status',
           'stack',
+          'benchmark',
+          'deploy',
           'work',
           'experience',
           'profiles',

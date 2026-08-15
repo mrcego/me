@@ -43,6 +43,11 @@ Nuxt 4 · Vue 3 `<script setup>` · TypeScript · PrimeVue · Tailwind 4 · moti
 
 `pnpm dev` · `pnpm lint` · `pnpm typecheck` · `pnpm generate` · `pnpm prepush:validate`
 
+## Git & Branching Canon
+
+- **Never commit directly to `main`**: Always create a feature or fix branch (`git checkout -b feat/...` or `fix/...`).
+- Run `pnpm format:check`, `pnpm lint`, and `pnpm test` before pushing.
+
 ## Fix as you go
 
 In files you touch: keep scope minimal, match existing patterns, run lint/typecheck before push.

@@ -133,7 +133,7 @@ const aboutPoints: PhilosophyPoint[] = [
     <!-- Background Decorative Element -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] -z-10" />
 
-    <div class="container mx-auto min-w-0 max-w-7xl">
+    <div class="container mx-auto min-w-0">
       <div
         class="grid grid-cols-1 xl:grid-cols-12 gap-8 sm:gap-10 xl:gap-14 2xl:gap-20 items-start min-w-0"
       >
@@ -143,7 +143,7 @@ const aboutPoints: PhilosophyPoint[] = [
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :viewport="{ once: true }"
           :transition="motionTransition({ duration: 0.42 })"
-          class="xl:col-span-5 xl:sticky xl:top-28 2xl:top-32 w-full max-w-lg mx-auto xl:max-w-none xl:mx-0 min-w-0"
+          class="xl:col-span-5 xl:sticky xl:top-28 2xl:top-32 w-full max-w-2xl md:max-w-4xl xl:max-w-none mx-auto xl:mx-0 min-w-0"
         >
           <div
             class="surface-card group glass border-white/5 rounded-2xl sm:rounded-3xl xl:rounded-[2.5rem] overflow-hidden p-5 sm:p-7 md:p-8 xl:p-10 shadow-2xl relative min-w-0"
@@ -154,7 +154,7 @@ const aboutPoints: PhilosophyPoint[] = [
             />
 
             <div
-              class="relative aspect-square max-h-56 sm:max-h-64 md:max-h-72 xl:max-h-104 w-full max-w-xs sm:max-w-sm xl:max-w-none mx-auto rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 transition-[transform,opacity,filter,box-shadow] duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
+              class="relative aspect-square max-h-56 sm:max-h-64 md:max-h-72 xl:max-h-104 w-full max-w-xs sm:max-w-sm md:max-w-md xl:max-w-none mx-auto rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 transition-[transform,opacity,filter,box-shadow] duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
             >
               <NuxtImg
                 src="/img/technical-identity.jpg"
@@ -198,19 +198,19 @@ const aboutPoints: PhilosophyPoint[] = [
             </div>
 
             <!-- Content inside card -->
-            <p
-              class="text-xl sm:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4 text-center xl:text-left"
-            >
-              {{ $t('about.philosophy') }}
-            </p>
+            <div class="max-w-2xl mx-auto xl:max-w-none text-center xl:text-left mb-6 sm:mb-8">
+              <p class="text-xl sm:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4">
+                {{ $t('about.philosophy') }}
+              </p>
 
-            <p
-              class="mb-6 sm:mb-8 text-base sm:text-lg font-medium text-muted leading-relaxed text-center xl:text-left text-pretty"
-            >
-              "{{ $t('about.philosophyQuote') }}"
-            </p>
+              <p class="text-base sm:text-lg font-medium text-muted leading-relaxed text-pretty">
+                "{{ $t('about.philosophyQuote') }}"
+              </p>
+            </div>
 
-            <div class="philosophy-points space-y-4 sm:space-y-5">
+            <div
+              class="philosophy-points grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-4 sm:gap-5"
+            >
               <PhilosophyBentoCard
                 v-for="(point, idx) in aboutPoints"
                 :key="point.label"
@@ -321,11 +321,11 @@ const aboutPoints: PhilosophyPoint[] = [
                   </div>
 
                   <div class="space-y-1.5 sm:space-y-2 min-w-0">
-                    <h4
+                    <h3
                       class="surface-card__title text-base sm:text-lg xl:text-xl font-black tracking-tight text-pretty line-clamp-2"
                     >
                       {{ $t(`about.roles.${role.key}.title`) }}
-                    </h4>
+                    </h3>
                     <p class="surface-card__meta type-meta">
                       {{ $t(`about.roles.${role.key}.company`) }}
                     </p>

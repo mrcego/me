@@ -28,6 +28,7 @@ export interface PortfolioTerminalShortcutApi {
   progressIndex: Ref<number>;
   sequenceLength: number;
   announce: Ref<string>;
+  armGate: () => void;
   resetGate: () => void;
   /** Mobile/coarse: logo long-press unlocks the same gate/terminal path. */
   unlockFromLogoLongPress: (options?: UnlockFromLogoLongPressOptions) => void;
@@ -241,10 +242,23 @@ function usePortfolioTerminalGateApi(): {
       progressIndex,
       sequenceLength: KONAMI_SEQUENCE.length,
       announce,
+      armGate: armSequence,
       resetGate,
       unlockFromLogoLongPress,
     },
     onGlobalKeydown,
+  };
+}
+
+/**
+ * Hero trigger chip / direct button entry — arms the Konami flight gate on desktop,
+ * or unlocks directly on mobile/coarse pointer.
+ */
+export function usePortfolioTerminalArmGate() {
+  const { api } = usePortfolioTerminalGateApi();
+  return {
+    armGate: api.armGate,
+    unlockDirect: api.unlockFromLogoLongPress,
   };
 }
 

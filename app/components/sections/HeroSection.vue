@@ -5,9 +5,11 @@ import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
 const { activeRoleIndex, currentRole } = useBrandRoleRotator();
 const { openVibeCodingModal, vibeCodingModalMounted } = useVibeCodingModal();
-const { openTerminal } = usePortfolioTerminal();
+const { armGate, unlockDirect } = usePortfolioTerminalArmGate();
 const { goToSection, sectionHref } = useSectionNavigation();
 const { trackEvent } = useAnalytics();
+const prefersReducedMotion = usePrefersReducedMotion();
+const isMobileDevice = useMatchMedia('(max-width: 1023px), (pointer: coarse)');
 
 function onPrimaryCtaClick(event: MouseEvent) {
   trackEvent('primary_cta_click', { location: 'hero' });
@@ -21,7 +23,11 @@ function onSecondaryCtaClick(event: MouseEvent) {
 
 function onTerminalPromptClick() {
   trackEvent('terminal_shortcut_click', { location: 'hero' });
-  openTerminal();
+  if (isMobileDevice.value) {
+    unlockDirect({ preferReducedMotion: prefersReducedMotion.value });
+  } else {
+    armGate();
+  }
 }
 
 const {
@@ -102,15 +108,15 @@ onMounted(() => {
     </div>
 
     <div
-      class="container mx-auto grid lg:grid-cols-[1.15fr_0.85fr] items-start gap-6 sm:gap-8 lg:gap-12 xl:gap-16 z-10 relative w-full"
+      class="container mx-auto grid xl:grid-cols-[1.15fr_0.85fr] items-start gap-8 lg:gap-12 xl:gap-16 z-10 relative w-full"
     >
       <!-- Left Column: Header + CTAs + Tags -->
       <div
-        class="order-1 lg:col-start-1 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 sm:space-y-7 lg:space-y-8 w-full"
+        class="order-1 xl:col-start-1 flex flex-col items-center xl:items-start text-center xl:text-left space-y-6 sm:space-y-7 lg:space-y-8 w-full max-w-2xl xl:max-w-none mx-auto"
       >
         <!-- Headline: H1 + name + differentiator -->
         <header
-          class="space-y-3 sm:space-y-4 md:space-y-5 flex flex-col items-center lg:items-start text-center lg:text-left w-full"
+          class="space-y-3 sm:space-y-4 md:space-y-5 flex flex-col items-center xl:items-start text-center xl:text-left w-full"
         >
           <h1 class="space-y-2 sm:space-y-3 font-black tracking-tighter text-balance w-full">
             <span class="block text-2xl sm:text-3xl md:text-4xl text-gradient tracking-tight">
@@ -125,10 +131,10 @@ onMounted(() => {
 
           <!-- Rotator & Interactive Terminal Trigger Strip -->
           <div
-            class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1 w-full"
+            class="flex flex-wrap items-center justify-center xl:justify-start gap-3 pt-1 w-full"
           >
             <!-- Rotator pill badge for specialized sub-roles -->
-            <p class="type-meta text-muted flex items-center justify-center lg:justify-start gap-2">
+            <p class="type-meta text-muted flex items-center justify-center xl:justify-start gap-2">
               <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse" />
               <Transition name="hero-role-fade" mode="out-in">
                 <span :key="activeRoleIndex" class="font-bold text-foreground">
@@ -139,10 +145,18 @@ onMounted(() => {
 
             <span class="text-muted/40 hidden sm:inline" aria-hidden="true">•</span>
 
-            <!-- Interactive Terminal Trigger Chip -->
+            <!-- Interactive Terminal Trigger Chip (Direct unlock on mobile, Arms Flight Gate on desktop) -->
             <button
               type="button"
               class="group/term inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/80 hover:bg-secondary border border-primary/20 hover:border-primary/50 text-muted hover:text-foreground transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              :aria-label="
+                isMobileDevice ? $t('hero.terminalChipAriaMobile') : $t('hero.terminalChipAria')
+              "
+              :title="
+                isMobileDevice
+                  ? $t('hero.terminalChipTooltipMobile')
+                  : $t('hero.terminalChipTooltip')
+              "
               @click="onTerminalPromptClick"
             >
               <Icon
@@ -150,16 +164,23 @@ onMounted(() => {
                 class="size-3.5 text-primary group-hover/term:rotate-12 transition-transform"
                 aria-hidden="true"
               />
-              <span class="font-mono text-xs">{{ $t('hero.terminalPrompt') }}</span>
+              <span class="font-mono text-xs hidden sm:inline">{{
+                $t('hero.terminalPrompt')
+              }}</span>
+              <span class="font-mono text-xs sm:hidden">{{ $t('hero.terminalPromptMobile') }}</span>
               <span
-                class="font-mono text-[10px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-bold"
+                class="hidden sm:inline-block font-mono text-[10px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-bold"
                 >/</span
+              >
+              <span
+                class="sm:hidden inline-flex items-center font-mono text-[10px] px-1.5 py-0.2 rounded bg-primary/10 text-primary font-bold"
+                >CMD</span
               >
             </button>
           </div>
 
           <p
-            class="hero-reveal hero-reveal--d35 w-full max-w-2xl text-base sm:text-lg text-muted text-center lg:text-left text-pretty font-medium leading-relaxed"
+            class="hero-reveal hero-reveal--d35 w-full max-w-2xl text-base sm:text-lg text-muted text-center xl:text-left text-pretty font-medium leading-relaxed"
           >
             {{ $t('hero.description') }}
           </p>
@@ -167,7 +188,7 @@ onMounted(() => {
 
         <!-- CTA Action Cluster -->
         <div
-          class="relative z-20 hero-reveal hero-reveal--d80 flex flex-col items-center lg:items-start gap-4 sm:gap-4.5 w-full"
+          class="relative z-20 hero-reveal hero-reveal--d80 flex flex-col items-center xl:items-start gap-4 sm:gap-4.5 w-full"
         >
           <!-- Primary & Secondary Action CTAs -->
           <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-3.5 w-full sm:w-auto">
@@ -191,7 +212,7 @@ onMounted(() => {
 
           <!-- Credentials & Direct Channels (Download CV + Social Profiles) -->
           <div
-            class="flex items-center gap-3 sm:gap-3.5 w-full sm:w-auto justify-center lg:justify-start"
+            class="flex items-center gap-3 sm:gap-3.5 w-full sm:w-auto justify-center xl:justify-start"
           >
             <CvDownloadButton />
 
@@ -203,7 +224,7 @@ onMounted(() => {
                 target="_blank"
                 rel="noopener noreferrer"
                 :aria-label="$t('footer.socialLinkedIn')"
-                class="hero-social-link inline-flex items-center justify-center size-10.5 sm:size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="simple-icons:linkedin"
@@ -215,7 +236,7 @@ onMounted(() => {
                 target="_blank"
                 rel="noopener noreferrer"
                 :aria-label="$t('footer.socialGitHub')"
-                class="hero-social-link inline-flex items-center justify-center size-10.5 sm:size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="simple-icons:github"
@@ -225,7 +246,7 @@ onMounted(() => {
               <a
                 href="mailto:cesargomezh90@gmail.com"
                 :aria-label="$t('footer.socialEmail')"
-                class="hero-social-link inline-flex items-center justify-center size-10.5 sm:size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="solar:letter-linear"
@@ -238,7 +259,7 @@ onMounted(() => {
 
         <!-- Tech Stack Tags -->
         <div class="hero-reveal hero-reveal--d60 w-full max-w-2xl">
-          <div class="flex flex-wrap justify-center lg:justify-start gap-x-4 sm:gap-x-5 gap-y-2">
+          <div class="flex flex-wrap justify-center xl:justify-start gap-x-4 sm:gap-x-5 gap-y-2">
             <div
               v-for="tag in heroTags"
               :key="tag"
@@ -253,7 +274,7 @@ onMounted(() => {
 
       <!-- Right Column: Photo + Vibe Badge + Stats HUD Card -->
       <div
-        class="order-2 lg:col-start-2 flex flex-col items-center gap-4 sm:gap-5 w-full max-w-[16rem] sm:max-w-md lg:max-w-none mx-auto lg:self-start"
+        class="order-2 xl:col-start-2 flex flex-col items-center gap-4 sm:gap-5 w-full max-w-[18rem] sm:max-w-md xl:max-w-none mx-auto xl:self-start"
       >
         <!-- Photo & Tilt Card -->
         <div
@@ -270,7 +291,7 @@ onMounted(() => {
               class="surface-card relative w-full rounded-[1.8rem] md:rounded-[2.2rem] lg:rounded-[2.6rem] overflow-hidden border border-primary/25 glass p-1 md:p-1.5 shadow-2xl"
             >
               <div
-                class="relative aspect-4/5 max-h-[min(13rem,28svh)] sm:max-h-[min(17rem,34svh)] md:max-h-[min(22rem,40svh)] lg:max-h-[min(28rem,54svh)] xl:max-h-[min(32rem,60svh)] mx-auto rounded-[1.5rem] md:rounded-[1.9rem] lg:rounded-[2.3rem] overflow-hidden bg-secondary"
+                class="relative aspect-4/5 max-h-[min(13rem,28svh)] sm:max-h-[min(17rem,34svh)] md:max-h-[min(22rem,40svh)] xl:max-h-[min(32rem,60svh)] mx-auto rounded-[1.5rem] md:rounded-[1.9rem] lg:rounded-[2.3rem] overflow-hidden bg-secondary"
               >
                 <div class="absolute inset-x-0 top-0 h-px bg-primary/20 z-20" />
                 <div class="absolute inset-y-0 left-0 w-px bg-primary/20 z-20" />
@@ -345,26 +366,26 @@ onMounted(() => {
 
         <!-- Stats HUD Dock under photo -->
         <div
-          class="w-full grid grid-cols-3 gap-2 sm:gap-3 p-2.5 sm:p-3 rounded-2xl sm:rounded-3xl border border-primary/20 bg-secondary/60 backdrop-blur-md shadow-xl"
+          class="w-full grid grid-cols-3 gap-2 sm:gap-3 p-2.5 sm:p-3.5 rounded-2xl sm:rounded-3xl border border-primary/20 bg-secondary/60 backdrop-blur-md shadow-xl"
         >
           <div
             v-for="(stat, i) in heroStats"
             :key="stat.labelKey"
-            class="hero-reveal text-center p-2 sm:p-2.5 rounded-xl sm:rounded-2xl bg-background/50 border border-foreground/5 group/stat hover:border-primary/30 transition-all duration-300 flex flex-col items-center justify-center gap-1"
+            class="hero-reveal text-center p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-background/50 border border-foreground/5 group/stat hover:border-primary/30 transition-all duration-300 flex flex-col items-center justify-center gap-1 min-w-0"
             :style="{ animationDelay: `${0.4 + i * 0.1}s` }"
           >
             <Icon
               :name="stat.icon"
-              class="size-4 sm:size-4.5 text-primary/70 group-hover/stat:text-primary transition-colors"
+              class="size-3.5 sm:size-4.5 text-primary/70 group-hover/stat:text-primary transition-colors shrink-0"
               aria-hidden="true"
             />
             <div
-              class="text-xl sm:text-2xl md:text-3xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
+              class="text-lg sm:text-2xl md:text-3xl font-black text-foreground tracking-tighter group-hover/stat:text-primary transition-colors text-gradient"
             >
               {{ stat.value }}
             </div>
             <div
-              class="text-xs text-muted group-hover/stat:text-foreground transition-colors font-medium leading-tight line-clamp-2"
+              class="text-[11px] sm:text-xs text-muted group-hover/stat:text-foreground transition-colors font-medium leading-snug text-center text-balance break-normal hyphens-none"
             >
               {{ $t(stat.labelKey) }}
             </div>

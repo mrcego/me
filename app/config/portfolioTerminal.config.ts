@@ -67,6 +67,8 @@ export type TerminalCommandId =
   | 'lang'
   | 'go'
   | 'theme'
+  | 'benchmark'
+  | 'deploy'
   | 'clear'
   | 'exit';
 
@@ -242,6 +244,22 @@ export const TERMINAL_COMMANDS: readonly TerminalCommandDefinition[] = [
     aliases: ['theme', 'tema'],
     usageKey: 'terminal.commands.theme.usage',
     summaryKey: 'terminal.commands.theme.summary',
+    group: 'system',
+  },
+  {
+    id: 'benchmark',
+    name: 'benchmark',
+    aliases: ['benchmark', 'bench', 'perf', 'telemetry', 'rendimiento'],
+    usageKey: 'terminal.commands.benchmark.usage',
+    summaryKey: 'terminal.commands.benchmark.summary',
+    group: 'system',
+  },
+  {
+    id: 'deploy',
+    name: 'deploy',
+    aliases: ['deploy', 'desplegar', 'build', 'pipeline'],
+    usageKey: 'terminal.commands.deploy.usage',
+    summaryKey: 'terminal.commands.deploy.summary',
     group: 'system',
   },
   {

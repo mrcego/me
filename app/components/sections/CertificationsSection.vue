@@ -99,19 +99,19 @@ watch(showAllRest, () => {
       >
         <div class="flex items-center justify-center gap-4 md:gap-6">
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
-          <h2 class="type-eyebrow tracking-[0.4em]">
+          <p class="type-eyebrow tracking-[0.4em]">
             {{ $t('certifications.section') }}
-          </h2>
+          </p>
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
         </div>
-        <h3
+        <h2
           class="certifications-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.95] md:leading-[0.9] text-foreground"
         >
           <span class="block">{{ $t('certifications.title') }}</span>
           <span class="text-gradient certifications-heading__highlight block">
             {{ $t('certifications.titleHighlight') }}
           </span>
-        </h3>
+        </h2>
         <p
           class="text-muted text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto"
         >
@@ -139,11 +139,11 @@ watch(showAllRest, () => {
             </div>
 
             <div class="space-y-2 min-w-0">
-              <h4
+              <h3
                 class="surface-card__title text-lg sm:text-xl font-bold tracking-tight text-foreground text-balance wrap-break-word line-clamp-2 sm:line-clamp-3"
               >
                 {{ cert.title }}
-              </h4>
+              </h3>
               <div class="flex items-center gap-2 text-sm font-medium text-muted">
                 <Icon :name="certIssuerIcon(cert.issuer)" class="cert-issuer__glyph shrink-0" />
                 <span>{{ cert.issuer }}</span>
@@ -196,9 +196,9 @@ watch(showAllRest, () => {
         <div
           class="flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 py-4 border-b border-foreground/5"
         >
-          <h4 class="type-eyebrow tracking-[0.3em] text-muted">
+          <p class="type-eyebrow tracking-[0.3em] text-muted">
             {{ $t('certifications.allCredentials') }}
-          </h4>
+          </p>
           <p class="text-sm font-medium text-muted" aria-live="polite">
             {{ $t('certifications.moreCredentials', { count: restCertifications.length }) }}
           </p>

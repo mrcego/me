@@ -29,7 +29,7 @@ test.describe('homepage sections', () => {
   });
 
   test('nav anchors jump to their sections', async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.setViewportSize({ width: 1536, height: 800 });
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     await expect(page.getByRole('button', { name: /Theme Presets/i })).toBeVisible({
       timeout: 20_000,

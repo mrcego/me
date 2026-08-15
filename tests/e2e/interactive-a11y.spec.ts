@@ -40,7 +40,7 @@ test.describe('interactive accessibility', () => {
   });
 
   test('hire menu: Escape restores focus to trigger', async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.setViewportSize({ width: 1536, height: 800 });
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     await waitForHydratedNav(page);
 
@@ -55,7 +55,7 @@ test.describe('interactive accessibility', () => {
   });
 
   test('hire menu: arrow keys move focus between menuitems', async ({ page }) => {
-    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.setViewportSize({ width: 1536, height: 800 });
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     await waitForHydratedNav(page);
 

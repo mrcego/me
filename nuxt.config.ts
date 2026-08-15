@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
+import { fileURLToPath } from 'node:url';
 import tailwindcss from '@tailwindcss/vite';
 import { prerenderRoutesWithSitemap, sitemapUrls } from './app/config/routes.manifest';
 import { SEO_EDITORIAL_DATES } from './app/config/seo.config';
@@ -35,6 +36,10 @@ export default defineNuxtConfig({
     },
     {
       path: '~/components/terminal',
+      pathPrefix: false,
+    },
+    {
+      path: '~/components/angie',
       pathPrefix: false,
     },
     {
@@ -119,10 +124,29 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [
+      tailwindcss(),
+      {
+        name: 'vite-plugin-aspect-flare-fallback',
+        enforce: 'pre',
+        resolveId(id: string) {
+          if (id === '@aspect/flare') {
+            return fileURLToPath(new URL('./app/utils/mocks/aspectFlareMock.ts', import.meta.url));
+          }
+        },
+      },
+    ],
+    resolve: {
+      alias: {
+        '@aspect/flare': fileURLToPath(
+          new URL('./app/utils/mocks/aspectFlareMock.ts', import.meta.url),
+        ),
+      },
+    },
     optimizeDeps: {
       // Avoid prebundling the full @vueuse/core barrel into the graph.
       include: ['@unhead/schema-org/vue'],
+      exclude: ['@browserai/browserai', '@aspect/flare'],
     },
     build: {
       modulePreload: false,
@@ -131,6 +155,9 @@ export default defineNuxtConfig({
       // only found after entry JS executed.
       // https://developer.chrome.com/docs/performance/insights/network-dependency-tree
       cssCodeSplit: false,
+    },
+    worker: {
+      format: 'es',
     },
   },
 
@@ -236,6 +263,9 @@ export default defineNuxtConfig({
       icons: [
         // Hero section & social
         'solar:rocket-2-bold-duotone',
+        'solar:calendar-date-bold-duotone',
+        'solar:code-file-bold-duotone',
+        'solar:code-square-bold-duotone',
         'solar:letter-linear',
         'solar:letter-bold',
         'solar:arrow-left-linear',
@@ -265,9 +295,12 @@ export default defineNuxtConfig({
         'solar:buildings-2-bold-duotone',
         'solar:chat-round-dots-bold-duotone',
         'solar:chat-square-code-bold-duotone',
+        'solar:check-circle-bold',
         // About & philosophy points
         'logos:nuxt-icon',
         'logos:figma',
+        'lucide:calendar-range',
+        'lucide:map-pin',
         // Contact & social
         'solar:letter-bold-duotone',
         'solar:phone-calling-bold-duotone',
@@ -276,6 +309,8 @@ export default defineNuxtConfig({
         'logos:linkedin-icon',
         'logos:github-icon',
         'logos:twitter',
+        'logos:google-gmail',
+        'logos:whatsapp-icon',
         'simple-icons:linkedin',
         'simple-icons:github',
         // Certifications & navbar
@@ -291,11 +326,15 @@ export default defineNuxtConfig({
         'solar:arrow-right-up-bold',
         'solar:arrow-right-up-linear',
         'solar:download-minimalistic-bold-duotone',
-        'lucide:check-circle-2',
+        'lucide:circle-check',
         'lucide:chevron-down',
         'lucide:x',
+        'lucide:send',
+        'lucide:arrow-right',
         'solar:hamburger-menu-linear',
         'solar:close-square-linear',
+        'solar:stars-minimalistic-bold-duotone',
+        'solar:restart-linear',
       ],
     },
   },

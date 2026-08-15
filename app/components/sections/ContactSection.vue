@@ -1,21 +1,41 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { Motion } from 'motion-v';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import Textarea from 'primevue/textarea';
-import { CONTACT_PHONE_DISPLAY, CONTACT_PHONE_WHATSAPP } from '~/config/seo.config';
+import { CONTACT_WHATSAPP_DISPLAY, CONTACT_PHONE_WHATSAPP } from '~/config/seo.config';
 import { useContactForm } from '~/composables/domain/useContactForm';
 
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
-const { formData, errors, isSubmitting, submitSuccess, submitError, submitForm, fieldMaxLength } =
-  useContactForm();
+const {
+  formData,
+  errors,
+  isSubmitting,
+  submitSuccess,
+  submitError,
+  dispatchStage,
+  txReceipt,
+  submitForm,
+  fieldMaxLength,
+} = useContactForm();
+
+const copiedReceipt = ref(false);
+function copyReceipt() {
+  if (!txReceipt.value || !import.meta.client) return;
+  navigator.clipboard.writeText(txReceipt.value);
+  copiedReceipt.value = true;
+  setTimeout(() => {
+    copiedReceipt.value = false;
+  }, 2000);
+}
 
 const fieldClass =
-  'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-5! bg-foreground/7! border-foreground/15! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color] duration-300 text-sm md:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70!';
+  'rounded-xl sm:rounded-2xl md:rounded-3xl p-3.5! sm:p-4! md:p-5! bg-foreground/7! border-foreground/15! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color] duration-300 text-base sm:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70!';
 
 const textareaClass =
-  'rounded-xl sm:rounded-2xl md:rounded-3xl !p-4 sm:!p-5 md:!p-6 !bg-foreground/7 !border-foreground/15 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color,border-radius] duration-300 focus:rounded-2xl text-sm md:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70! min-h-32';
+  'rounded-xl sm:rounded-2xl md:rounded-3xl !p-4 sm:!p-5 md:!p-6 !bg-foreground/7 !border-foreground/15 focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color,border-radius] duration-300 focus:rounded-2xl text-base sm:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70! min-h-32';
 
 const contactMethods = [
   {
@@ -41,7 +61,7 @@ const contactMethods = [
   },
   {
     key: 'whatsapp',
-    value: CONTACT_PHONE_DISPLAY,
+    value: CONTACT_WHATSAPP_DISPLAY,
     icon: 'logos:whatsapp-icon',
     link: CONTACT_PHONE_WHATSAPP,
     external: true,
@@ -68,7 +88,7 @@ const contactMethods = [
     />
 
     <div class="container mx-auto z-10 relative">
-      <div class="grid lg:grid-cols-2 gap-16 md:gap-32 items-center">
+      <div class="grid xl:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
         <Motion
           :initial="motionInitial({ opacity: 0, x: -50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
@@ -76,8 +96,8 @@ const contactMethods = [
           :viewport="{ once: true }"
           class="space-y-8 sm:space-y-10 md:space-y-14"
         >
-          <div class="space-y-6 sm:space-y-8 md:space-y-12 group text-center lg:text-left">
-            <div class="flex items-center justify-center lg:justify-start gap-4 md:gap-6">
+          <div class="space-y-6 sm:space-y-8 md:space-y-12 group text-center xl:text-left">
+            <div class="flex items-center justify-center xl:justify-start gap-4 md:gap-6">
               <div class="h-px w-12 md:w-16 bg-primary" aria-hidden="true" />
               <p class="type-eyebrow tracking-[0.4em]">
                 {{ $t('contact.section') }}
@@ -93,18 +113,18 @@ const contactMethods = [
               {{ $t('contact.titleEnd') }}
             </h2>
             <p
-              class="text-muted text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto lg:mx-0 text-pretty"
+              class="text-muted text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto xl:mx-0 text-pretty"
             >
               {{ $t('contact.description') }}
             </p>
           </div>
 
-          <div class="space-y-4 md:space-y-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-4 md:gap-5">
             <a
               v-for="c in contactMethods"
               :key="c.key"
               :href="c.link"
-              class="contact-method glass flex items-center gap-4 md:gap-5 group touch-manipulation rounded-2xl border border-foreground/10 bg-foreground/3 px-3 py-3.5 md:px-4 md:py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              class="contact-method glass flex items-center gap-3.5 sm:gap-4 md:gap-5 group touch-manipulation rounded-2xl border border-foreground/10 bg-foreground/3 px-3 py-3.5 md:px-4 md:py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background min-w-0"
               :target="c.external ? '_blank' : undefined"
               :rel="c.external ? 'noopener noreferrer' : undefined"
             >
@@ -121,7 +141,7 @@ const contactMethods = [
                   {{ $t(`contact.methods.${c.key}`) }}
                 </p>
                 <p
-                  class="text-base sm:text-lg md:text-xl font-black text-foreground tracking-tight wrap-break-word"
+                  class="text-sm sm:text-base md:text-lg xl:text-xl font-black text-foreground tracking-tight truncate"
                 >
                   {{ c.value }}
                 </p>
@@ -140,7 +160,7 @@ const contactMethods = [
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="motionTransition({ duration: 0.42, delay: 0.08 })"
           :viewport="{ once: true }"
-          class="surface-card group glass p-6 sm:p-8 md:p-10 lg:p-12 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 relative overflow-hidden shadow-4xl mt-12 lg:mt-0"
+          class="surface-card group glass p-6 sm:p-8 md:p-10 lg:p-12 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 relative overflow-hidden shadow-4xl mt-12 xl:mt-0"
         >
           <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
 
@@ -166,9 +186,31 @@ const contactMethods = [
               v-if="submitSuccess"
               role="status"
               aria-live="polite"
-              class="p-4 sm:p-6 bg-green-500/10 border border-green-500/30 rounded-2xl text-green-400 text-sm sm:text-base font-medium text-center text-pretty"
+              class="p-5 sm:p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl text-foreground space-y-3"
             >
-              {{ $t('contact.form.success') }}
+              <div
+                class="flex items-center justify-between gap-2 border-b border-emerald-500/20 pb-2.5"
+              >
+                <div
+                  class="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold uppercase tracking-wider"
+                >
+                  <span class="size-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>{{ $t('contact.form.transmissionConfirmed') }}</span>
+                </div>
+                <button
+                  v-if="txReceipt"
+                  type="button"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-mono text-xs cursor-pointer transition-colors"
+                  :aria-label="$t('contact.form.copyToken')"
+                  @click="copyReceipt"
+                >
+                  <Icon name="solar:check-circle-bold" class="size-3.5 text-emerald-400" />
+                  <span>{{ copiedReceipt ? $t('contact.form.tokenCopied') : txReceipt }}</span>
+                </button>
+              </div>
+              <p class="text-sm sm:text-base font-medium text-emerald-300 text-pretty">
+                {{ $t('contact.form.success') }}
+              </p>
             </div>
 
             <div
@@ -246,7 +288,7 @@ const contactMethods = [
                 id="contact-engagement-type"
                 v-model="formData.engagementType"
                 name="engagementType"
-                class="w-full rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 md:p-5 bg-foreground/7 border border-foreground/15 focus:border-primary/60 focus:ring-4 sm:focus:ring-8 focus:ring-primary/10 transition-[border-color,box-shadow,background-color] duration-300 text-sm md:text-base hover:border-foreground/25 text-foreground cursor-pointer"
+                class="w-full rounded-xl sm:rounded-2xl md:rounded-3xl p-3.5 sm:p-4 md:p-5 bg-foreground/7 border border-foreground/15 focus:border-primary/60 focus:ring-4 sm:focus:ring-8 focus:ring-primary/10 transition-[border-color,box-shadow,background-color] duration-300 text-base hover:border-foreground/25 text-foreground cursor-pointer"
               >
                 <option value="" disabled class="bg-background text-muted">
                   {{ $t('contact.form.engagementTypePlaceholder') }}
@@ -351,10 +393,24 @@ const contactMethods = [
                 <Icon
                   v-else
                   name="solar:sort-vertical-linear"
-                  class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] md:w-[34px] md:h-[34px] animate-spin"
+                  class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] md:w-[34px] md:h-[34px] animate-spin text-primary-contrast"
                   aria-hidden="true"
                 />
-                {{ isSubmitting ? $t('contact.form.sending') : $t('contact.form.submit') }}
+                <span v-if="isSubmitting && dispatchStage === 'encrypting'" class="font-mono">
+                  {{ $t('contact.form.encrypting') }}
+                </span>
+                <span
+                  v-else-if="isSubmitting && dispatchStage === 'transmitting'"
+                  class="font-mono"
+                >
+                  {{ $t('contact.form.establishingLink') }}
+                </span>
+                <span v-else-if="isSubmitting" class="font-mono">
+                  {{ $t('contact.form.sending') }}
+                </span>
+                <span v-else>
+                  {{ $t('contact.form.submit') }}
+                </span>
               </span>
             </Button>
           </form>

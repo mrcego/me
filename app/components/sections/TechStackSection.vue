@@ -1,10 +1,74 @@
-<script setup>
+<script setup lang="ts">
+import { ref } from 'vue';
 import { Motion } from 'motion-v';
 import { useI18n } from 'vue-i18n';
 
 useI18n();
 
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+
+const activeStackCard = ref<string | null>(null);
+
+const STACK_SYNERGIES: Record<string, string[]> = {
+  'Vue & Nuxt': [
+    'Vue 3',
+    'Nuxt 4',
+    'TypeScript',
+    'Frontend Architecture',
+    'State Management',
+    'Vite',
+    'PrimeVue',
+    'Testing (Vitest & Playwright)',
+  ],
+  'Fullstack TS': [
+    'TypeScript',
+    'Node.js',
+    'REST APIs',
+    'PostgreSQL / SQLite',
+    'CI/CD Pipelines',
+    'Testing (Vitest & Playwright)',
+  ],
+  'Systems Engineering': [
+    'JavaScript',
+    'TypeScript',
+    'Web Performance',
+    'Micro-frontends',
+    'Monorepos',
+    'Design Systems',
+    'Code Quality',
+  ],
+  'Senior Leadership': [
+    'Design Systems',
+    'CI/CD Pipelines',
+    'Code Quality',
+    'Accessibility (a11y)',
+    'Frontend Architecture',
+  ],
+  'AI-Assisted Craft': [
+    'LLM & NLP Integration',
+    'AI-Augmented Workflows',
+    'Agentic Tooling (Cursor, Copilot, Claude)',
+    'Code Quality',
+  ],
+};
+
+function isSkillHighlighted(skill: string): boolean {
+  if (!activeStackCard.value) return false;
+  return STACK_SYNERGIES[activeStackCard.value]?.includes(skill) ?? false;
+}
+
+function onStackHover(name: string | null) {
+  activeStackCard.value = name;
+}
+
+function onSkillHover(skill: string | null) {
+  if (!skill) {
+    activeStackCard.value = null;
+    return;
+  }
+  const match = Object.entries(STACK_SYNERGIES).find(([_, list]) => list.includes(skill));
+  activeStackCard.value = match ? match[0] : null;
+}
 
 const detailedStack = [
   {
@@ -87,7 +151,7 @@ const skillGroups = [
 <template>
   <section
     id="tech-stack"
-    class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
+    class="py-24 sm:py-28 md:py-32 xl:py-40 px-4 sm:px-6 md:px-8 lg:px-10 bg-background relative overflow-hidden"
   >
     <!-- Kinetic Grid Background -->
     <div
@@ -97,7 +161,7 @@ const skillGroups = [
       class="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent"
     />
 
-    <div class="container mx-auto space-y-24 md:space-y-32">
+    <div class="container mx-auto max-w-7xl space-y-24 md:space-y-32">
       <Motion
         :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 }, { opacity: 1, scale: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
@@ -137,7 +201,13 @@ const skillGroups = [
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true }"
-          class="surface-card surface-evidence group relative p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden min-h-0 flex flex-col justify-between cursor-crosshair h-full min-w-0"
+          class="surface-card surface-evidence group relative p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden min-h-0 flex flex-col justify-between cursor-crosshair h-full min-w-0 transition-all duration-300"
+          :class="{
+            'border-primary! shadow-xl! shadow-primary/20! scale-[1.02]':
+              activeStackCard === t.name,
+          }"
+          @mouseenter="onStackHover(t.name)"
+          @mouseleave="onStackHover(null)"
         >
           <div
             class="surface-card__blob absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-0"
@@ -160,11 +230,11 @@ const skillGroups = [
             </div>
 
             <div class="space-y-1.5 sm:space-y-2 md:space-y-3">
-              <h4
+              <h3
                 class="surface-card__title surface-card__title--gradient text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground"
               >
                 {{ t.name }}
-              </h4>
+              </h3>
               <p class="type-meta text-muted leading-normal">
                 {{ $t(t.level) }}
               </p>
@@ -185,7 +255,7 @@ const skillGroups = [
       </div>
 
       <!-- Stats & Bio HUD -->
-      <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative px-2 md:px-0">
+      <div class="grid xl:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative px-2 md:px-0">
         <Motion
           :initial="motionInitial({ opacity: 0, x: -30 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
@@ -201,9 +271,9 @@ const skillGroups = [
             <div class="tech-hud__icon glass shrink-0">
               <Icon name="solar:crown-star-bold" class="tech-hud__glyph shrink-0" />
             </div>
-            <h4 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-foreground">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-foreground">
               {{ $t('techStack.principles') }}
-            </h4>
+            </h3>
           </div>
 
           <div class="space-y-6 relative z-10">
@@ -217,7 +287,13 @@ const skillGroups = [
                 <span
                   v-for="skill in group.items"
                   :key="skill"
-                  class="surface-card__tag text-xs font-bold uppercase tracking-wider text-muted glass px-4 py-2 rounded-lg border-foreground/5 cursor-default shadow-xs"
+                  class="surface-card__tag text-xs font-bold uppercase tracking-wider text-muted glass px-4 py-2 rounded-lg border-foreground/5 cursor-pointer shadow-xs transition-all duration-300"
+                  :class="{
+                    'text-primary! bg-primary/20! border-primary/50! scale-105 shadow-md shadow-primary/20 font-black!':
+                      isSkillHighlighted(skill),
+                  }"
+                  @mouseenter="onSkillHover(skill)"
+                  @mouseleave="onSkillHover(null)"
                 >
                   {{ skill }}
                 </span>
@@ -246,9 +322,9 @@ const skillGroups = [
               <div class="tech-hud__icon glass shrink-0">
                 <Icon name="solar:global-linear" class="tech-hud__glyph shrink-0" />
               </div>
-              <h4 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
+              <h3 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
                 {{ $t('techStack.flow') }}
-              </h4>
+              </h3>
             </div>
             <div class="flex flex-wrap gap-3 md:gap-4">
               <div

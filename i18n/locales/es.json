@@ -43,7 +43,9 @@
     "themePresets": "Temas IDE",
     "modes": "Modos",
     "menuSubtitle": "Arquitecto Frontend & Fullstack",
-    "rolesLabel": "Roles"
+    "rolesLabel": "Roles",
+    "navigationTitle": "Navegación del sitio",
+    "sectionsLabel": "Secciones"
   },
   "hero": {
     "tagline": {
@@ -61,6 +63,8 @@
     "secondaryCta": "Ver casos de producto",
     "downloadCv": "Descargar CV",
     "downloadCvAria": "Descargar CV — PDF ({file})",
+    "cvPackaging": "[EMPAQUETANDO ARTEFACTO...]",
+    "cvReady": "[VERIFICADO Y LISTO ✓]",
     "stats": {
       "experience": "Años de Experiencia",
       "projects": "Módulos y Librerías Entregados",
@@ -87,6 +91,11 @@
       "operational": "Operativo"
     },
     "terminalPrompt": "cesargomez.dev/terminal ~ $ presiona \"/\" para abrir comandos",
+    "terminalPromptMobile": "cesargomez.dev/terminal ~ $ toca para abrir comandos",
+    "terminalChipAria": "Abrir terminal de comandos (presiona / o ingresa el código Konami)",
+    "terminalChipAriaMobile": "Abrir terminal de comandos",
+    "terminalChipTooltip": "Clic para armar flight path (o presiona /)",
+    "terminalChipTooltipMobile": "Toca para abrir terminal de comandos",
     "h1": "Ingeniero Fullstack Senior y Arquitecto Frontend",
     "title": "César Gómez | Ingeniero Fullstack Senior y Arquitecto Frontend"
   },
@@ -156,7 +165,8 @@
       "unlocked": "Terminal desbloqueado",
       "label": "RUTA DE VUELO // {current}/{total}",
       "unlockedLabel": "TERMINAL DESBLOQUEADO",
-      "resetLabel": "RUTA PERDIDA // REINICIAR"
+      "resetLabel": "RUTA PERDIDA // REINICIAR",
+      "konamiHint": "INGRESA EL CÓDIGO KONAMI: ↑ ↑ ↓ ↓ ← → ← → B A"
     },
     "commands": {
       "help": {
@@ -219,6 +229,14 @@
         "usage": "theme show|list|use [id]",
         "summary": "Ver o cambiar tema"
       },
+      "benchmark": {
+        "usage": "benchmark | bench | rendimiento",
+        "summary": "Ejecutar telemetría de rendimiento y Core Web Vitals en vivo"
+      },
+      "deploy": {
+        "usage": "deploy | desplegar | build",
+        "summary": "Simular logs de compilación SSG y despliegue en Netlify Edge"
+      },
       "clear": {
         "usage": "clear | cls",
         "summary": "Limpiar transcripción"
@@ -243,6 +261,22 @@
       "seo": "SEO Técnico: 98 rutas estáticas SSG prerenderizadas · 64 esquemas JSON-LD (Person {'@'}id: https://cesargomez.dev/#person, WebSite, ProfilePage, Service, FAQPage) · Sitemaps XML recíprocos · etiquetas hreflang en-US/es-ES/x-default · CSP con hashes SHA-256.",
       "lang": "Idioma actual: {locale}. Usa 'lang es' o 'lang en' para cambiar.",
       "langSet": "Cambiando idioma a {locale}…",
+      "benchmarkHeader": "⚡ RENDIMIENTO Y BENCHMARK DEL SISTEMA (RUM EN TIEMPO REAL)",
+      "benchmarkCores": "  ├─ Núcleos CPU Hardware ... {cores} hilos lógicos",
+      "benchmarkMemory": "  ├─ Memoria RAM Dispositivo . {memory}",
+      "benchmarkNetwork": "  ├─ Ancho de Banda de Red .. {connection}",
+      "benchmarkEngine": "  ├─ Motor de Renderizado ... Nuxt 4 (SSG) + Nitro (0 Overhead de API)",
+      "benchmarkFps": "  ├─ FPS Objetivo ........... 60.0 FPS (0 Caídas de Cuadros)",
+      "benchmarkLcp": "  ├─ Baseline LCP ........... < 1.2s (WebP IPX Pre-cargado)",
+      "benchmarkCls": "  ├─ Métrica CLS ............ 0.00 (Cero Desplazamiento Acumulado)",
+      "benchmarkInp": "  └─ INP / TBT .............. < 50ms (Loop Único RAF Lerpeado)",
+      "benchmarkGrade": "🚀 SALUD GENERAL: CALIFICACIÓN 100/100 LIGHTHOUSE (CERTIFICADO ARQUITECTO)",
+      "deployHeader": "⚡ REGISTROS Y TELEMETRÍA DE DESPLIEGUE A PRODUCCIÓN",
+      "deployPrerender": "  ├─ [1/4] Pre-renderizado SSG Nuxt 4 (134 Rutas) .. [✓ 97.4s]",
+      "deployIcons": "  ├─ [2/4] Validación de Iconos SVG Offline ........ [✓ 63/63 OK]",
+      "deployCsp": "  ├─ [3/4] Verificación de Integridad Hashes CSP ... [✓ PASÓ]",
+      "deployEdge": "  └─ [4/4] Sincronización CDN Global Netlify Edge .. [✓ 100% SALUDABLE]",
+      "deployStatus": "✨ ESTADO: EN VIVO EN NETLIFY EDGE (https://cesargomez.dev)",
       "cleared": "Transcripción limpiada.",
       "themeShow": "Tema activo: {name} ({id})",
       "themeListHeader": "Presets de tema (* = activo):",
@@ -961,6 +995,11 @@
       "messagePlaceholder": "Describe el desafío técnico…",
       "submit": "Enviar consulta",
       "sending": "Enviando…",
+      "encrypting": "[ENCRIPTANDO...]",
+      "establishingLink": "[ESTABLECIENDO ENLACE...]",
+      "transmissionConfirmed": "[TRANSMISIÓN REGISTRADA Y CONFIRMADA]",
+      "copyToken": "Copiar token de transmisión",
+      "tokenCopied": "COPIADO ✓",
       "success": "Mensaje enviado con éxito. Te responderé pronto.",
       "error": "No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme por email.",
       "errors": {
@@ -1473,6 +1512,7 @@
     "architectBlurb": "Arquitecto y Líder Frontend: design systems en Vue 3 / Nuxt 4, micro-frontends y Core Web Vitals a escala.",
     "fullstackBlurb": "Ingeniero Fullstack: aplicaciones cliente Vue 3/Nuxt 4 y APIs backend en Node.js con contratos 100% en TypeScript.",
     "viewProfile": "Ver perfil de desarrollador",
+    "availableLead": "DISPONIBLE // LEAD",
     "alsoAvailable": "También puedes contratar",
     "crossLinkFromVue": "También disponible: Ingeniería Aumentada por IA",
     "crossLinkFromAi": "También disponible: desarrollador Vue.js",
@@ -1854,5 +1894,56 @@
       }
     ],
     "answerBlock": "César Gómez es un ingeniero fullstack senior con más de 13 años construyendo aplicaciones web completas en Vue 3, Nuxt 4, Node.js y TypeScript. Desarrolla UIs reactivas y APIs backend de alto rendimiento con ownership end-to-end. Ubicado en Cartagena, Colombia, disponible para contratación remota."
+  },
+  "angie": {
+    "launcher": {
+      "aria": "Abrir asistente Angie de IA",
+      "tooltip": "Preguntar a Angie IA",
+      "tooltipTitle": "Angie · Concierge IA",
+      "tooltipText": "Pregúntame sobre la experiencia de César, stack técnico, arquitectura y disponibilidad.",
+      "tooltipPrompt": "Clic para chatear"
+    },
+    "header": {
+      "title": "Angie // Concierge IA",
+      "badge": "WebGPU v4.0",
+      "status": "En línea · 60 FPS"
+    },
+    "neural": {
+      "loading": "Motor Neuronal: Cargando Shaders ({progress}%)",
+      "ready": "Motor Neuronal: Online (WebGPU · SmolLM2)",
+      "fastMode": "Modo Rápido: Online (0ms RAG)",
+      "badge": "WebGPU LLM"
+    },
+    "roles": {
+      "user": "Tú",
+      "angie": "Angie IA"
+    },
+    "welcomeMessage": "¡Hola! Soy Angie, la asistente de IA del portafolio de César Gómez. Puedo responder preguntas sobre sus más de 13 años de experiencia en producción, arquitectura en Vue 3 / Nuxt 4, casos de estudio empresariales y disponibilidad para contratación. ¿En qué puedo ayudarte hoy?",
+    "thinking": "Sintetizando respuesta...",
+    "errorGeneric": "Ocurrió un error al procesar tu consulta. Inténtalo de nuevo o contáctale directamente.",
+    "inputPlaceholder": "Hazle una pregunta a Angie sobre el trabajo de César…",
+    "send": "Enviar mensaje a Angie",
+    "clearTranscript": "Limpiar conversación",
+    "close": "Cerrar asistente",
+    "categories": {
+      "all": "Todas",
+      "recruiter": "Recruiter / HR",
+      "lead": "Líder Técnico",
+      "founder": "Founder / Cliente"
+    },
+    "actions": {
+      "viewAbout": "Ver Perfil Completo",
+      "viewTechStack": "Explorar Stack Técnico",
+      "viewProfiles": "Especialidades de Contrato",
+      "viewColegium": "Caso Colegium",
+      "viewLingoQuesto": "Caso LingoQuesto",
+      "viewTissini": "Caso TISSINI",
+      "viewAllCerts": "Credenciales y Certs",
+      "downloadCvNow": "Descargar CV en PDF",
+      "discussProject": "Hablar de Proyecto",
+      "contactCesar": "Contactar a César",
+      "openContactForm": "Abrir Formulario",
+      "runTelemetry": "Ejecutar Telemetría CLI"
+    }
   }
 }

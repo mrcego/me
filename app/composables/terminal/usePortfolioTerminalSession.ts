@@ -168,6 +168,32 @@ export function usePortfolioTerminalSession(): PortfolioTerminalSessionApi {
       case 'lang':
         pushLine('output', t('terminal.responses.lang', { locale: locale.value }));
         break;
+      case 'benchmark': {
+        const cores = (import.meta.client && navigator?.hardwareConcurrency) || 8;
+        const memory = '16 GB / High Performance';
+        const connection = '10 Gbps Edge / Fiber';
+
+        pushLine('output', t('terminal.responses.benchmarkHeader'));
+        pushLine('output', t('terminal.responses.benchmarkCores', { cores }));
+        pushLine('output', t('terminal.responses.benchmarkMemory', { memory }));
+        pushLine('output', t('terminal.responses.benchmarkNetwork', { connection }));
+        pushLine('output', t('terminal.responses.benchmarkEngine'));
+        pushLine('output', t('terminal.responses.benchmarkFps'));
+        pushLine('output', t('terminal.responses.benchmarkLcp'));
+        pushLine('output', t('terminal.responses.benchmarkCls'));
+        pushLine('output', t('terminal.responses.benchmarkInp'));
+        pushLine('output', t('terminal.responses.benchmarkGrade'));
+        break;
+      }
+      case 'deploy': {
+        pushLine('output', t('terminal.responses.deployHeader'));
+        pushLine('output', t('terminal.responses.deployPrerender'));
+        pushLine('output', t('terminal.responses.deployIcons'));
+        pushLine('output', t('terminal.responses.deployCsp'));
+        pushLine('output', t('terminal.responses.deployEdge'));
+        pushLine('output', t('terminal.responses.deployStatus'));
+        break;
+      }
       default:
         break;
     }

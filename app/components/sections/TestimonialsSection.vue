@@ -64,17 +64,17 @@ watch(testimonials, () => {
       >
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
-          <h2 class="type-eyebrow tracking-[0.4em]">
+          <p class="type-eyebrow tracking-[0.4em]">
             {{ $t('testimonials.section') }}
-          </h2>
+          </p>
           <div class="h-px w-10 bg-primary/40" />
         </div>
-        <h3
+        <h2
           class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground text-balance"
         >
           <span class="block">{{ $t('testimonials.title') }}</span>
           <span class="text-gradient inline-block">{{ $t('testimonials.titleHighlight') }}</span>
-        </h3>
+        </h2>
       </Motion>
 
       <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-12 items-stretch">

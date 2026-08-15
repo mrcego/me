@@ -36,13 +36,13 @@ const { motionInitial, motionInView, motionTransition } = useMotionConfig();
       :class="align === 'center' ? 'justify-center' : 'justify-start'"
     >
       <div class="h-px w-10 bg-primary/40" />
-      <h2 class="type-eyebrow tracking-[0.4em]">
+      <p class="type-eyebrow tracking-[0.4em]">
         {{ eyebrow }}
-      </h2>
+      </p>
       <div class="h-px w-10 bg-primary/40" />
     </div>
 
-    <h3
+    <h2
       class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter text-foreground text-balance"
     >
       {{ title }}
@@ -51,7 +51,7 @@ const { motionInitial, motionInView, motionTransition } = useMotionConfig();
         <span class="text-gradient">{{ titleHighlight }}</span>
       </template>
       <template v-if="titleEnd"> {{ titleEnd }}</template>
-    </h3>
+    </h2>
 
     <p
       v-if="lead"

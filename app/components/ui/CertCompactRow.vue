@@ -43,7 +43,7 @@ const issuerIcon = computed(() => {
     />
 
     <div
-      class="pointer-events-none relative flex items-start sm:items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 min-h-11"
+      class="pointer-events-none relative flex items-start sm:items-center gap-2 sm:gap-3 px-3.5 sm:px-6 py-3 min-h-11"
     >
       <div class="min-w-0 flex-1 space-y-1 sm:space-y-0 sm:flex sm:items-center sm:gap-4">
         <span
@@ -67,7 +67,7 @@ const issuerIcon = computed(() => {
         :to="cert.url"
         target="_blank"
         rel="noopener noreferrer"
-        class="pointer-events-auto relative z-10 inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-xl px-3 glass text-xs font-black uppercase tracking-[0.15em] text-foreground hover:bg-primary hover:text-primary-contrast transition-[background-color,color,transform,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 group/btn"
+        class="pointer-events-auto relative z-10 inline-flex min-h-10 min-w-10 sm:min-h-11 sm:min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-xl px-2.5 sm:px-3 glass text-xs font-black uppercase tracking-[0.15em] text-foreground hover:bg-primary hover:text-primary-contrast transition-[background-color,color,transform,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 group/btn touch-manipulation"
         :aria-label="$t('certifications.viewCredentialNamed', { title: cert.title })"
       >
         <span class="hidden sm:inline" aria-hidden="true">{{
