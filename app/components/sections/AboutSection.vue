@@ -182,7 +182,7 @@ const aboutPoints: PhilosophyPoint[] = [
 
               <!-- Live Code Craft Spec HUD -->
               <div
-                class="absolute bottom-3 inset-x-3 z-20 flex items-center justify-between gap-1.5 p-2.5 rounded-xl bg-background/80 backdrop-blur-md border border-white/10 text-[9px] sm:text-[10px] font-black uppercase tracking-wider text-foreground shadow-lg"
+                class="absolute bottom-3 inset-x-3 z-20 flex items-center justify-between gap-1.5 p-2.5 rounded-xl bg-background/80 backdrop-blur-md border border-white/10 text-xs font-black uppercase tracking-wider text-foreground shadow-lg"
               >
                 <div class="flex items-center gap-1.5 text-emerald-400">
                   <span class="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -537,7 +537,7 @@ const aboutPoints: PhilosophyPoint[] = [
   box-sizing: border-box;
   max-width: 100%;
   max-height: 100%;
-  border-radius: 0.4rem;
+  border-radius: 0.5rem;
   padding: 0.2rem 0.3rem;
   background: rgba(255, 255, 255, 0.94);
   box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);

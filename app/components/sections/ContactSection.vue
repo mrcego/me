@@ -431,7 +431,7 @@ const contactMethods = [
   width: 2.75rem; /* 44px */
   height: 2.75rem;
   border-radius: 0.75rem;
-  box-shadow: 0 4px 12px color-mix(in srgb, #000 20%, transparent);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--background) 20%, transparent);
   transition:
     background-color 0.3s ease,
     border-color 0.3s ease,
@@ -443,7 +443,7 @@ const contactMethods = [
   .contact-method__icon {
     width: 3rem; /* 48px */
     height: 3rem;
-    border-radius: 0.875rem;
+    border-radius: 0.75rem;
   }
 }
 

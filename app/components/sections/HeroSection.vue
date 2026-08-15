@@ -274,7 +274,7 @@ onMounted(() => {
                       {{ $t('hero.hud.status') }}
                     </span>
                     <span
-                      class="text-[10px] md:text-xs font-mono font-bold text-foreground uppercase leading-none"
+                      class="text-xs font-mono font-bold text-foreground uppercase leading-none"
                     >
                       {{ $t('hero.hud.operational') }}
                     </span>
@@ -289,7 +289,7 @@ onMounted(() => {
 
             <button
               type="button"
-              class="pointer-events-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-full border border-primary/25 bg-primary/8 text-primary type-label hover:bg-primary/12 hover:border-primary/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation min-h-11 cursor-pointer"
+              class="pointer-events-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 py-2 rounded-full border border-primary/25 bg-primary/8 text-primary type-label hover:bg-primary/12 hover:border-primary/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 touch-manipulation min-h-11 cursor-pointer"
               aria-haspopup="dialog"
               @click="onVibeBadgeClick"
               @pointerenter="prefetchVibeModal"
@@ -300,9 +300,7 @@ onMounted(() => {
                 class="size-4 sm:size-[18px] shrink-0"
                 aria-hidden="true"
               />
-              <span class="text-[10px] sm:text-xs tracking-[0.12em]">{{
-                $t('hero.expertiseBadge')
-              }}</span>
+              <span class="text-xs tracking-[0.12em]">{{ $t('hero.expertiseBadge') }}</span>
               <span class="sr-only">{{ $t('about.vibeCodingOpen') }}</span>
             </button>
           </div>
@@ -328,7 +326,7 @@ onMounted(() => {
               {{ stat.value }}
             </div>
             <div
-              class="text-[10px] sm:text-xs text-muted group-hover/stat:text-foreground transition-colors font-medium leading-tight"
+              class="text-xs text-muted group-hover/stat:text-foreground transition-colors font-medium leading-tight"
             >
               {{ $t(stat.labelKey) }}
             </div>
@@ -428,7 +426,7 @@ onMounted(() => {
   color: color-mix(in srgb, var(--foreground) 80%, transparent);
   background: color-mix(in srgb, var(--secondary) 88%, var(--background));
   border-color: color-mix(in srgb, var(--foreground) 10%, transparent);
-  box-shadow: 0 8px 20px color-mix(in srgb, #000000 14%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--background) 14%, transparent);
   transition:
     color 0.2s ease,
     border-color 0.2s ease,

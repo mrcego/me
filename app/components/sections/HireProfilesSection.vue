@@ -126,9 +126,9 @@ const craftMethodologyTo =
   justify-content: center;
   width: 4.5rem; /* 72px */
   height: 4.5rem;
-  border-radius: 1.25rem;
+  border-radius: 1rem;
   color: var(--color-primary);
-  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--background) 28%, transparent);
   overflow: hidden;
   flex-shrink: 0;
 }

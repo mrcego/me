@@ -90,7 +90,7 @@ watch(testimonials, () => {
           class="surface-card surface-evidence group relative p-6 sm:p-8 md:p-14 rounded-3xl sm:rounded-[3.5rem] overflow-hidden h-full min-w-0"
         >
           <div
-            class="surface-card__glow absolute inset-0 bg-primary/2 pointer-events-none testimonial-dots"
+            class="surface-card__glow absolute inset-0 bg-radial from-primary/5 via-transparent to-transparent pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity duration-500"
           />
 
           <div class="relative z-10 space-y-8 sm:space-y-10">
@@ -169,10 +169,3 @@ watch(testimonials, () => {
     </div>
   </section>
 </template>
-
-<style scoped>
-.testimonial-dots {
-  background-image: radial-gradient(circle, rgba(255, 75, 92, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-}
-</style>

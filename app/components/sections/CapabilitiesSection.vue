@@ -131,7 +131,7 @@ const capabilities = [
   height: 4rem;
   border-radius: 1rem;
   color: var(--color-primary);
-  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--background) 28%, transparent);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -140,7 +140,7 @@ const capabilities = [
   .capability-icon {
     width: 5rem; /* 80px */
     height: 5rem;
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
   }
 }
 

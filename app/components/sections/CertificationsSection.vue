@@ -303,7 +303,7 @@ watch(showAllRest, () => {
   height: 4rem;
   border-radius: 1rem;
   color: var(--color-primary);
-  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--background) 28%, transparent);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -312,7 +312,7 @@ watch(showAllRest, () => {
   .cert-card__icon {
     width: 4.75rem; /* 76px */
     height: 4.75rem;
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
   }
 }
 

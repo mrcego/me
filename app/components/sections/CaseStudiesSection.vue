@@ -42,11 +42,10 @@ function onCaseStudyClick(slug: string) {
     class="py-24 md:py-40 px-6 md:px-12 bg-background relative overflow-hidden"
     aria-labelledby="case-studies-heading"
   >
-    <div
-      class="absolute inset-0 opacity-[0.03] z-0 pointer-events-none overflow-hidden"
-      aria-hidden="true"
-    >
-      <div class="absolute inset-0 case-studies-grid-bg" />
+    <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
+      <div
+        class="absolute -top-40 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-radial from-primary/6 via-transparent to-transparent blur-3xl opacity-50"
+      />
     </div>
 
     <div class="container mx-auto space-y-16 md:space-y-24 relative z-10">
@@ -88,8 +87,6 @@ function onCaseStudyClick(slug: string) {
           >
             <div
               class="absolute inset-0 bg-linear-to-tr from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[0.85s] pointer-events-none"
-              style="transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1)"
-              aria-hidden="true"
             />
 
             <div class="relative z-10 flex flex-col h-full gap-6 md:gap-8">
@@ -122,7 +119,7 @@ function onCaseStudyClick(slug: string) {
                 <li
                   v-for="tag in studyTags(study.slug)"
                   :key="tag"
-                  class="bg-foreground/5 border border-foreground/10 text-foreground type-label px-3 py-1.5 rounded-xl"
+                  class="bg-foreground/5 border border-foreground/10 text-foreground type-label px-3 py-1.5 rounded-xl text-xs font-mono"
                 >
                   {{ tag }}
                 </li>
@@ -135,18 +132,13 @@ function onCaseStudyClick(slug: string) {
                     title: $t(`caseStudies.items.${study.slug}.cardTitle`),
                   })
                 "
-                class="btn-premium bg-primary text-primary-contrast rounded-2xl px-6 py-3 border-none w-fit inline-flex items-center gap-2 font-black uppercase tracking-widest after:absolute after:inset-0 opacity-100 translate-y-0 pointer-events-auto md:opacity-0 md:translate-y-4 md:pointer-events-none md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-hover:pointer-events-auto md:group-focus-within:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:pointer-events-auto transition-all duration-300 ease-out"
+                class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary group-hover:text-primary-hover transition-colors"
                 @click="onCaseStudyClick(study.slug)"
               >
-                {{ $t('caseStudies.readMore') }}
-                <Icon name="solar:arrow-right-linear" class="size-5" />
+                <span>{{ $t('caseStudies.readMore') }}</span>
+                <Icon name="solar:arrow-right-linear" class="size-4" aria-hidden="true" />
               </NuxtLink>
             </div>
-
-            <div
-              class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
-              aria-hidden="true"
-            />
           </article>
         </Motion>
       </div>
@@ -155,13 +147,6 @@ function onCaseStudyClick(slug: string) {
 </template>
 
 <style scoped>
-.case-studies-grid-bg {
-  background-image:
-    linear-gradient(0deg, var(--foreground) 1px, transparent 1px),
-    linear-gradient(90deg, var(--foreground) 1px, transparent 1px);
-  background-size: 100px 100px;
-}
-
 .case-study__icon {
   display: flex;
   align-items: center;
@@ -170,7 +155,7 @@ function onCaseStudyClick(slug: string) {
   height: 4rem;
   border-radius: 1rem;
   color: var(--color-primary);
-  box-shadow: 0 10px 24px color-mix(in srgb, #000 28%, transparent);
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--background) 28%, transparent);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -179,7 +164,7 @@ function onCaseStudyClick(slug: string) {
   .case-study__icon {
     width: 4.75rem; /* 76px */
     height: 4.75rem;
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
   }
 }
 
