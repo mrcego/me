@@ -63,6 +63,61 @@ describe('usePortfolioTerminalSession', () => {
     expect(terminal.terminalOpen.value).toBe(false);
   });
 
+  it('runs benchmark, deploy, stack, and info commands from submit', async () => {
+    const { session } = await mountSession();
+
+    session.input.value = 'benchmark';
+    await session.submit();
+    expect(session.lines.value.some((line) => line.text.includes('BENCHMARK'))).toBe(true);
+
+    session.input.value = 'deploy';
+    await session.submit();
+    expect(session.lines.value.some((line) => line.text.includes('DEPLOYMENT'))).toBe(true);
+
+    session.input.value = 'stack';
+    await session.submit();
+    expect(session.lines.value.length).toBeGreaterThan(0);
+
+    session.input.value = 'services';
+    await session.submit();
+    expect(session.lines.value.length).toBeGreaterThan(0);
+
+    session.input.value = 'experience';
+    await session.submit();
+
+    session.input.value = 'profiles';
+    await session.submit();
+
+    session.input.value = 'certs';
+    await session.submit();
+
+    session.input.value = 'contact';
+    await session.submit();
+
+    session.input.value = 'work';
+    await session.submit();
+
+    session.input.value = 'seo';
+    await session.submit();
+
+    session.input.value = 'lang';
+    await session.submit();
+
+    session.input.value = 'status';
+    await session.submit();
+
+    session.input.value = 'theme show';
+    await session.submit();
+
+    session.input.value = 'theme use dracula';
+    await session.submit();
+
+    session.input.value = 'go contact';
+    await session.submit();
+
+    expect(session.lines.value.some((line) => line.kind === 'output')).toBe(true);
+  });
+
   it('supports suggestion navigation and history recall', async () => {
     const { session } = await mountSession();
 

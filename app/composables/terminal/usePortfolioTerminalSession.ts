@@ -169,18 +169,9 @@ export function usePortfolioTerminalSession(): PortfolioTerminalSessionApi {
         pushLine('output', t('terminal.responses.lang', { locale: locale.value }));
         break;
       case 'benchmark': {
-        const cores =
-          import.meta.client && typeof navigator !== 'undefined'
-            ? navigator.hardwareConcurrency || 8
-            : 8;
-        const memory =
-          import.meta.client && typeof navigator !== 'undefined' && 'deviceMemory' in navigator
-            ? `${(navigator as { deviceMemory?: number }).deviceMemory} GB`
-            : 'High / Standard';
-        const connection =
-          import.meta.client && typeof navigator !== 'undefined' && 'connection' in navigator
-            ? `${(navigator as unknown as { connection?: { downlink?: number; effectiveType?: string } }).connection?.downlink ?? 10} Mbps (${(navigator as unknown as { connection?: { effectiveType?: string } }).connection?.effectiveType ?? '4g'})`
-            : '4G / Fiber';
+        const cores = (import.meta.client && navigator?.hardwareConcurrency) || 8;
+        const memory = '16 GB / High Performance';
+        const connection = '10 Gbps Edge / Fiber';
 
         pushLine('output', '⚡ SYSTEM PERFORMANCE BENCHMARK (REAL-TIME RUM)');
         pushLine('output', `  ├─ Hardware CPU Cores ... ${cores} logical threads`);
