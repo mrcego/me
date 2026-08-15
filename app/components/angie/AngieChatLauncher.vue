@@ -84,13 +84,12 @@ const { isOpen, toggleChat } = useAngieChat();
         />
 
         <!-- Angie Face Avatar / Close Icon -->
-        <NuxtImg
+        <img
           v-if="!isOpen"
           src="/img/angie-face.webp"
           alt="Angie AI"
           width="128"
           height="128"
-          densities="x1 x2"
           loading="eager"
           class="size-8.5 sm:size-9.5 md:size-10 rounded-xl sm:rounded-2xl object-cover relative z-10 drop-shadow-md pointer-events-none transform-gpu"
         />
