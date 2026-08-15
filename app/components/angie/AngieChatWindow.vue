@@ -178,9 +178,6 @@ watch(isOpen, (open) => {
                 height="36"
                 class="size-full object-cover"
               />
-              <span
-                class="absolute -top-0.5 -right-0.5 size-2.5 rounded-full bg-emerald-400 animate-pulse border border-background z-10"
-              />
             </div>
             <div class="min-w-0">
               <div class="flex items-center gap-1.5 sm:gap-2">
