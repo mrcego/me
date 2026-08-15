@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { Motion } from 'motion-v';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
@@ -8,8 +9,27 @@ import { useContactForm } from '~/composables/domain/useContactForm';
 
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 
-const { formData, errors, isSubmitting, submitSuccess, submitError, submitForm, fieldMaxLength } =
-  useContactForm();
+const {
+  formData,
+  errors,
+  isSubmitting,
+  submitSuccess,
+  submitError,
+  dispatchStage,
+  txReceipt,
+  submitForm,
+  fieldMaxLength,
+} = useContactForm();
+
+const copiedReceipt = ref(false);
+function copyReceipt() {
+  if (!txReceipt.value || !import.meta.client) return;
+  navigator.clipboard.writeText(txReceipt.value);
+  copiedReceipt.value = true;
+  setTimeout(() => {
+    copiedReceipt.value = false;
+  }, 2000);
+}
 
 const fieldClass =
   'rounded-xl sm:rounded-2xl md:rounded-3xl p-3! sm:p-4! md:p-5! bg-foreground/7! border-foreground/15! focus:border-primary/60! focus:ring-4! sm:focus:ring-8! focus:ring-primary/10! transition-[border-color,box-shadow,background-color] duration-300 text-sm md:text-base hover:border-foreground/25! text-foreground! placeholder:text-muted/70!';
@@ -166,9 +186,31 @@ const contactMethods = [
               v-if="submitSuccess"
               role="status"
               aria-live="polite"
-              class="p-4 sm:p-6 bg-green-500/10 border border-green-500/30 rounded-2xl text-green-400 text-sm sm:text-base font-medium text-center text-pretty"
+              class="p-5 sm:p-6 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl text-foreground space-y-3"
             >
-              {{ $t('contact.form.success') }}
+              <div
+                class="flex items-center justify-between gap-2 border-b border-emerald-500/20 pb-2.5"
+              >
+                <div
+                  class="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold uppercase tracking-wider"
+                >
+                  <span class="size-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>[TRANSMISSION LOGGED & CONFIRMED]</span>
+                </div>
+                <button
+                  v-if="txReceipt"
+                  type="button"
+                  class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 font-mono text-xs cursor-pointer transition-colors"
+                  aria-label="Copy Transmission Token"
+                  @click="copyReceipt"
+                >
+                  <Icon name="solar:check-circle-bold" class="size-3.5 text-emerald-400" />
+                  <span>{{ copiedReceipt ? 'COPIED ✓' : txReceipt }}</span>
+                </button>
+              </div>
+              <p class="text-sm sm:text-base font-medium text-emerald-300 text-pretty">
+                {{ $t('contact.form.success') }}
+              </p>
             </div>
 
             <div
@@ -351,10 +393,24 @@ const contactMethods = [
                 <Icon
                   v-else
                   name="solar:sort-vertical-linear"
-                  class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] md:w-[34px] md:h-[34px] animate-spin"
+                  class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] md:w-[34px] md:h-[34px] animate-spin text-primary-contrast"
                   aria-hidden="true"
                 />
-                {{ isSubmitting ? $t('contact.form.sending') : $t('contact.form.submit') }}
+                <span v-if="isSubmitting && dispatchStage === 'encrypting'" class="font-mono">
+                  [ENCRYPTING...]
+                </span>
+                <span
+                  v-else-if="isSubmitting && dispatchStage === 'transmitting'"
+                  class="font-mono"
+                >
+                  [ESTABLISHING LINK...]
+                </span>
+                <span v-else-if="isSubmitting" class="font-mono">
+                  {{ $t('contact.form.sending') }}
+                </span>
+                <span v-else>
+                  {{ $t('contact.form.submit') }}
+                </span>
               </span>
             </Button>
           </form>

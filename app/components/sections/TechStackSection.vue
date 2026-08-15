@@ -1,10 +1,74 @@
-<script setup>
+<script setup lang="ts">
+import { ref } from 'vue';
 import { Motion } from 'motion-v';
 import { useI18n } from 'vue-i18n';
 
 useI18n();
 
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+
+const activeStackCard = ref<string | null>(null);
+
+const STACK_SYNERGIES: Record<string, string[]> = {
+  'Vue & Nuxt': [
+    'Vue 3',
+    'Nuxt 4',
+    'TypeScript',
+    'Frontend Architecture',
+    'State Management',
+    'Vite',
+    'PrimeVue',
+    'Testing (Vitest & Playwright)',
+  ],
+  'Fullstack TS': [
+    'TypeScript',
+    'Node.js',
+    'REST APIs',
+    'PostgreSQL / SQLite',
+    'CI/CD Pipelines',
+    'Testing (Vitest & Playwright)',
+  ],
+  'Systems Engineering': [
+    'JavaScript',
+    'TypeScript',
+    'Web Performance',
+    'Micro-frontends',
+    'Monorepos',
+    'Design Systems',
+    'Code Quality',
+  ],
+  'Senior Leadership': [
+    'Design Systems',
+    'CI/CD Pipelines',
+    'Code Quality',
+    'Accessibility (a11y)',
+    'Frontend Architecture',
+  ],
+  'AI-Assisted Craft': [
+    'LLM & NLP Integration',
+    'AI-Augmented Workflows',
+    'Agentic Tooling (Cursor, Copilot, Claude)',
+    'Code Quality',
+  ],
+};
+
+function isSkillHighlighted(skill: string): boolean {
+  if (!activeStackCard.value) return false;
+  return STACK_SYNERGIES[activeStackCard.value]?.includes(skill) ?? false;
+}
+
+function onStackHover(name: string | null) {
+  activeStackCard.value = name;
+}
+
+function onSkillHover(skill: string | null) {
+  if (!skill) {
+    activeStackCard.value = null;
+    return;
+  }
+  const match = Object.entries(STACK_SYNERGIES).find(([_, list]) => list.includes(skill));
+  activeStackCard.value = match ? match[0] : null;
+}
 
 const detailedStack = [
   {
@@ -137,7 +201,13 @@ const skillGroups = [
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true }"
-          class="surface-card surface-evidence group relative p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden min-h-0 flex flex-col justify-between cursor-crosshair h-full min-w-0"
+          class="surface-card surface-evidence group relative p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden min-h-0 flex flex-col justify-between cursor-crosshair h-full min-w-0 transition-all duration-300"
+          :class="{
+            'border-primary! shadow-xl! shadow-primary/20! scale-[1.02]':
+              activeStackCard === t.name,
+          }"
+          @mouseenter="onStackHover(t.name)"
+          @mouseleave="onStackHover(null)"
         >
           <div
             class="surface-card__blob absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-0"
@@ -217,7 +287,13 @@ const skillGroups = [
                 <span
                   v-for="skill in group.items"
                   :key="skill"
-                  class="surface-card__tag text-xs font-bold uppercase tracking-wider text-muted glass px-4 py-2 rounded-lg border-foreground/5 cursor-default shadow-xs"
+                  class="surface-card__tag text-xs font-bold uppercase tracking-wider text-muted glass px-4 py-2 rounded-lg border-foreground/5 cursor-pointer shadow-xs transition-all duration-300"
+                  :class="{
+                    'text-primary! bg-primary/20! border-primary/50! scale-105 shadow-md shadow-primary/20 font-black!':
+                      isSkillHighlighted(skill),
+                  }"
+                  @mouseenter="onSkillHover(skill)"
+                  @mouseleave="onSkillHover(null)"
                 >
                   {{ skill }}
                 </span>

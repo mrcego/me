@@ -219,6 +219,14 @@
         "usage": "theme show|list|use [id]",
         "summary": "Inspect or set theme"
       },
+      "benchmark": {
+        "usage": "benchmark | bench | perf",
+        "summary": "Run live client-side performance & RUM benchmark"
+      },
+      "deploy": {
+        "usage": "deploy | build",
+        "summary": "Simulate live production build & edge deploy telemetry"
+      },
       "clear": {
         "usage": "clear | cls",
         "summary": "Clear transcript"

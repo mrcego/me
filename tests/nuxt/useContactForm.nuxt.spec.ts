@@ -78,6 +78,8 @@ describe('useContactForm', () => {
 
     expect(await form.submitForm()).toBe(true);
     expect(form.submitSuccess.value).toBe(true);
+    expect(form.dispatchStage.value).toBe('confirmed');
+    expect(form.txReceipt.value).toMatch(/^TX-2026-/);
     expect(fetch).toHaveBeenCalled();
   });
 

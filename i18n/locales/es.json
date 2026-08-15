@@ -219,6 +219,14 @@
         "usage": "theme show|list|use [id]",
         "summary": "Ver o cambiar tema"
       },
+      "benchmark": {
+        "usage": "benchmark | bench | rendimiento",
+        "summary": "Ejecutar telemetría de rendimiento y Core Web Vitals en vivo"
+      },
+      "deploy": {
+        "usage": "deploy | desplegar | build",
+        "summary": "Simular logs de compilación SSG y despliegue en Netlify Edge"
+      },
       "clear": {
         "usage": "clear | cls",
         "summary": "Limpiar transcripción"

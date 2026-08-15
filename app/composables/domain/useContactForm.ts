@@ -21,6 +21,8 @@ export const useContactForm = () => {
   const isSubmitting = ref(false);
   const submitSuccess = ref(false);
   const submitError = ref('');
+  const dispatchStage = ref<'idle' | 'encrypting' | 'transmitting' | 'confirmed'>('idle');
+  const txReceipt = ref('');
 
   const formData = reactive({
     name: '',
@@ -157,17 +159,21 @@ export const useContactForm = () => {
     isSubmitting.value = true;
     submitError.value = '';
     submitSuccess.value = false;
+    dispatchStage.value = 'encrypting';
 
     try {
       const useNetlify = import.meta.client && runtimeConfig.public.contactProvider === 'netlify';
 
       if (useNetlify) {
+        dispatchStage.value = 'transmitting';
         const sent = await submitViaNetlify();
         if (!sent) {
           submitError.value = t('contact.form.error');
+          dispatchStage.value = 'idle';
           return false;
         }
       } else {
+        dispatchStage.value = 'transmitting';
         submitViaMailto();
         await new Promise((resolve) => setTimeout(resolve, 500));
       }
@@ -176,6 +182,9 @@ export const useContactForm = () => {
         engagement_type: formData.engagementType,
       });
 
+      const randomHash = Math.random().toString(36).substring(2, 7).toUpperCase();
+      txReceipt.value = `TX-2026-${randomHash}`;
+      dispatchStage.value = 'confirmed';
       submitSuccess.value = true;
       resetForm();
 
@@ -183,6 +192,7 @@ export const useContactForm = () => {
     } catch (error) {
       console.error('Form submission error:', error);
       submitError.value = t('contact.form.error');
+      dispatchStage.value = 'idle';
       return false;
     } finally {
       isSubmitting.value = false;
@@ -195,6 +205,8 @@ export const useContactForm = () => {
     isSubmitting,
     submitSuccess,
     submitError,
+    dispatchStage,
+    txReceipt,
     fieldMaxLength: FIELD_MAX_LENGTH,
     validateForm,
     submitForm,

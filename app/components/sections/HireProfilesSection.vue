@@ -15,10 +15,20 @@ const BLURB_KEYS: Record<HireProfileId, string> = {
   fullstack: 'hireProfiles.fullstackBlurb',
 };
 
+const PROFILE_TAGS: Record<HireProfileId, string[]> = {
+  architect: ['13+ YOE', 'SYSTEM DESIGN', 'PERF 100'],
+  vue: ['VUE 3 / NUXT 4', 'SSR / SSG', 'STATE & ARCH'],
+  fullstack: ['NODE / NITRO', 'POSTGRES / DB', 'REST & GRAPHQL'],
+  ai: ['AI-AUGMENTED', 'AGENTIC WORKFLOW', 'QUALITY GATES'],
+  node: ['NITRO / H3', 'MICROSERVICES', 'PERF TUNING'],
+  angular: ['ANGULAR MIGRATION', 'RXJS / NGXS', 'ENTERPRISE'],
+};
+
 const profiles = hireProfileRoutes().map((link) => ({
   key: link.id,
   titleKey: link.hireLabelKey,
   blurbKey: BLURB_KEYS[link.id],
+  tags: PROFILE_TAGS[link.id] ?? [],
   icon: link.hireIcon,
   to: link.localePath,
 }));
@@ -69,7 +79,7 @@ const craftMethodologyTo =
         >
           <NuxtLink
             :to="localePath(profile.to)"
-            class="surface-card glass group relative flex h-full flex-col gap-5 rounded-3xl border border-foreground/5 p-6 md:p-8 transition-all duration-300 hover:border-primary/30 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="surface-card glass group relative flex h-full flex-col justify-between rounded-3xl border border-foreground/5 p-6 md:p-8 transition-all duration-300 hover:border-primary/30 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <!-- holographic scanline hover animation -->
             <div
@@ -79,16 +89,36 @@ const craftMethodologyTo =
             />
 
             <div class="relative z-10 flex flex-col h-full gap-5">
-              <CoreIconBadge
-                :name="profile.icon"
-                size="xl"
-                class="transition-transform group-hover:scale-105"
-              />
+              <div class="flex items-center justify-between gap-3">
+                <CoreIconBadge
+                  :name="profile.icon"
+                  size="xl"
+                  class="transition-transform group-hover:scale-105"
+                />
+                <span
+                  class="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400/90 px-2 py-1 rounded-md bg-emerald-400/10 border border-emerald-400/20"
+                >
+                  AVAILABLE // LEAD
+                </span>
+              </div>
               <div class="space-y-3 flex-1">
                 <h3 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
                   {{ $t(profile.titleKey) }}
                 </h3>
-                <p class="text-muted leading-relaxed">{{ $t(profile.blurbKey) }}</p>
+                <p class="text-muted leading-relaxed text-sm md:text-base">
+                  {{ $t(profile.blurbKey) }}
+                </p>
+
+                <!-- Quick-fit skill chips -->
+                <div class="flex flex-wrap gap-1.5 pt-2">
+                  <span
+                    v-for="tag in profile.tags"
+                    :key="tag"
+                    class="font-mono text-[11px] font-bold px-2 py-0.5 rounded-md bg-foreground/5 text-muted group-hover:text-primary group-hover:bg-primary/10 border border-foreground/5 group-hover:border-primary/20 transition-colors"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
               </div>
               <div class="pt-2">
                 <span
