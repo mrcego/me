@@ -169,11 +169,17 @@ watch(isOpen, (open) => {
         >
           <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
             <div
-              class="relative flex items-center justify-center size-8.5 sm:size-9 rounded-xl bg-primary/10 border border-primary/30 text-primary shrink-0"
+              class="relative flex items-center justify-center size-8.5 sm:size-9 rounded-xl bg-primary/10 border border-primary/30 text-primary shrink-0 overflow-hidden"
             >
-              <Icon name="solar:stars-minimalistic-bold-duotone" class="size-4.5 sm:size-5" />
+              <NuxtImg
+                src="/img/angie-face.webp"
+                alt="Angie AI"
+                width="36"
+                height="36"
+                class="size-full object-cover"
+              />
               <span
-                class="absolute -top-1 -right-1 size-2.5 rounded-full bg-emerald-400 animate-pulse border border-background"
+                class="absolute -top-0.5 -right-0.5 size-2.5 rounded-full bg-emerald-400 animate-pulse border border-background z-10"
               />
             </div>
             <div class="min-w-0">
@@ -301,6 +307,14 @@ watch(isOpen, (open) => {
             :class="msg.role === 'user' ? 'items-end' : 'items-start'"
           >
             <div class="flex items-center gap-1.5 px-1">
+              <NuxtImg
+                v-if="msg.role === 'angie'"
+                src="/img/angie-face.webp"
+                alt="Angie AI"
+                width="16"
+                height="16"
+                class="size-4 rounded-full object-cover border border-primary/30 shrink-0"
+              />
               <span class="font-mono text-[10px] text-muted/60 uppercase tracking-widest">
                 {{ msg.role === 'user' ? $t('angie.roles.user') : $t('angie.roles.angie') }}
               </span>
