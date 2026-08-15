@@ -37,9 +37,11 @@ const { isOpen, toggleChat } = useAngieChat();
         v-if="!isOpen"
         src="/img/angie-face.webp"
         alt="Angie AI"
-        width="44"
-        height="44"
-        class="size-8.5 sm:size-9.5 md:size-10 rounded-xl sm:rounded-2xl object-cover relative z-10 transition-transform group-hover:scale-110 duration-300 drop-shadow-md"
+        width="128"
+        height="128"
+        densities="x1 x2"
+        loading="eager"
+        class="size-8.5 sm:size-9.5 md:size-10 rounded-xl sm:rounded-2xl object-cover relative z-10 drop-shadow-md pointer-events-none transform-gpu"
       />
       <Icon
         v-else
@@ -49,7 +51,7 @@ const { isOpen, toggleChat } = useAngieChat();
 
       <!-- Mini online status badge -->
       <span
-        class="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 size-2 rounded-full bg-emerald-400 border border-background shadow-xs shadow-emerald-400 z-20"
+        class="absolute top-1 right-1 sm:top-1.5 sm:right-1.5 size-2 rounded-full bg-emerald-400 border border-background shadow-xs shadow-emerald-400 z-20 pointer-events-none"
         aria-hidden="true"
       />
     </button>
@@ -66,6 +68,8 @@ const { isOpen, toggleChat } = useAngieChat();
   box-shadow:
     0 8px 32px color-mix(in srgb, var(--background) 70%, transparent),
     0 0 20px color-mix(in srgb, var(--primary) 22%, transparent);
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .angie-fab:hover {
@@ -78,5 +82,11 @@ const { isOpen, toggleChat } = useAngieChat();
 .angie-fab--active {
   border-color: var(--primary);
   background: color-mix(in srgb, var(--primary) 15%, var(--background));
+}
+
+.angie-fab :deep(img) {
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 </style>

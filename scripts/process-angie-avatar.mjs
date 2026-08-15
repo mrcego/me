@@ -127,7 +127,7 @@ async function processAvatar() {
       fit: 'contain',
       background: { r: 0, g: 0, b: 0, alpha: 0 },
     })
-    .png({ quality: 95 })
+    .png({ quality: 100, compressionLevel: 9 })
     .toFile(path.join(outputDir, 'angie-headshot.png'));
 
   await sharp(trimmedBuffer)
@@ -135,16 +135,15 @@ async function processAvatar() {
       fit: 'contain',
       background: { r: 0, g: 0, b: 0, alpha: 0 },
     })
-    .webp({ quality: 95, effort: 6 })
+    .webp({ quality: 98, effort: 6 })
     .toFile(path.join(outputDir, 'angie-headshot.webp'));
 
   // Also create a circular cropped face badge (close-up of face and glasses for small buttons/chat headers)
-  // Let's calculate close up crop:
-  // Face center in the trimmed image is roughly in the upper-middle area (x ~ 50%, y ~ 45%)
-  const faceCropWidth = Math.round(trimmedMeta.width * 0.85);
-  const faceCropHeight = Math.round(trimmedMeta.width * 0.85);
+  // 512x512 high resolution for crystal clear Retina displays and smooth scaling
+  const faceCropWidth = Math.round(trimmedMeta.width * 0.9);
+  const faceCropHeight = Math.round(trimmedMeta.width * 0.9);
   const faceCropLeft = Math.round((trimmedMeta.width - faceCropWidth) / 2);
-  const faceCropTop = Math.round(trimmedMeta.height * 0.05);
+  const faceCropTop = Math.round(trimmedMeta.height * 0.03);
 
   const faceCloseUp = sharp(trimmedBuffer)
     .extract({
@@ -153,16 +152,19 @@ async function processAvatar() {
       width: Math.min(faceCropWidth, trimmedMeta.width),
       height: Math.min(faceCropHeight, trimmedMeta.height),
     })
-    .resize(256, 256, { fit: 'cover' });
-
-  await faceCloseUp.clone().png({ quality: 95 }).toFile(path.join(outputDir, 'angie-face.png'));
+    .resize(512, 512, { fit: 'cover' });
 
   await faceCloseUp
     .clone()
-    .webp({ quality: 95, effort: 6 })
+    .png({ quality: 100, compressionLevel: 9 })
+    .toFile(path.join(outputDir, 'angie-face.png'));
+
+  await faceCloseUp
+    .clone()
+    .webp({ quality: 98, effort: 6 })
     .toFile(path.join(outputDir, 'angie-face.webp'));
 
-  console.log('Avatar processing complete!');
+  console.log('Avatar processing complete with ultra-sharp 512x512 assets!');
 }
 
 processAvatar().catch(console.error);
