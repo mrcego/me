@@ -216,6 +216,7 @@ const aboutPoints: PhilosophyPoint[] = [
                 :key="point.label"
                 :point="point"
                 :index="idx"
+                :class="{ 'md:col-span-2 xl:col-span-1': idx === 2 }"
               />
             </div>
 
