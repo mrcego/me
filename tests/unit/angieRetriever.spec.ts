@@ -13,15 +13,33 @@ describe('angieRetriever (Search & Intent Synthesis)', () => {
     expect(resEs.entry?.id).toBe('tech_stack_core');
   });
 
-  it('matches case studies (Colegium, LingoQuesto, TISSINI)', () => {
-    const colRes = searchKnowledge('Tell me about the Colegium migration', 'en');
+  it('matches case studies (Colegium, LingoQuesto, TISSINI) with exact deliverables', () => {
+    const colRes = searchKnowledge('Tell me about the Colegium project', 'en');
     expect(colRes.entry?.id).toBe('case_colegium');
+    expect(colRes.entry?.content.es).toContain('12 módulos educativos');
+    expect(colRes.entry?.content.es).toContain('3 herramientas internas');
 
     const lqRes = searchKnowledge('Háblame de la plataforma de LingoQuesto', 'es');
     expect(lqRes.entry?.id).toBe('case_lingoquesto');
 
     const tisRes = searchKnowledge('ecommerce app TISSINI sales', 'en');
     expect(tisRes.entry?.id).toBe('case_tissini');
+  });
+
+  it('matches availability and English proficiency accurately without falling back to bio', () => {
+    const availRes = searchKnowledge('¿Cuál es la disponibilidad actual de César Gómez?', 'es');
+    expect(availRes.entry?.id).toBe('hiring_availability');
+    expect(availRes.entry?.content.es).toContain('DISPONIBLE');
+    expect(availRes.entry?.content.es).toContain('B1');
+
+    const engRes = searchKnowledge('What is his English level?', 'en');
+    expect(engRes.entry?.id).toBe('languages_proficiency');
+    expect(engRes.entry?.content.en).toContain('B1');
+
+    const contactRes = searchKnowledge('¿Cómo puedo contactar a César o coordinar?', 'es');
+    expect(contactRes.entry?.id).toBe('contact_channels');
+    expect(contactRes.entry?.actions?.some((a) => a.type === 'contact_form')).toBe(true);
+    expect(contactRes.entry?.actions?.some((a) => a.type === 'download_cv')).toBe(true);
   });
 
   it('synthesizes specialized greetings in English and Spanish', () => {

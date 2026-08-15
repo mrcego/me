@@ -119,14 +119,26 @@ export function searchKnowledge(
     const content = normalize(entry.content[locale] || entry.content.en);
     const title = normalize(entry.title[locale] || entry.title.en);
 
+    // Exact phrase match bonus
+    for (const kw of keywords) {
+      const normKw = normalize(kw);
+      if (normQuery.includes(normKw)) {
+        score += 25;
+      }
+    }
+
     for (const token of queryTokens) {
+      const isGenericNameToken = ['cesar', 'gomez', 'cesargomez'].includes(token);
       for (const kw of keywords) {
         const normKw = normalize(kw);
-        if (normKw === token) score += 10;
-        else if (normKw.includes(token) || token.includes(normKw)) score += 4;
+        if (normKw === token) {
+          score += isGenericNameToken && entry.id === 'bio_summary' ? 2 : 12;
+        } else if (normKw.includes(token) || token.includes(normKw)) {
+          score += isGenericNameToken ? 1 : 4;
+        }
       }
-      if (title.includes(token)) score += 3;
-      if (content.includes(token)) score += 1;
+      if (title.includes(token)) score += isGenericNameToken ? 1 : 3;
+      if (content.includes(token)) score += isGenericNameToken ? 0.5 : 1;
     }
 
     if (score > bestScore) {
