@@ -119,12 +119,12 @@ const contactMethods = [
             </p>
           </div>
 
-          <div class="space-y-4 md:space-y-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-4 md:gap-5">
             <a
               v-for="c in contactMethods"
               :key="c.key"
               :href="c.link"
-              class="contact-method glass flex items-center gap-4 md:gap-5 group touch-manipulation rounded-2xl border border-foreground/10 bg-foreground/3 px-3 py-3.5 md:px-4 md:py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              class="contact-method glass flex items-center gap-3.5 sm:gap-4 md:gap-5 group touch-manipulation rounded-2xl border border-foreground/10 bg-foreground/3 px-3 py-3.5 md:px-4 md:py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background min-w-0"
               :target="c.external ? '_blank' : undefined"
               :rel="c.external ? 'noopener noreferrer' : undefined"
             >
@@ -141,7 +141,7 @@ const contactMethods = [
                   {{ $t(`contact.methods.${c.key}`) }}
                 </p>
                 <p
-                  class="text-base sm:text-lg md:text-xl font-black text-foreground tracking-tight wrap-break-word"
+                  class="text-sm sm:text-base md:text-lg xl:text-xl font-black text-foreground tracking-tight truncate"
                 >
                   {{ c.value }}
                 </p>
