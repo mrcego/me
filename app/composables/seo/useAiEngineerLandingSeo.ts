@@ -4,15 +4,14 @@ export const useAiEngineerLandingSeo = () =>
   useExpertiseLandingSeo({
     translationKey: 'landingAi',
     paths: {
-      en: '/ai-engineer',
-      es: '/ingeniero-ia',
+      en: '/ai-assisted-craft',
+      es: '/craft-asistido-ia',
     },
     jobTitles: [
-      'Vibe Coding Cleanup Specialist',
-      'AI-Assisted Craft',
-      'Senior Vue/Nuxt Developer',
-      'Desarrollador Vue/Nuxt Senior',
-      'Craft asistido por IA',
+      'AI-Augmented Software Engineer',
+      'AI-Assisted Craft Specialist',
+      'Senior Fullstack Engineer',
+      'Frontend Architecture Specialist',
     ],
     knowsAbout: [
       'AI-Assisted Software Engineering',

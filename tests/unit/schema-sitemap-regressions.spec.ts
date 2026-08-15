@@ -33,15 +33,15 @@ describe('schema + sitemap regressions', () => {
       const es = absoluteSiteUrl(route.paths.es);
       const links = buildHreflangAlternateLinks({ en, es });
       expect(links).toHaveLength(3);
-      expect(links.map((l) => l.hreflang).sort()).toEqual(['en-US', 'es-ES', 'x-default'].sort());
+      expect(links.map((l) => l.hreflang).sort()).toEqual(['en', 'es-CO', 'x-default'].sort());
       expect(links.find((l) => l.hreflang === 'x-default')?.href).toBe(en);
     }
   });
 
-  it('never renames the publicly indexed AI landing slug', () => {
+  it('maintains canonical AI-Assisted Craft landing route', () => {
     const ai = PORTFOLIO_ROUTES.find((r) => r.id === 'ai');
-    expect(ai?.paths.en).toBe('/ai-engineer/');
-    expect(ai?.paths.es).toBe('/es/ingeniero-ia/');
-    expect(ai?.localePath).toBe('/ai-engineer');
+    expect(ai?.paths.en).toBe('/ai-assisted-craft/');
+    expect(ai?.paths.es).toBe('/es/craft-asistido-ia/');
+    expect(ai?.localePath).toBe('/ai-assisted-craft');
   });
 });

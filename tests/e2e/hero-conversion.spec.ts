@@ -11,18 +11,21 @@ test.describe('hero conversion hierarchy', () => {
     await expect(hero).toBeVisible();
 
     const h1 = hero.locator('h1');
-    await expect(h1).toContainText(/Senior Vue\/Nuxt (Engineer|Developer)/i);
+    await expect(h1).toContainText(/Senior Vue\/Nuxt & Fullstack Engineer/i);
 
     const nameText = (await h1.innerText()).replace(/\s+/g, ' ');
     expect(nameText).toMatch(/César Gómez|Cesar Gomez|CESAR GOMEZ/i);
     expect(nameText).not.toMatch(/CESARGOMEZ/);
 
-    // Differentiator should not repeat the full H1 role phrase.
-    const differentiator = hero.getByText(/AI-Assisted Craft/i).first();
-    await expect(differentiator).toBeVisible();
+    const description = hero.getByText(/I help product teams build and scale/i).first();
+    await expect(description).toBeVisible();
     await expect(hero.getByText(/Senior Vue\/Nuxt · AI-Assisted Craft/i)).toHaveCount(0);
 
-    const cta = hero.getByRole('link', { name: /Get in Touch|Contáctame|Contacto/i }).first();
+    const cta = hero
+      .getByRole('link', {
+        name: /Discuss a Vue\/Nuxt engagement|Hablar sobre un proyecto Vue\/Nuxt/i,
+      })
+      .first();
     await expect(cta).toBeVisible();
 
     const photo = hero.locator('img[src*="me.jpg"], img[alt*="César"], img[alt*="Cesar"]').first();
@@ -43,7 +46,9 @@ test.describe('hero conversion hierarchy', () => {
     const hero = page.locator('#hero');
     const h1Box = await hero.locator('h1').boundingBox();
     const ctaBox = await hero
-      .getByRole('link', { name: /Get in Touch|Contáctame|Contacto/i })
+      .getByRole('link', {
+        name: /Discuss a Vue\/Nuxt engagement|Hablar sobre un proyecto Vue\/Nuxt/i,
+      })
       .first()
       .boundingBox();
     const photoBox = await hero

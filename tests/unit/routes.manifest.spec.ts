@@ -12,20 +12,19 @@ describe('routes.manifest', () => {
     expect(PORTFOLIO_ROUTES).toHaveLength(13);
   });
 
-  it('keeps the AI landing URL slug unchanged', () => {
+  it('defines canonical AI-Assisted Craft landing URL slug', () => {
     const ai = PORTFOLIO_ROUTES.find((route) => route.id === 'ai');
-    expect(ai?.paths.en).toBe('/ai-engineer/');
-    expect(ai?.paths.es).toBe('/es/ingeniero-ia/');
+    expect(ai?.paths.en).toBe('/ai-assisted-craft/');
+    expect(ai?.paths.es).toBe('/es/craft-asistido-ia/');
   });
 
   it('emits trailing-slash prerender and sitemap URLs', () => {
     const routes = prerenderRoutes();
     expect(routes).toContain('/');
     expect(routes).toContain('/es/');
-    expect(routes).toContain('/ai-engineer/');
+    expect(routes).toContain('/ai-assisted-craft/');
     expect(routes).toContain('/case-studies/colegium/');
     expect(routes).toContain('/web-developer-cartagena/');
-    expect(routes).toContain('/ai-assisted-craft/');
     expect(routes).toContain('/vue-developer-colombia/');
     expect(routes).toContain('/angular-developer/');
     expect(routes).toContain('/frontend-architect/');
@@ -34,10 +33,9 @@ describe('routes.manifest', () => {
     expect(sitemapUrls()).toEqual(
       expect.arrayContaining([
         '/',
-        '/ai-engineer/',
+        '/ai-assisted-craft/',
         '/case-studies/colegium/',
         '/web-developer-cartagena/',
-        '/ai-assisted-craft/',
         '/vue-developer-colombia/',
         '/angular-developer/',
         '/frontend-architect/',

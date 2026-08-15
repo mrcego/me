@@ -9,7 +9,7 @@ import {
   personSchemaRef,
   websiteSchemaRef,
 } from '~/utils/seo';
-import { SITE_ORIGIN, absoluteSiteUrl } from '~/utils/siteUrl';
+import { absoluteSiteUrl } from '~/utils/siteUrl';
 
 export type ExpertiseLandingTranslationKey =
   | 'landingVue'
@@ -51,7 +51,6 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
   const canonicalUrl = computed(() => absoluteSiteUrl(route.path));
   const enUrl = absoluteSiteUrl(options.paths.en);
   const esUrl = absoluteSiteUrl(`/es${options.paths.es}`);
-  const ogImage = `${SITE_ORIGIN}${SEO_IDENTITY.ogImage}`;
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
 
   const metaTitle = computed(() => {
@@ -145,15 +144,10 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
         // Reference home Person — do not redefine url/jobTitle on the same @id
         about: [personSchemaRef(), ...pageOccupations],
         mainEntity: personSchemaRef(),
-        primaryImageOfPage: ogImage,
         mentions: options.knowsAbout.map((topic) => ({
           '@type': 'Thing',
           name: topic,
         })),
-        speakable: {
-          '@type': 'SpeakableSpecification',
-          cssSelector: ['h1', '#answer-block', '.faq-section'],
-        },
       }),
       jsonLdScript(`${options.translationKey}-breadcrumb`, {
         '@context': 'https://schema.org',

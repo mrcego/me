@@ -6,6 +6,17 @@ const { t } = useI18n();
 const { activeRoleIndex, currentRole } = useBrandRoleRotator();
 const { openVibeCodingModal, vibeCodingModalMounted } = useVibeCodingModal();
 const { goToSection, sectionHref } = useSectionNavigation();
+const { trackEvent } = useAnalytics();
+
+function onPrimaryCtaClick(event: MouseEvent) {
+  trackEvent('primary_cta_click', { location: 'hero' });
+  goToSection(event, '#contact');
+}
+
+function onSecondaryCtaClick(event: MouseEvent) {
+  trackEvent('view_case_study', { location: 'hero' });
+  goToSection(event, '#case-studies');
+}
 
 const {
   hitRef: photoHitRef,
@@ -43,37 +54,16 @@ const heroTags = [
 ];
 
 const heroStats = [
-  { value: '13+', label: 'hero.stats.experience' },
-  { value: '18+', label: 'hero.stats.projects' },
-  { value: '20+', label: 'hero.stats.technologies' },
+  { value: '13+', labelKey: 'hero.stats.experience' },
+  { value: '40+', labelKey: 'hero.stats.projects' },
+  { value: '5', labelKey: 'hero.stats.technologies' },
 ];
 
 onMounted(() => {
-  const scheduleMarquee = () => {
-    showMarquee.value = true;
-  };
-
-  const revealMarquee = () => {
-    if (marqueeReady.value) return;
+  showMarquee.value = true;
+  requestAnimationFrame(() => {
     marqueeReady.value = true;
-  };
-
-  const start = () => {
-    const requestIdle = Reflect.get(window, 'requestIdleCallback') as
-      Window['requestIdleCallback'] | undefined;
-    if (requestIdle) {
-      requestIdle.call(window, scheduleMarquee, { timeout: 4000 });
-    } else {
-      window.setTimeout(scheduleMarquee, 2000);
-    }
-  };
-
-  if (document.readyState === 'complete') start();
-  else window.addEventListener('load', start, { once: true });
-
-  window.addEventListener('scroll', revealMarquee, { once: true, passive: true });
-  window.addEventListener('pointerdown', revealMarquee, { once: true, passive: true });
-  window.addEventListener('keydown', revealMarquee, { once: true });
+  });
 });
 </script>
 
@@ -108,33 +98,33 @@ onMounted(() => {
       <header
         class="order-1 lg:col-start-1 space-y-3 sm:space-y-4 md:space-y-5 flex flex-col items-center lg:items-start text-center lg:text-left w-full"
       >
-        <h1
-          class="space-y-3 sm:space-y-4 md:space-y-5 font-black tracking-tighter text-balance w-full"
-        >
-          <span
-            class="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl leading-[1.05] min-h-[2.1em] sm:min-h-[2.0em] flex items-center justify-center lg:justify-start"
-          >
-            <Transition name="hero-role-fade" mode="out-in">
-              <span
-                :key="activeRoleIndex"
-                class="block text-gradient hover:text-foreground transition-colors duration-700 text-pretty"
-              >
-                {{ currentRole }}
-              </span>
-            </Transition>
+        <h1 class="space-y-2 sm:space-y-3 font-black tracking-tighter text-balance w-full">
+          <span class="block text-2xl sm:text-3xl md:text-4xl text-gradient tracking-tight">
+            {{ nameParts.first }} {{ nameParts.last }}
           </span>
           <span
-            class="flex flex-wrap items-baseline justify-center lg:justify-start gap-x-3 sm:gap-x-4 md:gap-x-5 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-snug text-foreground/85"
+            class="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] text-foreground text-pretty"
           >
-            <span class="text-gradient">{{ nameParts.first }}</span>
-            <span v-if="nameParts.last" class="text-foreground">{{ nameParts.last }}</span>
+            {{ $t('hero.h1') }}
           </span>
         </h1>
 
+        <!-- Rotator pill badge for specialized sub-roles -->
         <p
-          class="hero-reveal hero-reveal--d35 w-full max-w-2xl type-meta text-muted text-center lg:text-left text-balance"
+          class="type-meta text-muted flex items-center justify-center lg:justify-start gap-2 pt-1"
         >
-          {{ $t('hero.differentiator') }}
+          <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse" />
+          <Transition name="hero-role-fade" mode="out-in">
+            <span :key="activeRoleIndex" class="font-bold text-foreground">
+              {{ currentRole }}
+            </span>
+          </Transition>
+        </p>
+
+        <p
+          class="hero-reveal hero-reveal--d35 w-full max-w-2xl text-base sm:text-lg text-muted text-center lg:text-left text-pretty font-medium leading-relaxed"
+        >
+          {{ $t('hero.description') }}
         </p>
       </header>
 
@@ -148,10 +138,17 @@ onMounted(() => {
           <a
             class="btn-premium bg-primary text-primary-contrast rounded-2xl sm:rounded-3xl px-6 sm:px-8 py-3.5 sm:py-4 shadow-3xl shadow-primary/20 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-sm sm:text-base border-none whitespace-nowrap"
             :href="sectionHref('#contact')"
-            @click="goToSection($event, '#contact')"
+            @click="onPrimaryCtaClick"
           >
             <Icon name="solar:rocket-2-bold-duotone" class="w-6 h-6 sm:w-7 sm:h-7 shrink-0" />
             <span class="whitespace-nowrap">{{ $t('hero.cta') }}</span>
+          </a>
+          <a
+            class="rounded-2xl sm:rounded-3xl px-6 sm:px-8 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-foreground border border-foreground/15 hover:border-primary/50 hover:scale-[1.03] active:scale-95 w-full sm:w-auto text-center whitespace-nowrap transition-transform duration-200"
+            :href="sectionHref('#case-studies')"
+            @click="onSecondaryCtaClick"
+          >
+            <span class="whitespace-nowrap">{{ $t('hero.secondaryCta') }}</span>
           </a>
           <CvDownloadButton class="w-full sm:w-auto" />
         </div>
@@ -319,7 +316,7 @@ onMounted(() => {
       >
         <div
           v-for="(stat, i) in heroStats"
-          :key="stat.label"
+          :key="stat.labelKey"
           class="hero-reveal space-y-0.5 md:space-y-1 group/stat"
           :style="{ animationDelay: `${1 + i * 0.15}s` }"
         >
@@ -331,7 +328,7 @@ onMounted(() => {
           <div
             class="type-stat-label text-muted group-hover/stat:text-foreground transition-colors"
           >
-            {{ $t(stat.label) }}
+            {{ $t(stat.labelKey) }}
           </div>
         </div>
       </div>

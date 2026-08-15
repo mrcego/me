@@ -4,18 +4,19 @@ id: "person"
 name: "César Gómez"
 given_name: "César"
 family_name: "Gómez"
-job_title: "Senior Vue/Nuxt Engineer & Frontend Architect"
+job_title: "Senior Fullstack Engineer, Frontend Architect and Senior Vue/Nuxt Engineer"
 location: "Cartagena de Indias, Colombia"
-work_preference: "Remote contract"
+work_preference: "Remote senior engagements"
 languages: ["en", "es"]
 known_about:
   - "Vue.js / Vue 3"
   - "Nuxt.js / Nuxt 4"
   - "TypeScript"
+  - "Node.js"
   - "Frontend Architecture"
   - "Micro-frontends"
   - "Design Systems"
-  - "AI-Assisted Craft & Vibe Coding Cleanup"
+  - "AI-Augmented Engineering & AI-Assisted Craft"
 same_as:
   - "https://www.linkedin.com/in/mrcego"
   - "https://github.com/mrcego"
@@ -24,4 +25,4 @@ same_as:
 
 # Person Node — César Gómez
 
-César Gómez is a senior software engineer with 13+ years of experience specializing in Vue.js, Nuxt.js, TypeScript, and maintainable software delivery. Based in Cartagena, Colombia; available for global remote contracts starting August 10, 2026.
+César Gómez is a senior software engineer with 13+ years of experience specializing in Vue 3, Nuxt 4, TypeScript, Node.js, and maintainable software architecture. Based in Cartagena, Colombia; available now for global remote engagements.

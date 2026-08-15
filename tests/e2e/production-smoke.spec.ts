@@ -10,7 +10,9 @@ const productionBase = process.env.PLAYWRIGHT_PROD_URL || '';
 test.describe('production smoke', () => {
   test.skip(!productionBase, 'Set PLAYWRIGHT_PROD_URL to run production smoke');
 
-  const routes = PORTFOLIO_ROUTES.flatMap((route) => [route.paths.en, route.paths.es]);
+  const routes = [
+    ...new Set(PORTFOLIO_ROUTES.flatMap((route) => [route.paths.en, route.paths.es])),
+  ];
 
   for (const path of routes) {
     test(`GET ${path} is 200 with canonical`, async ({ request }) => {
@@ -18,8 +20,8 @@ test.describe('production smoke', () => {
       expect(res.status(), path).toBe(200);
       const html = await res.text();
       expect(html).toMatch(/rel=["']canonical["']/i);
-      expect(html).toMatch(/hreflang=["']en-US["']/i);
-      expect(html).toMatch(/hreflang=["']es-ES["']/i);
+      expect(html).toMatch(/hreflang=["']en["']/i);
+      expect(html).toMatch(/hreflang=["']es-CO["']/i);
     });
   }
 

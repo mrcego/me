@@ -79,11 +79,11 @@ const contactMethods = [
           <div class="space-y-6 sm:space-y-8 md:space-y-12 group text-center lg:text-left">
             <div class="flex items-center justify-center lg:justify-start gap-4 md:gap-6">
               <div class="h-px w-12 md:w-16 bg-primary" aria-hidden="true" />
-              <h2 class="type-eyebrow tracking-[0.4em]">
+              <p class="type-eyebrow tracking-[0.4em]">
                 {{ $t('contact.section') }}
-              </h2>
+              </p>
             </div>
-            <h3
+            <h2
               id="contact-heading"
               class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-none text-foreground whitespace-pre-line text-balance"
             >
@@ -91,7 +91,7 @@ const contactMethods = [
               <span class="text-gradient">{{ $t('contact.titleHighlight') }}</span
               ><br />
               {{ $t('contact.titleEnd') }}
-            </h3>
+            </h2>
             <p
               class="text-muted text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto lg:mx-0 text-pretty"
             >
@@ -234,6 +234,42 @@ const contactMethods = [
                   >{{ errors.email }}</span
                 >
               </div>
+            </div>
+
+            <div class="space-y-2 sm:space-y-3 md:space-y-4 group/input">
+              <label
+                for="contact-engagement-type"
+                class="type-label text-muted block pl-3 sm:pl-4 md:pl-6 group-focus-within/input:text-primary transition-colors duration-300"
+                >{{ $t('contact.form.engagementType') }}</label
+              >
+              <select
+                id="contact-engagement-type"
+                v-model="formData.engagementType"
+                name="engagementType"
+                class="w-full rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 md:p-5 bg-foreground/7 border border-foreground/15 focus:border-primary/60 focus:ring-4 sm:focus:ring-8 focus:ring-primary/10 transition-[border-color,box-shadow,background-color] duration-300 text-sm md:text-base hover:border-foreground/25 text-foreground cursor-pointer"
+              >
+                <option value="" disabled class="bg-background text-muted">
+                  {{ $t('contact.form.engagementTypePlaceholder') }}
+                </option>
+                <option value="vue" class="bg-background text-foreground">
+                  {{ $t('contact.form.engagementTypes.vue') }}
+                </option>
+                <option value="fullstack" class="bg-background text-foreground">
+                  {{ $t('contact.form.engagementTypes.fullstack') }}
+                </option>
+                <option value="architect" class="bg-background text-foreground">
+                  {{ $t('contact.form.engagementTypes.architect') }}
+                </option>
+                <option value="hire" class="bg-background text-foreground">
+                  {{ $t('contact.form.engagementTypes.hire') }}
+                </option>
+                <option value="contract" class="bg-background text-foreground">
+                  {{ $t('contact.form.engagementTypes.contract') }}
+                </option>
+                <option value="aiReview" class="bg-background text-foreground">
+                  {{ $t('contact.form.engagementTypes.aiReview') }}
+                </option>
+              </select>
             </div>
 
             <div class="space-y-2 sm:space-y-3 md:space-y-4 group/input">

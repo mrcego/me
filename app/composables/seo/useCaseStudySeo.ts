@@ -98,15 +98,6 @@ export const useCaseStudySeo = (slug: CaseStudySlug) => {
         dateModified: SEO_EDITORIAL_DATES.lastModified,
         mainEntityOfPage: `${canonicalUrl.value}#webpage`,
         about: personSchemaRef(),
-        speakable: {
-          '@type': 'SpeakableSpecification',
-          cssSelector: [
-            '.case-study-hero h1',
-            '.case-study-hero .lead',
-            '.case-study-highlights',
-            '.case-study-sections',
-          ],
-        },
       }),
       jsonLdScript(`case-study-${slug}-webpage`, {
         '@context': 'https://schema.org',

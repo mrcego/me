@@ -9,7 +9,6 @@ import seoConfig, {
   SEO_EDITORIAL_DATES,
   SEO_HREFLANG,
   SEO_IDENTITY,
-  SERVICE_PRICE_RANGE,
   SITE_NAME,
   SITE_NAME_ALTERNATES,
   WEBSITE_SCHEMA_ID,
@@ -53,8 +52,8 @@ describe('seo.config', () => {
   });
 
   it('uses region-qualified hreflang codes', () => {
-    expect(SEO_HREFLANG.en).toBe('en-US');
-    expect(SEO_HREFLANG.es).toBe('es-ES');
+    expect(SEO_HREFLANG.en).toBe('en');
+    expect(SEO_HREFLANG.es).toBe('es-CO');
     expect(SEO_HREFLANG.xDefault).toBe('x-default');
     expect(seoConfig.seo.hreflang).toEqual(SEO_HREFLANG);
   });
@@ -78,12 +77,10 @@ describe('seo.config', () => {
     expect(SITE_NAME_ALTERNATES).toContain('Cesar Gomez');
   });
 
-  it('exposes contact phone and dual-currency hourly price range for LocalBusiness', () => {
+  it('exposes contact phone numbers for LocalBusiness schema', () => {
     expect(CONTACT_PHONE_DISPLAY).toBe('+57 333 263 6550');
     expect(CONTACT_PHONE_E164).toBe('+573332636550');
     expect(CONTACT_PHONE_WHATSAPP).toBe('https://wa.me/573332636550');
-    expect(SERVICE_PRICE_RANGE).toContain('USD');
-    expect(SERVICE_PRICE_RANGE).toContain('COP');
   });
 
   it('keeps home meta descriptions within the 300-character scanner budget', () => {

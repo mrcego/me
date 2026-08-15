@@ -106,7 +106,11 @@ test.describe('portfolio SSG under CSP', () => {
   test('home hire-profile links use trailing-slash canonical hrefs', async ({ page }) => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
 
-    const expected = ['/vue-frontend-developer/', '/nodejs-backend-developer/', '/ai-engineer/'];
+    const expected = [
+      '/vue-frontend-developer/',
+      '/nodejs-backend-developer/',
+      '/ai-assisted-craft/',
+    ];
 
     for (const path of expected) {
       const link = page.locator(`a[href="${path}"]`).first();

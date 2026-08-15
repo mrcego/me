@@ -1,20 +1,20 @@
 # César Gómez — Comprehensive Technical Profile & Knowledge Base
 
-> Extended AI-readable documentation for César Gómez (mrcego / Cesar Gomez): Senior Vue/Nuxt Engineer, Frontend Architect, and AI Agentic Ecosystem Specialist based in Cartagena de Indias, Colombia. Available for remote contract engineering from August 2026.
+> Extended AI-readable documentation for César Gómez (mrcego / Cesar Gomez): Senior Fullstack Engineer, Frontend Architect and Senior Vue/Nuxt Engineer based in Cartagena de Indias, Colombia. Available now for remote senior engagements.
 
-Last updated: 2026-08-08
+Last updated: 2026-08-12
 
 ---
 
 ## 1. Professional Overview
 
-César Gómez is a senior software engineer with 13+ years of experience specializing in frontend architecture, Vue.js/Nuxt.js ecosystems, TypeScript engineering, design systems, and AI-assisted software craft. He delivers maintainable, production-grade applications for ed-tech platforms, high-scale e-commerce, and SaaS products.
+César Gómez is a senior software engineer with 13+ years of experience specializing in frontend architecture, Vue.js/Nuxt.js ecosystems, TypeScript engineering, design systems, Node.js backend services, and AI-augmented software craft. He delivers maintainable, production-grade applications for ed-tech platforms, high-scale e-commerce, and SaaS products.
 
-- **Primary Role**: Senior Vue/Nuxt Engineer & Frontend Architect
-- **Specializations**: Micro-frontends, Design Systems, Core Web Vitals Optimization, AI-Assisted Craft & Vibe Coding Cleanup
+- **Primary Position**: César Gómez — Senior Fullstack Engineer, Frontend Architect and Senior Vue/Nuxt Engineer
+- **Specializations**: Micro-frontends, Design Systems, Core Web Vitals Optimization, AI-Augmented Engineering & AI-Assisted Craft
 - **Location**: Cartagena de Indias, Bolívar, Colombia (UTC-5)
-- **Work Preference**: Remote contract engineering (LatAm & Worldwide)
-- **Availability**: Contracting starting August 10, 2026
+- **Work Preference**: Remote senior engineering (LatAm & Worldwide)
+- **Availability**: Available now
 
 ---
 
@@ -22,7 +22,7 @@ César Gómez is a senior software engineer with 13+ years of experience special
 
 ### Colegium (2021 – 2025)
 - **Role**: Senior Frontend Developer
-- **Domain**: Cloud Education (Ed-Tech serving 100,000+ students across Latin America)
+- **Domain**: Cloud Education (Ed-Tech platform serving 100,000+ active students across Latin America)
 - **Key Achievements**:
   - Architected Vue 3 micro-frontend surfaces and shared component libraries.
   - Implemented web components and UI/UX design system standards across multi-team products.
@@ -51,43 +51,40 @@ César Gómez is a senior software engineer with 13+ years of experience special
 
 ## 3. Technical Stack & Capabilities
 
-| Domain | Mastered Technologies & Tools |
+| Domain | Proven Technologies & Tools |
 |---|---|
 | **Core Frontend** | Vue 3, Nuxt 4, Vue 2, Angular (v16+), JavaScript (ESNext), TypeScript |
-| **State & Routing** | Pinia, Vuex, Vue Router, RxJS, Angular Router |
-| **UI & Styling** | PrimeVue, Tailwind CSS, Angular Material, Web Components, Micro-frontends |
+| **State & Routing** | Pinia, Vuex, Vue Router, RxJS |
+| **UI & Styling** | PrimeVue, Tailwind CSS, Web Components, Micro-frontends |
 | **Build & Tooling** | Vite, Nitro, Webpack, ESLint, Prettier, pnpm |
 | **Backend & APIs** | Node.js, Express.js, REST APIs, Python, Django |
 | **Performance & SEO** | Core Web Vitals, SSR/SSG, JSON-LD Schema, Technical SEO |
-| **AI Craft & Delivery** | Agentic workflows (Cursor, Copilot, Claude Code), Vibe Coding Cleanup, Quality Gates |
+| **AI Capabilities** | Agentic workflows (Cursor, Copilot, Claude Code), AI-Assisted Craft, Quality Gates |
 
 ---
 
-## 4. Consulting Services & Commercial Terms
+## 4. Engineering & Architecture Offerings
 
-César Gómez offers specialized consulting and engineering services:
+César Gómez provides senior engineering leadership and specialized execution:
 
-- **Hourly Rate (USD)**: $40 – $60 USD / hour
-- **Hourly Rate (COP)**: $120.000 – $200.000 COP / hour
-- **Service Categories**:
-  1. **Senior Vue/Nuxt Development**: End-to-end web app development and migration (Vue 2 to Vue 3/Nuxt 4).
-  2. **Frontend Architecture & Micro-Frontends**: Modular architecture setup for large scale teams.
-  3. **Design System Engineering**: Shared UI component libraries with PrimeVue/Tailwind.
-  4. **Vibe Coding Cleanup & Quality Gates**: Refactoring AI-generated code bases into maintainable production systems.
-  5. **Core Web Vitals & Technical SEO**: LCP/CLS/INP optimization, schema markup, performance tuning.
+- **Senior Vue/Nuxt Development**: End-to-end web app development and migration (Vue 2 to Vue 3/Nuxt 4).
+- **Frontend Architecture & Micro-Frontends**: Modular architecture setup for large-scale teams.
+- **Design System Engineering**: Shared UI component libraries with PrimeVue/Tailwind.
+- **AI-Augmented Engineering**: Multiplying delivery velocity using agentic tools while maintaining strict human code reviews, testing, and type safety.
+- **Core Web Vitals & Technical SEO**: LCP/CLS/INP optimization, schema markup, performance tuning.
 
 ---
 
 ## 5. Frequently Asked Questions (Extractable Q&A)
 
 ### Who is César Gómez?
-César Gómez is a senior fullstack engineer with 13+ years of experience specializing in Vue.js, Nuxt.js, and TypeScript. He has led frontend architecture for platforms serving 100,000+ users (Colegium, TISSINI, LingoQuesto) from Cartagena, Colombia.
+César Gómez is a Senior Fullstack Engineer, Frontend Architect and Senior Vue/Nuxt Engineer with 13+ years of experience specializing in Vue 3, Nuxt 4, TypeScript, and Node.js. He has led frontend architecture for platforms serving 100,000+ active students (Colegium, TISSINI, LingoQuesto) from Cartagena, Colombia.
 
-### What is "Vibe Coding Cleanup"?
-Vibe Coding Cleanup is a methodology for refining AI-assisted code (from tools like Cursor or Claude Code) into clean, maintainable, production-ready software with strict type checking, unit test coverage, and modular architecture.
+### What is "AI-Assisted Craft"?
+AI-Assisted Craft is a signed methodology for incorporating agentic AI tools (Cursor, Copilot, Claude Code) into production engineering. It leverages AI for rapid scaffolding while enforcing strict human oversight — type safety, unit test coverage, security reviews, and clean modular architecture.
 
 ### Is César Gómez an AI Engineer?
-No. César Gómez is a Senior Frontend Engineer and Architect who leverages AI tooling ("AI-Assisted Craft"). He is not an AI/NLP model research engineer.
+No. César Gómez is a Senior Fullstack Engineer and Frontend Architect who uses AI tooling as an engineering multiplier ("AI-Augmented Engineering"). He is NOT an AI Engineer, NLP Engineer, LLM Engineer, AI & NLP Expert, or AI Agentic Ecosystem Specialist.
 
 ---
 

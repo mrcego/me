@@ -58,8 +58,8 @@ export const PORTFOLIO_ROUTES: readonly PortfolioRoute[] = [
   },
   {
     id: 'ai',
-    paths: { en: '/ai-engineer/', es: '/es/ingeniero-ia/' },
-    localePath: '/ai-engineer',
+    paths: { en: '/ai-assisted-craft/', es: '/es/craft-asistido-ia/' },
+    localePath: '/ai-assisted-craft',
     landingKey: 'landingAi',
     hireLabelKey: 'hireProfiles.hireForAi',
     hireIcon: 'solar:cpu-bolt-bold-duotone',
@@ -135,8 +135,8 @@ export const PORTFOLIO_ROUTES: readonly PortfolioRoute[] = [
 export const SITEMAP_PRERENDER_ROUTES = [
   '/sitemap.xml',
   '/sitemap_index.xml',
-  '/__sitemap__/en-US.xml',
-  '/__sitemap__/es-ES.xml',
+  '/__sitemap__/en.xml',
+  '/__sitemap__/es-CO.xml',
 ] as const;
 
 /** Page HTML paths only (trailing slash). */

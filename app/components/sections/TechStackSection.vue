@@ -44,23 +44,43 @@ const detailedStack = [
   },
 ];
 
-const skills = [
-  'Artificial Intelligence',
-  'NLP',
-  'TypeScript',
-  'Tailwind CSS',
-  'Monorepo Architecture',
-  'Functional Programming',
-  'Frontend Architecture',
-  'System Design',
-  'Testing Strategy',
-  'Web Performance',
-  'Clean Code',
-  'CI/CD Pipelines',
-  'State Management',
-  'Design Systems',
-  'Accessibility',
-  'SEO Optimization',
+const skillGroups = [
+  {
+    categoryKey: 'techStack.categories.core',
+    items: ['Vue 3', 'Nuxt 4', 'TypeScript', 'JavaScript', 'Node.js', 'REST APIs'],
+  },
+  {
+    categoryKey: 'techStack.categories.architecture',
+    items: [
+      'Frontend Architecture',
+      'Design Systems',
+      'Micro-frontends',
+      'Monorepos',
+      'State Management',
+    ],
+  },
+  {
+    categoryKey: 'techStack.categories.engineering',
+    items: [
+      'Testing (Vitest & Playwright)',
+      'CI/CD Pipelines',
+      'Web Performance',
+      'Accessibility (a11y)',
+      'Code Quality',
+    ],
+  },
+  {
+    categoryKey: 'techStack.categories.ai',
+    items: [
+      'LLM & NLP Integration',
+      'AI-Augmented Workflows',
+      'Agentic Tooling (Cursor, Copilot, Claude)',
+    ],
+  },
+  {
+    categoryKey: 'techStack.categories.additional',
+    items: ['Angular (v16+)', 'Tailwind CSS', 'PrimeVue', 'Vite', 'PostgreSQL / SQLite'],
+  },
 ];
 </script>
 
@@ -186,14 +206,23 @@ const skills = [
             </h4>
           </div>
 
-          <div class="flex flex-wrap gap-2 md:gap-3 relative z-10">
-            <span
-              v-for="skill in skills"
-              :key="skill"
-              class="surface-card__tag text-xs md:text-sm font-bold uppercase tracking-wider text-muted glass px-6 py-3 rounded-xl border-foreground/5 cursor-default shadow-sm"
-            >
-              {{ skill }}
-            </span>
+          <div class="space-y-6 relative z-10">
+            <div v-for="group in skillGroups" :key="group.categoryKey" class="space-y-2">
+              <span
+                class="type-label text-primary/80 font-bold uppercase tracking-wider text-xs block"
+              >
+                {{ $t(group.categoryKey) }}
+              </span>
+              <div class="flex flex-wrap gap-2 md:gap-2.5">
+                <span
+                  v-for="skill in group.items"
+                  :key="skill"
+                  class="surface-card__tag text-xs font-bold uppercase tracking-wider text-muted glass px-4 py-2 rounded-lg border-foreground/5 cursor-default shadow-xs"
+                >
+                  {{ skill }}
+                </span>
+              </div>
+            </div>
           </div>
 
           <div

@@ -14,22 +14,21 @@ import {
 import { absoluteSiteUrl } from '../../app/utils/siteUrl';
 
 describe('seo helpers', () => {
-  it('builds en-US / es-ES / x-default hreflang alternates', () => {
+  it('builds en / es-CO / x-default hreflang alternates', () => {
     const en = absoluteSiteUrl('/');
     const es = absoluteSiteUrl('/es/');
     const links = buildHreflangAlternateLinks({ en, es });
 
     expect(links).toEqual([
-      { rel: 'alternate', hreflang: 'en-US', href: en },
-      { rel: 'alternate', hreflang: 'es-ES', href: es },
+      { rel: 'alternate', hreflang: 'en', href: en },
+      { rel: 'alternate', hreflang: 'es-CO', href: es },
       { rel: 'alternate', hreflang: 'x-default', href: en },
     ]);
-    expect(links.every((l) => l.hreflang !== 'en' && l.hreflang !== 'es')).toBe(true);
   });
 
   it('builds landing hreflang with x-default on the English URL', () => {
-    const en = absoluteSiteUrl('/ai-engineer');
-    const es = absoluteSiteUrl('/es/ingeniero-ia');
+    const en = absoluteSiteUrl('/ai-assisted-craft');
+    const es = absoluteSiteUrl('/es/craft-asistido-ia');
     const links = buildHreflangAlternateLinks({ en, es });
 
     expect(links[0]).toMatchObject({ hreflang: SEO_HREFLANG.en, href: en });
@@ -49,10 +48,10 @@ describe('seo helpers', () => {
   });
 
   it('maps app locale codes to HTML / OG locale tags', () => {
-    expect(htmlLangForLocale('en')).toBe('en-US');
-    expect(htmlLangForLocale('es')).toBe('es-ES');
+    expect(htmlLangForLocale('en')).toBe('en');
+    expect(htmlLangForLocale('es')).toBe('es-CO');
     expect(ogLocaleForLocale('en')).toBe('en_US');
-    expect(ogLocaleForLocale('es')).toBe('es_ES');
+    expect(ogLocaleForLocale('es')).toBe('es_CO');
   });
 
   it('exposes editorial lastModified for ProfilePage dateModified wiring', () => {

@@ -13,12 +13,15 @@ export function parseAvailableFrom(isoDate: string): Date {
 }
 
 /** Official contract start date — local midnight from content config. */
-export const AVAILABILITY_START = parseAvailableFrom(AVAILABILITY_CONFIG.availableFrom);
+export const AVAILABILITY_START = AVAILABILITY_CONFIG.availableFrom
+  ? parseAvailableFrom(AVAILABILITY_CONFIG.availableFrom)
+  : new Date(2026, 0, 1);
 
 export function isImmediatelyAvailable(
   now = new Date(),
-  availableFrom: string = AVAILABILITY_CONFIG.availableFrom,
+  availableFrom: string | null = AVAILABILITY_CONFIG.availableFrom,
 ) {
+  if (!availableFrom) return true;
   const start = parseAvailableFrom(availableFrom);
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
   return today >= start;

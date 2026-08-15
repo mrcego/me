@@ -2,11 +2,12 @@ import { ref, reactive } from 'vue';
 
 const NETLIFY_FORM_NAME = 'portfolio-contact';
 
-const FIELD_ORDER = ['name', 'email', 'subject', 'message'] as const;
+const FIELD_ORDER = ['name', 'email', 'engagementType', 'subject', 'message'] as const;
 
 const FIELD_MAX_LENGTH = {
   name: 100,
   email: 254,
+  engagementType: 100,
   subject: 200,
   message: 5000,
 } as const satisfies Record<(typeof FIELD_ORDER)[number], number>;
@@ -16,6 +17,7 @@ type FieldKey = (typeof FIELD_ORDER)[number];
 export const useContactForm = () => {
   const { t } = useI18n();
   const runtimeConfig = useRuntimeConfig();
+  const { trackEvent } = useAnalytics();
   const isSubmitting = ref(false);
   const submitSuccess = ref(false);
   const submitError = ref('');
@@ -23,6 +25,7 @@ export const useContactForm = () => {
   const formData = reactive({
     name: '',
     email: '',
+    engagementType: '',
     subject: '',
     message: '',
   });
@@ -30,6 +33,7 @@ export const useContactForm = () => {
   const errors = reactive<Record<FieldKey, string>>({
     name: '',
     email: '',
+    engagementType: '',
     subject: '',
     message: '',
   });
@@ -108,6 +112,7 @@ export const useContactForm = () => {
   const resetForm = () => {
     formData.name = '';
     formData.email = '';
+    formData.engagementType = '';
     formData.subject = '';
     formData.message = '';
     clearErrors();
@@ -115,7 +120,7 @@ export const useContactForm = () => {
 
   const submitViaMailto = (): void => {
     const mailtoLink = `mailto:cesargomezh90@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
+      `Name: ${formData.name}\nEmail: ${formData.email}\nType: ${formData.engagementType}\n\nMessage:\n${formData.message}`,
     )}`;
     window.location.href = mailtoLink;
   };
@@ -128,6 +133,7 @@ export const useContactForm = () => {
       'form-name': NETLIFY_FORM_NAME,
       name: formData.name.trim(),
       email: formData.email.trim(),
+      engagementType: formData.engagementType.trim(),
       subject: formData.subject.trim(),
       message: formData.message.trim(),
       'bot-field': '',
@@ -165,6 +171,10 @@ export const useContactForm = () => {
         submitViaMailto();
         await new Promise((resolve) => setTimeout(resolve, 500));
       }
+
+      trackEvent('contact_submit', {
+        engagement_type: formData.engagementType,
+      });
 
       submitSuccess.value = true;
       resetForm();

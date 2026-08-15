@@ -7,7 +7,7 @@ const localePath = useLocalePath();
 
 const homeTo = computed(() => localePath('/'));
 const vueProfileTo = computed(() => localePath('/vue-frontend-developer'));
-const aiProfileTo = computed(() => localePath('/ai-engineer'));
+const aiProfileTo = computed(() => localePath('/ai-assisted-craft'));
 const nodeProfileTo = computed(() => localePath('/nodejs-backend-developer'));
 const angularProfileTo = computed(() => localePath('/angular-developer'));
 const architectProfileTo = computed(() => localePath('/frontend-architect'));

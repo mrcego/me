@@ -33,7 +33,7 @@ describe('useBrandRoleRotator', () => {
     );
     await nextTick();
 
-    expect(api.brandRoles.value.length).toBe(6);
+    expect(api.brandRoles.value.length).toBe(4);
     const first = api.activeRoleIndex.value;
     await vi.advanceTimersByTimeAsync(3000);
     expect(api.activeRoleIndex.value).not.toBe(first);

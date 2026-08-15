@@ -298,6 +298,13 @@ export default defineNuxtConfig({
     },
   },
 
+  routeRules: {
+    '/ai-engineer': { redirect: { to: '/ai-assisted-craft/', statusCode: 301 } },
+    '/ai-engineer/': { redirect: { to: '/ai-assisted-craft/', statusCode: 301 } },
+    '/es/ingeniero-ia': { redirect: { to: '/es/craft-asistido-ia/', statusCode: 301 } },
+    '/es/ingeniero-ia/': { redirect: { to: '/es/craft-asistido-ia/', statusCode: 301 } },
+  },
+
   // SEO module configuration
   // Build-time OG PNGs (static Netlify generate) — no runtime signing secret needed
   ogImage: {
@@ -305,7 +312,7 @@ export default defineNuxtConfig({
     defaults: {
       width: 1200,
       height: 630,
-      alt: 'César Gómez — Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem',
+      alt: 'César Gómez — Senior Fullstack Engineer · Frontend Architect',
     },
     // Prerender can exceed the module default (15s) under Windows + cold Chromium.
     security: {
@@ -363,8 +370,8 @@ export default defineNuxtConfig({
 
   i18n: {
     locales: [
-      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
-      { code: 'es', language: 'es-ES', name: 'Español', file: 'es.json' },
+      { code: 'en', language: 'en', name: 'English', file: 'en.json' },
+      { code: 'es', language: 'es-CO', name: 'Español (Colombia)', file: 'es.json' },
     ],
     defaultLocale: 'en',
     langDir: '../i18n/locales',

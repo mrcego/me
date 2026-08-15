@@ -141,3 +141,17 @@
   from = "/cv/CV Cesar Gomez ES.pdf"
   to = "/cv/cv-cesar-gomez-es.pdf"
   status = 301
+
+# Legacy AI Engineer URLs → AI-Assisted Craft
+[[redirects]]
+  from = "/ai-engineer/*"
+  to = "/ai-assisted-craft/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/es/ingeniero-ia/*"
+  to = "/es/craft-asistido-ia/:splat"
+  status = 301
+  force = true
+

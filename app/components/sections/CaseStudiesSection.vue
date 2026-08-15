@@ -6,13 +6,9 @@ import { getI18nArray } from '~/core/utils/i18nHelpers';
 const localePath = useLocalePath();
 const { tm, rt } = useI18n();
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+const { trackEvent } = useAnalytics();
 
 const studies = [
-  {
-    slug: 'tissini',
-    icon: 'solar:bag-2-bold-duotone',
-    to: '/case-studies/tissini',
-  },
   {
     slug: 'colegium',
     icon: 'solar:buildings-2-bold-duotone',
@@ -23,11 +19,20 @@ const studies = [
     icon: 'solar:chat-round-dots-bold-duotone',
     to: '/case-studies/lingoquesto',
   },
+  {
+    slug: 'tissini',
+    icon: 'solar:bag-2-bold-duotone',
+    to: '/case-studies/tissini',
+  },
 ] as const;
 
 function studyTags(slug: (typeof studies)[number]['slug']): string[] {
   const data = getI18nArray(tm, `caseStudies.items.${slug}.tags`);
   return data.map((item) => rt(item));
+}
+
+function onCaseStudyClick(slug: string) {
+  trackEvent('view_case_study', { case_study_slug: slug });
 }
 </script>
 
@@ -131,6 +136,7 @@ function studyTags(slug: (typeof studies)[number]['slug']): string[] {
                   })
                 "
                 class="btn-premium bg-primary text-primary-contrast rounded-2xl px-6 py-3 border-none w-fit inline-flex items-center gap-2 font-black uppercase tracking-widest after:absolute after:inset-0 opacity-100 translate-y-0 pointer-events-auto md:opacity-0 md:translate-y-4 md:pointer-events-none md:group-hover:opacity-100 md:group-hover:translate-y-0 md:group-hover:pointer-events-auto md:group-focus-within:opacity-100 md:group-focus-within:translate-y-0 md:group-focus-within:pointer-events-auto transition-all duration-300 ease-out"
+                @click="onCaseStudyClick(study.slug)"
               >
                 {{ $t('caseStudies.readMore') }}
                 <Icon name="solar:arrow-right-linear" class="size-5" />

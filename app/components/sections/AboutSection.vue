@@ -85,7 +85,7 @@ const aboutPoints: PhilosophyPoint[] = [
     label: 'about.vibeCoding',
     descKey: 'about.vibeCodingDesc',
     icon: 'solar:magic-stick-3-bold-duotone',
-    to: '/ai-engineer',
+    to: '/ai-assisted-craft',
     linkLabelKey: 'hireProfiles.hireForAi',
     accent: 'violet',
     featured: true,
@@ -198,11 +198,11 @@ const aboutPoints: PhilosophyPoint[] = [
             </div>
 
             <!-- Content inside card -->
-            <h3
+            <p
               class="text-xl sm:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4 text-center xl:text-left"
             >
               {{ $t('about.philosophy') }}
-            </h3>
+            </p>
 
             <p
               class="mb-6 sm:mb-8 text-base sm:text-lg font-medium text-muted leading-relaxed text-center xl:text-left text-pretty"

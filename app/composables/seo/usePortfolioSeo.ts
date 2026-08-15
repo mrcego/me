@@ -5,7 +5,6 @@ import {
   PERSON_SCHEMA_ID,
   SEO_EDITORIAL_DATES,
   SEO_IDENTITY,
-  SERVICE_PRICE_RANGE,
   SITE_NAME,
   SITE_NAME_ALTERNATES,
   WEBSITE_SCHEMA_ID,
@@ -31,13 +30,7 @@ export const usePortfolioSeo = () => {
   const personName = computed(() => (locale.value === 'es' ? 'César Gómez' : 'Cesar Gomez'));
   const { public: publicConfig } = useRuntimeConfig();
 
-  const { currentRole } = useBrandRoleRotator();
   const shareTitle = computed(() => t('seo.ogTitle'));
-  const dynamicRoleTitle = computed(() => {
-    const name = personName.value;
-    const role = currentRole.value;
-    return role ? `${name} · ${role}` : `${name} — ${shareTitle.value}`;
-  });
   const shareImageAlt = computed(() => `${personName.value} — ${shareTitle.value}`);
 
   defineOgImage(
@@ -57,14 +50,14 @@ export const usePortfolioSeo = () => {
   );
 
   useSeoMeta({
-    title: () => dynamicRoleTitle.value,
+    title: () => shareTitle.value,
     description: () => t('seo.description'),
     author: SEO_IDENTITY.author,
     robots: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
     fbAppId: () => String(publicConfig.facebookAppId || ''),
 
     ogType: 'profile',
-    ogTitle: () => dynamicRoleTitle.value,
+    ogTitle: () => shareTitle.value,
     ogDescription: () => t('seo.ogDescription'),
     // og:image / twitter:image injected by defineOgImage('Portfolio')
     ogImageAlt: () => shareImageAlt.value,
@@ -139,31 +132,10 @@ export const usePortfolioSeo = () => {
         ],
         knowsAbout: [...PERSON_KNOWS_ABOUT],
         knowsLanguage: ['en', 'es'],
-        alumniOf: [
-          {
-            '@type': 'Organization',
-            name: 'TISSINI',
-            url: 'https://tissini.com',
-            description:
-              'Latin-American social-commerce and direct-sales platform for fashion entrepreneurs.',
-          },
-          {
-            '@type': 'Organization',
-            name: 'Colegium',
-            url: 'https://www.colegium.com',
-            description:
-              'Ed-tech company providing cloud-based school management and learning tools across Latin America.',
-          },
-          {
-            '@type': 'Organization',
-            name: 'LingoQuesto',
-            description: 'AI/NLP conversational ed-tech product for oral language practice.',
-          },
-        ],
         hasOccupation: [
           {
             '@type': 'Occupation',
-            name: 'Senior Frontend Developer',
+            name: 'Senior Frontend Engineer',
             occupationalCategory: '15-1252.00',
             description:
               'Senior frontend engineer specializing in Vue.js, Nuxt.js, TypeScript, and scalable web architecture.',
@@ -193,7 +165,7 @@ export const usePortfolioSeo = () => {
         alternateName: [...SITE_NAME_ALTERNATES],
         description: t('seo.description'),
         url: PERSON_ENTITY_URL,
-        inLanguage: ['en-US', 'es-ES'],
+        inLanguage: ['en', 'es-CO'],
         publisher: personSchemaRef(),
         about: personSchemaRef(),
         potentialAction: {
@@ -216,10 +188,6 @@ export const usePortfolioSeo = () => {
         dateModified: SEO_EDITORIAL_DATES.lastModified,
         // Reference only — full Person node is published once above
         mainEntity: personSchemaRef(),
-        speakable: {
-          '@type': 'SpeakableSpecification',
-          cssSelector: ['#hero .text-gradient', '#about .text-muted', '#case-studies h2', '#faq'],
-        },
       }),
       jsonLdScript('schema-sitenavigation', {
         '@context': 'https://schema.org',
@@ -236,8 +204,10 @@ export const usePortfolioSeo = () => {
           {
             '@type': 'SiteNavigationElement',
             position: 2,
-            name: 'Vibe Coding Cleanup',
-            url: absoluteSiteUrl(locale.value === 'es' ? '/es/ingeniero-ia/' : '/ai-engineer/'),
+            name: 'AI-Assisted Craft',
+            url: absoluteSiteUrl(
+              locale.value === 'es' ? '/es/craft-asistido-ia/' : '/ai-assisted-craft/',
+            ),
           },
           {
             '@type': 'SiteNavigationElement',
@@ -288,37 +258,12 @@ export const usePortfolioSeo = () => {
         url: canonicalUrl.value,
         image: ogImage,
         telephone: CONTACT_PHONE_E164,
-        priceRange: SERVICE_PRICE_RANGE,
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'Cartagena de Indias',
           addressRegion: 'Bolívar',
           addressCountry: 'CO',
         },
-        makesOffer: [
-          {
-            '@type': 'Offer',
-            name: 'Hourly consulting (USD)',
-            priceSpecification: {
-              '@type': 'UnitPriceSpecification',
-              priceCurrency: 'USD',
-              minPrice: 40,
-              maxPrice: 60,
-              unitCode: 'HUR',
-            },
-          },
-          {
-            '@type': 'Offer',
-            name: 'Hourly consulting (COP)',
-            priceSpecification: {
-              '@type': 'UnitPriceSpecification',
-              priceCurrency: 'COP',
-              minPrice: 120000,
-              maxPrice: 200000,
-              unitCode: 'HUR',
-            },
-          },
-        ],
         areaServed: [
           {
             '@type': 'City',

@@ -11,7 +11,7 @@ async function waitForHydratedNav(page: import('@playwright/test').Page) {
 test.describe('interactive chrome', () => {
   test('opens and closes the vibe coding modal', async ({ page }) => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
-    const openBtn = page.getByRole('button', { name: /Open Vibe Coding details/i }).first();
+    const openBtn = page.getByRole('button', { name: /Open AI workflow details/i }).first();
     await expect(openBtn).toBeVisible({ timeout: 20_000 });
     await expect(async () => {
       await openBtn.click({ force: true });

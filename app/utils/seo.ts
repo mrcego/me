@@ -37,12 +37,12 @@ export function websiteSchemaRef(): { '@id': string } {
   return { '@id': WEBSITE_SCHEMA_ID };
 }
 
-export function htmlLangForLocale(locale: string): 'es-ES' | 'en-US' {
-  return locale === 'es' ? 'es-ES' : 'en-US';
+export function htmlLangForLocale(locale: string): 'es-CO' | 'en' {
+  return locale === 'es' ? 'es-CO' : 'en';
 }
 
-export function ogLocaleForLocale(locale: string): 'es_ES' | 'en_US' {
-  return locale === 'es' ? 'es_ES' : 'en_US';
+export function ogLocaleForLocale(locale: string): 'es_CO' | 'en_US' {
+  return locale === 'es' ? 'es_CO' : 'en_US';
 }
 
 export function jsonLdScript(key: string, data: Record<string, unknown>) {

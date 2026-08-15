@@ -24,7 +24,7 @@ const capabilities = [
   {
     key: 'vibeCoding',
     icon: 'solar:magic-stick-3-bold-duotone',
-    to: '/ai-engineer',
+    to: '/ai-assisted-craft',
     linkLabelKey: 'hireProfiles.hireForAi',
   },
 ];

@@ -76,7 +76,7 @@ test.describe('interactive accessibility', () => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
     await waitForHydratedNav(page);
 
-    const vibeOpen = page.getByRole('button', { name: /Open Vibe Coding details/i }).first();
+    const vibeOpen = page.getByRole('button', { name: /Open AI workflow details/i }).first();
     await expect(vibeOpen).toBeVisible({ timeout: 20_000 });
     await expect(async () => {
       await vibeOpen.click({ force: true });

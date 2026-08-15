@@ -11,3 +11,9 @@ https://www.cesargomez.dev/*  https://cesargomez.dev/:splat  301!
 /cv/CV%20Cesar%20Gomez%20ES.pdf  /cv/cv-cesar-gomez-es.pdf  301
 /cv/CV Cesar Gomez EN.pdf  /cv/cv-cesar-gomez-en.pdf  301
 /cv/CV Cesar Gomez ES.pdf  /cv/cv-cesar-gomez-es.pdf  301
+
+# Legacy AI Engineer URLs -> AI-Assisted Craft
+/ai-engineer/      /ai-assisted-craft/   301!
+/ai-engineer       /ai-assisted-craft/   301!
+/es/ingeniero-ia/  /es/craft-asistido-ia/ 301!
+/es/ingeniero-ia   /es/craft-asistido-ia/ 301!

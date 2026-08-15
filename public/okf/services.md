@@ -2,18 +2,16 @@
 okf_version: "0.1"
 id: "services"
 provider: "César Gómez"
-pricing_usd: "$40–60/hr"
-pricing_cop: "$120,000–200,000/hr"
-availability: "Remote contract from August 2026"
+availability: "Available now for remote senior engagements"
 services:
   - name: "Senior Vue/Nuxt Engineering"
     description: "Building production Web applications with Vue 3, Nuxt 4, TypeScript, Pinia, and Vite."
   - name: "Frontend Architecture & Micro-Frontends"
     description: "Designing scalable component systems, shared libraries, and micro-frontend architectures."
-  - name: "Vibe Coding Cleanup & Quality Gates"
-    description: "Refactoring agent-generated code into maintainable production systems with type safety."
+  - name: "AI-Augmented Engineering & AI-Assisted Craft"
+    description: "Multiplying delivery velocity using agentic tools while maintaining strict human code reviews, testing, and type safety."
 ---
 
 # Services Node — César Gómez
 
-Consulting services offered by César Gómez for product teams, ed-tech platforms, e-commerce, and SaaS.
+Senior engineering services offered by César Gómez for product teams, ed-tech platforms, e-commerce, and SaaS.

@@ -6,9 +6,9 @@ defineI18nRoute({
   },
 });
 
-useAiCraftLandingSeo();
+useAiEngineerLandingSeo();
 </script>
 
 <template>
-  <ExpertiseLandingPage translation-key="landingCraft" />
+  <ExpertiseLandingPage translation-key="landingAi" />
 </template>

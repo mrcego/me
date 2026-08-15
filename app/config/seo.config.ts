@@ -28,8 +28,8 @@ export const PERSON_ENTITY_URL = `${SITE_ORIGIN}/`;
 
 /** BCP 47 tags for HTML hreflang alternates (not bare `en` / `es`). */
 export const SEO_HREFLANG = {
-  en: 'en-US',
-  es: 'es-ES',
+  en: 'en',
+  es: 'es-CO',
   xDefault: 'x-default',
 } as const;
 
@@ -39,7 +39,7 @@ export const SEO_HREFLANG = {
  */
 export const SEO_EDITORIAL_DATES = {
   profileCreated: '2024-06-01T12:00:00-05:00',
-  lastModified: '2026-08-08T01:00:00-05:00',
+  lastModified: '2026-08-12T15:30:00-05:00',
 } as const;
 
 /** Shared social / OG defaults used by composables and @nuxtjs/seo. */
@@ -47,12 +47,12 @@ export const SEO_IDENTITY = {
   siteUrl: SITE_ORIGIN,
   name: 'César Gómez',
   description:
-    'Senior Vue/Nuxt Engineer, Frontend Architect Lead & AI Agentic Ecosystem Specialist with 13+ years of experience. Expert in Vue.js, Nuxt.js, TypeScript, and modern web architectures.',
+    'Senior Fullstack Engineer & Frontend Architect with 13+ years building scalable Vue 3, Nuxt 4 & Node.js applications for ed-tech and e-commerce leaders.',
   author: 'César Gómez',
   type: 'website',
-  locale: 'en-US',
+  locale: 'en',
   ogImage: '/img/og-image.png?v=cg3',
-  ogImageAlt: 'César Gómez — Senior Vue/Nuxt Engineer · Frontend Architect · AI Agentic Ecosystem',
+  ogImageAlt: 'César Gómez — Senior Fullstack Engineer · Frontend Architect',
   facebookAppId: '966242223397117',
   twitterCard: 'summary_large_image',
   twitterCreator: '@codingwithcego',
@@ -63,9 +63,6 @@ export const SEO_IDENTITY = {
 export const CONTACT_PHONE_DISPLAY = '+57 333 263 6550';
 export const CONTACT_PHONE_E164 = '+573332636550';
 export const CONTACT_PHONE_WHATSAPP = `https://wa.me/${CONTACT_PHONE_E164.replace('+', '')}`;
-
-/** LocalBusiness priceRange string (Rich Results) + dual-currency hourly Offers. */
-export const SERVICE_PRICE_RANGE = '$40–60 USD / COP 120.000–200.000 per hour' as const;
 
 /** Compact topical terms for Person / ProfessionalService knowsAbout (not meta keywords). */
 export const PERSON_KNOWS_ABOUT = [
