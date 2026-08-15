@@ -41,3 +41,8 @@ coverage/
 .env
 .env.*
 !.env.example
+
+# Agent and skills tooling caches
+.opencode/
+.agent/
+.gemini/
