@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
-import { fileURLToPath } from 'node:url';
 import tailwindcss from '@tailwindcss/vite';
 import { prerenderRoutesWithSitemap, sitemapUrls } from './app/config/routes.manifest';
 import { SEO_EDITORIAL_DATES } from './app/config/seo.config';
@@ -124,29 +123,10 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   vite: {
-    plugins: [
-      tailwindcss(),
-      {
-        name: 'vite-plugin-aspect-flare-fallback',
-        enforce: 'pre',
-        resolveId(id: string) {
-          if (id === '@aspect/flare') {
-            return fileURLToPath(new URL('./app/utils/mocks/aspectFlareMock.ts', import.meta.url));
-          }
-        },
-      },
-    ],
-    resolve: {
-      alias: {
-        '@aspect/flare': fileURLToPath(
-          new URL('./app/utils/mocks/aspectFlareMock.ts', import.meta.url),
-        ),
-      },
-    },
+    plugins: [tailwindcss()],
     optimizeDeps: {
       // Avoid prebundling the full @vueuse/core barrel into the graph.
       include: ['@unhead/schema-org/vue'],
-      exclude: ['@browserai/browserai', '@aspect/flare'],
     },
     build: {
       modulePreload: false,
@@ -210,7 +190,14 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
     '@primevue/nuxt-module',
+    'nuxt-edge-ai',
   ],
+
+  edgeAI: {
+    provider: 'local',
+    cacheDir: './.cache/nuxt-edge-ai',
+    preset: 'distilgpt2',
+  },
 
   fonts: {
     defaults: {

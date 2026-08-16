@@ -53,6 +53,9 @@ export function useAngieChat() {
           if (data.model) {
             neuralModel.value = data.model;
           }
+          if (data.status === 'fallback' && data.error) {
+            console.warn('[AngieChat] Neural engine fallback:', data.error);
+          }
           return;
         }
 

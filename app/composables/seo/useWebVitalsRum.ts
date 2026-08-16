@@ -56,11 +56,15 @@ export function useWebVitalsRum() {
   const measurementId = String(runtimeConfig.public.gaMeasurementId || '').trim();
   const consentGranted = hasAnalyticsConsent();
 
-  if (measurementId && consentGranted) {
-    loadGtag(measurementId);
-  }
-
   onMounted(() => {
+    if (measurementId && consentGranted) {
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(() => loadGtag(measurementId), { timeout: 3500 });
+      } else {
+        setTimeout(() => loadGtag(measurementId), 1500);
+      }
+    }
+
     const send = (metric: { name: string; value: number; id: string; rating?: string }) => {
       const payload = {
         name: metric.name,

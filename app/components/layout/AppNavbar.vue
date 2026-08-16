@@ -620,12 +620,12 @@ onBeforeUnmount(() => {
                     <div
                       class="flex items-center justify-between border-b border-foreground/5 pb-2 sm:pb-3"
                     >
-                      <h3
+                      <span
                         id="theme-preset-heading"
                         class="text-xs sm:text-sm font-black uppercase tracking-widest text-foreground"
                       >
                         {{ $t('nav.themePresets') }}
-                      </h3>
+                      </span>
                       <span
                         class="text-xs sm:text-sm bg-primary/10 text-primary px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full font-bold border border-primary/20"
                         >{{ THEME_PRESETS.length }} {{ $t('nav.modes') }}</span

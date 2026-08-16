@@ -54,7 +54,7 @@ export function injectStylesheetPreload(html, href) {
   const marker = `rel="preload" as="style" href="${href}"`;
   if (html.includes(marker)) return { html, changed: false };
 
-  const linkTag = `<link rel="preload" as="style" href="${href}" crossorigin>`;
+  const linkTag = `<link rel="preload" as="style" href="${href}">`;
   if (!/<head[^>]*>/i.test(html)) return { html, changed: false };
 
   // Prefer immediately after an early LCP image preload when present.
