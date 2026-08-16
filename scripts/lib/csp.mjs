@@ -113,7 +113,7 @@ export function buildCspDirectives(options = {}) {
     "font-src 'self'",
     "style-src 'self' 'unsafe-inline'",
     scriptSrc,
-    "connect-src 'self' https://*.google-analytics.com https://www.googletagmanager.com https://huggingface.co https://*.huggingface.co https://cdn-lfs.huggingface.co https://*.hf.co",
+    "connect-src 'self' https://*.google-analytics.com https://www.googletagmanager.com https://huggingface.co https://*.huggingface.co https://cdn-lfs.huggingface.co https://*.hf.co https://raw.githubusercontent.com",
     "worker-src 'self' blob:",
     "manifest-src 'self'",
     'upgrade-insecure-requests',
