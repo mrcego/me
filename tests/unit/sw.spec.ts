@@ -18,6 +18,6 @@ describe('public/sw.js', () => {
   });
 
   it('bumps CACHE_NAME when fetch/caching semantics change', () => {
-    expect(source).toMatch(/cesar-gomez-portfolio-v8/);
+    expect(source).toMatch(/cesar-gomez-portfolio-v9/);
   });
 });

@@ -1,8 +1,8 @@
-const CACHE_NAME = 'cesar-gomez-portfolio-v8';
+const CACHE_NAME = 'cesar-gomez-portfolio-v9';
 const IS_LOCALHOST = ['localhost', '127.0.0.1', '[::1]'].includes(self.location.hostname);
 const urlsToCache = [
   '/img/logo-final.svg?v=cg3',
-  '/_ipx/f_webp&q_85&fit_cover&s_224x280/img/me.jpg',
+  '/img/me.jpg',
   '/img/og-image.png?v=cg3',
   '/favicon.ico?v=cg3',
 ];
@@ -59,7 +59,17 @@ self.addEventListener('install', (event) => {
     return;
   }
 
-  event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(urlsToCache)));
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(async (cache) => {
+      await Promise.allSettled(
+        urlsToCache.map((url) =>
+          cache.add(url).catch(() => {
+            // Ignore missing optional offline asset during pre-cache
+          }),
+        ),
+      );
+    }),
+  );
   self.skipWaiting();
 });
 
