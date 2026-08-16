@@ -407,6 +407,29 @@ async function warmupNeuralEngine(): Promise<void> {
     const { BrowserAI } = await import('@browserai/browserai');
     browserAIInstance = new BrowserAI() as unknown as BrowserAIEngine;
 
+    // Register optimized SmolLM2-135M with q4f32_1 quantization for universal WebGPU compatibility (avoids shader-f16 limitation)
+    const engineWithCustom = browserAIInstance as unknown as {
+      registerCustomModel?: (id: string, cfg: unknown) => void;
+    };
+    if (typeof engineWithCustom.registerCustomModel === 'function') {
+      engineWithCustom.registerCustomModel('smollm2-135m-instruct', {
+        engine: 'mlc',
+        modelName: 'SmolLM2-135M-Instruct',
+        modelType: 'text-generation',
+        repo: 'mlc-ai/SmolLM2-135M-Instruct-q4f32_1-MLC',
+        quantizations: ['q4f32_1'],
+        defaultQuantization: 'q4f32_1',
+        defaultParams: {
+          temperature: 0.2,
+          maxTokens: 256,
+        },
+        overrides: {
+          context_window_size: 2048,
+        },
+        pipeline: 'text-generation',
+      });
+    }
+
     await browserAIInstance.loadModel('smollm2-135m-instruct', {
       onProgress: (p: { progress?: number; loaded?: number; total?: number }) => {
         let percent = 50;
@@ -436,12 +459,13 @@ async function warmupNeuralEngine(): Promise<void> {
       } satisfies AngieWorkerOutboundMessage);
     }
   } catch (err) {
+    console.error('[AngieWorker] Neural warmup failed:', err);
     neuralStatus = 'fallback';
     if (typeof self !== 'undefined' && 'postMessage' in self) {
       self.postMessage({
         type: 'neural_status',
         status: 'fallback',
-        error: String(err),
+        error: err instanceof Error ? err.message : String(err),
       } satisfies AngieWorkerOutboundMessage);
     }
   }

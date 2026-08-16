@@ -127,11 +127,14 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
       {
-        name: 'vite-plugin-aspect-flare-fallback',
+        name: 'vite-plugin-browserai-mocks',
         enforce: 'pre',
         resolveId(id: string) {
           if (id === '@aspect/flare') {
             return fileURLToPath(new URL('./app/utils/mocks/aspectFlareMock.ts', import.meta.url));
+          }
+          if (id === 'mammoth') {
+            return fileURLToPath(new URL('./app/utils/mocks/mammothMock.ts', import.meta.url));
           }
         },
       },
@@ -141,12 +144,13 @@ export default defineNuxtConfig({
         '@aspect/flare': fileURLToPath(
           new URL('./app/utils/mocks/aspectFlareMock.ts', import.meta.url),
         ),
+        mammoth: fileURLToPath(new URL('./app/utils/mocks/mammothMock.ts', import.meta.url)),
       },
     },
     optimizeDeps: {
       // Avoid prebundling the full @vueuse/core barrel into the graph.
       include: ['@unhead/schema-org/vue'],
-      exclude: ['@browserai/browserai', '@aspect/flare'],
+      exclude: ['@browserai/browserai', '@aspect/flare', 'mammoth'],
     },
     build: {
       modulePreload: false,
@@ -158,6 +162,22 @@ export default defineNuxtConfig({
     },
     worker: {
       format: 'es',
+      plugins: () => [
+        {
+          name: 'vite-plugin-worker-browserai-mocks',
+          enforce: 'pre',
+          resolveId(id: string) {
+            if (id === '@aspect/flare') {
+              return fileURLToPath(
+                new URL('./app/utils/mocks/aspectFlareMock.ts', import.meta.url),
+              );
+            }
+            if (id === 'mammoth') {
+              return fileURLToPath(new URL('./app/utils/mocks/mammothMock.ts', import.meta.url));
+            }
+          },
+        },
+      ],
     },
   },
 
