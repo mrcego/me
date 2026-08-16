@@ -156,15 +156,11 @@ async function processAvatar() {
 
   await faceCloseUp
     .clone()
-    .png({ quality: 100, compressionLevel: 9 })
-    .toFile(path.join(outputDir, 'angie-face.png'));
-
-  await faceCloseUp
-    .clone()
-    .webp({ quality: 98, effort: 6 })
+    .resize(96, 96, { fit: 'cover' })
+    .webp({ quality: 85, effort: 6 })
     .toFile(path.join(outputDir, 'angie-face.webp'));
 
-  console.log('Avatar processing complete with ultra-sharp 512x512 assets!');
+  console.log('Avatar processing complete with optimized lightweight assets!');
 }
 
 processAvatar().catch(console.error);
