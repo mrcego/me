@@ -18,8 +18,6 @@ const {
   triggerAction,
 } = useAngieChat();
 
-useBodyScrollLock(isOpen);
-
 const userInput = ref('');
 const transcriptRef = ref<HTMLElement | null>(null);
 
