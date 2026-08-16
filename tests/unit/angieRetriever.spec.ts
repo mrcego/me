@@ -63,8 +63,10 @@ describe('angieRetriever (Search & Intent Synthesis)', () => {
     const rateRes = searchKnowledge('What are his hourly rates or pricing structure?', 'en');
     expect(rateRes.entry?.id).toBe('rates_pricing');
 
-    const reactRes = searchKnowledge('¿Tiene experiencia con React o Angular?', 'es');
-    expect(reactRes.entry?.id).toBe('other_frameworks_ecosystem');
+    const angularRes = searchKnowledge('¿Cuál es su experiencia con Angular y migraciones?', 'es');
+    expect(angularRes.entry?.id).toBe('angular_capability');
+    expect(angularRes.entry?.content.es).toContain('Angular');
+    expect(angularRes.entry?.content.es).toContain('RxJS');
   });
 
   it('synthesizes specialized greetings in English and Spanish', () => {
