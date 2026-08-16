@@ -1,4 +1,4 @@
-const CACHE_NAME = 'cesar-gomez-portfolio-v9';
+const CACHE_NAME = 'cesar-gomez-portfolio-v10';
 const IS_LOCALHOST = ['localhost', '127.0.0.1', '[::1]'].includes(self.location.hostname);
 const urlsToCache = [
   '/img/logo-final.svg?v=cg3',
@@ -148,4 +148,11 @@ self.addEventListener('activate', (event) => {
     ),
   );
   self.clients.claim();
+});
+
+// Immediate activation message support
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });

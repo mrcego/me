@@ -422,6 +422,33 @@
     "title": "Production-Grade",
     "titleHighlight": "Tech Stack.",
     "description": "Core frameworks, architectural principles, and engineering practices refined over 13+ years in production.",
+    "expertise": "Expertise",
+    "cards": {
+      "vue": {
+        "title": "Vue & Nuxt",
+        "years": "8Y+"
+      },
+      "ts": {
+        "title": "Fullstack TS",
+        "years": "10Y"
+      },
+      "js": {
+        "title": "Systems Engineering",
+        "years": "Senior"
+      },
+      "git": {
+        "title": "Senior Leadership",
+        "years": "6Y+"
+      },
+      "perf": {
+        "title": "Web Perf & Architecture",
+        "years": "100/100"
+      },
+      "ai": {
+        "title": "AI-Assisted Craft",
+        "years": "Applied"
+      }
+    },
     "officialCertifications": "Certifications & Credentials",
     "languages": "Languages",
     "categories": {
@@ -436,6 +463,7 @@
       "senior": "Senior Developer",
       "principal": "Senior",
       "founding": "Founding Engineer",
+      "perf": "Performance & Architecture",
       "ai": "AI-Assisted Craft"
     },
     "creds": "Official Credentials",
@@ -444,6 +472,7 @@
       "vue": "Lead frontend engineer for complex SPA/SSR ecosystems, modular UI systems, and performance tuning.",
       "ts": "End-to-end type safety across API contracts and sophisticated frontend reactive states.",
       "js": "Deep knowledge in software engineering patterns, modularity, and enterprise scalability.",
+      "perf": "Sub-second TTFB, 100/100 Core Web Vitals, 0 CLS, semantic Microformats2, and high-resilience Edge delivery.",
       "git": "Mentoring teams, defining technical roadmaps, and optimizing CI/CD velocity.",
       "ai": "LLM/NLP integrations (local + cloud) and agentic development workflows with human quality control."
     },

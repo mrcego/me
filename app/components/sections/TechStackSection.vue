@@ -10,7 +10,7 @@ const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 const activeStackCard = ref<string | null>(null);
 
 const STACK_SYNERGIES: Record<string, string[]> = {
-  'Vue & Nuxt': [
+  vue: [
     'Vue 3',
     'Nuxt 4',
     'TypeScript',
@@ -20,7 +20,7 @@ const STACK_SYNERGIES: Record<string, string[]> = {
     'PrimeVue',
     'Testing (Vitest & Playwright)',
   ],
-  'Fullstack TS': [
+  ts: [
     'TypeScript',
     'Node.js',
     'REST APIs',
@@ -28,7 +28,7 @@ const STACK_SYNERGIES: Record<string, string[]> = {
     'CI/CD Pipelines',
     'Testing (Vitest & Playwright)',
   ],
-  'Systems Engineering': [
+  js: [
     'JavaScript',
     'TypeScript',
     'Web Performance',
@@ -37,14 +37,23 @@ const STACK_SYNERGIES: Record<string, string[]> = {
     'Design Systems',
     'Code Quality',
   ],
-  'Senior Leadership': [
+  perf: [
+    'Web Performance',
+    'Frontend Architecture',
+    'Testing (Vitest & Playwright)',
+    'Accessibility (a11y)',
+    'CI/CD Pipelines',
+    'Code Quality',
+    'Design Systems',
+  ],
+  git: [
     'Design Systems',
     'CI/CD Pipelines',
     'Code Quality',
     'Accessibility (a11y)',
     'Frontend Architecture',
   ],
-  'AI-Assisted Craft': [
+  ai: [
     'LLM & NLP Integration',
     'AI-Augmented Workflows',
     'Agentic Tooling (Cursor, Copilot, Claude)',
@@ -57,8 +66,8 @@ function isSkillHighlighted(skill: string): boolean {
   return STACK_SYNERGIES[activeStackCard.value]?.includes(skill) ?? false;
 }
 
-function onStackHover(name: string | null) {
-  activeStackCard.value = name;
+function onStackHover(id: string | null) {
+  activeStackCard.value = id;
 }
 
 function onSkillHover(skill: string | null) {
@@ -72,36 +81,49 @@ function onSkillHover(skill: string | null) {
 
 const detailedStack = [
   {
-    name: 'Vue & Nuxt',
-    years: '8Y+',
+    id: 'vue',
+    titleKey: 'techStack.cards.vue.title',
+    yearsKey: 'techStack.cards.vue.years',
     level: 'techStack.levels.architect',
     icon: 'logos:vue',
     descKey: 'techStack.detailed.vue',
   },
   {
-    name: 'Fullstack TS',
-    years: '10Y',
+    id: 'ts',
+    titleKey: 'techStack.cards.ts.title',
+    yearsKey: 'techStack.cards.ts.years',
     level: 'techStack.levels.senior',
     icon: 'logos:typescript-icon',
     descKey: 'techStack.detailed.ts',
   },
   {
-    name: 'Systems Engineering',
-    years: 'Senior',
+    id: 'js',
+    titleKey: 'techStack.cards.js.title',
+    yearsKey: 'techStack.cards.js.years',
     level: 'techStack.levels.principal',
     icon: 'logos:javascript',
     descKey: 'techStack.detailed.js',
   },
   {
-    name: 'Senior Leadership',
-    years: '6Y+',
+    id: 'perf',
+    titleKey: 'techStack.cards.perf.title',
+    yearsKey: 'techStack.cards.perf.years',
+    level: 'techStack.levels.perf',
+    icon: 'solar:layers-minimalistic-bold-duotone',
+    descKey: 'techStack.detailed.perf',
+  },
+  {
+    id: 'git',
+    titleKey: 'techStack.cards.git.title',
+    yearsKey: 'techStack.cards.git.years',
     level: 'techStack.levels.founding',
     icon: 'logos:git-icon',
     descKey: 'techStack.detailed.git',
   },
   {
-    name: 'AI-Assisted Craft',
-    years: 'Applied',
+    id: 'ai',
+    titleKey: 'techStack.cards.ai.title',
+    yearsKey: 'techStack.cards.ai.years',
     level: 'techStack.levels.ai',
     icon: 'solar:cpu-bolt-bold-duotone',
     descKey: 'techStack.detailed.ai',
@@ -192,21 +214,20 @@ const skillGroups = [
       </Motion>
 
       <div
-        class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-4 sm:gap-6 md:gap-8 px-2 md:px-0 items-stretch"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-2 md:px-0 items-stretch"
       >
         <Motion
           v-for="(t, i) in detailedStack"
-          :key="t.name"
+          :key="t.id"
           :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true }"
-          class="surface-card surface-evidence group relative p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden min-h-0 flex flex-col justify-between cursor-crosshair h-full min-w-0 transition-all duration-300"
+          class="surface-card surface-evidence group relative p-6 sm:p-7 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl overflow-hidden min-h-0 flex flex-col justify-between cursor-crosshair h-full min-w-0 transition-all duration-300"
           :class="{
-            'border-primary! shadow-xl! shadow-primary/20! scale-[1.02]':
-              activeStackCard === t.name,
+            'border-primary! shadow-xl! shadow-primary/20!': activeStackCard === t.id,
           }"
-          @mouseenter="onStackHover(t.name)"
+          @mouseenter="onStackHover(t.id)"
           @mouseleave="onStackHover(null)"
         >
           <div
@@ -223,9 +244,9 @@ const skillGroups = [
               <div class="flex flex-col items-end gap-0.5 sm:gap-1">
                 <span
                   class="surface-card__meta text-xs sm:text-sm md:text-base font-black uppercase tracking-widest text-muted"
-                  >{{ t.years }}</span
+                  >{{ $t(t.yearsKey) }}</span
                 >
-                <span class="type-label text-primary">Expertise</span>
+                <span class="type-label text-primary">{{ $t('techStack.expertise') }}</span>
               </div>
             </div>
 
@@ -233,7 +254,7 @@ const skillGroups = [
               <h3
                 class="surface-card__title surface-card__title--gradient text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground"
               >
-                {{ t.name }}
+                {{ $t(t.titleKey) }}
               </h3>
               <p class="type-meta text-muted leading-normal">
                 {{ $t(t.level) }}
@@ -249,7 +270,7 @@ const skillGroups = [
 
           <!-- Subtle Inner Glow on Hover -->
           <div
-            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left"
+            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-0.5 bg-primary origin-left pointer-events-none"
           />
         </Motion>
       </div>

@@ -422,6 +422,33 @@
     "title": "Stack Técnico",
     "titleHighlight": "Nivel Producción.",
     "description": "Frameworks principales, principios de arquitectura y prácticas de ingeniería refinados a lo largo de 13+ años en producción.",
+    "expertise": "Especialidad",
+    "cards": {
+      "vue": {
+        "title": "Vue & Nuxt",
+        "years": "8Y+"
+      },
+      "ts": {
+        "title": "Fullstack TS",
+        "years": "10Y"
+      },
+      "js": {
+        "title": "Ingeniería de Sistemas",
+        "years": "Senior"
+      },
+      "git": {
+        "title": "Liderazgo Senior",
+        "years": "6Y+"
+      },
+      "perf": {
+        "title": "Rendimiento Web & SEO",
+        "years": "100/100"
+      },
+      "ai": {
+        "title": "Craft Asistido por IA",
+        "years": "Aplicada"
+      }
+    },
     "officialCertifications": "Certificaciones y Credenciales",
     "languages": "Idiomas",
     "categories": {
@@ -436,6 +463,7 @@
       "senior": "Desarrollador Senior",
       "principal": "Senior",
       "founding": "Ingeniero Fundador",
+      "perf": "Rendimiento & Arquitectura",
       "ai": "Craft asistido por IA"
     },
     "creds": "Credenciales Oficiales",
@@ -444,6 +472,7 @@
       "vue": "Ingeniero frontend líder en ecosistemas SPA/SSR complejos, sistemas de UI modulares y optimización de rendimiento.",
       "ts": "Seguridad de tipos de extremo a extremo, a través de contratos de API y estados reactivos frontend sofisticados.",
       "js": "Profundo conocimiento en patrones de ingeniería de software, modularidad y escalabilidad empresarial.",
+      "perf": "TTFB sub-segundo, 100/100 Core Web Vitals, 0 CLS, marcado semántico Microformats2 y entrega en el Edge de alta resiliencia.",
       "git": "Mentoría de equipos, definición de hojas de ruta técnicas y optimización de la velocidad de CI/CD.",
       "ai": "Integraciones LLM/NLP (local + cloud) y flujos agentic de desarrollo con control de calidad humano."
     },

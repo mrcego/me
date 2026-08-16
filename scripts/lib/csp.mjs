@@ -215,6 +215,7 @@ export function buildCacheHeaderBlocks() {
     { path: '/favicon-32x32.png', headers: { 'Cache-Control': CACHE_CONTROL_BRAND } },
     { path: '/apple-touch-icon.png', headers: { 'Cache-Control': CACHE_CONTROL_BRAND } },
     { path: '/manifest.json', headers: { 'Cache-Control': CACHE_CONTROL_MANIFEST } },
+    { path: '/sw.js', headers: { 'Cache-Control': CACHE_CONTROL_HTML } },
   ];
 }
 
