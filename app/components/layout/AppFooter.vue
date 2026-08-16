@@ -95,11 +95,11 @@ const socials = [
               <Icon name="solar:code-square-bold-duotone" class="size-7 md:size-8" />
             </div>
             <div class="flex flex-col min-w-0">
-              <h3
+              <p
                 class="p-name fn text-xl md:text-2xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors duration-300 uppercase"
               >
                 {{ $t('hero.name') }}
-              </h3>
+              </p>
               <span
                 class="p-job-title title text-xs md:text-sm tracking-[0.12em] md:tracking-[0.16em] text-muted uppercase font-bold group-hover:text-foreground transition-colors delay-75 text-pretty"
               >
