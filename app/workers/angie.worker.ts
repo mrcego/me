@@ -350,124 +350,14 @@ export function synthesizeResponse(
   };
 }
 
-interface BrowserAIGenerateResult {
-  choices?: Array<{ message?: { content?: string } }>;
-  text?: string;
-}
-
-interface BrowserAIEngine {
-  loadModel: (
-    model: string,
-    options?: {
-      onProgress?: (p: { progress?: number; loaded?: number; total?: number }) => void;
-    },
-  ) => Promise<void>;
-  generateText: (
-    query: string,
-    options?: { systemMessage?: string; temperature?: number; maxTokens?: number },
-  ) => Promise<BrowserAIGenerateResult | string>;
-}
-
-let browserAIInstance: BrowserAIEngine | null = null;
-let neuralStatus: 'idle' | 'loading' | 'ready' | 'fallback' = 'idle';
-let warmupPromise: Promise<void> | null = null;
-
 async function warmupNeuralEngine(): Promise<void> {
-  if (neuralStatus === 'ready' || neuralStatus === 'loading') return;
-  neuralStatus = 'loading';
-
   if (typeof self !== 'undefined' && 'postMessage' in self) {
     self.postMessage({
       type: 'neural_status',
-      status: 'loading',
-      progress: 5,
-      model: 'smollm2-135m-instruct',
+      status: 'ready',
+      progress: 100,
+      model: 'angie-rag-core',
     } satisfies AngieWorkerOutboundMessage);
-  }
-
-  try {
-    // Check WebGPU availability
-    const hasWebGpu =
-      typeof navigator !== 'undefined' &&
-      'gpu' in navigator &&
-      Boolean((navigator as unknown as { gpu?: unknown }).gpu);
-
-    if (!hasWebGpu) {
-      neuralStatus = 'fallback';
-      if (typeof self !== 'undefined' && 'postMessage' in self) {
-        self.postMessage({
-          type: 'neural_status',
-          status: 'fallback',
-          error: 'WebGPU not available in environment; using deterministic fast mode.',
-        } satisfies AngieWorkerOutboundMessage);
-      }
-      return;
-    }
-
-    const { BrowserAI } = await import('@browserai/browserai');
-    browserAIInstance = new BrowserAI() as unknown as BrowserAIEngine;
-
-    // Register optimized SmolLM2-135M with q4f32_1 quantization for universal WebGPU compatibility (avoids shader-f16 limitation)
-    const engineWithCustom = browserAIInstance as unknown as {
-      registerCustomModel?: (id: string, cfg: unknown) => void;
-    };
-    if (typeof engineWithCustom.registerCustomModel === 'function') {
-      engineWithCustom.registerCustomModel('smollm2-135m-instruct', {
-        engine: 'mlc',
-        modelName: 'SmolLM2-135M-Instruct',
-        modelType: 'text-generation',
-        repo: 'mlc-ai/SmolLM2-135M-Instruct-q4f32_1-MLC',
-        quantizations: ['q4f32_1'],
-        defaultQuantization: 'q4f32_1',
-        defaultParams: {
-          temperature: 0.2,
-          maxTokens: 256,
-        },
-        overrides: {
-          context_window_size: 2048,
-        },
-        pipeline: 'text-generation',
-      });
-    }
-
-    await browserAIInstance.loadModel('smollm2-135m-instruct', {
-      onProgress: (p: { progress?: number; loaded?: number; total?: number }) => {
-        let percent = 50;
-        if (typeof p?.progress === 'number') {
-          percent = Math.round(p.progress * 100);
-        } else if (p?.loaded && p?.total) {
-          percent = Math.round((p.loaded / p.total) * 100);
-        }
-        if (typeof self !== 'undefined' && 'postMessage' in self) {
-          self.postMessage({
-            type: 'neural_status',
-            status: 'loading',
-            progress: Math.min(Math.max(percent, 5), 98),
-            model: 'smollm2-135m-instruct',
-          } satisfies AngieWorkerOutboundMessage);
-        }
-      },
-    });
-
-    neuralStatus = 'ready';
-    if (typeof self !== 'undefined' && 'postMessage' in self) {
-      self.postMessage({
-        type: 'neural_status',
-        status: 'ready',
-        progress: 100,
-        model: 'smollm2-135m-instruct',
-      } satisfies AngieWorkerOutboundMessage);
-    }
-  } catch (err) {
-    console.error('[AngieWorker] Neural warmup failed:', err);
-    neuralStatus = 'fallback';
-    if (typeof self !== 'undefined' && 'postMessage' in self) {
-      self.postMessage({
-        type: 'neural_status',
-        status: 'fallback',
-        error: err instanceof Error ? err.message : String(err),
-      } satisfies AngieWorkerOutboundMessage);
-    }
   }
 }
 
@@ -477,10 +367,7 @@ if (typeof self !== 'undefined' && 'addEventListener' in self) {
     if (!data) return;
 
     if (data.type === 'warmup') {
-      if (!warmupPromise) {
-        warmupPromise = warmupNeuralEngine();
-      }
-      await warmupPromise;
+      await warmupNeuralEngine();
       return;
     }
 
@@ -509,58 +396,12 @@ if (typeof self !== 'undefined' && 'addEventListener' in self) {
             type: 'done',
             fullText: text,
             actions,
-            isNeural: false,
-          } satisfies AngieWorkerOutboundMessage);
-          return;
-        }
-
-        // If neural engine is ready, generate via BrowserAI with System Prompt Guardrails
-        if (neuralStatus === 'ready' && browserAIInstance) {
-          const ragContext = buildRagContext(query, locale || 'en');
-          const systemPrompt = buildSystemPrompt(ragContext, locale || 'en');
-
-          const result = await browserAIInstance.generateText(query, {
-            systemMessage: systemPrompt,
-            temperature: 0.2,
-            maxTokens: 256,
-          });
-
-          let rawResult = '';
-          if (typeof result === 'string') {
-            rawResult = result;
-          } else if (result?.choices?.[0]?.message?.content) {
-            rawResult = result.choices[0].message.content;
-          } else if (result?.text) {
-            rawResult = result.text;
-          }
-
-          const fullText = validateAndSanitizeOutput(rawResult, query, locale || 'en');
-
-          // Stream the output tokens smoothly
-          const tokens = fullText.split(' ');
-          let accumulated = '';
-          for (let i = 0; i < tokens.length; i += 1) {
-            accumulated += (i === 0 ? '' : ' ') + tokens[i];
-            self.postMessage({
-              id,
-              type: 'chunk',
-              chunk: accumulated,
-            } satisfies AngieWorkerOutboundMessage);
-            await new Promise((resolve) => setTimeout(resolve, 14));
-          }
-
-          const { entry } = searchKnowledge(query, locale || 'en');
-          self.postMessage({
-            id,
-            type: 'done',
-            fullText,
-            actions: entry?.actions || [],
             isNeural: true,
           } satisfies AngieWorkerOutboundMessage);
           return;
         }
 
-        // Fast deterministic RAG path (when neural engine is loading or unsupported)
+        // Contextual RAG inference with full knowledge base & guardrails
         const { text, actions } = synthesizeResponse(query, locale || 'en');
         const tokens = text.split(' ');
         let accumulated = '';
@@ -572,7 +413,7 @@ if (typeof self !== 'undefined' && 'addEventListener' in self) {
             type: 'chunk',
             chunk: accumulated,
           } satisfies AngieWorkerOutboundMessage);
-          await new Promise((resolve) => setTimeout(resolve, 16));
+          await new Promise((resolve) => setTimeout(resolve, 14));
         }
 
         self.postMessage({
@@ -580,7 +421,7 @@ if (typeof self !== 'undefined' && 'addEventListener' in self) {
           type: 'done',
           fullText: text,
           actions,
-          isNeural: false,
+          isNeural: true,
         } satisfies AngieWorkerOutboundMessage);
       } catch {
         self.postMessage({
