@@ -16,6 +16,12 @@ const hireLinks: FooterLink[] = hireProfileRoutes().map((profile) => ({
   to: profile.localePath,
 }));
 
+const caseStudyLinks: FooterLink[] = [
+  { name: 'caseStudies.items.colegium.footerLink', to: '/case-studies/colegium' },
+  { name: 'caseStudies.items.lingoquesto.footerLink', to: '/case-studies/lingoquesto' },
+  { name: 'caseStudies.items.tissini.footerLink', to: '/case-studies/tissini' },
+];
+
 const footerColumns: FooterColumn[] = [
   {
     title: 'col.nav',
@@ -25,6 +31,10 @@ const footerColumns: FooterColumn[] = [
       { name: 'nav.certifications', href: '#certifications' },
       { name: 'capabilities.section', href: '#capabilities' },
     ],
+  },
+  {
+    title: 'col.cases',
+    links: caseStudyLinks,
   },
   {
     title: 'col.hire',
@@ -114,9 +124,9 @@ const socials = [
           </p>
         </div>
 
-        <!-- Navigation: 1–2 cols on narrow screens, 3 from md -->
+        <!-- Navigation: 1–2 cols on narrow screens, 2 on sm/md, 4 on lg+ -->
         <nav
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 md:gap-x-8 xl:gap-x-12 w-full xl:w-auto xl:min-w-0 xl:max-w-2xl xl:grow"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8 md:gap-x-8 xl:gap-x-10 w-full xl:w-auto xl:min-w-0 xl:max-w-3xl xl:grow"
           :aria-label="$t('footer.navLabel')"
         >
           <div v-for="col in footerColumns" :key="col.title" class="space-y-4 md:space-y-5 min-w-0">

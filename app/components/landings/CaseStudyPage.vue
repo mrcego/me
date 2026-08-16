@@ -9,6 +9,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const localePath = useLocalePath();
 const { t, tm, rt } = useI18n();
 
 const copyKey = (key: string) => `caseStudies.items.${props.slug}.${key}`;
@@ -16,6 +17,31 @@ const { sectionHref } = useSectionNavigation();
 const contactHref = computed(() => sectionHref('#contact'));
 
 const homeCaseStudiesHref = computed(() => sectionHref('#case-studies'));
+
+const ALL_STUDIES = [
+  {
+    slug: 'colegium' as const,
+    icon: 'solar:buildings-2-bold-duotone',
+    to: '/case-studies/colegium',
+  },
+  {
+    slug: 'lingoquesto' as const,
+    icon: 'solar:chat-round-dots-bold-duotone',
+    to: '/case-studies/lingoquesto',
+  },
+  {
+    slug: 'tissini' as const,
+    icon: 'solar:bag-2-bold-duotone',
+    to: '/case-studies/tissini',
+  },
+] as const;
+
+const otherStudies = computed(() => ALL_STUDIES.filter((study) => study.slug !== props.slug));
+
+function otherTags(slug: CaseStudySlug): string[] {
+  const data = getI18nArray(tm, `caseStudies.items.${slug}.tags`);
+  return data.map((item) => rt(item));
+}
 
 const sectionBlocks = computed(() => {
   const data = getI18nArray<I18nSectionContent>(tm, copyKey('page.sections'));
@@ -126,6 +152,82 @@ const tagItems = computed(() => {
               <span>{{ item }}</span>
             </li>
           </ul>
+        </section>
+
+        <!-- Cross-linking: Other Case Studies -->
+        <section
+          class="space-y-6 md:space-y-8 pt-8 md:pt-12 border-t border-foreground/10"
+          aria-labelledby="other-cases-heading"
+        >
+          <div class="space-y-2">
+            <div class="flex items-center gap-3">
+              <div class="h-0.5 w-8 bg-primary/30" />
+              <p class="type-eyebrow tracking-[0.35em]">{{ t('caseStudies.otherEyebrow') }}</p>
+            </div>
+            <h2
+              id="other-cases-heading"
+              class="text-3xl md:text-4xl font-black tracking-tight text-foreground"
+            >
+              {{ t('caseStudies.otherTitle') }}
+            </h2>
+            <p class="text-muted text-base leading-relaxed max-w-2xl text-pretty">
+              {{ t('caseStudies.otherSubtitle') }}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <article
+              v-for="other in otherStudies"
+              :key="other.slug"
+              class="surface-card group relative glass rounded-3xl border border-foreground/5 hover:border-primary/20 p-6 sm:p-7 md:p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 min-w-0"
+            >
+              <div class="space-y-4">
+                <div class="flex items-start justify-between gap-4">
+                  <CoreIconBadge
+                    :name="other.icon"
+                    size="lg"
+                    class="transition-transform group-hover:scale-105 shrink-0"
+                  />
+                  <span class="type-meta text-muted font-bold text-xs sm:text-sm shrink-0">
+                    {{ t(`caseStudies.items.${other.slug}.period`) }}
+                  </span>
+                </div>
+                <div class="space-y-2">
+                  <p class="type-eyebrow tracking-[0.25em] text-primary">
+                    {{ t(`caseStudies.items.${other.slug}.role`) }}
+                  </p>
+                  <h3
+                    class="text-xl sm:text-2xl font-black tracking-tight text-foreground group-hover:text-primary transition-colors text-pretty"
+                  >
+                    {{ t(`caseStudies.items.${other.slug}.cardTitle`) }}
+                  </h3>
+                  <p class="text-muted text-sm leading-relaxed text-pretty">
+                    {{ t(`caseStudies.items.${other.slug}.cardSummary`) }}
+                  </p>
+                </div>
+
+                <ul class="flex flex-wrap gap-1.5 pt-1" :aria-label="t('caseStudies.tagsLabel')">
+                  <li
+                    v-for="tag in otherTags(other.slug)"
+                    :key="tag"
+                    class="bg-foreground/5 border border-foreground/10 text-foreground type-label px-2.5 py-1 rounded-xl text-xs font-mono"
+                  >
+                    {{ tag }}
+                  </li>
+                </ul>
+              </div>
+
+              <div class="pt-6 mt-4 border-t border-foreground/5 flex items-center justify-between">
+                <NuxtLink
+                  :to="localePath(other.to)"
+                  class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary group-hover:text-primary-hover transition-colors"
+                >
+                  <span>{{ t('caseStudies.readMore') }}</span>
+                  <Icon name="solar:arrow-right-linear" class="size-4" />
+                </NuxtLink>
+              </div>
+            </article>
+          </div>
         </section>
       </div>
     </section>

@@ -867,8 +867,12 @@
     "tagsLabel": "Tecnologías y áreas de enfoque",
     "readMore": "Leer caso de estudio",
     "readMoreAria": "Leer caso de estudio: {title}",
+    "otherEyebrow": "Otros Casos de Estudio",
+    "otherTitle": "Explora Más Casos en Producción",
+    "otherSubtitle": "Descubre cómo la arquitectura frontend, los sistemas de diseño y los flujos asistidos por IA resuelven problemas a escala real.",
     "items": {
       "colegium": {
+        "footerLink": "Colegium (SaaS EdTech)",
         "role": "Senior Frontend · Colegium",
         "period": "2021 – 2025",
         "cardTitle": "Plataformas cloud para 100k+ estudiantes",
@@ -910,7 +914,8 @@
         }
       },
       "lingoquesto": {
-        "role": "Fullstack fundador · LingoQuesto",
+        "footerLink": "LingoQuesto (Audio IA)",
+        "role": "Founding Fullstack · LingoQuesto",
         "period": "2025 – 2026",
         "cardTitle": "Producto de idiomas con práctica oral",
         "cardSummary": "Ingeniero fullstack fundador integrando flujos de práctica oral con IA/NLP en una experiencia Vue/Nuxt mantenible.",
@@ -951,6 +956,7 @@
         }
       },
       "tissini": {
+        "footerLink": "TISSINI (Comercio Electrónico)",
         "role": "Senior Frontend · TISSINI",
         "period": "2019 – 2021",
         "cardTitle": "Plataformas e-commerce mobile-first a escala",
@@ -1517,6 +1523,7 @@
   },
   "col": {
     "nav": "Navegación",
+    "cases": "Casos de Estudio",
     "connect": "Conectar",
     "hire": "Contratar"
   },

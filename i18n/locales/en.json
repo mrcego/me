@@ -866,8 +866,12 @@
     "tagsLabel": "Technologies and focus areas",
     "readMore": "Read case study",
     "readMoreAria": "Read case study: {title}",
+    "otherEyebrow": "Next Case Studies",
+    "otherTitle": "Explore More Production Cases",
+    "otherSubtitle": "Discover how frontend architecture, design systems, and AI-assisted workflows solve complex problems at scale.",
     "items": {
       "colegium": {
+        "footerLink": "Colegium (EdTech SaaS)",
         "role": "Senior Frontend · Colegium",
         "period": "2021 – 2025",
         "cardTitle": "Cloud platforms for 100k+ students",
@@ -909,6 +913,7 @@
         }
       },
       "lingoquesto": {
+        "footerLink": "LingoQuesto (AI Audio)",
         "role": "Founding Fullstack · LingoQuesto",
         "period": "2025 – 2026",
         "cardTitle": "Speech-first language learning product",
@@ -950,6 +955,7 @@
         }
       },
       "tissini": {
+        "footerLink": "TISSINI (E-Commerce)",
         "role": "Senior Frontend · TISSINI",
         "period": "2019 – 2021",
         "cardTitle": "Mobile-first e-commerce platforms at scale",
@@ -1516,6 +1522,7 @@
   },
   "col": {
     "nav": "Navigation",
+    "cases": "Case Studies",
     "connect": "Connect",
     "hire": "Hire"
   },
