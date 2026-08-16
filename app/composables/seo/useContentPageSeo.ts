@@ -1,6 +1,8 @@
 import { SEO_IDENTITY, SITE_NAME } from '~/config/seo.config';
 import {
   buildHreflangAlternateLinks,
+  buildPersonEntity,
+  buildWebSiteEntity,
   htmlLangForLocale,
   jsonLdScript,
   ogLocaleForLocale,
@@ -53,6 +55,8 @@ export const useContentPageSeo = (options: ContentPageSeoOptions) => {
       ...buildHreflangAlternateLinks({ en: enUrl, es: esUrl }),
     ],
     script: [
+      jsonLdScript('schema-person', buildPersonEntity({ locale: locale.value })),
+      jsonLdScript('schema-website', buildWebSiteEntity({ locale: locale.value })),
       jsonLdScript(`content-${options.metaKey}-webpage`, {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
@@ -73,7 +77,7 @@ export const useContentPageSeo = (options: ContentPageSeoOptions) => {
           {
             '@type': 'ListItem',
             position: 1,
-            name: t('seo.siteName'),
+            name: SITE_NAME,
             item: locale.value === 'es' ? absoluteSiteUrl('/es/') : absoluteSiteUrl('/'),
           },
           {

@@ -422,6 +422,33 @@
     "title": "Production-Grade",
     "titleHighlight": "Tech Stack.",
     "description": "Core frameworks, architectural principles, and engineering practices refined over 13+ years in production.",
+    "expertise": "Expertise",
+    "cards": {
+      "vue": {
+        "title": "Vue & Nuxt",
+        "years": "8Y+"
+      },
+      "ts": {
+        "title": "Fullstack TS",
+        "years": "10Y"
+      },
+      "js": {
+        "title": "Systems Engineering",
+        "years": "Senior"
+      },
+      "git": {
+        "title": "Senior Leadership",
+        "years": "6Y+"
+      },
+      "perf": {
+        "title": "Web Perf & Architecture",
+        "years": "100/100"
+      },
+      "ai": {
+        "title": "AI-Assisted Craft",
+        "years": "Applied"
+      }
+    },
     "officialCertifications": "Certifications & Credentials",
     "languages": "Languages",
     "categories": {
@@ -436,18 +463,22 @@
       "senior": "Senior Developer",
       "principal": "Senior",
       "founding": "Founding Engineer",
+      "perf": "Performance & Architecture",
       "ai": "AI-Assisted Craft"
     },
-    "creds": "Official Credentials",
-    "flow": "Linguistic & Flow",
     "detailed": {
       "vue": "Lead frontend engineer for complex SPA/SSR ecosystems, modular UI systems, and performance tuning.",
       "ts": "End-to-end type safety across API contracts and sophisticated frontend reactive states.",
       "js": "Deep knowledge in software engineering patterns, modularity, and enterprise scalability.",
+      "perf": "Sub-second TTFB, 100/100 Core Web Vitals, 0 CLS, semantic Microformats2, and high-resilience Edge delivery.",
       "git": "Mentoring teams, defining technical roadmaps, and optimizing CI/CD velocity.",
       "ai": "LLM/NLP integrations (local + cloud) and agentic development workflows with human quality control."
     },
     "principles": "Foundational Principles",
+    "flow": "Linguistic & Flow",
+    "hudEyebrow": "Ecosystem & Fluency",
+    "hudTitle": "Engineering Ecosystem & Languages",
+    "hudSubtitle": "Comprehensive overview of technical capabilities, engineering practices, and bilingual communication.",
     "certList": [
       "AI Programming for JavaScript Developers (LinkedIn)",
       "Building TypeScript Applications with JSDoc (LinkedIn)",
@@ -835,8 +866,12 @@
     "tagsLabel": "Technologies and focus areas",
     "readMore": "Read case study",
     "readMoreAria": "Read case study: {title}",
+    "otherEyebrow": "Next Case Studies",
+    "otherTitle": "Explore More Production Cases",
+    "otherSubtitle": "Discover how frontend architecture, design systems, and AI-assisted workflows solve complex problems at scale.",
     "items": {
       "colegium": {
+        "footerLink": "Colegium (EdTech SaaS)",
         "role": "Senior Frontend · Colegium",
         "period": "2021 – 2025",
         "cardTitle": "Cloud platforms for 100k+ students",
@@ -878,6 +913,7 @@
         }
       },
       "lingoquesto": {
+        "footerLink": "LingoQuesto (AI Audio)",
         "role": "Founding Fullstack · LingoQuesto",
         "period": "2025 – 2026",
         "cardTitle": "Speech-first language learning product",
@@ -919,6 +955,7 @@
         }
       },
       "tissini": {
+        "footerLink": "TISSINI (E-Commerce)",
         "role": "Senior Frontend · TISSINI",
         "period": "2019 – 2021",
         "cardTitle": "Mobile-first e-commerce platforms at scale",
@@ -1485,6 +1522,7 @@
   },
   "col": {
     "nav": "Navigation",
+    "cases": "Case Studies",
     "connect": "Connect",
     "hire": "Hire"
   },

@@ -422,6 +422,33 @@
     "title": "Stack Técnico",
     "titleHighlight": "Nivel Producción.",
     "description": "Frameworks principales, principios de arquitectura y prácticas de ingeniería refinados a lo largo de 13+ años en producción.",
+    "expertise": "Especialidad",
+    "cards": {
+      "vue": {
+        "title": "Vue & Nuxt",
+        "years": "8Y+"
+      },
+      "ts": {
+        "title": "Fullstack TS",
+        "years": "10Y"
+      },
+      "js": {
+        "title": "Ingeniería de Sistemas",
+        "years": "Senior"
+      },
+      "git": {
+        "title": "Liderazgo Senior",
+        "years": "6Y+"
+      },
+      "perf": {
+        "title": "Rendimiento Web & SEO",
+        "years": "100/100"
+      },
+      "ai": {
+        "title": "Craft Asistido por IA",
+        "years": "Aplicada"
+      }
+    },
     "officialCertifications": "Certificaciones y Credenciales",
     "languages": "Idiomas",
     "categories": {
@@ -436,17 +463,22 @@
       "senior": "Desarrollador Senior",
       "principal": "Senior",
       "founding": "Ingeniero Fundador",
+      "perf": "Rendimiento & Arquitectura",
       "ai": "Craft asistido por IA"
     },
-    "creds": "Credenciales Oficiales",
-    "flow": "Lingüística y Flow",
     "detailed": {
       "vue": "Ingeniero frontend líder en ecosistemas SPA/SSR complejos, sistemas de UI modulares y optimización de rendimiento.",
       "ts": "Seguridad de tipos de extremo a extremo, a través de contratos de API y estados reactivos frontend sofisticados.",
       "js": "Profundo conocimiento en patrones de ingeniería de software, modularidad y escalabilidad empresarial.",
+      "perf": "TTFB sub-segundo, 100/100 Core Web Vitals, 0 CLS, marcado semántico Microformats2 y entrega en el Edge de alta resiliencia.",
       "git": "Mentoría de equipos, definición de hojas de ruta técnicas y optimización de la velocidad de CI/CD.",
       "ai": "Integraciones LLM/NLP (local + cloud) y flujos agentic de desarrollo con control de calidad humano."
     },
+    "principles": "Principios Fundamentales",
+    "flow": "Lingüística y Fluidez",
+    "hudEyebrow": "Ecosistema y Fluidez",
+    "hudTitle": "Ecosistema de Ingeniería y Lenguajes",
+    "hudSubtitle": "Visión integral de capacidades técnicas, prácticas de ingeniería y comunicación bilingüe.",
     "certList": [
       "AI Programming for JavaScript Developers (LinkedIn)",
       "Building TypeScript Applications with JSDoc (LinkedIn)",
@@ -835,8 +867,12 @@
     "tagsLabel": "Tecnologías y áreas de enfoque",
     "readMore": "Leer caso de estudio",
     "readMoreAria": "Leer caso de estudio: {title}",
+    "otherEyebrow": "Otros Casos de Estudio",
+    "otherTitle": "Explora Más Casos en Producción",
+    "otherSubtitle": "Descubre cómo la arquitectura frontend, los sistemas de diseño y los flujos asistidos por IA resuelven problemas a escala real.",
     "items": {
       "colegium": {
+        "footerLink": "Colegium (SaaS EdTech)",
         "role": "Senior Frontend · Colegium",
         "period": "2021 – 2025",
         "cardTitle": "Plataformas cloud para 100k+ estudiantes",
@@ -878,7 +914,8 @@
         }
       },
       "lingoquesto": {
-        "role": "Fullstack fundador · LingoQuesto",
+        "footerLink": "LingoQuesto (Audio IA)",
+        "role": "Founding Fullstack · LingoQuesto",
         "period": "2025 – 2026",
         "cardTitle": "Producto de idiomas con práctica oral",
         "cardSummary": "Ingeniero fullstack fundador integrando flujos de práctica oral con IA/NLP en una experiencia Vue/Nuxt mantenible.",
@@ -919,6 +956,7 @@
         }
       },
       "tissini": {
+        "footerLink": "TISSINI (Comercio Electrónico)",
         "role": "Senior Frontend · TISSINI",
         "period": "2019 – 2021",
         "cardTitle": "Plataformas e-commerce mobile-first a escala",
@@ -1485,6 +1523,7 @@
   },
   "col": {
     "nav": "Navegación",
+    "cases": "Casos de Estudio",
     "connect": "Conectar",
     "hire": "Contratar"
   },
@@ -1699,7 +1738,7 @@
   "landingAngular": {
     "meta": {
       "title": "Angular Developer | Senior Angular 16+ — Cesar Gomez",
-      "description": "Senior Angular developer with standalone components, RxJS, TypeScript, and enterprise frontend architecture up to Angular 16."
+      "description": "Desarrollador Angular senior con experiencia hasta Angular 16: componentes independientes, RxJS, TypeScript y arquitectura frontend empresarial."
     },
     "eyebrow": "Perfil de Contratación · Especialista Angular v16+",
     "title": "Desarrollador Angular",

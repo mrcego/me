@@ -6,6 +6,8 @@ import {
   SEO_HREFLANG,
   WEBSITE_SCHEMA_ID,
   buildHreflangAlternateLinks,
+  buildPersonEntity,
+  buildWebSiteEntity,
   htmlLangForLocale,
   ogLocaleForLocale,
   personSchemaRef,
@@ -45,6 +47,25 @@ describe('seo helpers', () => {
 
   it('references WebSite by stable @id', () => {
     expect(websiteSchemaRef()).toEqual({ '@id': WEBSITE_SCHEMA_ID });
+  });
+
+  it('builds canonical Person entity for standalone subpages', () => {
+    const personEs = buildPersonEntity({ locale: 'es' });
+    expect(personEs['@type']).toBe('Person');
+    expect(personEs['@id']).toBe(PERSON_SCHEMA_ID);
+    expect(personEs.name).toBe('César Gómez');
+
+    const personEn = buildPersonEntity({ locale: 'en' });
+    expect(personEn['@type']).toBe('Person');
+    expect(personEn['@id']).toBe(PERSON_SCHEMA_ID);
+    expect(personEn.name).toBe('Cesar Gomez');
+  });
+
+  it('builds canonical WebSite entity for standalone subpages', () => {
+    const site = buildWebSiteEntity({ locale: 'es' });
+    expect(site['@type']).toBe('WebSite');
+    expect(site['@id']).toBe(WEBSITE_SCHEMA_ID);
+    expect(site.url).toBe(PERSON_ENTITY_URL);
   });
 
   it('maps app locale codes to HTML / OG locale tags', () => {

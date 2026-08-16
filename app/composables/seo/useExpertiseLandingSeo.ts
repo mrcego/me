@@ -3,6 +3,8 @@ import { getI18nArray } from '~/core/utils/i18nHelpers';
 import { SEO_IDENTITY, SITE_NAME } from '~/config/seo.config';
 import {
   buildHreflangAlternateLinks,
+  buildPersonEntity,
+  buildWebSiteEntity,
   htmlLangForLocale,
   jsonLdScript,
   ogLocaleForLocale,
@@ -132,16 +134,20 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
       ...buildHreflangAlternateLinks({ en: enUrl, es: esUrl }),
     ],
     script: [
+      jsonLdScript(
+        'schema-person',
+        buildPersonEntity({ locale: locale.value, jobTitle: options.jobTitles[0] }),
+      ),
+      jsonLdScript('schema-website', buildWebSiteEntity({ locale: locale.value })),
       jsonLdScript(`${options.translationKey}-webpage`, {
         '@context': 'https://schema.org',
         '@type': 'WebPage',
         '@id': `${canonicalUrl.value}#webpage`,
         url: canonicalUrl.value,
-        name: t(copyKey('meta.title')),
-        description: t(copyKey('meta.description')),
+        name: metaTitle.value,
+        description: metaDescription.value,
         inLanguage: htmlLangForLocale(locale.value),
         isPartOf: websiteSchemaRef(),
-        // Reference home Person — do not redefine url/jobTitle on the same @id
         about: [personSchemaRef(), ...pageOccupations],
         mainEntity: personSchemaRef(),
         mentions: options.knowsAbout.map((topic) => ({
@@ -156,29 +162,33 @@ export const useExpertiseLandingSeo = (options: ExpertiseLandingSeoOptions) => {
           {
             '@type': 'ListItem',
             position: 1,
-            name: t('seo.siteName'),
+            name: SITE_NAME,
             item: locale.value === 'es' ? absoluteSiteUrl('/es/') : absoluteSiteUrl('/'),
           },
           {
             '@type': 'ListItem',
             position: 2,
-            name: t(copyKey('meta.title')),
+            name: metaTitle.value,
             item: canonicalUrl.value,
           },
         ],
       }),
-      jsonLdScript(`${options.translationKey}-faq`, {
-        '@context': 'https://schema.org',
-        '@type': 'FAQPage',
-        mainEntity: faqItems.value.map((item) => ({
-          '@type': 'Question',
-          name: item.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: item.answer,
-          },
-        })),
-      }),
+      ...(faqItems.value.length > 0
+        ? [
+            jsonLdScript(`${options.translationKey}-faq`, {
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqItems.value.map((item) => ({
+                '@type': 'Question',
+                name: item.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: item.answer,
+                },
+              })),
+            }),
+          ]
+        : []),
     ],
   }));
 };

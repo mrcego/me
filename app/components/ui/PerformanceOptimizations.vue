@@ -16,9 +16,34 @@ onMounted(() => {
   }
 
   const register = () => {
-    void navigator.serviceWorker.register('/sw.js').catch(() => {
-      // SW is optional; ignore registration failures in production.
-    });
+    void navigator.serviceWorker
+      .register('/sw.js')
+      .then((registration) => {
+        // Check for updates on load immediately
+        void registration.update().catch(() => {});
+
+        // Listen for new worker updates and prompt immediate activation
+        registration.addEventListener('updatefound', () => {
+          const newWorker = registration.installing;
+          if (!newWorker) return;
+
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              newWorker.postMessage({ type: 'SKIP_WAITING' });
+            }
+          });
+        });
+
+        // Check for updates when user returns to the tab
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') {
+            void registration.update().catch(() => {});
+          }
+        });
+      })
+      .catch(() => {
+        // SW is optional; ignore registration failures in production.
+      });
   };
 
   if (document.readyState === 'complete') {
