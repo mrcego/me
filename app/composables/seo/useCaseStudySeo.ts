@@ -1,6 +1,8 @@
 import { SEO_EDITORIAL_DATES, SEO_IDENTITY, SITE_NAME } from '~/config/seo.config';
 import {
   buildHreflangAlternateLinks,
+  buildPersonEntity,
+  buildWebSiteEntity,
   htmlLangForLocale,
   jsonLdScript,
   ogLocaleForLocale,
@@ -83,6 +85,8 @@ export const useCaseStudySeo = (slug: CaseStudySlug) => {
       ...buildHreflangAlternateLinks({ en: enUrl, es: esUrl }),
     ],
     script: [
+      jsonLdScript('schema-person', buildPersonEntity({ locale: locale.value })),
+      jsonLdScript('schema-website', buildWebSiteEntity({ locale: locale.value })),
       jsonLdScript(`case-study-${slug}-article`, {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -119,7 +123,7 @@ export const useCaseStudySeo = (slug: CaseStudySlug) => {
           {
             '@type': 'ListItem',
             position: 1,
-            name: t('seo.siteName'),
+            name: SITE_NAME,
             item: locale.value === 'es' ? absoluteSiteUrl('/es/') : absoluteSiteUrl('/'),
           },
           {

@@ -353,6 +353,10 @@ export default defineNuxtConfig({
     robotsTxt: false,
   },
 
+  schemaOrg: {
+    enabled: false,
+  },
+
   sitemap: {
     strictNuxtContentPaths: true,
     zeroRuntime: true,
