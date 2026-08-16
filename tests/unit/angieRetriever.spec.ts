@@ -2,13 +2,19 @@ import { describe, expect, it } from 'vitest';
 import { searchKnowledge, synthesizeResponse } from '~/workers/angie.worker';
 
 describe('angieRetriever (Search & Intent Synthesis)', () => {
-  it('returns high-confidence match for technical stack queries in English and Spanish', () => {
-    const resEn = searchKnowledge("What is César's Vue and Nuxt stack?", 'en');
+  it('returns high-confidence match for technical stack and Vue mastery queries in English and Spanish', () => {
+    const resEn = searchKnowledge(
+      "What is César's Vue 3 and Nuxt 4 architecture experience?",
+      'en',
+    );
     expect(resEn.entry).toBeTruthy();
-    expect(resEn.entry?.id).toBe('tech_stack_core');
+    expect(resEn.entry?.id).toBe('vue_nuxt_mastery');
     expect(resEn.confidence).toBeGreaterThan(0);
 
-    const resEs = searchKnowledge('¿Cuál es el stack de tecnologías de César?', 'es');
+    const resEs = searchKnowledge(
+      '¿Cuál es el stack de tecnologías y herramientas de César?',
+      'es',
+    );
     expect(resEs.entry).toBeTruthy();
     expect(resEs.entry?.id).toBe('tech_stack_core');
   });
