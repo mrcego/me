@@ -84,9 +84,9 @@ const socials = [
       <div
         class="flex flex-col xl:flex-row xl:justify-between xl:items-start gap-10 md:gap-12 xl:gap-16"
       >
-        <!-- Brand Identity -->
+        <!-- Brand Identity (Microformats2 h-card) -->
         <div
-          class="group w-full xl:w-auto xl:max-w-sm flex flex-col md:flex-row md:items-end md:justify-between xl:flex-col xl:items-start gap-5 md:gap-8 xl:gap-5"
+          class="h-card vcard group w-full xl:w-auto xl:max-w-sm flex flex-col md:flex-row md:items-end md:justify-between xl:flex-col xl:items-start gap-5 md:gap-8 xl:gap-5"
         >
           <div class="flex items-center gap-4 shrink-0">
             <div
@@ -96,19 +96,19 @@ const socials = [
             </div>
             <div class="flex flex-col min-w-0">
               <h3
-                class="text-xl md:text-2xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors duration-300 uppercase"
+                class="p-name fn text-xl md:text-2xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors duration-300 uppercase"
               >
                 {{ $t('hero.name') }}
               </h3>
               <span
-                class="text-xs md:text-sm tracking-[0.12em] md:tracking-[0.16em] text-muted uppercase font-bold group-hover:text-foreground transition-colors delay-75 text-pretty"
+                class="p-job-title title text-xs md:text-sm tracking-[0.12em] md:tracking-[0.16em] text-muted uppercase font-bold group-hover:text-foreground transition-colors delay-75 text-pretty"
               >
                 {{ $t('hero.tags.frontArch') }}
               </span>
             </div>
           </div>
           <p
-            class="text-muted text-xs md:text-sm font-medium uppercase tracking-[0.14em] md:tracking-[0.18em] max-w-md md:max-w-xs xl:max-w-sm leading-relaxed md:leading-loose md:text-right xl:text-left pl-1 md:pl-0"
+            class="p-note note text-muted text-xs md:text-sm font-medium uppercase tracking-[0.14em] md:tracking-[0.18em] max-w-md md:max-w-xs xl:max-w-sm leading-relaxed md:leading-loose md:text-right xl:text-left pl-1 md:pl-0"
           >
             {{ $t('footer.tagline') }}
           </p>
@@ -143,6 +143,9 @@ const socials = [
                 <a
                   v-else
                   :href="link.href"
+                  :rel="
+                    link.href && link.href.startsWith('http') ? 'me noopener noreferrer' : undefined
+                  "
                   class="text-sm font-medium text-muted hover:text-foreground transition-[color,transform] hover:translate-x-1 inline-flex items-center gap-1.5 group/link"
                 >
                   <span
@@ -193,8 +196,11 @@ const socials = [
             :key="s.icon"
             :href="s.link"
             :target="s.link.startsWith('mailto:') ? undefined : '_blank'"
-            :rel="s.link.startsWith('mailto:') ? undefined : 'noopener noreferrer'"
-            class="footer-social-link size-11 md:size-12 rounded-xl md:rounded-2xl border flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            :rel="s.link.startsWith('mailto:') ? undefined : 'me noopener noreferrer'"
+            :class="[
+              'footer-social-link size-11 md:size-12 rounded-xl md:rounded-2xl border flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50',
+              s.link.startsWith('mailto:') ? 'u-email email' : 'u-url url',
+            ]"
             :aria-label="$t(s.labelKey)"
           >
             <Icon :name="s.icon" class="size-5 md:size-6 text-current pointer-events-none" />

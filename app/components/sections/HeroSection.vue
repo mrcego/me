@@ -86,7 +86,7 @@ onMounted(() => {
 <template>
   <section
     id="hero"
-    class="relative min-h-svh flex items-start justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+6.25rem)] sm:pt-[calc(var(--availability-banner-h,0px)+6.75rem)] lg:pt-[calc(var(--availability-banner-h,0px)+7.25rem)] pb-8 md:pb-12 lg:pb-14"
+    class="h-card vcard relative min-h-svh flex items-start justify-center overflow-hidden px-5 md:px-10 pt-[calc(var(--availability-banner-h,0px)+6.25rem)] sm:pt-[calc(var(--availability-banner-h,0px)+6.75rem)] lg:pt-[calc(var(--availability-banner-h,0px)+7.25rem)] pb-8 md:pb-12 lg:pb-14"
   >
     <LazyHeroParticles :hydrate-after="5200" />
 
@@ -119,7 +119,9 @@ onMounted(() => {
           class="space-y-3 sm:space-y-4 md:space-y-5 flex flex-col items-center xl:items-start text-center xl:text-left w-full"
         >
           <h1 class="space-y-2 sm:space-y-3 font-black tracking-tighter text-balance w-full">
-            <span class="block text-2xl sm:text-3xl md:text-4xl text-gradient tracking-tight">
+            <span
+              class="p-name fn block text-2xl sm:text-3xl md:text-4xl text-gradient tracking-tight"
+            >
               {{ nameParts.first }} {{ nameParts.last }}
             </span>
             <span
@@ -137,7 +139,7 @@ onMounted(() => {
             <p class="type-meta text-muted flex items-center justify-center xl:justify-start gap-2">
               <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse" />
               <Transition name="hero-role-fade" mode="out-in">
-                <span :key="activeRoleIndex" class="font-bold text-foreground">
+                <span :key="activeRoleIndex" class="p-job-title title font-bold text-foreground">
                   {{ currentRole }}
                 </span>
               </Transition>
@@ -180,10 +182,13 @@ onMounted(() => {
           </div>
 
           <p
-            class="hero-reveal hero-reveal--d35 w-full max-w-2xl text-base sm:text-lg text-muted text-center xl:text-left text-pretty font-medium leading-relaxed"
+            class="p-note note hero-reveal hero-reveal--d35 w-full max-w-2xl text-base sm:text-lg text-muted text-center xl:text-left text-pretty font-medium leading-relaxed"
           >
             {{ $t('hero.description') }}
           </p>
+          <!-- Hidden Microformat GEO Attributes -->
+          <span class="p-locality hidden" aria-hidden="true">Cartagena</span>
+          <span class="p-country-name hidden" aria-hidden="true">Colombia</span>
         </header>
 
         <!-- CTA Action Cluster -->
@@ -222,9 +227,9 @@ onMounted(() => {
               <a
                 href="https://linkedin.com/in/mrcego"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 :aria-label="$t('footer.socialLinkedIn')"
-                class="hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="u-url url hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="simple-icons:linkedin"
@@ -234,9 +239,9 @@ onMounted(() => {
               <a
                 href="https://github.com/mrcego"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="me noopener noreferrer"
                 :aria-label="$t('footer.socialGitHub')"
-                class="hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="u-url url hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="simple-icons:github"
@@ -246,7 +251,7 @@ onMounted(() => {
               <a
                 href="mailto:cesargomezh90@gmail.com"
                 :aria-label="$t('footer.socialEmail')"
-                class="hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="u-email email hero-social-link inline-flex items-center justify-center size-11 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="solar:letter-linear"
@@ -311,7 +316,7 @@ onMounted(() => {
                   fetchpriority="high"
                   densities="x1"
                   sizes="154px sm:205px md:256px lg:392px xl:448px"
-                  class="surface-card__image hero-photo-image w-full h-full object-cover"
+                  class="u-photo photo surface-card__image hero-photo-image w-full h-full object-cover"
                 />
 
                 <div class="surface-card__glow absolute inset-0 z-20 bg-primary/5 hero-scanline" />
