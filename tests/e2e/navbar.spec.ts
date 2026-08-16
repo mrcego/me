@@ -45,10 +45,8 @@ test.describe('navbar layout regressions', () => {
       .not.toMatch(/^blur\(0px\)/);
   });
 
-  test('hire CTA and primary Contact fit inside the shell at large desktop widths', async ({
-    page,
-  }) => {
-    for (const width of [1536, 1920]) {
+  test('hire CTA and primary Contact fit inside the shell at desktop widths', async ({ page }) => {
+    for (const width of [1280, 1366, 1536, 1920]) {
       await page.setViewportSize({ width, height: 800 });
       await page.goto('/', { waitUntil: 'domcontentloaded' });
       await expect(page.locator('.hire-menu-trigger')).toBeVisible({ timeout: 20_000 });
@@ -81,10 +79,10 @@ test.describe('navbar layout regressions', () => {
     }
   });
 
-  test('responsive navigation is clean with zero overflow at tablet and mid-desktop widths', async ({
+  test('responsive navigation is clean with zero overflow at tablet and mobile widths', async ({
     page,
   }) => {
-    for (const width of [768, 1024, 1100, 1280]) {
+    for (const width of [768, 834, 1024, 1100]) {
       await page.setViewportSize({ width, height: 800 });
       await page.goto('/', { waitUntil: 'domcontentloaded' });
       await expect(
