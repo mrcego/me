@@ -525,7 +525,7 @@ onBeforeUnmount(() => {
             </span>
             <AppTextRotator
               :items="brandRoles"
-              container-class="hidden xl:block text-[10px] font-bold uppercase tracking-[0.18em] text-muted site-nav__brand-subtitle h-[1.25em]"
+              container-class="hidden 2xl:block text-[10px] font-bold uppercase tracking-[0.18em] text-muted site-nav__brand-subtitle h-[1.25em]"
               track-class="site-nav__brand-subtitle-track"
               line-class="site-nav__brand-subtitle-line"
             />
@@ -534,12 +534,12 @@ onBeforeUnmount(() => {
 
         <!-- Desktop Navigation -->
         <div
-          class="site-nav__links hidden 2xl:flex items-center gap-1.5 rounded-full px-2.5 py-1 border min-w-0 shrink"
+          class="site-nav__links hidden xl:flex items-center gap-1 xl:gap-1.5 rounded-full px-2 xl:px-2.5 py-1 border min-w-0 shrink"
         >
           <template v-for="(link, i) in navLinks" :key="link.id">
             <a
               :href="sectionHref(link.href)"
-              class="nav-reveal relative px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 isolate group/link overflow-hidden cursor-pointer whitespace-nowrap"
+              class="nav-reveal relative px-2.5 xl:px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors duration-300 isolate group/link overflow-hidden cursor-pointer whitespace-nowrap"
               :class="[
                 isActiveSection(link.id) ? 'text-foreground' : 'text-muted hover:text-foreground',
               ]"
@@ -566,7 +566,7 @@ onBeforeUnmount(() => {
           <!-- Mobile contact — persistent before theme -->
           <a
             :href="sectionHref('#contact')"
-            class="2xl:hidden inline-flex items-center justify-center gap-1.5 min-h-11 min-w-11 px-3 sm:px-3.5 rounded-full text-primary bg-primary/10 border border-primary/25 hover:bg-primary/15 transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="xl:hidden inline-flex items-center justify-center gap-1.5 min-h-11 min-w-11 px-3 sm:px-3.5 rounded-full text-primary bg-primary/10 border border-primary/25 hover:bg-primary/15 transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             @click="onNavSectionClick($event, '#contact')"
           >
             <Icon name="solar:letter-bold" class="size-5 shrink-0" aria-hidden="true" />
@@ -579,11 +579,11 @@ onBeforeUnmount(() => {
           <a
             :href="cvHref"
             :download="cvFileName"
-            class="hidden 2xl:flex w-[48px] h-[48px] items-center justify-center rounded-full text-foreground/80 hover:text-primary hover:bg-foreground/5 transition-colors active:scale-95 cursor-pointer"
+            class="hidden xl:flex w-[44px] h-[44px] sm:w-[48px] sm:h-[48px] items-center justify-center rounded-full text-foreground/80 hover:text-primary hover:bg-foreground/5 transition-colors active:scale-95 cursor-pointer"
             :aria-label="$t('hero.downloadCvAria', { file: cvFileName })"
             :title="$t('hero.downloadCv')"
           >
-            <Icon name="solar:download-minimalistic-bold-duotone" class="w-7 h-7 sm:w-8 sm:h-8" />
+            <Icon name="solar:download-minimalistic-bold-duotone" class="size-6 sm:size-7" />
           </a>
 
           <!-- Theme presets — fallback keeps the crown visible before ClientOnly hydrates -->
@@ -600,7 +600,7 @@ onBeforeUnmount(() => {
                 @click="toggleThemeSelector"
                 @keydown="onThemeTriggerKeydown"
               >
-                <Icon name="solar:crown-star-bold" class="w-7 h-7 sm:w-8 sm:h-8" />
+                <Icon name="solar:crown-star-bold" class="size-5 sm:size-6 text-primary" />
               </button>
               <!-- Theme Preset Selector Popover -->
               <Transition
@@ -720,13 +720,10 @@ onBeforeUnmount(() => {
             </template>
           </ClientOnly>
 
-          <div
-            class="w-px h-5 bg-foreground/10 mx-1 hidden 2xl:block shrink-0"
-            aria-hidden="true"
-          />
+          <div class="w-px h-5 bg-foreground/10 mx-1 hidden xl:block shrink-0" aria-hidden="true" />
 
           <!-- Hire + Contact share one action cluster (matched size, intentional gap) -->
-          <div class="site-nav__actions relative hidden 2xl:flex items-center gap-3 shrink-0">
+          <div class="site-nav__actions relative hidden xl:flex items-center gap-3 shrink-0">
             <div ref="hireMenuRef" class="relative shrink-0">
               <button
                 ref="hireTriggerRef"
@@ -817,7 +814,7 @@ onBeforeUnmount(() => {
           <button
             ref="mobileMenuToggleRef"
             type="button"
-            class="2xl:hidden inline-flex size-11 items-center justify-center rounded-full border border-foreground/15 text-foreground hover:text-primary hover:border-primary/40 hover:bg-foreground/5 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer shrink-0"
+            class="xl:hidden inline-flex size-11 items-center justify-center rounded-full border border-foreground/15 text-foreground hover:text-primary hover:border-primary/40 hover:bg-foreground/5 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer shrink-0"
             :aria-label="$t('a11y.openMenu')"
             :aria-expanded="isMobileMenuOpen"
             :aria-controls="isMobileMenuOpen ? 'mobile-nav-dialog' : undefined"
@@ -829,20 +826,37 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <!-- Mobile Navigation Modal -->
+    <!-- Mobile Navigation Modal Backdrop -->
     <Transition
       enter-active-class="transition duration-300 ease-out"
-      enter-from-class="opacity-0 translate-y-8 scale-98"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <div
+        v-if="isMobileMenuOpen"
+        class="fixed inset-0 bg-background/80 backdrop-blur-md z-139 xl:hidden"
+        aria-hidden="true"
+        @click="closeMobileMenu()"
+      />
+    </Transition>
+
+    <!-- Mobile Navigation Modal Dialog -->
+    <Transition
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="opacity-0 translate-y-6 scale-95"
       enter-to-class="opacity-100 translate-y-0 scale-100"
       leave-active-class="transition duration-200 ease-in"
       leave-from-class="opacity-100 translate-y-0 scale-100"
-      leave-to-class="opacity-0 translate-y-8 scale-98"
+      leave-to-class="opacity-0 translate-y-6 scale-95"
     >
       <div
         v-if="isMobileMenuOpen"
         id="mobile-nav-dialog"
         ref="mobileMenuRef"
-        class="mobile-nav-dialog fixed inset-2 sm:inset-4 md:inset-6 lg:inset-8 z-140 rounded-3xl md:rounded-[2.5rem] overflow-y-auto border border-foreground/15 shadow-4xl 2xl:hidden overscroll-contain bg-background/95 backdrop-blur-2xl p-4 sm:p-6 md:p-8 pb-[calc(env(safe-area-inset-bottom,0px)+1.5rem)] custom-scrollbar"
+        class="mobile-nav-dialog fixed inset-x-3 inset-y-3 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[calc(100%-3rem)] sm:max-w-2xl lg:max-w-4xl sm:max-h-[min(90svh,48rem)] z-140 rounded-2xl sm:rounded-3xl lg:rounded-[2rem] overflow-y-auto border border-foreground/15 shadow-4xl xl:hidden overscroll-contain bg-background/95 backdrop-blur-2xl p-4 sm:p-5 md:p-6 lg:p-7 custom-scrollbar flex flex-col justify-between"
         role="dialog"
         aria-modal="true"
         aria-labelledby="mobile-nav-title"
@@ -854,13 +868,13 @@ onBeforeUnmount(() => {
 
         <!-- Header bar with identity & close button -->
         <div
-          class="flex items-center justify-between w-full max-w-lg md:max-w-3xl lg:max-w-6xl mx-auto pb-3.5 sm:pb-4 border-b border-foreground/10"
+          class="flex items-center justify-between w-full pb-3 sm:pb-3.5 border-b border-foreground/10 shrink-0"
         >
           <div class="flex items-center gap-3">
             <div
-              class="flex size-10 sm:size-11 items-center justify-center rounded-xl bg-primary/10 border border-primary/25 text-primary shrink-0"
+              class="flex size-9 sm:size-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/25 text-primary shrink-0"
             >
-              <Icon name="solar:crown-star-bold" class="size-5 sm:size-6" />
+              <Icon name="solar:crown-star-bold" class="size-5" />
             </div>
             <div class="min-w-0">
               <span
@@ -879,7 +893,7 @@ onBeforeUnmount(() => {
           <button
             ref="mobileMenuCloseRef"
             type="button"
-            class="flex size-11 min-h-11 min-w-11 items-center justify-center rounded-full border border-foreground/15 bg-secondary/70 hover:bg-foreground/10 text-foreground transition-all hover:scale-105 active:scale-95 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer shrink-0"
+            class="flex size-10 min-h-10 min-w-10 items-center justify-center rounded-full border border-foreground/15 bg-secondary/70 hover:bg-foreground/10 text-foreground transition-all hover:scale-105 active:scale-95 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 cursor-pointer shrink-0"
             :aria-label="$t('a11y.closeMenu')"
             @click="closeMobileMenu()"
           >
@@ -887,15 +901,13 @@ onBeforeUnmount(() => {
           </button>
         </div>
 
-        <div
-          class="w-full max-w-lg md:max-w-3xl lg:max-w-6xl mx-auto py-4 sm:py-6 flex flex-col justify-between gap-6 sm:gap-8"
-        >
+        <div class="w-full py-3 sm:py-4 space-y-4 sm:space-y-5">
           <!-- Section Navigation -->
-          <div class="space-y-3 w-full">
+          <div class="space-y-2 w-full">
             <div class="flex items-center justify-between px-1">
               <div class="flex items-center gap-2">
-                <Icon name="solar:widget-2-bold-duotone" class="size-4.5 text-primary" />
-                <span class="text-xs font-black uppercase tracking-[0.25em] text-foreground/80">
+                <Icon name="solar:widget-2-bold-duotone" class="size-4 text-primary" />
+                <span class="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">
                   {{ $t('nav.navigationTitle') }}
                 </span>
               </div>
@@ -907,14 +919,14 @@ onBeforeUnmount(() => {
             </div>
 
             <nav
-              class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5 w-full"
+              class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-1.5 sm:gap-2 w-full"
               :aria-label="$t('a11y.mobileMenu')"
             >
               <a
                 v-for="link in navLinks"
                 :key="link.id"
                 :href="sectionHref(link.href)"
-                class="flex items-center justify-center min-h-11 py-2.5 px-3 rounded-xl border border-foreground/10 bg-secondary/30 hover:bg-primary/10 hover:border-primary/40 text-foreground hover:text-primary font-bold text-sm tracking-tight transition-all active:scale-95 touch-manipulation cursor-pointer text-center group/nlink"
+                class="flex items-center justify-center min-h-10 py-2 px-2.5 rounded-xl border border-foreground/10 bg-secondary/30 hover:bg-primary/10 hover:border-primary/40 text-foreground hover:text-primary font-bold text-xs sm:text-sm tracking-tight transition-all active:scale-95 touch-manipulation cursor-pointer text-center group/nlink"
                 :class="[
                   isActiveSection(link.id) ? 'border-primary/40 bg-primary/10 text-primary' : '',
                 ]"
@@ -926,86 +938,84 @@ onBeforeUnmount(() => {
           </div>
 
           <!-- Hiring Profiles Grid -->
-          <div class="space-y-3.5 w-full border-t border-foreground/10 pt-5 sm:pt-6">
+          <div class="space-y-2.5 w-full border-t border-foreground/10 pt-3 sm:pt-4">
             <div class="flex items-center justify-between px-1">
               <div class="flex items-center gap-2">
-                <Icon name="solar:case-minimalistic-bold-duotone" class="size-4.5 text-primary" />
-                <span class="text-xs font-black uppercase tracking-[0.25em] text-foreground/80">
+                <Icon name="solar:case-minimalistic-bold-duotone" class="size-4 text-primary" />
+                <span class="text-[11px] font-black uppercase tracking-[0.2em] text-foreground/80">
                   {{ $t('nav.hireMenu') }}
                 </span>
               </div>
               <span
-                class="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20"
+                class="text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20"
               >
                 6 {{ $t('nav.rolesLabel') }}
               </span>
             </div>
 
-            <div
-              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3.5 text-left"
-            >
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-2.5 text-left">
               <NuxtLink
                 v-for="profile in hireProfileLinks"
                 :key="profile.to"
                 :to="localePath(profile.to)"
-                class="relative flex items-center gap-3.5 p-3 sm:p-3.5 min-h-14 rounded-2xl border border-foreground/10 bg-secondary/40 hover:bg-secondary/80 hover:border-primary/40 active:scale-[0.98] transition-all group/mitem touch-manipulation"
+                class="relative flex items-center gap-3 p-2.5 sm:p-3 rounded-xl sm:rounded-2xl border border-foreground/10 bg-secondary/40 hover:bg-secondary/80 hover:border-primary/40 active:scale-[0.98] transition-all group/mitem touch-manipulation"
                 @click="closeMobileMenu({ restoreFocus: false })"
               >
                 <div
-                  class="flex size-11 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover/mitem:bg-primary group-hover/mitem:text-primary-contrast group-hover/mitem:scale-105 transition-all duration-300 shrink-0"
+                  class="flex size-9 sm:size-10 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover/mitem:bg-primary group-hover/mitem:text-primary-contrast group-hover/mitem:scale-105 transition-all duration-300 shrink-0"
                 >
-                  <Icon :name="profile.icon" class="size-5.5 shrink-0" />
+                  <Icon :name="profile.icon" class="size-4.5 sm:size-5 shrink-0" />
                 </div>
                 <div class="flex-1 min-w-0">
                   <span
-                    class="block text-sm font-bold text-foreground group-hover/mitem:text-primary transition-colors truncate"
+                    class="block text-xs sm:text-sm font-bold text-foreground group-hover/mitem:text-primary transition-colors truncate"
                   >
                     {{ $t(profile.name) }}
                   </span>
                   <span
                     v-if="profile.tagKey"
-                    class="block text-[11px] font-medium text-muted truncate mt-0.5"
+                    class="block text-[10px] sm:text-[11px] font-medium text-muted truncate mt-0.5"
                   >
                     {{ $t(profile.tagKey) }}
                   </span>
                 </div>
                 <Icon
                   name="solar:arrow-right-linear"
-                  class="size-4 text-muted/50 group-hover/mitem:text-primary group-hover/mitem:translate-x-0.5 transition-all shrink-0"
+                  class="size-3.5 text-muted/50 group-hover/mitem:text-primary group-hover/mitem:translate-x-0.5 transition-all shrink-0"
                 />
               </NuxtLink>
             </div>
 
             <a
               :href="sectionHref('#hire-profiles')"
-              class="inline-flex items-center justify-center min-h-11 gap-2 pt-2 text-xs font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors w-full touch-manipulation cursor-pointer"
+              class="inline-flex items-center justify-center min-h-9 gap-1.5 pt-1 text-xs font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors w-full touch-manipulation cursor-pointer"
               @click="goToHireSection($event)"
             >
               {{ $t('nav.hireSection') }}
-              <Icon name="solar:arrow-right-linear" class="size-4" />
+              <Icon name="solar:arrow-right-linear" class="size-3.5" />
             </a>
           </div>
 
           <!-- Bottom Actions -->
           <div
-            class="flex flex-col sm:flex-row gap-2.5 sm:gap-3 w-full max-w-md sm:max-w-xl mx-auto border-t border-foreground/10 pt-5 sm:pt-6"
+            class="flex flex-col sm:flex-row gap-2 sm:gap-2.5 w-full max-w-md sm:max-w-xl mx-auto border-t border-foreground/10 pt-3 sm:pt-4"
           >
             <a
               :href="sectionHref('#contact')"
-              class="btn-premium bg-primary text-primary-contrast rounded-2xl min-h-12 py-3.5 px-6 flex-1 inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all touch-manipulation cursor-pointer"
+              class="btn-premium bg-primary text-primary-contrast rounded-xl sm:rounded-2xl min-h-11 py-2.5 sm:py-3 px-5 flex-1 inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-xs sm:text-sm shadow-xl shadow-primary/20 hover:shadow-primary/30 transition-all touch-manipulation cursor-pointer"
               @click="onNavSectionClick($event, '#contact')"
             >
               {{ $t('nav.getInTouch') }}
-              <Icon name="solar:arrow-right-up-bold" class="size-5" />
+              <Icon name="solar:arrow-right-up-bold" class="size-4.5" />
             </a>
             <a
               :href="cvHref"
               :download="cvFileName"
-              class="btn-premium glass border border-foreground/15 text-foreground rounded-2xl min-h-12 py-3.5 px-6 flex-1 inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm hover:border-primary/40 hover:text-primary transition-colors touch-manipulation cursor-pointer"
+              class="btn-premium glass border border-foreground/15 text-foreground rounded-xl sm:rounded-2xl min-h-11 py-2.5 sm:py-3 px-5 flex-1 inline-flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-xs sm:text-sm hover:border-primary/40 hover:text-primary transition-colors touch-manipulation cursor-pointer"
               :aria-label="$t('hero.downloadCvAria', { file: cvFileName })"
               @click="closeMobileMenu({ restoreFocus: false })"
             >
-              <Icon name="solar:download-minimalistic-bold-duotone" class="size-5" />
+              <Icon name="solar:download-minimalistic-bold-duotone" class="size-4.5" />
               {{ $t('hero.downloadCv') }}
             </a>
           </div>
