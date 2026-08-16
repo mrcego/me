@@ -1097,9 +1097,9 @@
     ]
   },
   "seo": {
-    "title": "Senior Vue/Nuxt Engineer · Frontend Architect · Senior Fullstack Engineer",
+    "title": "Ingeniero Senior Vue/Nuxt & Arquitecto Frontend",
     "description": "César Gómez — Fullstack Senior y Arquitecto Frontend en Cartagena, Colombia. 13+ años con Vue 3, Nuxt 4, TypeScript y Node.js. Ed-tech y e-commerce. Contrato remoto.",
-    "ogTitle": "Senior Vue/Nuxt Engineer · Frontend Architect · Senior Fullstack Engineer",
+    "ogTitle": "Ingeniero Senior Vue/Nuxt & Arquitecto Frontend",
     "ogDescription": "Ingeniero senior frontend y arquitecto en Cartagena de Indias, Colombia. Páginas web, design systems y craft Vue/Nuxt asistido por IA con TypeScript y Node/Express. TISSINI, Colegium, LingoQuesto. Preferencia remoto. Disponible ahora.",
     "jobTitle": "Senior Vue/Nuxt Engineer · Frontend Architect · Senior Fullstack Engineer",
     "siteName": "César Gómez",
@@ -1157,7 +1157,7 @@
   },
   "landingVue": {
     "meta": {
-      "title": "Desarrollador Vue.js | Vue 3, Nuxt y TypeScript — César Gómez",
+      "title": "Desarrollador Senior Vue.js & Nuxt",
       "description": "Desarrollador Vue.js senior en Colombia. 13+ años con Vue 3, Nuxt 4, TypeScript y Pinia. Frontend remoto para productos y design systems. Cartagena · LatAm."
     },
     "eyebrow": "Desarrollador Vue.js · Colombia",
@@ -1265,7 +1265,7 @@
   },
   "landingVueColombia": {
     "meta": {
-      "title": "Desarrollador Vue.js Colombia | Senior Vue 3 y Nuxt — César Gómez",
+      "title": "Desarrollador Vue.js Senior Colombia",
       "description": "Desarrollador Vue.js en Colombia. Vue 3, Nuxt 4, TypeScript y Pinia con 13+ años en ed-tech y e-commerce. Desarrollo remoto desde Colombia / LatAm."
     },
     "eyebrow": "Desarrollador Vue.js · Colombia",
@@ -1345,7 +1345,7 @@
   },
   "landingAi": {
     "meta": {
-      "title": "Ingeniería Aumentada por IA · Craft Vue/Nuxt asistido por IA — César Gómez",
+      "title": "Ingeniería Aumentada por IA & Vue/Nuxt",
       "description": "Entrega Vue/Nuxt con craft asistido por IA usando Cursor, Copilot y Claude Code. Revisión senior y quality gates — no es un rol de ingeniero de IA."
     },
     "eyebrow": "Ingeniería Aumentada por IA · Craft asistido por IA",
@@ -1431,7 +1431,7 @@
   },
   "landingNode": {
     "meta": {
-      "title": "Vue + Node Fullstack | APIs tipadas y entrega UI — César Gómez",
+      "title": "Desarrollador Backend Node.js & APIs",
       "description": "Desarrollador Node.js con Express, TypeScript y ownership fullstack. Backend real Django/Python desde LingoQuesto. Desarrollo remoto desde Colombia / LatAm."
     },
     "eyebrow": "Desarrollador Node.js · Express",
@@ -1583,7 +1583,7 @@
   },
   "landingLocal": {
     "meta": {
-      "title": "Desarrollador Web Cartagena | Senior Vue y Fullstack — César Gómez",
+      "title": "Desarrollador Web Cartagena · Vue & Nuxt",
       "description": "Desarrollador web senior en Cartagena, Colombia. Páginas web a medida y apps Vue/Nuxt con entrega remota para equipos locales e internacionales."
     },
     "eyebrow": "Cartagena · Páginas web · Remoto",
@@ -1660,7 +1660,7 @@
   },
   "landingCraft": {
     "meta": {
-      "title": "Craft Asistido por IA | Metodología para Vue/Nuxt — César Gómez",
+      "title": "Metodología de Craft Asistido por IA",
       "description": "Metodología de Craft asistido por IA: ownership de arquitectura, quality gates y entrega Vue/Nuxt mantenible — explícitamente no un rol de ingeniero de IA."
     },
     "eyebrow": "Metodología · No título de ingeniero de IA",
@@ -1737,7 +1737,7 @@
   },
   "landingAngular": {
     "meta": {
-      "title": "Angular Developer | Senior Angular 16+ — Cesar Gomez",
+      "title": "Desarrollador Angular Senior (v16+)",
       "description": "Desarrollador Angular senior con experiencia hasta Angular 16: componentes independientes, RxJS, TypeScript y arquitectura frontend empresarial."
     },
     "eyebrow": "Perfil de Contratación · Especialista Angular v16+",
@@ -1806,7 +1806,7 @@
   },
   "landingArchitect": {
     "meta": {
-      "title": "Arquitecto Frontend — Líder Técnico Web — César Gómez",
+      "title": "Arquitecto Frontend (Vue 3 & Nuxt 4)",
       "description": "Arquitecto Frontend especializado en Vue 3, Nuxt 4, sistemas de diseño, micro-frontends, Core Web Vitals e ingeniería web escalable."
     },
     "eyebrow": "Perfil de Contratación · Liderazgo Técnico",
@@ -1871,7 +1871,7 @@
   },
   "landingFullstack": {
     "meta": {
-      "title": "Ingeniero Fullstack (Vue/Node) — César Gómez",
+      "title": "Ingeniero Fullstack Senior (Vue & Node)",
       "description": "Ingeniero Fullstack Senior con experiencia end-to-end en Vue 3, Nuxt 4, APIs Node.js, PostgreSQL y entrega de proyectos en TypeScript."
     },
     "eyebrow": "Perfil de Contratación · Entrega End-to-End",

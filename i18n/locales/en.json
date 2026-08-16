@@ -1096,9 +1096,9 @@
     ]
   },
   "seo": {
-    "title": "Senior Vue/Nuxt Engineer · Frontend Architect · Senior Fullstack Engineer",
+    "title": "Senior Vue/Nuxt Engineer & Frontend Architect",
     "description": "Senior Vue/Nuxt & Fullstack Engineer in Cartagena, Colombia. 13+ years with Vue 3, Nuxt 4, TypeScript, Node.js. Ed-tech and e-commerce proof. Remote contract.",
-    "ogTitle": "Senior Vue/Nuxt Engineer · Frontend Architect · Senior Fullstack Engineer",
+    "ogTitle": "Senior Vue/Nuxt Engineer & Frontend Architect",
     "ogDescription": "Senior frontend engineer and architect in Cartagena de Indias, Colombia. Websites, design systems, and AI-assisted Vue/Nuxt craft with TypeScript and Node/Express. TISSINI, Colegium, LingoQuesto. Remote preferred. Available now.",
     "jobTitle": "Senior Vue/Nuxt Engineer · Frontend Architect · Senior Fullstack Engineer",
     "siteName": "César Gómez",
@@ -1156,7 +1156,7 @@
   },
   "landingVue": {
     "meta": {
-      "title": "Vue.js Developer | Vue 3, Nuxt & TypeScript — Cesar Gomez",
+      "title": "Senior Vue.js & Nuxt Developer",
       "description": "Senior Vue.js developer in Colombia. 13+ years with Vue 3, Nuxt 4, TypeScript and Pinia. Remote frontend for products and design systems. Cartagena · LatAm."
     },
     "eyebrow": "Vue.js Developer · Colombia",
@@ -1264,7 +1264,7 @@
   },
   "landingVueColombia": {
     "meta": {
-      "title": "Vue.js Developer Colombia | Senior Vue 3 & Nuxt — Cesar Gomez",
+      "title": "Senior Vue.js Developer Colombia",
       "description": "Senior Vue.js developer in Colombia. Vue 3, Nuxt 4, TypeScript, and Pinia with 13+ years in ed-tech and e-commerce. Remote Vue developer in Colombia / LatAm."
     },
     "eyebrow": "Vue.js Developer · Colombia",
@@ -1344,7 +1344,7 @@
   },
   "landingAi": {
     "meta": {
-      "title": "AI-Augmented Engineering · AI-Assisted Vue/Nuxt — Cesar Gomez",
+      "title": "AI-Augmented Engineering & Vue/Nuxt",
       "description": "AI-assisted Vue/Nuxt delivery with Cursor, Copilot, and Claude Code. Senior code review, architecture ownership, and quality gates — not an AI Engineer role."
     },
     "eyebrow": "AI-Augmented Engineering · AI-Assisted Craft",
@@ -1430,7 +1430,7 @@
   },
   "landingNode": {
     "meta": {
-      "title": "Vue + Node Fullstack | Typed APIs & UI Delivery — Cesar Gomez",
+      "title": "Node.js & Express Backend Developer",
       "description": "Node.js developer with Express, TypeScript, and fullstack ownership. Real Django/Python backend from LingoQuesto. Remote Node.js developer in Colombia / LatAm."
     },
     "eyebrow": "Node.js Developer · Express",
@@ -1582,7 +1582,7 @@
   },
   "landingLocal": {
     "meta": {
-      "title": "Web Developer Cartagena | Senior Vue & Fullstack — Cesar Gomez",
+      "title": "Web Developer Cartagena · Vue & Nuxt",
       "description": "Senior web developer in Cartagena, Colombia. Custom websites and Vue/Nuxt apps with remote-first delivery for local and international teams."
     },
     "eyebrow": "Cartagena · Páginas web · Remote",
@@ -1659,7 +1659,7 @@
   },
   "landingCraft": {
     "meta": {
-      "title": "AI-Assisted Craft | Methodology for Vue/Nuxt — Cesar Gomez",
+      "title": "AI-Assisted Craft Methodology",
       "description": "AI-Assisted Craft methodology: architecture ownership, quality gates, and maintainable Vue/Nuxt delivery — not an AI Engineer role."
     },
     "eyebrow": "Methodology · Not an AI Engineer title",
@@ -1736,7 +1736,7 @@
   },
   "landingAngular": {
     "meta": {
-      "title": "Angular Developer (v16+) — Cesar Gomez",
+      "title": "Senior Angular Developer (v16+)",
       "description": "Senior Angular developer experienced up to Angular 16: standalone components, RxJS, NgRx, TypeScript, and enterprise frontend architecture."
     },
     "eyebrow": "Hire Profile · Angular v16+ Specialist",
@@ -1805,7 +1805,7 @@
   },
   "landingArchitect": {
     "meta": {
-      "title": "Frontend Architect — Senior Web Lead — Cesar Gomez",
+      "title": "Frontend Architect (Vue 3 & Nuxt 4)",
       "description": "Frontend Architect specializing in Vue 3, Nuxt 4, design systems, micro-frontends, Core Web Vitals, and scalable web engineering."
     },
     "eyebrow": "Hire Profile · Technical Leadership",
@@ -1870,7 +1870,7 @@
   },
   "landingFullstack": {
     "meta": {
-      "title": "Fullstack Engineer (Vue/Node) — Cesar Gomez",
+      "title": "Senior Fullstack Engineer (Vue & Node)",
       "description": "Senior Fullstack Engineer with end-to-end expertise in Vue 3, Nuxt 4, Node.js APIs, PostgreSQL, and TypeScript contract delivery."
     },
     "eyebrow": "Hire Profile · End-to-End Delivery",
