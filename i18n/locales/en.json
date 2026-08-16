@@ -466,8 +466,6 @@
       "perf": "Performance & Architecture",
       "ai": "AI-Assisted Craft"
     },
-    "creds": "Official Credentials",
-    "flow": "Linguistic & Flow",
     "detailed": {
       "vue": "Lead frontend engineer for complex SPA/SSR ecosystems, modular UI systems, and performance tuning.",
       "ts": "End-to-end type safety across API contracts and sophisticated frontend reactive states.",
@@ -477,6 +475,10 @@
       "ai": "LLM/NLP integrations (local + cloud) and agentic development workflows with human quality control."
     },
     "principles": "Foundational Principles",
+    "flow": "Linguistic & Flow",
+    "hudEyebrow": "Ecosystem & Fluency",
+    "hudTitle": "Engineering Ecosystem & Languages",
+    "hudSubtitle": "Comprehensive overview of technical capabilities, engineering practices, and bilingual communication.",
     "certList": [
       "AI Programming for JavaScript Developers (LinkedIn)",
       "Building TypeScript Applications with JSDoc (LinkedIn)",

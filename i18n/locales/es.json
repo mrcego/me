@@ -466,8 +466,6 @@
       "perf": "Rendimiento & Arquitectura",
       "ai": "Craft asistido por IA"
     },
-    "creds": "Credenciales Oficiales",
-    "flow": "Lingüística y Flow",
     "detailed": {
       "vue": "Ingeniero frontend líder en ecosistemas SPA/SSR complejos, sistemas de UI modulares y optimización de rendimiento.",
       "ts": "Seguridad de tipos de extremo a extremo, a través de contratos de API y estados reactivos frontend sofisticados.",
@@ -476,6 +474,11 @@
       "git": "Mentoría de equipos, definición de hojas de ruta técnicas y optimización de la velocidad de CI/CD.",
       "ai": "Integraciones LLM/NLP (local + cloud) y flujos agentic de desarrollo con control de calidad humano."
     },
+    "principles": "Principios Fundamentales",
+    "flow": "Lingüística y Fluidez",
+    "hudEyebrow": "Ecosistema y Fluidez",
+    "hudTitle": "Ecosistema de Ingeniería y Lenguajes",
+    "hudSubtitle": "Visión integral de capacidades técnicas, prácticas de ingeniería y comunicación bilingüe.",
     "certList": [
       "AI Programming for JavaScript Developers (LinkedIn)",
       "Building TypeScript Applications with JSDoc (LinkedIn)",

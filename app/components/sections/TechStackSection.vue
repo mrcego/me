@@ -275,6 +275,29 @@ const skillGroups = [
         </Motion>
       </div>
 
+      <!-- Sub-section Header: Ecosystem & Fluency -->
+      <Motion
+        :initial="motionInitial({ opacity: 0, y: 15 }, { opacity: 1, y: 0 })"
+        :while-in-view="motionInView({ opacity: 1, y: 0 })"
+        :transition="motionTransition({ duration: 0.4 })"
+        :viewport="{ once: true, amount: 0.2 }"
+        class="text-center space-y-4 max-w-3xl mx-auto pt-4 md:pt-8"
+      >
+        <div class="flex items-center justify-center gap-4">
+          <div class="h-px w-8 sm:w-12 bg-primary/20" />
+          <p class="type-eyebrow tracking-[0.3em]">
+            {{ $t('techStack.hudEyebrow') }}
+          </p>
+          <div class="h-px w-8 sm:w-12 bg-primary/20" />
+        </div>
+        <h3 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-foreground">
+          {{ $t('techStack.hudTitle') }}
+        </h3>
+        <p class="text-muted text-base sm:text-lg font-medium leading-relaxed max-w-2xl mx-auto">
+          {{ $t('techStack.hudSubtitle') }}
+        </p>
+      </Motion>
+
       <!-- Stats & Bio HUD -->
       <div class="grid xl:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative px-2 md:px-0">
         <Motion
