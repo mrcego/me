@@ -1,12 +1,15 @@
-# Constitution — cesargomez.dev quality rules
+# Quality Constitution — Architectural Invariants & Non-Negotiables
 
-1. **Honesty over hype**: Never claim AI Engineer / Principal / unsupported tenure. Prefer AI-Assisted Craft and verified metrics.
-2. **Artifact is production**: Anything required at the CDN edge (CSP, cache, redirects) must live in the published `.output/public` tree for `--no-build` deploys.
-3. **One entity**: `Person` `@id` is unique and stable; pages reference it rather than rewriting it.
-4. **Locale discipline**: Canonical copy lives in `i18n/locales/`; hreflang uses `en-US`/`es-ES`.
-5. **URL stability**: Do not rename `/ai-engineer/` or `/es/ingeniero-ia/` without an explicit product decision and 301 plan.
-6. **CWV is a feature**: Decorative motion must degrade on mobile/reduced-motion; never steal LCP from the hero image.
-7. **Accessible by default**: Dialogs trap focus; icon buttons have names; forms have labels; keyboard reaches every CTA.
-8. **Proof over placeholders**: No Unsplash, `href="#"`, or invented KPIs in published case studies.
-9. **Test what ships**: Prefer assertions on generated HTML/headers/sitemap over disconnected config objects.
-10. **Measure then tune**: Keep CSS/JS strategies that win cold mobile lab+field budgets; discard cargo-cult optimizations.
+## 1. Governance & Git Flow
+
+1. **Never commit directly to `main`**: All features, fixes, and refactors MUST originate from a dedicated branch (`feat/*`, `fix/*`, `perf/*`, `refactor/*`).
+2. **Husky & Quality Gates**: `pnpm lint`, `pnpm format:check`, `nuxt typecheck` and `pnpm test:coverage` must pass before any push.
+3. **Conventional Commits**: `feat:`, `fix:`, `refactor:`, `perf:`, `chore:`, `test:`, `docs:`.
+
+## 2. Technical Stack Invariants
+
+1. **Nuxt 4 / Vue 3 Composition API**: Strict TypeScript `<script setup lang="ts">`.
+2. **No Unbundled Icons**: All icons must exist in `@iconify-json/*` and be declared in `nuxt.config.ts` (`provider: 'none'`, `fallbackToApi: false`).
+3. **Strict i18n Key Parity**: 100% parity between `i18n/locales/en.json` and `i18n/locales/es.json`.
+4. **Zero Runtime API Dependency**: Static Site Generation (SSG) with client-side deterministic fallbacks.
+5. **Accessible & Reduced Motion Compliant**: `useMotionConfig()` governs all UI motion.
