@@ -107,6 +107,12 @@ export function synthesizeGuardrailRefusal(
           target: '#about',
           labelKey: 'angie.actions.viewAbout',
         },
+        {
+          id: 'act_guardrail_contact',
+          type: 'contact_form',
+          target: '#contact',
+          labelKey: 'angie.actions.openContactForm',
+        },
       ],
     };
   }
@@ -139,6 +145,42 @@ export function synthesizeGuardrailRefusal(
   };
 }
 
+const STOP_WORDS = new Set([
+  'de',
+  'la',
+  'el',
+  'en',
+  'un',
+  'una',
+  'y',
+  'o',
+  'a',
+  'los',
+  'las',
+  'por',
+  'con',
+  'del',
+  'al',
+  'que',
+  'the',
+  'of',
+  'to',
+  'and',
+  'in',
+  'is',
+  'for',
+  'on',
+  'with',
+  'at',
+  'by',
+  'an',
+  'as',
+  'tell',
+  'me',
+  'about',
+  'hablame',
+]);
+
 export function searchKnowledge(
   query: string,
   locale: 'en' | 'es',
@@ -159,29 +201,29 @@ export function searchKnowledge(
   for (const entry of ANGIE_KNOWLEDGE_BASE) {
     let score = 0;
     const keywords = entry.keywords[locale] || entry.keywords.en;
-    const content = normalize(entry.content[locale] || entry.content.en);
     const title = normalize(entry.title[locale] || entry.title.en);
 
     // Exact phrase match bonus
     for (const kw of keywords) {
       const normKw = normalize(kw);
       if (normQuery.includes(normKw)) {
-        score += 25;
+        score += 30;
       }
     }
 
     for (const token of queryTokens) {
+      if (STOP_WORDS.has(token)) continue;
       const isGenericNameToken = ['cesar', 'gomez', 'cesargomez'].includes(token);
       for (const kw of keywords) {
         const normKw = normalize(kw);
+        const kwWords = normKw.split(/\s+/);
         if (normKw === token) {
-          score += isGenericNameToken && entry.id === 'bio_summary' ? 2 : 12;
-        } else if (normKw.includes(token) || token.includes(normKw)) {
-          score += isGenericNameToken ? 1 : 4;
+          score += isGenericNameToken && entry.id === 'bio_summary' ? 2 : 14;
+        } else if (kwWords.includes(token)) {
+          score += isGenericNameToken ? 1 : 10;
         }
       }
-      if (title.includes(token)) score += isGenericNameToken ? 1 : 3;
-      if (content.includes(token)) score += 1;
+      if (title.split(/\s+/).includes(token)) score += isGenericNameToken ? 1 : 4;
     }
 
     if (score > bestScore) {
@@ -191,7 +233,7 @@ export function searchKnowledge(
   }
 
   return {
-    entry: bestEntry,
+    entry: bestScore >= 10 ? bestEntry : null,
     confidence: bestScore,
   };
 }
