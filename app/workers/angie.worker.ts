@@ -243,7 +243,7 @@ export function synthesizeResponse(
 
   const { entry, confidence } = searchKnowledge(query, locale);
 
-  if (entry && confidence >= 4) {
+  if (entry && confidence >= 6) {
     return {
       text: entry.content[locale] || entry.content.en,
       actions: entry.actions || [],

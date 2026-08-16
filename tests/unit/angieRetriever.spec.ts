@@ -42,6 +42,31 @@ describe('angieRetriever (Search & Intent Synthesis)', () => {
     expect(contactRes.entry?.actions?.some((a) => a.type === 'download_cv')).toBe(true);
   });
 
+  it('accurately matches extended domains: companies, location, AI methodology, rates, and other frameworks', () => {
+    const compRes = searchKnowledge('¿En qué empresas ha trabajado César?', 'es');
+    expect(compRes.entry?.id).toBe('companies_experience');
+    expect(compRes.entry?.content.es).toContain('Colegium');
+    expect(compRes.entry?.content.es).toContain('LingoQuesto');
+
+    const locRes = searchKnowledge('Where is César located and does he work remotely?', 'en');
+    expect(locRes.entry?.id).toBe('location_remote');
+    expect(locRes.entry?.content.en).toContain('Colombia');
+    expect(locRes.entry?.content.en).toContain('remote');
+
+    const aiRes = searchKnowledge(
+      '¿Cómo aplica la inteligencia artificial en su flujo de trabajo?',
+      'es',
+    );
+    expect(aiRes.entry?.id).toBe('ai_augmented_engineering');
+    expect(aiRes.entry?.content.es).toContain('Ingeniería Aumentada');
+
+    const rateRes = searchKnowledge('What are his hourly rates or pricing structure?', 'en');
+    expect(rateRes.entry?.id).toBe('rates_pricing');
+
+    const reactRes = searchKnowledge('¿Tiene experiencia con React o Angular?', 'es');
+    expect(reactRes.entry?.id).toBe('other_frameworks_ecosystem');
+  });
+
   it('synthesizes specialized greetings in English and Spanish', () => {
     const greetingEn = synthesizeResponse('hello', 'en');
     expect(greetingEn.text).toContain('Angie');
