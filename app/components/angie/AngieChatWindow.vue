@@ -171,7 +171,7 @@ watch(isOpen, (open) => {
             <div
               class="relative flex items-center justify-center size-8.5 sm:size-9 rounded-xl bg-primary/10 border border-primary/30 text-primary shrink-0 overflow-hidden"
             >
-              <NuxtImg
+              <img
                 src="/img/angie-face.webp"
                 alt="Angie AI"
                 width="36"
@@ -304,7 +304,7 @@ watch(isOpen, (open) => {
             :class="msg.role === 'user' ? 'items-end' : 'items-start'"
           >
             <div class="flex items-center gap-1.5 px-1">
-              <NuxtImg
+              <img
                 v-if="msg.role === 'angie'"
                 src="/img/angie-face.webp"
                 alt="Angie AI"
