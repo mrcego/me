@@ -15,10 +15,11 @@ const selectedRoleKey = ref<string | null>(null);
 
 const COMPANY_LOGOS = {
   bitsamericas: {
-    src: '/img/companies/bitsamericas.svg',
+    src: '/img/companies/bitsamericas.png',
     alt: 'BITS Americas',
-    width: 320,
-    height: 90,
+    width: 1276,
+    height: 816,
+    onLight: true,
   },
   lingoquesto: {
     src: '/img/companies/lingoquesto.png',
