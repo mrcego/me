@@ -124,10 +124,6 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    optimizeDeps: {
-      // Avoid prebundling the full @vueuse/core barrel into the graph.
-      include: ['@unhead/schema-org/vue'],
-    },
     build: {
       modulePreload: false,
       // One stylesheet discoverable from HTML — avoids JS→CSS→JS critical chains
