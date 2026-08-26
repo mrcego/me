@@ -4,12 +4,30 @@ import { defineComponent, nextTick } from 'vue';
 import { AVAILABILITY_START, useAvailability } from '~/composables/domain/useAvailability';
 
 describe('useAvailability', () => {
-  it('shows announcement and evaluates isAvailable=true when availableFrom is null', async () => {
+  it('hides announcement when enabled is false and evaluates isAvailable=true when availableFrom is null', async () => {
     let api!: ReturnType<typeof useAvailability>;
     const wrapper = await mountSuspended(
       defineComponent({
         setup() {
           api = useAvailability();
+          return {};
+        },
+        template: '<div />',
+      }),
+    );
+
+    await nextTick();
+    expect(api.showAnnouncement.value).toBe(false);
+    expect(api.isAvailable.value).toBe(true);
+    wrapper.unmount();
+  });
+
+  it('shows announcement when explicitly enabled via override', async () => {
+    let api!: ReturnType<typeof useAvailability>;
+    const wrapper = await mountSuspended(
+      defineComponent({
+        setup() {
+          api = useAvailability(true);
           return {};
         },
         template: '<div />',
@@ -30,7 +48,7 @@ describe('useAvailability', () => {
     const wrapper = await mountSuspended(
       defineComponent({
         setup() {
-          api = useAvailability();
+          api = useAvailability(true);
           return {};
         },
         template: '<div />',

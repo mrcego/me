@@ -27,15 +27,29 @@ export function isImmediatelyAvailable(
   return today >= start;
 }
 
+export function isBannerEnabled(): boolean {
+  try {
+    const config = useRuntimeConfig();
+    if (config?.public?.availabilityBannerEnabled !== undefined) {
+      return Boolean(config.public.availabilityBannerEnabled);
+    }
+  } catch {
+    // Outside Nuxt context (plain unit tests)
+  }
+  return AVAILABILITY_CONFIG.enabled;
+}
+
 /**
  * Availability banner visibility.
  *
- * SSG must NOT freeze a build-time `new Date()` into a dep-less computed forever.
- * Default to the pre-availability announcement in SSR/prerender (matches i18n
- * seeking copy), then reconcile on the client after mount.
+ * Defaults to `AVAILABILITY_CONFIG.enabled` (or `NUXT_PUBLIC_AVAILABILITY_BANNER_ENABLED`),
+ * allowing instant hiding/showing of the top banner.
  */
-export function useAvailability() {
-  const showAnnouncement = ref(true);
+export function useAvailability(bannerEnabledOverride?: boolean) {
+  const enabled =
+    typeof bannerEnabledOverride === 'boolean' ? bannerEnabledOverride : isBannerEnabled();
+
+  const showAnnouncement = ref(enabled);
   const isAvailable = ref(false);
 
   if (import.meta.client) {
