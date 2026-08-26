@@ -14,6 +14,12 @@ const roleModalVisible = ref(false);
 const selectedRoleKey = ref<string | null>(null);
 
 const COMPANY_LOGOS = {
+  bitsamericas: {
+    src: '/img/companies/bitsamericas.svg',
+    alt: 'BITS Americas',
+    width: 320,
+    height: 90,
+  },
   lingoquesto: {
     src: '/img/companies/lingoquesto.png',
     alt: 'LingoQuesto',
@@ -42,6 +48,7 @@ type CompanyLogoId = keyof typeof COMPANY_LOGOS;
 type RoleItem = { key: CompanyLogoId };
 
 const roles: RoleItem[] = [
+  { key: 'bitsamericas' },
   { key: 'lingoquesto' },
   { key: 'colegium' },
   { key: 'tissini' },

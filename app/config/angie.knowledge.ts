@@ -586,6 +586,49 @@ export const ANGIE_KNOWLEDGE_BASE: AngieKnowledgeEntry[] = [
     ],
   },
   {
+    id: 'company_bits_americas',
+    category: 'case_study',
+    keywords: {
+      en: [
+        'bits americas',
+        'bits americas s.a.s.',
+        'bits',
+        'solutions architect',
+        'frontend solutions architect',
+        'level ii',
+        'frontend architect level 2',
+        'frontend architect level ii',
+      ],
+      es: [
+        'bits americas',
+        'bits americas s.a.s.',
+        'bits',
+        'arquitecto de soluciones',
+        'arquitecto de soluciones frontend',
+        'nivel ii',
+        'arquitecto frontend nivel 2',
+        'arquitecto frontend nivel ii',
+      ],
+    },
+    title: {
+      en: 'BITS Americas — Frontend Solutions Architect Level II',
+      es: 'BITS Americas — Arquitecto de Soluciones Frontend Nivel II',
+    },
+    content: {
+      en: 'At BITS Americas S.A.S., César serves as Frontend Solutions Architect Level II:\n• Enterprise TO-BE Architecture: Defining target state architecture for scalable Design Systems, component governance, and cross-team adoption pipelines.\n• Multi-Framework Web Components: Building high-performance Stencil.js / Custom Elements libraries and typed wrappers for Vue 3, Angular (v16+), and React.\n• Quality & Standards: Enforcing design tokens, semantic versioning, private NPM/CDN distribution, WCAG 2.1 AA accessibility, and automated visual regression testing.',
+      es: 'En BITS Americas S.A.S., César se desempeña como Arquitecto de Soluciones Frontend Nivel II:\n• Arquitectura Empresarial TO-BE: Definición de la arquitectura objetivo para Sistemas de Diseño escalables, gobernanza de componentes y pipelines de adopción entre equipos.\n• Web Components Multi-Framework: Construcción de librerías de componentes en Stencil.js / Custom Elements con wrappers tipados para Vue 3, Angular (v16+) y React.\n• Calidad y Estándares: Estandarización de design tokens, versionamiento semántico, distribución privada por NPM/CDN, accesibilidad WCAG 2.1 AA y pruebas de regresión visual automatizadas.',
+    },
+    actions: [
+      {
+        id: 'act_about_bits',
+        type: 'navigate',
+        target: '#about',
+        labelKey: 'angie.actions.viewAbout',
+      },
+      { id: 'act_dl_cv', type: 'download_cv', labelKey: 'angie.actions.downloadCvNow' },
+    ],
+  },
+  {
     id: 'companies_experience',
     category: 'case_study',
     keywords: {
@@ -620,8 +663,8 @@ export const ANGIE_KNOWLEDGE_BASE: AngieKnowledgeEntry[] = [
       es: 'Empresas y Trayectoria Laboral',
     },
     content: {
-      en: 'Over his 13+ years in software engineering, César has delivered high-impact production architectures across major enterprise platforms:\n• Colegium (EdTech SaaS): Senior Frontend Developer architecting 12 educational modules, 3 admin tools, and 3 shared Vue 3 libraries for 100,000+ students.\n• LingoQuesto (AI Conversational Platform): Founding Fullstack Engineer building real-time WebSocket dialog simulations, audio streaming, and LLM pipelines (65% retention boost).\n• TISSINI (E-commerce): Optimized mobile sales funnels, checkout pipelines, and Core Web Vitals for Hispanic micro-entrepreneurs.\n• Multi-tenant Cloud & Independent Consulting: Designed scalable Vue/Nuxt frontends and Node.js microservices for diverse enterprise clients.',
-      es: 'En sus más de 13 años de trayectoria, César ha liderado arquitecturas de alto impacto en producción para destacadas plataformas:\n• Colegium (SaaS EdTech): Desarrollador Frontend Senior construyendo 12 módulos educativos, 3 herramientas de administración y 3 librerías compartidas en Vue 3 para más de 100.000 estudiantes.\n• LingoQuesto (IA Conversacional): Ingeniero Fullstack Fundador desarrollando la simulación conversacional en tiempo real con WebSockets, streaming de audio y pipelines LLM (+65% retención).\n• TISSINI (Comercio Electrónico): Optimizó el embudo de ventas móvil y estabilizó Core Web Vitals en eventos masivos de compra.\n• Plataformas Cloud Multi-Inquilino y Consultoría: Arquitecturas frontend escalables en Vue/Nuxt y microservicios Node.js para clientes empresariales.',
+      en: 'Over his 13+ years in software engineering, César has delivered high-impact production architectures across major enterprise platforms:\n• BITS Americas S.A.S.: Frontend Solutions Architect Level II leading enterprise Design Systems TO-BE architecture and multi-framework Web Components.\n• Colegium (EdTech SaaS): Senior Frontend Developer architecting 12 educational modules, 3 admin tools, and 3 shared Vue 3 libraries for 100,000+ students.\n• LingoQuesto (AI Conversational Platform): Founding Fullstack Engineer building real-time WebSocket dialog simulations, audio streaming, and LLM pipelines (65% retention boost).\n• TISSINI (E-commerce): Optimized mobile sales funnels, checkout pipelines, and Core Web Vitals for Hispanic micro-entrepreneurs.\n• Multi-tenant Cloud & Independent Consulting: Designed scalable Vue/Nuxt frontends and Node.js microservices for diverse enterprise clients.',
+      es: 'En sus más de 13 años de trayectoria, César ha liderado arquitecturas de alto impacto en producción para destacadas plataformas:\n• BITS Americas S.A.S.: Arquitecto de Soluciones Frontend Nivel II liderando la arquitectura TO-BE de Sistemas de Diseño y Web Components multi-framework.\n• Colegium (SaaS EdTech): Desarrollador Frontend Senior construyendo 12 módulos educativos, 3 herramientas de administración y 3 librerías compartidas en Vue 3 para más de 100.000 estudiantes.\n• LingoQuesto (IA Conversacional): Ingeniero Fullstack Fundador desarrollando la simulación conversacional en tiempo real con WebSockets, streaming de audio y pipelines LLM (+65% retención).\n• TISSINI (Comercio Electrónico): Optimizó el embudo de ventas móvil y estabilizó Core Web Vitals en eventos masivos de compra.\n• Plataformas Cloud Multi-Inquilino y Consultoría: Arquitecturas frontend escalables en Vue/Nuxt y microservicios Node.js para clientes empresariales.',
     },
     actions: [
       { id: 'act_about', type: 'navigate', target: '#about', labelKey: 'angie.actions.viewAbout' },

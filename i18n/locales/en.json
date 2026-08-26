@@ -334,6 +334,19 @@
       "viewDetails": "View role details",
       "highlightsTitle": "Key contributions",
       "close": "Close",
+      "bitsamericas": {
+        "title": "Frontend Solutions Architect Level II",
+        "company": "BITS Americas S.A.S.",
+        "years": "2026 - Present",
+        "location": "Colombia · Remote",
+        "desc": "Leading enterprise Design Systems architecture TO-BE, Web Components, and multi-framework governance.",
+        "highlights": [
+          "Architected the TO-BE enterprise roadmap for scalable Design Systems, component governance, and cross-team adoption pipelines.",
+          "Engineered framework-agnostic Web Components (Stencil.js, Custom Elements) and native wrappers for seamless multi-framework interoperability (Vue 3, Angular v16+, React).",
+          "Standardized design tokens, semantic versioning, private NPM distribution, and automated visual regression quality gates.",
+          "Enforced WCAG 2.1 AA accessibility standards, zero-runtime overhead, and strict TypeScript API contracts."
+        ]
+      },
       "lingoquesto": {
         "title": "Founding Member | Senior Fullstack",
         "company": "LingoQuesto",

@@ -334,6 +334,19 @@
       "viewDetails": "Ver detalles del rol",
       "highlightsTitle": "Contribuciones clave",
       "close": "Cerrar",
+      "bitsamericas": {
+        "title": "Arquitecto de Soluciones Frontend Nivel II",
+        "company": "BITS Americas S.A.S.",
+        "years": "2026 - Presente",
+        "location": "Colombia · Remoto",
+        "desc": "Liderazgo en arquitectura TO-BE de Sistemas de Diseño empresariales, Web Components y gobernanza multi-framework.",
+        "highlights": [
+          "Diseño de la hoja de ruta arquitectónica empresarial TO-BE para Sistemas de Diseño escalables, gobernanza de componentes y adopción entre equipos.",
+          "Construcción de Web Components agnósticos (Stencil.js, Custom Elements) y wrappers nativos para interoperabilidad sin fricciones (Vue 3, Angular v16+, React).",
+          "Estandarización de design tokens, versionamiento semántico, distribución por NPM/CDN privado y puertas de calidad con pruebas visuales automatizadas.",
+          "Cumplimiento estricto de accesibilidad WCAG 2.1 AA, mínimo coste de runtime y contratos fuertemente tipados en TypeScript."
+        ]
+      },
       "lingoquesto": {
         "title": "Miembro Fundador | Senior Fullstack",
         "company": "LingoQuesto",
