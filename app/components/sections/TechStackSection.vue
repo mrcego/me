@@ -183,7 +183,7 @@ const skillGroups = [
       class="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent"
     />
 
-    <div class="container mx-auto max-w-7xl space-y-24 md:space-y-32">
+    <div class="container mx-auto space-y-24 md:space-y-32">
       <Motion
         :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 }, { opacity: 1, scale: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
@@ -207,15 +207,13 @@ const skillGroups = [
           <span class="text-gradient">{{ $t('techStack.titleHighlight') }}</span>
         </h2>
         <p
-          class="text-muted text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto px-4 md:px-0"
+          class="text-muted text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto"
         >
           {{ $t('techStack.description') }}
         </p>
       </Motion>
 
-      <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 px-2 md:px-0 items-stretch"
-      >
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
         <Motion
           v-for="(t, i) in detailedStack"
           :key="t.id"
@@ -299,7 +297,7 @@ const skillGroups = [
       </Motion>
 
       <!-- Stats & Bio HUD -->
-      <div class="grid xl:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative px-2 md:px-0">
+      <div class="grid xl:grid-cols-2 gap-6 sm:gap-8 md:gap-12 relative">
         <Motion
           :initial="motionInitial({ opacity: 0, x: -30 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
