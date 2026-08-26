@@ -31,11 +31,11 @@
     "contactShort": "Contact",
     "hireMenu": "Hiring profiles",
     "hireSection": "All profiles",
-    "brandRole": "Senior Fullstack Engineer",
+    "brandRole": "Frontend Solutions Architect",
     "brandRoles": [
+      "Frontend Solutions Architect",
       "Senior Fullstack Engineer",
-      "Frontend Architecture Specialist",
-      "Senior Vue/Nuxt Engineer",
+      "Senior Vue/Nuxt Specialist",
       "AI-Augmented Software Engineer"
     ],
     "switchLanguage": "Switch language",
@@ -96,8 +96,8 @@
     "terminalChipAriaMobile": "Open command terminal",
     "terminalChipTooltip": "Click to arm flight path (or press /)",
     "terminalChipTooltipMobile": "Tap to open command terminal",
-    "h1": "Senior Vue/Nuxt & Fullstack Engineer",
-    "title": "César Gómez | Senior Vue/Nuxt & Fullstack Engineer"
+    "h1": "Frontend Solutions Architect & Senior Fullstack Engineer",
+    "title": "César Gómez | Frontend Solutions Architect & Senior Fullstack Engineer"
   },
   "vibeCoding": {
     "modal": {

@@ -31,11 +31,11 @@
     "contactShort": "Contacto",
     "hireMenu": "Perfiles de contratación",
     "hireSection": "Todos los perfiles",
-    "brandRole": "Ingeniero Fullstack Senior",
+    "brandRole": "Arquitecto de Soluciones Frontend",
     "brandRoles": [
+      "Arquitecto de Soluciones Frontend",
       "Ingeniero Fullstack Senior",
-      "Especialista en Arquitectura Frontend",
-      "Ingeniero Senior Vue/Nuxt",
+      "Especialista Senior Vue/Nuxt",
       "Ingeniero de Software Aumentado por IA"
     ],
     "switchLanguage": "Cambiar idioma",
@@ -96,8 +96,8 @@
     "terminalChipAriaMobile": "Abrir terminal de comandos",
     "terminalChipTooltip": "Clic para armar flight path (o presiona /)",
     "terminalChipTooltipMobile": "Toca para abrir terminal de comandos",
-    "h1": "Ingeniero Fullstack Senior y Arquitecto Frontend",
-    "title": "César Gómez | Ingeniero Fullstack Senior y Arquitecto Frontend"
+    "h1": "Arquitecto de Soluciones Frontend e Ingeniero Fullstack Senior",
+    "title": "César Gómez | Arquitecto de Soluciones Frontend e Ingeniero Fullstack"
   },
   "vibeCoding": {
     "modal": {
