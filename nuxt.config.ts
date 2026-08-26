@@ -336,6 +336,7 @@ export default defineNuxtConfig({
   // SEO module configuration
   // Build-time OG PNGs (static Netlify generate) — no runtime signing secret needed
   ogImage: {
+    enabled: !process.env.VITEST,
     zeroRuntime: true,
     defaults: {
       width: 1200,

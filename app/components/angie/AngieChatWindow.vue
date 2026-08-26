@@ -47,11 +47,13 @@ const categoryPrompts = computed(() => {
       return isEs
         ? [
             'Cuéntame sobre la arquitectura en Vue 3 y Nuxt 4',
+            '¿Cómo diseña Sistemas de Diseño y Web Components?',
             '¿Cómo optimiza Core Web Vitals a 60 FPS?',
             '¿Cómo aplica Ingeniería Aumentada por IA?',
           ]
         : [
             'Tell me about his Vue 3 & Nuxt 4 architecture',
+            'How does he architect enterprise Design Systems?',
             'How does he optimize Core Web Vitals to 60 FPS?',
             'How does he apply AI-Augmented Engineering?',
           ];

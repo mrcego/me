@@ -92,12 +92,10 @@
     "vitest": "^4.1.10",
     "vue-tsc": "^3.3.9"
   },
-  "pnpm": {
-    "overrides": {
-      "typescript": "$typescript",
-      "sharp": "$sharp",
-      "unhead": "^3.1.8",
-      "vite": "$vite"
-    }
+  "overrides": {
+    "typescript": "$typescript",
+    "sharp": "$sharp",
+    "unhead": "^3.1.8",
+    "vite": "$vite"
   }
 }

@@ -46,6 +46,8 @@ coverage/
 .opencode/
 .agent/
 .gemini/
+.windsurf/
+.gentle-ai/
 .impeccable/live/
 .impeccable/config.local.json
 

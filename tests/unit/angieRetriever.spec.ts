@@ -17,6 +17,13 @@ describe('angieRetriever (Search & Intent Synthesis)', () => {
     );
     expect(resEs.entry).toBeTruthy();
     expect(resEs.entry?.id).toBe('tech_stack_core');
+
+    const resDs = searchKnowledge(
+      '¿Cuál es su experiencia diseñando sistemas de diseño y arquitectura TO-BE?',
+      'es',
+    );
+    expect(resDs.entry).toBeTruthy();
+    expect(resDs.entry?.id).toBe('design_systems_architecture');
   });
 
   it('matches case studies (Colegium, LingoQuesto, TISSINI) with exact deliverables', () => {

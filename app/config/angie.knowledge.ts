@@ -135,6 +135,62 @@ export const ANGIE_KNOWLEDGE_BASE: AngieKnowledgeEntry[] = [
     ],
   },
   {
+    id: 'design_systems_architecture',
+    category: 'stack',
+    keywords: {
+      en: [
+        'design system',
+        'design systems',
+        'web components',
+        'stencil',
+        'stencil.js',
+        'design tokens',
+        'component governance',
+        'reusable components',
+        'design system architecture',
+        'to-be architecture',
+        'micro frontends',
+      ],
+      es: [
+        'design system',
+        'design systems',
+        'sistema de diseno',
+        'sistemas de diseno',
+        'web components',
+        'stencil',
+        'stencil.js',
+        'design tokens',
+        'gobernanza de componentes',
+        'componentes reutilizables',
+        'arquitectura de sistemas de diseno',
+        'arquitectura to-be',
+        'microfrontends',
+      ],
+    },
+    title: {
+      en: 'Design Systems Architecture & Component Governance',
+      es: 'Arquitectura de Sistemas de Diseño y Gobernanza de Componentes',
+    },
+    content: {
+      en: 'César specializes in enterprise Design Systems Architecture:\n• Architecture TO-BE: Defining target state roadmaps, component governance, versioning, distribution, and cross-team adoption.\n• Multi-Framework & Web Components: Building high-performance component libraries (Stencil.js, Web Components, Vue 3, React, Angular) that guarantee zero-friction interoperability.\n• Quality & Standards: Strict design tokens, WCAG 2.1 AA accessibility, automated visual regression testing, and typed APIs.',
+      es: 'César se especializa en Arquitectura de Sistemas de Diseño Empresariales:\n• Arquitectura TO-BE: Definición de la hoja de ruta objetivo, gobernanza de componentes, versionamiento, distribución y adopción entre equipos.\n• Multi-Framework y Web Components: Construcción de librerías de componentes de alto rendimiento (Stencil.js, Web Components, Vue 3, React, Angular) con interoperabilidad sin fricciones.\n• Calidad y Estándares: Design tokens estrictos, accesibilidad WCAG 2.1 AA, pruebas de regresión visual automatizadas y APIs fuertemente tipadas.',
+    },
+    actions: [
+      {
+        id: 'act_ds_stack',
+        type: 'navigate',
+        target: '#tech-stack',
+        labelKey: 'angie.actions.viewTechStack',
+      },
+      {
+        id: 'act_ds_contact',
+        type: 'contact_form',
+        target: '#contact',
+        labelKey: 'angie.actions.contactCesar',
+      },
+    ],
+  },
+  {
     id: 'tech_stack_core',
     category: 'stack',
     keywords: {
