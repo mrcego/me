@@ -51,3 +51,5 @@ coverage/
 .impeccable/live/
 .impeccable/config.local.json
 
+# Local AI runtime state
+.atl/

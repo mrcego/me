@@ -1,0 +1,69 @@
+schema: spec-driven
+
+project:
+  name: mrcego/me (cesargomez.dev)
+  domain: portfolio-sanctuary
+
+context: |
+  Tech stack: Nuxt 4 (compatibilityVersion 4) + Vue 3 Composition API + TypeScript Strict + Tailwind CSS v4 + Motion Vue (motion-v) + Nitro SSG.
+  Architecture: Static Site Generation (SSG), offline client icons, strict Content Security Policy (CSP Grade A+), Edge AI / WebGPU SmolLM2 Angie Concierge.
+  Testing: Vitest (unit & nuxt layers, v8 coverage >= 80%), Playwright (e2e navigation & accessibility).
+  Style: Modern IDE Sanctuary (obsidian dark, emerald/indigo accents, typography-first, 60 FPS motion).
+
+strict_tdd: true
+
+testing:
+  runner:
+    command: pnpm test
+    framework: vitest
+  layers:
+    unit:
+      available: true
+      tool: vitest
+      command: pnpm test:unit
+    integration:
+      available: true
+      tool: '@nuxt/test-utils/runtime (vitest environment: nuxt)'
+      command: pnpm test
+    e2e:
+      available: true
+      tool: playwright
+      command: pnpm test:e2e
+  coverage:
+    available: true
+    command: pnpm test:coverage
+    threshold: 80
+  quality:
+    linter:
+      available: true
+      command: pnpm lint
+    typecheck:
+      available: true
+      command: pnpm typecheck
+    formatter:
+      available: true
+      command: pnpm format:check
+
+rules:
+  proposal:
+    - Include user impact, motivation, and scope boundaries
+    - Outline risk assessment and rollback strategy
+  specs:
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+    - Define scenarios using Given/When/Then criteria
+    - Maintain 100% key parity for all i18n locales (en.json and es.json)
+  design:
+    - Adhere to CANONICAL Ground Truth in AGENTS.md (branch-first, conventional commits, offline icon bundle)
+    - Guarantee zero inline event handlers on HTML to maintain strict CSP Grade A+
+    - Ensure 60 FPS reactive motion and reduced-motion safety via useMotionConfig()
+  tasks:
+    - Group by sequential phase with clear acceptance criteria
+    - Ensure each task is atomic and independently verifiable
+  apply:
+    - Follow Strict TDD: author/update unit or E2E tests before implementation
+    - Validate pre-push suite (lint, typecheck, format, coverage) before hand-off
+  verify:
+    - Validate automated test execution with 100% pass rate
+    - Verify zero runtime console warnings
+  archive:
+    - Merge delta specifications cleanly into openspec/specs/{domain}/spec.md
