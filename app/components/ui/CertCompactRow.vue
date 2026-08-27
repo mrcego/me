@@ -97,13 +97,13 @@ const issuerIcon = computed(() => {
       <div class="cert-expand-panel__inner">
         <div class="px-4 sm:px-6 pb-4 pt-0">
           <div class="flex flex-wrap gap-2">
-            <span
+            <AppBadge
               v-for="skill in cert.skills"
               :key="skill"
-              class="type-label text-muted bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5"
-            >
-              {{ skill }}
-            </span>
+              :label="skill"
+              variant="subtle"
+              size="sm"
+            />
           </div>
         </div>
       </div>
