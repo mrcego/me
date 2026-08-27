@@ -10,6 +10,7 @@ interface Props {
   href?: string;
   target?: string;
   rel?: string;
+  download?: string;
   disabled?: boolean;
   loading?: boolean;
   ariaLabel?: string;
@@ -25,6 +26,7 @@ const props = withDefaults(defineProps<Props>(), {
   href: undefined,
   target: undefined,
   rel: undefined,
+  download: undefined,
   disabled: false,
   loading: false,
   ariaLabel: undefined,
@@ -78,6 +80,7 @@ const variantClasses: Record<NonNullable<Props['variant']>, string> = {
   <a
     v-else-if="props.href && !props.disabled"
     :href="props.href"
+    :download="props.download"
     :target="props.target"
     :rel="props.rel || (props.target === '_blank' ? 'noopener noreferrer' : undefined)"
     :aria-label="props.ariaLabel"
