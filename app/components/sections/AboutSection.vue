@@ -486,15 +486,15 @@ const aboutPoints: PhilosophyPoint[] = [
         <span class="type-label text-muted tracking-[0.3em]">
           {{ $t('about.section') }}
         </span>
-        <a
+        <AppButton
           href="https://linkedin.com/in/mrcego"
           target="_blank"
-          rel="noopener noreferrer"
-          class="experience-modal__linkedin"
+          variant="primary"
+          size="md"
+          icon="simple-icons:linkedin"
         >
-          <Icon name="simple-icons:linkedin" class="w-5 h-5" />
           LinkedIn
-        </a>
+        </AppButton>
       </footer>
     </div>
   </AppModal>
