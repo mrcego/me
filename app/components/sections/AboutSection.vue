@@ -207,9 +207,9 @@ const aboutPoints: PhilosophyPoint[] = [
 
             <!-- Content inside card -->
             <div class="max-w-2xl mx-auto xl:max-w-none text-center xl:text-left mb-5 sm:mb-6">
-              <p class="text-lg sm:text-xl font-black tracking-tight text-foreground mb-2 sm:mb-3">
+              <h2 class="text-lg sm:text-xl font-black tracking-tight text-foreground mb-2 sm:mb-3">
                 {{ $t('about.philosophy') }}
-              </p>
+              </h2>
 
               <p class="text-sm sm:text-base font-medium text-muted leading-relaxed text-pretty">
                 "{{ $t('about.philosophyQuote') }}"

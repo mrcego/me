@@ -151,9 +151,6 @@ onMounted(() => {
             <button
               type="button"
               class="group/term inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-secondary/80 hover:bg-secondary border border-primary/20 hover:border-primary/50 text-muted hover:text-foreground transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-              :aria-label="
-                isMobileDevice ? $t('hero.terminalChipAriaMobile') : $t('hero.terminalChipAria')
-              "
               :title="
                 isMobileDevice
                   ? $t('hero.terminalChipTooltipMobile')
@@ -286,7 +283,7 @@ onMounted(() => {
 
       <!-- Right Column: Photo + Vibe Badge + Stats HUD Card -->
       <div
-        class="order-2 xl:col-start-2 flex flex-col items-center gap-3 sm:gap-3.5 2xl:gap-4.5 3xl:gap-5 w-full max-w-68 sm:max-w-sm md:max-w-md xl:max-w-md 2xl:max-w-md 3xl:max-w-[32rem] mx-auto xl:self-center"
+        class="order-2 xl:col-start-2 flex flex-col items-center gap-3 sm:gap-3.5 2xl:gap-4.5 3xl:gap-5 w-full max-w-68 sm:max-w-sm md:max-w-md xl:max-w-md 2xl:max-w-md 3xl:max-w-lg mx-auto xl:self-center"
       >
         <!-- Photo & Tilt Card -->
         <div
