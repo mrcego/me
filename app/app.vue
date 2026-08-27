@@ -116,8 +116,8 @@ onMounted(() => {
       :aria-label="$t('a11y.pageScrollProgress')"
     />
 
-    <!-- No reactive props: prop changes force immediate hydration on Lazy islands. -->
-    <LazyAppNavbar :hydrate-after="4200" />
+    <!-- Fixed full-width Navbar -->
+    <LazyAppNavbar />
 
     <div class="relative min-w-0 overflow-x-clip">
       <!--
