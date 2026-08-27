@@ -65,12 +65,20 @@ watch(
 );
 
 async function goHome() {
-  await clearError({ redirect: localePath('/') });
+  await clearError();
+  const target = localePath('/');
+  if (import.meta.client) {
+    window.location.assign(target);
+  }
 }
 
 async function goContact() {
+  await clearError();
   const home = localePath('/');
-  await clearError({ redirect: home.endsWith('/') ? `${home}#contact` : `${home}/#contact` });
+  const target = home.endsWith('/') ? `${home}#contact` : `${home}/#contact`;
+  if (import.meta.client) {
+    window.location.assign(target);
+  }
 }
 </script>
 
