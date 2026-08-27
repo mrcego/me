@@ -39,11 +39,12 @@ const { isOpen, toggleChat } = useAngieChat();
                   {{ $t('angie.launcher.tooltipTitle') }}
                 </span>
               </div>
-              <span
-                class="text-[9px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-md bg-primary/15 text-primary border border-primary/30 shrink-0"
-              >
-                AI RAG
-              </span>
+              <AppBadge
+                label="AI RAG"
+                variant="primary"
+                size="xs"
+                class="font-mono text-[9px] font-bold tracking-wider px-1.5 py-0.5 shrink-0"
+              />
             </div>
 
             <p class="text-xs font-medium text-foreground/85 leading-relaxed">
