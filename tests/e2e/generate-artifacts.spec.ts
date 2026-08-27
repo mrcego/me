@@ -27,7 +27,7 @@ test.describe('generate artifacts', () => {
     expect(headersText).toMatch(/\/_nuxt\/\*[\s\S]*max-age=31536000,\s*immutable/);
     expect(headersText).toMatch(/\/_fonts\/\*[\s\S]*max-age=31536000,\s*immutable/);
     expect(headersText).toMatch(/\/_i18n\/\*[\s\S]*max-age=31536000,\s*immutable/);
-    expect(headersText).toMatch(/Cache-Control:\s*no-cache,\s*no-store,\s*must-revalidate/);
+    expect(headersText).toMatch(/Cache-Control:\s*public,\s*max-age=0,\s*must-revalidate/);
 
     const html = readFileSync(indexPath, 'utf8');
     expect(html).toMatch(/rel="preload"[^>]*as="style"/);
