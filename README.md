@@ -56,4 +56,4 @@ pnpm preview
 
 ## License
 
-© 2026 Ancelabs. All rights reserved. Built by César Gómez.
+© 2026 César Gómez. All rights reserved. Built by César Gómez.

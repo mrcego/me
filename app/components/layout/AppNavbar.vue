@@ -525,7 +525,7 @@ onBeforeUnmount(() => {
             </span>
             <AppTextRotator
               :items="brandRoles"
-              container-class="hidden 2xl:block text-[10px] font-bold uppercase tracking-[0.18em] text-muted site-nav__brand-subtitle h-[1.25em]"
+              container-class="hidden xl:block text-[10px] font-bold uppercase tracking-[0.18em] text-muted site-nav__brand-subtitle h-[1.25em]"
               track-class="site-nav__brand-subtitle-track"
               line-class="site-nav__brand-subtitle-line"
             />
@@ -856,7 +856,7 @@ onBeforeUnmount(() => {
         v-if="isMobileMenuOpen"
         id="mobile-nav-dialog"
         ref="mobileMenuRef"
-        class="mobile-nav-dialog fixed inset-x-3 inset-y-3 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[calc(100%-3rem)] sm:max-w-2xl lg:max-w-4xl sm:max-h-[min(90svh,48rem)] z-140 rounded-2xl sm:rounded-3xl lg:rounded-[2rem] overflow-y-auto border border-foreground/15 shadow-4xl xl:hidden overscroll-contain bg-background/95 backdrop-blur-2xl p-4 sm:p-5 md:p-6 lg:p-7 custom-scrollbar flex flex-col justify-between"
+        class="mobile-nav-dialog fixed inset-x-3 inset-y-3 sm:inset-auto sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 sm:w-[calc(100%-3rem)] sm:max-w-2xl lg:max-w-4xl sm:max-h-[min(90svh,48rem)] z-140 rounded-2xl sm:rounded-3xl lg:rounded-4xl overflow-y-auto border border-foreground/15 shadow-4xl xl:hidden overscroll-contain bg-background/95 backdrop-blur-2xl p-4 sm:p-5 md:p-6 lg:p-7 custom-scrollbar flex flex-col justify-between"
         role="dialog"
         aria-modal="true"
         aria-labelledby="mobile-nav-title"

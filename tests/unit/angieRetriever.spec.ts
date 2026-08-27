@@ -66,12 +66,18 @@ describe('angieRetriever (Search & Intent Synthesis)', () => {
     expect(bitsResEn.entry?.id).toBe('company_bits_americas');
     expect(bitsResEn.entry?.content.en).toContain('Frontend Solutions Architect Level II');
 
+    const currentRoleEn = searchKnowledge('What is his current role?', 'en');
+    expect(currentRoleEn.entry?.id).toBe('company_bits_americas');
+
     const bitsResEs = searchKnowledge(
       '¿Cuál es su experiencia en BITS Americas como arquitecto frontend?',
       'es',
     );
     expect(bitsResEs.entry?.id).toBe('company_bits_americas');
     expect(bitsResEs.entry?.content.es).toContain('Arquitecto de Soluciones Frontend Nivel II');
+
+    const currentRoleEs = searchKnowledge('¿Cuál es su cargo actual?', 'es');
+    expect(currentRoleEs.entry?.id).toBe('company_bits_americas');
 
     const locRes = searchKnowledge('Where is César located and does he work remotely?', 'en');
     expect(locRes.entry?.id).toBe('location_remote');

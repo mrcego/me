@@ -34,28 +34,28 @@ const categoryPrompts = computed(() => {
     case 'recruiter':
       return isEs
         ? [
+            '¿Cuál es su rol actual en BITS Americas?',
             '¿Cuál es la disponibilidad actual de César?',
-            '¿Qué modalidades de contrato maneja?',
             '¿Cuáles son sus certificaciones técnicas?',
           ]
         : [
+            "What is César's role at BITS Americas?",
             "What is César's current availability?",
-            'What contract modalities does he accept?',
             'What are his verified certifications?',
           ];
     case 'lead':
       return isEs
         ? [
+            'Cuéntame sobre su rol en BITS Americas y Sistemas de Diseño',
             'Cuéntame sobre la arquitectura en Vue 3 y Nuxt 4',
             '¿Cómo diseña Sistemas de Diseño y Web Components?',
             '¿Cómo optimiza Core Web Vitals a 60 FPS?',
-            '¿Cómo aplica Ingeniería Aumentada por IA?',
           ]
         : [
+            'Tell me about his role at BITS Americas & Design Systems',
             'Tell me about his Vue 3 & Nuxt 4 architecture',
             'How does he architect enterprise Design Systems?',
             'How does he optimize Core Web Vitals to 60 FPS?',
-            'How does he apply AI-Augmented Engineering?',
           ];
     case 'founder':
       return isEs
@@ -74,15 +74,15 @@ const categoryPrompts = computed(() => {
       return isEs
         ? [
             '¿Quién es César Gómez?',
+            '¿Cuál es su rol actual en BITS Americas?',
             '¿Cuál es su stack técnico principal?',
             '¿Cómo puedo descargar su CV?',
-            '¿Cuáles son sus canales de contacto?',
           ]
         : [
             'Who is César Gómez?',
+            'What is his current role at BITS Americas?',
             'What is his core technical stack?',
             'How can I download his CV?',
-            'What are his contact channels?',
           ];
   }
 });

@@ -63,8 +63,8 @@ export const ANGIE_KNOWLEDGE_BASE: AngieKnowledgeEntry[] = [
       es: 'Sobre César Gómez',
     },
     content: {
-      en: 'César Gómez is a Senior Fullstack Engineer & Frontend Architect with 13+ years of experience building high-scale, production-grade applications. He specializes in Vue 3 / Nuxt 4 enterprise ecosystems, TypeScript contracts, reactive performance (60 FPS), and AI-Augmented Engineering with human oversight. Founding member at LingoQuesto and lead architect for multiple multi-tenant cloud platforms.',
-      es: 'César Gómez es un Ingeniero Fullstack Senior y Arquitecto Frontend con más de 13 años de experiencia construyendo aplicaciones escalables en producción. Se especializa en ecosistemas empresariales Vue 3 / Nuxt 4, contratos TypeScript, rendimiento reactivo (60 FPS) e Ingeniería Aumentada por IA con control de calidad humano. Miembro fundador en LingoQuesto y arquitecto líder en plataformas cloud multi-inquilino.',
+      en: 'César Gómez is a Frontend Solutions Architect & Senior Fullstack Engineer with 13+ years of experience building high-scale, production-grade applications. He serves as Frontend Solutions Architect Level II at BITS Americas S.A.S., leading enterprise Design Systems and multi-framework Web Components. He specializes in Vue 3 / Nuxt 4 enterprise ecosystems, TypeScript contracts, reactive performance (60 FPS), and AI-Augmented Engineering with human oversight.',
+      es: 'César Gómez es un Arquitecto de Soluciones Frontend e Ingeniero Fullstack Senior con más de 13 años de experiencia construyendo aplicaciones escalables en producción. Se desempeña como Arquitecto de Soluciones Frontend Nivel II en BITS Americas S.A.S., liderando Sistemas de Diseño empresariales y Web Components multi-framework. Se especializa en ecosistemas empresariales Vue 3 / Nuxt 4, contratos TypeScript, rendimiento reactivo (60 FPS) e Ingeniería Aumentada por IA con control de calidad humano.',
     },
     actions: [
       { id: 'act_about', type: 'navigate', target: '#about', labelKey: 'angie.actions.viewAbout' },
@@ -598,6 +598,12 @@ export const ANGIE_KNOWLEDGE_BASE: AngieKnowledgeEntry[] = [
         'level ii',
         'frontend architect level 2',
         'frontend architect level ii',
+        'current role',
+        'current job',
+        'current position',
+        'current company',
+        'where does he work now',
+        'what does he do now',
       ],
       es: [
         'bits americas',
@@ -608,6 +614,13 @@ export const ANGIE_KNOWLEDGE_BASE: AngieKnowledgeEntry[] = [
         'nivel ii',
         'arquitecto frontend nivel 2',
         'arquitecto frontend nivel ii',
+        'cargo actual',
+        'rol actual',
+        'puesto actual',
+        'empresa actual',
+        'donde trabaja actualmente',
+        'que hace actualmente',
+        'trabajo actual',
       ],
     },
     title: {

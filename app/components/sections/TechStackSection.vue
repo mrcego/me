@@ -173,7 +173,7 @@ const skillGroups = [
 <template>
   <section
     id="tech-stack"
-    class="py-24 sm:py-28 md:py-32 xl:py-40 px-4 sm:px-6 md:px-8 lg:px-10 bg-background relative overflow-hidden"
+    class="py-16 sm:py-20 md:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-background relative overflow-hidden"
   >
     <!-- Kinetic Grid Background -->
     <div
@@ -183,13 +183,13 @@ const skillGroups = [
       class="absolute inset-x-0 bottom-0 h-px bg-linear-to-r from-transparent via-primary/20 to-transparent"
     />
 
-    <div class="container mx-auto space-y-24 md:space-y-32">
+    <div class="container mx-auto space-y-16 md:space-y-24">
       <Motion
         :initial="motionInitial({ opacity: 0, scale: 0.98, y: 5 }, { opacity: 1, scale: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true, amount: 0.1 }"
-        class="max-w-4xl mx-auto text-center space-y-8 md:space-y-10 group"
+        class="max-w-4xl mx-auto text-center space-y-5 md:space-y-6 group"
       >
         <div class="flex items-center justify-center gap-4 md:gap-6">
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
@@ -200,20 +200,22 @@ const skillGroups = [
         </div>
         <h2
           id="tech-stack-heading"
-          class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-black tracking-tighter leading-[0.9] text-foreground"
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-black tracking-tighter leading-[0.95] text-foreground text-balance"
         >
           {{ $t('techStack.title') }}
           <br />
           <span class="text-gradient">{{ $t('techStack.titleHighlight') }}</span>
         </h2>
         <p
-          class="text-muted text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto"
+          class="text-muted text-base md:text-lg lg:text-xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto text-pretty"
         >
           {{ $t('techStack.description') }}
         </p>
       </Motion>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8 items-stretch"
+      >
         <Motion
           v-for="(t, i) in detailedStack"
           :key="t.id"
@@ -303,7 +305,7 @@ const skillGroups = [
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="motionTransition({ duration: 0.42 })"
           :viewport="{ once: true }"
-          class="surface-card surface-card--soft group/hud glass p-6 sm:p-8 md:p-10 lg:p-16 rounded-2xl sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 relative overflow-hidden"
+          class="surface-card surface-card--soft group/hud glass p-6 sm:p-8 md:p-10 lg:p-16 rounded-2xl sm:rounded-3xl xl:rounded-4xl border-foreground/5 space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 relative overflow-hidden"
         >
           <div
             class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none tech-hud-horizontal"
@@ -353,7 +355,7 @@ const skillGroups = [
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="motionTransition({ duration: 0.42, delay: 0.06 })"
           :viewport="{ once: true }"
-          class="surface-card surface-card--soft group/hud glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border-foreground/5 flex flex-col justify-between space-y-16 relative overflow-hidden"
+          class="surface-card surface-card--soft group/hud glass p-6 sm:p-8 md:p-10 lg:p-16 rounded-2xl sm:rounded-3xl xl:rounded-4xl border-foreground/5 flex flex-col justify-between space-y-12 sm:space-y-16 relative overflow-hidden"
         >
           <div
             class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none tech-hud-vertical"

@@ -33,18 +33,18 @@ const capabilities = [
 <template>
   <section
     id="capabilities"
-    class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
+    class="py-16 sm:py-20 md:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-background relative overflow-hidden"
   >
     <!-- background grid light -->
     <div class="absolute inset-0 z-0 pointer-events-none capability-ambient-glow" />
 
-    <div class="container mx-auto space-y-24">
+    <div class="container mx-auto space-y-12 md:space-y-16">
       <Motion
         :initial="motionInitial({ opacity: 0, y: 5 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true, amount: 0.1 }"
-        class="max-w-4xl mx-auto text-center space-y-8"
+        class="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6"
       >
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
@@ -53,13 +53,15 @@ const capabilities = [
           </p>
           <div class="h-px w-10 bg-primary/40" />
         </div>
-        <h2 class="text-5xl md:text-8xl font-black tracking-tighter text-foreground">
+        <h2
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground"
+        >
           {{ $t('capabilities.title') }}<br />
           <span class="text-gradient">{{ $t('capabilities.titleHighlight') }}</span>
         </h2>
       </Motion>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 items-stretch">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 items-stretch">
         <Motion
           v-for="(cap, i) in capabilities"
           :key="cap.key"
@@ -67,7 +69,7 @@ const capabilities = [
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-8 sm:p-10 md:p-12 lg:p-14 rounded-3xl sm:rounded-[2.5rem] border-foreground/5 overflow-hidden h-full"
+          class="surface-card group relative glass p-6 sm:p-7 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border-foreground/5 overflow-hidden h-full"
         >
           <!-- holographic scanline internal -->
           <div

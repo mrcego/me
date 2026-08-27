@@ -19,6 +19,9 @@
 }
 
 @theme {
+  --breakpoint-3xl: 112rem;
+  --breakpoint-4k: 140rem;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
@@ -68,6 +71,33 @@
     90% {
       transform: translate(-5%, 15%);
     }
+  }
+}
+
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 100%;
+  @variant sm {
+    max-width: var(--breakpoint-sm);
+  }
+  @variant md {
+    max-width: var(--breakpoint-md);
+  }
+  @variant lg {
+    max-width: var(--breakpoint-lg);
+  }
+  @variant xl {
+    max-width: var(--breakpoint-xl);
+  }
+  @variant 2xl {
+    max-width: 90rem;
+  }
+  @variant 3xl {
+    max-width: 104rem;
+  }
+  @variant 4k {
+    max-width: 120rem;
   }
 }
 

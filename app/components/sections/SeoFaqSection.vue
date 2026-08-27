@@ -24,10 +24,10 @@ const faqLinkClass =
 <template>
   <section
     id="faq"
-    class="py-20 md:py-28 px-6 md:px-12 bg-secondary/5 border-t border-foreground/5"
+    class="py-16 sm:py-20 md:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-secondary/5 border-t border-foreground/5"
     aria-labelledby="faq-heading"
   >
-    <div class="container mx-auto max-w-4xl space-y-10 md:space-y-12">
+    <div class="container mx-auto max-w-4xl space-y-8 sm:space-y-10 md:space-y-12">
       <header class="space-y-4 text-center">
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
@@ -38,7 +38,7 @@ const faqLinkClass =
         </div>
         <h2
           id="faq-heading"
-          class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-foreground text-balance"
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground text-balance"
         >
           {{ $t('faq.title') }}
         </h2>

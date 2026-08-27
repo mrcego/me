@@ -46,10 +46,10 @@ const COMPANY_LOGOS = {
 } as const;
 
 type CompanyLogoId = keyof typeof COMPANY_LOGOS;
-type RoleItem = { key: CompanyLogoId };
+type RoleItem = { key: CompanyLogoId; current?: boolean };
 
 const roles: RoleItem[] = [
-  { key: 'bitsamericas' },
+  { key: 'bitsamericas', current: true },
   { key: 'lingoquesto' },
   { key: 'colegium' },
   { key: 'tissini' },
@@ -136,14 +136,14 @@ const aboutPoints: PhilosophyPoint[] = [
 <template>
   <section
     id="about"
-    class="about-section py-20 sm:py-24 md:py-28 xl:py-32 px-4 sm:px-6 md:px-8 lg:px-10 relative bg-secondary/5 overflow-x-clip"
+    class="about-section py-16 sm:py-20 md:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 relative bg-secondary/5 overflow-x-clip"
   >
     <!-- Background Decorative Element -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[150px] -z-10" />
 
     <div class="container mx-auto min-w-0">
       <div
-        class="grid grid-cols-1 xl:grid-cols-12 gap-8 sm:gap-10 xl:gap-14 2xl:gap-20 items-start min-w-0"
+        class="grid grid-cols-1 xl:grid-cols-12 gap-8 sm:gap-10 xl:gap-12 2xl:gap-16 items-start min-w-0"
       >
         <!-- Sidebar Card with Motion (Spans 5 cols) -->
         <Motion
@@ -151,18 +151,18 @@ const aboutPoints: PhilosophyPoint[] = [
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :viewport="{ once: true }"
           :transition="motionTransition({ duration: 0.42 })"
-          class="xl:col-span-5 xl:sticky xl:top-28 2xl:top-32 w-full max-w-2xl md:max-w-4xl xl:max-w-none mx-auto xl:mx-0 min-w-0"
+          class="xl:col-span-5 xl:sticky xl:top-24 2xl:top-28 w-full max-w-2xl md:max-w-4xl xl:max-w-none mx-auto xl:mx-0 min-w-0"
         >
           <div
-            class="surface-card group glass border-white/5 rounded-2xl sm:rounded-3xl xl:rounded-[2.5rem] overflow-hidden p-5 sm:p-7 md:p-8 xl:p-10 shadow-2xl relative min-w-0"
+            class="surface-card group glass border-white/5 rounded-2xl sm:rounded-3xl xl:rounded-4xl overflow-hidden p-5 sm:p-6 md:p-7 xl:p-8 shadow-2xl relative min-w-0"
           >
             <!-- Gamified Energy Border -->
             <div
-              class="surface-card__glow absolute inset-0 border border-primary/20 rounded-2xl sm:rounded-3xl xl:rounded-[2.5rem] pointer-events-none"
+              class="surface-card__glow absolute inset-0 border border-primary/20 rounded-2xl sm:rounded-3xl xl:rounded-4xl pointer-events-none"
             />
 
             <div
-              class="relative aspect-square max-h-56 sm:max-h-64 md:max-h-72 xl:max-h-104 w-full max-w-xs sm:max-w-sm md:max-w-md xl:max-w-none mx-auto rounded-2xl sm:rounded-3xl overflow-hidden mb-6 sm:mb-8 border border-white/10 transition-[transform,opacity,filter,box-shadow] duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
+              class="relative aspect-square max-h-52 sm:max-h-60 md:max-h-68 xl:max-h-80 2xl:max-h-92 w-full max-w-xs sm:max-w-sm md:max-w-md xl:max-w-none mx-auto rounded-2xl sm:rounded-3xl overflow-hidden mb-5 sm:mb-6 border border-white/10 transition-[transform,opacity,filter,box-shadow] duration-1000 group-hover:scale-[1.02] shadow-2xl group/photo"
             >
               <NuxtImg
                 src="/img/technical-identity.jpg"
@@ -206,18 +206,18 @@ const aboutPoints: PhilosophyPoint[] = [
             </div>
 
             <!-- Content inside card -->
-            <div class="max-w-2xl mx-auto xl:max-w-none text-center xl:text-left mb-6 sm:mb-8">
-              <p class="text-xl sm:text-2xl font-black tracking-tight text-foreground mb-3 sm:mb-4">
+            <div class="max-w-2xl mx-auto xl:max-w-none text-center xl:text-left mb-5 sm:mb-6">
+              <p class="text-lg sm:text-xl font-black tracking-tight text-foreground mb-2 sm:mb-3">
                 {{ $t('about.philosophy') }}
               </p>
 
-              <p class="text-base sm:text-lg font-medium text-muted leading-relaxed text-pretty">
+              <p class="text-sm sm:text-base font-medium text-muted leading-relaxed text-pretty">
                 "{{ $t('about.philosophyQuote') }}"
               </p>
             </div>
 
             <div
-              class="philosophy-points grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-4 sm:gap-5"
+              class="philosophy-points grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-3.5 sm:gap-4"
             >
               <PhilosophyBentoCard
                 v-for="(point, idx) in aboutPoints"
@@ -234,13 +234,13 @@ const aboutPoints: PhilosophyPoint[] = [
         </Motion>
 
         <!-- Main Content Area (Spans 7 cols) -->
-        <div class="xl:col-span-7 space-y-10 sm:space-y-14 xl:space-y-16 min-w-0">
+        <div class="xl:col-span-7 space-y-8 sm:space-y-10 xl:space-y-12 min-w-0">
           <Motion
             :initial="motionInitial({ opacity: 0, y: 30 }, { opacity: 1, y: 0 })"
             :while-in-view="motionInView({ opacity: 1, y: 0 })"
             :viewport="{ once: true }"
             :transition="motionTransition({ duration: 0.4 })"
-            class="space-y-6 md:space-y-10"
+            class="space-y-5 md:space-y-7"
           >
             <div class="flex items-center gap-3 sm:gap-4 justify-center xl:justify-start">
               <div class="h-px w-12 bg-foreground/10" />
@@ -254,14 +254,14 @@ const aboutPoints: PhilosophyPoint[] = [
 
             <h2
               id="about-heading"
-              class="text-3xl sm:text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-black tracking-tighter leading-[0.92] sm:leading-[0.9] text-foreground text-center xl:text-left text-balance"
+              class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground text-center xl:text-left text-balance"
             >
               {{ $t('about.title') }}<br />
               <span class="text-gradient">{{ $t('about.titleHighlight') }}</span>
             </h2>
 
             <div
-              class="prose prose-invert prose-lg sm:prose-xl xl:prose-2xl max-w-none text-muted font-medium leading-relaxed space-y-4 sm:space-y-6 text-center xl:text-left mx-auto xl:mx-0 text-pretty"
+              class="prose prose-invert prose-base sm:prose-lg xl:prose-xl max-w-none text-muted font-medium leading-relaxed space-y-3.5 sm:space-y-5 text-center xl:text-left mx-auto xl:mx-0 text-pretty"
             >
               <p>
                 {{ $t('about.description1') }}
@@ -286,10 +286,14 @@ const aboutPoints: PhilosophyPoint[] = [
             >
               <article
                 class="surface-card surface-evidence role-experience-card p-4 sm:p-5 xl:p-6 rounded-2xl sm:rounded-3xl group flex h-full min-h-48 sm:min-h-52 xl:min-h-56 flex-col relative w-full min-w-0 text-left cursor-pointer touch-manipulation"
+                :class="{ 'role-experience-card--current': role.current }"
               >
+                <!-- Dynamic Border Beam for active current role -->
+                <div v-if="role.current" class="role-card__border-beam" aria-hidden="true" />
+
                 <button
                   type="button"
-                  class="absolute inset-0 z-20 rounded-[inherit] cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
+                  class="absolute inset-0 z-20 rounded-inherit cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary/50"
                   :aria-label="`${$t('about.roles.viewDetails')}: ${$t(`about.roles.${role.key}.title`)} · ${$t(`about.roles.${role.key}.company`)}`"
                   aria-haspopup="dialog"
                   @click="openRoleModal(role.key)"
@@ -300,10 +304,39 @@ const aboutPoints: PhilosophyPoint[] = [
                 >
                   <div class="flex items-start justify-between gap-2 sm:gap-3 min-w-0">
                     <div
-                      class="surface-card__chip type-chip glass-lite rounded-lg sm:rounded-xl shadow-sm min-w-0 shrink max-w-[52%] sm:max-w-none px-3 py-1 sm:px-4 sm:py-1.5"
+                      class="flex flex-wrap items-center gap-1.5 sm:gap-2 min-w-0 shrink max-w-[65%] sm:max-w-none"
                     >
-                      {{ $t(`about.roles.${role.key}.years`) }}
+                      <div
+                        class="surface-card__chip type-chip glass-lite rounded-lg sm:rounded-xl shadow-sm min-w-0 shrink px-3 py-1 sm:px-4 sm:py-1.5 flex items-center gap-1.5"
+                        :class="{
+                          'surface-card__chip--current border-emerald-500/40 bg-emerald-950/30 text-emerald-300 shadow-[0_0_12px_rgba(52,211,153,0.15)]':
+                            role.current,
+                        }"
+                      >
+                        <span
+                          v-if="role.current"
+                          class="relative flex size-2 shrink-0"
+                          aria-hidden="true"
+                        >
+                          <span
+                            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75 motion-reduce:hidden"
+                          />
+                          <span
+                            class="relative inline-flex size-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]"
+                          />
+                        </span>
+                        <span>{{ $t(`about.roles.${role.key}.years`) }}</span>
+                      </div>
+
+                      <span
+                        v-if="role.current"
+                        class="role-card__current-badge inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[0.65rem] sm:text-xs font-black uppercase tracking-wider text-emerald-300 border border-emerald-500/40 bg-emerald-950/50 shadow-xs"
+                      >
+                        <span class="size-1.5 rounded-full bg-emerald-400" />
+                        {{ $t('about.roles.currentBadge') }}
+                      </span>
                     </div>
+
                     <div
                       v-if="COMPANY_LOGOS[role.key]"
                       class="role-card__logo-wrap shrink-0"
@@ -350,6 +383,10 @@ const aboutPoints: PhilosophyPoint[] = [
                   >
                     <span
                       class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground group-hover:bg-primary group-hover:text-primary-contrast group-focus-within:bg-primary group-focus-within:text-primary-contrast transition-[background-color,color,transform,box-shadow] duration-500"
+                      :class="{
+                        'border-emerald-500/20 bg-emerald-950/20 text-foreground group-hover:bg-emerald-400! group-hover:text-slate-950! group-focus-within:bg-emerald-400! group-focus-within:text-slate-950!':
+                          role.current,
+                      }"
                     >
                       {{ $t('about.roles.viewDetails') }}
                       <Icon
@@ -362,6 +399,7 @@ const aboutPoints: PhilosophyPoint[] = [
 
                 <div
                   class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
+                  :class="{ 'bg-emerald-400!': role.current }"
                 />
               </article>
             </Motion>
@@ -554,6 +592,94 @@ const aboutPoints: PhilosophyPoint[] = [
 @media (prefers-reduced-motion: reduce) {
   .role-card__company-logo {
     transition: none;
+  }
+  .role-card__border-beam::before {
+    animation: none;
+    background: linear-gradient(135deg, #38bdf8 0%, #34d399 100%);
+  }
+}
+
+/* Active / Current Role Styles with Rotating Border Beam */
+.role-experience-card--current {
+  position: relative;
+  background: color-mix(in srgb, var(--color-surface, #161b22) 80%, #06181f 20%);
+  border-color: rgba(52, 211, 153, 0.3) !important;
+  box-shadow:
+    0 0 0 1px rgba(52, 211, 153, 0.15),
+    0 16px 36px -12px rgba(6, 182, 212, 0.18),
+    0 8px 24px -6px rgba(0, 0, 0, 0.5);
+}
+
+.role-experience-card--current:focus-within,
+.role-experience-card--current:focus-visible {
+  border-color: rgba(52, 211, 153, 0.6) !important;
+  box-shadow:
+    0 0 0 1px rgba(52, 211, 153, 0.4),
+    0 24px 48px -12px rgba(52, 211, 153, 0.25),
+    0 12px 28px -6px rgba(0, 0, 0, 0.6);
+}
+
+@media (any-hover: hover) {
+  .role-experience-card--current:hover {
+    border-color: rgba(52, 211, 153, 0.6) !important;
+    box-shadow:
+      0 0 0 1px rgba(52, 211, 153, 0.4),
+      0 24px 48px -12px rgba(52, 211, 153, 0.25),
+      0 12px 28px -6px rgba(0, 0, 0, 0.6);
+  }
+}
+
+.role-card__border-beam {
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(1rem + 1px);
+  padding: 2px;
+  background: transparent;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 15;
+}
+
+@media (min-width: 640px) {
+  .role-card__border-beam {
+    border-radius: calc(1.5rem + 1px);
+  }
+}
+
+.role-card__border-beam::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%;
+  height: 250%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    transparent 260deg,
+    rgba(56, 189, 248, 0.4) 290deg,
+    #38bdf8 325deg,
+    #34d399 355deg,
+    transparent 360deg
+  );
+  animation: role-beam-spin 4s linear infinite;
+  will-change: transform;
+}
+
+@keyframes role-beam-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 </style>

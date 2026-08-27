@@ -248,11 +248,11 @@
     },
     "responses": {
       "helpHeader": "Comandos disponibles:",
-      "about": "César Gómez — Desarrollador Fullstack Senior especializado en Arquitectura Frontend y craft asistido por IA. 13+ años entregando sistemas Vue/Nuxt con ownership de arquitectura y quality gates.",
+      "about": "César Gómez — Arquitecto de Soluciones Frontend e Ingeniero Fullstack Senior especializado en Sistemas de Diseño empresariales, microfrontends y craft asistido por IA. Más de 13 años liderando sistemas Vue 3 / Nuxt 4 con ownership de arquitectura y puertas de calidad estrictas.",
       "status": "Disponible: ahora. Abierto a conversaciones, entrevistas y ofertas tempranas antes de esa fecha.",
       "stack": "Vue 3 · Nuxt 4 · TypeScript · Node/Express · Tailwind · PrimeVue · motion-v · Playwright/Vitest · craft asistido por IA con revisión humana.",
-      "services": "Servicios de Ingeniería: 1) Arquitectura & Escalabilidad Vue/Nuxt 3. 2) Craft Asistido por IA & Quality Gates. 3) Optimización de Core Web Vitals (LCP, CLS, INP). 4) Fullstack Node.js / Nitro APIs.",
-      "experience": "Enfoque reciente: Colegium (plataformas cloud educativas) y LingoQuesto (producto conversacional con IA/NLP). Abre About para el detalle de roles.",
+      "services": "Servicios de Ingeniería: 1) Sistemas de Diseño Empresariales & Web Components. 2) Arquitectura & Escalabilidad Vue 3 / Nuxt 4. 3) Core Web Vitals en Submilisegundos (LCP, CLS, INP). 4) Ingeniería Aumentada por IA & Quality Gates. 5) APIs Fullstack Node.js / Nitro.",
+      "experience": "Experiencia actual y reciente: BITS Americas (Arquitecto de Soluciones Frontend Nivel II, Sistemas de Diseño TO-BE y Web Components empresariales), Colegium (SaaS EdTech con 100k+ estudiantes) y LingoQuesto (plataforma IA/NLP). Abre About para el detalle de roles.",
       "profiles": "Perfiles: desarrollador Vue · Vibe Coding Cleanup · Node.js backend · Angular 16+ · Arquitecto Frontend · ingeniero Fullstack.",
       "certs": "{count} credenciales en la sección Certificaciones — TypeScript, programación con IA, estructuras de datos, observabilidad y más.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · O usa el formulario de contacto del sitio.",
@@ -334,6 +334,7 @@
       "viewDetails": "Ver detalles del rol",
       "highlightsTitle": "Contribuciones clave",
       "close": "Cerrar",
+      "currentBadge": "Rol Actual",
       "bitsamericas": {
         "title": "Arquitecto de Soluciones Frontend Nivel II",
         "company": "BITS Americas S.A.S.",
@@ -1526,7 +1527,7 @@
     "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",
     "rights": "Todos los derechos reservados.",
     "copyrightYear": "2026",
-    "protocol": "Ancelab.",
+    "protocol": "César Gómez.",
     "status": "Todos los Sistemas Operativos",
     "navLabel": "Enlaces del pie de página",
     "email": "Escribir a César",
@@ -1874,7 +1875,7 @@
       "Flujos de ingeniería aumentados por IA con validación automatizada y estándares de calidad convencionales"
     ],
     "experienceTitle": "Historial Comprobado en Producción",
-    "experienceBody": "Lideré la arquitectura micro-frontend en Vue 3 en Colegium sirviendo a más de 100k estudiantes activos diarios en Latinoamérica, reduje los tiempos de compilación y despliegue en un 60% en TISSINI mediante monorrepos y CI/CD automatizado, diseñé la arquitectura de la plataforma de IA/NLP LingoQuesto y establecí bases frontend escalables para BITS Americas.",
+    "experienceBody": "Lideré la arquitectura micro-frontend en Vue 3 en Colegium sirviendo a más de 100k estudiantes activos diarios en Latinoamérica, reduje los tiempos de compilación y despliegue en un 60% en TISSINI mediante monorrepos y CI/CD automatizado, diseñé la arquitectura de la plataforma de IA/NLP LingoQuesto y lidero la arquitectura frontend escalable en BITS Americas.",
     "proofTitle": "Hitos Arquitectónicos y Evidencia",
     "proofLink": "Explorar caso de estudio Colegium",
     "proof": [
@@ -1985,7 +1986,7 @@
       "aria": "Abrir asistente Angie de IA",
       "tooltip": "Preguntar a Angie IA",
       "tooltipTitle": "Angie · Concierge IA",
-      "tooltipText": "Pregúntame sobre la experiencia de César, stack técnico, arquitectura y disponibilidad.",
+      "tooltipText": "Pregúntame sobre el rol de César en BITS Americas, sus más de 13 años de experiencia, arquitectura y stack.",
       "tooltipPrompt": "Clic para chatear"
     },
     "header": {
@@ -2003,7 +2004,7 @@
       "user": "Tú",
       "angie": "Angie IA"
     },
-    "welcomeMessage": "¡Hola! Soy Angie, la asistente de IA del portafolio de César Gómez. Puedo responder preguntas sobre sus más de 13 años de experiencia en producción, arquitectura en Vue 3 / Nuxt 4, casos de estudio empresariales y disponibilidad para contratación. ¿En qué puedo ayudarte hoy?",
+    "welcomeMessage": "¡Hola! Soy Angie, la asistente de IA del portafolio de César Gómez. Puedo responder preguntas sobre su rol actual como Arquitecto de Soluciones Frontend Nivel II en BITS Americas, sus más de 13 años de experiencia en producción, arquitectura en Vue 3 / Nuxt 4, Sistemas de Diseño empresariales y disponibilidad. ¿En qué puedo ayudarte hoy?",
     "thinking": "Sintetizando respuesta...",
     "errorGeneric": "Ocurrió un error al procesar tu consulta. Inténtalo de nuevo o contáctale directamente.",
     "inputPlaceholder": "Hazle una pregunta a Angie sobre el trabajo de César…",

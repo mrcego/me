@@ -78,15 +78,13 @@ watch(showAllRest, () => {
 <template>
   <section
     id="certifications"
-    class="py-24 md:py-48 px-6 md:px-12 bg-background relative overflow-hidden"
+    class="py-16 sm:py-20 md:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-background relative overflow-hidden"
   >
     <!-- Background Accents -->
     <div
-      class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10 animate-pulse"
+      class="absolute top-0 right-0 size-125 bg-primary/5 rounded-full blur-[120px] -z-10 animate-pulse"
     />
-    <div
-      class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10"
-    />
+    <div class="absolute bottom-0 left-0 size-125 bg-primary/5 rounded-full blur-[120px] -z-10" />
 
     <div class="container mx-auto">
       <!-- Section Header -->
@@ -95,7 +93,7 @@ watch(showAllRest, () => {
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true, amount: 0.1 }"
-        class="max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto text-center space-y-6 md:space-y-10 mb-12 md:mb-24 px-2 sm:px-0"
+        class="max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto text-center space-y-4 sm:space-y-6 mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0"
       >
         <div class="flex items-center justify-center gap-4 md:gap-6">
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
@@ -105,7 +103,7 @@ watch(showAllRest, () => {
           <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
         </div>
         <h2
-          class="certifications-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tighter leading-[0.95] md:leading-[0.9] text-foreground"
+          class="certifications-heading text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground text-balance"
         >
           <span class="block">{{ $t('certifications.title') }}</span>
           <span class="text-gradient certifications-heading__highlight block">
@@ -113,14 +111,16 @@ watch(showAllRest, () => {
           </span>
         </h2>
         <p
-          class="text-muted text-lg md:text-xl lg:text-2xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto"
+          class="text-muted text-base md:text-lg lg:text-xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto text-pretty"
         >
           {{ $t('certifications.description') }}
         </p>
       </Motion>
 
       <!-- Featured credentials -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-stretch mb-10 md:mb-14">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 lg:gap-8 items-stretch mb-8 md:mb-12"
+      >
         <Motion
           v-for="(cert, i) in featuredCertifications"
           :key="cert.id"
@@ -128,7 +128,7 @@ watch(showAllRest, () => {
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.04 })"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-5 sm:p-6 md:p-8 rounded-4xl border-foreground/5 flex flex-col justify-between h-full overflow-hidden min-w-0"
+          class="surface-card group relative glass p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl xl:rounded-4xl border-foreground/5 flex flex-col justify-between h-full overflow-hidden min-w-0"
         >
           <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
 

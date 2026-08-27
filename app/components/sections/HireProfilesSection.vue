@@ -5,6 +5,7 @@ import { PORTFOLIO_ROUTES, hireProfileRoutes } from '~/config/routes.manifest';
 
 const localePath = useLocalePath();
 const { motionInitial, motionInView, motionTransition } = useMotionConfig();
+const { showAnnouncement } = useAvailability();
 
 const BLURB_KEYS: Record<HireProfileId, string> = {
   vue: 'hireProfiles.vueBlurb',
@@ -40,16 +41,16 @@ const craftMethodologyTo =
 <template>
   <section
     id="hire-profiles"
-    class="py-20 sm:py-24 md:py-28 xl:py-32 px-4 sm:px-6 md:px-8 lg:px-10 bg-secondary/5 border-y border-foreground/5"
+    class="py-16 sm:py-20 md:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-secondary/5 border-y border-foreground/5"
     aria-labelledby="hire-profiles-heading"
   >
-    <div class="container mx-auto space-y-12 md:space-y-16">
+    <div class="container mx-auto space-y-10 md:space-y-14">
       <Motion
         :initial="motionInitial({ opacity: 0, y: 16 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true }"
-        class="max-w-3xl mx-auto text-center space-y-5"
+        class="max-w-3xl mx-auto text-center space-y-4 sm:space-y-5"
       >
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
@@ -58,7 +59,7 @@ const craftMethodologyTo =
         </div>
         <h2
           id="hire-profiles-heading"
-          class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tighter text-foreground text-balance"
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground text-balance"
         >
           {{ $t('hireProfiles.title') }}
           <span class="text-gradient">{{ $t('hireProfiles.titleHighlight') }}</span>
@@ -68,7 +69,7 @@ const craftMethodologyTo =
         </p>
       </Motion>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
         <Motion
           v-for="(profile, index) in profiles"
           :key="profile.key"
@@ -79,7 +80,7 @@ const craftMethodologyTo =
         >
           <NuxtLink
             :to="localePath(profile.to)"
-            class="surface-card glass group relative flex h-full flex-col justify-between rounded-3xl border border-foreground/5 p-6 md:p-8 transition-all duration-300 hover:border-primary/30 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+            class="surface-card glass group relative flex h-full flex-col justify-between rounded-2xl sm:rounded-3xl border border-foreground/5 p-5 sm:p-6 md:p-7 transition-all duration-300 hover:border-primary/30 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
           >
             <!-- holographic scanline hover animation -->
             <div
@@ -96,6 +97,7 @@ const craftMethodologyTo =
                   class="transition-transform group-hover:scale-105"
                 />
                 <span
+                  v-if="showAnnouncement"
                   class="font-mono text-[10px] font-bold uppercase tracking-wider text-emerald-400/90 px-2 py-1 rounded-md bg-emerald-400/10 border border-emerald-400/20"
                 >
                   {{ $t('hireProfiles.availableLead') }}

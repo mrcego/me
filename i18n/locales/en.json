@@ -248,11 +248,11 @@
     },
     "responses": {
       "helpHeader": "Available commands:",
-      "about": "César Gómez — Senior Fullstack Developer specialized in Frontend Architecture and AI-assisted craft. 13+ years shipping Vue/Nuxt systems with architecture ownership and quality gates.",
+      "about": "César Gómez — Frontend Solutions Architect & Senior Fullstack Engineer specialized in enterprise Design Systems, micro-frontends, and AI-augmented craft. 13+ years shipping Vue 3 / Nuxt 4 systems with architecture ownership and quality gates.",
       "status": "Available now. Open to conversations, interviews, and early offers.",
       "stack": "Vue 3 · Nuxt 4 · TypeScript · Node/Express · Tailwind · PrimeVue · motion-v · Playwright/Vitest · AI-assisted craft with human review.",
-      "services": "Engineering Services: 1) Vue 3 & Nuxt 3 Architecture & Scaling. 2) AI-Assisted Craft & Quality Gates. 3) Core Web Vitals Optimization (LCP, CLS, INP). 4) Fullstack Node.js / Nitro APIs.",
-      "experience": "Recent focus: Colegium (education cloud platforms) and LingoQuesto (AI/NLP conversational product). Open the About section for role deep-dives.",
+      "services": "Engineering Services: 1) Enterprise Design Systems & Web Components. 2) Vue 3 & Nuxt 4 Architecture & Scaling. 3) Core Web Vitals & Sub-second Performance. 4) AI-Augmented Engineering & Quality Gates. 5) Fullstack Node.js / Nitro APIs.",
+      "experience": "Current & past engagements: BITS Americas (Frontend Solutions Architect Level II, enterprise Design Systems TO-BE & Web Components), Colegium (100k+ students ed-tech SaaS), and LingoQuesto (AI/NLP platform). Open the About section for role deep-dives.",
       "profiles": "Hire profiles: Vue developer · Vibe Coding Cleanup · Node.js backend · Angular 16+ · Frontend Architect · Fullstack engineer.",
       "certs": "{count} credentials listed on the Certifications section — TypeScript, AI programming, data structures, observability, and more.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · Or use the contact form on this site.",
@@ -334,6 +334,7 @@
       "viewDetails": "View role details",
       "highlightsTitle": "Key contributions",
       "close": "Close",
+      "currentBadge": "Current Role",
       "bitsamericas": {
         "title": "Frontend Solutions Architect Level II",
         "company": "BITS Americas S.A.S.",
@@ -341,10 +342,10 @@
         "location": "Colombia · Remote",
         "desc": "Leading enterprise Design Systems architecture TO-BE, Web Components, and multi-framework governance.",
         "highlights": [
-          "Architected the TO-BE enterprise roadmap for scalable Design Systems, component governance, and cross-team adoption pipelines.",
-          "Engineered framework-agnostic Web Components (Stencil.js, Custom Elements) and native wrappers for seamless multi-framework interoperability (Vue 3, Angular v16+, React).",
-          "Standardized design tokens, semantic versioning, private NPM distribution, and automated visual regression quality gates.",
-          "Enforced WCAG 2.1 AA accessibility standards, zero-runtime overhead, and strict TypeScript API contracts."
+          "Architecting the TO-BE enterprise roadmap for scalable Design Systems, component governance, and cross-team adoption pipelines.",
+          "Engineering framework-agnostic Web Components (Stencil.js, Custom Elements) and native wrappers for seamless multi-framework interoperability (Vue 3, Angular v16+, React).",
+          "Standardizing design tokens, semantic versioning, private NPM distribution, and automated visual regression quality gates.",
+          "Enforcing WCAG 2.1 AA accessibility standards, zero-runtime overhead, and strict TypeScript API contracts."
         ]
       },
       "lingoquesto": {
@@ -1525,7 +1526,7 @@
     "tagline": "Building high-fidelity products with frontend excellence",
     "rights": "All rights reserved.",
     "copyrightYear": "2026",
-    "protocol": "Ancelab.",
+    "protocol": "Cesar Gomez.",
     "status": "All Systems Operational",
     "navLabel": "Footer links",
     "email": "Email Cesar",
@@ -1873,7 +1874,7 @@
       "Human-led, AI-augmented engineering workflows with automated verification and conventional quality gates"
     ],
     "experienceTitle": "Proven Production Track Record",
-    "experienceBody": "Led the multi-tenant micro-frontend architecture at Colegium serving 100k+ active daily users across Latin America, slashed build and deployment times by 60% at TISSINI via automated CI/CD and monorepo pipelines, designed the AI/NLP platform architecture for LingoQuesto, and established scalable frontend foundations for BITS Americas.",
+    "experienceBody": "Led the multi-tenant micro-frontend architecture at Colegium serving 100k+ active daily users across Latin America, slashed build and deployment times by 60% at TISSINI via automated CI/CD and monorepo pipelines, designed the AI/NLP platform architecture for LingoQuesto, and leading scalable enterprise frontend architecture at BITS Americas.",
     "proofTitle": "Architectural Milestones & Evidence",
     "proofLink": "Explore Colegium Case Study",
     "proof": [
@@ -1984,7 +1985,7 @@
       "aria": "Open Angie AI Portfolio Concierge",
       "tooltip": "Ask Angie AI",
       "tooltipTitle": "Angie · AI Concierge",
-      "tooltipText": "Ask me about César's 13+ YOE, tech stack, architecture, and hiring availability.",
+      "tooltipText": "Ask me about César's role at BITS Americas, 13+ YOE, architecture, and tech stack.",
       "tooltipPrompt": "Click to chat"
     },
     "header": {
@@ -2002,7 +2003,7 @@
       "user": "You",
       "angie": "Angie AI"
     },
-    "welcomeMessage": "Hello! I am Angie, César Gómez's AI Portfolio Concierge. I can provide verified insights on his 13+ years of production experience, Vue 3 / Nuxt 4 architecture, enterprise case studies, and availability for contract or leadership roles. How can I help you today?",
+    "welcomeMessage": "Hello! I am Angie, César Gómez's AI Portfolio Concierge. I can provide verified insights on his current role as Frontend Solutions Architect Level II at BITS Americas, his 13+ years of production experience, Vue 3 / Nuxt 4 architecture, enterprise Design Systems, and availability for contract or leadership roles. How can I help you today?",
     "thinking": "Synthesizing response...",
     "errorGeneric": "An error occurred while processing your request. Please try again or reach out directly.",
     "inputPlaceholder": "Ask Angie a question about César's work…",
