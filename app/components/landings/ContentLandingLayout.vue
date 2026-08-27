@@ -32,21 +32,23 @@ const { sectionHref, goToSection } = useSectionNavigation();
             {{ lead }}
           </p>
           <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a
-              class="btn-premium bg-primary text-primary-contrast rounded-2xl! px-8! py-4! border-none! inline-flex items-center justify-center gap-3"
+            <AppButton
+              variant="primary"
+              size="lg"
               :href="sectionHref('#contact')"
+              icon-left="solar:letter-bold-duotone"
               @click="goToSection($event, '#contact')"
             >
-              <Icon name="solar:letter-bold-duotone" class="w-6 h-6" aria-hidden="true" />
               {{ $t('hero.cta') }}
-            </a>
-            <NuxtLink
+            </AppButton>
+            <AppButton
+              variant="outline"
+              size="lg"
               :to="localePath('/')"
-              class="btn-premium glass rounded-2xl! px-8! py-4! border border-foreground/10! inline-flex items-center justify-center gap-3 font-black uppercase tracking-widest"
+              icon-left="solar:arrow-left-linear"
             >
-              <Icon name="solar:arrow-left-linear" class="w-6 h-6" aria-hidden="true" />
               {{ $t('landingAi.portfolioCta') }}
-            </NuxtLink>
+            </AppButton>
           </div>
         </div>
 
