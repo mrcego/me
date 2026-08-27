@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { resolveComponent } from 'vue';
+
 interface Props {
   variant?: 'primary' | 'muted' | 'accent' | 'outline' | 'success' | 'warning' | 'subtle' | 'dot';
   size?: 'xs' | 'sm' | 'md';
@@ -6,6 +8,9 @@ interface Props {
   label?: string;
   dot?: boolean;
   interactive?: boolean;
+  to?: string;
+  href?: string;
+  as?: string | object;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -15,6 +20,17 @@ const props = withDefaults(defineProps<Props>(), {
   label: undefined,
   dot: false,
   interactive: false,
+  to: undefined,
+  href: undefined,
+  as: 'span',
+});
+
+const isLink = computed(() => !!props.to || !!props.href);
+
+const resolvedComponent = computed(() => {
+  if (props.to) return resolveComponent('NuxtLink');
+  if (props.href) return 'a';
+  return props.as;
 });
 
 const sizeClasses: Record<NonNullable<Props['size']>, string> = {
@@ -37,14 +53,17 @@ const variantClasses: Record<NonNullable<Props['variant']>, string> = {
 </script>
 
 <template>
-  <span
+  <component
+    :is="resolvedComponent"
+    :to="props.to"
+    :href="props.href"
     class="app-badge inline-flex items-center font-bold uppercase rounded-full border transition-all duration-200 select-none whitespace-nowrap"
     :class="[
       sizeClasses[props.size],
       variantClasses[props.variant],
       {
         'hover:border-primary hover:text-primary hover:scale-[1.03] cursor-pointer':
-          props.interactive,
+          props.interactive || isLink,
       },
     ]"
   >
@@ -55,5 +74,5 @@ const variantClasses: Record<NonNullable<Props['variant']>, string> = {
     />
     <Icon v-if="props.icon" :name="props.icon" class="size-3.5 shrink-0" />
     <slot>{{ props.label }}</slot>
-  </span>
+  </component>
 </template>

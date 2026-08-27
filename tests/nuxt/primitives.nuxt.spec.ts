@@ -117,6 +117,15 @@ describe('Atomic Primitives (Design System)', () => {
       expect(wrapper.find('span.bg-emerald-400').exists()).toBe(true);
       wrapper.unmount();
     });
+
+    it('renders as NuxtLink when to prop is provided', async () => {
+      const wrapper = await mountSuspended(AppBadge, {
+        props: { to: '/ai-assisted-craft', label: 'Craft' },
+      });
+      expect(wrapper.element.tagName.toLowerCase()).toBe('a');
+      expect(wrapper.attributes('href')).toBe('/ai-assisted-craft/');
+      wrapper.unmount();
+    });
   });
 
   describe('AppSectionHeader', () => {
