@@ -95,7 +95,6 @@
   "overrides": {
     "typescript": "$typescript",
     "sharp": "$sharp",
-    "@img/sharp-win32-x64": "$sharp",
     "unhead": "^3.1.8",
     "vite": "$vite"
   }
