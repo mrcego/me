@@ -1,15 +1,6 @@
-/** Display font stacks. Fira Code max Google weight is 700 — see CSS clamp in main.css. */
-export type ThemeFont = 'Sans' | 'Fira Code';
+import type { ThemeFont, ThemePreset } from '../core/types/theme';
 
-export interface ThemePreset {
-  id: string;
-  name: string;
-  background: string;
-  surface: string;
-  primary: string;
-  font: ThemeFont;
-  isDark: boolean;
-}
+export type { ThemeFont, ThemePreset };
 
 export const THEME_STORAGE_KEY = 'theme-preset-id';
 
