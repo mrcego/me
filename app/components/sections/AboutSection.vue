@@ -2,7 +2,6 @@
 import { computed, ref } from 'vue';
 import { Motion } from 'motion-v';
 import { useI18n } from 'vue-i18n';
-import Dialog from 'primevue/dialog';
 import type { PhilosophyPoint } from '~/components/ui/PhilosophyPointItem.vue';
 
 import { getI18nArray } from '~/core/utils/i18nHelpers';
@@ -236,29 +235,20 @@ const aboutPoints: PhilosophyPoint[] = [
         <!-- Main Content Area (Spans 7 cols) -->
         <div class="xl:col-span-7 space-y-8 sm:space-y-10 xl:space-y-12 min-w-0">
           <Motion
-            :initial="motionInitial({ opacity: 0, y: 30 }, { opacity: 1, y: 0 })"
+            :initial="motionInitial({ opacity: 0, y: 16 }, { opacity: 1, y: 0 })"
             :while-in-view="motionInView({ opacity: 1, y: 0 })"
             :viewport="{ once: true }"
             :transition="motionTransition({ duration: 0.4 })"
             class="space-y-5 md:space-y-7"
           >
-            <div class="flex items-center gap-3 sm:gap-4 justify-center xl:justify-start">
-              <div class="h-px w-12 bg-foreground/10" />
-              <div class="flex items-center gap-3 shrink-0">
-                <div class="w-2 h-2 rounded-full bg-primary animate-pulse" />
-                <p class="type-eyebrow">
-                  {{ $t('about.section') }}
-                </p>
-              </div>
-            </div>
-
-            <h2
-              id="about-heading"
-              class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground text-center xl:text-left text-balance"
-            >
-              {{ $t('about.title') }}<br />
-              <span class="text-gradient">{{ $t('about.titleHighlight') }}</span>
-            </h2>
+            <AppSectionHeader
+              :eyebrow="$t('about.section')"
+              :title="$t('about.title')"
+              :highlight="$t('about.titleHighlight')"
+              heading-id="about-heading"
+              align="left"
+              class="text-center xl:text-left"
+            />
 
             <div
               class="prose prose-invert prose-base sm:prose-lg xl:prose-xl max-w-none text-muted font-medium leading-relaxed space-y-3.5 sm:space-y-5 text-center xl:text-left mx-auto xl:mx-0 text-pretty"
@@ -409,31 +399,7 @@ const aboutPoints: PhilosophyPoint[] = [
     </div>
   </section>
 
-  <Dialog
-    v-model:visible="roleModalVisible"
-    modal
-    dismissable-mask
-    append-to="body"
-    block-scroll
-    :draggable="false"
-    :show-header="false"
-    aria-labelledby="role-experience-modal-title"
-    class="experience-dialog"
-    :style="{ width: 'min(44rem, calc(100vw - 1.5rem))' }"
-    :pt="{
-      mask: {
-        class: 'experience-dialog-mask',
-      },
-      root: {
-        class: 'experience-dialog',
-        'aria-labelledby': 'role-experience-modal-title',
-      },
-      content: {
-        class: 'experience-dialog-content',
-      },
-    }"
-    @hide="selectedRoleKey = null"
-  >
+  <AppModal v-model="roleModalVisible" size="lg" aria-labelledby="role-experience-modal-title">
     <div v-if="selectedRoleKey" class="experience-modal">
       <header class="experience-modal__header">
         <div class="flex items-start gap-3 md:gap-4 min-w-0 flex-1">
@@ -471,26 +437,22 @@ const aboutPoints: PhilosophyPoint[] = [
             </div>
 
             <div class="flex flex-wrap items-center gap-2">
-              <span class="experience-modal__chip">
-                <Icon name="lucide:calendar-range" class="w-3.5 h-3.5" />
-                {{ $t(`about.roles.${selectedRoleKey}.years`) }}
-              </span>
-              <span class="experience-modal__chip experience-modal__chip--muted">
-                <Icon name="lucide:map-pin" class="w-3.5 h-3.5" />
-                {{ $t(`about.roles.${selectedRoleKey}.location`) }}
-              </span>
+              <AppBadge
+                :label="$t(`about.roles.${selectedRoleKey}.years`)"
+                variant="subtle"
+                size="sm"
+                icon="lucide:calendar-range"
+              />
+              <AppBadge
+                :label="$t(`about.roles.${selectedRoleKey}.location`)"
+                variant="subtle"
+                size="sm"
+                icon="lucide:map-pin"
+                class="text-muted"
+              />
             </div>
           </div>
         </div>
-
-        <button
-          type="button"
-          class="experience-modal__close"
-          :aria-label="$t('about.roles.close')"
-          @click="roleModalVisible = false"
-        >
-          <Icon name="lucide:x" class="w-4 h-4 md:w-5 md:h-5" />
-        </button>
       </header>
 
       <div class="experience-modal__body">
@@ -535,7 +497,7 @@ const aboutPoints: PhilosophyPoint[] = [
         </a>
       </footer>
     </div>
-  </Dialog>
+  </AppModal>
 </template>
 
 <style scoped>
