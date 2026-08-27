@@ -2,11 +2,30 @@ import { mountSuspended } from '@nuxt/test-utils/runtime';
 import { describe, expect, it } from 'vitest';
 import AppBadge from '~/components/primitives/AppBadge.vue';
 import AppButton from '~/components/primitives/AppButton.vue';
+import AppIconBadge from '~/components/primitives/AppIconBadge.vue';
 import AppModal from '~/components/primitives/AppModal.vue';
 import AppSectionHeader from '~/components/primitives/AppSectionHeader.vue';
 import AppSurface from '~/components/primitives/AppSurface.vue';
 
 describe('Atomic Primitives (Design System)', () => {
+  describe('AppIconBadge', () => {
+    it('renders single icon and size class correctly', async () => {
+      const wrapper = await mountSuspended(AppIconBadge, {
+        props: { name: 'solar:medal-ribbon-bold', size: 'lg' },
+      });
+      expect(wrapper.classes()).toContain('app-icon-badge--lg');
+      expect(wrapper.find('.app-icon-badge__glyph').exists()).toBe(true);
+      wrapper.unmount();
+    });
+
+    it('renders multiple icons with multi layout class', async () => {
+      const wrapper = await mountSuspended(AppIconBadge, {
+        props: { names: ['logos:vue', 'logos:nuxt-icon'], size: 'md' },
+      });
+      expect(wrapper.classes()).toContain('app-icon-badge--multi');
+      wrapper.unmount();
+    });
+  });
   describe('AppSurface', () => {
     it('renders default surface-evidence variant with 2xl rounded class', async () => {
       const wrapper = await mountSuspended(AppSurface, {

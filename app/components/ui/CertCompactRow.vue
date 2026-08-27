@@ -1,12 +1,5 @@
 <script setup lang="ts">
-export interface CertCompactItem {
-  id: string;
-  title: string;
-  issuer: string;
-  date: string;
-  skills: string[];
-  url: string;
-}
+import type { CertCompactItem } from '~/core/types/portfolio';
 
 const props = defineProps<{
   cert: CertCompactItem;

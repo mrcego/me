@@ -46,10 +46,6 @@ export default defineNuxtConfig({
       path: '~/components/angie',
       pathPrefix: false,
     },
-    {
-      path: '~/core/components',
-      pathPrefix: false,
-    },
   ],
 
   imports: {

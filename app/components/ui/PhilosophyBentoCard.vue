@@ -1,14 +1,5 @@
 <script setup lang="ts">
-export interface PhilosophyPoint {
-  label: string;
-  descKey: string;
-  icon?: string;
-  icons?: string[];
-  to?: string;
-  linkLabelKey?: string;
-  accent?: 'emerald' | 'violet' | 'cyan' | 'red' | 'indigo' | 'amber';
-  featured?: boolean;
-}
+import type { PhilosophyPoint } from '~/core/types/portfolio';
 
 const props = withDefaults(
   defineProps<{

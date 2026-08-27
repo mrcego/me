@@ -59,10 +59,10 @@ describe('homepage heading hierarchy', () => {
       /<(?:h2|AppSectionHeader|CoreSectionHeader)[\s\S]{0,400}(?::title="\$t\('testimonials\.title'\)"|\{\{ \$t\('testimonials\.title'\) \}\})/,
     );
 
-    const coreHeader = readFileSync(
-      resolve(root, 'app/core/components/CoreSectionHeader.vue'),
+    const appHeader = readFileSync(
+      resolve(root, 'app/components/primitives/AppSectionHeader.vue'),
       'utf8',
     );
-    expect(coreHeader).toMatch(/<h2[\s\S]{0,400}\{\{ title \}\}/);
+    expect(appHeader).toMatch(/<component[\s\S]{0,400}:is="props\.as"/);
   });
 });

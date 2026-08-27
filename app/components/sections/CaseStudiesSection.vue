@@ -88,10 +88,10 @@ function onCaseStudyClick(slug: string) {
 
             <div class="relative z-10 flex flex-col h-full gap-4 sm:gap-5 xl:gap-6 min-w-0">
               <div class="flex items-start justify-between gap-4">
-                <CoreIconBadge
+                <AppIconBadge
                   :name="study.icon"
-                  size="xl"
-                  class="transition-transform group-hover:scale-105 shrink-0"
+                  size="lg"
+                  class="transition-transform duration-300 group-hover:scale-105"
                 />
                 <p class="type-meta text-muted font-bold text-right shrink-0">
                   {{ $t(`caseStudies.items.${study.slug}.period`) }}

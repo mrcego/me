@@ -151,7 +151,7 @@ watch(isOpen, (open) => {
     >
       <div
         v-if="isOpen"
-        class="angie-window fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 md:bottom-26 md:right-8 z-200 w-full sm:w-[26rem] md:w-[28rem] h-[100dvh] sm:h-[34rem] sm:max-h-[calc(100svh-5.5rem)] bg-background sm:glass rounded-none sm:rounded-3xl border-0 sm:border sm:border-primary/25 shadow-4xl flex flex-col overflow-hidden text-foreground"
+        class="angie-window fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 md:bottom-26 md:right-8 z-200 w-full sm:w-104 md:w-md h-dvh sm:h-136 sm:max-h-[calc(100svh-5.5rem)] bg-background sm:glass rounded-none sm:rounded-3xl border-0 sm:border sm:border-primary/25 shadow-4xl flex flex-col overflow-hidden text-foreground"
         role="dialog"
         aria-modal="true"
         :aria-label="$t('angie.header.title')"

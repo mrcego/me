@@ -201,7 +201,7 @@ const tagItems = computed(() => {
             >
               <div class="space-y-4">
                 <div class="flex items-start justify-between gap-4">
-                  <CoreIconBadge
+                  <AppIconBadge
                     :name="other.icon"
                     size="lg"
                     class="transition-transform group-hover:scale-105 shrink-0"

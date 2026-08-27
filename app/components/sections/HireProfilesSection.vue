@@ -90,10 +90,10 @@ const craftMethodologyTo =
 
               <div class="relative z-10 flex flex-col h-full gap-5">
                 <div class="flex items-center justify-between gap-3">
-                  <CoreIconBadge
+                  <AppIconBadge
                     :name="profile.icon"
-                    size="xl"
-                    class="transition-transform group-hover:scale-105"
+                    size="md"
+                    class="transition-transform duration-300 group-hover:scale-105"
                   />
                   <AppBadge
                     v-if="showAnnouncement"
