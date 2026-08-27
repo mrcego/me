@@ -98,9 +98,9 @@ describe('CSP builders', () => {
     expect(file).toMatch(/\/_i18n\/\*[\s\S]*max-age=31536000,\s*immutable/);
     expect(file).toMatch(/\/_ipx\/\*[\s\S]*max-age=31536000,\s*immutable/);
     expect(file).toMatch(/\/img\/\*[\s\S]*max-age=2592000,\s*stale-while-revalidate=604800/);
-    expect(file).toMatch(/\/\n\s*Cache-Control:\s*no-cache/);
-    expect(file).toMatch(/\/index\.html[\s\S]*no-cache/);
-    expect(file).toMatch(/\/200\.html[\s\S]*no-cache/);
+    expect(file).toMatch(/\/\n\s*Cache-Control:\s*public,\s*max-age=0,\s*must-revalidate/);
+    expect(file).toMatch(/\/index\.html[\s\S]*public,\s*max-age=0/);
+    expect(file).toMatch(/\/200\.html[\s\S]*public,\s*max-age=0/);
     expect(file).toMatch(/\/favicon\.ico[\s\S]*max-age=86400/);
     expect(file).toMatch(/\/manifest\.json[\s\S]*stale-while-revalidate=604800/);
   });
