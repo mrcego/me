@@ -126,7 +126,7 @@ watch(showAllRest, () => {
 
             <div class="space-y-5 sm:space-y-6 relative z-10">
               <div class="flex justify-between items-start gap-3">
-                <CoreIconBadge name="solar:medal-ribbon-bold" size="lg" />
+                <AppIconBadge name="solar:medal-ribbon-bold" size="lg" />
                 <span class="surface-card__meta type-meta text-muted">{{ cert.date }}</span>
               </div>
 

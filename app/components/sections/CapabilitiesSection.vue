@@ -77,11 +77,10 @@ const capabilities = [
             <div
               class="relative z-10 space-y-4 sm:space-y-6 md:space-y-8 h-full flex flex-col justify-center items-center text-center"
             >
-              <CoreIconBadge
+              <AppIconBadge
                 :name="cap.icon"
-                size="xl"
-                tilt
-                class="transition-transform group-hover:scale-110"
+                size="md"
+                class="transition-transform group-hover:scale-105"
               />
               <div class="space-y-3 sm:space-y-4 max-w-md mx-auto">
                 <h3
@@ -94,9 +93,18 @@ const capabilities = [
                 >
                   {{ $t(`capabilities.items.${cap.key}.desc`) }}
                 </p>
-                <CoreCtaLink v-if="cap.to && cap.linkLabelKey" :to="localePath(cap.to)" @click.stop>
-                  {{ $t(cap.linkLabelKey) }}
-                </CoreCtaLink>
+                <NuxtLink
+                  v-if="cap.to && cap.linkLabelKey"
+                  :to="localePath(cap.to)"
+                  class="inline-flex items-center justify-center gap-2 pt-2 text-xs sm:text-sm font-black uppercase tracking-widest text-primary hover:text-foreground transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm group/cta"
+                  @click.stop
+                >
+                  <span>{{ $t(cap.linkLabelKey) }}</span>
+                  <Icon
+                    name="solar:arrow-right-linear"
+                    class="size-4 shrink-0 transition-transform duration-300 group-hover/cta:translate-x-1"
+                  />
+                </NuxtLink>
               </div>
             </div>
 
