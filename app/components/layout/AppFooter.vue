@@ -223,13 +223,15 @@ const socials = [
             $t('footer.rights')
           }}</span>
         </p>
-        <NuxtLink
+        <AppBadge
           :to="localePath('/ai-assisted-craft')"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-colors cursor-pointer"
+          variant="primary"
+          size="sm"
+          icon="logos:nuxt-icon"
+          class="cursor-pointer font-semibold text-xs tracking-normal normal-case"
         >
-          <Icon name="logos:nuxt-icon" class="size-3.5" />
-          <span>Built with Nuxt 4 & AI Craft</span>
-        </NuxtLink>
+          Built with Nuxt 4 & AI Craft
+        </AppBadge>
 
         <!--
           Hover styles live in scoped CSS (not Tailwind hover:) so they still

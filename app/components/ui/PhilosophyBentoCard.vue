@@ -80,8 +80,11 @@ const accentStyle = computed(() => {
 </script>
 
 <template>
-  <div
-    class="bento-card group relative flex flex-col justify-between rounded-2xl sm:rounded-3xl border border-foreground/10 bg-background/60 p-5 sm:p-6 transition-all duration-300 backdrop-blur-xl hover:-translate-y-1 shadow-lg hover:shadow-2xl overflow-hidden w-full"
+  <AppSurface
+    variant="glass"
+    rounded="3xl"
+    interactive
+    class="bento-card group relative flex flex-col justify-between border border-foreground/10 p-5 sm:p-6 overflow-hidden w-full"
     :class="[accentStyle.card]"
   >
     <!-- Background Radial Glow -->
@@ -136,5 +139,5 @@ const accentStyle = computed(() => {
         />
       </NuxtLink>
     </div>
-  </div>
+  </AppSurface>
 </template>

@@ -196,25 +196,26 @@ onMounted(() => {
           <div
             class="flex flex-wrap sm:flex-nowrap items-center gap-3 sm:gap-3.5 2xl:gap-4 w-full sm:w-auto"
           >
-            <a
-              class="hero-cta-btn hero-cta-btn--primary bg-primary text-primary-contrast rounded-xl sm:rounded-2xl px-5 sm:px-6 2xl:px-7 3xl:px-8 py-3 2xl:py-3.5 3xl:py-4 shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-flex items-center justify-center gap-2.5 font-bold text-sm sm:text-base 2xl:text-lg border border-primary/50 whitespace-nowrap cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 w-full sm:w-auto"
+            <AppButton
+              variant="primary"
+              size="lg"
+              class="hero-cta-btn hero-cta-btn--primary shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto"
               :href="sectionHref('#contact')"
+              icon-left="solar:chat-round-dots-bold-duotone"
               @click="onPrimaryCtaClick"
             >
-              <Icon name="solar:chat-round-dots-bold-duotone" class="size-5 2xl:size-6 shrink-0" />
-              <span class="whitespace-nowrap">{{ $t('hero.cta') }}</span>
-            </a>
-            <a
-              class="hero-cta-btn hero-cta-btn--secondary rounded-xl sm:rounded-2xl px-4.5 sm:px-5.5 2xl:px-6.5 3xl:px-7.5 py-3 2xl:py-3.5 3xl:py-4 text-sm sm:text-base 2xl:text-lg font-bold text-foreground border border-foreground/15 hover:border-primary/40 hover:bg-primary/5 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 inline-flex items-center justify-center gap-2.5 text-center whitespace-nowrap bg-secondary/60 backdrop-blur-xs cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 w-full sm:w-auto"
+              {{ $t('hero.cta') }}
+            </AppButton>
+            <AppButton
+              variant="outline"
+              size="lg"
+              class="hero-cta-btn hero-cta-btn--secondary hover:border-primary/40 hover:bg-primary/5 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto"
               :href="sectionHref('#case-studies')"
+              icon-left="solar:bag-2-bold-duotone"
               @click="onSecondaryCtaClick"
             >
-              <Icon
-                name="solar:bag-2-bold-duotone"
-                class="size-5 2xl:size-6 shrink-0 text-primary"
-              />
-              <span class="whitespace-nowrap">{{ $t('hero.secondaryCta') }}</span>
-            </a>
+              {{ $t('hero.secondaryCta') }}
+            </AppButton>
           </div>
 
           <!-- Credentials & Direct Channels (Download CV + Social Profiles) -->
@@ -376,13 +377,18 @@ onMounted(() => {
         </div>
 
         <!-- Stats HUD Dock under photo -->
-        <div
-          class="w-full grid grid-cols-3 gap-1.5 sm:gap-2 2xl:gap-2.5 3xl:gap-3.5 p-2 sm:p-2.5 2xl:p-3 3xl:p-4 rounded-2xl sm:rounded-3xl border border-primary/20 bg-secondary/60 backdrop-blur-md shadow-xl"
+        <AppSurface
+          variant="glass"
+          rounded="3xl"
+          class="w-full grid grid-cols-3 gap-1.5 sm:gap-2 2xl:gap-2.5 3xl:gap-3.5 p-2 sm:p-2.5 2xl:p-3 3xl:p-4 border-primary/20 bg-secondary/60 backdrop-blur-md shadow-xl"
         >
-          <div
+          <AppSurface
             v-for="(stat, i) in heroStats"
             :key="stat.labelKey"
-            class="hero-reveal text-center p-1.5 sm:p-2.5 2xl:p-3 rounded-xl bg-background/50 border border-foreground/5 group/stat hover:border-primary/30 transition-all duration-300 flex flex-col items-center justify-center gap-0.5 sm:gap-1 min-w-0"
+            as="div"
+            variant="glass-lite"
+            rounded="xl"
+            class="hero-reveal text-center p-1.5 sm:p-2.5 2xl:p-3 bg-background/50 border border-foreground/5 group/stat hover:border-primary/30 transition-all duration-300 flex flex-col items-center justify-center gap-0.5 sm:gap-1 min-w-0"
             :style="{ animationDelay: `${0.4 + i * 0.1}s` }"
           >
             <Icon
@@ -400,8 +406,8 @@ onMounted(() => {
             >
               {{ $t(stat.labelKey) }}
             </div>
-          </div>
-        </div>
+          </AppSurface>
+        </AppSurface>
       </div>
     </div>
   </section>
