@@ -10,12 +10,17 @@ describe('homepage heading hierarchy', () => {
       resolve(root, 'app/components/sections/AboutSection.vue'),
       'utf8',
     );
-    const titleIndex = aboutSection.indexOf("{{ $t('about.title') }}");
+    const titleIndex =
+      aboutSection.indexOf('title="$t(\'about.title\')"') !== -1
+        ? aboutSection.indexOf('title="$t(\'about.title\')"')
+        : aboutSection.indexOf("{{ $t('about.title') }}");
     const roleCardHeadingIndex = aboutSection.indexOf('class="surface-card__title');
 
     expect(titleIndex).toBeGreaterThan(-1);
     expect(roleCardHeadingIndex).toBeGreaterThan(titleIndex);
-    expect(aboutSection).toMatch(/<h2\s+[\s\S]{0,300}\{\{ \$t\('about\.title'\) \}\}/);
+    expect(aboutSection).toMatch(
+      /<(?:h2|AppSectionHeader)\s+[\s\S]{0,300}(?::title="\$t\('about\.title'\)"|\{\{ \$t\('about\.title'\) \}\})/,
+    );
   });
 
   it('uses semantic h2 section titles and h3 cards across all major homepage sections', () => {

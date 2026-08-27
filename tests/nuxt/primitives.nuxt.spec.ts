@@ -107,6 +107,16 @@ describe('Atomic Primitives (Design System)', () => {
       expect(wrapper.classes()).toContain('px-2.5');
       wrapper.unmount();
     });
+
+    it('renders label prop and dot indicator', async () => {
+      const wrapper = await mountSuspended(AppBadge, {
+        props: { label: 'AVAILABLE', variant: 'dot' },
+      });
+      expect(wrapper.text()).toContain('AVAILABLE');
+      expect(wrapper.classes()).toContain('text-emerald-400');
+      expect(wrapper.find('span.bg-emerald-400').exists()).toBe(true);
+      wrapper.unmount();
+    });
   });
 
   describe('AppSectionHeader', () => {
