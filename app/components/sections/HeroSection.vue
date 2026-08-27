@@ -234,11 +234,11 @@ onMounted(() => {
                 target="_blank"
                 rel="me noopener noreferrer"
                 :aria-label="$t('footer.socialLinkedIn')"
-                class="u-url url hero-social-link inline-flex items-center justify-center size-10 sm:size-10.5 2xl:size-11.5 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="u-url url hero-social-link inline-flex items-center justify-center size-11 2xl:size-11.5 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="simple-icons:linkedin"
-                  class="size-4 sm:size-4.5 2xl:size-5 shrink-0 pointer-events-none text-current"
+                  class="size-4.5 2xl:size-5 shrink-0 pointer-events-none text-current"
                 />
               </a>
               <a
@@ -246,21 +246,21 @@ onMounted(() => {
                 target="_blank"
                 rel="me noopener noreferrer"
                 :aria-label="$t('footer.socialGitHub')"
-                class="u-url url hero-social-link inline-flex items-center justify-center size-10 sm:size-10.5 2xl:size-11.5 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="u-url url hero-social-link inline-flex items-center justify-center size-11 2xl:size-11.5 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="simple-icons:github"
-                  class="size-4 sm:size-4.5 2xl:size-5 shrink-0 pointer-events-none text-current"
+                  class="size-4.5 2xl:size-5 shrink-0 pointer-events-none text-current"
                 />
               </a>
               <a
                 href="mailto:cesargomezh90@gmail.com"
                 :aria-label="$t('footer.socialEmail')"
-                class="u-email email hero-social-link inline-flex items-center justify-center size-10 sm:size-10.5 2xl:size-11.5 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                class="u-email email hero-social-link inline-flex items-center justify-center size-11 2xl:size-11.5 rounded-xl border cursor-pointer active:scale-95 shrink-0 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
               >
                 <Icon
                   name="solar:letter-linear"
-                  class="size-4 sm:size-4.5 2xl:size-5 shrink-0 pointer-events-none text-current"
+                  class="size-4.5 2xl:size-5 shrink-0 pointer-events-none text-current"
                 />
               </a>
             </div>
