@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import Button from 'primevue/button';
 import { hireProfileRoutes } from '~/config/routes.manifest';
 import type { ExpertiseLandingTranslationKey } from '~/composables/seo/useExpertiseLandingSeo';
 
@@ -131,21 +130,22 @@ const proofLink = computed(() => {
           </p>
 
           <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <Button
-              class="btn-premium bg-primary text-primary-contrast rounded-2xl! px-8! py-4! border-none!"
-              as="a"
+            <AppButton
+              variant="primary"
+              size="lg"
               :href="contactHref"
+              icon-left="solar:letter-bold-duotone"
             >
-              <Icon name="solar:letter-bold-duotone" class="w-6 h-6" />
               {{ t(copyKey('contactCta')) }}
-            </Button>
-            <NuxtLink
+            </AppButton>
+            <AppButton
+              variant="outline"
+              size="lg"
               :to="localePath('/')"
-              class="btn-premium glass rounded-2xl! px-8! py-4! border border-foreground/10! inline-flex items-center justify-center gap-3 font-black uppercase tracking-widest"
+              icon-left="solar:arrow-left-linear"
             >
-              <Icon name="solar:arrow-left-linear" class="w-6 h-6" />
               {{ t(copyKey('portfolioCta')) }}
-            </NuxtLink>
+            </AppButton>
           </div>
 
           <div
@@ -197,21 +197,29 @@ const proofLink = computed(() => {
             {{ t(copyKey('services.title')) }}
           </h2>
           <div class="grid md:grid-cols-2 gap-5 md:gap-6">
-            <article
+            <AppSurface
               v-for="service in serviceItems"
               :key="service.title"
-              class="surface-card glass rounded-3xl border-foreground/5 p-6 md:p-7 space-y-3"
+              as="article"
+              variant="glass"
+              rounded="3xl"
+              class="surface-card p-6 md:p-7 space-y-3 border-foreground/5"
             >
               <h3 class="text-xl md:text-2xl font-black tracking-tight text-foreground text-pretty">
                 {{ service.title }}
               </h3>
               <p class="text-muted leading-relaxed text-pretty">{{ service.body }}</p>
-            </article>
+            </AppSurface>
           </div>
         </section>
 
         <div class="grid md:grid-cols-2 gap-6 md:gap-8">
-          <article class="surface-card glass rounded-3xl border-foreground/5 p-6 md:p-8 space-y-5">
+          <AppSurface
+            as="article"
+            variant="glass"
+            rounded="3xl"
+            class="surface-card p-6 md:p-8 space-y-5 border-foreground/5"
+          >
             <h2 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
               {{ t(copyKey('expertiseTitle')) }}
             </h2>
@@ -225,9 +233,14 @@ const proofLink = computed(() => {
                 <span>{{ item }}</span>
               </li>
             </ul>
-          </article>
+          </AppSurface>
 
-          <article class="surface-card glass rounded-3xl border-foreground/5 p-6 md:p-8 space-y-5">
+          <AppSurface
+            as="article"
+            variant="glass"
+            rounded="3xl"
+            class="surface-card p-6 md:p-8 space-y-5 border-foreground/5"
+          >
             <h2 class="text-2xl md:text-3xl font-black tracking-tight text-foreground">
               {{ t(copyKey('experienceTitle')) }}
             </h2>
@@ -253,7 +266,7 @@ const proofLink = computed(() => {
               {{ proofLink.label }}
               <Icon name="solar:arrow-right-linear" class="size-4" />
             </NuxtLink>
-          </article>
+          </AppSurface>
         </div>
 
         <section class="space-y-6 md:space-y-8">
@@ -261,10 +274,13 @@ const proofLink = computed(() => {
             {{ t(copyKey('faqTitle')) }}
           </h2>
           <div class="grid gap-4">
-            <article
+            <AppSurface
               v-for="(item, index) in faqItems"
               :key="item.question"
-              class="surface-card glass rounded-2xl border-foreground/5 p-5 md:p-6"
+              as="article"
+              variant="glass"
+              rounded="2xl"
+              class="surface-card p-5 md:p-6 border-foreground/5"
             >
               <button
                 type="button"
@@ -291,7 +307,7 @@ const proofLink = computed(() => {
                   <p class="pt-4 text-muted leading-relaxed">{{ item.answer }}</p>
                 </div>
               </div>
-            </article>
+            </AppSurface>
           </div>
         </section>
       </div>
