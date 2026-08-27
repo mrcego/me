@@ -6,6 +6,7 @@ interface Props {
   description?: string;
   align?: 'left' | 'center' | 'right';
   as?: 'h1' | 'h2' | 'h3';
+  headingId?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -15,6 +16,7 @@ const props = withDefaults(defineProps<Props>(), {
   description: undefined,
   align: 'left',
   as: 'h2',
+  headingId: undefined,
 });
 
 const alignClasses: Record<NonNullable<Props['align']>, { container: string; desc: string }> = {
@@ -46,6 +48,7 @@ const alignClasses: Record<NonNullable<Props['align']>, { container: string; des
     <!-- Main Title -->
     <component
       :is="props.as"
+      :id="props.headingId"
       class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] text-foreground"
     >
       <slot name="title">

@@ -28,30 +28,21 @@ const faqLinkClass =
     aria-labelledby="faq-heading"
   >
     <div class="container mx-auto max-w-4xl space-y-8 sm:space-y-10 md:space-y-12">
-      <header class="space-y-4 text-center">
-        <div class="flex items-center justify-center gap-4">
-          <div class="h-px w-10 bg-primary/40" />
-          <p class="type-eyebrow tracking-[0.4em]">
-            {{ $t('faq.section') }}
-          </p>
-          <div class="h-px w-10 bg-primary/40" />
-        </div>
-        <h2
-          id="faq-heading"
-          class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground text-balance"
-        >
-          {{ $t('faq.title') }}
-        </h2>
-        <p class="text-muted text-base md:text-lg font-medium leading-relaxed text-pretty">
-          {{ $t('faq.description') }}
-        </p>
-      </header>
+      <AppSectionHeader
+        :eyebrow="$t('faq.section')"
+        :title="$t('faq.title')"
+        :description="$t('faq.description')"
+        align="center"
+      />
 
       <dl class="space-y-4 md:space-y-5">
-        <div
+        <AppSurface
           v-for="(item, index) in faqItems"
           :key="item.key ?? index"
-          class="surface-card glass rounded-2xl md:rounded-3xl border border-foreground/5 p-5 md:p-6 overflow-hidden"
+          as="div"
+          variant="glass"
+          rounded="3xl"
+          class="surface-card border border-foreground/5 p-5 md:p-6 overflow-hidden"
         >
           <dt class="text-base md:text-lg font-bold text-foreground text-pretty">
             {{ item.question }}
@@ -154,7 +145,7 @@ const faqLinkClass =
             </I18nT>
             <span v-else>{{ item.answer }}</span>
           </dd>
-        </div>
+        </AppSurface>
       </dl>
     </div>
   </section>

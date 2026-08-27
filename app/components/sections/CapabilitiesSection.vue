@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { Motion } from 'motion-v';
 
 const localePath = useLocalePath();
@@ -44,21 +44,14 @@ const capabilities = [
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true, amount: 0.1 }"
-        class="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6"
+        class="max-w-4xl mx-auto"
       >
-        <div class="flex items-center justify-center gap-4">
-          <div class="h-px w-10 bg-primary/40" />
-          <p class="type-eyebrow tracking-[0.4em]">
-            {{ $t('capabilities.section') }}
-          </p>
-          <div class="h-px w-10 bg-primary/40" />
-        </div>
-        <h2
-          class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-foreground"
-        >
-          {{ $t('capabilities.title') }}<br />
-          <span class="text-gradient">{{ $t('capabilities.titleHighlight') }}</span>
-        </h2>
+        <AppSectionHeader
+          :eyebrow="$t('capabilities.section')"
+          :title="$t('capabilities.title')"
+          :highlight="$t('capabilities.titleHighlight')"
+          align="center"
+        />
       </Motion>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 items-stretch">
@@ -69,42 +62,48 @@ const capabilities = [
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-6 sm:p-7 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border-foreground/5 overflow-hidden h-full"
+          class="h-full"
         >
-          <!-- holographic scanline internal -->
-          <div
-            class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none capability-scanline"
-          />
-
-          <div
-            class="relative z-10 space-y-4 sm:space-y-6 md:space-y-8 h-full flex flex-col justify-center items-center text-center"
+          <AppSurface
+            variant="glass"
+            rounded="3xl"
+            class="surface-card group relative p-6 sm:p-7 md:p-8 lg:p-10 border-foreground/5 overflow-hidden h-full"
           >
-            <CoreIconBadge
-              :name="cap.icon"
-              size="xl"
-              tilt
-              class="transition-transform group-hover:scale-110"
+            <!-- holographic scanline internal -->
+            <div
+              class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none capability-scanline"
             />
-            <div class="space-y-3 sm:space-y-4 max-w-md mx-auto">
-              <h3
-                class="surface-card__title text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground"
-              >
-                {{ $t(`capabilities.items.${cap.key}.title`) }}
-              </h3>
-              <p
-                class="surface-card__text text-muted text-base sm:text-lg leading-relaxed font-medium"
-              >
-                {{ $t(`capabilities.items.${cap.key}.desc`) }}
-              </p>
-              <CoreCtaLink v-if="cap.to && cap.linkLabelKey" :to="localePath(cap.to)" @click.stop>
-                {{ $t(cap.linkLabelKey) }}
-              </CoreCtaLink>
-            </div>
-          </div>
 
-          <div
-            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
-          />
+            <div
+              class="relative z-10 space-y-4 sm:space-y-6 md:space-y-8 h-full flex flex-col justify-center items-center text-center"
+            >
+              <CoreIconBadge
+                :name="cap.icon"
+                size="xl"
+                tilt
+                class="transition-transform group-hover:scale-110"
+              />
+              <div class="space-y-3 sm:space-y-4 max-w-md mx-auto">
+                <h3
+                  class="surface-card__title text-xl sm:text-2xl md:text-3xl font-black tracking-tighter text-foreground"
+                >
+                  {{ $t(`capabilities.items.${cap.key}.title`) }}
+                </h3>
+                <p
+                  class="surface-card__text text-muted text-base sm:text-lg leading-relaxed font-medium"
+                >
+                  {{ $t(`capabilities.items.${cap.key}.desc`) }}
+                </p>
+                <CoreCtaLink v-if="cap.to && cap.linkLabelKey" :to="localePath(cap.to)" @click.stop>
+                  {{ $t(cap.linkLabelKey) }}
+                </CoreCtaLink>
+              </div>
+            </div>
+
+            <div
+              class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
+            />
+          </AppSurface>
         </Motion>
       </div>
     </div>

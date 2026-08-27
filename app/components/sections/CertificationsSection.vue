@@ -93,28 +93,15 @@ watch(showAllRest, () => {
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true, amount: 0.1 }"
-        class="max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto text-center space-y-4 sm:space-y-6 mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0"
+        class="max-w-4xl lg:max-w-5xl xl:max-w-6xl mx-auto mb-10 sm:mb-12 md:mb-16 px-2 sm:px-0"
       >
-        <div class="flex items-center justify-center gap-4 md:gap-6">
-          <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
-          <p class="type-eyebrow tracking-[0.4em]">
-            {{ $t('certifications.section') }}
-          </p>
-          <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
-        </div>
-        <h2
-          class="certifications-heading text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground text-balance"
-        >
-          <span class="block">{{ $t('certifications.title') }}</span>
-          <span class="text-gradient certifications-heading__highlight block">
-            {{ $t('certifications.titleHighlight') }}
-          </span>
-        </h2>
-        <p
-          class="text-muted text-base md:text-lg lg:text-xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto text-pretty"
-        >
-          {{ $t('certifications.description') }}
-        </p>
+        <AppSectionHeader
+          :eyebrow="$t('certifications.section')"
+          :title="$t('certifications.title')"
+          :highlight="$t('certifications.titleHighlight')"
+          :description="$t('certifications.description')"
+          align="center"
+        />
       </Motion>
 
       <!-- Featured credentials -->
@@ -128,59 +115,61 @@ watch(showAllRest, () => {
           :while-in-view="motionInView({ opacity: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.04 })"
           :viewport="{ once: true }"
-          class="surface-card group relative glass p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl xl:rounded-4xl border-foreground/5 flex flex-col justify-between h-full overflow-hidden min-w-0"
+          class="h-full min-w-0"
         >
-          <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
+          <AppSurface
+            variant="glass"
+            rounded="3xl"
+            class="surface-card group relative p-5 sm:p-6 md:p-8 border-foreground/5 flex flex-col justify-between h-full overflow-hidden min-w-0"
+          >
+            <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
 
-          <div class="space-y-5 sm:space-y-6 relative z-10">
-            <div class="flex justify-between items-start gap-3">
-              <CoreIconBadge name="solar:medal-ribbon-bold" size="lg" />
-              <span class="surface-card__meta type-meta text-muted">{{ cert.date }}</span>
-            </div>
+            <div class="space-y-5 sm:space-y-6 relative z-10">
+              <div class="flex justify-between items-start gap-3">
+                <CoreIconBadge name="solar:medal-ribbon-bold" size="lg" />
+                <span class="surface-card__meta type-meta text-muted">{{ cert.date }}</span>
+              </div>
 
-            <div class="space-y-2 min-w-0">
-              <h3
-                class="surface-card__title text-lg sm:text-xl font-bold tracking-tight text-foreground text-balance wrap-break-word line-clamp-2 sm:line-clamp-3"
-              >
-                {{ cert.title }}
-              </h3>
-              <div class="flex items-center gap-2 text-sm font-medium text-muted">
-                <Icon :name="certIssuerIcon(cert.issuer)" class="cert-issuer__glyph shrink-0" />
-                <span>{{ cert.issuer }}</span>
+              <div class="space-y-2 min-w-0">
+                <h3
+                  class="surface-card__title text-lg sm:text-xl font-bold tracking-tight text-foreground text-balance wrap-break-word line-clamp-2 sm:line-clamp-3"
+                >
+                  {{ cert.title }}
+                </h3>
+                <div class="flex items-center gap-2 text-sm font-medium text-muted">
+                  <Icon :name="certIssuerIcon(cert.issuer)" class="cert-issuer__glyph shrink-0" />
+                  <span>{{ cert.issuer }}</span>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-2">
+                <AppBadge
+                  v-for="skill in cert.skills"
+                  :key="skill"
+                  :label="skill"
+                  variant="subtle"
+                  size="sm"
+                />
               </div>
             </div>
 
-            <div class="flex flex-wrap gap-2">
-              <span
-                v-for="skill in cert.skills"
-                :key="skill"
-                class="surface-card__tag type-label text-muted bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5"
+            <div class="surface-card__footer mt-8 pt-6 border-t border-foreground/5 relative z-10">
+              <AppButton
+                :href="cert.url"
+                external
+                variant="ghost"
+                class="w-full text-xs sm:text-sm uppercase tracking-[0.2em]"
+                :aria-label="$t('certifications.viewCredentialNamed', { title: cert.title })"
+                icon-right="solar:arrow-right-up-linear"
               >
-                {{ skill }}
-              </span>
+                {{ $t('certifications.viewCredential') }}
+              </AppButton>
             </div>
-          </div>
 
-          <div class="surface-card__footer mt-8 pt-6 border-t border-foreground/5 relative z-10">
-            <NuxtLink
-              :to="cert.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="w-full flex items-center justify-center gap-2 py-3 glass rounded-xl text-sm font-black uppercase tracking-[0.2em] text-foreground hover:bg-primary hover:text-primary-contrast transition-[background-color,color,transform,box-shadow] duration-500 group/btn"
-              :aria-label="$t('certifications.viewCredentialNamed', { title: cert.title })"
-            >
-              <span aria-hidden="true">{{ $t('certifications.viewCredential') }}</span>
-              <Icon
-                name="solar:arrow-right-up-linear"
-                class="size-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
-                aria-hidden="true"
-              />
-            </NuxtLink>
-          </div>
-
-          <div
-            class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
-          />
+            <div
+              class="surface-card__line surface-card__line--grow absolute inset-x-0 bottom-0 h-1 bg-primary origin-left pointer-events-none z-20"
+            />
+          </AppSurface>
         </Motion>
       </div>
 
