@@ -1,0 +1,69 @@
+name: Production Health Check
+
+on:
+  schedule:
+    # Daily at 06:00 COT (11:00 UTC)
+    - cron: '0 11 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: healthcheck-production
+  cancel-in-progress: true
+
+jobs:
+  healthcheck:
+    name: Uptime & Header Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify Root & Security Headers
+        run: |
+          set -euo pipefail
+          echo "Auditing https://cesargomez.dev/ ..."
+          headers=$(curl -sS -I https://cesargomez.dev/)
+          echo "$headers"
+
+          if ! echo "$headers" | grep -qi "HTTP/.*200"; then
+            echo "::error::Root page did not return HTTP 200"
+            exit 1
+          fi
+
+          if ! echo "$headers" | grep -qi "strict-transport-security"; then
+            echo "::error::Missing Strict-Transport-Security header"
+            exit 1
+          fi
+
+          if ! echo "$headers" | grep -qi "content-security-policy"; then
+            echo "::error::Missing Content-Security-Policy header"
+            exit 1
+          fi
+
+          echo "Root page and security headers verified!"
+
+      - name: Verify Key Endpoints
+        run: |
+          set -euo pipefail
+          endpoints=(
+            "https://cesargomez.dev/es/"
+            "https://cesargomez.dev/ai-assisted-craft/"
+            "https://cesargomez.dev/vue-frontend-developer/"
+            "https://cesargomez.dev/sitemap_index.xml"
+            "https://cesargomez.dev/robots.txt"
+            "https://cesargomez.dev/llms.txt"
+            "https://cesargomez.dev/ai.txt"
+          )
+
+          for url in "${endpoints[@]}"; do
+            echo "Checking $url ..."
+            status=$(curl -sS -o /dev/null -w "%{http_code}" "$url")
+            if [ "$status" != "200" ]; then
+              echo "::error::Endpoint $url returned HTTP $status (expected 200)"
+              exit 1
+            fi
+            echo "OK: $url (HTTP $status)"
+          done
+
+          echo "All critical production endpoints are healthy!"
