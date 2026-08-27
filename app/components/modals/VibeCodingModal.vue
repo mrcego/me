@@ -94,14 +94,15 @@ const rolePoints = computed(() => {
         <span class="type-label text-muted tracking-[0.3em]">
           {{ $t('vibeCoding.modal.footer') }}
         </span>
-        <a
+        <AppButton
           :href="sectionHref('#contact')"
-          class="experience-modal__linkedin"
+          variant="primary"
+          size="md"
+          icon="solar:letter-bold-duotone"
           @click="onContactClick"
         >
-          <Icon name="solar:letter-bold-duotone" class="w-5 h-5" />
           {{ $t('hero.cta') }}
-        </a>
+        </AppButton>
       </div>
     </template>
   </AppModal>
