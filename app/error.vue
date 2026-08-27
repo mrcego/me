@@ -117,14 +117,15 @@ async function goContact() {
             </span>
           </button>
 
-          <button
-            type="button"
-            class="shrink-0 inline-flex items-center justify-center gap-2 min-h-11 px-4 sm:px-5 rounded-full bg-primary text-primary-contrast text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-primary-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+          <AppButton
+            variant="primary"
+            size="sm"
+            class="rounded-full! px-4! sm:px-5! min-h-11 font-bold uppercase tracking-wider shrink-0"
+            icon-left="solar:letter-bold"
             @click="goContact"
           >
-            <Icon name="solar:letter-bold" class="size-4 sm:size-5 shrink-0" aria-hidden="true" />
-            <span>{{ $t('nav.cta') }}</span>
-          </button>
+            {{ $t('nav.cta') }}
+          </AppButton>
         </div>
       </div>
     </header>
@@ -168,23 +169,24 @@ async function goContact() {
           </div>
 
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2">
-            <button
-              type="button"
-              class="btn-premium bg-primary text-primary-contrast rounded-2xl! px-8! py-4! border-none! inline-flex items-center justify-center gap-3 min-h-12 w-full sm:w-auto"
+            <AppButton
+              variant="primary"
+              size="lg"
+              class="w-full sm:w-auto"
+              icon-left="solar:arrow-left-linear"
               @click="goHome"
             >
-              <!-- arrow-left is already bundled; home-2-duotone was missing from the icon scan -->
-              <Icon name="solar:arrow-left-linear" class="size-5 shrink-0" aria-hidden="true" />
               {{ isNotFound ? $t('error.notFound.home') : $t('error.generic.home') }}
-            </button>
-            <button
-              type="button"
-              class="btn-premium glass rounded-2xl! px-8! py-4! border border-foreground/10! inline-flex items-center justify-center gap-3 font-black uppercase tracking-widest min-h-12 w-full sm:w-auto"
+            </AppButton>
+            <AppButton
+              variant="outline"
+              size="lg"
+              class="w-full sm:w-auto"
+              icon-left="solar:letter-bold"
               @click="goContact"
             >
-              <Icon name="solar:letter-bold" class="size-5 shrink-0" aria-hidden="true" />
               {{ $t('nav.cta') }}
-            </button>
+            </AppButton>
           </div>
 
           <p v-if="!isNotFound && error?.message" class="text-xs text-muted/70 font-mono break-all">

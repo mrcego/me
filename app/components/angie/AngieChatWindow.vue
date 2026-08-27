@@ -186,11 +186,12 @@ watch(isOpen, (open) => {
                 >
                   {{ $t('angie.header.title') }}
                 </h3>
-                <span
-                  class="font-mono text-[9px] px-1.5 py-0.2 rounded bg-primary/15 text-primary font-bold shrink-0"
-                >
-                  {{ $t('angie.header.badge') }}
-                </span>
+                <AppBadge
+                  :label="$t('angie.header.badge')"
+                  variant="primary"
+                  size="xs"
+                  class="font-mono text-[9px] py-0.2 shrink-0"
+                />
               </div>
               <p class="font-mono text-[10px] text-muted flex items-center gap-1.5 truncate">
                 <span class="size-1.5 rounded-full bg-emerald-400 shrink-0" />
@@ -243,19 +244,17 @@ watch(isOpen, (open) => {
               </span>
             </template>
 
-            <!-- Fast mode / fallback -->
+            <!-- Offline / Heuristic mode fallback -->
             <template v-else>
-              <span class="size-1.5 rounded-full bg-primary shrink-0" />
+              <span class="size-1.5 rounded-full bg-primary/70 shrink-0" />
               <span class="text-muted font-medium truncate">
-                {{ $t('angie.neural.fastMode') }}
+                {{ $t('angie.neural.fallback') }}
               </span>
             </template>
           </div>
 
-          <span
-            class="px-1.5 py-0.5 rounded bg-primary/10 text-primary text-[9px] font-bold tracking-wider shrink-0 uppercase"
-          >
-            {{ $t('angie.neural.badge') }}
+          <span class="text-muted/60 uppercase tracking-widest text-[9px] shrink-0">
+            {{ $t('angie.neural.latency') }}
           </span>
         </div>
 
@@ -315,12 +314,13 @@ watch(isOpen, (open) => {
               <span class="font-mono text-[10px] text-muted/60 uppercase tracking-widest">
                 {{ msg.role === 'user' ? $t('angie.roles.user') : $t('angie.roles.angie') }}
               </span>
-              <span
+              <AppBadge
                 v-if="msg.isNeural"
-                class="font-mono text-[8px] font-bold px-1 py-0.2 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30"
-              >
-                WebGPU
-              </span>
+                label="WebGPU"
+                variant="success"
+                size="xs"
+                class="font-mono text-[8px] font-bold px-1 py-0.2"
+              />
             </div>
 
             <div
@@ -343,16 +343,18 @@ watch(isOpen, (open) => {
               v-if="msg.actions && msg.actions.length > 0 && !msg.isStreaming"
               class="flex flex-wrap gap-1.5 pt-1 max-w-[95%] sm:max-w-[90%]"
             >
-              <button
+              <AppBadge
                 v-for="action in msg.actions"
                 :key="action.id"
-                type="button"
-                class="inline-flex items-center gap-1 px-2.5 py-1.5 sm:py-1 rounded-lg font-mono text-[10px] sm:text-[11px] font-bold text-primary bg-primary/10 hover:bg-primary hover:text-primary-contrast border border-primary/30 transition-all duration-200 cursor-pointer active:scale-95 touch-manipulation min-h-7"
+                variant="primary"
+                size="sm"
+                interactive
+                class="font-mono text-[10px] sm:text-[11px] min-h-7"
                 @click="onActionClick(action, $event)"
               >
                 <span>{{ $t(action.labelKey) }}</span>
                 <Icon name="solar:arrow-right-up-linear" class="size-3 shrink-0" />
-              </button>
+              </AppBadge>
             </div>
           </div>
 
@@ -366,9 +368,9 @@ watch(isOpen, (open) => {
           </div>
         </div>
 
-        <!-- Quick Prompts Slider -->
+        <!-- Quick Prompts suggestions (empty state or context based) -->
         <div
-          class="p-2 sm:p-2.5 bg-foreground/2 border-t border-foreground/5 relative z-10 flex gap-1.5 overflow-x-auto scrollbar-hide shrink-0"
+          class="p-2 sm:p-3 bg-secondary/95 sm:bg-secondary/80 border-t border-foreground/5 flex items-center gap-1.5 overflow-x-auto scrollbar-hide relative z-10 shrink-0"
         >
           <button
             v-for="prompt in categoryPrompts"
@@ -394,14 +396,15 @@ watch(isOpen, (open) => {
             class="flex-1 bg-foreground/5 border border-foreground/10 focus:border-primary/50 rounded-xl px-3.5 py-2.5 text-base sm:text-sm text-foreground placeholder:text-muted/60 focus:outline-none focus:ring-1 focus:ring-primary/40 transition-all"
             maxlength="200"
           />
-          <button
+          <AppButton
             type="submit"
+            variant="primary"
+            size="md"
             :disabled="!userInput.trim() || isTyping"
-            class="size-10 sm:size-10 rounded-xl bg-primary text-primary-contrast flex items-center justify-center disabled:opacity-40 disabled:cursor-not-allowed hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-md shadow-primary/20 shrink-0 touch-manipulation"
+            class="size-10! sm:size-10! rounded-xl! p-0! flex items-center justify-center shrink-0 shadow-md shadow-primary/20"
             :aria-label="$t('angie.send')"
-          >
-            <Icon name="lucide:send" class="size-4" />
-          </button>
+            icon-left="lucide:send"
+          />
         </form>
       </div>
     </Transition>
