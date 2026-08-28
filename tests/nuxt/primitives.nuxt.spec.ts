@@ -203,7 +203,7 @@ describe('Atomic Primitives (Design System)', () => {
       expect(wrapper.text()).toContain('Design System Modal');
       expect(wrapper.text()).toContain('Modal Body Content');
 
-      const closeBtn = wrapper.find('button[aria-label="Cerrar modal"]');
+      const closeBtn = wrapper.find('button[aria-label="Close"]');
       expect(closeBtn.exists()).toBe(true);
       await closeBtn.trigger('click');
 

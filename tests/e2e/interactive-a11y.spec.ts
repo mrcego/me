@@ -84,10 +84,9 @@ test.describe('interactive accessibility', () => {
     }).toPass({ timeout: 20_000 });
     const vibeDialog = page.locator('.p-dialog.experience-dialog').first();
     await expect(vibeDialog).toHaveAttribute('aria-labelledby', 'vibe-coding-modal-title');
-    await page
-      .getByRole('button', { name: /close|cerrar/i })
-      .first()
-      .click({ force: true });
+    const vibeCloseBtn = page.getByRole('button', { name: /close|cerrar/i }).first();
+    await expect(vibeCloseBtn).toBeVisible({ timeout: 10_000 });
+    await vibeCloseBtn.click();
     await expect(page.locator('#vibe-coding-modal-title')).toBeHidden({ timeout: 10_000 });
 
     await page.locator('#about').scrollIntoViewIfNeeded();

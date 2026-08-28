@@ -13,6 +13,13 @@ async function onContactClick(event: Event) {
   await goToSection(event, '#contact');
 }
 
+function handleModalUpdate(val: boolean) {
+  vibeCodingModalVisible.value = val;
+  if (!val) {
+    closeVibeCodingModal();
+  }
+}
+
 const rolePoints = computed(() => {
   const items = getI18nArray(tm, 'vibeCoding.modal.points');
   return items.map((_, index) => t(`vibeCoding.modal.points.${index}`));
@@ -20,7 +27,13 @@ const rolePoints = computed(() => {
 </script>
 
 <template>
-  <AppModal v-model="vibeCodingModalVisible" size="lg" aria-labelledby="vibe-coding-modal-title">
+  <AppModal
+    :model-value="vibeCodingModalVisible"
+    size="lg"
+    aria-labelledby="vibe-coding-modal-title"
+    @update:model-value="handleModalUpdate"
+    @close="closeVibeCodingModal"
+  >
     <template #header>
       <div class="flex items-start gap-3 md:gap-4 min-w-0 flex-1">
         <div class="experience-modal__icon-wrap shrink-0" aria-hidden="true">

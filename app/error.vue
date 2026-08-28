@@ -63,6 +63,21 @@ watch(
   },
   { immediate: true },
 );
+
+function handleHome() {
+  const target = localePath('/');
+  if (import.meta.client) {
+    window.location.assign(target);
+  }
+}
+
+function handleContact() {
+  const home = localePath('/');
+  const target = home.endsWith('/') ? `${home}#contact` : `${home}/#contact`;
+  if (import.meta.client) {
+    window.location.assign(target);
+  }
+}
 </script>
 
 <template>
@@ -164,7 +179,7 @@ watch(
               size="lg"
               class="w-full sm:w-auto"
               icon="solar:arrow-left-linear"
-              :href="localePath('/')"
+              @click="handleHome"
             >
               {{ isNotFound ? $t('error.notFound.home') : $t('error.generic.home') }}
             </AppButton>
@@ -173,7 +188,7 @@ watch(
               size="lg"
               class="w-full sm:w-auto"
               icon="solar:letter-bold"
-              :href="localePath('/') + '#contact'"
+              @click="handleContact"
             >
               {{ $t('nav.cta') }}
             </AppButton>
