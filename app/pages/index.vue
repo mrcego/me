@@ -5,7 +5,7 @@ usePortfolioSeo();
 <template>
   <main id="main-content" class="portfolio-content relative" tabindex="-1">
     <HeroSection />
-    <LazyAboutSection :hydrate-on-visible="{ rootMargin: '120px' }" />
+    <AboutSection />
     <LazyCaseStudiesSection :hydrate-on-visible="{ rootMargin: '120px' }" />
     <LazyTechStackSection :hydrate-on-visible="{ rootMargin: '120px' }" />
     <LazyCertificationsSection :hydrate-on-visible="{ rootMargin: '120px' }" />

@@ -116,7 +116,7 @@ describe('deploy / layout invariants (regression guards)', () => {
 
   it('keeps fixed navbar outside the overflow-x-clip wrapper', () => {
     const app = read('app/app.vue');
-    const navIdx = app.indexOf('<LazyAppNavbar');
+    const navIdx = app.search(/<(?:Lazy)?AppNavbar/);
     // Match the real wrapper class, not the explanatory HTML comment above it.
     const clipIdx = app.search(/class="[^"]*overflow-x-clip[^"]*"/);
     expect(navIdx).toBeGreaterThan(-1);

@@ -49,12 +49,21 @@ const alignClasses: Record<NonNullable<Props['align']>, { container: string; des
     <component
       :is="props.as"
       :id="props.headingId"
-      class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[1.05] text-foreground"
+      class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tight leading-tight text-foreground text-balance"
     >
       <slot name="title">
         <template v-if="props.highlight && props.title">
-          <span>{{ props.title.replace(props.highlight, '') }}</span>
-          <span class="text-gradient-primary">{{ props.highlight }}</span>
+          <template v-if="props.title.includes(props.highlight)">
+            <span>{{ props.title.split(props.highlight)[0] }}</span>
+            <span class="text-gradient text-gradient-primary inline-block">{{
+              props.highlight
+            }}</span>
+            <span>{{ props.title.split(props.highlight)[1] }}</span>
+          </template>
+          <template v-else>
+            <span class="block">{{ props.title }}</span>
+            <span class="text-gradient text-gradient-primary block">{{ props.highlight }}</span>
+          </template>
         </template>
         <template v-else>
           {{ props.title }}

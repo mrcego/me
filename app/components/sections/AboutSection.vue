@@ -329,13 +329,13 @@ const aboutPoints: PhilosophyPoint[] = [
 
                     <div
                       v-if="COMPANY_LOGOS[role.key]"
-                      class="role-card__logo-wrap shrink-0"
+                      class="role-card__logo-wrap flex items-center justify-end shrink-0 w-26 sm:w-28 h-12 sm:h-13 p-1 max-w-28 max-h-13 overflow-visible"
                       aria-hidden="true"
                     >
                       <NuxtImg
                         :src="COMPANY_LOGOS[role.key].src"
                         :alt="COMPANY_LOGOS[role.key].alt"
-                        class="role-card__company-logo"
+                        class="role-card__company-logo block w-full h-full max-w-full max-h-full object-contain object-center"
                         :class="{
                           'role-card__company-logo--on-light': 'onLight' in COMPANY_LOGOS[role.key],
                         }"

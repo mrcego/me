@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue';
 import type { RouteLocationRaw } from 'vue-router';
 
 interface Props {
@@ -6,6 +7,8 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
   icon?: string;
   iconPosition?: 'left' | 'right';
+  iconLeft?: string;
+  iconRight?: string;
   to?: RouteLocationRaw;
   href?: string;
   target?: string;
@@ -22,6 +25,8 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   icon: undefined,
   iconPosition: 'left',
+  iconLeft: undefined,
+  iconRight: undefined,
   to: undefined,
   href: undefined,
   target: undefined,
@@ -32,6 +37,13 @@ const props = withDefaults(defineProps<Props>(), {
   ariaLabel: undefined,
   type: 'button',
 });
+
+const resolvedIconLeft = computed(
+  () => props.iconLeft || (props.iconPosition === 'left' ? props.icon : undefined),
+);
+const resolvedIconRight = computed(
+  () => props.iconRight || (props.iconPosition === 'right' ? props.icon : undefined),
+);
 
 const sizeClasses: Record<NonNullable<Props['size']>, string> = {
   sm: 'px-3.5 py-1.5 text-xs rounded-xl gap-1.5',
@@ -64,15 +76,15 @@ const variantClasses: Record<NonNullable<Props['variant']>, string> = {
     :class="[sizeClasses[props.size], variantClasses[props.variant]]"
   >
     <Icon
-      v-if="props.icon && props.iconPosition === 'left' && !props.loading"
-      :name="props.icon"
+      v-if="resolvedIconLeft && !props.loading"
+      :name="resolvedIconLeft"
       class="size-4.5 shrink-0"
     />
     <Icon v-if="props.loading" name="solar:restart-linear" class="size-4.5 shrink-0 animate-spin" />
     <slot />
     <Icon
-      v-if="props.icon && props.iconPosition === 'right' && !props.loading"
-      :name="props.icon"
+      v-if="resolvedIconRight && !props.loading"
+      :name="resolvedIconRight"
       class="size-4.5 shrink-0"
     />
   </NuxtLink>
@@ -88,15 +100,15 @@ const variantClasses: Record<NonNullable<Props['variant']>, string> = {
     :class="[sizeClasses[props.size], variantClasses[props.variant]]"
   >
     <Icon
-      v-if="props.icon && props.iconPosition === 'left' && !props.loading"
-      :name="props.icon"
+      v-if="resolvedIconLeft && !props.loading"
+      :name="resolvedIconLeft"
       class="size-4.5 shrink-0"
     />
     <Icon v-if="props.loading" name="solar:restart-linear" class="size-4.5 shrink-0 animate-spin" />
     <slot />
     <Icon
-      v-if="props.icon && props.iconPosition === 'right' && !props.loading"
-      :name="props.icon"
+      v-if="resolvedIconRight && !props.loading"
+      :name="resolvedIconRight"
       class="size-4.5 shrink-0"
     />
   </a>
@@ -114,15 +126,15 @@ const variantClasses: Record<NonNullable<Props['variant']>, string> = {
     ]"
   >
     <Icon
-      v-if="props.icon && props.iconPosition === 'left' && !props.loading"
-      :name="props.icon"
+      v-if="resolvedIconLeft && !props.loading"
+      :name="resolvedIconLeft"
       class="size-4.5 shrink-0"
     />
     <Icon v-if="props.loading" name="solar:restart-linear" class="size-4.5 shrink-0 animate-spin" />
     <slot />
     <Icon
-      v-if="props.icon && props.iconPosition === 'right' && !props.loading"
-      :name="props.icon"
+      v-if="resolvedIconRight && !props.loading"
+      :name="resolvedIconRight"
       class="size-4.5 shrink-0"
     />
   </button>

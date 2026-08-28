@@ -29,6 +29,7 @@ const faqLinkClass =
   >
     <div class="container mx-auto max-w-4xl space-y-8 sm:space-y-10 md:space-y-12">
       <AppSectionHeader
+        heading-id="faq-heading"
         :eyebrow="$t('faq.section')"
         :title="$t('faq.title')"
         :description="$t('faq.description')"

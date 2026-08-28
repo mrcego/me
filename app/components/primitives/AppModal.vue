@@ -10,6 +10,7 @@ interface Props {
   closeOnEsc?: boolean;
   showCloseButton?: boolean;
   ariaLabel?: string;
+  ariaLabelledby?: string;
   teleport?: boolean;
 }
 
@@ -22,6 +23,7 @@ const props = withDefaults(defineProps<Props>(), {
   closeOnEsc: true,
   showCloseButton: true,
   ariaLabel: undefined,
+  ariaLabelledby: undefined,
   teleport: true,
 });
 
@@ -95,6 +97,7 @@ onUnmounted(() => {
           role="dialog"
           :aria-modal="true"
           :aria-label="props.ariaLabel || props.title"
+          :aria-labelledby="props.ariaLabelledby"
           class="app-modal-content relative flex flex-col w-full max-h-[calc(100dvh-2rem)] overflow-hidden rounded-2xl sm:rounded-3xl border border-foreground/10 bg-[#0a0f1a] shadow-2xl focus:outline-none"
           :class="sizeClasses[props.size]"
           @click.stop
