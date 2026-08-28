@@ -63,21 +63,6 @@ watch(
   },
   { immediate: true },
 );
-
-async function goHome() {
-  const target = localePath('/');
-  if (import.meta.client) {
-    window.location.href = target;
-  }
-}
-
-async function goContact() {
-  const home = localePath('/');
-  const target = home.endsWith('/') ? `${home}#contact` : `${home}/#contact`;
-  if (import.meta.client) {
-    window.location.href = target;
-  }
-}
 </script>
 
 <template>
@@ -92,10 +77,9 @@ async function goContact() {
         class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 pointer-events-none"
       >
         <div class="error-shell__shell pointer-events-auto flex items-center justify-between gap-3">
-          <button
-            type="button"
-            class="flex items-center gap-2 sm:gap-3 min-w-0 appearance-none bg-transparent border-0 p-0 text-left cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-full"
-            @click="goHome"
+          <a
+            :href="localePath('/')"
+            class="flex items-center gap-2 sm:gap-3 min-w-0 appearance-none bg-transparent border-0 p-0 text-left cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-full text-inherit no-underline"
           >
             <span
               class="relative size-9 sm:size-10 md:size-11 overflow-hidden rounded-full bg-primary/10 shrink-0"
@@ -121,14 +105,14 @@ async function goContact() {
                 {{ $t('nav.brandRole') }}
               </span>
             </span>
-          </button>
+          </a>
 
           <AppButton
             variant="primary"
             size="sm"
             class="rounded-full! px-4! sm:px-5! min-h-11 font-bold uppercase tracking-wider shrink-0"
-            icon-left="solar:letter-bold"
-            @click="goContact"
+            icon="solar:letter-bold"
+            :href="localePath('/') + '#contact'"
           >
             {{ $t('nav.cta') }}
           </AppButton>
@@ -179,8 +163,8 @@ async function goContact() {
               variant="primary"
               size="lg"
               class="w-full sm:w-auto"
-              icon-left="solar:arrow-left-linear"
-              @click="goHome"
+              icon="solar:arrow-left-linear"
+              :href="localePath('/')"
             >
               {{ isNotFound ? $t('error.notFound.home') : $t('error.generic.home') }}
             </AppButton>
@@ -188,8 +172,8 @@ async function goContact() {
               variant="outline"
               size="lg"
               class="w-full sm:w-auto"
-              icon-left="solar:letter-bold"
-              @click="goContact"
+              icon="solar:letter-bold"
+              :href="localePath('/') + '#contact'"
             >
               {{ $t('nav.cta') }}
             </AppButton>

@@ -117,7 +117,7 @@ onMounted(() => {
     />
 
     <!-- Fixed full-width Navbar -->
-    <LazyAppNavbar />
+    <AppNavbar />
 
     <div class="relative min-w-0 overflow-x-clip">
       <!--
