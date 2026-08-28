@@ -87,7 +87,7 @@ onUnmounted(() => {
     <Transition name="modal-fade">
       <div
         v-if="props.modelValue"
-        class="app-modal-mask fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-[#030612]/85 backdrop-blur-md"
+        class="app-modal-mask fixed inset-0 z-[200] flex items-center justify-center p-3 sm:p-6 bg-[#030612]/85 backdrop-blur-md"
         role="presentation"
         @click="onBackdropClick"
       >
@@ -98,7 +98,7 @@ onUnmounted(() => {
           :aria-modal="true"
           :aria-label="props.ariaLabel || props.title"
           :aria-labelledby="props.ariaLabelledby"
-          class="app-modal-content relative flex flex-col w-full max-h-[calc(100dvh-2rem)] overflow-hidden rounded-2xl sm:rounded-3xl border border-foreground/10 bg-[#0a0f1a] shadow-2xl focus:outline-none"
+          class="app-modal-content p-dialog experience-dialog relative flex flex-col w-full max-h-[calc(100dvh-2rem)] overflow-hidden rounded-2xl sm:rounded-3xl border border-foreground/10 bg-[#0a0f1a] shadow-2xl focus:outline-none"
           :class="sizeClasses[props.size]"
           @click.stop
         >
@@ -121,9 +121,9 @@ onUnmounted(() => {
             <button
               v-if="props.showCloseButton"
               type="button"
-              class="size-9 rounded-xl inline-flex items-center justify-center text-muted hover:text-foreground hover:bg-foreground/10 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-              aria-label="Cerrar modal"
-              @click="closeModal"
+              class="p-dialog-header-close p-dialog-header-icon size-9 rounded-xl inline-flex items-center justify-center text-muted hover:text-foreground hover:bg-foreground/10 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              aria-label="Close"
+              @click.stop="closeModal"
             >
               <Icon name="lucide:x" class="size-5" />
             </button>

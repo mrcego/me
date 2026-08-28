@@ -11,16 +11,16 @@ async function waitForHydratedNav(page: import('@playwright/test').Page) {
 test.describe('interactive chrome', () => {
   test('opens and closes the vibe coding modal', async ({ page }) => {
     await page.goto('/', { waitUntil: 'domcontentloaded' });
+    await waitForHydratedNav(page);
     const openBtn = page.getByRole('button', { name: /Open AI workflow details/i }).first();
     await expect(openBtn).toBeVisible({ timeout: 20_000 });
     await expect(async () => {
       await openBtn.click({ force: true });
       await expect(page.locator('#vibe-coding-modal-title')).toBeVisible();
     }).toPass({ timeout: 20_000 });
-    await page
-      .getByRole('button', { name: /close|cerrar/i })
-      .first()
-      .click({ force: true });
+    const closeBtn = page.getByRole('button', { name: /close|cerrar/i }).first();
+    await expect(closeBtn).toBeVisible({ timeout: 10_000 });
+    await closeBtn.click();
     await expect(page.locator('#vibe-coding-modal-title')).toBeHidden({ timeout: 10_000 });
   });
 

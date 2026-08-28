@@ -12,6 +12,13 @@ const { motionInitial, motionInView, motionTransition } = useMotionConfig();
 const roleModalVisible = ref(false);
 const selectedRoleKey = ref<string | null>(null);
 
+function handleRoleModalUpdate(val: boolean) {
+  roleModalVisible.value = val;
+  if (!val) {
+    selectedRoleKey.value = null;
+  }
+}
+
 const COMPANY_LOGOS = {
   bitsamericas: {
     src: '/img/companies/bitsamericas.png',
@@ -399,7 +406,13 @@ const aboutPoints: PhilosophyPoint[] = [
     </div>
   </section>
 
-  <AppModal v-model="roleModalVisible" size="lg" aria-labelledby="role-experience-modal-title">
+  <AppModal
+    :model-value="roleModalVisible"
+    size="lg"
+    aria-labelledby="role-experience-modal-title"
+    @update:model-value="handleRoleModalUpdate"
+    @close="handleRoleModalUpdate(false)"
+  >
     <div v-if="selectedRoleKey" class="experience-modal">
       <header class="experience-modal__header">
         <div class="flex items-start gap-3 md:gap-4 min-w-0 flex-1">
