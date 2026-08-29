@@ -5,7 +5,6 @@ name: Netlify preview
 
 on:
   pull_request:
-    branches: [main]
     paths-ignore:
       - 'redirect/**'
       - '.github/workflows/deploy.yml'
