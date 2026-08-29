@@ -80,6 +80,11 @@ export function buildPersonEntity(options?: {
         addressRegion: 'Bolívar',
         addressCountry: 'CO',
       },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 10.391,
+        longitude: -75.4794,
+      },
     },
     sameAs: [
       'https://www.linkedin.com/in/mrcego',

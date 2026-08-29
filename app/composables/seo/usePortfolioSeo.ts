@@ -87,6 +87,8 @@ export const usePortfolioSeo = () => {
     meta: [
       { name: 'geo.region', content: 'CO-BOL' },
       { name: 'geo.placename', content: 'Cartagena de Indias, Colombia' },
+      { name: 'geo.position', content: '10.3910;-75.4794' },
+      { name: 'ICBM', content: '10.3910, -75.4794' },
       { property: 'profile:first_name', content: 'César' },
       { property: 'profile:last_name', content: 'Gómez' },
       { property: 'profile:username', content: 'mrcego' },
@@ -117,6 +119,11 @@ export const usePortfolioSeo = () => {
             addressLocality: 'Cartagena de Indias',
             addressRegion: 'Bolívar',
             addressCountry: 'CO',
+          },
+          geo: {
+            '@type': 'GeoCoordinates',
+            latitude: 10.391,
+            longitude: -75.4794,
           },
         },
         workLocation: {

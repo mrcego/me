@@ -6,8 +6,10 @@
  * Env: PORT (default 4173), NUXT_OUTPUT_DIR (default .output)
  */
 import { createServer } from 'node:http';
-import { readFileSync, existsSync, statSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, createReadStream } from 'node:fs';
 import { join, extname } from 'node:path';
+import { createBrotliCompress, createGzip, createDeflate } from 'node:zlib';
+import { pipeline } from 'node:stream';
 import { parseCspFromHeadersFile } from './lib/csp.mjs';
 
 const outputRoot = process.env.NUXT_OUTPUT_DIR || '.output';
@@ -48,6 +50,18 @@ const mime = {
   '.webmanifest': 'application/manifest+json',
 };
 
+const compressible = new Set([
+  '.html',
+  '.js',
+  '.mjs',
+  '.css',
+  '.json',
+  '.svg',
+  '.txt',
+  '.xml',
+  '.webmanifest',
+]);
+
 /**
  * @param {string} urlPath
  * @returns {string | null}
@@ -80,6 +94,7 @@ const server = createServer((req, res) => {
         'Content-Type': 'text/html; charset=utf-8',
         'Content-Security-Policy': csp,
         'X-Content-Type-Options': 'nosniff',
+        'Cache-Control': 'public, max-age=0, must-revalidate',
       });
       res.end(readFileSync(notFoundPage));
       return;
@@ -88,20 +103,55 @@ const server = createServer((req, res) => {
     res.writeHead(404, {
       'Content-Type': 'text/plain; charset=utf-8',
       'Content-Security-Policy': csp,
+      'Cache-Control': 'no-cache',
     });
     res.end('Not found');
     return;
   }
 
-  const type = mime[extname(file)] || 'application/octet-stream';
-  res.writeHead(200, {
+  const ext = extname(file);
+  const type = mime[ext] || 'application/octet-stream';
+  const isNuxtAsset = (req.url || '').startsWith('/_nuxt/');
+  const cacheControl = isNuxtAsset
+    ? 'public, max-age=31536000, immutable'
+    : 'public, max-age=0, must-revalidate';
+
+  const headers = {
     'Content-Type': type,
     'Content-Security-Policy': csp,
     'X-Content-Type-Options': 'nosniff',
-  });
+    'Cache-Control': cacheControl,
+    Vary: 'Accept-Encoding',
+  };
+
+  const acceptEncoding = req.headers['accept-encoding'] || '';
+  const shouldCompress = compressible.has(ext);
+
+  if (shouldCompress && acceptEncoding.includes('br')) {
+    headers['Content-Encoding'] = 'br';
+    res.writeHead(200, headers);
+    pipeline(createReadStream(file), createBrotliCompress(), res, () => {});
+    return;
+  }
+
+  if (shouldCompress && acceptEncoding.includes('gzip')) {
+    headers['Content-Encoding'] = 'gzip';
+    res.writeHead(200, headers);
+    pipeline(createReadStream(file), createGzip(), res, () => {});
+    return;
+  }
+
+  if (shouldCompress && acceptEncoding.includes('deflate')) {
+    headers['Content-Encoding'] = 'deflate';
+    res.writeHead(200, headers);
+    pipeline(createReadStream(file), createDeflate(), res, () => {});
+    return;
+  }
+
+  res.writeHead(200, headers);
   res.end(readFileSync(file));
 });
 
 server.listen(port, '127.0.0.1', () => {
-  console.log(`[serve-ssg] http://127.0.0.1:${port} (CSP from _headers)`);
+  console.log(`[serve-ssg] http://127.0.0.1:${port} (CSP + Compression + Cache-Control)`);
 });
