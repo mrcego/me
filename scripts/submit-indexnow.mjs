@@ -1,11 +1,33 @@
+import { existsSync, readdirSync } from 'node:fs';
+import { basename, join } from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
 import { pagePrerenderRoutes } from '../app/config/routes.manifest.ts';
 
 const HOST = 'cesargomez.dev';
-const KEY = process.env.INDEXNOW_KEY || 'e8610d0c86bb4715b5266a9b8aed362f';
-const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
 const ENDPOINTS = ['https://www.bing.com/indexnow', 'https://api.indexnow.org/indexnow'];
 const MAX_ATTEMPTS = 3;
+
+/**
+ * Resolves IndexNow API verification key from environment variable or auto-discovers
+ * standard 32-character hex verification file from `public/` directory.
+ *
+ * @returns {string | null}
+ */
+function resolveIndexNowKey() {
+  if (process.env.INDEXNOW_KEY && process.env.INDEXNOW_KEY.trim()) {
+    return process.env.INDEXNOW_KEY.trim();
+  }
+
+  const publicDir = join(process.cwd(), 'public');
+  if (existsSync(publicDir)) {
+    const candidate = readdirSync(publicDir).find((file) => /^[a-f0-9]{32}\.txt$/i.test(file));
+    if (candidate) {
+      return basename(candidate, '.txt');
+    }
+  }
+
+  return null;
+}
 
 /**
  * @param {string} endpoint
@@ -49,16 +71,25 @@ async function submitWithRetry(endpoint, payload, attempt = 1) {
 }
 
 async function submitIndexNow() {
+  const key = resolveIndexNowKey();
+  if (!key) {
+    console.warn(
+      '⚠️ IndexNow skipped: No INDEXNOW_KEY environment variable or public/<key>.txt verification file found.',
+    );
+    return;
+  }
+
+  const keyLocation = `https://${HOST}/${key}.txt`;
   const relativeRoutes = pagePrerenderRoutes();
   const urlList = relativeRoutes.map((path) => `https://${HOST}${path}`);
 
   console.log(`📡 Submitting ${urlList.length} URLs to IndexNow endpoints...`);
-  console.log(`🔑 Host: ${HOST} | Key Location: ${KEY_LOCATION}`);
+  console.log(`🔑 Host: ${HOST} | Key Location: ${keyLocation}`);
 
   const payload = {
     host: HOST,
-    key: KEY,
-    keyLocation: KEY_LOCATION,
+    key,
+    keyLocation,
     urlList,
   };
 
