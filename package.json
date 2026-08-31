@@ -50,7 +50,7 @@
     "nuxt": "^4.5.1",
     "nuxt-edge-ai": "^0.2.0",
     "primeicons": "^7.0.0",
-    "primevue": "^4.5.5",
+    "primevue": "^5.0.1",
     "satori": "^0.28.2",
     "sharp": "^0.35.4",
     "web-vitals": "^6.0.1"
