@@ -16,7 +16,7 @@ importers:
         version: 10.6.0(@netlify/blobs@10.1.0)(@vue/compiler-dom@3.5.40)(db0@0.3.4)(esbuild@0.28.1)(eslint@10.8.0(jiti@2.7.0))(idb-keyval@6.3.0)(ioredis@5.11.1)(magicast@0.5.4)(rolldown@1.2.1)(rollup@4.62.4)(typescript@5.9.3)(vite@8.2.0(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(yaml@2.9.0))(vue@3.5.40(typescript@5.9.3))
       '@nuxtjs/seo':
         specifier: ^5.3.6
-        version: 5.3.6(a58f3a11417be6dfe40b12b0567f36e9)
+        version: 5.3.6(8c08fe355bafb9f77f6bfed1125111c5)
       '@primeuix/themes':
         specifier: ^2.0.3
         version: 2.0.3
@@ -45,8 +45,8 @@ importers:
         specifier: ^0.28.2
         version: 0.28.2
       sharp:
-        specifier: ^0.34.5
-        version: 0.34.5
+        specifier: ^0.35.4
+        version: 0.35.4(@types/node@26.1.2)
       web-vitals:
         specifier: ^6.0.1
         version: 6.0.1
@@ -12046,7 +12046,7 @@ snapshots:
       find-up: 7.0.0
       minimatch: 9.0.9
       read-pkg: 9.0.1
-      semver: 7.7.2
+      semver: 7.8.5
       yaml: 2.9.0
       yargs: 17.7.3
 
@@ -12094,7 +12094,7 @@ snapshots:
       resolve: 2.0.0-next.7
       rfdc: 1.4.1
       safe-json-stringify: 1.2.0
-      semver: 7.7.2
+      semver: 7.8.5
       string-width: 7.2.0
       supports-color: 10.2.2
       terminal-link: 4.0.0
@@ -12184,7 +12184,7 @@ snapshots:
       image-size: 2.0.2
       js-image-generator: 1.0.4
       parse-gitignore: 2.0.0
-      semver: 7.7.2
+      semver: 7.8.5
       tmp-promise: 3.0.3
       uuid: 13.0.0
       write-file-atomic: 5.0.1
@@ -12223,7 +12223,7 @@ snapshots:
       p-wait-for: 5.0.2
       parse-imports: 2.2.1
       path-key: 4.0.0
-      semver: 7.7.2
+      semver: 7.8.5
       tar: 7.5.22
       tmp-promise: 3.0.3
       urlpattern-polyfill: 8.0.2
@@ -12413,7 +12413,7 @@ snapshots:
       precinct: 12.3.2(supports-color@10.2.2)
       require-package-name: 2.0.1
       resolve: 2.0.0-next.7
-      semver: 7.7.2
+      semver: 7.8.5
       tmp-promise: 3.0.3
       toml: 3.0.0
       unixify: 1.0.0
@@ -13425,14 +13425,14 @@ snapshots:
       - vite
       - vue
 
-  '@nuxtjs/seo@5.3.6(a58f3a11417be6dfe40b12b0567f36e9)':
+  '@nuxtjs/seo@5.3.6(8c08fe355bafb9f77f6bfed1125111c5)':
     dependencies:
       '@nuxt/kit': 4.5.1(magic-string@1.1.0)(magicast@0.5.4)(oxc-parser@0.140.0)(rolldown@1.2.1)(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.2.1)(rollup@4.62.4)(vite@8.2.0(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(yaml@2.9.0)))
       '@nuxtjs/robots': 6.1.3(6983bb2fb0f66fdcd94974b0b42eed5e)
       '@nuxtjs/sitemap': 8.3.2(6983bb2fb0f66fdcd94974b0b42eed5e)
       nuxt: 4.5.1(@babel/plugin-syntax-jsx@7.29.7(@babel/core@7.29.7))(@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7))(@netlify/blobs@10.1.0)(@oxc-project/types@0.142.0)(@parcel/watcher@2.5.6)(@types/node@26.1.2)(@vue/compiler-sfc@3.5.40)(cac@7.0.0)(commander@14.0.3)(db0@0.3.4)(esbuild@0.28.1)(eslint@10.8.0(jiti@2.7.0))(idb-keyval@6.3.0)(ioredis@5.11.1)(lightningcss@1.33.0)(magicast@0.5.4)(meow@13.2.0)(optionator@0.9.4)(oxc-parser@0.140.0)(rollup-plugin-visualizer@7.0.1(rolldown@1.2.1)(rollup@4.62.4))(rollup@4.62.4)(srvx@0.12.5)(terser@5.49.0)(typescript@5.9.3)(vite@8.2.0(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(yaml@2.9.0))(vue-tsc@3.3.9(typescript@5.9.3))(yaml@2.9.0)
       nuxt-link-checker: 5.1.3(c54c699921a2b6ca77c4cd0fe1bc6353)
-      nuxt-og-image: 6.7.5(95e09eb5b6f48f2b8ddbf4e118269d83)
+      nuxt-og-image: 6.7.5(08fc5a792dad839d93e0b44eb9cc1d47)
       nuxt-schema-org: 6.2.8(3c66f838b952c42c5268aeb2f7e769e1)
       nuxt-seo-utils: 8.3.3(463e3f83b477a06f109bd7bddac02e3f)
       nuxt-site-config: 4.1.2(6983bb2fb0f66fdcd94974b0b42eed5e)
@@ -17165,7 +17165,7 @@ snapshots:
       process-warning: 5.1.0
       rfdc: 1.4.1
       secure-json-parse: 4.1.0
-      semver: 7.7.2
+      semver: 7.8.5
       toad-cache: 3.7.4
 
   fastq@1.20.1:
@@ -17490,7 +17490,7 @@ snapshots:
     dependencies:
       '@xhmikosr/downloader': 13.0.1
       node-fetch: 3.3.2
-      semver: 7.7.2
+      semver: 7.8.5
     transitivePeerDependencies:
       - bare-abort-controller
       - bare-buffer
@@ -18308,7 +18308,7 @@ snapshots:
       lodash.isstring: 4.0.1
       lodash.once: 4.1.1
       ms: 2.1.3
-      semver: 7.7.2
+      semver: 7.8.5
 
   junk@4.0.1: {}
 
@@ -19237,7 +19237,7 @@ snapshots:
   normalize-package-data@7.0.1:
     dependencies:
       hosted-git-info: 8.1.0
-      semver: 7.7.2
+      semver: 7.8.5
       validate-npm-package-license: 3.0.4
 
   normalize-package-data@8.0.0:
@@ -19334,7 +19334,7 @@ snapshots:
       - vue
       - zod
 
-  nuxt-og-image@6.7.5(95e09eb5b6f48f2b8ddbf4e118269d83):
+  nuxt-og-image@6.7.5(08fc5a792dad839d93e0b44eb9cc1d47):
     dependencies:
       '@clack/prompts': 1.7.0
       '@nuxt/kit': 4.5.1(magic-string@1.1.0)(magicast@0.5.4)(oxc-parser@0.142.0)(rolldown@1.2.1)(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.2.1)(rollup@4.62.4)(vite@8.2.0(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(yaml@2.9.0)))
@@ -19377,7 +19377,7 @@ snapshots:
       nitropack: 2.13.4(@netlify/blobs@10.1.0)(@parcel/watcher@2.5.6)(idb-keyval@6.3.0)(oxc-parser@0.140.0)(rolldown@1.2.1)(srvx@0.12.5)(vite@8.2.0(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.49.0)(yaml@2.9.0))
       playwright-core: 1.62.1
       satori: 0.28.2
-      sharp: 0.34.5
+      sharp: 0.35.4(@types/node@26.1.2)
       tailwindcss: 4.3.3
       unifont: 0.7.4
       zod: 4.4.3
@@ -21103,7 +21103,6 @@ snapshots:
       '@img/sharp-win32-ia32': 0.35.4
       '@img/sharp-win32-x64': 0.35.4
       '@types/node': 26.1.2
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:
@@ -21993,7 +21992,7 @@ snapshots:
       is-npm: 6.1.0
       latest-version: 9.0.0
       pupa: 3.3.0
-      semver: 7.7.2
+      semver: 7.8.5
       xdg-basedir: 5.1.0
 
   uqr@0.1.3: {}

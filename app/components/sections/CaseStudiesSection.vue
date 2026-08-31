@@ -54,23 +54,16 @@ function onCaseStudyClick(slug: string) {
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.42 })"
         :viewport="{ once: true }"
-        class="max-w-3xl mx-auto text-center space-y-4 sm:space-y-5"
+        class="max-w-3xl mx-auto"
       >
-        <div class="flex items-center justify-center gap-4">
-          <div class="h-px w-10 bg-primary/40" />
-          <p class="type-eyebrow tracking-[0.4em]">{{ $t('caseStudies.section_tag') }}</p>
-          <div class="h-px w-10 bg-primary/40" />
-        </div>
-        <h2
-          id="case-studies-heading"
-          class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground text-balance"
-        >
-          {{ $t('caseStudies.title_top') }}
-          <span class="text-gradient">{{ $t('caseStudies.title_bottom') }}</span>
-        </h2>
-        <p class="text-muted text-base md:text-lg font-medium leading-relaxed text-pretty">
-          {{ $t('caseStudies.lead') }}
-        </p>
+        <AppSectionHeader
+          :eyebrow="$t('caseStudies.section_tag')"
+          :title="$t('caseStudies.title_top')"
+          :highlight="$t('caseStudies.title_bottom')"
+          :description="$t('caseStudies.lead')"
+          heading-id="case-studies-heading"
+          align="center"
+        />
       </Motion>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-7 xl:gap-8 w-full items-stretch">
@@ -83,8 +76,11 @@ function onCaseStudyClick(slug: string) {
           :viewport="{ once: true }"
           class="h-full min-w-0"
         >
-          <article
-            class="surface-card group relative glass h-full rounded-2xl sm:rounded-3xl xl:rounded-4xl border-foreground/5 p-5 sm:p-6 xl:p-8 flex flex-col overflow-hidden min-w-0"
+          <AppSurface
+            as="article"
+            variant="glass"
+            rounded="3xl"
+            class="surface-card group relative h-full border-foreground/5 p-5 sm:p-6 xl:p-8 flex flex-col overflow-hidden min-w-0"
           >
             <div
               class="absolute inset-0 bg-linear-to-tr from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[0.85s] pointer-events-none"
@@ -92,10 +88,10 @@ function onCaseStudyClick(slug: string) {
 
             <div class="relative z-10 flex flex-col h-full gap-4 sm:gap-5 xl:gap-6 min-w-0">
               <div class="flex items-start justify-between gap-4">
-                <CoreIconBadge
+                <AppIconBadge
                   :name="study.icon"
-                  size="xl"
-                  class="transition-transform group-hover:scale-105 shrink-0"
+                  size="lg"
+                  class="transition-transform duration-300 group-hover:scale-105"
                 />
                 <p class="type-meta text-muted font-bold text-right shrink-0">
                   {{ $t(`caseStudies.items.${study.slug}.period`) }}
@@ -119,81 +115,35 @@ function onCaseStudyClick(slug: string) {
               </div>
 
               <ul class="flex flex-wrap gap-1.5 sm:gap-2" :aria-label="$t('caseStudies.tagsLabel')">
-                <li
-                  v-for="tag in studyTags(study.slug)"
-                  :key="tag"
-                  class="bg-foreground/5 border border-foreground/10 text-foreground type-label px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-xl text-xs font-mono"
-                >
-                  {{ tag }}
+                <li v-for="tag in studyTags(study.slug)" :key="tag">
+                  <AppBadge
+                    :label="tag"
+                    variant="outline"
+                    size="sm"
+                    class="font-mono text-xs text-foreground bg-foreground/5 border-foreground/10"
+                  />
                 </li>
               </ul>
 
-              <NuxtLink
-                :to="localePath(study.to)"
-                :aria-label="
-                  $t('caseStudies.readMoreAria', {
-                    title: $t(`caseStudies.items.${study.slug}.cardTitle`),
-                  })
-                "
-                class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary group-hover:text-primary-hover transition-colors mt-auto pt-2"
-                @click="onCaseStudyClick(study.slug)"
-              >
-                <span>{{ $t('caseStudies.readMore') }}</span>
-                <Icon name="solar:arrow-right-linear" class="size-4" aria-hidden="true" />
-              </NuxtLink>
+              <div class="mt-auto pt-2">
+                <NuxtLink
+                  :to="localePath(study.to)"
+                  :aria-label="
+                    $t('caseStudies.readMoreAria', {
+                      title: $t(`caseStudies.items.${study.slug}.cardTitle`),
+                    })
+                  "
+                  class="inline-flex items-center gap-2 text-xs font-black uppercase tracking-wider text-primary group-hover:text-primary-hover transition-colors"
+                  @click="onCaseStudyClick(study.slug)"
+                >
+                  <span>{{ $t('caseStudies.readMore') }}</span>
+                  <Icon name="solar:arrow-right-linear" class="size-4" aria-hidden="true" />
+                </NuxtLink>
+              </div>
             </div>
-          </article>
+          </AppSurface>
         </Motion>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.case-study__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 4rem; /* 64px */
-  height: 4rem;
-  border-radius: 1rem;
-  color: var(--color-primary);
-  box-shadow: 0 10px 24px color-mix(in srgb, var(--background) 28%, transparent);
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-@media (min-width: 640px) {
-  .case-study__icon {
-    width: 4.75rem; /* 76px */
-    height: 4.75rem;
-    border-radius: 1.5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .case-study__icon {
-    width: 5.5rem; /* 88px */
-    height: 5.5rem;
-  }
-}
-
-.case-study__glyph {
-  width: 2.5rem; /* 40px */
-  height: 2.5rem;
-}
-
-@media (min-width: 640px) {
-  .case-study__glyph {
-    width: 3rem; /* 48px */
-    height: 3rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .case-study__glyph {
-    width: 3.5rem; /* 56px */
-    height: 3.5rem;
-  }
-}
-</style>

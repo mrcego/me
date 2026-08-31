@@ -189,28 +189,16 @@ const skillGroups = [
         :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true, amount: 0.1 }"
-        class="max-w-4xl mx-auto text-center space-y-5 md:space-y-6 group"
+        class="max-w-4xl mx-auto"
       >
-        <div class="flex items-center justify-center gap-4 md:gap-6">
-          <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
-          <p class="type-eyebrow tracking-[0.4em]">
-            {{ $t('techStack.section') }}
-          </p>
-          <div class="h-0.5 w-12 md:w-16 bg-primary/20" />
-        </div>
-        <h2
-          id="tech-stack-heading"
-          class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl 2xl:text-7xl font-black tracking-tighter leading-[0.95] text-foreground text-balance"
-        >
-          {{ $t('techStack.title') }}
-          <br />
-          <span class="text-gradient">{{ $t('techStack.titleHighlight') }}</span>
-        </h2>
-        <p
-          class="text-muted text-base md:text-lg lg:text-xl font-medium tracking-tight leading-relaxed max-w-2xl mx-auto text-pretty"
-        >
-          {{ $t('techStack.description') }}
-        </p>
+        <AppSectionHeader
+          :eyebrow="$t('techStack.section')"
+          :title="$t('techStack.title')"
+          :highlight="$t('techStack.titleHighlight')"
+          :description="$t('techStack.description')"
+          heading-id="tech-stack-heading"
+          align="center"
+        />
       </Motion>
 
       <div

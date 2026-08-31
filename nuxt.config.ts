@@ -31,6 +31,10 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
     {
+      path: '~/components/primitives',
+      pathPrefix: false,
+    },
+    {
       path: '~/components/ui',
       pathPrefix: false,
     },
@@ -40,10 +44,6 @@ export default defineNuxtConfig({
     },
     {
       path: '~/components/angie',
-      pathPrefix: false,
-    },
-    {
-      path: '~/core/components',
       pathPrefix: false,
     },
   ],

@@ -64,13 +64,19 @@ watch(
   { immediate: true },
 );
 
-async function goHome() {
-  await clearError({ redirect: localePath('/') });
+function handleHome() {
+  const target = localePath('/');
+  if (import.meta.client) {
+    window.location.assign(target);
+  }
 }
 
-async function goContact() {
+function handleContact() {
   const home = localePath('/');
-  await clearError({ redirect: home.endsWith('/') ? `${home}#contact` : `${home}/#contact` });
+  const target = home.endsWith('/') ? `${home}#contact` : `${home}/#contact`;
+  if (import.meta.client) {
+    window.location.assign(target);
+  }
 }
 </script>
 
@@ -86,10 +92,9 @@ async function goContact() {
         class="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 2xl:px-16 pointer-events-none"
       >
         <div class="error-shell__shell pointer-events-auto flex items-center justify-between gap-3">
-          <button
-            type="button"
-            class="flex items-center gap-2 sm:gap-3 min-w-0 appearance-none bg-transparent border-0 p-0 text-left cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-full"
-            @click="goHome"
+          <a
+            :href="localePath('/')"
+            class="flex items-center gap-2 sm:gap-3 min-w-0 appearance-none bg-transparent border-0 p-0 text-left cursor-pointer group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-full text-inherit no-underline"
           >
             <span
               class="relative size-9 sm:size-10 md:size-11 overflow-hidden rounded-full bg-primary/10 shrink-0"
@@ -115,16 +120,17 @@ async function goContact() {
                 {{ $t('nav.brandRole') }}
               </span>
             </span>
-          </button>
+          </a>
 
-          <button
-            type="button"
-            class="shrink-0 inline-flex items-center justify-center gap-2 min-h-11 px-4 sm:px-5 rounded-full bg-primary text-primary-contrast text-xs sm:text-sm font-bold uppercase tracking-wider hover:bg-primary-hover transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
-            @click="goContact"
+          <AppButton
+            variant="primary"
+            size="sm"
+            class="rounded-full! px-4! sm:px-5! min-h-11 font-bold uppercase tracking-wider shrink-0"
+            icon="solar:letter-bold"
+            :href="localePath('/') + '#contact'"
           >
-            <Icon name="solar:letter-bold" class="size-4 sm:size-5 shrink-0" aria-hidden="true" />
-            <span>{{ $t('nav.cta') }}</span>
-          </button>
+            {{ $t('nav.cta') }}
+          </AppButton>
         </div>
       </div>
     </header>
@@ -168,23 +174,24 @@ async function goContact() {
           </div>
 
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2">
-            <button
-              type="button"
-              class="btn-premium bg-primary text-primary-contrast rounded-2xl! px-8! py-4! border-none! inline-flex items-center justify-center gap-3 min-h-12 w-full sm:w-auto"
-              @click="goHome"
+            <AppButton
+              variant="primary"
+              size="lg"
+              class="w-full sm:w-auto"
+              icon="solar:arrow-left-linear"
+              @click="handleHome"
             >
-              <!-- arrow-left is already bundled; home-2-duotone was missing from the icon scan -->
-              <Icon name="solar:arrow-left-linear" class="size-5 shrink-0" aria-hidden="true" />
               {{ isNotFound ? $t('error.notFound.home') : $t('error.generic.home') }}
-            </button>
-            <button
-              type="button"
-              class="btn-premium glass rounded-2xl! px-8! py-4! border border-foreground/10! inline-flex items-center justify-center gap-3 font-black uppercase tracking-widest min-h-12 w-full sm:w-auto"
-              @click="goContact"
+            </AppButton>
+            <AppButton
+              variant="outline"
+              size="lg"
+              class="w-full sm:w-auto"
+              icon="solar:letter-bold"
+              @click="handleContact"
             >
-              <Icon name="solar:letter-bold" class="size-5 shrink-0" aria-hidden="true" />
               {{ $t('nav.cta') }}
-            </button>
+            </AppButton>
           </div>
 
           <p v-if="!isNotFound && error?.message" class="text-xs text-muted/70 font-mono break-all">

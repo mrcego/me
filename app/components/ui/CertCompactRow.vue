@@ -1,12 +1,5 @@
 <script setup lang="ts">
-export interface CertCompactItem {
-  id: string;
-  title: string;
-  issuer: string;
-  date: string;
-  skills: string[];
-  url: string;
-}
+import type { CertCompactItem } from '~/core/types/portfolio';
 
 const props = defineProps<{
   cert: CertCompactItem;
@@ -63,11 +56,13 @@ const issuerIcon = computed(() => {
         </span>
       </div>
 
-      <NuxtLink
-        :to="cert.url"
+      <AppButton
+        :href="cert.url"
         target="_blank"
         rel="noopener noreferrer"
-        class="pointer-events-auto relative z-10 inline-flex min-h-10 min-w-10 sm:min-h-11 sm:min-w-11 shrink-0 items-center justify-center gap-1.5 rounded-xl px-2.5 sm:px-3 glass text-xs font-black uppercase tracking-[0.15em] text-foreground hover:bg-primary hover:text-primary-contrast transition-[background-color,color,transform,box-shadow] duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 group/btn touch-manipulation"
+        variant="ghost"
+        size="sm"
+        class="pointer-events-auto relative z-10 min-h-10 min-w-10 sm:min-h-11 sm:min-w-11 px-2.5! sm:px-3! glass font-black uppercase tracking-[0.15em] text-foreground hover:bg-primary hover:text-primary-contrast group/btn touch-manipulation"
         :aria-label="$t('certifications.viewCredentialNamed', { title: cert.title })"
       >
         <span class="hidden sm:inline" aria-hidden="true">{{
@@ -77,7 +72,7 @@ const issuerIcon = computed(() => {
           name="solar:arrow-right-up-linear"
           class="size-5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
         />
-      </NuxtLink>
+      </AppButton>
 
       <Icon
         name="lucide:chevron-down"
@@ -97,13 +92,13 @@ const issuerIcon = computed(() => {
       <div class="cert-expand-panel__inner">
         <div class="px-4 sm:px-6 pb-4 pt-0">
           <div class="flex flex-wrap gap-2">
-            <span
+            <AppBadge
               v-for="skill in cert.skills"
               :key="skill"
-              class="type-label text-muted bg-foreground/5 px-2.5 py-1 rounded-md border border-foreground/5"
-            >
-              {{ skill }}
-            </span>
+              :label="skill"
+              variant="subtle"
+              size="sm"
+            />
           </div>
         </div>
       </div>

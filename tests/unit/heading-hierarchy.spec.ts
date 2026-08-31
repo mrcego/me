@@ -10,12 +10,17 @@ describe('homepage heading hierarchy', () => {
       resolve(root, 'app/components/sections/AboutSection.vue'),
       'utf8',
     );
-    const titleIndex = aboutSection.indexOf("{{ $t('about.title') }}");
+    const titleIndex =
+      aboutSection.indexOf('title="$t(\'about.title\')"') !== -1
+        ? aboutSection.indexOf('title="$t(\'about.title\')"')
+        : aboutSection.indexOf("{{ $t('about.title') }}");
     const roleCardHeadingIndex = aboutSection.indexOf('class="surface-card__title');
 
     expect(titleIndex).toBeGreaterThan(-1);
     expect(roleCardHeadingIndex).toBeGreaterThan(titleIndex);
-    expect(aboutSection).toMatch(/<h2\s+[\s\S]{0,300}\{\{ \$t\('about\.title'\) \}\}/);
+    expect(aboutSection).toMatch(
+      /<(?:h2|AppSectionHeader)\s+[\s\S]{0,300}(?::title="\$t\('about\.title'\)"|\{\{ \$t\('about\.title'\) \}\})/,
+    );
   });
 
   it('uses semantic h2 section titles and h3 cards across all major homepage sections', () => {
@@ -23,33 +28,41 @@ describe('homepage heading hierarchy', () => {
       resolve(root, 'app/components/sections/CapabilitiesSection.vue'),
       'utf8',
     );
-    expect(capabilities).toMatch(/<h2[\s\S]{0,400}\{\{ \$t\('capabilities\.title'\) \}\}/);
+    expect(capabilities).toMatch(
+      /<(?:h2|AppSectionHeader|CoreSectionHeader)[\s\S]{0,400}(?::title="\$t\('capabilities\.title'\)"|\{\{ \$t\('capabilities\.title'\) \}\})/,
+    );
     expect(capabilities).toMatch(/<h3[\s\S]{0,400}surface-card__title/);
 
     const techStack = readFileSync(
       resolve(root, 'app/components/sections/TechStackSection.vue'),
       'utf8',
     );
-    expect(techStack).toMatch(/<h2[\s\S]{0,400}id="tech-stack-heading"/);
+    expect(techStack).toMatch(
+      /<(?:h2|AppSectionHeader|CoreSectionHeader)[\s\S]{0,400}(?:id="tech-stack-heading"|heading-id="tech-stack-heading")/,
+    );
     expect(techStack).toMatch(/<h3[\s\S]{0,400}surface-card__title/);
 
     const certs = readFileSync(
       resolve(root, 'app/components/sections/CertificationsSection.vue'),
       'utf8',
     );
-    expect(certs).toMatch(/<h2[\s\S]{0,400}\{\{ \$t\('certifications\.title'\) \}\}/);
+    expect(certs).toMatch(
+      /<(?:h2|AppSectionHeader|CoreSectionHeader)[\s\S]{0,400}(?::title="\$t\('certifications\.title'\)"|\{\{ \$t\('certifications\.title'\) \}\})/,
+    );
     expect(certs).toMatch(/<h3[\s\S]{0,100}surface-card__title/);
 
     const testimonials = readFileSync(
       resolve(root, 'app/components/sections/TestimonialsSection.vue'),
       'utf8',
     );
-    expect(testimonials).toMatch(/<h2[\s\S]{0,400}\{\{ \$t\('testimonials\.title'\) \}\}/);
+    expect(testimonials).toMatch(
+      /<(?:h2|AppSectionHeader|CoreSectionHeader)[\s\S]{0,400}(?::title="\$t\('testimonials\.title'\)"|\{\{ \$t\('testimonials\.title'\) \}\})/,
+    );
 
-    const coreHeader = readFileSync(
-      resolve(root, 'app/core/components/CoreSectionHeader.vue'),
+    const appHeader = readFileSync(
+      resolve(root, 'app/components/primitives/AppSectionHeader.vue'),
       'utf8',
     );
-    expect(coreHeader).toMatch(/<h2[\s\S]{0,400}\{\{ title \}\}/);
+    expect(appHeader).toMatch(/<component[\s\S]{0,400}:is="props\.as"/);
   });
 });
