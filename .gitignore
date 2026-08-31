@@ -45,7 +45,13 @@ coverage/
 # Agent and skills tooling caches
 .opencode/
 .agent/
+.agents/
 .gemini/
+.windsurf/
+.gentle-ai/
 .impeccable/live/
 .impeccable/config.local.json
+skills-lock.json
 
+# Local AI runtime state
+.atl/

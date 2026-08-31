@@ -31,11 +31,11 @@
     "contactShort": "Contacto",
     "hireMenu": "Perfiles de contratación",
     "hireSection": "Todos los perfiles",
-    "brandRole": "Ingeniero Fullstack Senior",
+    "brandRole": "Arquitecto de Soluciones Frontend",
     "brandRoles": [
+      "Arquitecto de Soluciones Frontend",
       "Ingeniero Fullstack Senior",
-      "Especialista en Arquitectura Frontend",
-      "Ingeniero Senior Vue/Nuxt",
+      "Especialista Senior Vue/Nuxt",
       "Ingeniero de Software Aumentado por IA"
     ],
     "switchLanguage": "Cambiar idioma",
@@ -59,7 +59,7 @@
     "workPreference": "Remoto",
     "locationLine": "Cartagena de Indias, Colombia · Preferencia remoto",
     "description": "Ayudo a equipos de producto a construir y escalar aplicaciones Vue/Nuxt, arquitecturas frontend y servicios Node.js con código limpio, mantenible y entrega confiable. Respaldado por 13+ años de ingeniería en producción y flujos aumentados por IA.",
-    "cta": "Hablar sobre un proyecto Vue/Nuxt",
+    "cta": "Hablemos de tu proyecto",
     "secondaryCta": "Ver casos de producto",
     "downloadCv": "Descargar CV",
     "downloadCvAria": "Descargar CV — PDF ({file})",
@@ -96,8 +96,8 @@
     "terminalChipAriaMobile": "Abrir terminal de comandos",
     "terminalChipTooltip": "Clic para armar flight path (o presiona /)",
     "terminalChipTooltipMobile": "Toca para abrir terminal de comandos",
-    "h1": "Ingeniero Fullstack Senior y Arquitecto Frontend",
-    "title": "César Gómez | Ingeniero Fullstack Senior y Arquitecto Frontend"
+    "h1": "Arquitecto de Soluciones Frontend e Ingeniero Fullstack Senior",
+    "title": "César Gómez | Arquitecto de Soluciones Frontend e Ingeniero Fullstack"
   },
   "vibeCoding": {
     "modal": {
@@ -248,11 +248,11 @@
     },
     "responses": {
       "helpHeader": "Comandos disponibles:",
-      "about": "César Gómez — Desarrollador Fullstack Senior especializado en Arquitectura Frontend y craft asistido por IA. 13+ años entregando sistemas Vue/Nuxt con ownership de arquitectura y quality gates.",
+      "about": "César Gómez — Arquitecto de Soluciones Frontend e Ingeniero Fullstack Senior especializado en Sistemas de Diseño empresariales, microfrontends y craft asistido por IA. Más de 13 años liderando sistemas Vue 3 / Nuxt 4 con ownership de arquitectura y puertas de calidad estrictas.",
       "status": "Disponible: ahora. Abierto a conversaciones, entrevistas y ofertas tempranas antes de esa fecha.",
       "stack": "Vue 3 · Nuxt 4 · TypeScript · Node/Express · Tailwind · PrimeVue · motion-v · Playwright/Vitest · craft asistido por IA con revisión humana.",
-      "services": "Servicios de Ingeniería: 1) Arquitectura & Escalabilidad Vue/Nuxt 3. 2) Craft Asistido por IA & Quality Gates. 3) Optimización de Core Web Vitals (LCP, CLS, INP). 4) Fullstack Node.js / Nitro APIs.",
-      "experience": "Enfoque reciente: Colegium (plataformas cloud educativas) y LingoQuesto (producto conversacional con IA/NLP). Abre About para el detalle de roles.",
+      "services": "Servicios de Ingeniería: 1) Sistemas de Diseño Empresariales & Web Components. 2) Arquitectura & Escalabilidad Vue 3 / Nuxt 4. 3) Core Web Vitals en Submilisegundos (LCP, CLS, INP). 4) Ingeniería Aumentada por IA & Quality Gates. 5) APIs Fullstack Node.js / Nitro.",
+      "experience": "Experiencia actual y reciente: BITS Americas (Arquitecto de Soluciones Frontend Nivel II, Sistemas de Diseño TO-BE y Web Components empresariales), Colegium (SaaS EdTech con 100k+ estudiantes) y LingoQuesto (plataforma IA/NLP). Abre About para el detalle de roles.",
       "profiles": "Perfiles: desarrollador Vue · Vibe Coding Cleanup · Node.js backend · Angular 16+ · Arquitecto Frontend · ingeniero Fullstack.",
       "certs": "{count} credenciales en la sección Certificaciones — TypeScript, programación con IA, estructuras de datos, observabilidad y más.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · O usa el formulario de contacto del sitio.",
@@ -334,6 +334,20 @@
       "viewDetails": "Ver detalles del rol",
       "highlightsTitle": "Contribuciones clave",
       "close": "Cerrar",
+      "currentBadge": "Rol Actual",
+      "bitsamericas": {
+        "title": "Arquitecto de Soluciones Frontend Nivel II",
+        "company": "BITS Americas S.A.S.",
+        "years": "2026 - Presente",
+        "location": "Colombia · Remoto",
+        "desc": "Liderazgo en arquitectura TO-BE de Sistemas de Diseño empresariales, Web Components y gobernanza multi-framework.",
+        "highlights": [
+          "Diseño de la hoja de ruta arquitectónica empresarial TO-BE para Sistemas de Diseño escalables, gobernanza de componentes y adopción entre equipos.",
+          "Construcción de Web Components agnósticos (Stencil.js, Custom Elements) y wrappers nativos para interoperabilidad sin fricciones (Vue 3, Angular v16+, React).",
+          "Estandarización de design tokens, versionamiento semántico, distribución por NPM/CDN privado y puertas de calidad con pruebas visuales automatizadas.",
+          "Cumplimiento estricto de accesibilidad WCAG 2.1 AA, mínimo coste de runtime y contratos fuertemente tipados en TypeScript."
+        ]
+      },
       "lingoquesto": {
         "title": "Miembro Fundador | Senior Fullstack",
         "company": "LingoQuesto",
@@ -1513,7 +1527,7 @@
     "tagline": "Construyendo productos de alta fidelidad con excelencia frontend",
     "rights": "Todos los derechos reservados.",
     "copyrightYear": "2026",
-    "protocol": "Ancelab.",
+    "protocol": "César Gómez.",
     "status": "Todos los Sistemas Operativos",
     "navLabel": "Enlaces del pie de página",
     "email": "Escribir a César",
@@ -1806,68 +1820,101 @@
   },
   "landingArchitect": {
     "meta": {
-      "title": "Arquitecto Frontend (Vue 3 & Nuxt 4)",
-      "description": "Arquitecto Frontend especializado en Vue 3, Nuxt 4, sistemas de diseño, micro-frontends, Core Web Vitals e ingeniería web escalable."
+      "title": "Arquitecto de Soluciones Frontend (Vue 3, Nuxt 4 & Sistemas Web Empresariales)",
+      "description": "Arquitecto de Soluciones Frontend con más de 13 años de experiencia en sistemas de diseño empresariales, micro-frontends, optimización de Core Web Vitals y plataformas Vue/Nuxt de alto rendimiento."
     },
-    "eyebrow": "Perfil de Contratación · Liderazgo Técnico",
-    "title": "Arquitecto Frontend",
-    "titleHighlight": "& Líder",
-    "lead": "Liderazgo técnico senior en Vue 3, Nuxt 4, sistemas de diseño, micro-frontends y entrega web orientada al alto rendimiento para productos a escala.",
+    "eyebrow": "Liderazgo Técnico · Arquitectura Frontend",
+    "title": "Arquitecto de Soluciones Frontend",
+    "titleHighlight": "& Líder Técnico",
+    "lead": "Liderazgo técnico estratégico en diseño de sistemas empresariales, ecosistemas micro-frontend, rendimiento web SSG/SSR sin sobrecoste de runtime y flujos de ingeniería aumentados por IA.",
     "intent": {
-      "title": "Ingeniería frontend estratégica para aplicaciones web complejas",
+      "title": "Arquitectura de ecosistemas frontend resilientes y de alta velocidad",
       "paragraphs": [
-        "Construir aplicaciones a escala requiere más que componentes UI: exige visión arquitectónica, puertas de calidad estrictas y sistemas mantenibles. Como Arquitecto Frontend, establezco patrones fundacionales, sistemas de diseño y pipelines de CI/CD.",
-        "Disponible ahora para liderazgo técnico y roles por contrato."
+        "La ingeniería frontend moderna a escala es fundamentalmente diseño de sistemas: desacoplar dominios complejos, establecer límites contractuales inquebrantables, garantizar accesibilidad estricta (WCAG AA/AAA) y construir sistemas de diseño que multipliquen la velocidad del equipo.",
+        "Como Arquitecto de Soluciones Frontend con más de 13 años de experiencia en producción, conecto la estrategia de producto de alto nivel con una ejecución técnica rigurosa. Diseño arquitecturas fundacionales, pipelines de tokens de diseño multimarca e implemento puertas de calidad automatizadas que garantizan rendimiento en submilisegundos, cero regresiones y mantenibilidad a largo plazo.",
+        "Ya sea modularizando monolitos a gran escala, estableciendo gobernanza de UI entre múltiples squads o guiando a equipos en adopción disciplinada de desarrollo asistido por IA, aseguro que tu arquitectura web soporte de manera confiable la demanda del mundo real."
       ]
     },
     "services": {
-      "title": "Contrata a un Arquitecto Frontend para",
+      "title": "Capacidades de Arquitectura y Liderazgo Frontend",
       "items": [
         {
-          "title": "Sistemas de Diseño & Gobernanza UI",
-          "body": "Sistemas de componentes multimarca con variantes de Tailwind, cumplimiento de accesibilidad y consistencia de tokens de diseño."
+          "title": "Sistemas de Diseño Empresariales & Gobernanza de Tokens",
+          "body": "Arquitectura de librerías de componentes headless y multimarca con Tailwind CSS v4, primitivas accesibles (Reka UI/PrimeVue) y pipelines de tokens que garantizan 100% de fidelidad visual entre equipos de producto."
         },
         {
-          "title": "Micro-Frontends & Límites de Dominio",
-          "body": "Aplicaciones web desacopladas utilizando Web Components, módulos de Nuxt y límites limpios de dominio."
+          "title": "Micro-Frontends & Modularización por Dominios",
+          "body": "Descomposición de aplicaciones web monolíticas en micro-aplicaciones tipadas y desplegables de forma independiente usando Module Federation, Web Components y workspaces de pnpm."
         },
         {
-          "title": "Rendimiento & Core Web Vitals",
-          "body": "LCP por debajo del segundo, optimización de hidratación, minimización de payload y seguridad CSP Grado A+."
+          "title": "Ingeniería de Rendimiento & Core Web Vitals",
+          "body": "Entrega de LCP por debajo del segundo, INP inferior a 50ms y 0 CLS en aplicaciones estáticas y dinámicas mediante inlining de CSS crítico, prefetching inteligente, hidratación mínima y presupuestos en LHCI."
         },
         {
-          "title": "Mentoría de Equipo & Revisión de Código",
-          "body": "Establecimiento de estándares de ingeniería, puertas de calidad asistidas por IA y mentoría a ingenieros del equipo."
+          "title": "Arquitectura Limpia & Hexagonal para Frontend",
+          "body": "Estructuración de bases de código con límites claros inspirados en Clean Architecture, aislando la lógica de negocio del dominio de las capas visuales de Vue/Nuxt y asegurando pruebas de contrato deterministas con Vitest."
+        },
+        {
+          "title": "Puertas de Calidad Automatizadas & Pipelines CI/CD",
+          "body": "Implementación de pipelines de entrega con Husky, suites E2E en Playwright, regresión visual automatizada, encabezados de seguridad CSP Grado A+ y generación de sitios estáticos (SSG) sin tiempo de inactividad."
+        },
+        {
+          "title": "Mentoría Técnica & Adopción de Flujos con IA",
+          "body": "Potenciación de squads de desarrollo mediante revisiones de RFC arquitectónicos, pair programming, estándares de code review y adopción de ingeniería aumentada por IA bajo estricta supervisión humana."
         }
       ]
     },
-    "expertiseTitle": "Pilares de arquitectura",
+    "expertiseTitle": "Pilares Arquitectónicos Fundacionales",
     "expertise": [
-      "SSG sin runtime y SSR híbrido en Vue 3 & Nuxt 4",
-      "Sistemas de diseño y gobernanza de librerías UI",
-      "Federación de módulos micro-frontend & web components",
-      "RUM para Core Web Vitals y pipelines automatizados de CI/CD"
+      "Arquitectura empresarial en Nuxt 4 y Vue 3 (SSR híbrido, SSG sin runtime, rutas de servidor Nitro en el edge)",
+      "Sistemas de diseño headless, tokens con Tailwind CSS v4 y cumplimiento de accesibilidad WCAG AA/AAA",
+      "Federación de módulos micro-frontend, Web Components y gestión de monorrepos con pnpm/Turborepo",
+      "Core Web Vitals en submilisegundos (LCP < 1.0s, INP < 50ms, CLS = 0) y telemetría de monitoreo real (RUM)",
+      "Arquitectura de estado, desacoplamiento de capas de dominio y pruebas unitarias/integración con Vitest",
+      "Seguridad estricta con Content Security Policy (CSP Grado A+), integridad de subrecursos y blindaje técnico",
+      "Flujos de ingeniería aumentados por IA con validación automatizada y estándares de calidad convencionales"
     ],
-    "experienceTitle": "Prueba de ingeniería a escala",
-    "experienceBody": "Lideré la arquitectura micro-frontend en Vue 3 en Colegium sirviendo a más de 100k estudiantes activos, establecí automatización CI/CD en TISSINI reduciendo tiempos de despliegue en un 60% y creé la plataforma de IA/NLP LingoQuesto.",
-    "proofTitle": "Hitos arquitectónicos",
-    "proofLink": "Caso de estudio Colegium",
+    "experienceTitle": "Historial Comprobado en Producción",
+    "experienceBody": "Lideré la arquitectura micro-frontend en Vue 3 en Colegium sirviendo a más de 100k estudiantes activos diarios en Latinoamérica, reduje los tiempos de compilación y despliegue en un 60% en TISSINI mediante monorrepos y CI/CD automatizado, diseñé la arquitectura de la plataforma de IA/NLP LingoQuesto y lidero la arquitectura frontend escalable en BITS Americas.",
+    "proofTitle": "Hitos Arquitectónicos y Evidencia",
+    "proofLink": "Explorar caso de estudio Colegium",
     "proof": [
-      "Arquitectura micro-frontend multitenant",
-      "60% de mejora en velocidad de despliegue",
-      "Seguridad CSP Grado A+ y blindaje técnico",
-      "Disponible para roles senior por contrato desde ahora"
+      "Más de 100k usuarios activos diarios sobre arquitectura micro-frontend multitenant",
+      "60% de reducción en tiempos de ciclo de despliegue mediante puertas de calidad CI/CD",
+      "100/100 en rendimiento Lighthouse y Core Web Vitals en submilisegundos en producción",
+      "Calificación de seguridad CSP Grado A+ con cero vulnerabilidades en runtime",
+      "Más de 180 especificaciones automatizadas de pruebas unitarias, integración y E2E con 100% de éxito"
     ],
     "portfolioCta": "Ver portafolio completo",
     "contactCta": "Discutir Arquitectura Frontend",
-    "faqTitle": "Preguntas Frecuentes — Arquitecto Frontend",
+    "faqTitle": "Preguntas Frecuentes — Arquitecto de Soluciones Frontend",
     "faq": [
       {
-        "question": "¿Cuál es la diferencia entre un Desarrollador Frontend Senior y un Arquitecto Frontend?",
-        "answer": "Un Desarrollador Senior construye funcionalidades; un Arquitecto diseña los sistemas fundamentales, tokens de diseño, límites de micro-frontends, estrategia de rendimiento y guías de ingeniería para equipos completos."
+        "question": "¿Cuál es la diferencia fundamental entre un Desarrollador Frontend Senior y un Arquitecto Frontend?",
+        "answer": "Un Desarrollador Frontend Senior destaca implementando funcionalidades y componentes complejos con alto nivel de craft. Un Arquitecto de Soluciones Frontend diseña los cimientos sistémicos para toda la organización: define límites modulares, establece pipelines de tokens de diseño, vigila presupuestos de rendimiento, crea estrategias de testing y fija los estándares técnicos que permiten a múltiples squads trabajar en paralelo sin colisionar."
+      },
+      {
+        "question": "¿Cuándo necesita una organización de producto un Arquitecto Frontend dedicado?",
+        "answer": "Una organización suele requerir un Arquitecto Frontend cuando escala a más de 2 o 3 equipos de ingeniería, cuando necesita desacoplar un monolito frontend en micro-frontends o librerías compartidas, cuando adopta un Sistema de Diseño para toda la empresa, cuando enfrenta problemas de regresión en Core Web Vitals o cuando busca integrar flujos de IA con estricto control de calidad."
+      },
+      {
+        "question": "¿Cómo garantizas que el rendimiento web y los Core Web Vitals se mantengan óptimos en producción?",
+        "answer": "El rendimiento no puede ser un parche posterior; se diseña en la arquitectura. Implemento estrategias de CSS sin runtime, inlining de estilos críticos, optimización de tipografías con font-display, división inteligente de chunks, presupuestos de carga y validaciones automatizadas de Lighthouse CI en cada pull request. En producción, la telemetría RUM monitorea el percentil 75 para detectar regresiones antes de que impacten a los usuarios."
+      },
+      {
+        "question": "¿Cuál es tu enfoque para construir y escalar Sistemas de Diseño?",
+        "answer": "Construyo Sistemas de Diseño partiendo de una única fuente de verdad en tokens de diseño (colores, tipografía, espaciado, elevaciones) desacoplados de frameworks específicos. Sobre los tokens, creamos primitivas headless y 100% accesibles (usando herramientas como Reka UI o PrimeVue), estilizadas con variantes modernas de Tailwind CSS. Esto garantiza consistencia de marca, capacidad multitema y accesibilidad sólida."
+      },
+      {
+        "question": "¿Cómo integras herramientas de IA en los flujos de ingeniería sin comprometer la calidad?",
+        "answer": "Tratamos la IA como un multiplicador de ejecución gobernado por estricto criterio arquitectónico humano. Todo código generado por IA debe adherirse a los patrones de diseño establecidos, someterse a revisión por pares y aprobar el 100% de las suites automatizadas de lint, tipado, cobertura y pruebas E2E con Playwright. El arquitecto humano define los contratos; la IA acelera la entrega."
+      },
+      {
+        "question": "¿En qué stacks tecnológicos y ecosistemas te especializas?",
+        "answer": "Mi stack principal se centra en Vue 3 (Composition API con script setup, TypeScript), Nuxt 4, rutas de servidor Nitro, Tailwind CSS v4 y herramientas modernas de Node.js/Vite. También cuento con sólida experiencia en producción con Angular (v16+), microservicios en TypeScript, Web Components y arquitecturas cloud en el edge."
       }
     ],
-    "answerBlock": "César Gómez es un arquitecto frontend senior con más de 13 años liderando entregas técnicas en Vue 3, Nuxt 4, sistemas de diseño, micro-frontends y plataformas web críticas para rendimiento. Brinda ownership arquitectónico, puertas de calidad y bases escalables para equipos de producto. Ubicado en Cartagena, Colombia, disponible de forma remota."
+    "answerBlock": "César Gómez es un Arquitecto de Soluciones Frontend Senior y Líder Técnico con más de 13 años de experiencia diseñando plataformas web escalables en Vue 3, Nuxt 4, sistemas de diseño, micro-frontends y entornos críticos para rendimiento. Establece bases arquitectónicas robustas, puertas de calidad y flujos de ingeniería aumentados por IA para empresas tecnológicas de alto crecimiento. Ubicado en Cartagena, Colombia, disponible para liderazgo remoto global."
   },
   "landingFullstack": {
     "meta": {
@@ -1939,7 +1986,7 @@
       "aria": "Abrir asistente Angie de IA",
       "tooltip": "Preguntar a Angie IA",
       "tooltipTitle": "Angie · Concierge IA",
-      "tooltipText": "Pregúntame sobre la experiencia de César, stack técnico, arquitectura y disponibilidad.",
+      "tooltipText": "Pregúntame sobre el rol de César en BITS Americas, sus más de 13 años de experiencia, arquitectura y stack.",
       "tooltipPrompt": "Clic para chatear"
     },
     "header": {
@@ -1957,7 +2004,7 @@
       "user": "Tú",
       "angie": "Angie IA"
     },
-    "welcomeMessage": "¡Hola! Soy Angie, la asistente de IA del portafolio de César Gómez. Puedo responder preguntas sobre sus más de 13 años de experiencia en producción, arquitectura en Vue 3 / Nuxt 4, casos de estudio empresariales y disponibilidad para contratación. ¿En qué puedo ayudarte hoy?",
+    "welcomeMessage": "¡Hola! Soy Angie, la asistente de IA del portafolio de César Gómez. Puedo responder preguntas sobre su rol actual como Arquitecto de Soluciones Frontend Nivel II en BITS Americas, sus más de 13 años de experiencia en producción, arquitectura en Vue 3 / Nuxt 4, Sistemas de Diseño empresariales y disponibilidad. ¿En qué puedo ayudarte hoy?",
     "thinking": "Sintetizando respuesta...",
     "errorGeneric": "Ocurrió un error al procesar tu consulta. Inténtalo de nuevo o contáctale directamente.",
     "inputPlaceholder": "Hazle una pregunta a Angie sobre el trabajo de César…",

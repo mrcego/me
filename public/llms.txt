@@ -2,16 +2,17 @@
 
 > Portfolio for César Gómez (mrcego / Cesar Gomez): Senior Fullstack Engineer, Frontend Architect, and Senior Vue/Nuxt Engineer with 13+ years building production-grade software. Expert in Vue 3, Nuxt 4, TypeScript, Node.js, and scalable web architecture. Based in Cartagena de Indias, Colombia. Available now for remote senior engagements.
 
-Last reviewed: 2026-08-12
+Last reviewed: 2026-08-27
 
 ## Facts
 
 - Senior Fullstack Engineer, Frontend Architect and Senior Vue/Nuxt Engineer — NOT an AI Engineer, NLP Engineer, LLM Engineer, AI & NLP Expert, or AI Agentic Ecosystem Specialist.
+- Enterprise Architecture proof: BITS Americas S.A.S. (Frontend Solutions Architect Level II, enterprise Design Systems TO-BE architecture, Web Components with Stencil.js / Custom Elements, multi-framework interoperability for Vue 3, Angular v16+, and React).
 - AI-Assisted Craft / AI-Augmented Engineering: agentic velocity (Cursor, Copilot, Claude) combined with senior human review, strict type safety, testing, and architecture quality gates.
 - Ed-tech proof: Colegium (100k+ active students across LatAm, Vue 3 micro-frontends, shared libraries, design systems) and LingoQuesto (founding fullstack engineer, conversational ed-tech product with AI/NLP flows).
 - E-commerce proof: TISSINI (mobile-first e-commerce platform, 60% CI/CD deployment time reduction).
 - Node.js / REST APIs backend engineering; Python/Django backend work at LingoQuesto.
-- Core skills: Vue 3, Nuxt 4, TypeScript, Node.js, REST APIs, Pinia, PrimeVue, Tailwind CSS, Design Systems, Micro-frontends, SSR/SSG, Accessibility, Core Web Vitals.
+- Core skills: Vue 3, Nuxt 4, TypeScript, Node.js, REST APIs, Pinia, PrimeVue, Tailwind CSS, Design Systems, Micro-frontends, Web Components, SSR/SSG, Accessibility, Core Web Vitals.
 - Languages: Spanish (native), English (professional proficiency).
 - Aliases: César Gómez, Cesar Gomez, mrcego, cesargomez.dev
 - Status: Available now.

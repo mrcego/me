@@ -2,7 +2,7 @@
 
 > Extended AI-readable documentation for César Gómez (mrcego / Cesar Gomez): Senior Fullstack Engineer, Frontend Architect and Senior Vue/Nuxt Engineer based in Cartagena de Indias, Colombia. Available now for remote senior engagements.
 
-Last updated: 2026-08-12
+Last updated: 2026-08-27
 
 ---
 
@@ -19,6 +19,14 @@ César Gómez is a senior software engineer with 13+ years of experience special
 ---
 
 ## 2. Proven Track Record & Production Case Studies
+
+### BITS Americas S.A.S. (2026 – Present)
+- **Role**: Frontend Solutions Architect Level II
+- **Domain**: Enterprise Solutions & Multi-Framework Architecture
+- **Key Achievements**:
+  - Architecting the TO-BE enterprise roadmap for scalable Design Systems, component governance, and cross-team adoption pipelines.
+  - Engineering framework-agnostic Web Components (Stencil.js, Custom Elements) and native wrappers for seamless multi-framework interoperability (Vue 3, Angular v16+, React).
+  - Standardizing design tokens, semantic versioning, private NPM distribution, and automated visual regression quality gates.
 
 ### Colegium (2021 – 2025)
 - **Role**: Senior Frontend Developer

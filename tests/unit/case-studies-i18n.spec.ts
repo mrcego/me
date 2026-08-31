@@ -115,4 +115,27 @@ describe('caseStudies i18n contract', () => {
   it('satisfies the component key contract in es.json', () => {
     assertCaseStudiesContract(es, 'es');
   });
+
+  it('guarantees about.roles.bitsamericas exists with complete fields in en and es', () => {
+    for (const [locale, messages] of [
+      ['en', en],
+      ['es', es],
+    ] as const) {
+      expect(
+        getNestedValue(messages, 'about.roles.bitsamericas.title'),
+        `${locale}: title`,
+      ).toBeTruthy();
+      expect(
+        getNestedValue(messages, 'about.roles.bitsamericas.company'),
+        `${locale}: company`,
+      ).toBe('BITS Americas S.A.S.');
+      expect(
+        getNestedValue(messages, 'about.roles.bitsamericas.desc'),
+        `${locale}: desc`,
+      ).toBeTruthy();
+      const highlights = getNestedValue(messages, 'about.roles.bitsamericas.highlights');
+      expect(Array.isArray(highlights), `${locale}: highlights array`).toBe(true);
+      expect((highlights as unknown[]).length).toBeGreaterThan(0);
+    }
+  });
 });

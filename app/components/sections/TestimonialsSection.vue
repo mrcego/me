@@ -52,15 +52,15 @@ watch(testimonials, () => {
 <template>
   <section
     id="testimonials"
-    class="py-24 md:py-48 px-6 md:px-12 bg-secondary/5 relative overflow-hidden"
+    class="py-16 sm:py-20 md:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-secondary/5 relative overflow-hidden"
   >
-    <div class="container mx-auto space-y-10 md:space-y-16">
+    <div class="container mx-auto space-y-10 md:space-y-14">
       <Motion
         :initial="motionInitial({ opacity: 0, y: 5 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.4 })"
         :viewport="{ once: true, amount: 0.1 }"
-        class="max-w-4xl mx-auto text-center space-y-8"
+        class="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6"
       >
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
@@ -70,14 +70,14 @@ watch(testimonials, () => {
           <div class="h-px w-10 bg-primary/40" />
         </div>
         <h2
-          class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-foreground text-balance"
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground text-balance"
         >
           <span class="block">{{ $t('testimonials.title') }}</span>
           <span class="text-gradient inline-block">{{ $t('testimonials.titleHighlight') }}</span>
         </h2>
       </Motion>
 
-      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-12 items-stretch">
+      <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 items-stretch">
         <Motion
           v-for="(t, i) in testimonials"
           :key="t.name"
@@ -87,7 +87,7 @@ watch(testimonials, () => {
           :while-in-view="motionInView({ opacity: 1, scale: 1, y: 0 })"
           :transition="motionTransition({ duration: 0.4, delay: i * 0.05 })"
           :viewport="{ once: true, amount: 0.1 }"
-          class="surface-card surface-evidence group relative p-6 sm:p-8 md:p-14 rounded-3xl sm:rounded-[3.5rem] overflow-hidden h-full min-w-0"
+          class="surface-card surface-evidence group relative p-5 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl overflow-hidden h-full min-w-0"
         >
           <div
             class="surface-card__glow absolute inset-0 bg-radial from-primary/5 via-transparent to-transparent pointer-events-none opacity-60 group-hover:opacity-100 transition-opacity duration-500"
@@ -97,7 +97,7 @@ watch(testimonials, () => {
             <div class="surface-card__quote-icon text-muted">
               <Icon
                 name="solar:chat-square-code-bold-duotone"
-                class="w-[58px] h-[58px] md:w-[66px] md:h-[66px] opacity-50"
+                class="size-14.5 md:size-16.5 opacity-50"
                 aria-hidden="true"
               />
             </div>

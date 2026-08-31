@@ -78,7 +78,11 @@ const proofLink = computed(() => {
   if (!te(labelKey)) return null;
 
   const routes: Record<string, string> = {
+    landingArchitect: '/case-studies/colegium',
     landingVue: '/case-studies/colegium',
+    landingFullstack: '/case-studies/tissini',
+    landingNode: '/case-studies/tissini',
+    landingAngular: '/case-studies/colegium',
     landingAi: '/ai-assisted-craft',
     landingCraft: '/case-studies/lingoquesto',
     landingLocal: '/case-studies/colegium',

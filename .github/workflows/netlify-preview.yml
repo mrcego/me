@@ -11,6 +11,9 @@ on:
       - '.github/workflows/deploy.yml'
       - '**.md'
 
+permissions:
+  contents: read
+
 concurrency:
   group: netlify-preview-${{ github.event.pull_request.number }}
   cancel-in-progress: true

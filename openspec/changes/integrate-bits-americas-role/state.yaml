@@ -1,0 +1,23 @@
+change: integrate-bits-americas-role
+phase: verify
+status: ready_for_archive
+created_at: 2026-08-26T15:12:35-05:00
+updated_at: 2026-08-26T15:26:30-05:00
+
+dag:
+  explore: skipped
+  proposal: done
+  spec: done
+  design: done
+  tasks: done
+  apply: done
+  verify: done
+  archive: pending
+
+artifacts:
+  proposal: openspec/changes/integrate-bits-americas-role/proposal.md
+  specs:
+    portfolio: openspec/changes/integrate-bits-americas-role/specs/portfolio/spec.md
+  design: openspec/changes/integrate-bits-americas-role/design.md
+  tasks: openspec/changes/integrate-bits-americas-role/tasks.md
+  verify: openspec/changes/integrate-bits-americas-role/verify-report.md

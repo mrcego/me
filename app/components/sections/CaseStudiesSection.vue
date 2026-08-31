@@ -39,22 +39,22 @@ function onCaseStudyClick(slug: string) {
 <template>
   <section
     id="case-studies"
-    class="py-24 sm:py-28 md:py-32 xl:py-40 px-4 sm:px-6 md:px-8 lg:px-10 bg-background relative overflow-hidden"
+    class="py-16 sm:py-20 md:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 bg-background relative overflow-hidden"
     aria-labelledby="case-studies-heading"
   >
     <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden" aria-hidden="true">
       <div
-        class="absolute -top-40 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] bg-radial from-primary/6 via-transparent to-transparent blur-3xl opacity-50"
+        class="absolute -top-40 left-1/2 -translate-x-1/2 w-full max-w-7xl h-125 bg-radial from-primary/6 via-transparent to-transparent blur-3xl opacity-50"
       />
     </div>
 
-    <div class="container mx-auto space-y-16 md:space-y-24 relative z-10">
+    <div class="container mx-auto space-y-12 md:space-y-16 xl:space-y-20 relative z-10">
       <Motion
         :initial="motionInitial({ opacity: 0, y: 20 }, { opacity: 1, y: 0 })"
         :while-in-view="motionInView({ opacity: 1, y: 0 })"
         :transition="motionTransition({ duration: 0.42 })"
         :viewport="{ once: true }"
-        class="max-w-3xl mx-auto text-center space-y-6"
+        class="max-w-3xl mx-auto text-center space-y-4 sm:space-y-5"
       >
         <div class="flex items-center justify-center gap-4">
           <div class="h-px w-10 bg-primary/40" />
@@ -63,7 +63,7 @@ function onCaseStudyClick(slug: string) {
         </div>
         <h2
           id="case-studies-heading"
-          class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] text-foreground text-balance"
+          class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground text-balance"
         >
           {{ $t('caseStudies.title_top') }}
           <span class="text-gradient">{{ $t('caseStudies.title_bottom') }}</span>
@@ -73,9 +73,7 @@ function onCaseStudyClick(slug: string) {
         </p>
       </Motion>
 
-      <div
-        class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-6 xl:gap-8 w-full items-stretch"
-      >
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-7 xl:gap-8 w-full items-stretch">
         <Motion
           v-for="(study, index) in studies"
           :key="study.slug"
@@ -86,13 +84,13 @@ function onCaseStudyClick(slug: string) {
           class="h-full min-w-0"
         >
           <article
-            class="surface-card group relative glass h-full rounded-3xl md:rounded-[2.5rem] border-foreground/5 p-6 sm:p-7 xl:p-9 flex flex-col overflow-hidden min-w-0"
+            class="surface-card group relative glass h-full rounded-2xl sm:rounded-3xl xl:rounded-4xl border-foreground/5 p-5 sm:p-6 xl:p-8 flex flex-col overflow-hidden min-w-0"
           >
             <div
               class="absolute inset-0 bg-linear-to-tr from-transparent via-foreground/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-[0.85s] pointer-events-none"
             />
 
-            <div class="relative z-10 flex flex-col h-full gap-5 sm:gap-6 xl:gap-8 min-w-0">
+            <div class="relative z-10 flex flex-col h-full gap-4 sm:gap-5 xl:gap-6 min-w-0">
               <div class="flex items-start justify-between gap-4">
                 <CoreIconBadge
                   :name="study.icon"

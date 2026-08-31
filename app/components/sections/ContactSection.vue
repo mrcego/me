@@ -72,7 +72,7 @@ const contactMethods = [
 <template>
   <section
     id="contact"
-    class="contact-section py-24 md:py-64 px-6 md:px-12 relative overflow-hidden bg-background"
+    class="contact-section py-16 sm:py-20 md:py-24 xl:py-28 px-4 sm:px-6 md:px-8 lg:px-10 relative overflow-hidden bg-background"
   >
     <div
       class="pointer-events-none absolute -bottom-24 left-1/2 h-112 w-md -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]"
@@ -88,15 +88,15 @@ const contactMethods = [
     />
 
     <div class="container mx-auto z-10 relative">
-      <div class="grid xl:grid-cols-2 gap-12 lg:gap-16 xl:gap-24 items-center">
+      <div class="grid xl:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 items-center">
         <Motion
           :initial="motionInitial({ opacity: 0, x: -50 }, { opacity: 1, x: 0 })"
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="motionTransition({ duration: 0.42 })"
           :viewport="{ once: true }"
-          class="space-y-8 sm:space-y-10 md:space-y-14"
+          class="space-y-6 sm:space-y-8 md:space-y-10"
         >
-          <div class="space-y-6 sm:space-y-8 md:space-y-12 group text-center xl:text-left">
+          <div class="space-y-4 sm:space-y-6 md:space-y-8 group text-center xl:text-left">
             <div class="flex items-center justify-center xl:justify-start gap-4 md:gap-6">
               <div class="h-px w-12 md:w-16 bg-primary" aria-hidden="true" />
               <p class="type-eyebrow tracking-[0.4em]">
@@ -105,7 +105,7 @@ const contactMethods = [
             </div>
             <h2
               id="contact-heading"
-              class="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter leading-none text-foreground whitespace-pre-line text-balance"
+              class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl font-black tracking-tighter leading-tight text-foreground whitespace-pre-line text-balance"
             >
               {{ $t('contact.title') }}<br />
               <span class="text-gradient">{{ $t('contact.titleHighlight') }}</span
@@ -113,13 +113,13 @@ const contactMethods = [
               {{ $t('contact.titleEnd') }}
             </h2>
             <p
-              class="text-muted text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto xl:mx-0 text-pretty"
+              class="text-muted text-base sm:text-lg md:text-xl leading-relaxed font-medium tracking-tight max-w-xl mx-auto xl:mx-0 text-pretty"
             >
               {{ $t('contact.description') }}
             </p>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-4 md:gap-5">
+          <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-1 gap-3.5 md:gap-4">
             <a
               v-for="c in contactMethods"
               :key="c.key"
@@ -160,7 +160,7 @@ const contactMethods = [
           :while-in-view="motionInView({ opacity: 1, x: 0 })"
           :transition="motionTransition({ duration: 0.42, delay: 0.08 })"
           :viewport="{ once: true }"
-          class="surface-card group glass p-6 sm:p-8 md:p-10 lg:p-12 rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] border-foreground/5 relative overflow-hidden shadow-4xl mt-12 xl:mt-0"
+          class="surface-card group glass p-6 sm:p-8 md:p-10 lg:p-12 rounded-2xl sm:rounded-3xl xl:rounded-4xl border-foreground/5 relative overflow-hidden shadow-4xl mt-12 xl:mt-0"
         >
           <div class="surface-card__glow absolute inset-0 bg-primary/5 pointer-events-none" />
 
@@ -371,7 +371,7 @@ const contactMethods = [
               type="submit"
               :disabled="isSubmitting"
               :aria-busy="isSubmitting"
-              class="w-full rounded-xl! sm:rounded-[1.8rem]! md:rounded-[2.5rem]! p-5! sm:p-6! md:p-7! bg-primary! text-primary-contrast! shadow-3xl shadow-primary/30 group/btn overflow-hidden relative active:scale-95 active:shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-contrast/40 focus-visible:ring-offset-2 focus-visible:ring-offset-primary transition-[transform,box-shadow,opacity] duration-300"
+              class="w-full rounded-xl! sm:rounded-2xl! p-4! sm:p-5! md:p-6! bg-primary! text-primary-contrast! shadow-3xl shadow-primary/30 group/btn overflow-hidden relative active:scale-95 active:shadow-primary/10 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-contrast/40 focus-visible:ring-offset-2 focus-visible:ring-offset-primary transition-[transform,box-shadow,opacity] duration-300"
             >
               <span
                 class="contact-submit__sweep absolute inset-x-0 top-0 h-px bg-primary-contrast/40 pointer-events-none"
@@ -393,7 +393,7 @@ const contactMethods = [
                 <Icon
                   v-else
                   name="solar:sort-vertical-linear"
-                  class="w-[26px] h-[26px] sm:w-[30px] sm:h-[30px] md:w-[34px] md:h-[34px] animate-spin text-primary-contrast"
+                  class="size-7 sm:size-8 md:size-9 animate-spin text-primary-contrast"
                   aria-hidden="true"
                 />
                 <span v-if="isSubmitting && dispatchStage === 'encrypting'" class="font-mono">

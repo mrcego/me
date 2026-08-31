@@ -17,6 +17,13 @@ describe('angieRetriever (Search & Intent Synthesis)', () => {
     );
     expect(resEs.entry).toBeTruthy();
     expect(resEs.entry?.id).toBe('tech_stack_core');
+
+    const resDs = searchKnowledge(
+      '¿Cuál es su experiencia diseñando sistemas de diseño y arquitectura TO-BE?',
+      'es',
+    );
+    expect(resDs.entry).toBeTruthy();
+    expect(resDs.entry?.id).toBe('design_systems_architecture');
   });
 
   it('matches case studies (Colegium, LingoQuesto, TISSINI) with exact deliverables', () => {
@@ -51,8 +58,26 @@ describe('angieRetriever (Search & Intent Synthesis)', () => {
   it('accurately matches extended domains: companies, location, AI methodology, rates, and other frameworks', () => {
     const compRes = searchKnowledge('¿En qué empresas ha trabajado César?', 'es');
     expect(compRes.entry?.id).toBe('companies_experience');
+    expect(compRes.entry?.content.es).toContain('BITS Americas');
     expect(compRes.entry?.content.es).toContain('Colegium');
     expect(compRes.entry?.content.es).toContain('LingoQuesto');
+
+    const bitsResEn = searchKnowledge('Tell me about his role at BITS Americas', 'en');
+    expect(bitsResEn.entry?.id).toBe('company_bits_americas');
+    expect(bitsResEn.entry?.content.en).toContain('Frontend Solutions Architect Level II');
+
+    const currentRoleEn = searchKnowledge('What is his current role?', 'en');
+    expect(currentRoleEn.entry?.id).toBe('company_bits_americas');
+
+    const bitsResEs = searchKnowledge(
+      '¿Cuál es su experiencia en BITS Americas como arquitecto frontend?',
+      'es',
+    );
+    expect(bitsResEs.entry?.id).toBe('company_bits_americas');
+    expect(bitsResEs.entry?.content.es).toContain('Arquitecto de Soluciones Frontend Nivel II');
+
+    const currentRoleEs = searchKnowledge('¿Cuál es su cargo actual?', 'es');
+    expect(currentRoleEs.entry?.id).toBe('company_bits_americas');
 
     const locRes = searchKnowledge('Where is César located and does he work remotely?', 'en');
     expect(locRes.entry?.id).toBe('location_remote');

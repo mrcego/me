@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { hireProfileRoutes } from '~/config/routes.manifest';
+import { useBrandRoleRotator } from '~/composables/ui/useBrandRoleRotator';
 
 const localePath = useLocalePath();
+const { brandRoles } = useBrandRoleRotator();
+const currentYear = new Date().getFullYear();
 
 type FooterLink =
   { name: string; href: string; to?: never } | { name: string; to: string; href?: never };
@@ -77,7 +80,7 @@ const socials = [
 
 <template>
   <footer
-    class="py-20 md:py-32 px-6 md:px-12 bg-background relative overflow-hidden border-t border-foreground/5"
+    class="py-14 sm:py-16 md:py-20 xl:py-24 px-4 sm:px-6 md:px-8 lg:px-10 bg-background relative overflow-hidden border-t border-foreground/5"
   >
     <!-- Cinematic Background -->
     <div class="absolute inset-0 bg-primary/5 opacity-20 pointer-events-none footer-ambient-bg" />
@@ -98,23 +101,55 @@ const socials = [
         <div
           class="h-card vcard group w-full xl:w-auto xl:max-w-sm flex flex-col md:flex-row md:items-end md:justify-between xl:flex-col xl:items-start gap-5 md:gap-8 xl:gap-5"
         >
-          <div class="flex items-center gap-4 shrink-0">
-            <div
-              class="size-12 md:size-14 glass rounded-2xl flex items-center justify-center text-primary group-hover:-rotate-12 transition-transform duration-500 shadow-lg shadow-primary/20 border-foreground/10"
+          <div class="flex items-center gap-3.5 sm:gap-4 shrink-0">
+            <span
+              class="relative size-11 sm:size-12 md:size-14 overflow-hidden rounded-full transition-transform duration-500 group-hover:scale-105 shrink-0"
             >
-              <Icon name="solar:code-square-bold-duotone" class="size-7 md:size-8" />
-            </div>
-            <div class="flex flex-col min-w-0">
+              <span
+                class="absolute inset-0 bg-primary/10 group-hover:bg-primary/20 transition-colors duration-500"
+                aria-hidden="true"
+              />
+              <svg
+                data-theme-logo
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 64 64"
+                fill="none"
+                aria-hidden="true"
+                class="w-full h-full scale-110 group-hover:scale-100 text-primary transition-[color,transform] duration-500 motion-reduce:transition-none"
+              >
+                <path
+                  d="M 27.43 23.13 A 11.25 11.25 0 1 0 27.43 40.87"
+                  stroke="currentColor"
+                  stroke-width="5.75"
+                  stroke-linecap="butt"
+                />
+                <path
+                  d="M 51.03 23.64 A 11.25 11.25 0 1 0 49.46 41.54"
+                  stroke="currentColor"
+                  stroke-width="5.75"
+                  stroke-linecap="butt"
+                />
+                <path
+                  d="M 43.00 32 H 55.10 V 38.40"
+                  stroke="currentColor"
+                  stroke-width="5.75"
+                  stroke-linecap="butt"
+                  stroke-linejoin="miter"
+                />
+              </svg>
+            </span>
+            <div class="flex flex-col justify-center min-w-0">
               <p
-                class="p-name fn text-xl md:text-2xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors duration-300 uppercase"
+                class="p-name fn text-xl md:text-2xl font-black tracking-tighter text-foreground group-hover:text-primary transition-colors duration-300 uppercase leading-tight"
               >
                 {{ $t('hero.name') }}
               </p>
-              <span
-                class="p-job-title title text-xs md:text-sm tracking-[0.12em] md:tracking-[0.16em] text-muted uppercase font-bold group-hover:text-foreground transition-colors delay-75 text-pretty"
-              >
-                {{ $t('hero.tags.frontArch') }}
-              </span>
+              <AppTextRotator
+                :items="brandRoles"
+                container-class="p-job-title title text-xs md:text-sm tracking-[0.12em] md:tracking-[0.16em] text-muted uppercase font-bold group-hover:text-foreground transition-colors duration-300 h-[1.35em]"
+                track-class="footer__brand-subtitle-track"
+                line-class="footer__brand-subtitle-line"
+              />
             </div>
           </div>
           <p
@@ -182,7 +217,7 @@ const socials = [
         <p
           class="min-w-0 shrink text-xs md:text-sm font-bold uppercase tracking-widest text-muted flex flex-col sm:flex-row items-center gap-1 sm:gap-2 text-center sm:text-left"
         >
-          <span>{{ $t('footer.copyrightYear') }} {{ $t('footer.protocol') }}</span>
+          <span>{{ currentYear }} {{ $t('footer.protocol') }}</span>
           <span class="hidden sm:inline text-muted/30" aria-hidden="true">|</span>
           <span class="opacity-50 tracking-[0.12em] sm:tracking-[0.16em]">{{
             $t('footer.rights')

@@ -150,7 +150,7 @@ export const usePortfolioSeo = () => {
         ],
         worksFor: {
           '@type': 'Organization',
-          name: 'LingoQuesto',
+          name: 'BITS Americas S.A.S.',
         },
         seeks: {
           '@type': 'Demand',

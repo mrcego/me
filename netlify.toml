@@ -13,6 +13,7 @@
 [build.environment]
   NODE_VERSION = "24"
   NUXT_PUBLIC_CONTACT_PROVIDER = "netlify"
+  NUXT_PUBLIC_AVAILABILITY_BANNER_ENABLED = "false"
 
 # Must stay true: HTML/CSS/JS post-processing can rewrite published files.
 # Nuxt generate already emits pretty directory URLs (no Netlify pretty_urls needed).

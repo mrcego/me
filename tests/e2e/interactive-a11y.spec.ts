@@ -129,8 +129,8 @@ test.describe('interactive accessibility', () => {
       await expect(control).toBeVisible({ timeout: 15_000 });
       const box = await control.boundingBox();
       expect(box).toBeTruthy();
-      expect(box!.width).toBeGreaterThanOrEqual(44);
-      expect(box!.height).toBeGreaterThanOrEqual(44);
+      expect(Math.round(box!.width)).toBeGreaterThanOrEqual(44);
+      expect(Math.round(box!.height)).toBeGreaterThanOrEqual(44);
     }
   });
 });

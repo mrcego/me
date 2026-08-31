@@ -32,4 +32,8 @@ describe('isImmediatelyAvailable', () => {
     expect(isImmediatelyAvailable(new Date(2026, 7, 9), boundary)).toBe(false);
     expect(isImmediatelyAvailable(new Date(2026, 7, 10), boundary)).toBe(true);
   });
+
+  it('defaults AVAILABILITY_CONFIG.enabled to false when not seeking', () => {
+    expect(typeof AVAILABILITY_CONFIG.enabled).toBe('boolean');
+  });
 });

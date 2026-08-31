@@ -31,11 +31,11 @@
     "contactShort": "Contact",
     "hireMenu": "Hiring profiles",
     "hireSection": "All profiles",
-    "brandRole": "Senior Fullstack Engineer",
+    "brandRole": "Frontend Solutions Architect",
     "brandRoles": [
+      "Frontend Solutions Architect",
       "Senior Fullstack Engineer",
-      "Frontend Architecture Specialist",
-      "Senior Vue/Nuxt Engineer",
+      "Senior Vue/Nuxt Specialist",
       "AI-Augmented Software Engineer"
     ],
     "switchLanguage": "Switch language",
@@ -59,7 +59,7 @@
     "workPreference": "Remote",
     "locationLine": "Cartagena de Indias, Colombia · Remote preferred",
     "description": "I help product teams build and scale Vue/Nuxt applications, frontend architectures, and Node.js services with clean, maintainable code and reliable delivery. Powered by 13+ years of production engineering experience and AI-augmented workflows.",
-    "cta": "Discuss a Vue/Nuxt engagement",
+    "cta": "Discuss a project",
     "secondaryCta": "See proven product work",
     "downloadCv": "Download CV",
     "downloadCvAria": "Download CV — résumé PDF ({file})",
@@ -96,8 +96,8 @@
     "terminalChipAriaMobile": "Open command terminal",
     "terminalChipTooltip": "Click to arm flight path (or press /)",
     "terminalChipTooltipMobile": "Tap to open command terminal",
-    "h1": "Senior Vue/Nuxt & Fullstack Engineer",
-    "title": "César Gómez | Senior Vue/Nuxt & Fullstack Engineer"
+    "h1": "Frontend Solutions Architect & Senior Fullstack Engineer",
+    "title": "César Gómez | Frontend Solutions Architect & Senior Fullstack Engineer"
   },
   "vibeCoding": {
     "modal": {
@@ -248,11 +248,11 @@
     },
     "responses": {
       "helpHeader": "Available commands:",
-      "about": "César Gómez — Senior Fullstack Developer specialized in Frontend Architecture and AI-assisted craft. 13+ years shipping Vue/Nuxt systems with architecture ownership and quality gates.",
+      "about": "César Gómez — Frontend Solutions Architect & Senior Fullstack Engineer specialized in enterprise Design Systems, micro-frontends, and AI-augmented craft. 13+ years shipping Vue 3 / Nuxt 4 systems with architecture ownership and quality gates.",
       "status": "Available now. Open to conversations, interviews, and early offers.",
       "stack": "Vue 3 · Nuxt 4 · TypeScript · Node/Express · Tailwind · PrimeVue · motion-v · Playwright/Vitest · AI-assisted craft with human review.",
-      "services": "Engineering Services: 1) Vue 3 & Nuxt 3 Architecture & Scaling. 2) AI-Assisted Craft & Quality Gates. 3) Core Web Vitals Optimization (LCP, CLS, INP). 4) Fullstack Node.js / Nitro APIs.",
-      "experience": "Recent focus: Colegium (education cloud platforms) and LingoQuesto (AI/NLP conversational product). Open the About section for role deep-dives.",
+      "services": "Engineering Services: 1) Enterprise Design Systems & Web Components. 2) Vue 3 & Nuxt 4 Architecture & Scaling. 3) Core Web Vitals & Sub-second Performance. 4) AI-Augmented Engineering & Quality Gates. 5) Fullstack Node.js / Nitro APIs.",
+      "experience": "Current & past engagements: BITS Americas (Frontend Solutions Architect Level II, enterprise Design Systems TO-BE & Web Components), Colegium (100k+ students ed-tech SaaS), and LingoQuesto (AI/NLP platform). Open the About section for role deep-dives.",
       "profiles": "Hire profiles: Vue developer · Vibe Coding Cleanup · Node.js backend · Angular 16+ · Frontend Architect · Fullstack engineer.",
       "certs": "{count} credentials listed on the Certifications section — TypeScript, AI programming, data structures, observability, and more.",
       "contact": "Email: cesargomezh90{'@'}gmail.com · LinkedIn: linkedin.com/in/mrcego · GitHub: github.com/mrcego · Or use the contact form on this site.",
@@ -334,6 +334,20 @@
       "viewDetails": "View role details",
       "highlightsTitle": "Key contributions",
       "close": "Close",
+      "currentBadge": "Current Role",
+      "bitsamericas": {
+        "title": "Frontend Solutions Architect Level II",
+        "company": "BITS Americas S.A.S.",
+        "years": "2026 - Present",
+        "location": "Colombia · Remote",
+        "desc": "Leading enterprise Design Systems architecture TO-BE, Web Components, and multi-framework governance.",
+        "highlights": [
+          "Architecting the TO-BE enterprise roadmap for scalable Design Systems, component governance, and cross-team adoption pipelines.",
+          "Engineering framework-agnostic Web Components (Stencil.js, Custom Elements) and native wrappers for seamless multi-framework interoperability (Vue 3, Angular v16+, React).",
+          "Standardizing design tokens, semantic versioning, private NPM distribution, and automated visual regression quality gates.",
+          "Enforcing WCAG 2.1 AA accessibility standards, zero-runtime overhead, and strict TypeScript API contracts."
+        ]
+      },
       "lingoquesto": {
         "title": "Founding Member | Senior Fullstack",
         "company": "LingoQuesto",
@@ -1512,7 +1526,7 @@
     "tagline": "Building high-fidelity products with frontend excellence",
     "rights": "All rights reserved.",
     "copyrightYear": "2026",
-    "protocol": "Ancelab.",
+    "protocol": "Cesar Gomez.",
     "status": "All Systems Operational",
     "navLabel": "Footer links",
     "email": "Email Cesar",
@@ -1805,68 +1819,101 @@
   },
   "landingArchitect": {
     "meta": {
-      "title": "Frontend Architect (Vue 3 & Nuxt 4)",
-      "description": "Frontend Architect specializing in Vue 3, Nuxt 4, design systems, micro-frontends, Core Web Vitals, and scalable web engineering."
+      "title": "Frontend Solutions Architect (Vue 3, Nuxt 4 & Enterprise Web Systems)",
+      "description": "Frontend Solutions Architect with 13+ years delivering scalable enterprise design systems, micro-frontends, Core Web Vitals optimization, and robust Vue/Nuxt platforms."
     },
-    "eyebrow": "Hire Profile · Technical Leadership",
-    "title": "Frontend Architect",
-    "titleHighlight": "& Lead",
-    "lead": "Senior technical leadership across Vue 3, Nuxt 4, design systems, micro-frontends, and performance-first web delivery for scale products.",
+    "eyebrow": "Technical Leadership · Frontend Architecture",
+    "title": "Frontend Solutions Architect",
+    "titleHighlight": "& Technical Lead",
+    "lead": "Strategic technical leadership delivering enterprise-scale design systems, micro-frontend ecosystems, zero-runtime SSG/SSR performance, and AI-augmented engineering workflows.",
     "intent": {
-      "title": "Strategic frontend engineering for complex web applications",
+      "title": "Architecting resilient, high-velocity frontend ecosystems",
       "paragraphs": [
-        "Building applications at scale requires more than UI components—it requires architectural foresight, strict quality gates, and maintainable systems. As Frontend Architect, I establish foundational patterns, design systems, and CI/CD pipelines.",
-        "Available now for senior leadership and contract roles."
+        "Modern frontend engineering at scale is fundamentally about system design: decoupling complex domains, establishing unbreakable contract boundaries, enforcing strict accessibility (WCAG AA/AAA), and building design systems that multiply team velocity.",
+        "As a Frontend Solutions Architect with 13+ years of production experience, I bridge high-level product strategy and deep implementation craft. I design foundational architectures, define multi-brand token pipelines, and implement automated quality gates that guarantee sub-second performance, zero regression, and long-term maintainability.",
+        "Whether modularizing large-scale monoliths, establishing cross-squad UI governance, or guiding teams in disciplined AI-assisted development, I ensure your web architecture scales reliably under heavy real-world demand."
       ]
     },
     "services": {
-      "title": "Hire a Frontend Architect for",
+      "title": "Frontend Architecture & Leadership Capabilities",
       "items": [
         {
-          "title": "Design Systems & UI Governance",
-          "body": "Multi-brand component systems with Tailwind variants, accessibility compliance, and design token consistency."
+          "title": "Enterprise Design Systems & Token Governance",
+          "body": "Architecting multi-brand, headless component libraries with Tailwind CSS v4, accessible primitives (Reka UI/PrimeVue), and token pipelines that ensure 100% brand fidelity across diverse product teams."
         },
         {
-          "title": "Micro-Frontends & Module Boundaries",
-          "body": "Decoupled web applications using Web Components, Nuxt modules, and clean domain boundaries."
+          "title": "Micro-Frontends & Domain-Driven Modularization",
+          "body": "Deconstructing monolithic web applications into independently deployable, typed micro-apps using Module Federation, Web Components, and pnpm workspaces with strict package seams."
         },
         {
-          "title": "Performance & Core Web Vitals",
-          "body": "Sub-second LCP, hydration optimization, payload minimization, and CSP Grado A+ security."
+          "title": "Core Web Vitals & Web Performance Engineering",
+          "body": "Delivering sub-second LCP, sub-50ms INP, and 0 CLS across static and dynamic applications through critical asset inlining, intelligent prefetching, hydration minimization, and automated LHCI budgets."
         },
         {
-          "title": "Team Mentorship & Code Review",
-          "body": "Establishing engineering standards, AI-assisted quality gates, and mentoring junior to mid-level engineers."
+          "title": "Clean & Hexagonal Frontend Architecture",
+          "body": "Structuring large codebases with clear screaming/hexagonal boundaries, separating pure domain business logic from Vue/Nuxt view layers, and enforcing deterministic contract testing with Vitest."
+        },
+        {
+          "title": "Automated Quality Gates & CI/CD Pipeline Design",
+          "body": "Implementing bulletproof delivery pipelines with Husky, Playwright E2E suites, automated visual regression, CSP Grade A+ security headers, and zero-downtime static site generation (SSG) on edge CDNs."
+        },
+        {
+          "title": "Engineering Team Mentorship & AI Leverage",
+          "body": "Empowering engineering squads through architectural RFC reviews, pair programming, code review standards, and establishing disciplined AI-augmented engineering workflows governed by human architectural quality."
         }
       ]
     },
-    "expertiseTitle": "Architecture pillars",
+    "expertiseTitle": "Core Architectural Pillars",
     "expertise": [
-      "Vue 3 & Nuxt 4 zero-runtime SSG & hybrid SSR",
-      "Design systems & component library governance",
-      "Micro-frontend module federation & web components",
-      "Core Web Vitals RUM & automated CI/CD pipelines"
+      "Nuxt 4 & Vue 3 enterprise architecture (hybrid SSR, zero-runtime SSG, Nitro edge server routes)",
+      "Headless design systems, Tailwind CSS v4 tokens, and WCAG AA/AAA accessibility compliance",
+      "Micro-frontend module federation, Web Components, and pnpm/Turborepo monorepo management",
+      "Sub-second Core Web Vitals (LCP < 1.0s, INP < 50ms, CLS = 0) & real-user monitoring (RUM)",
+      "State architecture, decoupled domain layers, and deterministic Vitest unit/integration testing",
+      "Strict Content Security Policy (CSP Grade A+), subresource integrity, and edge security hardening",
+      "Human-led, AI-augmented engineering workflows with automated verification and conventional quality gates"
     ],
-    "experienceTitle": "Scale engineering proof",
-    "experienceBody": "Led Vue 3 micro-frontend architecture at Colegium serving 100k+ active students, established CI/CD automation at TISSINI reducing deployment times by 60%, and authored LingoQuesto AI/NLP platform.",
-    "proofTitle": "Architectural highlights",
-    "proofLink": "Colegium case study",
+    "experienceTitle": "Proven Production Track Record",
+    "experienceBody": "Led the multi-tenant micro-frontend architecture at Colegium serving 100k+ active daily users across Latin America, slashed build and deployment times by 60% at TISSINI via automated CI/CD and monorepo pipelines, designed the AI/NLP platform architecture for LingoQuesto, and leading scalable enterprise frontend architecture at BITS Americas.",
+    "proofTitle": "Architectural Milestones & Evidence",
+    "proofLink": "Explore Colegium Case Study",
     "proof": [
-      "Multi-tenant micro-frontend architecture",
-      "60% deployment velocity improvement",
-      "CSP Grado A+ & security hardening",
-      "Available for senior contract roles from now"
+      "100k+ daily active users powered by multi-tenant micro-frontends",
+      "60% reduction in deployment cycle time via automated CI/CD gates",
+      "100/100 Lighthouse performance & sub-second Core Web Vitals in production",
+      "CSP Grade A+ security rating with zero runtime vulnerability footprint",
+      "180+ automated unit, integration, and E2E test specs with 100% pass rates"
     ],
-    "portfolioCta": "View full portfolio",
+    "portfolioCta": "Explore Full Portfolio",
     "contactCta": "Discuss Frontend Architecture",
-    "faqTitle": "Frontend Architect FAQ",
+    "faqTitle": "Frontend Solutions Architect FAQ",
     "faq": [
       {
-        "question": "What is the difference between a Senior Frontend Developer and a Frontend Architect?",
-        "answer": "A Senior Developer builds features; an Architect designs the foundational systems, design tokens, micro-frontend boundaries, performance strategy, and engineering guidelines for entire teams."
+        "question": "What is the core difference between a Senior Frontend Engineer and a Frontend Architect?",
+        "answer": "A Senior Frontend Engineer excels at implementing complex features and components with high craft. A Frontend Solutions Architect designs the systemic foundations for entire organizations: defining module boundaries, establishing design token pipelines, enforcing performance budgets, creating testing strategies, and setting the technical standards that enable multiple engineering squads to build in parallel without stepping on each other."
+      },
+      {
+        "question": "When does a product organization need a dedicated Frontend Architect?",
+        "answer": "An organization typically requires a Frontend Architect when scaling beyond 2-3 engineering teams, when splitting a legacy frontend monolith into micro-frontends or shared libraries, when adopting a company-wide Design System, when facing Core Web Vitals or bundle bloat regressions, or when transitioning team workflows to leverage modern AI-assisted engineering with strict quality control."
+      },
+      {
+        "question": "How do you ensure web performance and Core Web Vitals remain optimal in production?",
+        "answer": "Performance cannot be an afterthought; it is built into the architecture. I implement zero-runtime CSS strategies, critical CSS inlining, font display optimization, strict chunk splitting, payload budgets, and automated Lighthouse CI checks in every pull request. In production, real-user monitoring (RUM) telemetry tracks 75th-percentile vitals to detect regressions before users do."
+      },
+      {
+        "question": "What is your approach to building and scaling Design Systems?",
+        "answer": "I build Design Systems starting with a single source of truth in design tokens (colors, typography, spacing, elevations) decoupled from specific frameworks. On top of tokens, we build headless, fully accessible primitives (using tools like Reka UI or PrimeVue), styled with modern Tailwind CSS variants. This ensures brand consistency, rapid theming, and bulletproof accessibility across all client apps."
+      },
+      {
+        "question": "How do you integrate AI into engineering workflows without compromising software quality?",
+        "answer": "We treat AI as a powerful execution amplifier under strict human architectural governance. All AI-augmented code generation must adhere to established design patterns, undergo human peer review, and pass 100% of automated lint, typecheck, coverage, and end-to-end Playwright test suites. The human architect designs the seams and contracts; AI accelerates the delivery."
+      },
+      {
+        "question": "Which tech stacks and ecosystems do you specialize in?",
+        "answer": "My primary stack centers on Vue 3 (Composition API with script setup, TypeScript), Nuxt 4, Nitro server routes, Tailwind CSS v4, and modern Node.js/Vite tooling. I also have deep production experience with Angular (v16+), TypeScript microservices, Web Components, and edge cloud architectures."
       }
     ],
-    "answerBlock": "César Gómez is a senior frontend architect with 13+ years leading technical delivery across Vue 3, Nuxt 4, design systems, micro-frontends, and performance-critical web platforms. He provides architecture ownership, quality gates, and scalable frontend foundations for product teams. Based in Cartagena, Colombia, available remotely."
+    "answerBlock": "César Gómez is a Senior Frontend Solutions Architect and Technical Lead with 13+ years of experience engineering scalable Vue 3, Nuxt 4, design systems, micro-frontends, and performance-critical web platforms. He establishes robust architectural foundations, quality gates, and AI-augmented engineering workflows for high-growth tech organizations. Based in Cartagena, Colombia, available for global remote leadership."
   },
   "landingFullstack": {
     "meta": {
@@ -1938,7 +1985,7 @@
       "aria": "Open Angie AI Portfolio Concierge",
       "tooltip": "Ask Angie AI",
       "tooltipTitle": "Angie · AI Concierge",
-      "tooltipText": "Ask me about César's 13+ YOE, tech stack, architecture, and hiring availability.",
+      "tooltipText": "Ask me about César's role at BITS Americas, 13+ YOE, architecture, and tech stack.",
       "tooltipPrompt": "Click to chat"
     },
     "header": {
@@ -1956,7 +2003,7 @@
       "user": "You",
       "angie": "Angie AI"
     },
-    "welcomeMessage": "Hello! I am Angie, César Gómez's AI Portfolio Concierge. I can provide verified insights on his 13+ years of production experience, Vue 3 / Nuxt 4 architecture, enterprise case studies, and availability for contract or leadership roles. How can I help you today?",
+    "welcomeMessage": "Hello! I am Angie, César Gómez's AI Portfolio Concierge. I can provide verified insights on his current role as Frontend Solutions Architect Level II at BITS Americas, his 13+ years of production experience, Vue 3 / Nuxt 4 architecture, enterprise Design Systems, and availability for contract or leadership roles. How can I help you today?",
     "thinking": "Synthesizing response...",
     "errorGeneric": "An error occurred while processing your request. Please try again or reach out directly.",
     "inputPlaceholder": "Ask Angie a question about César's work…",

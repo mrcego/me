@@ -23,11 +23,16 @@ export default <RouterConfig>{
     if (to.hash) {
       const id = to.hash.replace(/^#/, '');
       revealSectionGeometry(id);
-      return {
-        el: to.hash,
-        top: 96,
-        behavior: 'auto',
-      };
+
+      if (typeof document !== 'undefined' && document.getElementById(id)) {
+        return {
+          el: to.hash,
+          top: 96,
+          behavior: 'auto',
+        };
+      }
+
+      return { top: 0, left: 0 };
     }
 
     return { top: 0, left: 0 };

@@ -10,6 +10,7 @@ public
 
 .opencode
 .agent
+.agents
 .gemini
 .github/skills
 .github/agents

@@ -11,7 +11,7 @@ test.describe('hero conversion hierarchy', () => {
     await expect(hero).toBeVisible();
 
     const h1 = hero.locator('h1');
-    await expect(h1).toContainText(/Senior Vue\/Nuxt & Fullstack Engineer/i);
+    await expect(h1).toContainText(/Frontend Solutions Architect|Senior Fullstack/i);
 
     const nameText = (await h1.innerText()).replace(/\s+/g, ' ');
     expect(nameText).toMatch(/César Gómez|Cesar Gomez|CESAR GOMEZ/i);
@@ -23,7 +23,7 @@ test.describe('hero conversion hierarchy', () => {
 
     const cta = hero
       .getByRole('link', {
-        name: /Discuss a Vue\/Nuxt engagement|Hablar sobre un proyecto Vue\/Nuxt/i,
+        name: /Discuss a project|Hablemos de tu proyecto/i,
       })
       .first();
     await expect(cta).toBeVisible();
@@ -47,7 +47,7 @@ test.describe('hero conversion hierarchy', () => {
     const h1Box = await hero.locator('h1').boundingBox();
     const ctaBox = await hero
       .getByRole('link', {
-        name: /Discuss a Vue\/Nuxt engagement|Hablar sobre un proyecto Vue\/Nuxt/i,
+        name: /Discuss a project|Hablemos de tu proyecto/i,
       })
       .first()
       .boundingBox();

@@ -1,8 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 import tailwindcss from '@tailwindcss/vite';
+import { BUNDLED_ICONS } from './app/config/icons.config';
 import { prerenderRoutesWithSitemap, sitemapUrls } from './app/config/routes.manifest';
-import { SEO_EDITORIAL_DATES } from './app/config/seo.config';
+import { SEO_EDITORIAL_DATES, SEO_IDENTITY } from './app/config/seo.config';
 import { buildThemeInitScript } from './app/utils/themeInitScript';
 
 export default defineNuxtConfig({
@@ -124,10 +125,6 @@ export default defineNuxtConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    optimizeDeps: {
-      // Avoid prebundling the full @vueuse/core barrel into the graph.
-      include: ['@unhead/schema-org/vue'],
-    },
     build: {
       modulePreload: false,
       // One stylesheet discoverable from HTML — avoids JS→CSS→JS critical chains
@@ -247,82 +244,7 @@ export default defineNuxtConfig({
     // Scan templates (incl. Lazy islands) so icons ship offline — empty scan broke prod icons.
     clientBundle: {
       scan: true,
-      icons: [
-        // Hero section & social
-        'solar:rocket-2-bold-duotone',
-        'solar:calendar-date-bold-duotone',
-        'solar:code-file-bold-duotone',
-        'solar:code-square-bold-duotone',
-        'solar:letter-linear',
-        'solar:letter-bold',
-        'solar:arrow-left-linear',
-        'solar:arrow-down-linear',
-        'solar:download-minimalistic-bold-duotone',
-        'solar:case-minimalistic-bold-duotone',
-        // Capabilities section
-        'solar:rocket-bold-duotone',
-        'solar:database-bold-duotone',
-        'solar:shield-check-bold-duotone',
-        'solar:magic-stick-3-bold-duotone',
-        // Hire profiles & PSEO landings
-        'logos:vue',
-        'logos:nodejs-icon',
-        'logos:angular-icon',
-        'solar:cpu-bolt-bold-duotone',
-        'solar:layers-minimalistic-bold-duotone',
-        'solar:code-square-bold-duotone',
-        // Tech stack
-        'logos:typescript-icon',
-        'logos:javascript',
-        'logos:git-icon',
-        'solar:crown-star-bold',
-        'solar:global-linear',
-        // Case studies & testimonials
-        'solar:bag-2-bold-duotone',
-        'solar:buildings-2-bold-duotone',
-        'solar:chat-round-dots-bold-duotone',
-        'solar:chat-square-code-bold-duotone',
-        'solar:check-circle-bold',
-        // About & philosophy points
-        'logos:nuxt-icon',
-        'logos:figma',
-        'lucide:calendar-range',
-        'lucide:map-pin',
-        // Contact & social
-        'solar:letter-bold-duotone',
-        'solar:phone-calling-bold-duotone',
-        'solar:plain-bold-duotone',
-        'solar:sort-vertical-linear',
-        'logos:linkedin-icon',
-        'logos:github-icon',
-        'logos:twitter',
-        'logos:google-gmail',
-        'logos:whatsapp-icon',
-        'simple-icons:linkedin',
-        'simple-icons:github',
-        // Certifications & navbar
-        'solar:medal-ribbon-bold',
-        'logos:google-icon',
-        'logos:meta-icon',
-        'logos:aws',
-        'simple-icons:platzi',
-        'simple-icons:udemy',
-        'simple-icons:newrelic',
-        'solar:widget-2-bold-duotone',
-        'solar:arrow-right-linear',
-        'solar:arrow-right-up-bold',
-        'solar:arrow-right-up-linear',
-        'solar:download-minimalistic-bold-duotone',
-        'lucide:circle-check',
-        'lucide:chevron-down',
-        'lucide:x',
-        'lucide:send',
-        'lucide:arrow-right',
-        'solar:hamburger-menu-linear',
-        'solar:close-square-linear',
-        'solar:stars-minimalistic-bold-duotone',
-        'solar:restart-linear',
-      ],
+      icons: [...BUNDLED_ICONS],
     },
   },
 
@@ -336,11 +258,12 @@ export default defineNuxtConfig({
   // SEO module configuration
   // Build-time OG PNGs (static Netlify generate) — no runtime signing secret needed
   ogImage: {
+    enabled: !process.env.VITEST,
     zeroRuntime: true,
     defaults: {
       width: 1200,
       height: 630,
-      alt: 'César Gómez — Senior Fullstack Engineer · Frontend Architect',
+      alt: SEO_IDENTITY.ogImageAlt,
     },
     // Prerender can exceed the module default (15s) under Windows + cold Chromium.
     security: {
@@ -422,6 +345,11 @@ export default defineNuxtConfig({
     public: {
       // Netlify production default; GitHub Pages redirect artifact does not use the form
       contactProvider: 'netlify',
+      // Master toggle for top availability banner (controlled via env var or availability.config.ts)
+      availabilityBannerEnabled:
+        process.env.NUXT_PUBLIC_AVAILABILITY_BANNER_ENABLED !== undefined
+          ? process.env.NUXT_PUBLIC_AVAILABILITY_BANNER_ENABLED === 'true'
+          : false,
       // Facebook Sharing Debugger asks for fb:app_id. Override with your own App ID via
       // NUXT_PUBLIC_FACEBOOK_APP_ID. Default is Meta's public fallback ID (silences the warning).
       facebookAppId: '966242223397117',

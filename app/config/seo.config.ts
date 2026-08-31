@@ -39,7 +39,7 @@ export const SEO_HREFLANG = {
  */
 export const SEO_EDITORIAL_DATES = {
   profileCreated: '2024-06-01T12:00:00-05:00',
-  lastModified: '2026-08-12T15:30:00-05:00',
+  lastModified: '2026-08-27T15:30:00-05:00',
 } as const;
 
 /** Shared social / OG defaults used by composables and @nuxtjs/seo. */
@@ -86,6 +86,7 @@ export const PERSON_KNOWS_ABOUT = [
   'UI Engineering',
   'Design Systems',
   'Micro-frontends',
+  'Web Components',
   'PrimeVue',
   'Tailwind CSS',
   'Pinia',

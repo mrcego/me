@@ -152,8 +152,8 @@ export function buildSecurityHeaders() {
   };
 }
 
-/** HTML documents — never pin; always revalidate after deploy. */
-export const CACHE_CONTROL_HTML = 'no-cache, no-store, must-revalidate';
+/** HTML documents — allow Netlify Edge CDN caching with instant revalidation on deploy. */
+export const CACHE_CONTROL_HTML = 'public, max-age=0, must-revalidate';
 
 /** Hashed Nuxt / font / i18n assets — immutable year-long cache. */
 export const CACHE_CONTROL_IMMUTABLE = 'public, max-age=31536000, immutable';
